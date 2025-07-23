@@ -25,7 +25,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(
-    product.options.values[0]
+    null
   );
   const [activeImage, setActiveImage] = useState(product.images[0]);
 
@@ -34,13 +34,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
     const newImage = product.images.find(img => img.option.toLowerCase() === option.toLowerCase());
     if (newImage) {
         setActiveImage(newImage);
-    } else {
-        setActiveImage(product.images[0]);
     }
   };
 
   return (
-    <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-secondary border-primary/50">
       <CardHeader className="p-0 relative">
         <div className="aspect-square relative w-full overflow-hidden">
           <Image
@@ -51,13 +49,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
             data-ai-hint={activeImage.dataAiHint}
           />
         </div>
-        <Badge className="absolute top-2 right-2" variant={product.availability === 'Disponible' ? 'default' : 'destructive'}>{product.availability}</Badge>
       </CardHeader>
-      <CardContent className="p-4 flex-grow">
-        <h3 className="font-semibold text-lg leading-tight truncate">
+      <CardContent className="p-4 flex-grow flex flex-col">
+        <h3 className="font-semibold text-lg leading-tight truncate uppercase flex-grow">
           {product.name}
         </h3>
         <p className="text-primary font-bold text-xl mt-1">{product.price}</p>
+        <p className="text-green-500 text-sm mt-1">{product.availability}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex flex-col items-start">
         <div className="flex flex-wrap gap-2 mb-2">
@@ -75,7 +73,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <p className="text-xs text-muted-foreground h-4">
           {selectedOption
-            ? `Opción seleccionada: ${selectedOption}`
+            ? `${product.options.type.charAt(0).toUpperCase() + product.options.type.slice(1)} seleccionado`
             : `Selecciona un ${product.options.type}`}
         </p>
       </CardFooter>

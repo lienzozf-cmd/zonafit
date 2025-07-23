@@ -5,9 +5,6 @@ import {
   Search,
   ShoppingCart,
   Menu,
-  ChevronDown,
-  ChevronRight,
-  Dumbbell,
 } from 'lucide-react';
 import {
   NavigationMenu,
@@ -16,7 +13,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -36,34 +32,40 @@ import {
 import { cn } from '@/lib/utils';
 import { navLinks } from '@/lib/data';
 import React from 'react';
+import Image from 'next/image';
 
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Dumbbell className="h-6 w-6 text-primary" />
-          <span className="hidden font-bold sm:inline-block font-headline text-lg">
-            ZONA FIT GT
-          </span>
-        </Link>
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="hidden md:flex">
-            <DesktopNav />
-          </nav>
-          <div className="flex items-center space-x-2">
+      <div className="container flex flex-col items-center py-4">
+        <div className="w-full flex justify-between items-center mb-2">
+          <div className="flex-1">
+            <Link href="/" className="flex items-center space-x-2">
+                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" width={80} height={80} id="site-logo" />
+            </Link>
+          </div>
+          <div className="flex-1 flex justify-center">
+            {/* DesktopNav will be centered */}
+            <nav className="hidden md:flex">
+                <DesktopNav />
+            </nav>
+          </div>
+          <div className="flex-1 flex justify-end items-center space-x-2">
             <div className="hidden sm:block relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input placeholder="Buscar productos..." className="pl-10" />
             </div>
             <Button variant="ghost" size="icon">
               <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Shopping Cart</span>
+              <span className="sr-only">Carrito de compras</span>
             </Button>
             <div className="md:hidden">
               <MobileNav />
             </div>
           </div>
+        </div>
+        <div className="w-full flex md:hidden justify-center">
+            {/* MobileNav trigger will be here, but nav is in a sheet */}
         </div>
       </div>
     </header>
@@ -102,13 +104,13 @@ const MobileNav = () => (
     <SheetTrigger asChild>
       <Button variant="ghost" size="icon">
         <Menu className="h-5 w-5" />
-        <span className="sr-only">Open Menu</span>
+        <span className="sr-only">Abrir Menú</span>
       </Button>
     </SheetTrigger>
     <SheetContent side="left">
       <div className="p-4">
       <Link href="/" className="mr-6 flex items-center space-x-2 mb-6">
-          <Dumbbell className="h-6 w-6 text-primary" />
+          <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" width={60} height={60} />
           <span className="font-bold font-headline text-lg">
             ZONA FIT GT
           </span>

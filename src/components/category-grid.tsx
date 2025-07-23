@@ -9,7 +9,7 @@ const categories = [
     products: 47,
     href: '/mujer',
     image: {
-      src: 'https://placehold.co/400x800.png',
+      src: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
       alt: 'Woman in fitness attire',
       dataAiHint: 'fitness woman',
     },
@@ -20,7 +20,7 @@ const categories = [
     products: 24,
     href: '/hombre',
     image: {
-      src: 'https://placehold.co/800x400.png',
+      src: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
       alt: 'Man working out',
       dataAiHint: 'fitness man',
     },
@@ -31,7 +31,7 @@ const categories = [
     products: 24,
     href: '/accesorios',
     image: {
-      src: 'https://placehold.co/400x400.png',
+      src: '/assets/images/marcas/youngla/hombre/maletagym.png',
       alt: 'Gym bag',
       dataAiHint: 'gym accessories',
     },
@@ -42,7 +42,7 @@ const categories = [
     products: 24,
     href: '/suplementos',
     image: {
-      src: 'https://placehold.co/400x400.png',
+      src: '/assets/images/marcas/raw/prewcb.jpg',
       alt: 'Protein powder container',
       dataAiHint: 'protein supplement',
     },
@@ -53,7 +53,7 @@ const categories = [
     products: 24,
     href: '/joyeria',
     image: {
-      src: 'https://placehold.co/400x400.png',
+      src: '/assets/images/marcas/rgmnt/tridente.png',
       alt: 'Fitness-themed jewelry',
       dataAiHint: 'fitness jewelry',
     },
@@ -63,14 +63,13 @@ const categories = [
 
 const CategoryGrid = () => {
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-4 py-8 md:py-12">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
         <div className="md:w-1/3 text-center md:text-left">
           <h2 className="text-4xl font-bold font-headline mb-4">ZONA FIT GT</h2>
           <p className="text-lg text-muted-foreground">
-            "Donde tu energía se viste, se nutre y se luce."
+          "Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce."
           </p>
-          <Button variant="outline" className="mt-6">Ver todas las categorías</Button>
         </div>
         <div className="md:w-2/3 w-full grid grid-cols-1 md:grid-cols-3 gap-4 h-[500px] md:h-[600px]">
           {categories.map((category) => (

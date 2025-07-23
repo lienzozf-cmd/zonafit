@@ -25,52 +25,33 @@ const Footer = () => {
   return (
     <footer className="bg-secondary/50">
         <div className="container py-12 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4 md:col-span-1">
-            <Link href="/" className="flex items-center space-x-2">
-                <Dumbbell className="h-8 w-8 text-primary" />
-                <span className="font-bold text-xl font-headline">ZONA FIT GT</span>
-            </Link>
+            <h3 className="font-semibold mb-4 text-primary">Acerca de Nosotros</h3>
             <p className="text-sm text-muted-foreground">
-                Desata tu mejor versión con fuerza, estilo y elegancia.
+                Copyright &copy; Esta página fue diseñada por "Bushido SynCode".
             </p>
-            <div className="flex space-x-4">
-                <a href="https://www.tiktok.com/@zonafitgt_" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><TikTokIcon /></a>
-                <a href="https://www.instagram.com/zonafitgt_/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><InstagramIcon /></a>
-                <a href="https://www.facebook.com/people/Zona-Fit-Gt/pfbid02mXkKgdqTS4t2eLj6px4tNXH9L4BJtQ1DJJbsPbyguE3nN3F5hU6wSHuJ7n9p4Sfl/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><FacebookIcon /></a>
+          </div>
+          <div className="md:col-span-1">
+            <h3 className="font-semibold mb-4 text-primary">Contacto</h3>
+            <p className="text-sm text-muted-foreground"><a href="https://www.instagram.com/zonafitgt_/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Página Web</a></p>
+            <p className="text-sm text-muted-foreground">Horario: Lunes - Viernes, 9 AM - 6 PM</p>
+            <div className="flex space-x-4 mt-2">
+                <a href="https://www.tiktok.com/@zonafitgt_" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><TikTokIcon className="h-5 w-5"/></a>
+                <a href="https://www.instagram.com/zonafitgt_/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><InstagramIcon className="h-5 w-5"/></a>
             </div>
           </div>
-          <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
-            <div>
-                <h3 className="font-semibold mb-4">Tienda</h3>
-                <ul className="space-y-2">
-                    <li><Link href="/hombres" className="text-sm text-muted-foreground hover:text-primary transition-colors">Hombres</Link></li>
-                    <li><Link href="/mujeres" className="text-sm text-muted-foreground hover:text-primary transition-colors">Mujeres</Link></li>
-                    <li><Link href="/accesorios" className="text-sm text-muted-foreground hover:text-primary transition-colors">Accesorios</Link></li>
-                    <li><Link href="/suplementos" className="text-sm text-muted-foreground hover:text-primary transition-colors">Suplementos</Link></li>
-                </ul>
-            </div>
-            <div>
-                <h3 className="font-semibold mb-4">Marcas</h3>
-                <ul className="space-y-2">
-                    <li><Link href="/marcas/youngla" className="text-sm text-muted-foreground hover:text-primary transition-colors">YoungLA</Link></li>
-                    <li><Link href="/marcas/gymshark" className="text-sm text-muted-foreground hover:text-primary transition-colors">Gymshark</Link></li>
-                    <li><Link href="/marcas/darc-sport" className="text-sm text-muted-foreground hover:text-primary transition-colors">Darc Sport</Link></li>
-                    <li><Link href="/marcas/dragon-pharma" className="text-sm text-muted-foreground hover:text-primary transition-colors">Dragon Pharma</Link></li>
-                </ul>
-            </div>
-            <div>
-                <h3 className="font-semibold mb-4">Enlaces Útiles</h3>
+          <div className="md:col-span-1">
+                <h3 className="font-semibold mb-4 text-primary">Enlaces Útiles</h3>
                 <ul className="space-y-2">
                     <li><Link href="/privacidad" className="text-sm text-muted-foreground hover:text-primary transition-colors">Políticas de Privacidad</Link></li>
                     <li><Link href="/terminos" className="text-sm text-muted-foreground hover:text-primary transition-colors">Términos y Condiciones</Link></li>
-                    <li><Link href="/devoluciones" className="text-sm text-muted-foreground hover:text-primary transition-colors">Política de Devoluciones</Link></li>
+                    <li><Link href="/devoluciones" className="text-sm text-muted-foreground hover:text-primary transition-colors">No hay devoluciones</Link></li>
                 </ul>
             </div>
-          </div>
         </div>
         <div className="mt-8 border-t pt-6 text-center text-sm text-muted-foreground">
-            <p>Copyright &copy; {new Date().getFullYear()} Zona Fit GT. Diseñada por "Bushido SynCode".</p>
+            <p>Copyright &copy; {new Date().getFullYear()} Zona Fit GT. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

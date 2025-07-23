@@ -11,15 +11,15 @@ import { Button } from './ui/button';
 import Autoplay from "embla-carousel-autoplay"
 
 const heroImages = [
-  { src: 'https://placehold.co/1600x800.png', alt: 'Man lifting weights', dataAiHint: 'gym workout' },
-  { src: 'https://placehold.co/1600x800.png', alt: 'Woman in athletic wear', dataAiHint: 'fitness woman' },
-  { src: 'https://placehold.co/1600x800.png', alt: 'Fitness supplements and gear', dataAiHint: 'fitness supplements' },
-  { src: 'https://placehold.co/1600x800.png', alt: 'Man running on a treadmill', dataAiHint: 'man running' },
+  { src: '/assets/images/banners/banner.jpg', alt: 'Man lifting weights', dataAiHint: 'gym workout' },
+  { src: '/assets/images/banners/banner2.png', alt: 'Woman in athletic wear', dataAiHint: 'fitness woman' },
+  { src: '/assets/images/banners/banner3.png', alt: 'Fitness supplements and gear', dataAiHint: 'fitness supplements' },
+  { src: '/assets/images/banners/banner4.png', alt: 'Man running on a treadmill', dataAiHint: 'man running' },
 ];
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[60vh] md:h-screen overflow-hidden">
       <Carousel 
         className="w-full h-full"
         plugins={[Autoplay({delay: 5000})]}
@@ -46,13 +46,7 @@ const HeroSection = () => {
         <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 text-white" />
       </Carousel>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-headline drop-shadow-lg animate-fade-in-down">
-          Desata tu mejor versión
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg md:text-xl text-neutral-200 drop-shadow-md animate-fade-in-up">
-          Fuerza, estilo y elegancia. Adéntrate a ZONA FIT GT.
-        </p>
-        <Button size="lg" className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg py-6 px-10 transition-transform duration-300 ease-in-out hover:scale-105">
+        <Button size="lg" className="mt-8 bg-black hover:bg-primary/90 text-primary font-bold text-lg py-6 px-10 transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-primary">
           COMPRAR AHORA
         </Button>
       </div>
