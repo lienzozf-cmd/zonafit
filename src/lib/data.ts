@@ -1,3 +1,4 @@
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -107,7 +108,21 @@ export const navLinks = [
   },
 ];
 
-export const products = [
+export type ProductOption = {
+  value: string;
+  stock: number;
+};
+
+export type Product = {
+  id: number;
+  name: string;
+  price: string;
+  availability: string;
+  images: { src: string; alt: string; dataAiHint: string; option: string }[];
+  options: { type: string; values: ProductOption[] };
+};
+
+export const products: Product[] = [
   {
     id: 1,
     name: 'Superhero Compression Tees Red',
@@ -133,7 +148,14 @@ export const products = [
         option: 'L',
       },
     ],
-    options: { type: 'talla', values: ['S', 'M', 'L'] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 3 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 5 },
+      ],
+    },
   },
   {
     id: 2,
@@ -160,7 +182,14 @@ export const products = [
         option: 'L',
       },
     ],
-    options: { type: 'talla', values: ['S', 'M', 'L'] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 4 },
+        { value: 'L', stock: 2 },
+      ],
+    },
   },
   {
     id: 3,
@@ -187,7 +216,14 @@ export const products = [
         option: 'L',
       },
     ],
-    options: { type: 'talla', values: ['S', 'M', 'L'] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 0 },
+      ],
+    },
   },
   {
     id: 4,
@@ -214,7 +250,14 @@ export const products = [
         option: 'L',
       },
     ],
-    options: { type: 'talla', values: ['S', 'M', 'L'] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 2 },
+        { value: 'M', stock: 3 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 5,
@@ -241,7 +284,14 @@ export const products = [
         option: 'L',
       },
     ],
-    options: { type: 'talla', values: ['S', 'M', 'L'] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 4 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 3 },
+      ],
+    },
   },
   {
     id: 6,
@@ -268,7 +318,14 @@ export const products = [
         option: 'L',
       },
     ],
-    options: { type: 'talla', values: ['S', 'M', 'L'] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 6 },
+        { value: 'M', stock: 0 },
+        { value: 'L', stock: 2 },
+      ],
+    },
   },
   {
     id: 7,
@@ -289,7 +346,13 @@ export const products = [
         option: 'ChocolateBlanco',
       },
     ],
-    options: { type: 'sabor', values: ['Blueberry', 'ChocolateBlanco'] },
+    options: {
+      type: 'sabor',
+      values: [
+        { value: 'Blueberry', stock: 10 },
+        { value: 'ChocolateBlanco', stock: 8 },
+      ],
+    },
   },
   {
     id: 8,
@@ -310,6 +373,12 @@ export const products = [
         option: 'Serv200',
       },
     ],
-    options: { type: 'servicios', values: ['Serv60', 'Serv200'] },
+    options: {
+      type: 'servicios',
+      values: [
+        { value: 'Serv60', stock: 15 },
+        { value: 'Serv200', stock: 5 },
+      ],
+    },
   },
 ];
