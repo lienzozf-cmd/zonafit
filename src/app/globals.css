@@ -45,8 +45,9 @@ a:hover {
 .site-header {
   padding: 20px 40px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -55,19 +56,9 @@ a:hover {
   box-sizing: border-box;
 }
 
-.header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
 .site-branding {
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  justify-content: flex-start;
 }
 
 #site-logo {
@@ -177,7 +168,9 @@ a:hover {
 }
 
 .site-navigation {
-  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .site-navigation ul {

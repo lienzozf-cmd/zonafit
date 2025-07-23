@@ -51,51 +51,10 @@ const Header = () => {
 
   return (
     <header className="site-header">
-      <div className="header-top">
-        <div className="site-branding">
-          <Link href="/">
-              <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={80} height={80} />
-          </Link>
-        </div>
-        <div className="header-icons">
-          <div className="search-container" ref={searchContainerRef}>
-            <Image 
-              src="/assets/icons/search-icon.svg" 
-              alt="Search Icon" 
-              className="search-icon" 
-              width={24} 
-              height={24}
-              onClick={() => setIsSearchActive(!isSearchActive)}
-            />
-            <div className={`search-box ${isSearchActive ? 'active' : ''}`} id="searchBox">
-              <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="Buscar productos..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && performSearch()}
-              />
-              <button id="searchButton" onClick={performSearch}>Buscar</button>
-            </div>
-            <div id="searchResults">
-              {searchResults.length > 0 ? (
-                searchResults.map(result => (
-                  <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                    <Image src={result.images[0].src} alt={result.name} width={50} height={50} />
-                    <div className="search-result-info">
-                      <div className="search-result-name">{result.name}</div>
-                      <div className="search-result-price">{result.price}</div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                searchTerm.trim() !== '' && <div className="search-result-item">No se encontraron productos</div>
-              )}
-            </div>
-          </div>
-          <Image src="/assets/icons/cart-icon.svg" alt="Cart Icon" className="cart-icon" width={24} height={24} />
-        </div>
+      <div className="site-branding">
+        <Link href="/">
+            <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} />
+        </Link>
       </div>
       <nav className="site-navigation">
         <ul>
@@ -125,6 +84,45 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+      <div className="header-icons">
+        <div className="search-container" ref={searchContainerRef}>
+          <Image 
+            src="/assets/icons/search-icon.svg" 
+            alt="Search Icon" 
+            className="search-icon" 
+            width={24} 
+            height={24}
+            onClick={() => setIsSearchActive(!isSearchActive)}
+          />
+          <div className={`search-box ${isSearchActive ? 'active' : ''}`} id="searchBox">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Buscar productos..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && performSearch()}
+            />
+            <button id="searchButton" onClick={performSearch}>Buscar</button>
+          </div>
+          <div id="searchResults" className={searchResults.length > 0 || (isSearchActive && searchTerm) ? 'active' : ''}>
+            {searchResults.length > 0 ? (
+              searchResults.map(result => (
+                <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
+                  <Image src={result.images[0].src} alt={result.name} width={50} height={50} />
+                  <div className="search-result-info">
+                    <div className="search-result-name">{result.name}</div>
+                    <div className="search-result-price">{result.price}</div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              (isSearchActive && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
+            )}
+          </div>
+        </div>
+        <Image src="/assets/icons/cart-icon.svg" alt="Cart Icon" className="cart-icon" width={24} height={24} />
+      </div>
     </header>
   );
 };
