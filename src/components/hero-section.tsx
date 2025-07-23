@@ -7,8 +7,8 @@ const HeroSection = () => {
       <Image
         src="/banner1.png"
         alt="Banner principal"
-        fill
-        style={{ objectFit: 'cover' }}
+        layout="fill"
+        objectFit="cover"
         quality={100}
         priority
         data-ai-hint="fitness store"
@@ -21,5 +21,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-    

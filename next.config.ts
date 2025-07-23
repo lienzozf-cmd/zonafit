@@ -18,14 +18,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack: (config, { isServer }) => {
+   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.(mp4|webm)$/,
       use: {
         loader: 'file-loader',
         options: {
-          publicPath: '/_next',
-          name: 'static/media/[name].[hash].[ext]',
+          publicPath: '/_next/static/media/',
+          outputPath: 'static/media/',
+          name: '[name].[hash].[ext]',
         },
       },
     });
