@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section className="hero-banner">
       <Image
-        src="/banner1.png"
+        src="/assets/images/banners/banner1.png"
         alt="Banner principal"
         layout="fill"
         objectFit="cover"
