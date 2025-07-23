@@ -24,7 +24,6 @@ export const navLinks = [
         href: '/mujeres/blusas',
         sublinks: [
           { title: 'Tops', href: '/mujeres/tops' },
-          { title: 'Blusas', href: '/mujeres/blusas' },
           { title: 'Bras Deportivos', href: '/mujeres/bras-deportivos' },
         ],
       },
@@ -33,7 +32,6 @@ export const navLinks = [
         href: '/mujeres/leggings',
         sublinks: [
           { title: 'Shorts', href: '/mujeres/shorts' },
-          { title: 'Leggings', href: '/mujeres/leggings' },
         ],
       },
       {
@@ -41,7 +39,6 @@ export const navLinks = [
         href: '/mujeres/sudaderas',
         sublinks: [
           { title: 'Chamarras', href: '/mujeres/chamarras' },
-          { title: 'Sudaderas', href: '/mujeres/sudaderas' },
         ],
       },
       { title: 'Ver Todo', href: '/mujeres' },
