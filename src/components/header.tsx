@@ -55,18 +55,17 @@ const Header = () => {
       <nav className="site-navigation">
         <ul>
           {navLinks.map((link) => (
-            <li key={link.title}>
+            <li key={link.title} className="has-dropdown">
               <a href={link.href}>
-                {link.title}
-                {link.sublinks && <span className="dropdown-arrow"> ▼</span>}
+                {link.title} <span className="dropdown-arrow">▼</span>
               </a>
               {link.sublinks && (
                 <div className="mega-menu">
-                   <ul>
+                   <ul className="mega-menu-content">
                     {link.sublinks.map((sublink) => (
-                      <li key={sublink.title} className={sublink.sublinks ? 'has-sub-submenu' : ''}>
-                        <a href={sublink.href}>
-                          {sublink.title}
+                      <li key={sublink.title} className="mega-menu-column">
+                        <a href={sublink.href} className="mega-menu-heading">
+                          {sublink.title} {sublink.sublinks && <span className="sub-arrow">►</span>}
                         </a>
                         {sublink.sublinks && (
                           <ul className="sub-submenu">
