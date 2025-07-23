@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section className="hero-banner">
       <Image
-        src="/banner.png"
+        src="/banner1.png"
         alt="Banner principal"
         fill
         style={{ objectFit: 'cover' }}
@@ -21,3 +21,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+    
