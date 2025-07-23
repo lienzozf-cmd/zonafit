@@ -12,6 +12,7 @@ const HeroSection = () => {
           data-ai-hint="fitness store"
           className="carousel-image active"
           priority
+          style={{ objectFit: 'cover' }}
         />
       </div>
       <div className="banner-content">
