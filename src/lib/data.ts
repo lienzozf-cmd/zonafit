@@ -1,3 +1,4 @@
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -30,16 +31,12 @@ export const navLinks = [
       {
         title: 'Leggings',
         href: '/mujeres/leggings',
-        sublinks: [
-          { title: 'Shorts', href: '/mujeres/shorts' },
-        ],
+        sublinks: [{ title: 'Shorts', href: '/mujeres/shorts' }],
       },
       {
         title: 'Sudaderas',
         href: '/mujeres/sudaderas',
-        sublinks: [
-          { title: 'Chamarras', href: '/mujeres/chamarras' },
-        ],
+        sublinks: [{ title: 'Chamarras', href: '/mujeres/chamarras' }],
       },
       { title: 'Ver Todo', href: '/mujeres' },
     ],
