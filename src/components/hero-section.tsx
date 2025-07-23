@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="hero-banner">
       <div className="carousel-container">
         <Image
-          src="https://placehold.co/1920x1080.png"
+          src="/banner.png"
           alt="Banner principal"
           fill
           data-ai-hint="fitness store"
