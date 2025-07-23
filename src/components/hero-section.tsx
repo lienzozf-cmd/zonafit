@@ -17,31 +17,29 @@ const heroImages = [
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="hero-banner">
       <Carousel 
-        className="w-full h-full"
+        className="carousel-container"
         plugins={[Autoplay({delay: 5000})]}
         opts={{loop: true}}
         >
-        <CarouselContent className="h-full">
+        <CarouselContent>
           {heroImages.map((image, index) => (
-            <CarouselItem key={index} className="h-full">
-              <div className="relative w-full h-full">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={image.dataAiHint}
-                  priority={index === 0}
-                />
-              </div>
+            <CarouselItem key={index} className="carousel-image">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                data-ai-hint={image.dataAiHint}
+                priority={index === 0}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4 bg-black/30">
-        <Button size="lg" className="mt-8 bg-black hover:bg-red-600 text-red-500 hover:text-white font-bold text-lg py-6 px-10 transition-all duration-300 ease-in-out hover:scale-105 border-2 border-red-500">
+      <div className="banner-content">
+        <Button className="buy-now-button">
           COMPRAR AHORA
         </Button>
       </div>

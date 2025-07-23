@@ -109,6 +109,7 @@ export const navLinks = [
 
 export type ProductOption = {
   value: string;
+  stock: number;
 };
 
 export type Product = {
@@ -149,9 +150,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S' },
-        { value: 'M' },
-        { value: 'L' },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 3 },
       ],
     },
   },
@@ -183,9 +184,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S' },
-        { value: 'M' },
-        { value: 'L' },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 3 },
       ],
     },
   },
@@ -217,9 +218,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S' },
-        { value: 'M' },
-        { value: 'L' },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 3 },
       ],
     },
   },
@@ -251,9 +252,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S' },
-        { value: 'M' },
-        { value: 'L' },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 3 },
       ],
     },
   },
@@ -285,9 +286,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S' },
-        { value: 'M' },
-        { value: 'L' },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 3 },
       ],
     },
   },
@@ -319,9 +320,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S' },
-        { value: 'M' },
-        { value: 'L' },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 2 },
+        { value: 'L', stock: 3 },
       ],
     },
   },
@@ -347,8 +348,8 @@ export const products: Product[] = [
     options: {
       type: 'sabor',
       values: [
-        { value: 'Blueberry' },
-        { value: 'ChocolateBlanco' },
+        { value: 'Blueberry', stock: 1 },
+        { value: 'ChocolateBlanco', stock: 3 },
       ],
     },
   },
@@ -374,8 +375,8 @@ export const products: Product[] = [
     options: {
       type: 'servicios',
       values: [
-        { value: 'Serv60' },
-        { value: 'Serv200' },
+        { value: 'Serv60', stock: 1 },
+        { value: 'Serv200', stock: 3 },
       ],
     },
   },

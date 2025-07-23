@@ -10,6 +10,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [activeImage, setActiveImage] = useState(product.images[0]);
+  const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
 
   const handleOptionClick = (option: ProductOption) => {
     setSelectedOption(option);
@@ -19,6 +20,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
     if (newImage) {
       setActiveImage(newImage);
     }
+    setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
   };
 
   return (
@@ -44,13 +46,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <button
                 key={option.value}
                 onClick={() => handleOptionClick(option)}
+                className={selectedOption?.value === option.value ? 'active' : ''}
                 >
                 {option.value}
                 </button>
             ))}
             </div>
             <p className="availability-message">
-                {`Selecciona un ${product.options.type}`}
+                {availabilityMessage}
             </p>
         </div>
     </div>

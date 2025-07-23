@@ -30,68 +30,105 @@ import {
 } from '@/components/ui/accordion';
 
 import { cn } from '@/lib/utils';
-import { navLinks } from '@/lib/data';
-import React from 'react';
+import { navLinks, products } from '@/lib/data';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 const Header = () => {
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<typeof products>([]);
+
+  const performSearch = () => {
+    if (searchTerm.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+    const results = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    setSearchResults(results);
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-red-500/20 bg-black">
-      <div className="container flex flex-col items-center py-2">
-        <div className="w-full flex justify-between items-center">
-            <div className="flex-1 md:flex-grow-0">
-                <Link href="/" className="flex items-center space-x-2">
-                    <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" width={80} height={80} id="site-logo" />
-                </Link>
-            </div>
-            <div className="hidden md:flex flex-1 justify-center">
-                <DesktopNav />
-            </div>
-            <div className="flex flex-1 justify-end items-center space-x-2">
-                <div className="hidden sm:block relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                    <Input placeholder="Buscar productos..." className="pl-10 bg-gray-900 border-gray-700 text-white" />
-                </div>
-                <Button variant="ghost" size="icon" className="text-white hover:text-red-500">
-                    <ShoppingCart className="h-5 w-5" />
-                    <span className="sr-only">Carrito de compras</span>
-                </Button>
-                <div className="md:hidden">
-                    <MobileNav />
-                </div>
-            </div>
-        </div>
+    <header className="site-header">
+      <div className="header-top">
+          <div className="site-branding">
+            <Link href="/">
+              <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" width={80} height={80} id="site-logo" />
+            </Link>
+          </div>
+          <div className="header-icons">
+              <div className="search-container">
+                  <Image src="/assets/icons/search-icon.svg" alt="Search Icon" width={24} height={24} className="search-icon" onClick={() => setIsSearchActive(!isSearchActive)} />
+                  {isSearchActive && (
+                    <div className="search-box active" id="searchBox">
+                        <input 
+                          type="text" 
+                          id="searchInput" 
+                          placeholder="Buscar productos..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          onKeyPress={(e) => e.key === 'Enter' && performSearch()}
+                        />
+                        <button id="searchButton" onClick={performSearch}>Buscar</button>
+                    </div>
+                  )}
+                  {searchResults.length > 0 && isSearchActive && (
+                     <div id="searchResults" className="active">
+                       {searchResults.map(result => (
+                         <div key={result.id} className="search-result-item">
+                           <Image src={result.images[0].src} alt={result.name} width={50} height={50} />
+                           <div className="search-result-info">
+                             <div className="search-result-name">{result.name}</div>
+                             <div className="search-result-price">{result.price}</div>
+                           </div>
+                         </div>
+                       ))}
+                     </div>
+                  )}
+              </div>
+              <Image src="/assets/icons/cart-icon.svg" alt="Cart Icon" width={24} height={24} className="cart-icon" />
+              <div className="md:hidden">
+                <MobileNav />
+              </div>
+          </div>
       </div>
+      <DesktopNav />
     </header>
   );
 };
 
 const DesktopNav = () => (
-    <NavigationMenu>
-    <NavigationMenuList>
-      {navLinks.map((link) => (
-        <NavigationMenuItem key={link.title}>
-          <NavigationMenuTrigger className="text-white hover:text-red-500 bg-transparent hover:bg-gray-900">{link.title}</NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-black border-red-500 text-white">
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {link.sublinks.map((sublink) => (
-                <ListItem
-                  key={sublink.title}
-                  title={sublink.title}
-                  href={sublink.href}
-                  className="hover:bg-gray-800"
-                >
-                  {sublink.sublinks && sublink.sublinks.length > 0
-                    ? sublink.sublinks.map((s) => s.title).join(', ')
-                    : ''}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      ))}
-    </NavigationMenuList>
-  </NavigationMenu>
+    <nav className="site-navigation hidden md:block">
+      <NavigationMenu>
+        <NavigationMenuList>
+          {navLinks.map((link) => (
+            <NavigationMenuItem key={link.title} className="has-dropdown">
+              <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
+              <NavigationMenuContent className="dropdown-menu">
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {link.sublinks.map((sublink) => (
+                     <li key={sublink.title} className={sublink.sublinks && sublink.sublinks.length > 0 ? 'has-sub-submenu' : ''}>
+                        <ListItem
+                          title={sublink.title}
+                          href={sublink.href}
+                        >
+                          {sublink.sublinks && sublink.sublinks.length > 0 && (
+                            <ul className="sub-submenu">
+                              {sublink.sublinks.map(s => (
+                                <li key={s.title}><Link href={s.href}>{s.title}</Link></li>
+                              ))}
+                            </ul>
+                          )}
+                        </ListItem>
+                     </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </nav>
 );
 
 const MobileNav = () => (
@@ -153,27 +190,26 @@ const ListItem = React.forwardRef<
   React.ComponentPropsWithoutRef<'a'>
 >(({ className, title, children, ...props }, ref) => {
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-red-500 focus:bg-accent focus:text-accent-foreground',
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none text-red-500">{title}</div>
-          {children && (
-            <p className="line-clamp-2 text-sm leading-snug text-gray-400">
-              {children}
-            </p>
-          )}
-        </a>
-      </NavigationMenuLink>
-    </li>
+    <NavigationMenuLink asChild>
+      <a
+        ref={ref}
+        className={cn(
+          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 focus:bg-accent focus:text-accent-foreground',
+          className
+        )}
+        {...props}
+      >
+        <div className="text-sm font-medium leading-none text-white hover:text-red-500">{title}</div>
+        {children && (
+           <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+             {children}
+           </div>
+        )}
+      </a>
+    </NavigationMenuLink>
   );
 });
 ListItem.displayName = 'ListItem';
+
 
 export default Header;
