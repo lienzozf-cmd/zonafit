@@ -49,7 +49,7 @@ const Header = () => {
     <header className="site-header">
       <div className="site-branding">
         <Link href="/">
-          <Image src="https://placehold.co/150x80.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+          <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
         </Link>
       </div>
       <nav className="site-navigation">
