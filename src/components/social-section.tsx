@@ -9,16 +9,14 @@ const socialLinks = [
 
 const SocialSection = () => {
     return (
-        <section className="bg-black py-12">
-            <div className="container mx-auto text-center">
-                <h2 className="text-3xl font-bold text-red-500 mb-8 animate-pulse">Síguenos en redes sociales</h2>
-                <div className="flex justify-center gap-5">
-                    {socialLinks.map(link => (
-                        <Link href={link.href} key={link.alt} target="_blank" rel="noopener noreferrer">
-                            <Image src={link.src} alt={link.alt} width={50} height={50} className="object-contain transition-transform hover:scale-125" />
-                        </Link>
-                    ))}
-                </div>
+        <section className="social-media">
+            <h2 id="social-media-heading">Síguenos en redes sociales</h2>
+            <div className="social-icons">
+                {socialLinks.map(link => (
+                    <a href={link.href} key={link.alt} target="_blank" rel="noopener noreferrer">
+                        <Image src={link.src} alt={link.alt} width={50} height={50} className="object-contain" />
+                    </a>
+                ))}
             </div>
         </section>
     )

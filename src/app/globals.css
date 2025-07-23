@@ -2,58 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-body), sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headline), sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 0%; /* Black */
     --foreground: 0 0% 100%; /* White */
-    --card: 270 4% 11%; /* Dark Gray */
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 100% 50%; /* Red */
-    --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 0 0% 9.8%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 9.8%;
+
+    --card: 0 0% 10.2%; /* #1a1a1a */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10.2%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 100% 45.1%; /* #e50000 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10.2%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10.2%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 84.2% 60.2%; /* Red */
-    --accent-foreground: 0 0% 100%; /* White */
+
+    --accent: 0 100% 45.1%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 100% 50%; /* Red */
-    --input: 0 0% 9.8%;
-    --ring: 0 100% 50%; /* Red */
+
+    --border: 0 100% 45.1%;
+    --input: 0 0% 10.2%;
+    --ring: 0 100% 45.1%;
+    
     --radius: 0.5rem;
   }
  
   .dark {
     --background: 0 0% 0%; /* Black */
     --foreground: 0 0% 100%; /* White */
-    --card: 270 4% 11%; /* Dark Gray */
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 100% 50%; /* Red */
-    --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 0 0% 9.8%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 9.8%;
+
+    --card: 0 0% 10.2%; /* #1a1a1a */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10.2%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 100% 45.1%; /* #e50000 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10.2%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10.2%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 84.2% 60.2%; /* Red */
-    --accent-foreground: 0 0% 100%; /* White */
+
+    --accent: 0 100% 45.1%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 100% 50%; /* Red */
-    --input: 0 0% 9.8%;
-    --ring: 0 100% 50%; /* Red */
+
+    --border: 0 100% 45.1%;
+    --input: 0 0% 10.2%;
+    --ring: 0 100% 45.1%;
   }
 }
  
@@ -64,4 +73,192 @@ h1, h2, h3, h4, h5, h6 {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.product-grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 20px;
+  max-width: 1600px;
+  margin: 20px auto;
+  background-color: black;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 100px;
+  }
+}
+
+.product-item {
+  background-color: #1a1a1a;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid #E50000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(229, 0, 0, 0.2);
+}
+
+.product-item .product-name {
+  margin-top: 0;
+  padding-left: 10px;
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: white;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.product-item .product-price {
+  color: #E50000;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+
+.product-item .product-availability {
+  color: green;
+  padding-left: 10px;
+}
+
+.product-item .product-info {
+  padding: 15px 0px;
+  color: white;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.product-item .size-options {
+  display: flex;
+  gap: 5px;
+  margin: 5px 0;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+.product-item .size-options button {
+  background-color: black;
+  color: #E50000;
+  border: 1px solid #E50000;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.product-item .size-options button:hover {
+  transform: scale(1.1);
+}
+
+.product-item .availability-message {
+  padding-left: 10px;
+  color: #aaa;
+}
+
+.social-media {
+  padding: 0px 20px 20px 20px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.social-media h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #E50000;
+  animation: pulse 2s infinite;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
+}
+
+.footer-section h3 {
+  color: rgb(212, 174, 1);
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul {
+  color: white;
+  line-height: 1.8;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #e74c3c;
+}
+
+.footer-section .socials {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-section .socials a {
+  margin-right: 10px;
+}
+
+.footer-section .socials img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.footer-section .socials img:hover {
+  transform: scale(1.1);
 }

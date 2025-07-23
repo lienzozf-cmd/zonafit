@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={cn("antialiased", fontBody.variable, fontHeadline.variable)}>
+      <body className={cn("antialiased")}>
         <Header />
         <main>{children}</main>
         <Footer />
