@@ -18,14 +18,12 @@ const Header = () => {
     }
     const results = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
     setSearchResults(results);
-    document.getElementById('searchResults')?.classList.add('active');
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
         setIsSearchActive(false);
-        document.getElementById('searchResults')?.classList.remove('active');
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -33,11 +31,9 @@ const Header = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-  
 
   const handleSearchResultClick = (product: Product) => {
     setIsSearchActive(false);
-    document.getElementById('searchResults')?.classList.remove('active');
     const element = document.getElementById(`product-item-${product.id}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -48,12 +44,11 @@ const Header = () => {
     }
   };
 
-
   return (
     <header className="site-header">
       <div className="site-branding">
         <Link href="/">
-            <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} />
+          <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} />
         </Link>
       </div>
       <nav className="site-navigation">
@@ -67,7 +62,7 @@ const Header = () => {
                     <li key={sublink.title} className={sublink.sublinks ? 'has-sub-submenu' : ''}>
                       <a href={sublink.href}>
                         {sublink.title}
-                        {sublink.sublinks && <span className="dropdown-arrow" style={{marginLeft: 'auto'}}>►</span>}
+                        {sublink.sublinks && <span className="dropdown-arrow" style={{ float: 'right' }}>►</span>}
                       </a>
                       {sublink.sublinks && (
                         <ul className="sub-submenu">
@@ -86,26 +81,25 @@ const Header = () => {
       </nav>
       <div className="header-icons">
         <div className="search-container" ref={searchContainerRef}>
-          <Image 
-            src="/assets/icons/search-icon.svg" 
-            alt="Search Icon" 
-            className="search-icon" 
-            width={24} 
+          <Image
+            src="/assets/icons/search-icon.svg"
+            alt="Search Icon"
+            className="search-icon"
+            width={24}
             height={24}
             onClick={() => setIsSearchActive(!isSearchActive)}
           />
-          <div className={`search-box ${isSearchActive ? 'active' : ''}`} id="searchBox">
-            <input 
-              type="text" 
-              id="searchInput" 
+          <div className={`search-box ${isSearchActive ? 'active' : ''}`}>
+            <input
+              type="text"
               placeholder="Buscar productos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && performSearch()}
             />
-            <button id="searchButton" onClick={performSearch}>Buscar</button>
+            <button onClick={performSearch}>Buscar</button>
           </div>
-          <div id="searchResults" className={searchResults.length > 0 || (isSearchActive && searchTerm) ? 'active' : ''}>
+          <div id="searchResults" className={isSearchActive && searchTerm ? 'active' : ''}>
             {searchResults.length > 0 ? (
               searchResults.map(result => (
                 <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
