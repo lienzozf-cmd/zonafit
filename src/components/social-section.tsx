@@ -14,7 +14,7 @@ const SocialSection = () => {
             <div className="social-icons">
                 {socialLinks.map(link => (
                     <a href={link.href} key={link.alt} target="_blank" rel="noopener noreferrer">
-                        <Image src={link.src} alt={link.alt} width={50} height={50} className="object-contain" />
+                        <Image src={link.src} alt={link.alt} width={80} height={80} className="object-contain" />
                     </a>
                 ))}
             </div>

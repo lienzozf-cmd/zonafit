@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import type { Product, ProductOption } from '@/lib/data';
 
@@ -23,16 +23,29 @@ const ProductCard = ({ product }: ProductCardProps) => {
     setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
   };
 
+  useEffect(() => {
+    const item = document.getElementById(`product-item-${product.id}`);
+    if(item) {
+        // Simple fade-in animation on load
+        item.style.opacity = '0';
+        setTimeout(() => {
+            if(item) item.style.opacity = '1';
+        }, 100);
+    }
+  }, [product.id]);
+
   return (
-    <div className="product-item">
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <Image
-            src={activeImage.src}
-            alt={activeImage.alt}
-            fill
-            className="object-cover"
-            data-ai-hint={activeImage.dataAiHint}
-            />
+    <div className="product-item" id={`product-item-${product.id}`}>
+        <div className="product-carousel relative aspect-[4/5] w-full overflow-hidden">
+            <div className="carousel-images">
+                <Image
+                src={activeImage.src}
+                alt={activeImage.alt}
+                fill
+                className="object-cover"
+                data-ai-hint={activeImage.dataAiHint}
+                />
+            </div>
         </div>
         <br />
         <h3 className="product-name">{product.name}</h3>

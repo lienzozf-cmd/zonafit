@@ -25,7 +25,7 @@ const HeroSection = () => {
         >
         <CarouselContent>
           {heroImages.map((image, index) => (
-            <CarouselItem key={index} className="carousel-image">
+            <CarouselItem key={index} className="carousel-image active">
               <Image
                 src={image.src}
                 alt={image.alt}

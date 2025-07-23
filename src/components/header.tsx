@@ -31,13 +31,14 @@ import {
 
 import { cn } from '@/lib/utils';
 import { navLinks, products } from '@/lib/data';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const Header = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<typeof products>([]);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const performSearch = () => {
     if (searchTerm.trim() === '') {
@@ -48,6 +49,18 @@ const Header = () => {
     setSearchResults(results);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsSearchActive(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <header className="site-header">
       <div className="header-top">
@@ -57,7 +70,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="header-icons">
-              <div className="search-container">
+              <div className="search-container" ref={searchContainerRef}>
                   <Image src="/assets/icons/search-icon.svg" alt="Search Icon" width={24} height={24} className="search-icon" onClick={() => setIsSearchActive(!isSearchActive)} />
                   {isSearchActive && (
                     <div className="search-box active" id="searchBox">
@@ -72,7 +85,7 @@ const Header = () => {
                         <button id="searchButton" onClick={performSearch}>Buscar</button>
                     </div>
                   )}
-                  {searchResults.length > 0 && isSearchActive && (
+                  {isSearchActive && searchResults.length > 0 && (
                      <div id="searchResults" className="active">
                        {searchResults.map(result => (
                          <div key={result.id} className="search-result-item">
@@ -98,37 +111,40 @@ const Header = () => {
 };
 
 const DesktopNav = () => (
-    <nav className="site-navigation hidden md:block">
-      <NavigationMenu>
-        <NavigationMenuList>
-          {navLinks.map((link) => (
-            <NavigationMenuItem key={link.title} className="has-dropdown">
-              <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
-              <NavigationMenuContent className="dropdown-menu">
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {link.sublinks.map((sublink) => (
-                     <li key={sublink.title} className={sublink.sublinks && sublink.sublinks.length > 0 ? 'has-sub-submenu' : ''}>
-                        <ListItem
-                          title={sublink.title}
-                          href={sublink.href}
-                        >
-                          {sublink.sublinks && sublink.sublinks.length > 0 && (
-                            <ul className="sub-submenu">
-                              {sublink.sublinks.map(s => (
-                                <li key={s.title}><Link href={s.href}>{s.title}</Link></li>
-                              ))}
-                            </ul>
-                          )}
-                        </ListItem>
-                     </li>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
-    </nav>
+  <nav className="site-navigation hidden md:block">
+    <ul className="flex justify-center">
+      {navLinks.map((link) => (
+        <li key={link.title} className="has-dropdown relative mx-5">
+          <Link href={link.href} className="text-white font-semibold uppercase tracking-wider py-2 flex items-center hover:text-red-500 transition-colors">
+            {link.title} <span className="dropdown-arrow ml-1">▼</span>
+          </Link>
+          {link.sublinks && link.sublinks.length > 0 && (
+            <ul className="dropdown-menu absolute hidden bg-black border border-red-500 mt-1 p-2 w-max z-20">
+              {link.sublinks.map((sublink) => (
+                <li key={sublink.title} className="has-sub-submenu relative">
+                  <Link href={sublink.href} className="block text-red-500 px-4 py-2 hover:bg-gray-800 flex justify-between items-center border-b border-red-500/50">
+                    {sublink.title}
+                    {sublink.sublinks && sublink.sublinks.length > 0 && <span className="dropdown-arrow ml-2">&#9658;</span>}
+                  </Link>
+                  {sublink.sublinks && sublink.sublinks.length > 0 && (
+                    <ul className="sub-submenu absolute hidden bg-black border border-red-500 left-full top-0 mt-0 p-2 w-max">
+                      {sublink.sublinks.map(s => (
+                        <li key={s.title}>
+                          <Link href={s.href} className="block text-red-500 px-4 py-2 hover:bg-gray-800 border-b border-red-500/50 last:border-b-0">
+                            {s.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
 );
 
 const MobileNav = () => (
@@ -184,32 +200,5 @@ const MobileNav = () => (
     </SheetContent>
   </Sheet>
 );
-
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <NavigationMenuLink asChild>
-      <a
-        ref={ref}
-        className={cn(
-          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 focus:bg-accent focus:text-accent-foreground',
-          className
-        )}
-        {...props}
-      >
-        <div className="text-sm font-medium leading-none text-white hover:text-red-500">{title}</div>
-        {children && (
-           <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-             {children}
-           </div>
-        )}
-      </a>
-    </NavigationMenuLink>
-  );
-});
-ListItem.displayName = 'ListItem';
-
 
 export default Header;

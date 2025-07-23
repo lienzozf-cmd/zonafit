@@ -12,7 +12,7 @@ const categories = [
       alt: 'Woman in fitness attire',
       dataAiHint: 'fitness woman',
     },
-    className: 'md:row-span-2',
+    className: 'large-vertical',
   },
   {
     name: 'Hombre',
@@ -23,7 +23,7 @@ const categories = [
       alt: 'Man working out',
       dataAiHint: 'fitness man',
     },
-    className: 'md:col-span-2',
+    className: 'large-horizontal',
   },
   {
     name: 'Accesorios',
@@ -34,7 +34,7 @@ const categories = [
       alt: 'Gym bag',
       dataAiHint: 'gym accessories',
     },
-    className: '',
+    className: 'small-square',
   },
   {
     name: 'Suplementos',
@@ -45,7 +45,7 @@ const categories = [
       alt: 'Protein powder container',
       dataAiHint: 'protein supplement',
     },
-    className: '',
+    className: 'small-square',
   },
   {
     name: 'Joyería',
@@ -56,26 +56,24 @@ const categories = [
       alt: 'Fitness-themed jewelry',
       dataAiHint: 'fitness jewelry',
     },
-    className: 'md:col-span-2',
+    className: 'small-square',
   },
 ];
 
 const CategoryGrid = () => {
   return (
-    <section className="container mx-auto px-4 py-8 md:py-12 bg-black text-white">
-      <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold font-headline mb-4">ZONA FIT GT</h2>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-        "Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce."
-        </p>
+    <section className="fitness-goals">
+      <div className="goal-content">
+        <h2>ZONA FIT GT</h2>
+        <p>"Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce."</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[400px_300px] gap-5 max-w-6xl mx-auto">
+      <div className="image-grid">
         {categories.map((category) => (
           <Link
             href={category.href}
             key={category.name}
             className={cn(
-              'relative rounded-lg overflow-hidden group shadow-lg',
+              'grid-item',
               category.className
             )}
           >
@@ -84,12 +82,11 @@ const CategoryGrid = () => {
               alt={category.image.alt}
               data-ai-hint={category.image.dataAiHint}
               fill
-              className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300"></div>
-            <div className="absolute bottom-5 left-5 bg-black/50 text-white p-3 rounded-md">
-              <h3 className="text-xl font-bold font-headline">{category.name}</h3>
-              <p className="text-sm">{category.products} productos</p>
+            <div className="overlay-text">
+              <h3>{category.name}</h3>
+              <p>{category.products} productos</p>
             </div>
           </Link>
         ))}

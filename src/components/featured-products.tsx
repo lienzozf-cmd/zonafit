@@ -1,3 +1,4 @@
+'use client';
 import { products } from '@/lib/data';
 import ProductCard from './product-card';
 
