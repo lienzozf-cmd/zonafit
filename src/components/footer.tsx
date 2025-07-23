@@ -16,7 +16,7 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-dark text-white">
+    <footer className="bg-[#1a1a1a] text-white">
         <div className="container py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
           <div className="space-y-4">

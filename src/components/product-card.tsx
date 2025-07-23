@@ -22,7 +22,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="product-item bg-[#1a1a1a] rounded-lg border-2 border-accent text-white p-4 flex flex-col overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+    <div className="product-item bg-[#1a1a1a] rounded-lg border-2 border-red-500 text-white p-4 flex flex-col overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/20">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-md">
             <Image
             src={activeImage.src}
@@ -33,8 +33,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
             />
         </div>
         <br />
-        <h3 className="product-name text-sm uppercase font-normal tracking-wider text-left pl-2">{product.name}</h3>
-        <p className="product-price text-accent font-bold text-left pl-2">{product.price}</p>
+        <h3 className="product-name text-sm uppercase font-normal tracking-wider text-left text-white pl-2">{product.name}</h3>
+        <p className="product-price text-red-500 font-bold text-left pl-2">{product.price}</p>
         <p className="product-availability text-green-500 text-left pl-2">
             Disponible
         </p>
@@ -44,13 +44,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <button
                 key={option.value}
                 onClick={() => handleOptionClick(option)}
-                className={`px-3 py-1 rounded-md border border-accent text-accent bg-black transition-transform duration-200 hover:scale-110 ${selectedOption?.value === option.value ? 'bg-accent text-black' : ''}`}
+                className={`px-3 py-1 rounded-md border border-red-500 text-red-500 bg-black transition-transform duration-200 hover:scale-110 ${selectedOption?.value === option.value ? 'bg-red-500 text-black' : ''}`}
                 >
                 {option.value}
                 </button>
             ))}
             </div>
-            <p className="availability-message text-left pl-2 mt-2">
+            <p className="availability-message text-left text-gray-400 pl-2 mt-2 text-xs">
                 {`Selecciona un ${product.options.type}`}
             </p>
         </div>

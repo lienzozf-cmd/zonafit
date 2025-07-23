@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Button } from './ui/button';
 
 const categories = [
   {
@@ -63,10 +62,10 @@ const categories = [
 
 const CategoryGrid = () => {
   return (
-    <section className="container mx-auto px-4 py-8 md:py-12">
+    <section className="container mx-auto px-4 py-8 md:py-12 bg-black text-white">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-bold font-headline mb-4">ZONA FIT GT</h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
         "Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce."
         </p>
       </div>
@@ -87,6 +86,7 @@ const CategoryGrid = () => {
               fill
               className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300"></div>
             <div className="absolute bottom-5 left-5 bg-black/50 text-white p-3 rounded-md">
               <h3 className="text-xl font-bold font-headline">{category.name}</h3>
               <p className="text-sm">{category.products} productos</p>

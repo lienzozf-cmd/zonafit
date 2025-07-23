@@ -13,16 +13,16 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <section className="bg-secondary/50 py-8">
+    <section className="bg-black py-8">
       <div className="container mx-auto">
         <div className="flex justify-center items-center gap-6 md:gap-10 flex-wrap">
           {brands.map((brand, index) => (
-            <div key={index} className="relative h-20 w-20 md:h-24 md:w-24 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+            <div key={index} className="relative h-20 w-20 md:h-24 md:w-24">
               <Image
                 src={brand.src}
                 alt={brand.alt}
                 fill
-                className="object-contain rounded-full"
+                className="object-contain rounded-full transition-transform duration-300 hover:scale-110"
                 data-ai-hint={brand.dataAiHint}
               />
             </div>

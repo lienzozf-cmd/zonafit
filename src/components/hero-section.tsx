@@ -19,7 +19,7 @@ const heroImages = [
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-[60vh] md:h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
       <Carousel 
         className="w-full h-full"
         plugins={[Autoplay({delay: 5000})]}
@@ -37,16 +37,14 @@ const HeroSection = () => {
                   data-ai-hint={image.dataAiHint}
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-black/50" />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 text-white" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 text-white" />
+        {/* Remove Previous/Next buttons for a cleaner look */}
       </Carousel>
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
-        <Button size="lg" className="mt-8 bg-black hover:bg-primary/90 text-primary font-bold text-lg py-6 px-10 transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-primary">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4 bg-black/30">
+        <Button size="lg" className="mt-8 bg-black hover:bg-red-600 text-red-500 hover:text-white font-bold text-lg py-6 px-10 transition-all duration-300 ease-in-out hover:scale-105 border-2 border-red-500">
           COMPRAR AHORA
         </Button>
       </div>
