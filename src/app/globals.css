@@ -273,10 +273,6 @@ a:hover {
   overflow: hidden;
 }
 
-.hero-banner > div:first-child {
-    z-index: -1;
-}
-
 .banner-content {
   position: absolute;
   top: 50%;

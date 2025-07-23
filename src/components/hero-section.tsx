@@ -7,8 +7,8 @@ const HeroSection = () => {
       <Image
         src="/banner.png"
         alt="Banner principal"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         quality={100}
         priority
         data-ai-hint="fitness store"
