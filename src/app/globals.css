@@ -178,9 +178,10 @@ a:hover {
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
-.site-navigation ul {
+.site-navigation > ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -188,12 +189,12 @@ a:hover {
   justify-content: center;
 }
 
-.site-navigation ul li {
+.site-navigation > ul > li {
   position: relative;
   margin-left: 40px;
 }
 
-.site-navigation ul li a {
+.site-navigation > ul > li > a {
   color: var(--light-text-color);
   font-weight: 600;
   padding: 5px 10px;
@@ -203,58 +204,75 @@ a:hover {
   white-space: nowrap;
 }
 
-.site-navigation ul li a:hover {
+.site-navigation > ul > li > a:hover {
   color: var(--accent-color);
 }
 
-.dropdown-menu {
+.mega-menu {
   display: none;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
   background-color: black;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  z-index: 1000;
   border: 1px solid var(--accent-color);
-  list-style: none;
-  min-width: 200px;
+  padding: 15px;
+  width: auto;
+  min-width: 800px;
+  z-index: 1000;
 }
 
-.has-dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu li a {
-  color: white;
-  border-bottom: 1px solid rgba(229, 0, 0, 0.5);
-  padding: 8px 15px;
+.site-navigation > ul > li:hover .mega-menu {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.dropdown-menu li:last-child a {
-  border-bottom: none;
+.mega-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
 }
 
-.dropdown-menu li a:hover {
+.mega-menu ul li a {
+  color: white;
+  padding: 8px 15px;
+  display: block;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.mega-menu ul li a:hover {
   color: var(--accent-color);
+}
+
+.has-sub-submenu > a:after {
+  content: ' ►';
+  font-size: 0.8em;
+  margin-left: 5px;
 }
 
 .sub-submenu {
   display: none;
   position: absolute;
-  left: 100%;
-  top: 0;
   background-color: black;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
   border: 1px solid var(--accent-color);
   list-style: none;
-  min-width: 200px;
+  padding: 10px 0;
+  min-width: 150px;
+  z-index: 1001;
 }
 
-.has-sub-submenu:hover .sub-submenu {
+.has-sub-submenu:hover > .sub-submenu {
   display: block;
+}
+
+.sub-submenu li a {
+  border-bottom: 1px solid rgba(229, 0, 0, 0.5);
+}
+
+.sub-submenu li:last-child a {
+  border-bottom: none;
 }
 
 

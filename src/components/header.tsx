@@ -55,29 +55,30 @@ const Header = () => {
       <nav className="site-navigation">
         <ul>
           {navLinks.map((link) => (
-            <li key={link.title} className={link.sublinks ? 'has-dropdown' : ''}>
+            <li key={link.title}>
               <a href={link.href}>
                 {link.title}
                 {link.sublinks && <span className="dropdown-arrow"> ▼</span>}
               </a>
               {link.sublinks && (
-                <ul className="dropdown-menu">
-                  {link.sublinks.map((sublink) => (
-                    <li key={sublink.title} className={sublink.sublinks ? 'has-sub-submenu' : ''}>
-                      <a href={sublink.href}>
-                        {sublink.title}
-                        {sublink.sublinks && <span className="dropdown-arrow" style={{ float: 'right' }}> ►</span>}
-                      </a>
-                      {sublink.sublinks && (
-                        <ul className="sub-submenu">
-                          {sublink.sublinks.map(s => (
-                            <li key={s.title}><a href={s.href}>{s.title}</a></li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                <div className="mega-menu">
+                   <ul>
+                    {link.sublinks.map((sublink) => (
+                      <li key={sublink.title} className={sublink.sublinks ? 'has-sub-submenu' : ''}>
+                        <a href={sublink.href}>
+                          {sublink.title}
+                        </a>
+                        {sublink.sublinks && (
+                          <ul className="sub-submenu">
+                            {sublink.sublinks.map(s => (
+                              <li key={s.title}><a href={s.href}>{s.title}</a></li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </li>
           ))}
