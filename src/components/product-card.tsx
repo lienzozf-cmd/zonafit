@@ -9,24 +9,16 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
-  const [activeImage, setActiveImage] = useState(product.images[0]);
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
 
   const handleOptionClick = (option: ProductOption) => {
     setSelectedOption(option);
-    const newImage = product.images.find(
-      (img) => img.option.toLowerCase() === option.value.toLowerCase()
-    );
-    if (newImage) {
-      setActiveImage(newImage);
-    }
     setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
   };
 
   useEffect(() => {
     const item = document.getElementById(`product-item-${product.id}`);
     if(item) {
-        // Simple fade-in animation on load
         item.style.opacity = '0';
         setTimeout(() => {
             if(item) item.style.opacity = '1';
@@ -36,14 +28,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <div className="product-item" id={`product-item-${product.id}`}>
-        <div className="product-carousel relative aspect-[4/5] w-full overflow-hidden">
+        <div className="product-carousel">
             <div className="carousel-images">
                 <Image
-                src={activeImage.src}
-                alt={activeImage.alt}
+                src={product.images[0].src}
+                alt={product.images[0].alt}
                 fill
                 className="object-cover"
-                data-ai-hint={activeImage.dataAiHint}
                 />
             </div>
         </div>

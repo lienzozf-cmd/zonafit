@@ -7,15 +7,18 @@ import SocialSection from '@/components/social-section';
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-black">
+    <>
       <HeroSection />
-      <BrandsSection />
-      <div className="py-8 md:py-12">
+      <main>
+        <br />
+        <BrandsSection />
+        <br />
+        <h2 style={{ color: 'white', textAlign: 'center' }}>NUESTROS PRODUCTOS MÁS SOLICITADOS</h2>
         <FeaturedProducts />
-      </div>
+      </main>
       <VideoSection />
       <CategoryGrid />
       <SocialSection />
-    </div>
+    </>
   );
 }

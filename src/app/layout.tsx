@@ -1,25 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
-import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-
-const fontBody = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-body',
-});
-
-const fontHeadline = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-headline',
-});
-
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata = {
-  title: 'Zona Fit GT Online',
+  title: 'ZONA FIT GT',
   description: 'Your one-stop shop for fitness apparel, supplements, and accessories.',
+  icons: {
+    icon: '/assets/images/logos/minilogo.png',
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={cn("antialiased")}>
+    <html lang="en">
+      <body>
         <Header />
         <main>{children}</main>
         <Footer />

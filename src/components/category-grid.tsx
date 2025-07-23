@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
 
 const categories = [
   {
@@ -9,8 +7,7 @@ const categories = [
     href: '/mujer',
     image: {
       src: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
-      alt: 'Woman in fitness attire',
-      dataAiHint: 'fitness woman',
+      alt: 'Mujer',
     },
     className: 'large-vertical',
   },
@@ -20,8 +17,7 @@ const categories = [
     href: '/hombre',
     image: {
       src: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
-      alt: 'Man working out',
-      dataAiHint: 'fitness man',
+      alt: 'Hombre',
     },
     className: 'large-horizontal',
   },
@@ -31,8 +27,7 @@ const categories = [
     href: '/accesorios',
     image: {
       src: '/assets/images/marcas/youngla/hombre/maletagym.png',
-      alt: 'Gym bag',
-      dataAiHint: 'gym accessories',
+      alt: 'Accesorios',
     },
     className: 'small-square',
   },
@@ -42,8 +37,7 @@ const categories = [
     href: '/suplementos',
     image: {
       src: '/assets/images/marcas/raw/prewcb.jpg',
-      alt: 'Protein powder container',
-      dataAiHint: 'protein supplement',
+      alt: 'Suplementos',
     },
     className: 'small-square',
   },
@@ -53,8 +47,7 @@ const categories = [
     href: '/joyeria',
     image: {
       src: '/assets/images/marcas/rgmnt/tridente.png',
-      alt: 'Fitness-themed jewelry',
-      dataAiHint: 'fitness jewelry',
+      alt: 'Joyeria',
     },
     className: 'small-square',
   },
@@ -69,18 +62,13 @@ const CategoryGrid = () => {
       </div>
       <div className="image-grid">
         {categories.map((category) => (
-          <Link
-            href={category.href}
+          <div
             key={category.name}
-            className={cn(
-              'grid-item',
-              category.className
-            )}
+            className={`grid-item ${category.className}`}
           >
             <Image
               src={category.image.src}
               alt={category.image.alt}
-              data-ai-hint={category.image.dataAiHint}
               fill
               className="object-cover"
             />
@@ -88,7 +76,7 @@ const CategoryGrid = () => {
               <h3>{category.name}</h3>
               <p>{category.products} productos</p>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </section>
