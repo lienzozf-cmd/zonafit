@@ -38,16 +38,16 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-red-500/20 bg-black">
       <div className="container flex flex-col items-center py-2">
-        <div className="w-full flex justify-between items-center mb-2">
-            <div className="flex-1">
+        <div className="w-full flex justify-between items-center">
+            <div className="flex-1 md:flex-grow-0">
                 <Link href="/" className="flex items-center space-x-2">
                     <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" width={80} height={80} id="site-logo" />
                 </Link>
             </div>
-            <div className="flex-1 flex justify-center md:hidden">
-                {/* Placeholder for mobile logo or title if needed */}
+            <div className="hidden md:flex flex-1 justify-center">
+                <DesktopNav />
             </div>
-            <div className="flex-1 flex justify-end items-center space-x-2">
+            <div className="flex flex-1 justify-end items-center space-x-2">
                 <div className="hidden sm:block relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input placeholder="Buscar productos..." className="pl-10 bg-gray-900 border-gray-700 text-white" />
@@ -61,16 +61,13 @@ const Header = () => {
                 </div>
             </div>
         </div>
-        <div className="w-full hidden md:flex justify-center">
-            <DesktopNav />
-        </div>
       </div>
     </header>
   );
 };
 
 const DesktopNav = () => (
-  <NavigationMenu>
+    <NavigationMenu>
     <NavigationMenuList>
       {navLinks.map((link) => (
         <NavigationMenuItem key={link.title}>

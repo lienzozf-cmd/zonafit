@@ -17,7 +17,7 @@ const fontHeadline = Space_Grotesk({
 });
 
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Zona Fit GT Online',
   description: 'Your one-stop shop for fitness apparel, supplements, and accessories.',
 };
