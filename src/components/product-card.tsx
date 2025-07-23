@@ -1,8 +1,6 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { Card } from '@/components/ui/card';
-import { Button } from './ui/button';
 import type { Product, ProductOption } from '@/lib/data';
 
 interface ProductCardProps {
@@ -24,38 +22,38 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="product-item">
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
+    <div className="product-item bg-[#1a1a1a] rounded-lg border-2 border-accent text-white p-4 flex flex-col overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-md">
             <Image
             src={activeImage.src}
             alt={activeImage.alt}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover"
             data-ai-hint={activeImage.dataAiHint}
             />
         </div>
         <br />
-        <h3 className="product-name">{product.name}</h3>
-        <p className="product-price">{product.price}</p>
-        <p className="product-availability">
+        <h3 className="product-name text-sm uppercase font-normal tracking-wider text-left pl-2">{product.name}</h3>
+        <p className="product-price text-accent font-bold text-left pl-2">{product.price}</p>
+        <p className="product-availability text-green-500 text-left pl-2">
             {selectedOption !== null 
                 ? (selectedOption.stock > 0 ? `${selectedOption.stock} disponibles` : 'Agotado') 
                 : product.availability
             }
         </p>
-        <div className="product-info">
-            <div className="size-options">
+        <div className="product-info mt-auto pt-2">
+            <div className="size-options flex gap-2 justify-start pl-2">
             {product.options.values.map((option) => (
                 <button
                 key={option.value}
                 onClick={() => handleOptionClick(option)}
-                className={selectedOption?.value === option.value ? 'active' : ''}
+                className={`px-3 py-1 rounded-md border border-accent text-accent bg-black transition-transform duration-200 hover:scale-110 ${selectedOption?.value === option.value ? 'bg-accent text-black' : ''}`}
                 >
                 {option.value}
                 </button>
             ))}
             </div>
-            <p className="availability-message">
+            <p className="availability-message text-left pl-2 mt-2">
                 {selectedOption === null ? `Selecciona un ${product.options.type}` : `${product.options.type.charAt(0).toUpperCase() + product.options.type.slice(1)} seleccionado`}
             </p>
         </div>
