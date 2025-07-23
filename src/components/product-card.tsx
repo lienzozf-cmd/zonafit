@@ -36,10 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <h3 className="product-name text-sm uppercase font-normal tracking-wider text-left pl-2">{product.name}</h3>
         <p className="product-price text-accent font-bold text-left pl-2">{product.price}</p>
         <p className="product-availability text-green-500 text-left pl-2">
-            {selectedOption !== null 
-                ? (selectedOption.stock > 0 ? `${selectedOption.stock} disponibles` : 'Agotado') 
-                : product.availability
-            }
+            Disponible
         </p>
         <div className="product-info mt-auto pt-2">
             <div className="size-options flex gap-2 justify-start pl-2">
@@ -54,7 +51,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             ))}
             </div>
             <p className="availability-message text-left pl-2 mt-2">
-                {selectedOption === null ? `Selecciona un ${product.options.type}` : `${product.options.type.charAt(0).toUpperCase() + product.options.type.slice(1)} seleccionado`}
+                {`Selecciona un ${product.options.type}`}
             </p>
         </div>
     </div>
