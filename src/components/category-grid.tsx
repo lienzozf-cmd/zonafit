@@ -69,8 +69,9 @@ const CategoryGrid = () => {
             <Image
               src={category.image.src}
               alt={category.image.alt}
-              fill
-              className="object-cover"
+              width={500}
+              height={500}
+              className="object-cover w-full h-full"
             />
             <div className="overlay-text">
               <h3>{category.name}</h3>
