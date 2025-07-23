@@ -69,7 +69,7 @@ const CategoryGrid = () => {
         "Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce."
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto h-auto md:h-[700px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[400px_300px] gap-5 max-w-6xl mx-auto">
         {categories.map((category) => (
           <Link
             href={category.href}

@@ -3,8 +3,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import { Button } from './ui/button';
@@ -41,7 +39,6 @@ const HeroSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        {/* Remove Previous/Next buttons for a cleaner look */}
       </Carousel>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4 bg-black/30">
         <Button size="lg" className="mt-8 bg-black hover:bg-red-600 text-red-500 hover:text-white font-bold text-lg py-6 px-10 transition-all duration-300 ease-in-out hover:scale-105 border-2 border-red-500">

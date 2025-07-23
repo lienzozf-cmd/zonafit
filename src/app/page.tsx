@@ -13,9 +13,7 @@ export default function Home() {
       <div className="py-8 md:py-12">
         <FeaturedProducts />
       </div>
-      <div className="py-8 md:py-12">
-        <VideoSection />
-      </div>
+      <VideoSection />
       <CategoryGrid />
       <SocialSection />
     </div>
