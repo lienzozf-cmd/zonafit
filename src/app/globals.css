@@ -203,93 +203,66 @@ a:hover {
   white-space: nowrap;
 }
 
-.site-navigation > ul > li > a:hover {
+.site-navigation > ul > li > a:hover,
+.site-navigation > ul > li:hover > a {
   color: var(--accent-color);
 }
 
-.site-navigation li.has-dropdown:hover > .mega-menu {
-  display: block;
-}
-
-.mega-menu {
+.dropdown-menu {
   display: none;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   top: 100%;
   background-color: black;
   border: 1px solid var(--accent-color);
-  padding: 20px;
-  width: auto;
-  min-width: 800px; /* Adjust as needed */
-  z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.mega-menu-content {
   list-style: none;
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
-  display: flex;
-  gap: 40px;
-  width: 100%;
+  min-width: 200px;
+  z-index: 1001;
 }
 
-.mega-menu-column {
+.site-navigation > ul > li:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
   position: relative;
 }
 
-.mega-menu-heading {
+.dropdown-menu li a {
   color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 8px 0;
+  padding: 10px 20px;
   display: block;
   white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.mega-menu-heading:hover {
-  color: var(--accent-color);
-}
-
-.sub-arrow {
-  font-size: 0.8em;
-  margin-left: 5px;
+.dropdown-menu li a:hover {
+  background-color: var(--accent-color);
+  color: black;
 }
 
 .sub-submenu {
-  list-style: none;
-  padding: 10px;
-  margin-top: 5px;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
   background-color: black;
   border: 1px solid var(--accent-color);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 150px;
-  display: none;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 200px;
 }
 
-.mega-menu-column:hover .sub-submenu {
-    display: block;
-}
-
-.sub-submenu li a {
-  color: white;
-  padding: 8px 15px;
+.dropdown-menu li:hover > .sub-submenu {
   display: block;
-  font-weight: normal;
-  text-transform: none;
-  border-bottom: 1px solid rgba(229, 0, 0, 0.2);
 }
 
-.sub-submenu li:last-child a {
-    border-bottom: none;
-}
-
-.sub-submenu li a:hover {
-  color: var(--accent-color);
-  background-color: #1a1a1a;
+.dropdown-arrow {
+  font-size: 0.8em;
+  margin-left: 5px;
 }
 
 

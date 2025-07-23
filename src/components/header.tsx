@@ -55,29 +55,29 @@ const Header = () => {
       <nav className="site-navigation">
         <ul>
           {navLinks.map((link) => (
-            <li key={link.title} className="has-dropdown">
+            <li key={link.title}>
               <a href={link.href}>
-                {link.title} <span className="dropdown-arrow">▼</span>
+                {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
               </a>
               {link.sublinks && (
-                <div className="mega-menu">
-                   <ul className="mega-menu-content">
-                    {link.sublinks.map((sublink) => (
-                      <li key={sublink.title} className="mega-menu-column">
-                        <a href={sublink.href} className="mega-menu-heading">
-                          {sublink.title} {sublink.sublinks && <span className="sub-arrow">►</span>}
-                        </a>
-                        {sublink.sublinks && (
-                          <ul className="sub-submenu">
-                            {sublink.sublinks.map(s => (
-                              <li key={s.title}><a href={s.href}>{s.title}</a></li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="dropdown-menu">
+                  {link.sublinks.map((sublink) => (
+                    <li key={sublink.title}>
+                      <a href={sublink.href}>
+                        {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
+                      </a>
+                      {sublink.sublinks && (
+                        <ul className="sub-submenu">
+                          {sublink.sublinks.map((item) => (
+                            <li key={item.title}>
+                              <a href={item.href}>{item.title}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               )}
             </li>
           ))}
