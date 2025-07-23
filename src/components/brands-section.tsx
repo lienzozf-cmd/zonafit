@@ -15,7 +15,14 @@ const BrandsSection = () => {
   return (
     <div className="circular-images-container">
       {brands.map((brand, index) => (
-        <Image key={index} src={brand.src} alt={brand.alt} width={150} height={150} />
+        <Image 
+          key={index} 
+          src={brand.src} 
+          alt={brand.alt} 
+          width={150} 
+          height={150}
+          className="rounded-full inline-block m-2"
+        />
       ))}
     </div>
   );
