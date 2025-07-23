@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
 const socialLinks = [
-    { href: "https://www.tiktok.com/@zonafitgt_", src: "/assets/images/tiktok.png", alt: "TikTok"},
-    { href: "https://www.instagram.com/zonafitgt_/", src: "/assets/images/instagram.png", alt: "Instagram"},
-    { href: "https://www.facebook.com/people/Zona-Fit-Gt/pfbid02mXkKgdqTS4t2eLj6px4tNXH9L4BJtQ1DJJbsPbyguE3nN3F5hU6wSHuJ7n9p4Sfl/", src: "/assets/images/facebook.png", alt: "Facebook"},
+    { href: "https://www.tiktok.com/@zonafitgt_", src: "https://placehold.co/50x50.png", alt: "TikTok", dataAiHint: "tiktok icon"},
+    { href: "https://www.instagram.com/zonafitgt_/", src: "https://placehold.co/50x50.png", alt: "Instagram", dataAiHint: "instagram icon"},
+    { href: "https://www.facebook.com/people/Zona-Fit-Gt/pfbid02mXkKgdqTS4t2eLj6px4tNXH9L4BJtQ1DJJbsPbyguE3nN3F5hU6wSHuJ7n9p4Sfl/", src: "https://placehold.co/50x50.png", alt: "Facebook", dataAiHint: "facebook icon"},
 ]
 
 const SocialSection = () => {
@@ -13,7 +13,7 @@ const SocialSection = () => {
             <div className="social-icons">
                 {socialLinks.map(link => (
                     <a href={link.href} key={link.alt} target="_blank" rel="noopener noreferrer">
-                        <Image src={link.src} alt={link.alt} width={50} height={50} />
+                        <Image src={link.src} alt={link.alt} width={50} height={50} data-ai-hint={link.dataAiHint}/>
                     </a>
                 ))}
             </div>

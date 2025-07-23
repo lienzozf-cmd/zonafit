@@ -9,35 +9,35 @@ const CategoryGrid = () => {
       </div>
       <div className="image-grid">
         <div className="grid-item large-vertical">
-          <Image src="/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg" alt="Mujer" width={500} height={500} className="object-cover w-full h-full" />
+          <Image src="https://placehold.co/500x1000.png" alt="Mujer" width={500} height={1000} data-ai-hint="woman fitness" className="object-cover w-full h-full" />
           <div className="overlay-text">
             <h3>Mujer</h3>
             <p>47 productos</p>
           </div>
         </div>
         <div className="grid-item large-horizontal">
-          <Image src="/assets/images/marcas/youngla/hombre/jerdaniv.jpg" alt="Hombre" width={500} height={500} className="object-cover w-full h-full" />
+          <Image src="https://placehold.co/1000x500.png" alt="Hombre" width={1000} height={500} data-ai-hint="man fitness" className="object-cover w-full h-full" />
           <div className="overlay-text">
             <h3>Hombre</h3>
             <p>24 productos</p>
           </div>
         </div>
         <div className="grid-item small-square">
-          <Image src="/assets/images/marcas/youngla/hombre/maletagym.png" alt="Accesorios" width={500} height={500} className="object-cover w-full h-full" />
+          <Image src="https://placehold.co/500x500.png" alt="Accesorios" width={500} height={500} data-ai-hint="gym accessories" className="object-cover w-full h-full" />
           <div className="overlay-text">
             <h3>Accesorios</h3>
             <p>24 productos</p>
           </div>
         </div>
         <div className="grid-item small-square">
-          <Image src="/assets/images/marcas/raw/prewcb.jpg" alt="Suplementos" width={500} height={500} className="object-cover w-full h-full" />
+          <Image src="https://placehold.co/500x500.png" alt="Suplementos" width={500} height={500} data-ai-hint="supplements" className="object-cover w-full h-full" />
           <div className="overlay-text">
             <h3>Suplementos</h3>
             <p>24 productos</p>
           </div>
         </div>
         <div className="grid-item small-square">
-          <Image src="/assets/images/marcas/rgmnt/tridente.png" alt="Joyeria" width={500} height={500} className="object-cover w-full h-full" />
+          <Image src="https://placehold.co/500x500.png" alt="Joyeria" width={500} height={500} data-ai-hint="jewelry" className="object-cover w-full h-full" />
           <div className="overlay-text">
             <h3>Joyeria</h3>
             <p>24 productos</p>

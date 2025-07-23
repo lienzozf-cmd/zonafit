@@ -123,19 +123,19 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/youngla/hombre/superheroeroja.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Red compression shirt',
         dataAiHint: 'red shirt',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/youngla/hombre/superheroeroja.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Red compression shirt M',
         dataAiHint: 'red shirt',
         option: 'M',
       },
       {
-        src: '/assets/images/marcas/youngla/hombre/superheroeroja.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Red compression shirt L',
         dataAiHint: 'red shirt',
         option: 'L',
@@ -157,19 +157,19 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/youngla/hombre/warriorazul.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Blue compression shirt',
         dataAiHint: 'blue shirt',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/youngla/hombre/warriorazul.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Blue compression shirt M',
         dataAiHint: 'blue shirt',
         option: 'M',
       },
       {
-        src: '/assets/images/marcas/youngla/hombre/warriorazul.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Blue compression shirt L',
         dataAiHint: 'blue shirt',
         option: 'L',
@@ -191,19 +191,19 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/gymshark/hombre/GYMSTHN.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Black tank top',
         dataAiHint: 'black tank',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/gymshark/hombre/GYMSTHN.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Black tank top M',
         dataAiHint: 'black tank',
         option: 'M',
       },
       {
-        src: '/assets/images/marcas/gymshark/hombre/GYMSTHN.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Black tank top L',
         dataAiHint: 'black tank',
         option: 'L',
@@ -225,19 +225,19 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Black and red t-shirt',
         dataAiHint: 'black red shirt',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Black and red t-shirt M',
         dataAiHint: 'black red shirt',
         option: 'M',
       },
       {
-        src: '/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Black and red t-shirt L',
         dataAiHint: 'black red shirt',
         option: 'L',
@@ -259,19 +259,19 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/gymshark/mujer/anabelgyms.jpg',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Green crop top',
         dataAiHint: 'green crop top',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/gymshark/mujer/anabelgyms.jpg',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Green crop top M',
         dataAiHint: 'green crop top',
         option: 'M',
       },
       {
-        src: '/assets/images/marcas/gymshark/mujer/anabelgyms.jpg',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Green crop top L',
         dataAiHint: 'green crop top',
         option: 'L',
@@ -293,19 +293,19 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/youngla/mujer/brarojoyla.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Red bra tank',
         dataAiHint: 'red bra',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/youngla/mujer/brarojoyla.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Red bra tank M',
         dataAiHint: 'red bra',
         option: 'M',
       },
       {
-        src: '/assets/images/marcas/youngla/mujer/brarojoyla.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Red bra tank L',
         dataAiHint: 'red bra',
         option: 'L',
@@ -327,13 +327,13 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/dragon/isophormblue.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Blueberry protein powder',
         dataAiHint: 'protein powder',
         option: 'Blueberry',
       },
       {
-        src: '/assets/images/marcas/dragon/isophormwc.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'White chocolate protein powder',
         dataAiHint: 'protein powder',
         option: 'ChocolateBlanco',
@@ -354,13 +354,13 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: '/assets/images/marcas/dragon/creatinaDP.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Creatine container',
         dataAiHint: 'creatine powder',
         option: 'Serv60',
       },
       {
-        src: '/assets/images/marcas/dragon/creatinaDP.png',
+        src: 'https://placehold.co/400x500.png',
         alt: 'Large creatine container',
         dataAiHint: 'creatine powder',
         option: 'Serv200',

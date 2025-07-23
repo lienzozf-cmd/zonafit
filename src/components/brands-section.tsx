@@ -1,26 +1,27 @@
 import Image from 'next/image';
 
 const brands = [
-  { src: '/assets/images/logos/vanquish.jpeg', alt: 'Vanquish' },
-  { src: '/assets/images/logos/darc.jpeg', alt: 'Darc Sport' },
-  { src: '/assets/images/logos/dragonp.png', alt: 'Dragon Pharma' },
-  { src: '/assets/images/logos/gymshark.png', alt: 'Gymshark' },
-  { src: '/assets/images/logos/youngla.png', alt: 'YoungLA' },
-  { src: '/assets/images/logos/raw.png', alt: 'Raw' },
-  { src: '/assets/images/logos/c4.png', alt: 'C4 Energy' },
-  { src: '/assets/images/logos/rgmnt.jpeg', alt: 'RGMNT' },
+  { src: 'https://placehold.co/150x150.png', alt: 'Vanquish', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'Darc Sport', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'Dragon Pharma', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'Gymshark', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'YoungLA', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'Raw', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'C4 Energy', dataAiHint: 'logo fitness' },
+  { src: 'https://placehold.co/150x150.png', alt: 'RGMNT', dataAiHint: 'logo fitness' },
 ];
 
 const BrandsSection = () => {
   return (
     <div className="circular-images-container">
       {brands.map((brand, index) => (
-        <Image 
-          key={index} 
-          src={brand.src} 
-          alt={brand.alt} 
-          width={150} 
+        <Image
+          key={index}
+          src={brand.src}
+          alt={brand.alt}
+          width={150}
           height={150}
+          data-ai-hint={brand.dataAiHint}
           className="rounded-full inline-block m-2"
         />
       ))}

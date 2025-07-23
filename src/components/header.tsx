@@ -49,7 +49,7 @@ const Header = () => {
     <header className="site-header">
       <div className="site-branding">
         <Link href="/">
-          <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} />
+          <Image src="https://placehold.co/150x80.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
         </Link>
       </div>
       <nav className="site-navigation">
@@ -86,11 +86,12 @@ const Header = () => {
       <div className="header-icons">
         <div className="search-container" ref={searchContainerRef}>
           <Image
-            src="/assets/icons/search-icon.svg"
+            src="https://placehold.co/24x24.png"
             alt="Search Icon"
             className="search-icon"
             width={24}
             height={24}
+            data-ai-hint="search icon"
             onClick={() => setIsSearchActive(!isSearchActive)}
           />
           <div className={`search-box ${isSearchActive ? 'active' : ''}`}>
@@ -107,7 +108,7 @@ const Header = () => {
             {searchResults.length > 0 ? (
               searchResults.map(result => (
                 <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                  <Image src={result.images[0].src} alt={result.name} width={50} height={50} />
+                  <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
                   <div className="search-result-info">
                     <div className="search-result-name">{result.name}</div>
                     <div className="search-result-price">{result.price}</div>
@@ -119,7 +120,7 @@ const Header = () => {
             )}
           </div>
         </div>
-        <Image src="/assets/icons/cart-icon.svg" alt="Cart Icon" className="cart-icon" width={24} height={24} />
+        <Image src="https://placehold.co/24x24.png" alt="Cart Icon" className="cart-icon" width={24} height={24} data-ai-hint="cart icon" />
       </div>
     </header>
   );

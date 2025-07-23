@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const heroImages = [
-  { src: '/assets/images/banners/banner.jpg', alt: 'Man lifting weights' },
-  { src: '/assets/images/banners/banner2.png', alt: 'Woman in athletic wear' },
-  { src: '/assets/images/banners/banner3.png', alt: 'Fitness supplements and gear' },
-  { src: '/assets/images/banners/banner4.png', alt: 'Man running on a treadmill' },
+  { src: 'https://placehold.co/1920x1080.png', alt: 'Man lifting weights', dataAiHint: 'man fitness' },
+  { src: 'https://placehold.co/1920x1080.png', alt: 'Woman in athletic wear', dataAiHint: 'woman fitness' },
+  { src: 'https://placehold.co/1920x1080.png', alt: 'Fitness supplements and gear', dataAiHint: 'fitness gear' },
+  { src: 'https://placehold.co/1920x1080.png', alt: 'Man running on a treadmill', dataAiHint: 'man running' },
 ];
 
 const HeroSection = () => {
@@ -28,6 +28,7 @@ const HeroSection = () => {
             src={image.src}
             alt={image.alt}
             fill
+            data-ai-hint={image.dataAiHint}
             className={`carousel-image ${index === currentImageIndex ? 'active' : ''}`}
             priority={index === 0}
           />
