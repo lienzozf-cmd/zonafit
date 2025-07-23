@@ -1,84 +1,48 @@
 import Image from 'next/image';
 
-const categories = [
-  {
-    name: 'Mujer',
-    products: 47,
-    href: '/mujer',
-    image: {
-      src: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
-      alt: 'Mujer',
-    },
-    className: 'large-vertical',
-  },
-  {
-    name: 'Hombre',
-    products: 24,
-    href: '/hombre',
-    image: {
-      src: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
-      alt: 'Hombre',
-    },
-    className: 'large-horizontal',
-  },
-  {
-    name: 'Accesorios',
-    products: 24,
-    href: '/accesorios',
-    image: {
-      src: '/assets/images/marcas/youngla/hombre/maletagym.png',
-      alt: 'Accesorios',
-    },
-    className: 'small-square',
-  },
-  {
-    name: 'Suplementos',
-    products: 24,
-    href: '/suplementos',
-    image: {
-      src: '/assets/images/marcas/raw/prewcb.jpg',
-      alt: 'Suplementos',
-    },
-    className: 'small-square',
-  },
-  {
-    name: 'Joyería',
-    products: 24,
-    href: '/joyeria',
-    image: {
-      src: '/assets/images/marcas/rgmnt/tridente.png',
-      alt: 'Joyeria',
-    },
-    className: 'small-square',
-  },
-];
-
 const CategoryGrid = () => {
   return (
     <section className="fitness-goals">
       <div className="goal-content">
         <h2>ZONA FIT GT</h2>
-        <p>"Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce."</p>
+        <p>"Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce.".</p>
       </div>
       <div className="image-grid">
-        {categories.map((category) => (
-          <div
-            key={category.name}
-            className={`grid-item ${category.className}`}
-          >
-            <Image
-              src={category.image.src}
-              alt={category.image.alt}
-              width={500}
-              height={500}
-              className="object-cover w-full h-full"
-            />
-            <div className="overlay-text">
-              <h3>{category.name}</h3>
-              <p>{category.products} productos</p>
-            </div>
+        <div className="grid-item large-vertical">
+          <Image src="/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg" alt="Mujer" width={500} height={500} className="object-cover w-full h-full" />
+          <div className="overlay-text">
+            <h3>Mujer</h3>
+            <p>47 productos</p>
           </div>
-        ))}
+        </div>
+        <div className="grid-item large-horizontal">
+          <Image src="/assets/images/marcas/youngla/hombre/jerdaniv.jpg" alt="Hombre" width={500} height={500} className="object-cover w-full h-full" />
+          <div className="overlay-text">
+            <h3>Hombre</h3>
+            <p>24 productos</p>
+          </div>
+        </div>
+        <div className="grid-item small-square">
+          <Image src="/assets/images/marcas/youngla/hombre/maletagym.png" alt="Accesorios" width={500} height={500} className="object-cover w-full h-full" />
+          <div className="overlay-text">
+            <h3>Accesorios</h3>
+            <p>24 productos</p>
+          </div>
+        </div>
+        <div className="grid-item small-square">
+          <Image src="/assets/images/marcas/raw/prewcb.jpg" alt="Suplementos" width={500} height={500} className="object-cover w-full h-full" />
+          <div className="overlay-text">
+            <h3>Suplementos</h3>
+            <p>24 productos</p>
+          </div>
+        </div>
+        <div className="grid-item small-square">
+          <Image src="/assets/images/marcas/rgmnt/tridente.png" alt="Joyeria" width={500} height={500} className="object-cover w-full h-full" />
+          <div className="overlay-text">
+            <h3>Joyeria</h3>
+            <p>24 productos</p>
+          </div>
+        </div>
       </div>
     </section>
   );
