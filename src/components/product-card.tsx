@@ -5,9 +5,11 @@ import type { Product, ProductOption } from '@/lib/data';
 
 interface ProductCardProps {
   product: Product;
+  animate?: boolean;
+  animationDelay?: number;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, animate = false, animationDelay = 0 }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
 
@@ -15,19 +17,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
     setSelectedOption(option);
     setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
   };
-
-  useEffect(() => {
-    const item = document.getElementById(`product-item-${product.id}`);
-    if(item) {
-        item.style.opacity = '0';
-        setTimeout(() => {
-            if(item) item.style.opacity = '1';
-        }, 100);
-    }
-  }, [product.id]);
+  
+  const animationClasses = animate ? 'animate-fade-in-left' : '';
+  const delayClass = `delay-[${animationDelay}ms]`;
 
   return (
-    <div className="product-item" id={`product-item-${product.id}`}>
+    <div 
+        className={`product-item ${animate ? 'animate-fade-in-left' : ''}`}
+        style={{ animationDelay: `${animationDelay}ms` }}
+        id={`product-item-${product.id}`}
+    >
         <div className="product-carousel">
             <div className="carousel-images">
                 <Image
