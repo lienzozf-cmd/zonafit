@@ -123,22 +123,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/superheroeroja.png",
         alt: 'Red compression shirt',
         dataAiHint: 'red shirt',
         option: 'S',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Red compression shirt M',
-        dataAiHint: 'red shirt',
-        option: 'M',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Red compression shirt L',
-        dataAiHint: 'red shirt',
-        option: 'L',
       },
     ],
     options: {
@@ -157,22 +145,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/warriorazul.png",
         alt: 'Blue compression shirt',
         dataAiHint: 'blue shirt',
         option: 'S',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Blue compression shirt M',
-        dataAiHint: 'blue shirt',
-        option: 'M',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Blue compression shirt L',
-        dataAiHint: 'blue shirt',
-        option: 'L',
       },
     ],
     options: {
@@ -191,22 +167,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/GYMSTHN.png",
         alt: 'Black tank top',
         dataAiHint: 'black tank',
         option: 'S',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Black tank top M',
-        dataAiHint: 'black tank',
-        option: 'M',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Black tank top L',
-        dataAiHint: 'black tank',
-        option: 'L',
       },
     ],
     options: {
@@ -225,22 +189,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/GYMSPOWERNR.png",
         alt: 'Black and red t-shirt',
         dataAiHint: 'black red shirt',
         option: 'S',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Black and red t-shirt M',
-        dataAiHint: 'black red shirt',
-        option: 'M',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Black and red t-shirt L',
-        dataAiHint: 'black red shirt',
-        option: 'L',
       },
     ],
     options: {
@@ -259,22 +211,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/anabelgyms.jpg",
         alt: 'Green crop top',
         dataAiHint: 'green crop top',
         option: 'S',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Green crop top M',
-        dataAiHint: 'green crop top',
-        option: 'M',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Green crop top L',
-        dataAiHint: 'green crop top',
-        option: 'L',
       },
     ],
     options: {
@@ -293,22 +233,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/brarojoyla.png",
         alt: 'Red bra tank',
         dataAiHint: 'red bra',
         option: 'S',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Red bra tank M',
-        dataAiHint: 'red bra',
-        option: 'M',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Red bra tank L',
-        dataAiHint: 'red bra',
-        option: 'L',
       },
     ],
     options: {
@@ -327,13 +255,13 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/isoproteinblb.png",
         alt: 'Blueberry protein powder',
         dataAiHint: 'protein powder',
         option: 'Blueberry',
       },
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/proteinachb.png",
         alt: 'White chocolate protein powder',
         dataAiHint: 'protein powder',
         option: 'ChocolateBlanco',
@@ -354,16 +282,10 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: 'https://placehold.co/400x500.png',
+        src: "/assets/images/products/creatinaDP.png",
         alt: 'Creatine container',
         dataAiHint: 'creatine powder',
         option: 'Serv60',
-      },
-      {
-        src: 'https://placehold.co/400x500.png',
-        alt: 'Large creatine container',
-        dataAiHint: 'creatine powder',
-        option: 'Serv200',
       },
     ],
     options: {
