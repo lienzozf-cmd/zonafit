@@ -6,7 +6,7 @@ export const metadata = {
   title: 'ZONA FIT GT',
   description: 'Your one-stop shop for fitness apparel, supplements, and accessories.',
   icons: {
-    icon: 'https://placehold.co/32x32.png',
+    icon: '/assets/images/logos/minilogo.png',
   },
 };
 
