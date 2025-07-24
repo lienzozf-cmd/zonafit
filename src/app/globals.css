@@ -9,8 +9,8 @@
   --accent-color: #E50000; /* Rojo vibrante para acentos y botones */
   --text-color: #1a1a1a; /* Color de texto general (negro) */
   --light-text-color: #FFFFFF; /* Color de texto para fondos oscuros */
-  --font-principal: 'Arial', sans-serif; /* Fuente moderna y limpia */
-  --font-secundaria: 'Roboto', sans-serif; /* Fuente para contenido secundario */
+  --font_principal: 'Arial', sans-serif; /* Fuente moderna y limpia */
+  --font_secundaria: 'Roboto', sans-serif; /* Fuente para contenido secundario */
 }
 
 /* Estilos generales */
@@ -652,33 +652,52 @@ footer {
   transform: scale(1.1);
 }
 
-/* Intro Animation Styles */
+/* Estilos para la pantalla de introducción estilo James Bond 007 */
 .intro-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh; /* Adjust this value as needed, e.g., 50vh for half viewport height */
     background-color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    transition: opacity 1s ease-out;
+    z-index: 9999; 
+    overflow: hidden;
 }
 
-.intro-screen.fade-out {
-    opacity: 0;
-}
-
-.intro-logo-container {
+.intro-logo-container { 
     position: relative;
-    width: 200px; /* Adjust as needed */
-    height: 200px; /* Adjust as needed */
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.intro-logo {
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: logoReveal 2s ease-in-out forwards;
+}
+
+@keyframes logoReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .gun-barrel {
@@ -687,72 +706,109 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://www.transparentpng.com/thumb/gun/j2T8k5-gun-barrel-james-bond-spectre-hd-pictures.png');
-    background-size: cover;
-    animation: zoomIn 2s forwards;
-    z-index: 2;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-sizing: border-box;
+    animation: gunBarrelSpin 2s ease-out;
+    opacity: 0;
+    box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes gunBarrelSpin {
+    0% {
+        transform: scale(5);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
 }
 
 .gun-flash {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
     background-color: #fff;
     border-radius: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
-    animation: flash 0.2s 1.5s;
-    z-index: 3;
+    animation: gunFlash 0.5s ease-out 1s forwards;
 }
 
-.intro-logo {
-    width: 80%;
-    height: auto;
-    z-index: 1;
+@keyframes gunFlash {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    10% {
+        width: 300px;
+        height: 300px;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
 }
+
+
 
 .loading-bar {
     width: 200px;
-    height: 10px;
+    height: 4px;
     background-color: #333;
-    border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 30px;
+    position: relative;
     overflow: hidden;
 }
 
 .loading-progress {
-    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
-    background-color: var(--accent-color);
-    border-radius: 5px;
-    animation: load 2s forwards;
+    width: 0%;
+    background-color: #E50000;
+    animation: loadingProgress 3s ease-in-out forwards;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
 }
 
 .intro-text {
-    margin-top: 20px;
     color: #fff;
-    font-size: 2em;
-    font-family: var(--font_principal);
-    animation: fadeIn 2s forwards;
-}
-
-@keyframes zoomIn {
-    from { transform: scale(3); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes flash {
-    from { opacity: 1; transform: scale(1); }
-    to { opacity: 0; transform: scale(0); }
-}
-
-@keyframes load {
-    from { width: 0; }
-    to { width: 100%; }
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 2.5s forwards;
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+.intro-screen.fade-out {
+    animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+}
     
+
 
