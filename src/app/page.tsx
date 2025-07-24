@@ -4,12 +4,14 @@ import FeaturedProducts from '@/components/featured-products';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import HeroSection from '@/components/hero-section';
+import IntroAnimation from '@/components/intro-animation';
 import SocialSection from '@/components/social-section';
 import VideoSection from '@/components/video-section';
 
 export default function Home() {
   return (
     <>
+      <IntroAnimation />
       <Header />
       <HeroSection />
       <main>
