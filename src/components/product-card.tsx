@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import type { Product, ProductOption } from '@/lib/data';
 
@@ -18,9 +18,6 @@ const ProductCard = ({ product, animate = false, animationDelay = 0 }: ProductCa
     setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
   };
   
-  const animationClasses = animate ? 'animate-fade-in-left' : '';
-  const delayClass = `delay-[${animationDelay}ms]`;
-
   return (
     <div 
         className={`product-item ${animate ? 'animate-fade-in-left' : ''}`}
@@ -28,14 +25,12 @@ const ProductCard = ({ product, animate = false, animationDelay = 0 }: ProductCa
         id={`product-item-${product.id}`}
     >
         <div className="product-carousel">
-            <div className="carousel-images">
-                <Image
-                src={product.images[0].src}
-                alt={product.images[0].alt}
-                fill
-                className="object-cover"
-                />
-            </div>
+            <Image
+            src={product.images[0].src}
+            alt={product.images[0].alt}
+            fill
+            className="object-cover"
+            />
         </div>
         <br />
         <h3 className="product-name">{product.name}</h3>
