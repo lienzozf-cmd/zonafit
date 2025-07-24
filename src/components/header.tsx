@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
+import { Search, ShoppingCart } from 'lucide-react';
 
 const Header = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -85,13 +86,8 @@ const Header = () => {
       </nav>
       <div className="header-icons">
         <div className="search-container" ref={searchContainerRef}>
-          <Image
-            src="https://placehold.co/24x24.png"
-            alt="Search Icon"
+          <Search
             className="search-icon"
-            width={24}
-            height={24}
-            data-ai-hint="search icon"
             onClick={() => setIsSearchActive(!isSearchActive)}
           />
           <div className={`search-box ${isSearchActive ? 'active' : ''}`}>
@@ -120,7 +116,7 @@ const Header = () => {
             )}
           </div>
         </div>
-        <Image src="https://placehold.co/24x24.png" alt="Cart Icon" className="cart-icon" width={24} height={24} data-ai-hint="cart icon" />
+        <ShoppingCart className="cart-icon" />
       </div>
     </header>
   );
