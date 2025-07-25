@@ -853,6 +853,10 @@ footer {
   margin-top: 0;
 }
 
+.mobile-search .search-box input {
+    margin-right: 0;
+}
+
 .mobile-search #searchResults {
   position: static;
   width: 100%;
