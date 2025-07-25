@@ -193,9 +193,6 @@ const Header = () => {
             <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto">
                <SheetHeader>
                 <SheetTitle className='text-white'>Menú</SheetTitle>
-                 <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-4 right-4">
-                  <X className="text-white" />
-                </button>
               </SheetHeader>
               <div className="mt-4 p-4">
                 {renderSearch(true)}
