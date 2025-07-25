@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
-import { Search, ShoppingCart, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, Menu } from 'lucide-react';
 import { useCart } from '@/hooks/use-cart';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -207,7 +207,7 @@ const Header = () => {
         )}
 
         <div className="header-icons">
-         {!isMobile && renderSearch(false)}
+         {isMobile === false && renderSearch(false)}
           <div className="relative">
             <ShoppingCart className="cart-icon" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (
