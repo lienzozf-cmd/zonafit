@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
 
 const brands = [
   { src: '/assets/images/logos/vanquish.jpeg', alt: 'Vanquish', dataAiHint: 'logo fitness' },
@@ -14,34 +13,8 @@ const brands = [
 ];
 
 const BrandsSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = containerRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
   return (
-    <div className="circular-images-container" ref={containerRef}>
+    <div className="circular-images-container">
       {brands.map((brand, index) => (
         <Image
           key={index}
@@ -50,8 +23,7 @@ const BrandsSection = () => {
           width={150}
           height={150}
           data-ai-hint={brand.dataAiHint}
-          className={`rounded-full inline-block m-2 transition-opacity duration-700 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-          style={{ transitionDelay: `${index * 150}ms` }}
+          className="rounded-full inline-block m-2"
         />
       ))}
     </div>

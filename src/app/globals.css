@@ -315,7 +315,9 @@ main {
   width: 150px;
   height: 150px;
   margin: 0 10px;
-  transition: transform 75ms ease, opacity 0.5s ease;
+  transition: transform 75ms ease;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .circular-images-container img:hover {
