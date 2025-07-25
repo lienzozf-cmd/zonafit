@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
-import { Search, ShoppingCart, Menu } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '@/hooks/use-cart';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -118,7 +118,7 @@ const Header = () => {
                       </a>
                       {sublink.sublinks && (
                         <ul className="sub-submenu">
-                          {sublink.sublinks.map((item) => (
+                          {link.sublinks.map((item) => (
                             <li key={item.title}>
                               <a href={item.href}>{item.title}</a>
                             </li>
@@ -162,7 +162,7 @@ const Header = () => {
                 <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
                 <div className="search-result-info">
                   <div className="search-result-name">{result.name}</div>
-                  <div className="search-result-price">{result.price}</div>
+                  <div className="search-result-price">Q.{result.price}</div>
                 </div>
               </div>
             ))
@@ -177,7 +177,9 @@ const Header = () => {
       return (
         <div className="p-4">
           <div className='relative'>
-            {searchComponent}
+             <div className="p-1">
+              {searchComponent}
+            </div>
           </div>
         </div>
       );
@@ -203,11 +205,14 @@ const Header = () => {
               </button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto p-0">
-               <SheetHeader className="p-6 pb-2">
+               <SheetHeader className="p-6 pb-2 border-b border-gray-700 flex flex-row items-center justify-between">
                 <SheetTitle className='text-white'>Menú</SheetTitle>
+                 <SheetTrigger>
+                  <X className="h-6 w-6 text-white" />
+                </SheetTrigger>
               </SheetHeader>
               {renderSearch(true)}
-              <div className="pt-4 p-6">
+               <div className="pt-4 p-6">
                 {renderNavLinks(true)}
               </div>
             </SheetContent>
