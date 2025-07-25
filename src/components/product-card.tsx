@@ -1,20 +1,38 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import type { Product, ProductOption } from '@/lib/data';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
+import { useProductStore } from '@/stores/product-store';
 
 interface ProductCardProps {
   product: Product;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
+  const { products, decreaseStock } = useProductStore();
+  const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
+
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
-  const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const { addItem } = useCart();
   const { toast } = useToast();
+
+  const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
+
+  useEffect(() => {
+    if (selectedOption) {
+      const updatedProduct = products.find(p => p.id === product.id);
+      const updatedOption = updatedProduct?.options.values.find(v => v.value === selectedOption.value);
+      if (updatedOption) {
+        setAvailabilityMessage(`Disponible: ${updatedOption.stock} unidades`);
+      }
+    } else {
+        setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+    }
+  }, [selectedOption, products, product.id]);
+
 
   const handleOptionClick = (option: ProductOption) => {
     setSelectedOption(option);
@@ -35,6 +53,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
       });
       return;
     }
+
+    if (selectedOption.stock <= 0) {
+      toast({
+        title: 'Error',
+        description: `No hay stock disponible para ${product.name} (${selectedOption.value}).`,
+        variant: 'destructive',
+      });
+      return;
+    }
     
     const priceAsNumber = parseFloat(product.price.replace(/Q\.|\s/g, ''));
 
@@ -46,6 +73,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
       option: selectedOption.value,
       quantity: 1,
     });
+    
+    decreaseStock(product.id, selectedOption.value);
 
     toast({
       title: 'Agregado al carrito',
@@ -79,6 +108,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 key={option.value}
                 onClick={() => handleOptionClick(option)}
                 className={selectedOption?.value === option.value ? 'active' : ''}
+                disabled={option.stock <= 0}
                 >
                 {option.value}
                 </button>
@@ -87,7 +117,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <p className="availability-message">
                 {availabilityMessage}
             </p>
-            <button className="add-to-cart-button" onClick={handleAddToCart}>AGREGAR</button>
+            <button className="add-to-cart-button" onClick={handleAddToCart} disabled={selectedOption?.stock === 0}>
+              {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
+            </button>
         </div>
     </div>
   );

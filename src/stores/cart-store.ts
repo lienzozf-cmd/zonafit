@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { createStore } from 'zustand';
 import type { CartItem } from '@/lib/types';
+import { useProductStore } from './product-store';
 
 export type CartStore = {
   items: CartItem[];
@@ -41,6 +42,12 @@ export const createCartStore = () =>
       });
     },
     removeItem: (id) => {
+      const itemToRemove = get().items.find((i) => i.id === id);
+      if (itemToRemove) {
+        const [productId, optionValue] = itemToRemove.id.split('-');
+        useProductStore.getState().increaseStock(Number(productId), optionValue, itemToRemove.quantity);
+      }
+
       const newItems = get().items.filter((i) => i.id !== id);
       set({
         items: newItems,
@@ -48,16 +55,30 @@ export const createCartStore = () =>
       });
     },
     incrementQuantity: (id) => {
-      const newItems = get().items.map((i) =>
-          i.id === id ? { ...i, quantity: i.quantity + 1 } : i
-        );
-       set({
-        items: newItems,
-        ...updateTotal(newItems)
-      });
+      const itemToIncrement = get().items.find((i) => i.id === id);
+      if (itemToIncrement) {
+        const [productId, optionValue] = itemToIncrement.id.split('-');
+        const product = useProductStore.getState().products.find(p => p.id === Number(productId));
+        const option = product?.options.values.find(o => o.value === optionValue);
+        if (option && option.stock > 0) {
+            useProductStore.getState().decreaseStock(Number(productId), optionValue);
+            const newItems = get().items.map((i) =>
+                i.id === id ? { ...i, quantity: i.quantity + 1 } : i
+            );
+            set({
+                items: newItems,
+                ...updateTotal(newItems)
+            });
+        }
+      }
     },
     decrementQuantity: (id) => {
       const existingItem = get().items.find((i) => i.id === id);
+      if (existingItem) {
+        const [productId, optionValue] = existingItem.id.split('-');
+        useProductStore.getState().increaseStock(Number(productId), optionValue, 1);
+      }
+      
       let newItems;
       if (existingItem && existingItem.quantity > 1) {
         newItems = get().items.map((i) =>

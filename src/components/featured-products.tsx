@@ -1,8 +1,9 @@
 'use client';
-import { products } from '@/lib/data';
+import { useProductStore } from '@/stores/product-store';
 import ProductCard from './product-card';
 
 const FeaturedProducts = () => {
+  const { products } = useProductStore();
   return (
     <section className="product-grid">
       {products.map((product) => (

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import CartProvider from '@/components/cart-provider';
+import ProductProvider from '@/components/product-provider';
 
 export const metadata = {
   title: 'ZONA FIT GT',
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <CartProvider>{children}</CartProvider>
+        <ProductProvider>
+          <CartProvider>{children}</CartProvider>
+        </ProductProvider>
         <Toaster />
       </body>
     </html>
