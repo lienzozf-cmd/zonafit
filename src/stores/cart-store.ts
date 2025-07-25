@@ -14,6 +14,11 @@ export type CartStore = {
   setIsCartOpen: (isOpen: boolean) => void;
 };
 
+const updateTotal = (items: CartItem[]) => ({
+  itemCount: items.reduce((acc, i) => acc + i.quantity, 0),
+  total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
+});
+
 export const createCartStore = () =>
   createStore<CartStore>((set, get) => ({
     items: [],
@@ -22,59 +27,49 @@ export const createCartStore = () =>
     isCartOpen: false,
     addItem: (item) => {
       const existingItem = get().items.find((i) => i.id === item.id);
+      let newItems;
       if (existingItem) {
-        set((state) => ({
-          items: state.items.map((i) =>
+        newItems = get().items.map((i) =>
             i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-          ),
-        }));
+          )
       } else {
-        set((state) => ({
-          items: [...state.items, item],
-        }));
+        newItems = [...get().items, item]
       }
-      set((state) => ({
-        itemCount: state.items.reduce((acc, i) => acc + i.quantity, 0),
-        total: state.items.reduce((acc, i) => acc + i.price * i.quantity, 0),
-      }));
+      set({
+        items: newItems,
+        ...updateTotal(newItems)
+      });
     },
     removeItem: (id) => {
-      set((state) => ({
-        items: state.items.filter((i) => i.id !== id),
-      }));
-      set((state) => ({
-        itemCount: state.items.reduce((acc, i) => acc + i.quantity, 0),
-        total: state.items.reduce((acc, i) => acc + i.price * i.quantity, 0),
-      }));
+      const newItems = get().items.filter((i) => i.id !== id);
+      set({
+        items: newItems,
+        ...updateTotal(newItems)
+      });
     },
     incrementQuantity: (id) => {
-      set((state) => ({
-        items: state.items.map((i) =>
+      const newItems = get().items.map((i) =>
           i.id === id ? { ...i, quantity: i.quantity + 1 } : i
-        ),
-      }));
-       set((state) => ({
-        itemCount: state.items.reduce((acc, i) => acc + i.quantity, 0),
-        total: state.items.reduce((acc, i) => acc + i.price * i.quantity, 0),
-      }));
+        );
+       set({
+        items: newItems,
+        ...updateTotal(newItems)
+      });
     },
     decrementQuantity: (id) => {
       const existingItem = get().items.find((i) => i.id === id);
+      let newItems;
       if (existingItem && existingItem.quantity > 1) {
-        set((state) => ({
-          items: state.items.map((i) =>
+        newItems = get().items.map((i) =>
             i.id === id ? { ...i, quantity: i.quantity - 1 } : i
-          ),
-        }));
+          )
       } else {
-        set((state) => ({
-          items: state.items.filter((i) => i.id !== id),
-        }));
+        newItems = get().items.filter((i) => i.id !== id)
       }
-      set((state) => ({
-        itemCount: state.items.reduce((acc, i) => acc + i.quantity, 0),
-        total: state.items.reduce((acc, i) => acc + i.price * i.quantity, 0),
-      }));
+      set({
+        items: newItems,
+        ...updateTotal(newItems)
+      });
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
   }));

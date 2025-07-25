@@ -36,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       return;
     }
     
-    const priceAsNumber = parseFloat(product.price.replace(/[^0-9.-]+/g, ''));
+    const priceAsNumber = parseFloat(product.price.replace(/Q\.|\s/g, ''));
 
     addItem({
       id: `${product.id}-${selectedOption.value}`,

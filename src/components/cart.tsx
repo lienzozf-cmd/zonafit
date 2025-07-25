@@ -69,7 +69,7 @@ const Cart = () => {
                         <Button
                           variant="outline"
                           size="icon"
-                          className="h-8 w-8"
+                          className="h-8 w-8 text-red-500"
                           onClick={() => removeItem(item.id)}
                         >
                           <Trash className="h-4 w-4" />
