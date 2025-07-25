@@ -18,7 +18,13 @@ export default function Home() {
         <br />
         <BrandsSection />
         <br />
-        <h2 style={{ color: 'white', textAlign: 'center' }}>
+        <h2
+          style={{
+            color: 'white',
+            textAlign: 'center',
+            fontSize: '2.5em',
+          }}
+        >
           NUESTROS PRODUCTOS MÁS SOLICITADOS
         </h2>
         <FeaturedProducts />
