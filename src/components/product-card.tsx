@@ -26,11 +26,10 @@ const ProductCard = ({ product, animate = false, animationDelay = 0 }: ProductCa
     >
         <div className="product-carousel">
             <Image
-            src={product.images[0].src}
-            alt={product.images[0].alt}
-            width={400}
-            height={500}
-            className="object-cover"
+              src={product.images[0].src}
+              alt={product.images[0].alt}
+              fill
+              className="object-cover"
             />
         </div>
         <br />

@@ -387,8 +387,8 @@ main {
 
 .product-item .product-carousel {
   position: relative;
-  aspect-ratio: 4 / 5;
   width: 100%;
+  aspect-ratio: 4 / 5;
 }
 
 .product-item .product-carousel img {

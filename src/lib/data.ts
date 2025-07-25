@@ -123,7 +123,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/superheroeroja.png",
+        src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
         alt: 'Red compression shirt',
         dataAiHint: 'red shirt',
         option: 'S',
@@ -145,7 +145,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/warriorazul.png",
+        src:  "/assets/images/marcas/youngla/hombre/warriorazul.png",
         alt: 'Blue compression shirt',
         dataAiHint: 'blue shirt',
         option: 'S',
@@ -167,7 +167,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/GYMSTHN.png",
+        src:  "/assets/images/marcas/gymshark/hombre/GYMSTHN.png",
         alt: 'Black tank top',
         dataAiHint: 'black tank',
         option: 'S',
@@ -189,7 +189,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/GYMSPOWERNR.png",
+        src: "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png",
         alt: 'Black and red t-shirt',
         dataAiHint: 'black red shirt',
         option: 'S',
@@ -211,7 +211,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/anabelgyms.jpg",
+        src: "/assets/images/marcas/gymshark/mujer/anabelgyms.jpg",
         alt: 'Green crop top',
         dataAiHint: 'green crop top',
         option: 'S',
@@ -233,7 +233,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/brarojoyla.png",
+        src: "/assets/images/marcas/youngla/mujer/brarojoyla.png",
         alt: 'Red bra tank',
         dataAiHint: 'red bra',
         option: 'S',
@@ -255,13 +255,13 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/isoproteinblb.png",
+        src: "/assets/images/marcas/dragonpharma/isoproteinblb.png",
         alt: 'Blueberry protein powder',
         dataAiHint: 'protein powder',
         option: 'Blueberry',
       },
       {
-        src: "/assets/images/products/proteinachb.png",
+        src: "/assets/images/marcas/dragonpharma/proteinachb.png",
         alt: 'White chocolate protein powder',
         dataAiHint: 'protein powder',
         option: 'ChocolateBlanco',
@@ -282,7 +282,7 @@ export const products: Product[] = [
     availability: 'Disponible',
     images: [
       {
-        src: "/assets/images/products/creatinaDP.png",
+        src: "/assets/images/marcas/dragonpharma/creatinaDP.png",
         alt: 'Creatine container',
         dataAiHint: 'creatine powder',
         option: 'Serv60',
