@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const [selectedOption, setSelectedOption] = useState<ProductOption | null>(product.options.values[0] ?? null);
+  const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const { addItem } = useCart();
