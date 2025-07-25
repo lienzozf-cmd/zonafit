@@ -15,10 +15,10 @@ const Footer = () => {
           <p>Horario: Lunes - Viernes, 9 AM - 6 PM</p>
           <div className="socials">
             <a href="https://www.instagram.com/zonafitgt_/" target="_blank" rel="noopener noreferrer">
-              <Image src="https://placehold.co/30x30.png" alt="Instagram" width={30} height={30} data-ai-hint="instagram icon" />
+              <Image src="/assets/images/redesociales/instagram.png" alt="Instagram" width={30} height={30} data-ai-hint="instagram icon" />
             </a>
             <a href="https://www.tiktok.com/@zonafitgt_" target="_blank" rel="noopener noreferrer">
-              <Image src="https://placehold.co/30x30.png" alt="TikTok" width={30} height={30} data-ai-hint="tiktok icon" />
+              <Image src="/assets/images/redesociales/tiktok.png" alt="TikTok" width={30} height={30} data-ai-hint="tiktok icon" />
             </a>
           </div>
         </div>
