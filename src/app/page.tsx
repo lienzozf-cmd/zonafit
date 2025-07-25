@@ -22,7 +22,7 @@ export default function Home() {
           style={{
             color: 'white',
             textAlign: 'center',
-            fontSize: '2.5em',
+            fontSize: '2em',
           }}
         >
           NUESTROS PRODUCTOS MÁS SOLICITADOS
