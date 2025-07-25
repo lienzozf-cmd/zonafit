@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { createStore } from 'zustand';
 import type { CartItem } from '@/lib/types';
-import { useProductStore } from './product-store';
+import { productStore } from './product-store';
 
 export type CartStore = {
   items: CartItem[];
@@ -45,7 +45,7 @@ export const createCartStore = () =>
       const itemToRemove = get().items.find((i) => i.id === id);
       if (itemToRemove) {
         const [productId, optionValue] = itemToRemove.id.split('-');
-        useProductStore.getState().increaseStock(Number(productId), optionValue, itemToRemove.quantity);
+        productStore.getState().increaseStock(Number(productId), optionValue, itemToRemove.quantity);
       }
 
       const newItems = get().items.filter((i) => i.id !== id);
@@ -58,10 +58,16 @@ export const createCartStore = () =>
       const itemToIncrement = get().items.find((i) => i.id === id);
       if (itemToIncrement) {
         const [productId, optionValue] = itemToIncrement.id.split('-');
-        const product = useProductStore.getState().products.find(p => p.id === Number(productId));
+        const product = productStore.getState().products.find(p => p.id === Number(productId));
         const option = product?.options.values.find(o => o.value === optionValue);
-        if (option && option.stock > 0) {
-            useProductStore.getState().decreaseStock(Number(productId), optionValue);
+        
+        // Ensure there is stock to increment
+        const currentStock = productStore.getState().products
+          .find(p => p.id === Number(productId))
+          ?.options.values.find(o => o.value === optionValue)?.stock ?? 0;
+
+        if (currentStock > 0) {
+            productStore.getState().decreaseStock(Number(productId), optionValue);
             const newItems = get().items.map((i) =>
                 i.id === id ? { ...i, quantity: i.quantity + 1 } : i
             );
@@ -76,7 +82,7 @@ export const createCartStore = () =>
       const existingItem = get().items.find((i) => i.id === id);
       if (existingItem) {
         const [productId, optionValue] = existingItem.id.split('-');
-        useProductStore.getState().increaseStock(Number(productId), optionValue, 1);
+        productStore.getState().increaseStock(Number(productId), optionValue, 1);
       }
       
       let newItems;

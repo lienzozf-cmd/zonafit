@@ -4,13 +4,13 @@ import { type StoreApi } from 'zustand';
 import {
   ProductStoreContext,
   type ProductStore,
-  createProductStore,
+  productStore
 } from '@/stores/product-store';
 
 const ProductProvider = ({ children }: { children: ReactNode }) => {
   const storeRef = useRef<StoreApi<ProductStore>>();
   if (!storeRef.current) {
-    storeRef.current = createProductStore();
+    storeRef.current = productStore;
   }
 
   return (

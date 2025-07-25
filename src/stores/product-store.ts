@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createContext } from 'react';
 import { createStore, useStore as useZustandStore } from 'zustand';
 import { products as initialProducts, type Product } from '@/lib/data';
@@ -8,10 +9,30 @@ export type ProductStore = {
   increaseStock: (productId: number, optionValue: string, quantity: number) => void;
 };
 
-export const createProductStore = () =>
-  createStore<ProductStore>((set, get) => ({
-    products: initialProducts,
-    decreaseStock: (productId, optionValue) => {
+const productStore = createStore<ProductStore>((set, get) => ({
+  products: initialProducts,
+  decreaseStock: (productId, optionValue) => {
+    set((state) => ({
+      products: state.products.map((product) => {
+        if (product.id === productId) {
+          return {
+            ...product,
+            options: {
+              ...product.options,
+              values: product.options.values.map((option) => {
+                if (option.value === optionValue && option.stock > 0) {
+                  return { ...option, stock: option.stock - 1 };
+                }
+                return option;
+              }),
+            },
+          };
+        }
+        return product;
+      }),
+    }));
+  },
+  increaseStock: (productId, optionValue, quantity) => {
       set((state) => ({
         products: state.products.map((product) => {
           if (product.id === productId) {
@@ -20,8 +41,8 @@ export const createProductStore = () =>
               options: {
                 ...product.options,
                 values: product.options.values.map((option) => {
-                  if (option.value === optionValue && option.stock > 0) {
-                    return { ...option, stock: option.stock - 1 };
+                  if (option.value === optionValue) {
+                    return { ...option, stock: option.stock + quantity };
                   }
                   return option;
                 }),
@@ -32,31 +53,10 @@ export const createProductStore = () =>
         }),
       }));
     },
-    increaseStock: (productId, optionValue, quantity) => {
-        set((state) => ({
-          products: state.products.map((product) => {
-            if (product.id === productId) {
-              return {
-                ...product,
-                options: {
-                  ...product.options,
-                  values: product.options.values.map((option) => {
-                    if (option.value === optionValue) {
-                      return { ...option, stock: option.stock + quantity };
-                    }
-                    return option;
-                  }),
-                },
-              };
-            }
-            return product;
-          }),
-        }));
-      },
-  }));
+}));
 
 export const ProductStoreContext = createContext<ReturnType<
-  typeof createProductStore
+  typeof createStore<ProductStore>
 > | null>(null);
 
 export const useProductStore = () => {
@@ -70,5 +70,4 @@ export const useProductStore = () => {
     return useZustandStore(context);
 };
 
-// Add this import at the top of the file
-import * as React from 'react';
+export { productStore };
