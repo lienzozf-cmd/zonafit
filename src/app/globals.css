@@ -632,6 +632,7 @@ footer {
   flex: 1;
   min-width: 250px;
   margin: 20px;
+  text-align: center;
 }
 
 .footer-section h3 {
@@ -663,6 +664,7 @@ footer {
 .footer-section .socials {
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 .footer-section .socials img {
@@ -832,4 +834,5 @@ footer {
     from { opacity: 1; }
     to { opacity: 0; visibility: hidden; }
 }
+    
     
