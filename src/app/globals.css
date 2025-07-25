@@ -315,12 +315,18 @@ main {
   width: 150px;
   height: 150px;
   margin: 0 10px;
-  transition: transform 75ms ease;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.circular-images-container.is-visible img {
   opacity: 1;
-  transform: scale(1);
+  transform: translateX(0);
 }
 
 .circular-images-container img:hover {
+  transition-duration: 75ms;
   transform: scale(1.1);
 }
 

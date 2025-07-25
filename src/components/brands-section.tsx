@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const brands = [
@@ -13,8 +14,38 @@ const brands = [
 ];
 
 const BrandsSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="circular-images-container">
+    <div
+      ref={containerRef}
+      className={`circular-images-container ${isVisible ? 'is-visible' : ''}`}
+    >
       {brands.map((brand, index) => (
         <Image
           key={index}
@@ -24,6 +55,7 @@ const BrandsSection = () => {
           height={150}
           data-ai-hint={brand.dataAiHint}
           className="rounded-full inline-block m-2"
+          style={{ transitionDelay: `${index * 100}ms` }}
         />
       ))}
     </div>
