@@ -60,7 +60,7 @@ const Header = () => {
         <Accordion type="multiple" className="w-full">
           {navLinks.map((link) =>
             link.sublinks ? (
-              <AccordionItem value={link.title} key={link.title}>
+              <AccordionItem value={link.title} key={link.title} className="border-gray-700">
                 <AccordionTrigger className="text-white hover:no-underline">
                   {link.title}
                 </AccordionTrigger>
@@ -70,7 +70,7 @@ const Header = () => {
                       <li key={sublink.title} className="py-2">
                         {sublink.sublinks ? (
                            <Accordion type="multiple" className="w-full">
-                             <AccordionItem value={sublink.title}>
+                             <AccordionItem value={sublink.title} className="border-gray-700">
                                <AccordionTrigger className="text-white hover:no-underline">
                                  {sublink.title}
                                </AccordionTrigger>
@@ -194,10 +194,10 @@ const Header = () => {
                <SheetHeader>
                 <SheetTitle className='text-white'>Menú</SheetTitle>
               </SheetHeader>
-              <div className="mt-4 p-4">
+              <div className="p-4">
                 {renderSearch(true)}
               </div>
-              <div className="mt-4">
+              <div className="pt-4">
                 {renderNavLinks(true)}
               </div>
             </SheetContent>
