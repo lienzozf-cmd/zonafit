@@ -118,7 +118,7 @@ const Header = () => {
                       </a>
                       {sublink.sublinks && (
                         <ul className="sub-submenu">
-                          {link.sublinks.map((item) => (
+                          {sublink.sublinks.map((item) => (
                             <li key={item.title}>
                               <a href={item.href}>{item.title}</a>
                             </li>
@@ -162,7 +162,7 @@ const Header = () => {
                 <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
                 <div className="search-result-info">
                   <div className="search-result-name">{result.name}</div>
-                  <div className="search-result-price">Q.{result.price}</div>
+                  <div className="search-result-price">{result.price}</div>
                 </div>
               </div>
             ))
@@ -176,10 +176,8 @@ const Header = () => {
     if (isMobile) {
       return (
         <div className="p-4">
-          <div className='relative'>
-             <div className="p-1">
-              {searchComponent}
-            </div>
+           <div className="p-1">
+            {searchComponent}
           </div>
         </div>
       );
@@ -211,7 +209,13 @@ const Header = () => {
                   <X className="h-6 w-6 text-white" />
                 </SheetTrigger>
               </SheetHeader>
-              {renderSearch(true)}
+              <div className="p-4">
+                  <div className='relative'>
+                    <div className="p-1">
+                      {renderSearch(true)}
+                    </div>
+                  </div>
+              </div>
                <div className="pt-4 p-6">
                 {renderNavLinks(true)}
               </div>

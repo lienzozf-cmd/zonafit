@@ -163,7 +163,8 @@ a:hover {
 }
 
 .search-result-info {
-  color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .search-result-name {
