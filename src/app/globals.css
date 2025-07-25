@@ -832,3 +832,31 @@ footer {
   padding: 0 10px;
   font-weight: bold;
 }
+
+/* Responsive navigation styles */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .site-navigation {
+    display: none;
+  }
+  .mobile-menu-button {
+    display: block;
+    position: absolute;
+    right: 70px;
+  }
+  .site-header {
+    justify-content: space-between;
+  }
+   .site-branding {
+    flex-grow: 1;
+  }
+  .header-icons {
+    /* The mobile menu button will be outside this container */
+  }
+}

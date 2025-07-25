@@ -4,16 +4,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
-import { Search, ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '@/hooks/use-cart';
 import Cart from './cart';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
 const Header = () => {
   const { itemCount, setIsCartOpen } = useCart();
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const performSearch = () => {
     if (searchTerm.trim() === '') {
@@ -48,6 +53,88 @@ const Header = () => {
     }
   };
 
+  const renderNavLinks = (isMobile = false) => {
+    if (isMobile) {
+      return (
+        <Accordion type="multiple" className="w-full">
+          {navLinks.map((link) =>
+            link.sublinks ? (
+              <AccordionItem value={link.title} key={link.title}>
+                <AccordionTrigger className="text-white hover:no-underline">
+                  <a href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.title}</a>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="pl-4">
+                    {link.sublinks.map((sublink) => (
+                      <li key={sublink.title} className="py-2">
+                        {sublink.sublinks ? (
+                           <Accordion type="multiple" className="w-full">
+                             <AccordionItem value={sublink.title}>
+                               <AccordionTrigger className="text-white hover:no-underline">
+                                 <a href={sublink.href} onClick={() => setIsMobileMenuOpen(false)}>{sublink.title}</a>
+                               </AccordionTrigger>
+                               <AccordionContent>
+                                <ul className="pl-4">
+                                  {sublink.sublinks.map((item) => (
+                                    <li key={item.title} className="py-2">
+                                      <a href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="text-gray-300 hover:text-white">{item.title}</a>
+                                    </li>
+                                  ))}
+                                </ul>
+                               </AccordionContent>
+                             </AccordionItem>
+                           </Accordion>
+                        ) : (
+                          <a href={sublink.href} onClick={() => setIsMobileMenuOpen(false)} className="text-gray-300 hover:text-white">{sublink.title}</a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ) : (
+              <a key={link.title} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="block py-4 text-white border-b border-gray-700">{link.title}</a>
+            )
+          )}
+        </Accordion>
+      );
+    }
+
+    return (
+      <nav className="site-navigation">
+        <ul>
+          {navLinks.map((link) => (
+            <li key={link.title}>
+              <a href={link.href}>
+                {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
+              </a>
+              {link.sublinks && (
+                <ul className="dropdown-menu">
+                  {link.sublinks.map((sublink) => (
+                    <li key={sublink.title}>
+                      <a href={sublink.href}>
+                        {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
+                      </a>
+                      {sublink.sublinks && (
+                        <ul className="sub-submenu">
+                          {sublink.sublinks.map((item) => (
+                            <li key={item.title}>
+                              <a href={item.href}>{item.title}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
+  };
+
   return (
     <>
       <header className="site-header">
@@ -56,37 +143,30 @@ const Header = () => {
             <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
           </Link>
         </div>
-        <nav className="site-navigation">
-          <ul>
-            {navLinks.map((link) => (
-              <li key={link.title}>
-                <a href={link.href}>
-                  {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
-                </a>
-                {link.sublinks && (
-                  <ul className="dropdown-menu">
-                    {link.sublinks.map((sublink) => (
-                      <li key={sublink.title}>
-                        <a href={sublink.href}>
-                          {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
-                        </a>
-                        {sublink.sublinks && (
-                          <ul className="sub-submenu">
-                            {sublink.sublinks.map((item) => (
-                              <li key={item.title}>
-                                <a href={item.href}>{item.title}</a>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
+        
+        {isMobile ? (
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+               <button className="mobile-menu-button">
+                <Menu className="cart-icon" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto">
+               <SheetHeader>
+                <SheetTitle className='text-white'>Menú</SheetTitle>
+                 <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-4 right-4">
+                  <X className="text-white" />
+                </button>
+              </SheetHeader>
+              <div className="mt-8">
+                {renderNavLinks(true)}
+              </div>
+            </SheetContent>
+          </Sheet>
+        ) : (
+          renderNavLinks(false)
+        )}
+
         <div className="header-icons">
           <div className="search-container" ref={searchContainerRef}>
             <Search
