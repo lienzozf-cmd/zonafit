@@ -858,7 +858,6 @@ footer {
 
 .mobile-search .search-box input {
   width: 100%;
-  margin-right: 0;
 }
 
 .mobile-search .search-box.active {
@@ -872,6 +871,9 @@ footer {
   max-height: 200px; /* Adjust as needed */
   background-color: black;
   color: white;
+  z-index: 1000;
+  top: 100%;
+  left: 0;
 }
 
 @media (max-width: 1024px) {

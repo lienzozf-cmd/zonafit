@@ -20,15 +20,17 @@ const Header = () => {
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
-  const performSearch = () => {
-    if (searchTerm.trim() === '') {
+  const performSearch = (term: string) => {
+    if (term.trim() === '') {
       setSearchResults([]);
+      setIsSearchActive(false);
       return;
     }
-    const results = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const results = products.filter(p => p.name.toLowerCase().includes(term.toLowerCase()));
     setSearchResults(results);
+    setIsSearchActive(true);
   };
-
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
@@ -43,7 +45,9 @@ const Header = () => {
 
   const handleSearchResultClick = (product: Product) => {
     setIsSearchActive(false);
-    setIsMobileMenuOpen(false); // Close mobile menu on selection
+    setIsMobileMenuOpen(false); 
+    setSearchTerm('');
+    setSearchResults([]);
     const element = document.getElementById(`product-item-${product.id}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -145,27 +149,26 @@ const Header = () => {
             onClick={() => setIsSearchActive(!isSearchActive)}
           />
         )}
-        <div className={`search-box ${isSearchActive || isMobile ? 'active' : ''}`}>
+        <div className={`search-box active`}>
           <input
             type="text"
             placeholder="Buscar productos..."
             value={searchTerm}
             onChange={(e) => {
-              setSearchTerm(e.target.value);
-              performSearch();
+              const term = e.target.value;
+              setSearchTerm(term);
+              performSearch(term);
             }}
-            onFocus={() => isMobile && setIsSearchActive(true)}
-            onBlur={() => isMobile && setTimeout(() => setIsSearchActive(false), 100)}
-            onKeyPress={(e) => e.key === 'Enter' && performSearch()}
+            onFocus={() => setIsSearchActive(true)}
           />
            <button 
-            onClick={performSearch} 
+            onClick={() => performSearch(searchTerm)}
             className={`${isMobile ? 'opacity-0 pointer-events-none' : ''}`}
           >
             Buscar
           </button>
         </div>
-        <div id="searchResults" className={isSearchActive || (isMobile && searchTerm) ? 'active' : ''}>
+        <div id="searchResults" className={isSearchActive && searchTerm ? 'active' : ''}>
           {searchResults.length > 0 ? (
             searchResults.map(result => (
               <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
@@ -177,7 +180,7 @@ const Header = () => {
               </div>
             ))
           ) : (
-            ((isSearchActive || isMobile) && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
+            (isSearchActive && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
           )}
         </div>
       </div>
@@ -186,9 +189,7 @@ const Header = () => {
     if (isMobile) {
        return (
         <div className="p-4">
-          <div className="relative">
             {searchComponent}
-          </div>
         </div>
       );
     }
@@ -218,10 +219,8 @@ const Header = () => {
                   <X className="h-6 w-6 text-white" />
                 </SheetTrigger>
               </SheetHeader>
-               <div className="p-4">
-                <div className='relative'>
-                   {renderSearch(true)}
-                </div>
+               <div>
+                  {renderSearch(true)}
                </div>
                <div className="p-6 pt-0">
                 {renderNavLinks(true)}
