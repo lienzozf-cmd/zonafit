@@ -858,10 +858,12 @@ footer {
 }
 
 .mobile-search #searchResults {
-  position: static;
+  position: absolute;
   width: 100%;
   margin-top: 10px;
   max-height: 200px; /* Adjust as needed */
+  background-color: black;
+  color: white;
 }
 
 @media (max-width: 1024px) {

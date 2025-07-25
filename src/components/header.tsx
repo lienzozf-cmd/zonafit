@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
-import { Search, ShoppingCart, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, Menu } from 'lucide-react';
 import { useCart } from '@/hooks/use-cart';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -137,8 +137,8 @@ const Header = () => {
   };
   
   const renderSearch = (isMobile = false) => {
-    return (
-       <div className={`search-container ${isMobile ? 'mobile-search' : ''}`} ref={searchContainerRef}>
+    const searchComponent = (
+      <div className={`search-container ${isMobile ? 'mobile-search' : ''}`} ref={searchContainerRef}>
         {isMobile === false && (
           <Search
             className="search-icon"
@@ -171,7 +171,19 @@ const Header = () => {
           )}
         </div>
       </div>
-    )
+    );
+
+    if (isMobile) {
+      return (
+        <div className="p-4">
+          <div className='relative'>
+            {searchComponent}
+          </div>
+        </div>
+      );
+    }
+
+    return searchComponent;
   }
 
   return (
@@ -190,14 +202,12 @@ const Header = () => {
                 <Menu className="cart-icon" />
               </button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto">
-               <SheetHeader>
+            <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto p-0">
+               <SheetHeader className="p-6 pb-2">
                 <SheetTitle className='text-white'>Menú</SheetTitle>
               </SheetHeader>
-              <div className="p-4">
-                {renderSearch(true)}
-              </div>
-              <div className="pt-4">
+              {renderSearch(true)}
+              <div className="pt-4 p-6">
                 {renderNavLinks(true)}
               </div>
             </SheetContent>
