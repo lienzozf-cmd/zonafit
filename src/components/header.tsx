@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -6,8 +5,11 @@ import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
 import { Search, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/hooks/use-cart';
+import Cart from './cart';
 
 const Header = () => {
+  const { itemCount, setIsCartOpen } = useCart();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
@@ -47,78 +49,88 @@ const Header = () => {
   };
 
   return (
-    <header className="site-header">
-      <div className="site-branding">
-        <Link href="/">
-          <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
-        </Link>
-      </div>
-      <nav className="site-navigation">
-        <ul>
-          {navLinks.map((link) => (
-            <li key={link.title}>
-              <a href={link.href}>
-                {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
-              </a>
-              {link.sublinks && (
-                <ul className="dropdown-menu">
-                  {link.sublinks.map((sublink) => (
-                    <li key={sublink.title}>
-                      <a href={sublink.href}>
-                        {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
-                      </a>
-                      {sublink.sublinks && (
-                        <ul className="sub-submenu">
-                          {sublink.sublinks.map((item) => (
-                            <li key={item.title}>
-                              <a href={item.href}>{item.title}</a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className="header-icons">
-        <div className="search-container" ref={searchContainerRef}>
-          <Search
-            className="search-icon"
-            onClick={() => setIsSearchActive(!isSearchActive)}
-          />
-          <div className={`search-box ${isSearchActive ? 'active' : ''}`}>
-            <input
-              type="text"
-              placeholder="Buscar productos..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && performSearch()}
+    <>
+      <header className="site-header">
+        <div className="site-branding">
+          <Link href="/">
+            <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+          </Link>
+        </div>
+        <nav className="site-navigation">
+          <ul>
+            {navLinks.map((link) => (
+              <li key={link.title}>
+                <a href={link.href}>
+                  {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
+                </a>
+                {link.sublinks && (
+                  <ul className="dropdown-menu">
+                    {link.sublinks.map((sublink) => (
+                      <li key={sublink.title}>
+                        <a href={sublink.href}>
+                          {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
+                        </a>
+                        {sublink.sublinks && (
+                          <ul className="sub-submenu">
+                            {sublink.sublinks.map((item) => (
+                              <li key={item.title}>
+                                <a href={item.href}>{item.title}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="header-icons">
+          <div className="search-container" ref={searchContainerRef}>
+            <Search
+              className="search-icon"
+              onClick={() => setIsSearchActive(!isSearchActive)}
             />
-            <button onClick={performSearch}>Buscar</button>
-          </div>
-          <div id="searchResults" className={isSearchActive && searchTerm ? 'active' : ''}>
-            {searchResults.length > 0 ? (
-              searchResults.map(result => (
-                <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                  <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
-                  <div className="search-result-info">
-                    <div className="search-result-name">{result.name}</div>
-                    <div className="search-result-price">{result.price}</div>
+            <div className={`search-box ${isSearchActive ? 'active' : ''}`}>
+              <input
+                type="text"
+                placeholder="Buscar productos..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && performSearch()}
+              />
+              <button onClick={performSearch}>Buscar</button>
+            </div>
+            <div id="searchResults" className={isSearchActive && searchTerm ? 'active' : ''}>
+              {searchResults.length > 0 ? (
+                searchResults.map(result => (
+                  <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
+                    <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
+                    <div className="search-result-info">
+                      <div className="search-result-name">{result.name}</div>
+                      <div className="search-result-price">{result.price}</div>
+                    </div>
                   </div>
-                </div>
-              ))
-            ) : (
-              (isSearchActive && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
+                ))
+              ) : (
+                (isSearchActive && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
+              )}
+            </div>
+          </div>
+          <div className="relative">
+            <ShoppingCart className="cart-icon" onClick={() => setIsCartOpen(true)}/>
+            {itemCount > 0 && (
+               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {itemCount}
+              </span>
             )}
           </div>
         </div>
-        <ShoppingCart className="cart-icon" />
-      </div>
-    </header>
+      </header>
+      <Cart />
+    </>
   );
 };
 

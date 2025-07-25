@@ -816,5 +816,19 @@ footer {
     from { opacity: 1; }
     to { opacity: 0; visibility: hidden; }
 }
-    
-    
+
+.cart-item-quantity-control button {
+  background-color: #eee;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.cart-item-quantity-control span {
+  padding: 0 10px;
+  font-weight: bold;
+}
