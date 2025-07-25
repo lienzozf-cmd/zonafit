@@ -326,7 +326,7 @@ main {
 }
 
 .circular-images-container img:hover {
-  transition-duration: 75ms;
+  transition: transform 75ms ease-out !important;
   transform: scale(1.1);
 }
 
