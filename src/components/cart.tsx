@@ -26,9 +26,9 @@ const Cart = () => {
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg bg-white">
+      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg bg-black text-white">
         <SheetHeader className="space-y-2.5 pr-6">
-          <SheetTitle>Tu Carrito ({itemCount})</SheetTitle>
+          <SheetTitle className="text-white">Tu Carrito ({itemCount})</SheetTitle>
         </SheetHeader>
         {itemCount > 0 ? (
           <>
@@ -61,9 +61,9 @@ const Cart = () => {
                       <div className="flex flex-col justify-center items-center gap-2">
                         <div className="flex items-center gap-2">
                            <div className="flex items-center cart-item-quantity-control">
-                            <button onClick={() => decrementQuantity(item.id)}>-</button>
+                            <button onClick={() => decrementQuantity(item.id)} className="text-black">-</button>
                             <span>{item.quantity}</span>
-                            <button onClick={() => incrementQuantity(item.id)}>+</button>
+                            <button onClick={() => incrementQuantity(item.id)} className="text-black">+</button>
                           </div>
                         </div>
                         <Button
@@ -83,14 +83,6 @@ const Cart = () => {
             </ScrollArea>
             <div className="space-y-4 pr-6">
               <div className="space-y-1.5 text-sm">
-                <div className="flex">
-                  <span className="flex-1">Subtotal</span>
-                  <span>Q{total.toFixed(2)}</span>
-                </div>
-                <div className="flex">
-                  <span className="flex-1">Envío</span>
-                  <span>Gratis</span>
-                </div>
                 <div className="flex text-base font-medium">
                   <span className="flex-1">Total</span>
                   <span>Q{total.toFixed(2)}</span>
