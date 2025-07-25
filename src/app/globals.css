@@ -74,13 +74,13 @@ a:hover {
 .header-icons {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .search-container {
   position: relative;
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
 .search-icon,
@@ -839,6 +839,25 @@ footer {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.mobile-search {
+  position: relative;
+}
+
+.mobile-search .search-box {
+  position: static;
+  display: flex;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.mobile-search #searchResults {
+  position: static;
+  width: 100%;
+  margin-top: 10px;
+  max-height: 200px; /* Adjust as needed */
 }
 
 @media (max-width: 1024px) {

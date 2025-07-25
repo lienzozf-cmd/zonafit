@@ -43,6 +43,7 @@ const Header = () => {
 
   const handleSearchResultClick = (product: Product) => {
     setIsSearchActive(false);
+    setIsMobileMenuOpen(false); // Close mobile menu on selection
     const element = document.getElementById(`product-item-${product.id}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -134,6 +135,44 @@ const Header = () => {
       </nav>
     );
   };
+  
+  const renderSearch = (isMobile = false) => {
+    return (
+       <div className={`search-container ${isMobile ? 'mobile-search' : ''}`} ref={searchContainerRef}>
+        {!isMobile && (
+          <Search
+            className="search-icon"
+            onClick={() => setIsSearchActive(!isSearchActive)}
+          />
+        )}
+        <div className={`search-box ${isSearchActive || isMobile ? 'active' : ''}`}>
+          <input
+            type="text"
+            placeholder="Buscar productos..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && performSearch()}
+          />
+          <button onClick={performSearch}>Buscar</button>
+        </div>
+        <div id="searchResults" className={isSearchActive || isMobile ? 'active' : ''}>
+          {searchResults.length > 0 ? (
+            searchResults.map(result => (
+              <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
+                <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
+                <div className="search-result-info">
+                  <div className="search-result-name">{result.name}</div>
+                  <div className="search-result-price">{result.price}</div>
+                </div>
+              </div>
+            ))
+          ) : (
+            ((isSearchActive || isMobile) && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
+          )}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -158,7 +197,10 @@ const Header = () => {
                   <X className="text-white" />
                 </button>
               </SheetHeader>
-              <div className="mt-8">
+              <div className="mt-4 p-4">
+                {renderSearch(true)}
+              </div>
+              <div className="mt-4">
                 {renderNavLinks(true)}
               </div>
             </SheetContent>
@@ -168,37 +210,7 @@ const Header = () => {
         )}
 
         <div className="header-icons">
-          <div className="search-container" ref={searchContainerRef}>
-            <Search
-              className="search-icon"
-              onClick={() => setIsSearchActive(!isSearchActive)}
-            />
-            <div className={`search-box ${isSearchActive ? 'active' : ''}`}>
-              <input
-                type="text"
-                placeholder="Buscar productos..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && performSearch()}
-              />
-              <button onClick={performSearch}>Buscar</button>
-            </div>
-            <div id="searchResults" className={isSearchActive && searchTerm ? 'active' : ''}>
-              {searchResults.length > 0 ? (
-                searchResults.map(result => (
-                  <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                    <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
-                    <div className="search-result-info">
-                      <div className="search-result-name">{result.name}</div>
-                      <div className="search-result-price">{result.price}</div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                (isSearchActive && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
-              )}
-            </div>
-          </div>
+         {!isMobile && renderSearch(false)}
           <div className="relative">
             <ShoppingCart className="cart-icon" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (
