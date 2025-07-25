@@ -56,6 +56,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <p className="availability-message">
                 {availabilityMessage}
             </p>
+            <button className="add-to-cart-button">AGREGAR</button>
         </div>
     </div>
   );

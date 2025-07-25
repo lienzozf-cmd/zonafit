@@ -432,7 +432,29 @@ main {
 .availability-message {
   color: #aaa;
   font-size: 0.9em;
+  margin-bottom: 10px;
 }
+
+.add-to-cart-button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #A50000;
+    transform: scale(1.05);
+}
+
 
 .video-container {
   position: relative;
