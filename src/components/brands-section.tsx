@@ -50,8 +50,8 @@ const BrandsSection = () => {
           width={150}
           height={150}
           data-ai-hint={brand.dataAiHint}
-          className={`rounded-full inline-block m-2 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
-          style={{ animationDelay: `${index * 100}ms` }}
+          className={`rounded-full inline-block m-2 transition-opacity duration-700 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+          style={{ transitionDelay: `${index * 150}ms` }}
         />
       ))}
     </div>

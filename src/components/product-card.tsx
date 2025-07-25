@@ -5,11 +5,9 @@ import type { Product, ProductOption } from '@/lib/data';
 
 interface ProductCardProps {
   product: Product;
-  animate?: boolean;
-  animationDelay?: number;
 }
 
-const ProductCard = ({ product, animate = false, animationDelay = 0 }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
@@ -26,8 +24,7 @@ const ProductCard = ({ product, animate = false, animationDelay = 0 }: ProductCa
   
   return (
     <div 
-        className={`product-item ${animate ? 'animate-fade-in-left' : ''}`}
-        style={{ animationDelay: `${animationDelay}ms` }}
+        className="product-item"
         id={`product-item-${product.id}`}
     >
         <div className="product-carousel">
