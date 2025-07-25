@@ -136,7 +136,7 @@ a:hover {
   width: 300px;
   max-height: 400px;
   overflow-y: auto;
-  z-index: 998;
+  z-index: 1000;
 }
 
 #searchResults.active {
@@ -853,10 +853,16 @@ footer {
   box-shadow: none;
   padding: 0;
   margin-top: 0;
+  width: 100%;
 }
 
 .mobile-search .search-box input {
-    margin-right: 0;
+  width: 100%;
+  margin-right: 0;
+}
+
+.mobile-search .search-box.active {
+  display: flex;
 }
 
 .mobile-search #searchResults {

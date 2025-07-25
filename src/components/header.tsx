@@ -150,12 +150,22 @@ const Header = () => {
             type="text"
             placeholder="Buscar productos..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              performSearch();
+            }}
+            onFocus={() => isMobile && setIsSearchActive(true)}
+            onBlur={() => isMobile && setTimeout(() => setIsSearchActive(false), 100)}
             onKeyPress={(e) => e.key === 'Enter' && performSearch()}
           />
-          <button onClick={performSearch}>Buscar</button>
+           <button 
+            onClick={performSearch} 
+            className={`${isMobile ? 'opacity-0 pointer-events-none' : ''}`}
+          >
+            Buscar
+          </button>
         </div>
-        <div id="searchResults" className={isSearchActive || isMobile ? 'active' : ''}>
+        <div id="searchResults" className={isSearchActive || (isMobile && searchTerm) ? 'active' : ''}>
           {searchResults.length > 0 ? (
             searchResults.map(result => (
               <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
@@ -174,15 +184,14 @@ const Header = () => {
     );
 
     if (isMobile) {
-      return (
+       return (
         <div className="p-4">
-           <div className="p-1">
+          <div className="relative">
             {searchComponent}
           </div>
         </div>
       );
     }
-
     return searchComponent;
   }
 
@@ -209,14 +218,12 @@ const Header = () => {
                   <X className="h-6 w-6 text-white" />
                 </SheetTrigger>
               </SheetHeader>
-              <div className="p-4">
-                  <div className='relative'>
-                    <div className="p-1">
-                      {renderSearch(true)}
-                    </div>
-                  </div>
-              </div>
-               <div className="pt-4 p-6">
+               <div className="p-4">
+                <div className='relative'>
+                   {renderSearch(true)}
+                </div>
+               </div>
+               <div className="p-6 pt-0">
                 {renderNavLinks(true)}
               </div>
             </SheetContent>
