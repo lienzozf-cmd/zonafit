@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { products, navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
-import { Search, ShoppingCart, Menu } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '@/hooks/use-cart';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -62,7 +62,7 @@ const Header = () => {
             link.sublinks ? (
               <AccordionItem value={link.title} key={link.title}>
                 <AccordionTrigger className="text-white hover:no-underline">
-                  <a href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.title}</a>
+                  {link.title}
                 </AccordionTrigger>
                 <AccordionContent>
                   <ul className="pl-4">
@@ -72,7 +72,7 @@ const Header = () => {
                            <Accordion type="multiple" className="w-full">
                              <AccordionItem value={sublink.title}>
                                <AccordionTrigger className="text-white hover:no-underline">
-                                 <a href={sublink.href} onClick={() => setIsMobileMenuOpen(false)}>{sublink.title}</a>
+                                 {sublink.title}
                                </AccordionTrigger>
                                <AccordionContent>
                                 <ul className="pl-4">
@@ -139,7 +139,7 @@ const Header = () => {
   const renderSearch = (isMobile = false) => {
     return (
        <div className={`search-container ${isMobile ? 'mobile-search' : ''}`} ref={searchContainerRef}>
-        {!isMobile && (
+        {isMobile === false && (
           <Search
             className="search-icon"
             onClick={() => setIsSearchActive(!isSearchActive)}
