@@ -59,7 +59,6 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
             <div className="loading-bar">
                 <div className="loading-progress"></div>
             </div>
-            <div className="intro-text">ZONA FIT GT</div>
         </div>
     );
 };
