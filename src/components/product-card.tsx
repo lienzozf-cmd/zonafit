@@ -86,7 +86,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   };
   
   return (
-    <Link href={`/product/${product.id}`} className="product-item-link">
+    <Link href={`/product/${product.id}`} className="product-item-link flex">
         <div 
             className="product-item"
             id={`product-item-${product.id}`}
@@ -99,31 +99,33 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                   className="object-cover"
                 />
             </div>
-            <br />
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-price">{product.price}</p>
-            <p className="product-availability">
-                {product.availability}
-            </p>
-            <div className="product-info">
-                <div className="size-options">
-                {product.options.values.map((option) => (
-                    <button
-                    key={option.value}
-                    onClick={(e) => handleOptionClick(e, option)}
-                    className={selectedOption?.value === option.value ? 'active' : ''}
-                    disabled={option.stock <= 0}
-                    >
-                    {option.value}
-                    </button>
-                ))}
-                </div>
-                <p className="availability-message">
-                    {availabilityMessage}
+            <div className='flex flex-col flex-grow'>
+                <br />
+                <h3 className="product-name">{product.name}</h3>
+                <p className="product-price">{product.price}</p>
+                <p className="product-availability">
+                    {product.availability}
                 </p>
-                <button className="add-to-cart-button" onClick={handleAddToCart} disabled={selectedOption?.stock === 0}>
-                  {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
-                </button>
+                <div className="product-info">
+                    <div className="size-options">
+                    {product.options.values.map((option) => (
+                        <button
+                        key={option.value}
+                        onClick={(e) => handleOptionClick(e, option)}
+                        className={selectedOption?.value === option.value ? 'active' : ''}
+                        disabled={option.stock <= 0}
+                        >
+                        {option.value}
+                        </button>
+                    ))}
+                    </div>
+                    <p className="availability-message">
+                        {availabilityMessage}
+                    </p>
+                    <button className="add-to-cart-button" onClick={handleAddToCart} disabled={selectedOption?.stock === 0}>
+                      {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
+                    </button>
+                </div>
             </div>
         </div>
     </Link>

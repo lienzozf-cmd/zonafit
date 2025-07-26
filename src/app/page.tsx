@@ -7,6 +7,8 @@ import HeroSection from '@/components/hero-section';
 import IntroAnimation from '@/components/intro-animation';
 import SocialSection from '@/components/social-section';
 import VideoSection from '@/components/video-section';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 export default function Home() {
   const [introFinished, setIntroFinished] = useState(false);
@@ -20,6 +22,7 @@ export default function Home() {
       <IntroAnimation onIntroFinish={handleIntroFinish} />
       {introFinished && (
         <>
+          <Header />
           <HeroSection />
           <main>
             <br />
@@ -39,6 +42,7 @@ export default function Home() {
           <VideoSection />
           <CategoryGrid />
           <SocialSection />
+          <Footer />
         </>
       )}
     </>

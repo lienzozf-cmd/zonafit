@@ -3,8 +3,6 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import CartProvider from '@/components/cart-provider';
 import ProductProvider from '@/components/product-provider';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
 
 export const metadata = {
   title: 'ZONA FIT GT',
@@ -24,9 +22,7 @@ export default function RootLayout({
       <body>
         <ProductProvider>
           <CartProvider>
-            <Header />
             {children}
-            <Footer />
           </CartProvider>
         </ProductProvider>
         <Toaster />

@@ -9,6 +9,9 @@ import { useToast } from '@/hooks/use-toast';
 import { useProductStore } from '@/stores/product-store';
 import { Button } from '@/components/ui/button';
 import { Check, Shield } from 'lucide-react';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+
 
 const ProductDetailPage = () => {
   const params = useParams();
@@ -96,6 +99,8 @@ const ProductDetailPage = () => {
   }
 
   return (
+    <>
+    <Header />
     <div className="bg-black text-white min-h-screen">
       <div className="container mx-auto px-4 py-8 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
@@ -184,6 +189,8 @@ const ProductDetailPage = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
