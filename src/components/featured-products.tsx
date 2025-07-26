@@ -4,9 +4,13 @@ import ProductCard from './product-card';
 
 const FeaturedProducts = () => {
   const { products } = useProductStore();
+  const featuredProducts = products.filter(
+    (product) => product.id >= 1 && product.id <= 8
+  );
+
   return (
     <section className="product-grid">
-      {products.map((product) => (
+      {featuredProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </section>
