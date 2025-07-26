@@ -1,5 +1,6 @@
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -649,6 +650,167 @@ export const products: Product[] = [
         { value: 'M', stock: 5 },
         { value: 'L', stock: 5 },
       ],
+    },
+  })),
+  // Pachones (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1100 + i,
+    name: `Hydrate Water Bottle ${i + 1}`,
+    price: 'Q.150.00',
+    availability: 'Disponible',
+    description: 'Mantente hidratado con estilo. Botella de agua duradera y libre de BPA.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'pachon',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Water Bottle ${i + 1}`,
+        dataAiHint: 'water bottle',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'color',
+      values: [{ value: 'Único', stock: 10 }],
+    },
+  })),
+  // Shakers (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1200 + i,
+    name: `Protein Shaker ${i + 1}`,
+    price: 'Q.125.00',
+    availability: 'Disponible',
+    description: 'Mezcla tus batidos de proteína sin grumos. Incluye bola mezcladora.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'shaker',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Shaker ${i + 1}`,
+        dataAiHint: 'protein shaker',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'color',
+      values: [{ value: 'Único', stock: 10 }],
+    },
+  })),
+  // Equipo de Entrenamiento (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1300 + i,
+    name: `Training Gear ${i + 1}`,
+    price: 'Q.250.00',
+    availability: 'Disponible',
+    description: 'Equipo esencial para tus entrenamientos, desde bandas de resistencia hasta cuerdas para saltar.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'equipo',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Training Gear ${i + 1}`,
+        dataAiHint: 'gym gear',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'item',
+      values: [{ value: 'Único', stock: 10 }],
+    },
+  })),
+  // Gorras (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1400 + i,
+    name: `Lifestyle Cap ${i + 1}`,
+    price: 'Q.200.00',
+    availability: 'Disponible',
+    description: 'Completa tu look con esta gorra de estilo de vida. Ajustable y cómoda.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'gorra',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Cap ${i + 1}`,
+        dataAiHint: 'fitness cap',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'color',
+      values: [{ value: 'Único', stock: 10 }],
+    },
+  })),
+  // Mochilas (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1500 + i,
+    name: `Gym Backpack ${i + 1}`,
+    price: 'Q.500.00',
+    availability: 'Disponible',
+    description: 'Lleva todo tu equipo de gimnasio en esta mochila espaciosa y duradera.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'mochila',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Backpack ${i + 1}`,
+        dataAiHint: 'gym backpack',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'color',
+      values: [{ value: 'Único', stock: 10 }],
+    },
+  })),
+  // Maletas (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1600 + i,
+    name: `Duffle Bag ${i + 1}`,
+    price: 'Q.600.00',
+    availability: 'Disponible',
+    description: 'Maleta de gimnasio perfecta para viajes o para llevar todo lo que necesitas para entrenar.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'maleta',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Duffle Bag ${i + 1}`,
+        dataAiHint: 'gym bag',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'color',
+      values: [{ value: 'Único', stock: 10 }],
+    },
+  })),
+  // Calcetines (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1700 + i,
+    name: `Performance Socks ${i + 1}`,
+    price: 'Q.100.00',
+    availability: 'Disponible',
+    description: 'Calcetines de rendimiento que ofrecen comodidad y soporte durante todo el día.',
+    gender: 'unisex' as const,
+    category: 'accesorio' as const,
+    subcategory: 'calcetin',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Socks ${i + 1}`,
+        dataAiHint: 'fitness socks',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [{ value: 'Único', stock: 10 }],
     },
   })),
 ];
