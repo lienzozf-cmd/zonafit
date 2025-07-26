@@ -12,7 +12,7 @@ import FilterSortControls from '@/components/filter-sort-controls';
 export default function HombresPage() {
   const { products } = useProductStore();
   const [sortOption, setSortOption] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState('all');
 
   const filteredProducts = products.filter(
     (product) => product.gender === 'hombre'
@@ -35,7 +35,7 @@ export default function HombresPage() {
     }
   };
   
-  const brandFilteredProducts = selectedBrand 
+  const brandFilteredProducts = selectedBrand && selectedBrand !== 'all'
     ? filteredProducts.filter(p => p.brand === selectedBrand)
     : filteredProducts;
 

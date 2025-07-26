@@ -12,7 +12,7 @@ import FilterSortControls from '@/components/filter-sort-controls';
 export default function LeggingsPage() {
   const { products } = useProductStore();
   const [sortOption, setSortOption] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState('all');
 
   const filteredProducts = products.filter(
     (product) =>
@@ -36,7 +36,7 @@ export default function LeggingsPage() {
     }
   };
   
-  const brandFilteredProducts = selectedBrand 
+  const brandFilteredProducts = selectedBrand && selectedBrand !== 'all'
     ? filteredProducts.filter(p => p.brand === selectedBrand)
     : filteredProducts;
 

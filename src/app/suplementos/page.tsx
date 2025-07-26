@@ -12,7 +12,7 @@ import FilterSortControls from '@/components/filter-sort-controls';
 export default function SuplementosPage() {
   const { products } = useProductStore();
   const [sortOption, setSortOption] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState('all');
 
   const filteredProducts = products.filter(
     (product) => product.category === 'suplemento'
@@ -35,7 +35,7 @@ export default function SuplementosPage() {
     }
   };
   
-  const brandFilteredProducts = selectedBrand 
+  const brandFilteredProducts = selectedBrand && selectedBrand !== 'all'
     ? filteredProducts.filter(p => p.brand === selectedBrand)
     : filteredProducts;
 

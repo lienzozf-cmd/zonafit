@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -36,7 +35,7 @@ const FilterSortControls = ({
   return (
     <Collapsible className="mb-8">
       <CollapsibleTrigger asChild>
-        <Button variant="outline" className="w-full text-white">
+        <Button variant="outline" className="text-white">
             <Filter className="mr-2 h-4 w-4" />
           Filtros y Ordenamiento
         </Button>
@@ -63,7 +62,7 @@ const FilterSortControls = ({
                     <SelectValue placeholder="Todas las marcas" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 text-white border-gray-600">
-                    <SelectItem value="">Todas las marcas</SelectItem>
+                    <SelectItem value="all">Todas las marcas</SelectItem>
                     {brands.map((brand) => (
                     <SelectItem key={brand} value={brand}>{brand}</SelectItem>
                     ))}

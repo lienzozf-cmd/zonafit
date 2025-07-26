@@ -12,7 +12,7 @@ import FilterSortControls from '@/components/filter-sort-controls';
 export default function MarcasPage() {
   const { products } = useProductStore();
   const [sortOption, setSortOption] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState('all');
 
   const getBrands = (products: Product[]) => {
     const brands = products.map(p => p.brand);
@@ -31,7 +31,7 @@ export default function MarcasPage() {
     }
   };
   
-  const brandFilteredProducts = selectedBrand 
+  const brandFilteredProducts = selectedBrand && selectedBrand !== 'all'
     ? products.filter(p => p.brand === selectedBrand)
     : products;
 
