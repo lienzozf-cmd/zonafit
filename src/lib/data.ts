@@ -281,7 +281,7 @@ export const products: Product[] = [
     description: 'Diseñado para esculpir y dar soporte, este bra tank en un vibrante color rojo es tan funcional como favorecedor. Su diseño de reloj de arena realza tus curvas naturales.',
     gender: 'mujer',
     category: 'ropa',
-    subcategory: 'top',
+    subcategory: 'bra-deportivo',
     fabric_type: '78% Nylon, 22% Elastane',
     is_compression: true,
     images: [
@@ -465,6 +465,180 @@ export const products: Product[] = [
         src: "https://placehold.co/600x400.png",
         alt: `Jacket ${i + 1}`,
         dataAiHint: 'men jacket',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
+  // Tops para Mujer (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 500 + i,
+    name: `Studio Crop Top ${i + 1}`,
+    price: 'Q.380.00',
+    availability: 'Disponible',
+    description: `Top corto versátil y cómodo, ideal para el estudio o para un look casual.`,
+    gender: 'mujer' as const,
+    category: 'ropa' as const,
+    subcategory: 'top',
+    fabric_type: '95% Cotton, 5% Elastane',
+    is_compression: false,
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Women's Top ${i + 1}`,
+        dataAiHint: 'woman top',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'XS', stock: 5 },
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+      ],
+    },
+  })),
+  // Bras Deportivos para Mujer (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 600 + i,
+    name: `Support Sports Bra ${i + 1}`,
+    price: 'Q.420.00',
+    availability: 'Disponible',
+    description: `Bra deportivo de alto impacto que ofrece máximo soporte y comodidad durante tus entrenamientos.`,
+    gender: 'mujer' as const,
+    category: 'ropa' as const,
+    subcategory: 'bra-deportivo',
+    fabric_type: '80% Nylon, 20% Spandex',
+    is_compression: true,
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Sports Bra ${i + 1}`,
+        dataAiHint: 'sports bra',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
+  // Leggings para Mujer (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 700 + i,
+    name: `Flex Legging ${i + 1}`,
+    price: 'Q.550.00',
+    availability: 'Disponible',
+    description: `Leggings flexibles que se mueven contigo. Diseño que realza la figura y no transparenta.`,
+    gender: 'mujer' as const,
+    category: 'ropa' as const,
+    subcategory: 'legging',
+    fabric_type: '87% Nylon, 13% Spandex',
+    is_compression: true,
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Legging ${i + 1}`,
+        dataAiHint: 'woman legging',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'XS', stock: 5 },
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+      ],
+    },
+  })),
+  // Shorts para Mujer (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 800 + i,
+    name: `Cycling Short ${i + 1}`,
+    price: 'Q.400.00',
+    availability: 'Disponible',
+    description: `Shorts de ciclismo cómodos y estilizados, perfectos para entrenar o para un look athleisure.`,
+    gender: 'mujer' as const,
+    category: 'ropa' as const,
+    subcategory: 'short',
+    fabric_type: '87% Nylon, 13% Spandex',
+    is_compression: true,
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Women's Short ${i + 1}`,
+        dataAiHint: 'woman shorts',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'XS', stock: 5 },
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+      ],
+    },
+  })),
+  // Sudaderas para Mujer (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 900 + i,
+    name: `Oversized Hoodie ${i + 1}`,
+    price: 'Q.620.00',
+    availability: 'Disponible',
+    description: `Sudadera oversized para una máxima comodidad y estilo. Tejido suave y cálido.`,
+    gender: 'mujer' as const,
+    category: 'ropa' as const,
+    subcategory: 'sudadera',
+    fabric_type: '80% Cotton, 20% Polyester',
+    is_compression: false,
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Women's Hoodie ${i + 1}`,
+        dataAiHint: 'woman hoodie',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
+    // Chamarras para Mujer (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 1000 + i,
+    name: `Cropped Jacket ${i + 1}`,
+    price: 'Q.750.00',
+    availability: 'Disponible',
+    description: `Chamarra corta moderna y funcional. Perfecta para combinar con tus leggings o tops favoritos.`,
+    gender: 'mujer' as const,
+    category: 'ropa' as const,
+    subcategory: 'chamarra',
+    fabric_type: '100% Polyester',
+    is_compression: false,
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Women's Jacket ${i + 1}`,
+        dataAiHint: 'woman jacket',
         option: 'M',
       },
     ],
