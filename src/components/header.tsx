@@ -44,10 +44,10 @@ const Header = () => {
   }, []);
 
   const handleSearchResultClick = (product: Product) => {
-    setIsSearchActive(false);
-    setIsMobileMenuOpen(false); 
     setSearchTerm('');
     setSearchResults([]);
+    setIsSearchActive(false);
+    setIsMobileMenuOpen(false); 
     const element = document.getElementById(`product-item-${product.id}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -149,7 +149,7 @@ const Header = () => {
             onClick={() => setIsSearchActive(!isSearchActive)}
           />
         )}
-        <div className={`search-box active`}>
+        <div className={`search-box ${isMobile || isSearchActive ? 'active' : ''}`}>
           <input
             type="text"
             placeholder="Buscar productos..."
@@ -189,7 +189,7 @@ const Header = () => {
     if (isMobile) {
        return (
         <div className="p-4">
-            {searchComponent}
+            <div className="p-1">{searchComponent}</div>
         </div>
       );
     }
@@ -205,7 +205,7 @@ const Header = () => {
           </Link>
         </div>
         
-        {isMobile ? (
+        {isMobile === undefined ? null : isMobile ? (
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
                <button className="mobile-menu-button">
@@ -222,7 +222,7 @@ const Header = () => {
                <div>
                   {renderSearch(true)}
                </div>
-               <div className="p-6 pt-0">
+               <div className="px-6 pt-0 pb-6">
                 {renderNavLinks(true)}
               </div>
             </SheetContent>
