@@ -361,4 +361,120 @@ export const products: Product[] = [
       ],
     },
   },
+  // Shorts para Hombres (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 100 + i,
+    name: `Performance Short ${i + 1}`,
+    price: 'Q.350.00',
+    availability: 'Disponible',
+    description: `Short deportivo de alto rendimiento, ideal para cualquier tipo de entrenamiento. Ligero y transpirable.`,
+    gender: 'hombre' as const,
+    category: 'ropa' as const,
+    subcategory: 'short',
+    fabric_type: '90% Polyester, 10% Spandex',
+    is_compression: false,
+    images: [
+      {
+        src: "https://placehold.co/600x400.png",
+        alt: `Short ${i + 1}`,
+        dataAiHint: 'men shorts',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
+  // Pantalones para Hombres (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 200 + i,
+    name: `Tech Jogger ${i + 1}`,
+    price: 'Q.550.00',
+    availability: 'Disponible',
+    description: `Pantalón jogger con tejido técnico, perfecto para un look atlético y cómodo.`,
+    gender: 'hombre' as const,
+    category: 'ropa'as const,
+    subcategory: 'pantalon',
+    fabric_type: '85% Algodón, 15% Polyester',
+    is_compression: false,
+    images: [
+      {
+        src: "https://placehold.co/600x400.png",
+        alt: `Jogger ${i + 1}`,
+        dataAiHint: 'men joggers',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
+  // Sudaderas para Hombres (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 300 + i,
+    name: `Training Hoodie ${i + 1}`,
+    price: 'Q.600.00',
+    availability: 'Disponible',
+    description: `Sudadera con capucha diseñada para el entrenamiento, te mantiene abrigado sin sacrificar movilidad.`,
+    gender: 'hombre' as const,
+    category: 'ropa' as const,
+    subcategory: 'sudadera',
+    fabric_type: '60% Algodón, 40% Polyester',
+    is_compression: false,
+    images: [
+      {
+        src: "https://placehold.co/600x400.png",
+        alt: `Hoodie ${i + 1}`,
+        dataAiHint: 'men hoodie',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
+  // Chamarras para Hombres (10 productos)
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: 400 + i,
+    name: `Windbreaker Jacket ${i + 1}`,
+    price: 'Q.700.00',
+    availability: 'Disponible',
+    description: `Chamarra rompevientos ligera, ideal para protegerte del clima sin añadir peso.`,
+    gender: 'hombre' as const,
+    category: 'ropa' as const,
+    subcategory: 'chamarra',
+    fabric_type: '100% Polyester',
+    is_compression: false,
+    images: [
+      {
+        src: "https://placehold.co/600x400.png",
+        alt: `Jacket ${i + 1}`,
+        dataAiHint: 'men jacket',
+        option: 'M',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 5 },
+        { value: 'M', stock: 5 },
+        { value: 'L', stock: 5 },
+      ],
+    },
+  })),
 ];
