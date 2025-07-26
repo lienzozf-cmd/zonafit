@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const IntroAnimation = () => {
+interface IntroAnimationProps {
+  onIntroFinish: () => void;
+}
+
+const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
 
@@ -21,14 +25,17 @@ const IntroAnimation = () => {
                 setIsVisible(false);
                 document.body.style.overflow = '';
                 sessionStorage.setItem('introShown', 'true');
+                onIntroFinish();
             }, 3500); // 1s for fade out animation
 
             return () => {
                 clearTimeout(fadeTimer);
                 clearTimeout(removeTimer);
             };
+        } else {
+            onIntroFinish();
         }
-    }, []);
+    }, [onIntroFinish]);
 
     if (!isVisible) {
         return null;
@@ -46,6 +53,7 @@ const IntroAnimation = () => {
                     height={160}
                     className="intro-logo"
                     unoptimized
+                    priority
                 />
             </div>
             <div className="loading-bar">
