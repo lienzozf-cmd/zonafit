@@ -1,16 +1,46 @@
 
 'use client';
 
+import { useState } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { useProductStore } from '@/stores/product-store';
+import { Product } from '@/lib/data';
+import FilterSortControls from '@/components/filter-sort-controls';
 
 export default function JoyeriaPage() {
   const { products } = useProductStore();
+  const [sortOption, setSortOption] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState('');
+
   const filteredProducts = products.filter(
     (product) => product.category === 'joyeria'
   );
+
+  const getBrands = (products: Product[]) => {
+    const brands = products.map(p => p.brand);
+    return [...new Set(brands)];
+  };
+
+  const sortProducts = (products: Product[], option: string) => {
+    const sorted = [...products];
+    switch (option) {
+      case 'price-asc':
+        return sorted.sort((a, b) => parseFloat(a.price.replace(/Q|\s/g, '')) - parseFloat(b.price.replace(/Q|\s/g, '')));
+      case 'price-desc':
+        return sorted.sort((a, b) => parseFloat(b.price.replace(/Q|\s/g, '')) - parseFloat(a.price.replace(/Q|\s/g, '')));
+      default:
+        return sorted;
+    }
+  };
+  
+  const brandFilteredProducts = selectedBrand 
+    ? filteredProducts.filter(p => p.brand === selectedBrand)
+    : filteredProducts;
+
+  const displayedProducts = sortProducts(brandFilteredProducts, sortOption);
+  const availableBrands = getBrands(filteredProducts);
 
   return (
     <>
@@ -20,9 +50,16 @@ export default function JoyeriaPage() {
           <h1 className="text-3xl font-bold text-center mb-8 text-white">
             Joyería - Ver Todo
           </h1>
-          {filteredProducts.length > 0 ? (
+          <FilterSortControls
+            sortOption={sortOption}
+            setSortOption={setSortOption}
+            selectedBrand={selectedBrand}
+            setSelectedBrand={setSelectedBrand}
+            brands={availableBrands}
+          />
+          {displayedProducts.length > 0 ? (
             <div className="product-grid">
-              {filteredProducts.map((product) => (
+              {displayedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>

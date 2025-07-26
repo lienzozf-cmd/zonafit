@@ -1,17 +1,36 @@
 
 'use client';
 
+import { useState } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { useProductStore } from '@/stores/product-store';
+import { Product } from '@/lib/data';
+import FilterSortControls from '@/components/filter-sort-controls';
 
 export default function C4EnergyPage() {
   const { products } = useProductStore();
+  const [sortOption, setSortOption] = useState('');
+
   const filteredProducts = products.filter(
     (product) => product.brand === 'C4 Energy'
   );
 
+  const sortProducts = (products: Product[], option: string) => {
+    const sorted = [...products];
+    switch (option) {
+      case 'price-asc':
+        return sorted.sort((a, b) => parseFloat(a.price.replace(/Q|\s/g, '')) - parseFloat(b.price.replace(/Q|\s/g, '')));
+      case 'price-desc':
+        return sorted.sort((a, b) => parseFloat(b.price.replace(/Q|\s/g, '')) - parseFloat(a.price.replace(/Q|\s/g, '')));
+      default:
+        return sorted;
+    }
+  };
+  
+  const displayedProducts = sortProducts(filteredProducts, sortOption);
+  
   return (
     <>
       <Header />
@@ -20,9 +39,17 @@ export default function C4EnergyPage() {
           <h1 className="text-3xl font-bold text-center mb-8 text-white">
             Marca - C4 Energy
           </h1>
-          {filteredProducts.length > 0 ? (
+          <FilterSortControls
+            sortOption={sortOption}
+            setSortOption={setSortOption}
+            selectedBrand={'C4 Energy'}
+            setSelectedBrand={() => {}}
+            brands={[]}
+            hideBrandFilter={true}
+          />
+          {displayedProducts.length > 0 ? (
             <div className="product-grid">
-              {filteredProducts.map((product) => (
+              {displayedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
