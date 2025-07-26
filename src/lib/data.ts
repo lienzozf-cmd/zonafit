@@ -1,6 +1,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -813,4 +814,138 @@ export const products: Product[] = [
       values: [{ value: 'Único', stock: 10 }],
     },
   })),
+  // Suplementos
+  ...Array.from({ length: 4 }, (_, i) => ({
+    id: 1800 + i,
+    name: `Whey Protein Isolate ${i + 1}`,
+    price: 'Q.550.00',
+    availability: 'Disponible',
+    description: 'Proteína de suero de leche de alta calidad, perfecta para la recuperación post-entrenamiento.',
+    gender: 'unisex' as const,
+    category: 'suplemento' as const,
+    subcategory: 'proteina',
+    benefits: 'Apoya el crecimiento muscular, rápida absorción.',
+    servings_info: '30 servicios por envase.',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Protein ${i + 1}`,
+        dataAiHint: 'protein supplement',
+        option: 'Vainilla',
+      },
+    ],
+    options: {
+      type: 'sabor',
+      values: [
+        { value: 'Vainilla', stock: 10 },
+        { value: 'Chocolate', stock: 10 },
+      ],
+    },
+  })),
+  ...Array.from({ length: 4 }, (_, i) => ({
+    id: 1900 + i,
+    name: `Micronized Creatine ${i + 1}`,
+    price: 'Q.250.00',
+    availability: 'Disponible',
+    description: 'Aumenta tu fuerza y potencia con nuestra creatina micronizada de alta pureza.',
+    gender: 'unisex' as const,
+    category: 'suplemento' as const,
+    subcategory: 'creatina',
+    benefits: 'Mejora el rendimiento, aumenta la fuerza.',
+    servings_info: '100 servicios por envase.',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Creatine ${i + 1}`,
+        dataAiHint: 'creatine supplement',
+        option: 'Único',
+      },
+    ],
+    options: {
+      type: 'tamaño',
+      values: [{ value: '500g', stock: 10 }],
+    },
+  })),
+  ...Array.from({ length: 4 }, (_, i) => ({
+    id: 2000 + i,
+    name: `Explosive Pre-Workout ${i + 1}`,
+    price: 'Q.400.00',
+    availability: 'Disponible',
+    description: 'Obtén la energía y el enfoque que necesitas para tus entrenamientos más intensos.',
+    gender: 'unisex' as const,
+    category: 'suplemento' as const,
+    subcategory: 'pre-entreno',
+    benefits: 'Aumenta la energía y el enfoque, mejora la resistencia.',
+    servings_info: '30 servicios por envase.',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `Pre-Workout ${i + 1}`,
+        dataAiHint: 'pre-workout supplement',
+        option: 'Fruit Punch',
+      },
+    ],
+    options: {
+      type: 'sabor',
+      values: [
+        { value: 'Fruit Punch', stock: 10 },
+        { value: 'Blue Raspberry', stock: 10 },
+      ],
+    },
+  })),
+    ...Array.from({ length: 4 }, (_, i) => ({
+    id: 2100 + i,
+    name: `BCAA 2:1:1 ${i + 1}`,
+    price: 'Q.350.00',
+    availability: 'Disponible',
+    description: 'Aminoácidos de cadena ramificada para apoyar la recuperación y reducir el dolor muscular.',
+    gender: 'unisex' as const,
+    category: 'suplemento' as const,
+    subcategory: 'aminoacidos',
+    benefits: 'Mejora la recuperación, reduce la fatiga muscular.',
+    servings_info: '40 servicios por envase.',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `BCAA ${i + 1}`,
+        dataAiHint: 'bcaa supplement',
+        option: 'Watermelon',
+      },
+    ],
+    options: {
+      type: 'sabor',
+      values: [
+        { value: 'Watermelon', stock: 10 },
+        { value: 'Grape', stock: 10 },
+      ],
+    },
+  })),
+  ...Array.from({ length: 4 }, (_, i) => ({
+    id: 2200 + i,
+    name: `L-Carnitine Liquid ${i + 1}`,
+    price: 'Q.300.00',
+    availability: 'Disponible',
+    description: 'Fórmula líquida de L-Carnitina para ayudar a convertir la grasa en energía.',
+    gender: 'unisex' as const,
+    category: 'suplemento' as const,
+    subcategory: 'l-carnitina',
+    benefits: 'Apoya el metabolismo de las grasas, mejora la energía.',
+    servings_info: '32 servicios por envase.',
+    images: [
+      {
+        src: 'https://placehold.co/600x400.png',
+        alt: `L-Carnitine ${i + 1}`,
+        dataAiHint: 'l-carnitine supplement',
+        option: 'Cherry',
+      },
+    ],
+    options: {
+      type: 'sabor',
+      values: [
+        { value: 'Cherry', stock: 10 },
+        { value: 'Orange', stock: 10 },
+      ],
+    },
+  })),
 ];
+
