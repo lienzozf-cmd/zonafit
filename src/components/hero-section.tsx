@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Carousel,
   CarouselContent,
@@ -47,7 +48,9 @@ const HeroSection = () => {
         </CarouselContent>
       </Carousel>
       <div className="banner-content">
-        <button className="buy-now-button">COMPRAR AHORA</button>
+        <Link href="/marcas" passHref>
+            <button className="buy-now-button">COMPRAR AHORA</button>
+        </Link>
       </div>
     </section>
   );
