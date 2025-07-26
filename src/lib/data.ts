@@ -1,4 +1,5 @@
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -7,7 +8,7 @@ export const navLinks = [
       {
         title: 'Playeras',
         href: '/hombres/playeras',
-        sublinks: [{ title: 'Tanks', href: '/hombres/tanks' }],
+        sublinks: [{ title: 'Tanks', href: '/hombres/playeras/tanks' }],
       },
       { title: 'Shorts', href: '/hombres/shorts' },
       { title: 'Pantalones', href: '/hombres/pantalones' },
@@ -114,7 +115,9 @@ export type Product = {
   images: { src: string; alt: string; dataAiHint: string; option: string }[];
   options: { type: string; values: ProductOption[] };
   description: string;
-  category: 'ropa' | 'suplemento';
+  gender: 'hombre' | 'mujer' | 'unisex';
+  category: 'ropa' | 'suplemento' | 'accesorio';
+  subcategory: string;
   // Ropa
   fabric_type?: string;
   is_compression?: boolean;
@@ -130,7 +133,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.',
+    gender: 'hombre',
     category: 'ropa',
+    subcategory: 'playera',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
     images: [
@@ -162,7 +167,9 @@ export const products: Product[] = [
     price: 'Q.500.00',
     availability: 'Disponible',
     description: 'Desata al guerrero que llevas dentro. Esta playera de compresión azul ofrece un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.',
+    gender: 'hombre',
     category: 'ropa',
+    subcategory: 'playera',
     fabric_type: '90% Nylon, 10% Elastane',
     is_compression: true,
     images: [
@@ -188,7 +195,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Un clásico del fitness. El Legacy Drop Arm Tank está diseñado para ofrecer una total libertad de movimiento y un look icónico que nunca pasa de moda.',
+    gender: 'hombre',
     category: 'ropa',
+    subcategory: 'tank',
     fabric_type: '100% Algodón',
     is_compression: false,
     images: [
@@ -214,7 +223,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Potencia y estilo se unen en esta T-Shirt. Con un ajuste atlético y un diseño audaz en negro y rojo, es la prenda perfecta tanto para dentro como para fuera del gimnasio.',
+    gender: 'hombre',
     category: 'ropa',
+    subcategory: 'playera',
     fabric_type: '95% Algodón, 5% Elastano',
     is_compression: false,
     images: [
@@ -240,7 +251,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.',
+    gender: 'mujer',
     category: 'ropa',
+    subcategory: 'top',
     fabric_type: '96% Nylon, 4% Elastane',
     is_compression: true,
     images: [
@@ -266,7 +279,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Diseñado para esculpir y dar soporte, este bra tank en un vibrante color rojo es tan funcional como favorecedor. Su diseño de reloj de arena realza tus curvas naturales.',
+    gender: 'mujer',
     category: 'ropa',
+    subcategory: 'top',
     fabric_type: '78% Nylon, 22% Elastane',
     is_compression: true,
     images: [
@@ -292,7 +307,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Isolat de proteína de suero de leche de la más alta pureza para una recuperación muscular óptima. Baja en carbohidratos y grasas, perfecta para definir.',
+    gender: 'unisex',
     category: 'suplemento',
+    subcategory: 'proteina',
     benefits: 'Recuperación muscular rápida, bajo en carbohidratos y grasas.',
     servings_info: 'Aproximadamente 30 servicios por envase.',
     images: [
@@ -323,7 +340,9 @@ export const products: Product[] = [
     price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.',
+    gender: 'unisex',
     category: 'suplemento',
+    subcategory: 'creatina',
     benefits: 'Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.',
     servings_info: 'Disponible en 60 o 200 servicios.',
     images: [
