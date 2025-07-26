@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { useCart } from '@/hooks/use-cart';
-import { useToast } from '@/hooks/use-toast';
 import confetti from 'canvas-confetti';
 import {
   Sheet,
@@ -13,6 +12,7 @@ import {
 import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const Cart = () => {
   const {
@@ -24,9 +24,8 @@ const Cart = () => {
     removeItem,
     incrementQuantity,
     decrementQuantity,
-    clearCart,
   } = useCart();
-  const { toast } = useToast();
+  const router = useRouter();
 
   const handleCheckout = () => {
     // Trigger fireworks
@@ -36,12 +35,8 @@ const Cart = () => {
       origin: { y: 0.6 },
     });
 
-    // Clear cart and show toast
-    clearCart();
-    toast({
-      title: '¡Compra realizada!',
-      description: 'Tu pedido ha sido procesado con éxito.',
-    });
+    setIsCartOpen(false);
+    router.push('/checkout');
   };
 
   return (
