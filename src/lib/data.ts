@@ -3,6 +3,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -121,6 +122,7 @@ export type Product = {
   gender: 'hombre' | 'mujer' | 'unisex';
   category: 'ropa' | 'suplemento' | 'accesorio' | 'joyeria';
   subcategory: string;
+  brand: string;
   // Ropa
   fabric_type?: string;
   is_compression?: boolean;
@@ -139,6 +141,7 @@ export const products: Product[] = [
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
+    brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
     images: [
@@ -173,6 +176,7 @@ export const products: Product[] = [
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
+    brand: 'YoungLA',
     fabric_type: '90% Nylon, 10% Elastane',
     is_compression: true,
     images: [
@@ -201,6 +205,7 @@ export const products: Product[] = [
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'tank',
+    brand: 'Gymshark',
     fabric_type: '100% Algodón',
     is_compression: false,
     images: [
@@ -229,6 +234,7 @@ export const products: Product[] = [
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
+    brand: 'Gymshark',
     fabric_type: '95% Algodón, 5% Elastano',
     is_compression: false,
     images: [
@@ -257,6 +263,7 @@ export const products: Product[] = [
     gender: 'mujer',
     category: 'ropa',
     subcategory: 'top',
+    brand: 'Gymshark',
     fabric_type: '96% Nylon, 4% Elastane',
     is_compression: true,
     images: [
@@ -285,6 +292,7 @@ export const products: Product[] = [
     gender: 'mujer',
     category: 'ropa',
     subcategory: 'bra-deportivo',
+    brand: 'YoungLA',
     fabric_type: '78% Nylon, 22% Elastane',
     is_compression: true,
     images: [
@@ -313,6 +321,7 @@ export const products: Product[] = [
     gender: 'unisex',
     category: 'suplemento',
     subcategory: 'proteina',
+    brand: 'Dragon Pharma',
     benefits: 'Recuperación muscular rápida, bajo en carbohidratos y grasas.',
     servings_info: 'Aproximadamente 30 servicios por envase.',
     images: [
@@ -346,6 +355,7 @@ export const products: Product[] = [
     gender: 'unisex',
     category: 'suplemento',
     subcategory: 'creatina',
+    brand: 'Dragon Pharma',
     benefits: 'Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.',
     servings_info: 'Disponible en 60 o 200 servicios.',
     images: [
@@ -374,6 +384,7 @@ export const products: Product[] = [
     gender: 'hombre' as const,
     category: 'ropa' as const,
     subcategory: 'short',
+    brand: i < 5 ? 'YoungLA' : 'Darc Sport',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
     images: [
@@ -403,6 +414,7 @@ export const products: Product[] = [
     gender: 'hombre' as const,
     category: 'ropa'as const,
     subcategory: 'pantalon',
+    brand: i < 5 ? 'Vanquish' : 'Gymshark',
     fabric_type: '85% Algodón, 15% Polyester',
     is_compression: false,
     images: [
@@ -432,6 +444,7 @@ export const products: Product[] = [
     gender: 'hombre' as const,
     category: 'ropa' as const,
     subcategory: 'sudadera',
+    brand: i < 5 ? 'Gymshark' : 'YoungLA',
     fabric_type: '60% Algodón, 40% Polyester',
     is_compression: false,
     images: [
@@ -461,6 +474,7 @@ export const products: Product[] = [
     gender: 'hombre' as const,
     category: 'ropa' as const,
     subcategory: 'chamarra',
+    brand: i < 5 ? 'Darc Sport' : 'Vanquish',
     fabric_type: '100% Polyester',
     is_compression: false,
     images: [
@@ -490,6 +504,7 @@ export const products: Product[] = [
     gender: 'mujer' as const,
     category: 'ropa' as const,
     subcategory: 'top',
+    brand: i < 5 ? 'Gymshark' : 'YoungLA',
     fabric_type: '95% Cotton, 5% Elastane',
     is_compression: false,
     images: [
@@ -519,6 +534,7 @@ export const products: Product[] = [
     gender: 'mujer' as const,
     category: 'ropa' as const,
     subcategory: 'bra-deportivo',
+    brand: i < 5 ? 'Gymshark' : 'Vanquish',
     fabric_type: '80% Nylon, 20% Spandex',
     is_compression: true,
     images: [
@@ -548,6 +564,7 @@ export const products: Product[] = [
     gender: 'mujer' as const,
     category: 'ropa' as const,
     subcategory: 'legging',
+    brand: i < 5 ? 'Gymshark' : 'YoungLA',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
     images: [
@@ -577,6 +594,7 @@ export const products: Product[] = [
     gender: 'mujer' as const,
     category: 'ropa' as const,
     subcategory: 'short',
+    brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
     images: [
@@ -606,6 +624,7 @@ export const products: Product[] = [
     gender: 'mujer' as const,
     category: 'ropa' as const,
     subcategory: 'sudadera',
+    brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
     images: [
@@ -635,6 +654,7 @@ export const products: Product[] = [
     gender: 'mujer' as const,
     category: 'ropa' as const,
     subcategory: 'chamarra',
+    brand: 'Vanquish',
     fabric_type: '100% Polyester',
     is_compression: false,
     images: [
@@ -664,6 +684,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'pachon',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -687,6 +708,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'shaker',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -710,6 +732,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'equipo',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -733,6 +756,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'gorra',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -756,6 +780,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'mochila',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -779,6 +804,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'maleta',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -802,6 +828,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'accesorio' as const,
     subcategory: 'calcetin',
+    brand: 'Generic',
     images: [
       {
         src: 'https://placehold.co/600x400.png',
@@ -825,6 +852,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'suplemento' as const,
     subcategory: 'proteina',
+    brand: 'Dragon Pharma',
     benefits: 'Apoya el crecimiento muscular, rápida absorción.',
     servings_info: '30 servicios por envase.',
     images: [
@@ -852,6 +880,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'suplemento' as const,
     subcategory: 'creatina',
+    brand: 'RAW',
     benefits: 'Mejora el rendimiento, aumenta la fuerza.',
     servings_info: '100 servicios por envase.',
     images: [
@@ -876,6 +905,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'suplemento' as const,
     subcategory: 'pre-entreno',
+    brand: i < 2 ? 'C4 Energy' : 'RAW',
     benefits: 'Aumenta la energía y el enfoque, mejora la resistencia.',
     servings_info: '30 servicios por envase.',
     images: [
@@ -903,6 +933,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'suplemento' as const,
     subcategory: 'aminoacidos',
+    brand: 'Dragon Pharma',
     benefits: 'Mejora la recuperación, reduce la fatiga muscular.',
     servings_info: '40 servicios por envase.',
     images: [
@@ -930,6 +961,7 @@ export const products: Product[] = [
     gender: 'unisex' as const,
     category: 'suplemento' as const,
     subcategory: 'l-carnitina',
+    brand: 'RAW',
     benefits: 'Apoya el metabolismo de las grasas, mejora la energía.',
     servings_info: '32 servicios por envase.',
     images: [
@@ -958,6 +990,7 @@ export const products: Product[] = [
       gender: 'unisex' as const,
       category: 'joyeria' as const,
       subcategory: 'rgmnt',
+      brand: 'RGMNT',
       images: [
         {
           src: 'https://placehold.co/600x400.png',
@@ -975,5 +1008,6 @@ export const products: Product[] = [
       },
     })),
 ];
+
 
 

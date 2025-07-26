@@ -6,10 +6,10 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { useProductStore } from '@/stores/product-store';
 
-export default function RgmntPage() {
+export default function RawPage() {
   const { products } = useProductStore();
   const filteredProducts = products.filter(
-    (product) => product.brand === 'RGMNT'
+    (product) => product.brand === 'RAW'
   );
 
   return (
@@ -18,7 +18,7 @@ export default function RgmntPage() {
       <main className="bg-black text-white">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-center mb-8 text-white">
-            Marca - RGMNT
+            Marca - RAW
           </h1>
           {filteredProducts.length > 0 ? (
             <div className="product-grid">
