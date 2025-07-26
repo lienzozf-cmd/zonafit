@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { useCart } from '@/hooks/use-cart';
+import { useToast } from '@/hooks/use-toast';
+import confetti from 'canvas-confetti';
 import {
   Sheet,
   SheetContent,
@@ -22,7 +24,25 @@ const Cart = () => {
     removeItem,
     incrementQuantity,
     decrementQuantity,
+    clearCart,
   } = useCart();
+  const { toast } = useToast();
+
+  const handleCheckout = () => {
+    // Trigger fireworks
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
+
+    // Clear cart and show toast
+    clearCart();
+    toast({
+      title: '¡Compra realizada!',
+      description: 'Tu pedido ha sido procesado con éxito.',
+    });
+  };
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -89,7 +109,7 @@ const Cart = () => {
                 </div>
               </div>
               <SheetFooter>
-                <Button className="w-full bg-red-500 text-white hover:bg-red-600">
+                <Button variant="destructive" className="w-full" onClick={handleCheckout}>
                   Finalizar Compra
                 </Button>
               </SheetFooter>

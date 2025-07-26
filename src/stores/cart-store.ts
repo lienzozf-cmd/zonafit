@@ -13,6 +13,7 @@ export type CartStore = {
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   setIsCartOpen: (isOpen: boolean) => void;
+  clearCart: () => void;
 };
 
 const updateTotal = (items: CartItem[]) => ({
@@ -99,6 +100,18 @@ export const createCartStore = () =>
       });
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
+    clearCart: () => {
+        get().items.forEach(item => {
+            const [productId, optionValue] = item.id.split('-');
+            productStore.getState().increaseStock(Number(productId), optionValue, item.quantity);
+        });
+
+        set({
+            items: [],
+            itemCount: 0,
+            total: 0,
+        });
+    }
   }));
 
 export const CartStoreContext = createContext<ReturnType<typeof createCartStore> | null>(null);
