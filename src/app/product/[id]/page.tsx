@@ -116,7 +116,7 @@ const ProductDetailPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
           {/* Image Gallery */}
           <div>
-            <div className="relative aspect-square w-full overflow-hidden rounded-lg border-2 border-accent-color">
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg border-2 border-[hsl(var(--accent))]">
               <Image
                 src={currentImage}
                 alt={product.name}
@@ -128,7 +128,7 @@ const ProductDetailPage = () => {
               {product.images.map((image, index) => (
                 <div
                   key={index}
-                  className={`relative w-20 h-20 flex-shrink-0 cursor-pointer rounded-md overflow-hidden border-2 ${currentImage === image.src ? 'border-red-500' : 'border-gray-700'}`}
+                  className={`relative w-20 h-20 flex-shrink-0 cursor-pointer rounded-md overflow-hidden border-2 ${currentImage === image.src ? 'border-accent' : 'border-gray-700'}`}
                   onClick={() => setCurrentImage(image.src)}
                 >
                   <Image
@@ -145,7 +145,7 @@ const ProductDetailPage = () => {
           {/* Product Info */}
           <div className="flex flex-col">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.name}</h1>
-            <p className="text-2xl text-red-500 font-semibold mb-4">{product.price}</p>
+            <p className="text-2xl text-accent font-semibold mb-4" style={{color: 'hsl(var(--accent))'}}>{product.price}</p>
 
             <div className="prose prose-invert max-w-none mb-6">
               <p>{product.description}</p>
@@ -191,7 +191,7 @@ const ProductDetailPage = () => {
                         variant={selectedOption?.value === option.value ? 'destructive' : 'outline'}
                         onClick={() => handleOptionClick(option)}
                         disabled={option.stock <= 0}
-                        className={`border-gray-600 ${selectedOption?.value === option.value ? 'bg-red-500 text-white' : 'text-white hover:bg-gray-800'}`}
+                        className={`border-gray-600 ${selectedOption?.value === option.value ? '' : 'text-white hover:bg-gray-800'}`}
                       >
                         {option.value}
                       </Button>
@@ -204,7 +204,9 @@ const ProductDetailPage = () => {
                 </p>
 
                 <Button
-                  className="w-full bg-red-500 text-white hover:bg-red-600 text-lg py-6"
+                  variant="destructive"
+                  size="lg"
+                  className="w-full text-lg py-6"
                   onClick={handleAddToCart}
                   disabled={!selectedOption || selectedOption.stock <= 0}
                 >
