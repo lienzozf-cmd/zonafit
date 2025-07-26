@@ -77,7 +77,7 @@ a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 40;
   background-color: black;
   box-sizing: border-box;
 }
