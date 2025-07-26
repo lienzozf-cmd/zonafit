@@ -2,6 +2,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -85,7 +86,7 @@ export const navLinks = [
   {
     title: 'JOYERIA',
     href: '/joyeria',
-    sublinks: [{ title: 'Rgmnt', href: '/marcas/rgmnt' }],
+    sublinks: [{ title: 'Rgmnt', href: '/joyeria/rgmnt' }],
   },
   {
     title: 'MARCAS',
@@ -118,7 +119,7 @@ export type Product = {
   options: { type: string; values: ProductOption[] };
   description: string;
   gender: 'hombre' | 'mujer' | 'unisex';
-  category: 'ropa' | 'suplemento' | 'accesorio';
+  category: 'ropa' | 'suplemento' | 'accesorio' | 'joyeria';
   subcategory: string;
   // Ropa
   fabric_type?: string;
@@ -947,5 +948,32 @@ export const products: Product[] = [
       ],
     },
   })),
+    // Joyeria (5 productos)
+    ...Array.from({ length: 5 }, (_, i) => ({
+      id: 2300 + i,
+      name: `RGMNT Pendant ${i + 1}`,
+      price: 'Q.850.00',
+      availability: 'Disponible',
+      description: 'Eleva tu estilo con este colgante exclusivo de RGMNT. Hecho con materiales de primera calidad para un look audaz y duradero.',
+      gender: 'unisex' as const,
+      category: 'joyeria' as const,
+      subcategory: 'rgmnt',
+      images: [
+        {
+          src: 'https://placehold.co/600x400.png',
+          alt: `Jewelry ${i + 1}`,
+          dataAiHint: 'men jewelry',
+          option: 'Gold',
+        },
+      ],
+      options: {
+        type: 'material',
+        values: [
+          { value: 'Gold', stock: 5 },
+          { value: 'Silver', stock: 5 },
+        ],
+      },
+    })),
 ];
+
 
