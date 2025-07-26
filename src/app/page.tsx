@@ -3,8 +3,6 @@ import { useState } from 'react';
 import BrandsSection from '@/components/brands-section';
 import CategoryGrid from '@/components/category-grid';
 import FeaturedProducts from '@/components/featured-products';
-import Footer from '@/components/footer';
-import Header from '@/components/header';
 import HeroSection from '@/components/hero-section';
 import IntroAnimation from '@/components/intro-animation';
 import SocialSection from '@/components/social-section';
@@ -22,7 +20,6 @@ export default function Home() {
       <IntroAnimation onIntroFinish={handleIntroFinish} />
       {introFinished && (
         <>
-          <Header />
           <HeroSection />
           <main>
             <br />
@@ -42,7 +39,6 @@ export default function Home() {
           <VideoSection />
           <CategoryGrid />
           <SocialSection />
-          <Footer />
         </>
       )}
     </>

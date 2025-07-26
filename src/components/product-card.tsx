@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Product, ProductOption } from '@/lib/data';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
@@ -31,10 +32,11 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     } else {
         setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     }
-  }, [selectedOption, products, product.id]);
+  }, [selectedOption, products, product.id, product.options.type]);
 
 
-  const handleOptionClick = (option: ProductOption) => {
+  const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
+    e.stopPropagation(); // Prevent link navigation
     setSelectedOption(option);
     setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
 
@@ -44,7 +46,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     }
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent link navigation
     if (!selectedOption) {
       toast({
         title: 'Error',
@@ -83,45 +86,47 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   };
   
   return (
-    <div 
-        className="product-item"
-        id={`product-item-${product.id}`}
-    >
-        <div className="product-carousel">
-            <Image
-              src={currentImage}
-              alt={product.name}
-              fill
-              className="object-cover"
-            />
-        </div>
-        <br />
-        <h3 className="product-name">{product.name}</h3>
-        <p className="product-price">{product.price}</p>
-        <p className="product-availability">
-            {product.availability}
-        </p>
-        <div className="product-info">
-            <div className="size-options">
-            {product.options.values.map((option) => (
-                <button
-                key={option.value}
-                onClick={() => handleOptionClick(option)}
-                className={selectedOption?.value === option.value ? 'active' : ''}
-                disabled={option.stock <= 0}
-                >
-                {option.value}
-                </button>
-            ))}
+    <Link href={`/product/${product.id}`} className="product-item-link">
+        <div 
+            className="product-item"
+            id={`product-item-${product.id}`}
+        >
+            <div className="product-carousel">
+                <Image
+                  src={currentImage}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
             </div>
-            <p className="availability-message">
-                {availabilityMessage}
+            <br />
+            <h3 className="product-name">{product.name}</h3>
+            <p className="product-price">{product.price}</p>
+            <p className="product-availability">
+                {product.availability}
             </p>
-            <button className="add-to-cart-button" onClick={handleAddToCart} disabled={selectedOption?.stock === 0}>
-              {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
-            </button>
+            <div className="product-info">
+                <div className="size-options">
+                {product.options.values.map((option) => (
+                    <button
+                    key={option.value}
+                    onClick={(e) => handleOptionClick(e, option)}
+                    className={selectedOption?.value === option.value ? 'active' : ''}
+                    disabled={option.stock <= 0}
+                    >
+                    {option.value}
+                    </button>
+                ))}
+                </div>
+                <p className="availability-message">
+                    {availabilityMessage}
+                </p>
+                <button className="add-to-cart-button" onClick={handleAddToCart} disabled={selectedOption?.stock === 0}>
+                  {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
+                </button>
+            </div>
         </div>
-    </div>
+    </Link>
   );
 };
 

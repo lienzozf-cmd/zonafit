@@ -113,6 +113,9 @@ export type Product = {
   availability: string;
   images: { src: string; alt: string; dataAiHint: string; option: string }[];
   options: { type: string; values: ProductOption[] };
+  description: string;
+  fabric_type: string;
+  is_compression: boolean;
 };
 
 export const products: Product[] = [
@@ -121,11 +124,20 @@ export const products: Product[] = [
     name: 'Superhero Compression Tees Red',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.',
+    fabric_type: '88% Polyester, 12% Spandex',
+    is_compression: true,
     images: [
       {
         src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
-        alt: 'Red compression shirt',
+        alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
+        option: 'S',
+      },
+       {
+        src: "/assets/images/marcas/youngla/hombre/superheroeatras.png",
+        alt: 'Red compression shirt back',
+        dataAiHint: 'red shirt man',
         option: 'S',
       },
     ],
@@ -143,6 +155,9 @@ export const products: Product[] = [
     name: 'Warrior Compression Tees Blue',
     price: 'Q.500.00',
     availability: 'Disponible',
+    description: 'Desata al guerrero que llevas dentro. Esta playera de compresión azul ofrece un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.',
+    fabric_type: '90% Nylon, 10% Elastane',
+    is_compression: true,
     images: [
       {
         src:  "/assets/images/marcas/youngla/hombre/warriorazul.png",
@@ -165,6 +180,9 @@ export const products: Product[] = [
     name: 'Legacy Drop Arm Tank Black',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'Un clásico del fitness. El Legacy Drop Arm Tank está diseñado para ofrecer una total libertad de movimiento y un look icónico que nunca pasa de moda.',
+    fabric_type: '100% Algodón',
+    is_compression: false,
     images: [
       {
         src:  "/assets/images/marcas/gymshark/hombre/GYMSTHN.png",
@@ -187,6 +205,9 @@ export const products: Product[] = [
     name: 'Power T-Shirt Black and Red',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'Potencia y estilo se unen en esta T-Shirt. Con un ajuste atlético y un diseño audaz en negro y rojo, es la prenda perfecta tanto para dentro como para fuera del gimnasio.',
+    fabric_type: '95% Algodón, 5% Elastano',
+    is_compression: false,
     images: [
       {
         src: "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png",
@@ -209,6 +230,9 @@ export const products: Product[] = [
     name: 'Vital Seamless Crop Top Green',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.',
+    fabric_type: '96% Nylon, 4% Elastane',
+    is_compression: true,
     images: [
       {
         src: "/assets/images/marcas/gymshark/mujer/anabelgyms.jpg",
@@ -231,6 +255,9 @@ export const products: Product[] = [
     name: 'Core Hourglass Bra Tank Red',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'Diseñado para esculpir y dar soporte, este bra tank en un vibrante color rojo es tan funcional como favorecedor. Su diseño de reloj de arena realza tus curvas naturales.',
+    fabric_type: '78% Nylon, 22% Elastane',
+    is_compression: true,
     images: [
       {
         src: "/assets/images/marcas/youngla/mujer/brarojoyla.png",
@@ -253,6 +280,9 @@ export const products: Product[] = [
     name: 'Proteína ISO Dragon Pharma - 2lb',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'Isolat de proteína de suero de leche de la más alta pureza para una recuperación muscular óptima. Baja en carbohidratos y grasas, perfecta para definir.',
+    fabric_type: 'N/A',
+    is_compression: false,
     images: [
       {
         src: "/assets/images/marcas/dragonpharma/isoproteinblb.png",
@@ -280,6 +310,9 @@ export const products: Product[] = [
     name: 'Creatina Monohidratada Dragon Pharma',
     price: 'Q.450.00',
     availability: 'Disponible',
+    description: 'Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.',
+    fabric_type: 'N/A',
+    is_compression: false,
     images: [
       {
         src: "/assets/images/marcas/dragonpharma/creatinaDP.png",
