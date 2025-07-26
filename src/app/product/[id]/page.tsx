@@ -1,20 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { products } from '@/lib/data';
 import type { Product, ProductOption } from '@/lib/data';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 import { useProductStore } from '@/stores/product-store';
 import { Button } from '@/components/ui/button';
-import { Check, Shield } from 'lucide-react';
+import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 
 const ProductDetailPage = () => {
   const params = useParams();
+  const router = useRouter();
   const { id } = params;
   const { products: storeProducts, decreaseStock } = useProductStore();
   const { addItem } = useCart();
@@ -95,7 +95,13 @@ const ProductDetailPage = () => {
   };
 
   if (!product) {
-    return <div className="text-white text-center py-20">Cargando producto...</div>;
+    return (
+      <>
+        <Header />
+        <div className="text-white text-center py-20">Cargando producto...</div>
+        <Footer />
+      </>
+    );
   }
 
   return (
@@ -103,6 +109,10 @@ const ProductDetailPage = () => {
     <Header />
     <div className="bg-black text-white min-h-screen">
       <div className="container mx-auto px-4 py-8 md:py-16">
+        <Button variant="ghost" onClick={() => router.back()} className="mb-8 hover:bg-gray-800 hover:text-white">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Regresar
+        </Button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
           {/* Image Gallery */}
           <div>
@@ -141,16 +151,32 @@ const ProductDetailPage = () => {
               <p>{product.description}</p>
             </div>
             
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500" />
-                <span><span className="font-semibold">Tipo de tela:</span> {product.fabric_type}</span>
+            {product.category === 'ropa' && (
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-green-500" />
+                  <span><span className="font-semibold">Tipo de tela:</span> {product.fabric_type}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Shield className="h-5 w-5 text-blue-500" />
+                  <span><span className="font-semibold">Compresión:</span> {product.is_compression ? 'Sí' : 'No'}</span>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Shield className="h-5 w-5 text-blue-500" />
-                <span><span className="font-semibold">Compresión:</span> {product.is_compression ? 'Sí' : 'No'}</span>
+            )}
+
+            {product.category === 'suplemento' && (
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <Pill className="h-5 w-5 text-green-500" />
+                  <span><span className="font-semibold">Beneficios:</span> {product.benefits}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Server className="h-5 w-5 text-blue-500" />
+                  <span><span className="font-semibold">Servicios:</span> {product.servings_info}</span>
+                </div>
               </div>
-            </div>
+            )}
+
 
             {/* Options */}
             <div className="mt-auto">
