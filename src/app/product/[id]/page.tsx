@@ -111,7 +111,7 @@ const ProductDetailPage = () => {
                 src={currentImage}
                 alt={product.name}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div className="flex gap-2 mt-4 overflow-x-auto">
