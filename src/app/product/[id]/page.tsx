@@ -31,7 +31,11 @@ const ProductDetailPage = () => {
       setProduct(foundProduct);
       setCurrentImage(foundProduct.images[0].src);
       if (foundProduct.options.values.length > 0) {
-        setAvailabilityMessage(`Selecciona un ${foundProduct.options.type}`);
+        if(foundProduct.options.values.length === 1 && foundProduct.options.values[0].value === 'Único') {
+            setSelectedOption(foundProduct.options.values[0]);
+        } else {
+            setAvailabilityMessage(`Selecciona un ${foundProduct.options.type}`);
+        }
       }
     }
   }, [id, storeProducts]);
@@ -43,7 +47,7 @@ const ProductDetailPage = () => {
       if (updatedOption) {
         setAvailabilityMessage(`Disponible: ${updatedOption.stock} unidades`);
       }
-    } else if (product) {
+    } else if (product && !(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     }
   }, [selectedOption, storeProducts, product]);
@@ -103,6 +107,8 @@ const ProductDetailPage = () => {
       </>
     );
   }
+
+  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
 
   return (
     <>
@@ -180,6 +186,7 @@ const ProductDetailPage = () => {
 
             {/* Options */}
             <div className="mt-auto">
+              {showOptions && (
                 <div className="mb-4">
                   <h3 className="text-lg font-medium mb-2">
                     {product.options.type.charAt(0).toUpperCase() + product.options.type.slice(1)}
@@ -198,6 +205,7 @@ const ProductDetailPage = () => {
                     ))}
                   </div>
                 </div>
+              )}
 
                 <p className="availability-message text-sm text-gray-400 h-5 mb-4">
                   {availabilityMessage}
