@@ -28,19 +28,21 @@ export default function Home() {
             <br />
             <BrandsSection />
             <br />
-            <h2
-              style={{
-                color: 'white',
-                textAlign: 'center',
-                fontSize: '2em',
-              }}
-            >
-              NUESTROS PRODUCTOS MÁS SOLICITADOS
-            </h2>
-            <FeaturedProducts />
+            <CategoryGrid />
           </main>
           <VideoSection />
-          <CategoryGrid />
+          <h2
+            style={{
+              color: 'white',
+              textAlign: 'center',
+              fontSize: '2em',
+              marginTop: '2rem',
+              marginBottom: '1rem',
+            }}
+          >
+            NUESTROS PRODUCTOS MÁS SOLICITADOS
+          </h2>
+          <FeaturedProducts />
           <SocialSection />
           <Footer />
         </>
