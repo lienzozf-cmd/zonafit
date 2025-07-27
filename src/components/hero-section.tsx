@@ -7,7 +7,6 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
-import { Button } from './ui/button';
 
 const banners = [
   { src: '/assets/images/banners/banner1.png', alt: 'Banner 1' },
@@ -50,12 +49,9 @@ const HeroSection = () => {
       </Carousel>
       <div className="banner-content">
         <Link href="/marcas" passHref>
-            <Button 
-              variant="destructive" 
-              className="text-lg py-7 px-8 uppercase tracking-wider transition-all duration-300 hover:scale-105"
-            >
+            <button className="buy-now-button transition-transform duration-300 ease-in-out hover:scale-105">
               Comprar Ahora
-            </Button>
+            </button>
         </Link>
       </div>
     </section>
