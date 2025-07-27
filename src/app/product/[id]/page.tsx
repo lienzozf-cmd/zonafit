@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -154,6 +155,7 @@ const ProductDetailPage = () => {
             <p className="text-2xl text-accent font-semibold mb-4" style={{color: 'hsl(var(--accent))'}}>{product.price}</p>
 
             <div className="prose prose-invert max-w-none mb-6">
+              {/* React automatically escapes the content of product.description, preventing XSS attacks. */}
               <p>{product.description}</p>
             </div>
             
