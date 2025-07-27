@@ -49,9 +49,11 @@ const HeroSection = () => {
       </Carousel>
       <div className="banner-content">
         <Link href="/marcas" passHref>
+          <div className="glowing-button-container">
             <button className="buy-now-button transition-transform duration-300 ease-in-out hover:scale-105">
               Comprar Ahora
             </button>
+          </div>
         </Link>
       </div>
     </section>

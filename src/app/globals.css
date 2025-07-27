@@ -326,6 +326,18 @@ a:hover {
   transform: scale(1.05);
 }
 
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px #E50000, 0 0 10px #E50000, 0 0 15px #E50000; }
+    50% { box-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700; }
+    100% { box-shadow: 0 0 5px #E50000, 0 0 10px #E50000, 0 0 15px #E50000; }
+}
+
+.glowing-button-container {
+    display: inline-block;
+    border-radius: 8px; /* Slightly larger than button's border-radius */
+    animation: glowing 3s linear infinite;
+}
+
 main {
   background-color: black;
 }
