@@ -10,6 +10,7 @@ import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const { itemCount, setIsCartOpen } = useCart();
@@ -19,6 +20,7 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const router = useRouter();
 
   const performSearch = (term: string) => {
     if (term.trim() === '') {
@@ -47,15 +49,8 @@ const Header = () => {
     setSearchTerm('');
     setSearchResults([]);
     setIsSearchActive(false);
-    setIsMobileMenuOpen(false); 
-    const element = document.getElementById(`product-item-${product.id}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      element.classList.add('highlight');
-      setTimeout(() => {
-        element.classList.remove('highlight');
-      }, 2000);
-    }
+    setIsMobileMenuOpen(false);
+    router.push(`/product/${product.id}`);
   };
 
   const renderNavLinks = (isMobile = false) => {
