@@ -229,7 +229,7 @@ const Header = () => {
         <div className="header-icons">
          {isMobile === false && renderSearch(false)}
           <div className="relative">
-            <ShoppingCart className="cart-icon" onClick={() => setIsCartOpen(true)}/>
+            <ShoppingCart className="cart-icon" color="hsl(var(--accent))" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (
                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 {itemCount}

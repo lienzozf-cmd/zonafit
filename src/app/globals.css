@@ -80,6 +80,7 @@ a:hover {
   z-index: 40;
   background-color: black;
   box-sizing: border-box;
+  padding-right: 20px;
 }
 
 .site-branding {
@@ -610,7 +611,6 @@ main {
   font-size: 2.5em;
   margin-bottom: 15px;
   color: var(--accent-color);
-  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
