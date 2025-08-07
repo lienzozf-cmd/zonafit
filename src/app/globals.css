@@ -372,14 +372,9 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  padding: 2rem;
+  padding: 2rem 4rem;
   margin: 20px auto;
 }
-
-.featured-product-grid {
-  padding: 2rem 4rem;
-}
-
 
 .product-item {
   background-color: #1a1a1a;
