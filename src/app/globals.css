@@ -671,8 +671,9 @@ main > .container {
 }
 
 footer {
-  background-color: var(--accent-color);
+  background-color: var(--secondary-color);
   color: #fff;
+  border-top: 3px solid var(--accent-color);
 }
 
 .footer-content {
