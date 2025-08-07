@@ -17,7 +17,6 @@ import { Input } from '@/components/ui/input';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
-import Footer from '@/components/footer';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -195,7 +194,6 @@ export default function CheckoutPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
