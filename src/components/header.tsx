@@ -142,6 +142,7 @@ const Header = () => {
           <Search
             className="search-icon"
             onClick={() => setIsSearchActive(!isSearchActive)}
+            color="hsl(var(--accent))"
           />
         )}
         <div className={`search-box ${isMobile || isSearchActive ? 'active' : ''}`}>
