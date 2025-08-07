@@ -377,6 +377,12 @@ main {
   max-width: 1400px;
 }
 
+.featured-product-grid {
+    max-width: 1400px;
+    padding: 2rem 4rem;
+}
+
+
 .product-item {
   background-color: #1a1a1a;
   border-radius: 5px;

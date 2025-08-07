@@ -9,7 +9,7 @@ const FeaturedProducts = () => {
   );
 
   return (
-    <section className="product-grid">
+    <section className="product-grid featured-product-grid">
       {featuredProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
