@@ -54,7 +54,7 @@ const CategoryGrid = () => {
   return (
     <section className="fitness-goals">
       <div className="goal-content">
-        <h2>ZONA FIT GT</h2>
+        <h2 className='animated-heading'>ZONA FIT GT</h2>
         <p>"Desata tu mejor versión con fuerza, estilo y elegancia. Adentrate a ZONA FIT GT y se tu mejor versión: donde tu energía se viste, se nutre y se luce.".</p>
       </div>
       <div className="image-grid">
