@@ -404,9 +404,9 @@ main > .container {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
-  padding: 2rem 4rem;
+  padding: 2rem;
   margin: 20px auto;
 }
 
@@ -966,10 +966,17 @@ footer {
     /* The mobile menu button will be outside this container */
   }
 }
+
 @media (min-width: 768px) {
-    .product-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .featured-product-grid {
