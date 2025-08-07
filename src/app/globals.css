@@ -505,7 +505,7 @@ main > .container {
   height: 75vh;
   overflow: hidden;
   margin: 40px 0;
-  border: 5px solid var(--accent-color);
+  border: 5px solid #808080;
 }
 
 .video-overlay {
@@ -947,4 +947,8 @@ footer {
     .product-grid {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+.featured-product-grid {
+    padding: 2rem 4rem;
 }
