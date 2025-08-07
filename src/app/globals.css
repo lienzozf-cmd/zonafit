@@ -334,9 +334,9 @@ a:hover {
 }
 
 @keyframes glowing {
-    0% { box-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500, 0 0 15px #FFA500; }
-    50% { box-shadow: 0 0 20px #FFA500, 0 0 30px #FFA500, 0 0 40px #FFA500; }
-    100% { box-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500, 0 0 15px #FFA500; }
+    0% { box-shadow: 0 0 5px #E50000, 0 0 10px #E50000, 0 0 15px #E50000; }
+    50% { box-shadow: 0 0 20px #E50000, 0 0 30px #E50000, 0 0 40px #E50000; }
+    100% { box-shadow: 0 0 5px #E50000, 0 0 10px #E50000, 0 0 15px #E50000; }
 }
 
 .glowing-button-container {
