@@ -325,6 +325,8 @@ a:hover {
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
 }
 
 .buy-now-button:hover {
@@ -333,16 +335,30 @@ a:hover {
   transform: scale(1.05);
 }
 
-@keyframes glowing {
-    0% { box-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000; }
-    50% { box-shadow: 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000; }
-    100% { box-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000; }
+@keyframes animated-gradient {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .glowing-button-container {
-    display: inline-block;
-    border-radius: 8px; /* Slightly larger than button's border-radius */
-    animation: glowing 3s linear infinite;
+  position: relative;
+  display: inline-block;
+  padding: 3px;
+  z-index: 1;
+}
+
+.glowing-button-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
+  border-radius: 8px;
+  animation: animated-gradient 4s linear infinite;
+  z-index: -1;
 }
 
 main {
