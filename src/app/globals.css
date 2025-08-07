@@ -370,7 +370,7 @@ main {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   padding: 2rem;
   margin: 20px auto;
@@ -931,4 +931,9 @@ footer {
   .header-icons {
     /* The mobile menu button will be outside this container */
   }
+}
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
