@@ -337,8 +337,14 @@ a:hover {
 
 @keyframes animated-gradient {
   to {
-    transform: rotate(360deg);
+    --angle: 360deg;
   }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 .glowing-button-container {
@@ -351,15 +357,14 @@ a:hover {
 .glowing-button-container::before {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  inset: 0;
   background: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red);
   border-radius: 8px;
   animation: animated-gradient 4s linear infinite;
   z-index: -1;
+  filter: blur(5px);
 }
+
 
 main {
   background-color: black;
