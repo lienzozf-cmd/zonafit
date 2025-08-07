@@ -374,12 +374,10 @@ main {
   gap: 2rem;
   padding: 2rem;
   margin: 20px auto;
-  max-width: 1400px;
 }
 
 .featured-product-grid {
-    max-width: 1400px;
-    padding: 2rem 4rem;
+  padding: 2rem 4rem;
 }
 
 
