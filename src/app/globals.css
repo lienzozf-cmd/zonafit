@@ -358,7 +358,7 @@ a:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: conic-gradient(from var(--angle), red, orange, green, white, green, red);
+  background: conic-gradient(from var(--angle), blue, yellow, green, white, blue);
   border-radius: 8px;
   animation: animated-gradient 4s linear infinite;
   z-index: -1;
