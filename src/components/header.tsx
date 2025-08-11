@@ -25,7 +25,6 @@ const Header = () => {
   const performSearch = (term: string) => {
     if (term.trim() === '') {
       setSearchResults([]);
-      setIsSearchActive(false);
       return;
     }
     const results = products.filter(p => p.name.toLowerCase().includes(term.toLowerCase()));
@@ -33,22 +32,9 @@ const Header = () => {
     setIsSearchActive(true);
   };
   
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
-        setIsSearchActive(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   const handleSearchResultClick = (product: Product) => {
     setSearchTerm('');
     setSearchResults([]);
-    setIsSearchActive(false);
     setIsMobileMenuOpen(false);
     router.push(`/product/${product.id}`);
   };
