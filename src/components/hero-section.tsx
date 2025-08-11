@@ -1,11 +1,13 @@
 
 'use client';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  type CarouselApi,
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
 
@@ -19,9 +21,34 @@ const banners = [
 ];
 
 const HeroSection = () => {
+    const [api, setApi] = useState<CarouselApi>()
+    const [current, setCurrent] = useState(0)
+    const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        if (!api) {
+          return
+        }
+    
+        setCount(api.scrollSnapList().length)
+        setCurrent(api.selectedScrollSnap())
+    
+        api.on("select", () => {
+          setCurrent(api.selectedScrollSnap())
+        })
+      }, [api])
+
+      const scrollTo = useCallback(
+        (index: number) => {
+          api?.scrollTo(index);
+        },
+        [api]
+      );
+
   return (
     <section className="hero-banner">
       <Carousel
+        setApi={setApi}
         className="w-full h-full"
         plugins={[
           Autoplay({
@@ -59,6 +86,15 @@ const HeroSection = () => {
             </button>
           </div>
         </Link>
+      </div>
+      <div className="carousel-dots">
+        {Array.from({ length: count }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollTo(index)}
+            className={`dot ${index === current ? 'is-selected' : ''}`}
+          />
+        ))}
       </div>
     </section>
   );
