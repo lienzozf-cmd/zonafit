@@ -526,7 +526,6 @@ main > .container {
   height: 75vh;
   overflow: hidden;
   margin: 40px 0;
-  border: 5px solid #808080;
 }
 
 .video-overlay {
