@@ -41,6 +41,7 @@ const HeroSection = () => {
                   priority={index === 0}
                   className="object-cover"
                   data-ai-hint="fitness store"
+                  quality={100}
                 />
               </div>
             </CarouselItem>
