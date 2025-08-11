@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,6 +14,8 @@ const banners = [
   { src: '/assets/images/banners/banner2.png', alt: 'Banner 2' },
   { src: '/assets/images/banners/banner3.png', alt: 'Banner 3' },
   { src: '/assets/images/banners/banner4.png', alt: 'Banner 4' },
+  { src: '/assets/images/banners/banner5.png', alt: 'Banner 5' },
+  { src: '/assets/images/banners/banner6.png', alt: 'Banner 6' },
 ];
 
 const HeroSection = () => {
