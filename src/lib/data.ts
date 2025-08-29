@@ -6,6 +6,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -1800,7 +1801,7 @@ export const products: Product[] = [
     subcategory: 'gorra',
     brand: 'Gymshark',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'SHARKHEAD CAP', dataAiHint: 'fitness cap', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 3 }] },
   },
   {
     id: 2551,
@@ -1840,19 +1841,6 @@ export const products: Product[] = [
     brand: 'Gymshark',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'Sets and Reps 3pk Crew Socks', dataAiHint: 'fitness socks', option: 'S' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
-  },
-  {
-    id: 2557,
-    name: 'Gorra Sharkhead',
-    price: 'Q.305.00',
-    availability: 'Disponible',
-    description: 'Gorra con el icónico logo de Sharkhead.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'gorra',
-    brand: 'Gymshark',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Gorra Sharkhead', dataAiHint: 'fitness cap', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
   },
   {
     id: 2559,
