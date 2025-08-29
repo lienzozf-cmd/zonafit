@@ -9,6 +9,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -1131,7 +1132,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '437 Digital Compression Tees', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '437 Digital Compression Tees', dataAiHint: 'men shirt', option: 'Rojo' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1146,7 +1147,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '425 Camiseta de compresión', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '425 Camiseta de compresión', dataAiHint: 'men shirt', option: 'Verde' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1161,7 +1162,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '95% Cotton, 5% Elastane',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '403 Elite Tees', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '403 Elite Tees', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1176,7 +1177,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '4096 - The Boys® Graphic Tees', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '4096 - The Boys® Graphic Tees', dataAiHint: 'men shirt', option: 'Billy Butcher' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1191,7 +1192,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '4207 - UFC™ Jersey', dataAiHint: 'men jersey', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '4207 - UFC™ Jersey', dataAiHint: 'men jersey', option: 'Gris/negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1206,7 +1207,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '477 Camiseta Compresion combat', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '477 Camiseta Compresion combat', dataAiHint: 'men shirt', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
@@ -1221,7 +1222,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '95% Cotton, 5% Elastane',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'W237 On-The-Go Flare Romper', dataAiHint: 'woman romper', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'W237 On-The-Go Flare Romper', dataAiHint: 'woman romper', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1236,7 +1237,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '5003 - UFC™ Cut-Off hoodies', dataAiHint: 'men hoodie', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '5003 - UFC™ Cut-Off hoodies', dataAiHint: 'men hoodie', option: 'Rojo' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1251,7 +1252,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '3002 GRAND SLAM BASEBALL JERSEYS', dataAiHint: 'men jersey', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '3002 GRAND SLAM BASEBALL JERSEYS', dataAiHint: 'men jersey', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1266,7 +1267,10 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '4156 - Revenge Tees', dataAiHint: 'men shirt', option: 'M' }],
+    images: [
+        { src: 'https://placehold.co/600x400.png', alt: '4156 - Revenge Tees Negro', dataAiHint: 'men shirt', option: 'Negro' },
+        { src: 'https://placehold.co/600x400.png', alt: '4156 - Revenge Tees Verde', dataAiHint: 'men shirt', option: 'Verde' }
+    ],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }, { value: 'S', stock: 10 }] },
   },
   {
@@ -1281,7 +1285,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '95% Cotton, 5% Elastane',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '5092 - Effortless Sets', dataAiHint: 'men set', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '5092 - Effortless Sets', dataAiHint: 'men set', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1296,7 +1300,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '3005 - The Boys® Cut-Offs', dataAiHint: 'men tank', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '3005 - The Boys® Cut-Offs', dataAiHint: 'men tank', option: 'Homelander Art' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1311,7 +1315,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '477 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '477 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1326,7 +1330,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '478 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '478 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1341,7 +1345,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1356,7 +1360,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'XL', stock: 10 }] },
   },
   {
@@ -1371,7 +1375,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Legacy Logo Tight Shorts', dataAiHint: 'woman shorts', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Legacy Logo Tight Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1386,7 +1390,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Legacy Bra', dataAiHint: 'sports bra', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Legacy Bra', dataAiHint: 'sports bra', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1401,7 +1405,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1416,7 +1420,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Strength Dept Graphic T-Shirt', dataAiHint: 'men shirt', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Strength Dept Graphic T-Shirt', dataAiHint: 'men shirt', option: 'Blanco' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1431,7 +1435,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1446,7 +1450,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crop Top Flex', dataAiHint: 'woman top', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crop Top Flex', dataAiHint: 'woman top', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1461,7 +1465,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Power Oversized Long Sleeve Top', dataAiHint: 'woman top', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Power Oversized Long Sleeve Top', dataAiHint: 'woman top', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1476,7 +1480,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1491,7 +1495,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Strength Department Graphic Joggers', dataAiHint: 'woman joggers', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Strength Department Graphic Joggers', dataAiHint: 'woman joggers', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1506,7 +1510,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Sets N Reps T-Shirt', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Sets N Reps T-Shirt', dataAiHint: 'men shirt', option: 'Verde' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1521,7 +1525,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Lightweight Jersey Shorts', dataAiHint: 'men shorts', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Lightweight Jersey Shorts', dataAiHint: 'men shorts', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1536,7 +1540,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'British Lifting Goods Graphic T-Shirt', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'British Lifting Goods Graphic T-Shirt', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1551,7 +1555,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crest 7" Shorts', dataAiHint: 'men shorts', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crest 7" Shorts', dataAiHint: 'men shorts', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1566,7 +1570,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Built in the UK T-Shirt', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Built in the UK T-Shirt', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1581,7 +1585,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Ribbed Tank 3 Pack', dataAiHint: 'men tank', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Ribbed Tank 3 Pack', dataAiHint: 'men tank', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1596,7 +1600,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '88% Polyester, 12% Elastane',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Element Long Sleeve T-Shirt', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Element Long Sleeve T-Shirt', dataAiHint: 'men shirt', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1611,7 +1615,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '79% Nylon, 15% Polyester, 6% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Adapt Fleck Sports Bra', dataAiHint: 'sports bra', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Adapt Fleck Sports Bra', dataAiHint: 'sports bra', option: 'Morado' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1626,7 +1630,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '79% Nylon, 15% Polyester, 6% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Adapt Fleck Seamless Shorts', dataAiHint: 'woman shorts', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Adapt Fleck Seamless Shorts', dataAiHint: 'woman shorts', option: 'Morado' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1641,7 +1645,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1656,7 +1660,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Training Fleece Joggers', dataAiHint: 'woman joggers', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Training Fleece Joggers', dataAiHint: 'woman joggers', option: 'Verde' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1671,7 +1675,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '88% Polyester, 12% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Mesh Sports Bra', dataAiHint: 'sports bra', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Mesh Sports Bra', dataAiHint: 'sports bra', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
@@ -1686,7 +1690,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Ruched Sports Bra', dataAiHint: 'sports bra', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Ruched Sports Bra', dataAiHint: 'sports bra', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1701,7 +1705,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Strap Feature Sports Bra', dataAiHint: 'sports bra', option: 'M' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Strap Feature Sports Bra', dataAiHint: 'sports bra', option: 'negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1716,7 +1720,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1731,7 +1735,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '78% Polyester, 22% Elastane',
     is_compression: true,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Elevate Cycling Shorts', dataAiHint: 'woman shorts', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Elevate Cycling Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1746,7 +1750,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1761,7 +1765,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '2005 - Hella Pocket Sweats', dataAiHint: 'men pants', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '2005 - Hella Pocket Sweats', dataAiHint: 'men pants', option: 'Deep Purple Wash' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1776,7 +1780,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Premium Lifting T-Shirt', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Premium Lifting T-Shirt', dataAiHint: 'men shirt', option: 'Sand Brown' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1791,7 +1795,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Through Fire And Storm "Premium" Oversized Tee', dataAiHint: 'men shirt', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Through Fire And Storm "Premium" Oversized Tee', dataAiHint: 'men shirt', option: 'Black' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1804,8 +1808,8 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'Gymshark',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Silicone Lifting Straps', dataAiHint: 'lifting straps', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Silicone Lifting Straps', dataAiHint: 'lifting straps', option: 'purpura' }],
+    options: { type: 'color', values: [{ value: 'purpura', stock: 10 }] },
   },
   {
     id: 2550,
@@ -1817,8 +1821,8 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'gorra',
     brand: 'Gymshark',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'SHARKHEAD CAP', dataAiHint: 'fitness cap', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 3 }] },
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'SHARKHEAD CAP', dataAiHint: 'fitness cap', option: 'Black' }],
+    options: { type: 'color', values: [{ value: 'Black', stock: 3 }] },
   },
   {
     id: 2551,
@@ -1830,7 +1834,10 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'calcetin',
     brand: 'Gymshark',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'S' }],
+    images: [
+        { src: 'https://placehold.co/600x400.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'Mixto' },
+        { src: 'https://placehold.co/600x400.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'Blancos' }
+    ],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }, { value: 'M', stock: 10 }] },
   },
   {
@@ -1843,7 +1850,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'calcetin',
     brand: 'Gymshark',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Sets and Reps 3pk Crew Socks', dataAiHint: 'fitness socks', option: 'S' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Sets and Reps 3pk Crew Socks', dataAiHint: 'fitness socks', option: 'Sets' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
@@ -1856,8 +1863,8 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'YoungLA',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '933 YoungLA Keychains', dataAiHint: 'keychain', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 20 }] },
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '933 YoungLA Keychains', dataAiHint: 'keychain', option: 'Black' }],
+    options: { type: 'color', values: [{ value: 'Black', stock: 20 }] },
   },
   {
     id: 2561,
@@ -1869,8 +1876,8 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'shaker',
     brand: 'Dragon Pharma',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'TU MARIDO MOISES SHAKER CUP', dataAiHint: 'protein shaker', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 20 }] },
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'TU MARIDO MOISES SHAKER CUP', dataAiHint: 'protein shaker', option: 'Black' }],
+    options: { type: 'color', values: [{ value: 'Black', stock: 20 }] },
   },
   {
     id: 2563,
@@ -1914,7 +1921,7 @@ export const products: Product[] = [
     brand: 'Dragon Pharma',
     benefits: 'Apoya la síntesis de proteínas y la recuperación.',
     servings_info: '30 servicios',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'DR. FEAAR®', dataAiHint: 'amino acids', option: 'Único' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'DR. FEAAR®', dataAiHint: 'amino acids', option: 'Raspberry Lemonade' }],
     options: { type: 'sabor', values: [{ value: 'Raspberry Lemonade', stock: 20 }] },
   },
   {
@@ -1944,7 +1951,7 @@ export const products: Product[] = [
     brand: 'Dragon Pharma',
     benefits: 'Aumenta la energía, el enfoque y la resistencia.',
     servings_info: '50 servicios',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'VENOM INFERNO', dataAiHint: 'pre-workout', option: 'Único' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'VENOM INFERNO', dataAiHint: 'pre-workout', option: 'Limón' }],
     options: { type: 'sabor', values: [{ value: 'Limón', stock: 20 }] },
   },
   {
@@ -1959,7 +1966,7 @@ export const products: Product[] = [
     brand: 'Dragon Pharma',
     benefits: 'Energía explosiva y enfoque mental.',
     servings_info: '40 servicios',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Venom Mangonada', dataAiHint: 'pre-workout', option: 'Único' }],
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Venom Mangonada', dataAiHint: 'pre-workout', option: 'Mangonada' }],
     options: { type: 'sabor', values: [{ value: 'Mangonada', stock: 10 }] },
   },
   {
@@ -1977,4 +1984,23 @@ export const products: Product[] = [
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'L-carnitina', dataAiHint: 'l-carnitine', option: 'Único' }],
     options: { type: 'presentacion', values: [{ value: 'Único', stock: 10 }] },
   },
+  {
+    id: 2574,
+    name: 'BUM Essential pre-workout',
+    price: 'Q.400.00',
+    availability: 'Disponible',
+    description: 'Pre-entreno esencial para un rendimiento óptimo, con el respaldo de Chris Bumstead.',
+    gender: 'unisex',
+    category: 'suplemento',
+    subcategory: 'pre-entreno',
+    brand: 'RAW',
+    benefits: 'Energía sostenida, enfoque mejorado y bombeos musculares intensos.',
+    servings_info: 'Aproximadamente 40 servicios.',
+    images: [{ src: 'https://placehold.co/600x400.png', alt: 'BUM Essential pre-workout', dataAiHint: 'pre-workout supplement', option: 'Liche' }],
+    options: {
+      type: 'sabor',
+      values: [{ value: 'Liche', stock: 10 }],
+    },
+  }
 ];
+
