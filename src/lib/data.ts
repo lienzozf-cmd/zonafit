@@ -10,6 +10,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -1151,21 +1152,6 @@ export const products: Product[] = [
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
-    id: 2503,
-    name: '403 Elite Tees',
-    price: 'Q.346.00',
-    availability: 'Disponible',
-    description: 'Playera de élite para tus entrenamientos más exigentes.',
-    gender: 'hombre',
-    category: 'ropa',
-    subcategory: 'playera',
-    brand: 'YoungLA',
-    fabric_type: '95% Cotton, 5% Elastane',
-    is_compression: false,
-    images: [{ src: 'https://placehold.co/600x400.png', alt: '403 Elite Tees', dataAiHint: 'men shirt', option: 'Azul' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
-  },
-  {
     id: 2504,
     name: '4096 - The Boys® Graphic Tees',
     price: 'Q.450.00',
@@ -1718,7 +1704,7 @@ export const products: Product[] = [
     category: 'ropa',
     subcategory: 'short',
     brand: 'Gymshark',
-    fabric_type: '87% Nylon, 13% Elastane',
+    fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
@@ -2003,4 +1989,5 @@ export const products: Product[] = [
     },
   }
 ];
+
 
