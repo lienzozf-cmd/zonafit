@@ -7,6 +7,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -1134,7 +1135,7 @@ export const products: Product[] = [
   },
   {
     id: 2502,
-    name: '425 Camiseta de compresión',
+    name: '425 Camiseta de comprecion',
     price: 'Q.376.00',
     availability: 'Disponible',
     description: 'Camiseta de compresión diseñada para ofrecer soporte muscular y comodidad.',
@@ -1205,7 +1206,7 @@ export const products: Product[] = [
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
     images: [{ src: 'https://placehold.co/600x400.png', alt: '477 Camiseta Compresion combat', dataAiHint: 'men shirt', option: 'S' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
     id: 2508,
@@ -1313,6 +1314,21 @@ export const products: Product[] = [
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
+    id: 2516,
+    name: '478 - Combat Compression Tees',
+    price: 'Q.315.00',
+    availability: 'Disponible',
+    description: 'Playera de compresión para combate, diseñada para el máximo rendimiento.',
+    gender: 'hombre',
+    category: 'ropa',
+    subcategory: 'playera',
+    brand: 'YoungLA',
+    fabric_type: '88% Polyester, 12% Spandex',
+    is_compression: true,
+    images: [{ src: 'https://placehold.co/600x400.png', alt: '478 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'M' }],
+    options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
+  },
+  {
     id: 2517,
     name: 'Vanquish Unconquerable Shorts',
     price: 'Q.345.00',
@@ -1404,7 +1420,7 @@ export const products: Product[] = [
   },
   {
     id: 2523,
-    name: 'Flex Shorts',
+    name: 'Flex Shorts (Grey)',
     price: 'Q.345.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -1614,7 +1630,7 @@ export const products: Product[] = [
   },
   {
     id: 2537,
-    name: 'Flex Shorts',
+    name: 'Flex Shorts (Blue)',
     price: 'Q.345.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -1655,7 +1671,7 @@ export const products: Product[] = [
     fabric_type: '88% Polyester, 12% Elastane',
     is_compression: true,
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'Mesh Sports Bra', dataAiHint: 'sports bra', option: 'S' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
     id: 2541,
@@ -1689,7 +1705,7 @@ export const products: Product[] = [
   },
   {
     id: 2543,
-    name: 'Flex Shorts',
+    name: 'Flex Shorts (Black)',
     price: 'Q.270.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -1814,20 +1830,7 @@ export const products: Product[] = [
     subcategory: 'calcetin',
     brand: 'Gymshark',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'S' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
-  },
-  {
-    id: 2554,
-    name: 'Crew Socks 3pk',
-    price: 'Q.235.00',
-    availability: 'Disponible',
-    description: 'Paquete de 3 pares de calcetines.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'calcetin',
-    brand: 'Gymshark',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'M' }],
-    options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 10 }, { value: 'M', stock: 10 }] },
   },
   {
     id: 2555,
@@ -1840,7 +1843,7 @@ export const products: Product[] = [
     subcategory: 'calcetin',
     brand: 'Gymshark',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'Sets and Reps 3pk Crew Socks', dataAiHint: 'fitness socks', option: 'S' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
     id: 2559,
@@ -1853,7 +1856,7 @@ export const products: Product[] = [
     subcategory: 'equipo',
     brand: 'YoungLA',
     images: [{ src: 'https://placehold.co/600x400.png', alt: '933 YoungLA Keychains', dataAiHint: 'keychain', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 20 }] },
   },
   {
     id: 2561,
@@ -1866,7 +1869,7 @@ export const products: Product[] = [
     subcategory: 'shaker',
     brand: 'Dragon Pharma',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'TU MARIDO MOISES SHAKER CUP', dataAiHint: 'protein shaker', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 20 }] },
   },
   {
     id: 2563,
@@ -1896,7 +1899,7 @@ export const products: Product[] = [
     benefits: 'Mejora la recuperación y el sistema inmunológico.',
     servings_info: '60 servicios',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'GLUTAMINE', dataAiHint: 'glutamine supplement', option: 'Único' }],
-    options: { type: 'presentacion', values: [{ value: 'Único', stock: 10 }] },
+    options: { type: 'presentacion', values: [{ value: 'Único', stock: 20 }] },
   },
   {
     id: 2566,
@@ -1911,7 +1914,7 @@ export const products: Product[] = [
     benefits: 'Apoya la síntesis de proteínas y la recuperación.',
     servings_info: '30 servicios',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'DR. FEAAR®', dataAiHint: 'amino acids', option: 'Único' }],
-    options: { type: 'sabor', values: [{ value: 'Raspberry Lemonade', stock: 10 }] },
+    options: { type: 'sabor', values: [{ value: 'Raspberry Lemonade', stock: 20 }] },
   },
   {
     id: 2568,
@@ -1941,7 +1944,7 @@ export const products: Product[] = [
     benefits: 'Aumenta la energía, el enfoque y la resistencia.',
     servings_info: '50 servicios',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'VENOM INFERNO', dataAiHint: 'pre-workout', option: 'Único' }],
-    options: { type: 'sabor', values: [{ value: 'Limón', stock: 10 }] },
+    options: { type: 'sabor', values: [{ value: 'Limón', stock: 20 }] },
   },
   {
     id: 2571,
