@@ -8,6 +8,7 @@
 
 
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -1975,35 +1976,5 @@ export const products: Product[] = [
     servings_info: '60 servicios',
     images: [{ src: 'https://placehold.co/600x400.png', alt: 'L-carnitina', dataAiHint: 'l-carnitine', option: 'Único' }],
     options: { type: 'presentacion', values: [{ value: 'Único', stock: 10 }] },
-  },
-  {
-    id: 2573,
-    name: 'Creatina RAW 30 servicios',
-    price: 'Q.295.00',
-    availability: 'Disponible',
-    description: 'Creatina de alta calidad de RAW.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'creatina',
-    brand: 'RAW',
-    benefits: 'Mejora la fuerza y el rendimiento.',
-    servings_info: '30 servicios',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'Creatina RAW', dataAiHint: 'creatine supplement', option: 'Único' }],
-    options: { type: 'presentacion', values: [{ value: 'Único', stock: 10 }] },
-  },
-  {
-    id: 2574,
-    name: 'BUM Essential pre-workout',
-    price: 'Q.400.00',
-    availability: 'Disponible',
-    description: 'Pre-entreno esencial de la línea BUM.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'pre-entreno',
-    brand: 'RAW',
-    benefits: 'Energía y enfoque para tus entrenamientos.',
-    servings_info: '40 servicios',
-    images: [{ src: 'https://placehold.co/600x400.png', alt: 'BUM Essential pre-workout', dataAiHint: 'pre-workout', option: 'Único' }],
-    options: { type: 'sabor', values: [{ value: 'Liche', stock: 10 }] },
   },
 ];
