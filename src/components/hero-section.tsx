@@ -18,6 +18,7 @@ const banners = [
   { src: '/assets/images/banners/banner4.png', alt: 'Banner 4' },
   { src: '/assets/images/banners/banner5.png', alt: 'Banner 5' },
   { src: '/assets/images/banners/banner6.png?v=2', alt: 'Banner 6' },
+  { src: '/assets/images/banners/banner7.png', alt: 'Banner 7' },
 ];
 
 const HeroSection = () => {
