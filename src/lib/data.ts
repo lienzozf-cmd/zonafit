@@ -47,7 +47,7 @@ export const navLinks = [
     sublinks: [
       {
         title: 'Pachones y Shakers',
-        href: '/accesorios/pantalones-shakers',
+        href: '/accesorios/pachones-shakers',
         sublinks: [
           { title: 'Pachones', href: '/accesorios/pachones' },
           { title: 'Shakers', href: '/accesorios/shakers' },
