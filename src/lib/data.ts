@@ -176,7 +176,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src:  "/assets/images/marcas/youngla/hombre/warriorblue.png",
+        src:  "/assets/images/marcas/youngla/hombre/warriorazul.png",
         alt: 'Blue compression shirt',
         dataAiHint: 'blue shirt',
         option: 'S',
