@@ -141,7 +141,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: "/assets/images/marcas/youngla/hombre/playeras/Superhero Compression Tees Red.png",
+        src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
         alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
         option: 'S',
