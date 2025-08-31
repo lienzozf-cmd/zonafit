@@ -141,7 +141,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
+        src: "/assets/images/marcas/youngla/hombre/playeras/superheroeroja.png",
         alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
         option: 'S',
@@ -321,13 +321,13 @@ export const products: Product[] = [
     servings_info: 'Aproximadamente 30 servicios por envase.',
     images: [
       {
-        src: "/assets/images/suplementos/proteinas/Proteína ISO Dragon Pharma - 2lb Blueberry.png",
+        src: "/assets/images/suplementos/proteinas/blueberry.png",
         alt: 'Blueberry protein powder',
         dataAiHint: 'protein powder',
         option: 'Blueberry',
       },
       {
-        src: "/assets/images/suplementos/proteinas/Proteína ISO Dragon Pharma - 2lb ChocolateBlanco.png",
+        src: "/assets/images/suplementos/proteinas/chocolate.png",
         alt: 'White chocolate protein powder',
         dataAiHint: 'protein powder',
         option: 'ChocolateBlanco',
@@ -396,7 +396,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '85% Algodón, 15% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/pantalones/Tech Joggers.png', alt: 'Tech Joggers', dataAiHint: 'men joggers', option: 'M' }],
+    images: [{ src: '/assets/images/marcas/vanquish/hombre/pantalones/Tech Joggers.png', alt: 'Tech Joggers', dataAiHint: 'men joggers', option: 'M' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 5 }, { value: 'M', stock: 5 }, { value: 'L', stock: 5 }] },
   },
   {
@@ -411,7 +411,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/darcsport/chamarras/Windbreaker Jacket.png', alt: 'Windbreaker Jacket', dataAiHint: 'men jacket', option: 'M' }],
+    images: [{ src: '/assets/images/marcas/darcsport/hombre/chamarras/Windbreaker Jacket.png', alt: 'Windbreaker Jacket', dataAiHint: 'men jacket', option: 'M' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 5 }, { value: 'M', stock: 5 }, { value: 'L', stock: 5 }] },
   },
   {
@@ -456,7 +456,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/chamarras/Cropped Jacket.png', alt: "Women's Jacket", dataAiHint: 'woman jacket', option: 'M' }],
+    images: [{ src: '/assets/images/marcas/vanquish/mujer/chamarras/Cropped Jacket.png', alt: "Women's Jacket", dataAiHint: 'woman jacket', option: 'M' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 5 }, { value: 'M', stock: 5 }, { value: 'L', stock: 5 }] },
   },
   {
@@ -469,7 +469,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'pachon',
     brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/pachones/Hydrate Water Bottle.png', alt: 'Water Bottle', dataAiHint: 'water bottle', option: 'Único' }],
+    images: [{ src: '/assets/images/accesorios/pachones/pachon.png', alt: 'Water Bottle', dataAiHint: 'water bottle', option: 'Único' }],
     options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
   },
   {
@@ -482,7 +482,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/equipo/Training Gear.png', alt: 'Training Gear', dataAiHint: 'gym gear', option: 'Único' }],
+    images: [{ src: '/assets/images/accesorios/equipo/equipo.png', alt: 'Training Gear', dataAiHint: 'gym gear', option: 'Único' }],
     options: { type: 'item', values: [{ value: 'Único', stock: 10 }] },
   },
   {
@@ -495,7 +495,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'gorra',
     brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/gorras/Lifestyle Cap.png', alt: 'Cap', dataAiHint: 'fitness cap', option: 'Único' }],
+    images: [{ src: '/assets/images/accesorios/gorras/gorra.png', alt: 'Cap', dataAiHint: 'fitness cap', option: 'Único' }],
     options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
   },
   {
@@ -508,7 +508,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'mochila',
     brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/mochilas/Gym Backpack.png', alt: 'Backpack', dataAiHint: 'gym backpack', option: 'Único' }],
+    images: [{ src: '/assets/images/accesorios/mochilas/mochila.png', alt: 'Backpack', dataAiHint: 'gym backpack', option: 'Único' }],
     options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
   },
   {
@@ -521,7 +521,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'maleta',
     brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/maletas/Duffle Bag.png', alt: 'Duffle Bag', dataAiHint: 'gym bag', option: 'Único' }],
+    images: [{ src: '/assets/images/accesorios/maletas/maleta.png', alt: 'Duffle Bag', dataAiHint: 'gym bag', option: 'Único' }],
     options: { type: 'color', values: [{ value: 'Único', stock: 10 }] },
   },
   {
@@ -536,7 +536,7 @@ export const products: Product[] = [
     brand: 'Dragon Pharma',
     benefits: 'Apoya el crecimiento muscular, rápida absorción.',
     servings_info: '30 servicios por envase.',
-    images: [{ src: '/assets/images/suplementos/proteinas/Whey Protein Isolate.png', alt: 'Protein', dataAiHint: 'protein supplement', option: 'Vainilla' }],
+    images: [{ src: '/assets/images/suplementos/proteinas/proteina.png', alt: 'Protein', dataAiHint: 'protein supplement', option: 'Vainilla' }],
     options: { type: 'sabor', values: [{ value: 'Vainilla', stock: 10 }, { value: 'Chocolate', stock: 10 }] },
   },
   {
@@ -551,7 +551,7 @@ export const products: Product[] = [
     brand: 'RAW',
     benefits: 'Mejora el rendimiento, aumenta la fuerza.',
     servings_info: '100 servicios por envase.',
-    images: [{ src: '/assets/images/suplementos/creatinas/Micronized Creatine.png', alt: 'Creatine', dataAiHint: 'creatine supplement', option: 'Único' }],
+    images: [{ src: '/assets/images/suplementos/creatinas/creatina.png', alt: 'Creatine', dataAiHint: 'creatine supplement', option: 'Único' }],
     options: { type: 'tamaño', values: [{ value: '500g', stock: 10 }] },
   },
   {
@@ -566,7 +566,7 @@ export const products: Product[] = [
     brand: 'C4 Energy',
     benefits: 'Aumenta la energía y el enfoque, mejora la resistencia.',
     servings_info: '30 servicios por envase.',
-    images: [{ src: '/assets/images/suplementos/pre-entrenos/Explosive Pre-Workout.png', alt: 'Pre-Workout', dataAiHint: 'pre-workout supplement', option: 'Fruit Punch' }],
+    images: [{ src: '/assets/images/suplementos/pre-entrenos/pre-entreno.png', alt: 'Pre-Workout', dataAiHint: 'pre-workout supplement', option: 'Fruit Punch' }],
     options: { type: 'sabor', values: [{ value: 'Fruit Punch', stock: 10 }, { value: 'Blue Raspberry', stock: 10 }] },
   },
   {
@@ -581,7 +581,7 @@ export const products: Product[] = [
     brand: 'Dragon Pharma',
     benefits: 'Mejora la recuperación, reduce la fatiga muscular.',
     servings_info: '40 servicios por envase.',
-    images: [{ src: '/assets/images/suplementos/aminoacidos/BCAA 2-1-1.png', alt: 'BCAA', dataAiHint: 'bcaa supplement', option: 'Watermelon' }],
+    images: [{ src: '/assets/images/suplementos/aminoacidos/aminoacidos.png', alt: 'BCAA', dataAiHint: 'bcaa supplement', option: 'Watermelon' }],
     options: { type: 'sabor', values: [{ value: 'Watermelon', stock: 10 }, { value: 'Grape', stock: 10 }] },
   },
   {
@@ -596,7 +596,7 @@ export const products: Product[] = [
     brand: 'RAW',
     benefits: 'Apoya el metabolismo de las grasas, mejora la energía.',
     servings_info: '32 servicios por envase.',
-    images: [{ src: '/assets/images/suplementos/l-carnitina/L-Carnitine Liquid.png', alt: 'L-Carnitine', dataAiHint: 'l-carnitine supplement', option: 'Cherry' }],
+    images: [{ src: '/assets/images/suplementos/l-carnitina/lcarnitina.png', alt: 'L-Carnitine', dataAiHint: 'l-carnitine supplement', option: 'Cherry' }],
     options: { type: 'sabor', values: [{ value: 'Cherry', stock: 10 }, { value: 'Orange', stock: 10 }] },
   },
   {
@@ -609,7 +609,7 @@ export const products: Product[] = [
     category: 'joyeria',
     subcategory: 'rgmnt',
     brand: 'RGMNT',
-    images: [{ src: '/assets/images/marcas/rgmnt/RGMNT Pendant.png', alt: 'Jewelry', dataAiHint: 'men jewelry', option: 'Gold' }],
+    images: [{ src: '/assets/images/marcas/rgmnt/joyeria.png', alt: 'Jewelry', dataAiHint: 'men jewelry', option: 'Gold' }],
     options: { type: 'material', values: [{ value: 'Gold', stock: 5 }, { value: 'Silver', stock: 5 }] },
   },
   {
@@ -624,7 +624,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Elastane',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/playeras/Stealth Performance Tee.png', alt: 'Stealth Performance Tee', dataAiHint: 'men shirt', option: 'M' }],
+    images: [{ src: '/assets/images/marcas/vanquish/hombre/playeras/Stealth Performance Tee.png', alt: 'Stealth Performance Tee', dataAiHint: 'men shirt', option: 'M' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }, { value: 'L', stock: 8 }] },
   },
   {
@@ -639,7 +639,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/darcsport/playeras/Graphic Oversized Tee.png', alt: 'Graphic Oversized Tee', dataAiHint: 'men shirt', option: 'L' }],
+    images: [{ src: '/assets/images/marcas/darcsport/hombre/playeras/Graphic Oversized Tee.png', alt: 'Graphic Oversized Tee', dataAiHint: 'men shirt', option: 'L' }],
     options: { type: 'talla', values: [{ value: 'L', stock: 12 }, { value: 'XL', stock: 7 }] },
   },
   {
@@ -684,7 +684,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '60% Algodón, 40% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/playeras/Core Training Tee.png', alt: 'Core Training Tee', dataAiHint: 'men shirt', option: 'L' }],
+    images: [{ src: '/assets/images/marcas/vanquish/hombre/playeras/Core Training Tee.png', alt: 'Core Training Tee', dataAiHint: 'men shirt', option: 'L' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 20 }, { value: 'L', stock: 18 }] },
   },
   {
@@ -699,7 +699,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Algodón grueso',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/darcsport/playeras/Wolves Club Tee.png', alt: 'Wolves Club Tee', dataAiHint: 'men shirt', option: 'XL' }],
+    images: [{ src: '/assets/images/marcas/darcsport/hombre/playeras/Wolves Club Tee.png', alt: 'Wolves Club Tee', dataAiHint: 'men shirt', option: 'XL' }],
     options: { type: 'talla', values: [{ value: 'L', stock: 10 }, { value: 'XL', stock: 5 }] },
   },
   {
@@ -927,7 +927,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/shorts/Vanquish Unconquerable Shorts.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/vanquish/hombre/shorts/Vanquish Unconquerable Shorts.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1137,7 +1137,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Crest 7 Shorts.png', alt: 'Crest 7" Shorts', dataAiHint: 'men shorts', option: 'Gris' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Crest 7 Shorts gris.png', alt: 'Crest 7" Shorts', dataAiHint: 'men shorts', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1377,7 +1377,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/darcsport/playeras/Through Fire And Storm Premium Oversized Tee in Wolf Gray.png', alt: 'Through Fire And Storm "Premium" Oversized Tee', dataAiHint: 'men shirt', option: 'Black' }],
+    images: [{ src: '/assets/images/marcas/darcsport/hombre/playeras/Through Fire And Storm Premium Oversized Tee in Wolf Gray.png', alt: 'Through Fire And Storm "Premium" Oversized Tee', dataAiHint: 'men shirt', option: 'Black' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
