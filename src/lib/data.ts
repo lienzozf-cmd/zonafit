@@ -96,6 +96,7 @@ export const navLinks = [
       { title: 'RAW', href: '/marcas/raw' },
       { title: 'RGMNT', href: '/marcas/rgmnt' },
       { title: 'C4 Energy', href: '/marcas/c4-energy' },
+      { title: 'Civil Regime', href: '/marcas/civil-regime' },
       { title: 'Ver Todo', href: '/marcas' },
     ],
   },
