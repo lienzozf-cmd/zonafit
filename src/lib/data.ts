@@ -730,7 +730,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/compresion-digital.png', alt: '437 Digital Compression Tees', dataAiHint: 'men shirt', option: 'Rojo' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/digitalcompressiontees.png', alt: '437 Digital Compression Tees', dataAiHint: 'men shirt', option: 'Rojo' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -745,7 +745,22 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/compresion-425.png', alt: '425 Camiseta de compresión', dataAiHint: 'men shirt', option: 'Verde' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/camisetadecomprecion.png', alt: '425 Camiseta de compresión', dataAiHint: 'men shirt', option: 'Verde' }],
+    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
+  },
+  {
+    id: 2503,
+    name: 'Elite Tees',
+    price: 'Q.400.00',
+    availability: 'Disponible',
+    description: 'Playera de élite para un rendimiento superior.',
+    gender: 'hombre',
+    category: 'ropa',
+    subcategory: 'playera',
+    brand: 'YoungLA',
+    fabric_type: '95% Cotton, 5% Spandex',
+    is_compression: false,
+    images: [{ src: '/assets/images/marcas/youngla/hombre/elitetees.png', alt: 'Elite Tees', dataAiHint: 'men shirt', option: 'S' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -760,7 +775,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/theboys-butcher.png', alt: '4096 - The Boys® Graphic Tees', dataAiHint: 'men shirt', option: 'Billy Butcher' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/theboysgraphictees.png', alt: '4096 - The Boys® Graphic Tees', dataAiHint: 'men shirt', option: 'Billy Butcher' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -775,7 +790,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/ufc-jersey.png', alt: '4207 - UFC™ Jersey', dataAiHint: 'men jersey', option: 'Gris/negro' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/ufcjersey.png', alt: '4207 - UFC™ Jersey', dataAiHint: 'men jersey', option: 'Gris/negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -790,7 +805,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/compresion-combat.png', alt: '477 Camiseta Compresion combat', dataAiHint: 'men shirt', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/camisetacomprecioncombat.png', alt: '477 Camiseta Compresion combat', dataAiHint: 'men shirt', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
@@ -805,7 +820,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '95% Cotton, 5% Elastane',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/mujer/tops/romper-onthego.png', alt: 'W237 On-The-Go Flare Romper', dataAiHint: 'woman romper', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/onthegoflareromper.png', alt: 'W237 On-The-Go Flare Romper', dataAiHint: 'woman romper', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -820,7 +835,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/sudaderas/hoodie-ufc.png', alt: '5003 - UFC™ Cut-Off hoodies', dataAiHint: 'men hoodie', option: 'Rojo' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/ufccutoffhoodies.png', alt: '5003 - UFC™ Cut-Off hoodies', dataAiHint: 'men hoodie', option: 'Rojo' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -835,7 +850,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/jersey-baseball.png', alt: '3002 GRAND SLAM BASEBALL JERSEYS', dataAiHint: 'men jersey', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/grandslambaseballjerseys.png', alt: '3002 GRAND SLAM BASEBALL JERSEYS', dataAiHint: 'men jersey', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -851,8 +866,7 @@ export const products: Product[] = [
     fabric_type: '100% Cotton',
     is_compression: false,
     images: [
-        { src: '/assets/images/marcas/youngla/hombre/playeras/revenge-negro.png', alt: '4156 - Revenge Tees Negro', dataAiHint: 'men shirt', option: 'Negro' },
-        { src: '/assets/images/marcas/youngla/hombre/playeras/revenge-verde.png', alt: '4156 - Revenge Tees Verde', dataAiHint: 'men shirt', option: 'Verde' }
+        { src: '/assets/images/marcas/youngla/hombre/revengetees.png', alt: '4156 - Revenge Tees Negro', dataAiHint: 'men shirt', option: 'Negro' }
     ],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }, { value: 'S', stock: 10 }] },
   },
@@ -868,7 +882,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '95% Cotton, 5% Elastane',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/sudaderas/set-effortless.png', alt: '5092 - Effortless Sets', dataAiHint: 'men set', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/effortlesssets.png', alt: '5092 - Effortless Sets', dataAiHint: 'men set', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -883,7 +897,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/theboys-homelander.png', alt: '3005 - The Boys® Cut-Offs', dataAiHint: 'men tank', option: 'Homelander Art' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/theboyscutoffs.png', alt: '3005 - The Boys® Cut-Offs', dataAiHint: 'men tank', option: 'Homelander Art' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -898,22 +912,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '88% Polyester, 12% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/combat-azul.png', alt: '477 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'Azul' }],
-    options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
-  },
-  {
-    id: 2516,
-    name: '478 - Combat Compression Tees',
-    price: 'Q.315.00',
-    availability: 'Disponible',
-    description: 'Playera de compresión para combate, diseñada para el máximo rendimiento.',
-    gender: 'hombre',
-    category: 'ropa',
-    subcategory: 'playera',
-    brand: 'YoungLA',
-    fabric_type: '88% Polyester, 12% Spandex',
-    is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/playeras/combat-roja.png', alt: '478 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'Azul' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/combatcompressiontees.png', alt: '477 - Combat Compression Tees', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -928,7 +927,7 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/hombre/shorts/short-unconquerable.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/vanquishunconquerableshorts.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -943,7 +942,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/short-liftingclub.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/liftingclubapparelgraphicshorts.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'XL', stock: 10 }] },
   },
   {
@@ -958,7 +957,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/shorts/short-legacy.png', alt: 'Legacy Logo Tight Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/legacylogotightshorts.png', alt: 'Legacy Logo Tight Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -973,7 +972,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/bras-deportivos/bra-legacy.png', alt: 'Legacy Bra', dataAiHint: 'sports bra', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/legacybra.png', alt: 'Legacy Bra', dataAiHint: 'sports bra', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -988,7 +987,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/pantalones/jogger-restday.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/restdayessentialscargojoggers.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1003,7 +1002,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/playera-strength.png', alt: 'Strength Dept Graphic T-Shirt', dataAiHint: 'men shirt', option: 'Blanco' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/strengthdeptgraphictshirt.png', alt: 'Strength Dept Graphic T-Shirt', dataAiHint: 'men shirt', option: 'Blanco' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1018,7 +1017,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/shorts/short-flex-gris.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Gris' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/flexshorts.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1033,7 +1032,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/tops/top-flex.png', alt: 'Crop Top Flex', dataAiHint: 'woman top', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/croptopflex.png', alt: 'Crop Top Flex', dataAiHint: 'woman top', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1048,7 +1047,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/tops/top-power-oversized.png', alt: 'Power Oversized Long Sleeve Top', dataAiHint: 'woman top', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/poweroversizedlongsleevetop.png', alt: 'Power Oversized Long Sleeve Top', dataAiHint: 'woman top', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1063,7 +1062,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/sudaderas/hoodie-legacy.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/legacyhoodie.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1078,7 +1077,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/pantalones/jogger-strength.png', alt: 'Strength Department Graphic Joggers', dataAiHint: 'woman joggers', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/strengthdepartmentgraphicjoggers.png', alt: 'Strength Department Graphic Joggers', dataAiHint: 'woman joggers', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1093,7 +1092,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/playera-setsnreps.png', alt: 'Sets N Reps T-Shirt', dataAiHint: 'men shirt', option: 'Verde' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/setsnrepstshirt.png', alt: 'Sets N Reps T-Shirt', dataAiHint: 'men shirt', option: 'Verde' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1108,7 +1107,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/short-lightweight.png', alt: 'Lightweight Jersey Shorts', dataAiHint: 'men shorts', option: 'Azul' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/lightweightjerseyshorts.png', alt: 'Lightweight Jersey Shorts', dataAiHint: 'men shorts', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1123,7 +1122,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/playera-british.png', alt: 'British Lifting Goods Graphic T-Shirt', dataAiHint: 'men shirt', option: 'Azul' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/britishliftinggoodsgraphictshirt.png', alt: 'British Lifting Goods Graphic T-Shirt', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1138,7 +1137,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/short-crest.png', alt: 'Crest 7" Shorts', dataAiHint: 'men shorts', option: 'Gris' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/crest7shorts.png', alt: 'Crest 7" Shorts', dataAiHint: 'men shorts', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1153,7 +1152,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/playera-builtuk.png', alt: 'Built in the UK T-Shirt', dataAiHint: 'men shirt', option: 'Azul' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/builtintheuktshirt.png', alt: 'Built in the UK T-Shirt', dataAiHint: 'men shirt', option: 'Azul' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1168,7 +1167,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/tank-ribbed.png', alt: 'Ribbed Tank 3 Pack', dataAiHint: 'men tank', option: 'Gris' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/ribbedtank3pack.png', alt: 'Ribbed Tank 3 Pack', dataAiHint: 'men tank', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1183,7 +1182,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '88% Polyester, 12% Elastane',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/playera-element.png', alt: 'Element Long Sleeve T-Shirt', dataAiHint: 'men shirt', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/elementlongsleevetshirt.png', alt: 'Element Long Sleeve T-Shirt', dataAiHint: 'men shirt', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1198,7 +1197,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '79% Nylon, 15% Polyester, 6% Elastane',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/bras-deportivos/bra-adapt-fleck.png', alt: 'Adapt Fleck Sports Bra', dataAiHint: 'sports bra', option: 'Morado' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/adaptflecksportsbra.png', alt: 'Adapt Fleck Sports Bra', dataAiHint: 'sports bra', option: 'Morado' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1213,22 +1212,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '79% Nylon, 15% Polyester, 6% Elastane',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/shorts/short-adapt-fleck.png', alt: 'Adapt Fleck Seamless Shorts', dataAiHint: 'woman shorts', option: 'Morado' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
-  },
-  {
-    id: 2537,
-    name: 'Flex Shorts (Blue)',
-    price: 'Q.345.00',
-    availability: 'Disponible',
-    description: 'Shorts Flex para máxima flexibilidad y comodidad.',
-    gender: 'mujer',
-    category: 'ropa',
-    subcategory: 'short',
-    brand: 'Gymshark',
-    fabric_type: '87% Nylon, 13% Spandex',
-    is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/shorts/short-flex-azul.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Azul' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/adaptfleckseamlessshorts.png', alt: 'Adapt Fleck Seamless Shorts', dataAiHint: 'woman shorts', option: 'Morado' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1243,7 +1227,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Cotton, 20% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/pantalones/jogger-training.png', alt: 'Training Fleece Joggers', dataAiHint: 'woman joggers', option: 'Verde' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/trainingfleecejoggers.png', alt: 'Training Fleece Joggers', dataAiHint: 'woman joggers', option: 'Verde' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1258,7 +1242,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '88% Polyester, 12% Elastane',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/bras-deportivos/bra-mesh.png', alt: 'Mesh Sports Bra', dataAiHint: 'sports bra', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/meshsportsbra.png', alt: 'Mesh Sports Bra', dataAiHint: 'sports bra', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 20 }] },
   },
   {
@@ -1273,7 +1257,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/bras-deportivos/bra-ruched.png', alt: 'Ruched Sports Bra', dataAiHint: 'sports bra', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/ruchedsportsbra.png', alt: 'Ruched Sports Bra', dataAiHint: 'sports bra', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1288,7 +1272,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/bras-deportivos/bra-strap.png', alt: 'Strap Feature Sports Bra', dataAiHint: 'sports bra', option: 'negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/strapfeaturesportsbra.png', alt: 'Strap Feature Sports Bra', dataAiHint: 'sports bra', option: 'negro' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1303,7 +1287,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/shorts/short-flex-negro.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/flexshorts.png', alt: 'Flex Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1318,7 +1302,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '78% Polyester, 22% Elastane',
     is_compression: true,
-    images: [{ src: '/assets/images/marcas/gymshark/mujer/shorts/short-cycling.png', alt: 'Elevate Cycling Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/elevatecyclingshorts.png', alt: 'Elevate Cycling Shorts', dataAiHint: 'woman shorts', option: 'Negro' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1333,7 +1317,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Polyester',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/pantalones/jogger-ease.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'Gris' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/easewovenjoggers.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'Gris' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1348,7 +1332,7 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/pantalones/pantalon-hella.png', alt: '2005 - Hella Pocket Sweats', dataAiHint: 'men pants', option: 'Deep Purple Wash' }],
+    images: [{ src: '/assets/images/marcas/youngla/hombre/hellapocketsweats.png', alt: '2005 - Hella Pocket Sweats', dataAiHint: 'men pants', option: 'Deep Purple Wash' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1363,7 +1347,7 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/playeras/playera-premium.png', alt: 'Premium Lifting T-Shirt', dataAiHint: 'men shirt', option: 'Sand Brown' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/premiumliftingtshirt.png', alt: 'Premium Lifting T-Shirt', dataAiHint: 'men shirt', option: 'Sand Brown' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1378,7 +1362,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/darcsport/hombre/playeras/playera-firestorm.png', alt: 'Through Fire And Storm "Premium" Oversized Tee', dataAiHint: 'men shirt', option: 'Black' }],
+    images: [{ src: '/assets/images/marcas/darcsport/hombre/throughfireandstormpremiumoversizedteeinwolfgray.png', alt: 'Through Fire And Storm "Premium" Oversized Tee', dataAiHint: 'men shirt', option: 'Black' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -1391,7 +1375,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'Gymshark',
-    images: [{ src: '/assets/images/accesorios/equipo/straps-silicone.png', alt: 'Silicone Lifting Straps', dataAiHint: 'lifting straps', option: 'purpura' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/siliconeliftingstraps.png', alt: 'Silicone Lifting Straps', dataAiHint: 'lifting straps', option: 'purpura' }],
     options: { type: 'color', values: [{ value: 'purpura', stock: 10 }] },
   },
   {
@@ -1404,7 +1388,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'gorra',
     brand: 'Gymshark',
-    images: [{ src: '/assets/images/accesorios/gorras/gorra-sharkhead.png', alt: 'SHARKHEAD CAP', dataAiHint: 'fitness cap', option: 'Black' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/sharkheadcap.png', alt: 'SHARKHEAD CAP', dataAiHint: 'fitness cap', option: 'Black' }],
     options: { type: 'color', values: [{ value: 'Black', stock: 3 }] },
   },
   {
@@ -1418,8 +1402,7 @@ export const products: Product[] = [
     subcategory: 'calcetin',
     brand: 'Gymshark',
     images: [
-        { src: '/assets/images/accesorios/calcetines/calcetines-crew-mixto.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'Mixto' },
-        { src: '/assets/images/accesorios/calcetines/calcetines-crew-blanco.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'Blancos' }
+        { src: '/assets/images/marcas/gymshark/hombre/crewsocks3pk.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'Mixto' }
     ],
     options: { type: 'color', values: [{ value: 'Mixto', stock: 10 }, { value: 'Blancos', stock: 10 }] },
   },
