@@ -411,7 +411,7 @@ main > .container {
 }
 
 .product-item {
-  background-color: #1a1a1a;
+  background-color: #000000;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
@@ -471,11 +471,11 @@ main > .container {
 }
 
 .product-availability.available {
-    background-color: #28a745; /* Verde */
+    background-color: #16a34a; /* Verde más fuerte */
 }
 
 .product-availability.unavailable {
-    background-color: #dc3545; /* Rojo */
+    background-color: #dc2626; /* Rojo más fuerte */
 }
 
 .product-info {
