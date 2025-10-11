@@ -207,21 +207,33 @@ const Header = () => {
   return (
     <>
       <header className="site-header">
-        {isMobile ? <MobileMenu /> : renderNavLinks(false)}
-        <div className="site-branding">
-          <Link href="/">
-            <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
-          </Link>
-        </div>
-
+        {isMobile ? (
+          <>
+            <MobileMenu />
+            <div className="site-branding">
+              <Link href="/">
+                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="site-branding">
+              <Link href="/">
+                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+              </Link>
+            </div>
+            {renderNavLinks(false)}
+          </>
+        )}
         <div className="header-icons">
-         {isMobile === false ? renderSearch(false) : (
+          {isMobile ? (
             <Search
                 className="search-icon"
                 onClick={() => setIsMobileMenuOpen(true)}
                 color="hsl(var(--accent))"
             />
-         )}
+          ) : renderSearch(false)}
           <div className="relative">
             <ShoppingCart className="cart-icon" color="hsl(var(--accent))" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (
