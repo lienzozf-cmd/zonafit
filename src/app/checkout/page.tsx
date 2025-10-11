@@ -96,7 +96,7 @@ export default function CheckoutPage() {
                  </div>
                  <div className="mt-4 p-4 bg-gray-900 border border-accent rounded-lg">
                     <p className="text-center text-accent-foreground">
-                        <span className="font-bold">Nota sobre el envío:</span> Por favor, comunícate con nosotros a través de nuestras redes sociales o WhatsApp para coordinar y calcular el costo de envío de tu pedido.
+                        <span className="font-bold">Nota sobre el envío:</span> Por favor, comunícate con nosotros a través de nuestras redes sociales para coordinar y calcular el costo de envío de tu pedido.
                     </p>
                  </div>
               </div>
