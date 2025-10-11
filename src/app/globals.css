@@ -455,14 +455,27 @@ main > .container {
 
 .product-item .product-price {
   color: var(--accent-color);
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
 .product-item .product-availability {
-  color: green;
-  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  display: inline-block;
+}
+
+.product-availability.available {
+    background-color: #28a745; /* Verde */
+}
+
+.product-availability.unavailable {
+    background-color: #dc3545; /* Rojo */
 }
 
 .product-info {
@@ -497,6 +510,7 @@ main > .container {
   color: #aaa;
   font-size: 0.9em;
   margin-bottom: 10px;
+  min-height: 1.25rem;
 }
 
 .add-to-cart-button {

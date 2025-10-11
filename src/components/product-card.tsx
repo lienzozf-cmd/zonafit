@@ -23,23 +23,33 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
 
   useEffect(() => {
+    // Set initial selected option if only one exists and is not 'Único'
+    if (product.options.values.length === 1 && product.options.values[0].value !== 'Único') {
+      setSelectedOption(product.options.values[0]);
+    } else if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
+        setSelectedOption(product.options.values[0]);
+    }
+  }, [product.options.values]);
+
+  useEffect(() => {
     if (selectedOption) {
       const updatedProduct = products.find(p => p.id === product.id);
       const updatedOption = updatedProduct?.options.values.find(v => v.value === selectedOption.value);
       if (updatedOption) {
         setAvailabilityMessage(`Disponible: ${updatedOption.stock} unidades`);
       }
+    } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
+      setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     } else {
-        setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+        setAvailabilityMessage('');
     }
-  }, [selectedOption, products, product.id, product.options.type]);
+  }, [selectedOption, products, product.id, product.options.type, product.options.values]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     setSelectedOption(option);
-    setAvailabilityMessage(`Disponible: ${option.stock} unidades`);
-
+    
     const newImage = product.images.find(img => img.option === option.value);
     if (newImage) {
       setCurrentImage(newImage.src);
@@ -85,6 +95,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     });
   };
   
+  const isAvailable = product.options.values.some(option => option.stock > 0);
+  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
+
   return (
     <div 
         className="product-item flex flex-col"
@@ -105,26 +118,34 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 <h3 className="product-name">{product.name}</h3>
             </Link>
             <p className="product-price">{product.price}</p>
-            <p className="product-availability">
-                {product.availability}
-            </p>
+            <div className="flex justify-center my-2">
+                 <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>
+                    {isAvailable ? 'Disponible' : 'Agotado'}
+                 </div>
+            </div>
             <div className="product-info mt-auto">
-                <div className="size-options">
-                {product.options.values.map((option) => (
-                    <button
-                    key={option.value}
-                    onClick={(e) => handleOptionClick(e, option)}
-                    className={selectedOption?.value === option.value ? 'active' : ''}
-                    disabled={option.stock <= 0}
-                    >
-                    {option.value}
-                    </button>
-                ))}
-                </div>
+                {showOptions && (
+                    <div className="size-options">
+                    {product.options.values.map((option) => (
+                        <button
+                        key={option.value}
+                        onClick={(e) => handleOptionClick(e, option)}
+                        className={selectedOption?.value === option.value ? 'active' : ''}
+                        disabled={option.stock <= 0}
+                        >
+                        {option.value}
+                        </button>
+                    ))}
+                    </div>
+                )}
                 <p className="availability-message">
                     {availabilityMessage}
                 </p>
-                <button className="add-to-cart-button" onClick={handleAddToCart} disabled={selectedOption?.stock === 0}>
+                <button 
+                    className="add-to-cart-button" 
+                    onClick={handleAddToCart} 
+                    disabled={!selectedOption || selectedOption.stock <= 0}
+                >
                   {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
                 </button>
             </div>
