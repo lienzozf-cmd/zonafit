@@ -124,7 +124,7 @@ const Header = () => {
   const renderSearch = (isMobile = false) => {
     const searchComponent = (
       <div className={`search-container ${isMobile ? 'mobile-search' : ''}`} ref={searchContainerRef}>
-        {isMobile === false && (
+        {(isMobile === false) && (
           <Search
             className="search-icon"
             onClick={() => setIsSearchActive(!isSearchActive)}
@@ -178,43 +178,50 @@ const Header = () => {
     return searchComponent;
   }
 
+  const MobileMenu = () => (
+     <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+        <SheetTrigger asChild>
+            <button className="mobile-menu-button">
+            <Menu className="cart-icon" />
+            </button>
+        </SheetTrigger>
+        <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto p-0">
+            <SheetHeader className="p-6 pb-2 border-b border-gray-700 flex flex-row items-center justify-between">
+            <SheetTitle className='text-white'>Menú</SheetTitle>
+                <SheetTrigger>
+                <X className="h-6 w-6 text-white" />
+            </SheetTrigger>
+            </SheetHeader>
+            <div>
+              {renderSearch(true)}
+            </div>
+            <div className="px-6 pt-0 pb-6">
+            {renderNavLinks(true)}
+            </div>
+        </SheetContent>
+    </Sheet>
+  );
+
   return (
     <>
       <header className="site-header">
+        {isMobile ? <MobileMenu /> : renderNavLinks(false)}
         <div className="site-branding">
           <Link href="/">
             <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
           </Link>
         </div>
-        
-        {isMobile === undefined ? null : isMobile ? (
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-               <button className="mobile-menu-button">
-                <Menu className="cart-icon" />
-              </button>
-            </SheetTrigger>
-            <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto p-0">
-               <SheetHeader className="p-6 pb-2 border-b border-gray-700 flex flex-row items-center justify-between">
-                <SheetTitle className='text-white'>Menú</SheetTitle>
-                 <SheetTrigger>
-                  <X className="h-6 w-6 text-white" />
-                </SheetTrigger>
-              </SheetHeader>
-               <div>
-                  {renderSearch(true)}
-               </div>
-               <div className="px-6 pt-0 pb-6">
-                {renderNavLinks(true)}
-              </div>
-            </SheetContent>
-          </Sheet>
-        ) : (
-          renderNavLinks(false)
-        )}
 
         <div className="header-icons">
-         {isMobile === false && renderSearch(false)}
+         {isMobile === false ? renderSearch(false) : (
+             <SheetTrigger asChild>
+                <Search
+                    className="search-icon"
+                    onClick={() => setIsMobileMenuOpen(true)}
+                    color="hsl(var(--accent))"
+                />
+            </SheetTrigger>
+         )}
           <div className="relative">
             <ShoppingCart className="cart-icon" color="hsl(var(--accent))" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (

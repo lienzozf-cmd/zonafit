@@ -961,24 +961,40 @@ footer {
 }
 
 @media (max-width: 1024px) {
-  .site-navigation {
-    display: none;
+    .site-header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      padding: 10px 20px;
+      gap: 10px;
+    }
+  
+    .mobile-menu-button {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  
+    .site-branding {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .site-branding #site-logo {
+      height: 60px;
+      margin-right: 0;
+    }
+  
+    .header-icons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .site-navigation {
+        display: none;
+    }
   }
-  .mobile-menu-button {
-    display: block;
-    position: absolute;
-    right: 70px;
-  }
-  .site-header {
-    justify-content: space-between;
-  }
-   .site-branding {
-    flex-grow: 1;
-  }
-  .header-icons {
-    /* The mobile menu button will be outside this container */
-  }
-}
 
 @media (min-width: 768px) {
   .product-grid {
