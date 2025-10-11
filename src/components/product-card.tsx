@@ -36,7 +36,11 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       const updatedProduct = products.find(p => p.id === product.id);
       const updatedOption = updatedProduct?.options.values.find(v => v.value === selectedOption.value);
       if (updatedOption) {
-        setAvailabilityMessage(`Disponible: ${updatedOption.stock} unidades`);
+        if(updatedOption.stock > 0) {
+            setAvailabilityMessage(`Disponible: ${updatedOption.stock} unidades`);
+        } else {
+            setAvailabilityMessage('Agotado');
+        }
       }
     } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
@@ -95,7 +99,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     });
   };
   
-  const isAvailable = product.options.values.some(option => option.stock > 0);
+  const isSelectedOptionAvailable = selectedOption ? selectedOption.stock > 0 : product.options.values.some(o => o.stock > 0);
   const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
 
   return (
@@ -119,8 +123,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             </Link>
             <p className="product-price">{product.price}</p>
             <div className="flex justify-center my-2">
-                 <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>
-                    {isAvailable ? 'Disponible' : 'Agotado'}
+                 <div className={`product-availability ${isSelectedOptionAvailable ? 'available' : 'unavailable'}`}>
+                    {isSelectedOptionAvailable ? 'Disponible' : 'Agotado'}
                  </div>
             </div>
             <div className="product-info mt-auto">
@@ -131,7 +135,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                         key={option.value}
                         onClick={(e) => handleOptionClick(e, option)}
                         className={selectedOption?.value === option.value ? 'active' : ''}
-                        disabled={option.stock <= 0}
                         >
                         {option.value}
                         </button>
