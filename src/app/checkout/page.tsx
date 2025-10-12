@@ -19,6 +19,7 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { sendOrderEmail } from '@/ai/flows/send-order-email-flow';
 
 const checkoutSchema = z.object({
   firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.').max(50, 'El nombre no puede exceder los 50 caracteres.'),
@@ -48,20 +49,32 @@ export default function CheckoutPage() {
     },
   });
 
-  function onSubmit(data: CheckoutFormValues) {
-    console.log('Datos del pedido:', {
+  async function onSubmit(data: CheckoutFormValues) {
+    const orderDetails = {
       shippingInfo: data,
       orderItems: items,
       orderTotal: total,
-    });
-    
-    toast({
-      title: '¡Pedido realizado con éxito!',
-      description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
-    });
-    
-    clearCart();
-    router.push('/');
+    };
+
+    console.log('Datos del pedido:', orderDetails);
+
+    try {
+      await sendOrderEmail(orderDetails);
+      toast({
+        title: '¡Pedido realizado con éxito!',
+        description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
+      });
+      
+      clearCart();
+      router.push('/');
+    } catch (error) {
+      console.error('Error al enviar el correo del pedido:', error);
+      toast({
+        title: 'Error al procesar el pedido',
+        description: 'Hubo un problema al enviar la confirmación. Por favor, intenta de nuevo.',
+        variant: 'destructive',
+      });
+    }
   }
 
   return (
@@ -187,7 +200,9 @@ export default function CheckoutPage() {
                         )}
                       />
                    </div>
-                  <Button type="submit" variant="destructive" className="w-full text-lg py-6">Confirmar Pedido</Button>
+                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting ? 'Procesando...' : 'Confirmar Pedido'}
+                  </Button>
                 </form>
               </Form>
             </div>
