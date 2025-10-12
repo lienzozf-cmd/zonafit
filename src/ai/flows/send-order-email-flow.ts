@@ -57,15 +57,18 @@ const emailSender = ai.defineTool(
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
-      secure: true, // Use SSL
+      secure: true, // Use SSL/TLS
       auth: {
         user: process.env.EMAIL_SERVER_USER, // Tu correo de Gmail
         pass: process.env.EMAIL_SERVER_PASSWORD, // Tu contraseña de aplicación de Gmail
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_SERVER_USER,
+      from: `ZONA FIT GT <${process.env.EMAIL_SERVER_USER}>`,
       to: input.to,
       subject: input.subject,
       html: input.html,
