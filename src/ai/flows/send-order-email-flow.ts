@@ -68,7 +68,7 @@ const emailSender = ai.defineTool(
     });
 
     const mailOptions = {
-      from: `ZONA FIT GT <${process.env.EMAIL_SERVER_USER}>`,
+      from: `"ZONA FIT GT" <${process.env.EMAIL_SERVER_USER}>`,
       to: input.to,
       subject: input.subject,
       html: input.html,
