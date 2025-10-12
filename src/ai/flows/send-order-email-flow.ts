@@ -55,7 +55,9 @@ const emailSender = ai.defineTool(
   async (input) => {
     // Configuración del transporte de nodemailer
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // Use SSL
       auth: {
         user: process.env.EMAIL_SERVER_USER, // Tu correo de Gmail
         pass: process.env.EMAIL_SERVER_PASSWORD, // Tu contraseña de aplicación de Gmail
