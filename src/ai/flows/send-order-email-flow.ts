@@ -62,9 +62,6 @@ const emailSender = ai.defineTool(
         user: process.env.EMAIL_SERVER_USER, // Tu correo de Gmail
         pass: process.env.EMAIL_SERVER_PASSWORD, // Tu contraseña de aplicación de Gmail
       },
-      tls: {
-        rejectUnauthorized: false
-      }
     });
 
     const mailOptions = {
