@@ -55,20 +55,20 @@ const emailSender = ai.defineTool(
   async (input) => {
     // Configuración del transporte de nodemailer
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true, // Use SSL/TLS
-      auth: {
-        user: process.env.EMAIL_SERVER_USER, // Tu correo de Gmail
-        pass: process.env.EMAIL_SERVER_PASSWORD, // Tu contraseña de aplicación de Gmail
-      },
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL_SERVER_USER,
+            pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
     });
 
     const mailOptions = {
-      from: `"ZONA FIT GT" <${process.env.EMAIL_SERVER_USER}>`,
-      to: input.to,
-      subject: input.subject,
-      html: input.html,
+        from: `"ZONA FIT GT" <${process.env.EMAIL_SERVER_USER}>`,
+        to: input.to,
+        subject: input.subject,
+        html: input.html,
     };
 
     try {
@@ -76,8 +76,7 @@ const emailSender = ai.defineTool(
       return 'Correo enviado exitosamente.';
     } catch (error) {
       console.error('Error al enviar correo:', error);
-      // No lanzamos un error para no detener el flujo de la aplicación
-      return `No se pudo enviar el correo: ${(error as Error).message}`;
+      throw new Error(`No se pudo enviar el correo: ${(error as Error).message}`);
     }
   }
 );
