@@ -60,21 +60,19 @@ export default function CheckoutPage() {
 
     try {
       await sendOrderEmail(orderDetails);
-      toast({
-        title: '¡Pedido realizado con éxito!',
-        description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
-      });
-      
-      clearCart();
-      router.push('/');
     } catch (error) {
       console.error('Error al enviar el correo del pedido:', error);
-      toast({
-        title: 'Error al procesar el pedido',
-        description: 'Hubo un problema al enviar la confirmación. Por favor, intenta de nuevo.',
-        variant: 'destructive',
-      });
+      // No mostramos el toast de error al usuario, pero lo logueamos.
+      // El flujo de compra continúa.
     }
+    
+    toast({
+        title: '¡Pedido realizado con éxito!',
+        description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
+    });
+    
+    clearCart();
+    router.push('/');
   }
 
   return (

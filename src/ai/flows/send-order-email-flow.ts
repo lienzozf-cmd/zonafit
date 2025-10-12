@@ -76,7 +76,8 @@ const emailSender = ai.defineTool(
       return 'Correo enviado exitosamente.';
     } catch (error) {
       console.error('Error al enviar correo:', error);
-      throw new Error(`No se pudo enviar el correo: ${(error as Error).message}`);
+      // No lanzamos un error para no detener el flujo de la aplicación
+      return `No se pudo enviar el correo: ${(error as Error).message}`;
     }
   }
 );
