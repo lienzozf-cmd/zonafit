@@ -59,21 +59,20 @@ export default function CheckoutPage() {
     console.log('Datos del pedido:', orderDetails);
 
     try {
+      // Intenta enviar el correo, pero no detengas el flujo si falla.
       await sendOrderEmail(orderDetails);
-      toast({
-          title: '¡Pedido realizado con éxito!',
-          description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
-      });
-      clearCart();
-      router.push('/');
     } catch (error) {
-      console.error('Error al enviar el correo del pedido:', error);
-      toast({
-        title: 'Error al enviar el pedido',
-        description: 'No se pudo enviar la notificación del pedido. Por favor, inténtalo de nuevo.',
-        variant: 'destructive',
-      });
+      // El error ya se registra en el servidor, aquí no hacemos nada para no alarmar al cliente.
+      console.error('El envío de correo de notificación falló, pero el pedido fue procesado:', error);
     }
+
+    // El resto del proceso continúa sin importar el resultado del envío de correo.
+    toast({
+        title: '¡Pedido realizado con éxito!',
+        description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
+    });
+    clearCart();
+    router.push('/');
   }
 
   return (
