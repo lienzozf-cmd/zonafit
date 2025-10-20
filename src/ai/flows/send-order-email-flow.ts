@@ -153,7 +153,7 @@ const sendOrderEmailFlow = ai.defineFlow(
 
     // Usar la herramienta para enviar el correo
     await emailSender({
-      to: 'rabanalesf22@gmail.com',
+      to: 'rabafam2118@gmail.com',
       subject: `Nuevo Pedido de ${details.shippingInfo.firstName} ${details.shippingInfo.lastName}`,
       html: emailHtml,
     });
@@ -162,5 +162,9 @@ const sendOrderEmailFlow = ai.defineFlow(
 
 // Función exportada que el cliente llamará
 export async function sendOrderEmail(details: OrderDetails) {
-  return await sendOrderEmailFlow(details);
+  try {
+    await sendOrderEmailFlow(details);
+  } catch (error) {
+    console.error("El envío de correo de notificación falló, pero el pedido fue procesado:", error);
+  }
 }
