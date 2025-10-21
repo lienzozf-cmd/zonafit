@@ -206,7 +206,7 @@ export const products: Product[] = [
     is_compression: false,
     images: [
       {
-        src: "/assets/images/marcas/gymshark/hombre/playeras/playera-onyx.png",
+        src: "/assets/images/marcas/gymshark/hombre/onyxnegra.jpg",
         alt: 'Onyx Seamless T-Shirt',
         dataAiHint: 'black shirt',
         option: 'M',
