@@ -611,7 +611,7 @@ export const products: Product[] = [
     subcategory: 'rgmnt',
     brand: 'RGMNT',
     images: [{ src: '/assets/images/marcas/rgmnt/tridente.png', alt: 'Jewelry', dataAiHint: 'men jewelry', option: 'Gold' }],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 5 }, { value: 'Silver', stock: 5 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 5 }] },
   },
   {
     id: 2400,
@@ -1554,4 +1554,5 @@ export const products: Product[] = [
     },
   }
 ];
+
 
