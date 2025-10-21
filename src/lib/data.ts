@@ -602,8 +602,8 @@ export const products: Product[] = [
   },
   {
     id: 2300,
-    name: 'RGMNT Pendant',
-    price: 'Q.850.00',
+    name: 'Trident Pendant - Gold 14K SS "22.5"',
+    price: 'Q.475.00',
     availability: 'Disponible',
     description: 'Eleva tu estilo con este colgante exclusivo de RGMNT. Hecho con materiales de primera calidad para un look audaz y duradero.',
     gender: 'unisex',
@@ -1554,3 +1554,4 @@ export const products: Product[] = [
     },
   }
 ];
+
