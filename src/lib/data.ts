@@ -1665,4 +1665,21 @@ export const products: Product[] = [
     images: [{ src: '/assets/images/marcas/darcsport/placeholder.png', alt: 'Darc Sport T-shirt', dataAiHint: 'men shirt', option: 'S' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 15 }] },
   },
+  {
+    id: 2605,
+    name: 'Vanquish Unconquerable Shorts',
+    price: 'Q.345.00',
+    availability: 'Disponible',
+    description: 'Shorts de alto rendimiento para entrenamientos intensos.',
+    gender: 'hombre',
+    category: 'ropa',
+    subcategory: 'short',
+    brand: 'Vanquish',
+    fabric_type: '90% Polyester, 10% Spandex',
+    is_compression: false,
+    images: [{ src: '/assets/images/marcas/vanquish/placeholder.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
+    options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
+  }
 ];
+
+    
