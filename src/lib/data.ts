@@ -163,7 +163,7 @@ export const products: Product[] = [
         option: 'S',
       },
       {
-        src: "/assets/images/marcas/youngla/hombre/superheroenegro.png",
+        src: "/assets/images/marcas/youngla/hombre/superheroenegra.png",
         alt: 'Black compression shirt',
         dataAiHint: 'black shirt',
         option: 'S',
@@ -171,7 +171,7 @@ export const products: Product[] = [
     ],
     colors: [
       { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' },
-      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroenegro.png' },
+      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroenegra.png' },
     ],
     options: {
       type: 'talla',
@@ -248,13 +248,13 @@ export const products: Product[] = [
         option: 'S',
       },
        {
-        src: "/assets/images/marcas/gymshark/hombre/onyxlightgrey.png",
+        src: "/assets/images/marcas/gymshark/hombre/onyxgris.png",
         alt: 'Onyx Seamless T-Shirt light grey',
         dataAiHint: 'light grey shirt',
         option: 'S',
       },
       {
-        src: "/assets/images/marcas/gymshark/hombre/onyxcarmired.png",
+        src: "/assets/images/marcas/gymshark/hombre/onyxroja.png",
         alt: 'Onyx Seamless T-Shirt carmin red',
         dataAiHint: 'red shirt',
         option: 'S',
@@ -262,8 +262,8 @@ export const products: Product[] = [
     ],
      colors: [
       { name: 'Black/Onyx Grey', hex: '#343434', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxnegra.jpg' },
-      { name: 'Light Grey', hex: '#D3D3D3', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxlightgrey.png' },
-      { name: 'Carmin Red', hex: '#960018', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxcarmired.png' },
+      { name: 'Light Grey', hex: '#D3D3D3', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxgris.png' },
+      { name: 'Carmin Red', hex: '#960018', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxroja.png' },
     ],
     options: {
       type: 'talla',
@@ -1466,3 +1466,6 @@ export const products: Product[] = [
     
 
 
+
+
+    
