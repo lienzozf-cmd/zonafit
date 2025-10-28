@@ -207,7 +207,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: 'Onyx 5.0 Seamless T-Shirt in Black/Onyx Grey',
-    price: 'Q.450.00',
+    price: 'Q.675.00',
     availability: 'Agotado',
     description: 'Experimenta la tecnología sin costuras con la Onyx 5.0. Diseñada para un máximo confort y un rendimiento sin restricciones, esta camiseta es perfecta para cualquier tipo de entrenamiento.',
     gender: 'hombre',
@@ -592,7 +592,7 @@ export const products: Product[] = [
   },
   {
     id: 2304,
-    name: 'Minimal Rope Bracelet - SS Silver "8"',
+    name: 'Minimal Rope Bracelet - SS Silver  "8"',
     price: 'Q.235.00',
     availability: 'Disponible',
     description: 'Pulsera de cuerda minimalista en plata de ley. El complemento perfecto para tu look diario.',
