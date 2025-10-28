@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Product, ProductOption } from '@/lib/data';
+import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 import { useProductStore } from '@/stores/product-store';
@@ -17,10 +17,20 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
   const { addItem } = useCart();
   const { toast } = useToast();
 
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
+  
+  useEffect(() => {
+    if (selectedColor) {
+      setCurrentImage(selectedColor.imageSrc);
+    } else {
+      setCurrentImage(product.images[0].src);
+    }
+  }, [selectedColor, product.images]);
+
 
   useEffect(() => {
     // Set initial selected option if only one exists and is not 'Único'
@@ -53,11 +63,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     setSelectedOption(option);
-    
-    const newImage = product.images.find(img => img.option === option.value);
-    if (newImage) {
-      setCurrentImage(newImage.src);
-    }
+  };
+
+  const handleColorHover = (color: ProductColor) => {
+    setSelectedColor(color);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -106,6 +115,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     <div 
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
+        onMouseLeave={() => product.colors && product.colors.length > 0 && handleColorHover(product.colors[0])}
     >
         <Link href={`/product/${product.id}`} className="product-image-link w-full">
             <div className="product-carousel">
@@ -127,6 +137,20 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                     {isSelectedOptionAvailable ? 'Disponible' : 'Agotado'}
                  </div>
             </div>
+
+            {product.colors && product.colors.length > 0 && (
+                <div className="color-swatches">
+                    {product.colors.map((color) => (
+                    <div
+                        key={color.name}
+                        className="color-swatch"
+                        style={{ backgroundColor: color.hex }}
+                        onMouseEnter={() => handleColorHover(color)}
+                    ></div>
+                    ))}
+                </div>
+            )}
+
             <div className="product-info mt-auto">
                 {showOptions && (
                     <div className="size-options">

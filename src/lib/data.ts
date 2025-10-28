@@ -1,4 +1,5 @@
 
+
 export const navLinks = [
   {
     title: 'HOMBRES',
@@ -107,6 +108,13 @@ export type ProductOption = {
   stock: number;
 };
 
+export type ProductColor = {
+  name: string;
+  hex: string;
+  imageSrc: string;
+};
+
+
 export type Product = {
   id: number;
   name: string;
@@ -122,6 +130,7 @@ export type Product = {
   // Ropa
   fabric_type?: string;
   is_compression?: boolean;
+  colors?: ProductColor[];
   // Suplemento
   benefits?: string;
   servings_info?: string;
@@ -130,7 +139,7 @@ export type Product = {
 export const products: Product[] = [
     {
     id: 1,
-    name: 'Superhero Compression Tees Red',
+    name: 'Superhero Compression Tees',
     price: 'Q.435.00',
     availability: 'Disponible',
     description: 'Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.',
@@ -153,6 +162,16 @@ export const products: Product[] = [
         dataAiHint: 'red shirt man',
         option: 'S',
       },
+      {
+        src: "/assets/images/marcas/youngla/hombre/superheroenegro.png",
+        alt: 'Black compression shirt',
+        dataAiHint: 'black shirt',
+        option: 'S',
+      },
+    ],
+    colors: [
+      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' },
+      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroenegro.png' },
     ],
     options: {
       type: 'talla',
@@ -195,6 +214,11 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
+     colors: [
+      { name: 'Blue', hex: '#0000ff', imageSrc: '/assets/images/marcas/youngla/hombre/warriorazul.png' },
+      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/warriornegra.png' },
+      { name: 'Gray', hex: '#808080', imageSrc: '/assets/images/marcas/youngla/hombre/warriorgris.png' },
+    ],
     options: {
       type: 'talla',
       values: [
@@ -206,7 +230,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    name: 'Onyx 5.0 Seamless T-Shirt in Black/Onyx Grey',
+    name: 'ONYX 5.0 SEAMLESS-T SHIRT',
     price: 'Q.675.00',
     availability: 'Agotado',
     description: 'Experimenta la tecnología sin costuras con la Onyx 5.0. Diseñada para un máximo confort y un rendimiento sin restricciones, esta camiseta es perfecta para cualquier tipo de entrenamiento.',
@@ -221,15 +245,32 @@ export const products: Product[] = [
         src: "/assets/images/marcas/gymshark/hombre/onyxnegra.jpg",
         alt: 'Onyx Seamless T-Shirt',
         dataAiHint: 'black shirt',
-        option: 'M',
+        option: 'Black/Onyx Grey',
+      },
+       {
+        src: "/assets/images/marcas/gymshark/hombre/onyxlightgrey.png",
+        alt: 'Onyx Seamless T-Shirt light grey',
+        dataAiHint: 'light grey shirt',
+        option: 'Light Grey',
+      },
+      {
+        src: "/assets/images/marcas/gymshark/hombre/onyxcarmired.png",
+        alt: 'Onyx Seamless T-Shirt carmin red',
+        dataAiHint: 'red shirt',
+        option: 'Carmin Red',
       },
     ],
+     colors: [
+      { name: 'Black/Onyx Grey', hex: '#343434', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxnegra.jpg' },
+      { name: 'Light Grey', hex: '#D3D3D3', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxlightgrey.png' },
+      { name: 'Carmin Red', hex: '#960018', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxcarmired.png' },
+    ],
     options: {
-      type: 'talla',
+      type: 'color',
       values: [
-        { value: 'S', stock: 0 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
+        { value: 'Black/Onyx Grey', stock: 0 },
+        { value: 'Light Grey', stock: 0 },
+        { value: 'Carmin Red', stock: 0 },
       ],
     },
   },
@@ -252,6 +293,9 @@ export const products: Product[] = [
         dataAiHint: 'black red shirt',
         option: 'S',
       },
+    ],
+    colors: [
+        { name: 'Black/Red', hex: '#000000', imageSrc: '/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png' }
     ],
     options: {
       type: 'talla',
@@ -281,6 +325,9 @@ export const products: Product[] = [
         dataAiHint: 'green crop top',
         option: 'S',
       },
+    ],
+    colors: [
+        { name: 'Green', hex: '#008000', imageSrc: '/assets/images/marcas/gymshark/mujer/anabelgyms.jpg' }
     ],
     options: {
       type: 'talla',
@@ -1370,3 +1417,4 @@ export const products: Product[] = [
 ];
 
     
+
