@@ -254,7 +254,7 @@ export const products: Product[] = [
         option: 'S',
       },
       {
-        src: "/assets/images/marcas/gymshark/hombre/onyxroja.png",
+        src: "/assets/images/marcas/gymshark/hombre/onyxroja.jpg",
         alt: 'Onyx Seamless T-Shirt carmin red',
         dataAiHint: 'red shirt',
         option: 'S',
@@ -263,7 +263,7 @@ export const products: Product[] = [
      colors: [
       { name: 'Black/Onyx Grey', hex: '#343434', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxnegra.jpg' },
       { name: 'Light Grey', hex: '#D3D3D3', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxgris.png' },
-      { name: 'Carmin Red', hex: '#960018', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxroja.png' },
+      { name: 'Carmin Red', hex: '#960018', imageSrc: '/assets/images/marcas/gymshark/hombre/onyxroja.jpg' },
     ],
     options: {
       type: 'talla',

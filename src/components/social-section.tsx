@@ -9,7 +9,7 @@ const socialLinks = [
 const SocialSection = () => {
     return (
         <section className="social-media">
-            <h2 id="social-media-heading" className="animate-pulse">Síguenos en redes sociales</h2>
+            <h2 className="social-media-heading-animated">Síguenos en redes sociales</h2>
             <div className="social-icons">
                 {socialLinks.map(link => (
                     <a href={link.href} key={link.alt} target="_blank" rel="noopener noreferrer">

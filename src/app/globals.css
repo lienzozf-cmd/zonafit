@@ -678,13 +678,18 @@ main > .container {
 .social-media h2 {
   font-size: 2.5em;
   margin-bottom: 15px;
-  color: var(--accent-color);
 }
 
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+@keyframes color-cycle {
+  0% { color: #E50000; } /* Accent Color */
+  25% { color: #FFD700; } /* Gold */
+  50% { color: #FFFFFF; } /* White */
+  75% { color: #C0C0C0; } /* Silver */
+  100% { color: #E50000; } /* Accent Color */
+}
+
+.social-media-heading-animated {
+  animation: color-cycle 5s linear infinite;
 }
 
 .social-icons {
