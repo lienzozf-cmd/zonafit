@@ -222,8 +222,8 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 1 },
-        { value: 'M', stock: 1 },
+        { value: 'S', stock: 0 },
+        { value: 'M', stock: 2 },
         { value: 'L', stock: 0 },
       ],
     },
@@ -1471,3 +1471,4 @@ export const products: Product[] = [
     
 
     
+
