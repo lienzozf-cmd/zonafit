@@ -716,7 +716,7 @@ main > .container {
 }
 
 footer {
-  background-color: transparent;
+  background-color: #000000;
   color: #fff;
   border-top: 3px solid var(--accent-color);
 }
