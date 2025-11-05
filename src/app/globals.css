@@ -565,6 +565,8 @@ main > .container {
   height: 75vh;
   overflow: hidden;
   margin: 40px 0;
+  border-top: 2px solid #87CEEB;
+  border-bottom: 2px solid #87CEEB;
 }
 
 .video-overlay {
@@ -1065,6 +1067,7 @@ footer {
     background-color: white;
     border-color: var(--accent-color);
   }
+
 
 
 
