@@ -53,6 +53,11 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       const newImage = product.images.find(img => img.option === selectedOption.value);
       if (newImage) {
         setCurrentImage(newImage.src);
+      } else {
+        // if no image for option, maybe there is for color
+         if (selectedColor) {
+            setCurrentImage(selectedColor.imageSrc);
+         }
       }
 
     } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
@@ -60,7 +65,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     } else {
         setAvailabilityMessage('');
     }
-  }, [selectedOption, products, product]);
+  }, [selectedOption, products, product, selectedColor]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
