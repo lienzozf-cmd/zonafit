@@ -46,7 +46,7 @@ export default function TanksPage() {
   return (
     <>
       <Header />
-      <main className="bg-black text-white">
+      <main className="bg-transparent text-white">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-center mb-8 text-white">
             Hombres - Tanks

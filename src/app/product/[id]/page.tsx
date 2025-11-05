@@ -114,7 +114,7 @@ const ProductDetailPage = () => {
   return (
     <>
     <Header />
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-transparent text-white min-h-screen">
       <div className="container mx-auto px-4 py-8 md:py-16">
         <Button variant="ghost" onClick={() => router.back()} className="mb-8 hover:bg-gray-800 hover:text-white">
             <ArrowLeft className="mr-2 h-4 w-4" />
