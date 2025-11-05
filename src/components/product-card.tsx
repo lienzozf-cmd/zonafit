@@ -33,14 +33,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
 
   useEffect(() => {
-    // Set initial selected option if only one exists or is the only one with stock.
-    const availableOptions = product.options.values.filter(o => o.stock > 0);
-    if (product.options.values.length === 1) {
-      setSelectedOption(product.options.values[0]);
-    } else if (availableOptions.length === 1) {
-      setSelectedOption(availableOptions[0]);
-    }
-  }, [product.options.values, product.id]);
+    // We don't pre-select any options anymore to avoid the button styling issue.
+  }, [product.id]);
 
   useEffect(() => {
     if (selectedOption) {
@@ -183,7 +177,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 <button 
                     className="add-to-cart-button" 
                     onClick={handleAddToCart} 
-                    disabled={!selectedOption || selectedOption.stock <= 0}
+                    disabled={!selectedOption || (selectedOption && selectedOption.stock <= 0)}
                 >
                   {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
                 </button>
