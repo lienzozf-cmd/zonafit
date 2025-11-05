@@ -33,11 +33,14 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
 
   useEffect(() => {
-    // Set initial selected option if only one exists
+    // Set initial selected option if only one exists or is the only one with stock.
+    const availableOptions = product.options.values.filter(o => o.stock > 0);
     if (product.options.values.length === 1) {
       setSelectedOption(product.options.values[0]);
+    } else if (availableOptions.length === 1) {
+      setSelectedOption(availableOptions[0]);
     }
-  }, [product.options.values]);
+  }, [product.options.values, product.id]);
 
   useEffect(() => {
     if (selectedOption) {
@@ -167,6 +170,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                         key={option.value}
                         onClick={(e) => handleOptionClick(e, option)}
                         className={selectedOption?.value === option.value ? 'active' : ''}
+                        disabled={option.stock <= 0}
                         >
                         {option.value}
                         </button>
