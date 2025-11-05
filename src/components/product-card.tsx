@@ -33,11 +33,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
 
   useEffect(() => {
-    // Set initial selected option if only one exists and is not 'Único'
-    if (product.options.values.length === 1 && product.options.values[0].value !== 'Único') {
+    // Set initial selected option if only one exists
+    if (product.options.values.length === 1) {
       setSelectedOption(product.options.values[0]);
-    } else if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
-        setSelectedOption(product.options.values[0]);
     }
   }, [product.options.values]);
 
