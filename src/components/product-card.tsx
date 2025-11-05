@@ -52,12 +52,17 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             setAvailabilityMessage('Agotado');
         }
       }
+      const newImage = product.images.find(img => img.option === selectedOption.value);
+      if (newImage) {
+        setCurrentImage(newImage.src);
+      }
+
     } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     } else {
         setAvailabilityMessage('');
     }
-  }, [selectedOption, products, product.id, product.options.type, product.options.values]);
+  }, [selectedOption, products, product]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
