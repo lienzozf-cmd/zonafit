@@ -163,7 +163,7 @@ export const products: Product[] = [
         option: 'S',
       },
       {
-        src: "/assets/images/marcas/youngla/hombre/superheroenegra.png",
+        src: "/assets/images/marcas/youngla/hombre/superheronegra.png",
         alt: 'Black compression shirt',
         dataAiHint: 'black shirt',
         option: 'S',
@@ -171,7 +171,7 @@ export const products: Product[] = [
     ],
     colors: [
       { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' },
-      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroenegra.png' },
+      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheronegra.png' },
     ],
     options: {
       type: 'talla',
@@ -969,8 +969,8 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/placeholder.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/placeholder.png' }],
+    images: [{ src: '/assets/images/marcas/vanquish/hombre/shorts/short-unconquerable.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/hombre/shorts/short-unconquerable.png' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1473,3 +1473,6 @@ export const products: Product[] = [
     
 
 
+
+
+    
