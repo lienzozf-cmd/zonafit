@@ -914,8 +914,8 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/darcsport/Premium Tee  samurai bushido.png', alt: 'Premium Tee SAMURAI bushido', dataAiHint: 'men shirt', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/darcsport/Premium Tee  samurai bushido.png' }],
+    images: [{ src: '/assets/images/marcas/darcsport/Premium Tee samurai bushido.png', alt: 'Premium Tee SAMURAI bushido', dataAiHint: 'men shirt', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/darcsport/Premium Tee samurai bushido.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] },
   },
   {
@@ -962,8 +962,8 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/hombre/shorts/Vanquishunconquerableshortsnegro.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/hombre/shorts/Vanquishunconquerableshortsnegro.png' }],
+    images: [{ src: '/assets/images/marcas/vanquish/shorts/Vanquishunconquerableshortsnegro.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/shorts/Vanquishunconquerableshortsnegro.png' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
@@ -1074,8 +1074,14 @@ export const products: Product[] = [
     brand: 'YoungLA',
     fabric_type: '100% Cotton',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png', alt: 'Revenge Tees', dataAiHint: 'graphic tee', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png' }],
+    images: [
+      { src: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png', alt: 'Revenge Tees Black', dataAiHint: 'graphic tee black', option: 'S' },
+      { src: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.png', alt: 'Revenge Tees Green', dataAiHint: 'graphic tee green', option: 'S' }
+    ],
+    colors: [
+        { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png' },
+        { name: 'Green', hex: '#008000', imageSrc: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.png' }
+    ],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }, { value: 'S', stock: 10 }] },
   },
   {
@@ -1209,8 +1215,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/pantalones/Ease Woven Joggers gris.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/pantalones/Ease Woven Joggers gris.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] }
   },
   {
@@ -1241,8 +1247,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Algodón, 20% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/sudaderas/Legacy Hoodie negra.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/sudaderas/Legacy Hoodie negra.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] }
   },
   {
@@ -1289,8 +1295,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/pantalones/Rest Day Essentials Cargo Joggers negro.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'M' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/pantalones/Rest Day Essentials Cargo Joggers negro.png' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] }
   },
   {
@@ -1441,6 +1447,7 @@ export const products: Product[] = [
     
 
     
+
 
 
 
