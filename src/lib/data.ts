@@ -969,8 +969,8 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/hombre/shorts/Unconquerable Shorts NEGRO.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/hombre/shorts/Unconquerable Shorts NEGRO.png' }],
+    images: [{ src: '/assets/images/marcas/vanquish/hombre/shorts/Vanquishunconquerableshortsnegro.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/hombre/shorts/Vanquishunconquerableshortsnegro.png' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
