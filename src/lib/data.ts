@@ -974,38 +974,6 @@ export const products: Product[] = [
     options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
   },
   {
-    id: 2606,
-    name: 'Superman Compression Tees',
-    price: 'Q.515.00',
-    availability: 'Disponible',
-    description: 'Playera de compresión de Superman para un rendimiento heroico.',
-    gender: 'hombre',
-    category: 'ropa',
-    subcategory: 'playera',
-    brand: 'YoungLA',
-    fabric_type: '88% Polyester, 12% Spandex',
-    is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/superheroeroja.png', alt: 'Superman Compression Tees', dataAiHint: 'superman shirt', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' }],
-    options: { type: 'talla', values: [{ value: 'M', stock: 10 }] },
-  },
-  {
-    id: 2607,
-    name: 'Warrior Compression Hoodies',
-    price: 'Q.480.00',
-    availability: 'Disponible',
-    description: 'Sudadera con capucha de compresión para mantenerte cálido y listo para la acción.',
-    gender: 'hombre',
-    category: 'ropa',
-    subcategory: 'sudadera',
-    brand: 'YoungLA',
-    fabric_type: '90% Nylon, 10% Elastane',
-    is_compression: true,
-    images: [{ src: '/assets/images/marcas/youngla/hombre/warriornegra.png', alt: 'Warrior Compression Hoodies', dataAiHint: 'compression hoodie', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/youngla/hombre/warriornegra.png' }],
-    options: { type: 'talla', values: [{ value: 'S', stock: 5 }, { value: 'M', stock: 5 }] },
-  },
-  {
     id: 2608,
     name: '4071 - Gods & Heroes Tees',
     price: 'Q.435.00',
@@ -1474,5 +1442,7 @@ export const products: Product[] = [
 
 
 
+
+    
 
     
