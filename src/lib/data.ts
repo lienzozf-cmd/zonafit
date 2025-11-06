@@ -1311,8 +1311,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Algodón, 20% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Crest 7 Shorts gris.png', alt: 'CREST 7" SHORTS', dataAiHint: 'men shorts', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Crest 7 Shorts gris.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png', alt: 'CREST 7" SHORTS', dataAiHint: 'men shorts', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 10 }] }
   },
   {
@@ -1447,4 +1447,5 @@ export const products: Product[] = [
     
 
     
+
 
