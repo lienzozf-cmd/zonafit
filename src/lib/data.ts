@@ -150,7 +150,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
+        src: "/assets/images/marcas/youngla/hombre/superheroroja.png",
         alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
         option: 'S',
@@ -169,7 +169,7 @@ export const products: Product[] = [
       },
     ],
     colors: [
-      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' },
+      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroroja.png' },
       { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheronegra.png' },
     ],
     options: {
@@ -1327,8 +1327,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Lifting Club Apparel Graphic Shorts NEGRO.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Lifting Club Apparel Graphic Shorts NEGRO.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png' }],
     options: { type: 'talla', values: [{ value: 'XL', stock: 10 }] }
   },
   {
@@ -1447,5 +1447,6 @@ export const products: Product[] = [
     
 
     
+
 
 
