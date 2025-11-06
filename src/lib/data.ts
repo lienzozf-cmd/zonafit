@@ -155,12 +155,6 @@ export const products: Product[] = [
         dataAiHint: 'red shirt',
         option: 'S',
       },
-       {
-        src: "/assets/images/marcas/youngla/hombre/superherojarojaatras.png",
-        alt: 'Red compression shirt back',
-        dataAiHint: 'red shirt man',
-        option: 'S',
-      },
       {
         src: "/assets/images/marcas/youngla/hombre/superheronegra.png",
         alt: 'Black compression shirt',
@@ -1447,6 +1441,7 @@ export const products: Product[] = [
     
 
     
+
 
 
 
