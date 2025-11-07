@@ -48,7 +48,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         }
       }
       
-      // Don't change the image based on size selection if a color is already selected
       const newImageForOption = product.images.find(img => img.option === selectedOption.value);
       if (newImageForOption && !selectedColor) {
           setCurrentImage(newImageForOption.src);
@@ -71,6 +70,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleColorHover = (color: ProductColor) => {
     setSelectedColor(color);
+    setSelectedOption(null); // Reset size selection when color changes
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -119,7 +119,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     <div 
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
-        onMouseLeave={() => product.colors && product.colors.length > 0 && handleColorHover(product.colors[0])}
+        onMouseLeave={() => {
+            if (product.colors && product.colors.length > 0) {
+                handleColorHover(product.colors[0]);
+            }
+            setSelectedOption(null);
+        }}
     >
         <Link href={`/product/${product.id}`} className="product-image-link w-full">
             <div className="product-carousel">
