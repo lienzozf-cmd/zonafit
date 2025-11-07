@@ -188,11 +188,6 @@ const Header = () => {
         <SheetContent side="left" className="bg-black text-white w-full max-w-sm overflow-y-auto p-0">
             <SheetHeader className="p-6 pb-2 border-b border-gray-700 flex flex-row items-center justify-between">
             <SheetTitle className='text-white'>Menú</SheetTitle>
-                <SheetTrigger asChild>
-                  <button>
-                    <X className="h-6 w-6 text-white" />
-                  </button>
-                </SheetTrigger>
             </SheetHeader>
             <div>
               {renderSearch(true)}
