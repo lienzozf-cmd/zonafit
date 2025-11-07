@@ -26,7 +26,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   useEffect(() => {
     if (selectedColor) {
       setCurrentImage(selectedColor.imageSrc);
-    } else {
+    } else if (product.images.length > 0) {
       setCurrentImage(product.images[0].src);
     }
   }, [selectedColor, product.images]);
@@ -47,14 +47,13 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             setAvailabilityMessage('Agotado');
         }
       }
-      const newImage = product.images.find(img => img.option === selectedOption.value);
-      if (newImage) {
-        setCurrentImage(newImage.src);
-      } else {
-        // if no image for option, maybe there is for color
-         if (selectedColor) {
-            setCurrentImage(selectedColor.imageSrc);
-         }
+      
+      // Don't change the image based on size selection if a color is already selected
+      const newImageForOption = product.images.find(img => img.option === selectedOption.value);
+      if (newImageForOption && !selectedColor) {
+          setCurrentImage(newImageForOption.src);
+      } else if (selectedColor) {
+          setCurrentImage(selectedColor.imageSrc);
       }
 
     } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {

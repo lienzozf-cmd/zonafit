@@ -150,21 +150,21 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: "/assets/images/marcas/youngla/hombre/superhero/superheroroja.png",
+        src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
         alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
         option: 'S',
       },
       {
-        src: "/assets/images/marcas/youngla/hombre/superhero/superheronegra.png",
+        src: "/assets/images/marcas/youngla/hombre/superheroenegra.png",
         alt: 'Black compression shirt',
         dataAiHint: 'black shirt',
         option: 'S',
       },
     ],
     colors: [
-      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superhero/superheroroja.png' },
-      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superhero/superheronegra.png' },
+      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' },
+      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroenegra.png' },
     ],
     options: {
       type: 'talla',
@@ -494,32 +494,6 @@ export const products: Product[] = [
     options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
   },
   {
-    id: 1500,
-    name: 'Gym Backpack',
-    price: 'Q.500.00',
-    availability: 'Disponible',
-    description: 'Lleva todo tu equipo de gimnasio en esta mochila espaciosa y duradera.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'mochila',
-    brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/mochilas/mochila.png', alt: 'Backpack', dataAiHint: 'gym backpack', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
-  },
-  {
-    id: 1600,
-    name: 'Duffle Bag',
-    price: 'Q.600.00',
-    availability: 'Disponible',
-    description: 'Maleta de gimnasio perfecta para viajes o para llevar todo lo que necesitas para entrenar.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'maleta',
-    brand: 'Generic',
-    images: [{ src: '/assets/images/accesorios/maletas/maleta.png', alt: 'Duffle Bag', dataAiHint: 'gym bag', option: 'Único' }],
-    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
-  },
-  {
     id: 1800,
     name: 'Whey Protein Isolate',
     price: 'Q.550.00',
@@ -604,12 +578,12 @@ export const products: Product[] = [
     category: 'joyeria',
     subcategory: 'rgmnt',
     brand: 'RGMNT',
-    images: [{ src: '/assets/images/marcas/rgmnt/placeholder.png', alt: 'Gold Rope Chain', dataAiHint: 'gold chain', option: 'Gold' }],
+    images: [{ src: '/assets/images/marcas/rgmnt/Minimal Rope Chain gold.png', alt: 'Gold Rope Chain', dataAiHint: 'gold chain', option: 'Gold' }],
     options: { type: 'material', values: [{ value: 'Gold', stock: 1 }] },
   },
   {
     id: 2302,
-    name: 'Minimal Rope Chain -14K Gold SS "8"',
+    name: 'Minimal Rope Bracelet Gold -14K Gold SS "8"',
     price: 'Q.255.00',
     availability: 'Disponible',
     description: 'Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.',
@@ -617,7 +591,7 @@ export const products: Product[] = [
     category: 'joyeria',
     subcategory: 'rgmnt',
     brand: 'RGMNT',
-    images: [{ src: '/assets/images/marcas/rgmnt/placeholder.png', alt: 'Gold Rope Bracelet', dataAiHint: 'gold bracelet', option: 'Gold' }],
+    images: [{ src: '/assets/images/marcas/rgmnt/Minimal Rope Bracelet gold.png', alt: 'Gold Rope Bracelet', dataAiHint: 'gold bracelet', option: 'Gold' }],
     options: { type: 'material', values: [{ value: 'Gold', stock: 1 }] },
   },
   {
@@ -630,7 +604,7 @@ export const products: Product[] = [
     category: 'joyeria',
     subcategory: 'rgmnt',
     brand: 'RGMNT',
-    images: [{ src: '/assets/images/marcas/rgmnt/placeholder.png', alt: 'Silver Rope Chain', dataAiHint: 'silver chain', option: 'Silver' }],
+    images: [{ src: '/assets/images/marcas/rgmnt/Minimal Rope Chain silver.png', alt: 'Silver Rope Chain', dataAiHint: 'silver chain', option: 'Silver' }],
     options: { type: 'material', values: [{ value: 'Silver', stock: 1 }] },
   },
   {
@@ -643,7 +617,7 @@ export const products: Product[] = [
     category: 'joyeria',
     subcategory: 'rgmnt',
     brand: 'RGMNT',
-    images: [{ src: '/assets/images/marcas/rgmnt/placeholder.png', alt: 'Silver Rope Bracelet', dataAiHint: 'silver bracelet', option: 'Silver' }],
+    images: [{ src: '/assets/images/marcas/rgmnt/Minimal Rope Bracelet silver.png', alt: 'Silver Rope Bracelet', dataAiHint: 'silver bracelet', option: 'Silver' }],
     options: { type: 'material', values: [{ value: 'Silver', stock: 1 }] },
   },
   {
@@ -1180,7 +1154,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'YoungLA',
-    images: [{ src: '/assets/images/marcas/youngla/accesorios/933 YoungLA Keychains negro.png', alt: 'YoungLA Keychains', dataAiHint: 'keychain', option: 'Único' }],
+    images: [{ src: '/assets/images/Accesorios/933 YoungLA Keychains negro.png', alt: 'YoungLA Keychains', dataAiHint: 'keychain', option: 'Único' }],
     options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
   },
   {
@@ -1193,7 +1167,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'calcetin',
     brand: 'Gymshark',
-    images: [{ src: '/assets/images/marcas/gymshark/accesorios/Crew Socks 3pk blancos talla s.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'S' }],
+    images: [{ src: '/assets/images/Accesorios/Crew Socks 3pk blancos talla s.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'S' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 1 }] },
   },
   {
@@ -1206,7 +1180,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'calcetin',
     brand: 'YoungLA',
-    images: [{ src: '/assets/images/marcas/youngla/accesorios/Crew Socks 3pk negro, blanco, gris.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'S' }],
+    images: [{ src: '/assets/images/Accesorios/Crew Socks 3pk negro, blanco, gris.png', alt: 'Crew Socks 3pk', dataAiHint: 'fitness socks', option: 'S' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
   {
@@ -1317,8 +1291,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Algodón, 20% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png', alt: 'CREST 7" SHORTS', dataAiHint: 'men shorts', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/Crest7.png', alt: 'CREST 7" SHORTS', dataAiHint: 'men shorts', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Crest7.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] }
   },
   {
@@ -1333,8 +1307,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png' }],
     options: { type: 'talla', values: [{ value: 'XL', stock: 1 }] }
   },
   {
@@ -1379,7 +1353,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'calcetin',
     brand: 'Gymshark',
-    images: [{ src: '/assets/images/marcas/gymshark/accesorios/Sets and Reps 3pk Crew.png', alt: 'Sets and Reps 3pk Crew Socks', dataAiHint: 'fitness socks', option: 'Sets' }],
+    images: [{ src: '/assets/images/Accesorios/Sets and Reps 3pk Crew.png', alt: 'Sets and Reps 3pk Crew Socks', dataAiHint: 'fitness socks', option: 'Sets' }],
     options: { type: 'color', values: [{ value: 'negro, blanco y verde', stock: 1 }] },
   },
   {
@@ -1392,7 +1366,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'Gymshark',
-    images: [{ src: '/assets/images/marcas/gymshark/accesorios/Silicone Lifting Straps negro.png', alt: 'Lifting Straps', dataAiHint: 'lifting straps', option: 'Negro' }],
+    images: [{ src: '/assets/images/Accesorios/Silicone Lifting Straps negro.png', alt: 'Lifting Straps', dataAiHint: 'lifting straps', option: 'Negro' }],
     options: { type: 'color', values: [{ value: 'Negro', stock: 1 }] }
   },
   {
@@ -1405,7 +1379,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'equipo',
     brand: 'YoungLA',
-    images: [{ src: '/assets/images/marcas/youngla/accesorios/Silicone Lifting Straps morado.png', alt: 'Lifting Straps', dataAiHint: 'lifting straps', option: 'Lila' }],
+    images: [{ src: '/assets/images/Accesorios/Silicone Lifting Straps morado.png', alt: 'Lifting Straps', dataAiHint: 'lifting straps', option: 'Lila' }],
     options: { type: 'color', values: [{ value: 'Lila', stock: 1 }] }
   },
   {
@@ -1418,7 +1392,7 @@ export const products: Product[] = [
     category: 'accesorio',
     subcategory: 'shaker',
     brand: 'Gymshark',
-    images: [{ src: '/assets/images/marcas/gymshark/accesorios/14OZ SHAKER BOTTLE.png', alt: 'Shaker Bottle', dataAiHint: 'shaker bottle', option: 'Único' }],
+    images: [{ src: '/assets/images/Accesorios/14OZ SHAKER BOTTLE.png', alt: 'Shaker Bottle', dataAiHint: 'shaker bottle', option: 'Único' }],
     options: { type: 'color', values: [{ value: 'Único', stock: 1 }] }
   },
   {
