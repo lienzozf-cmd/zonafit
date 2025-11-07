@@ -69,8 +69,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   };
 
   const handleColorHover = (color: ProductColor) => {
-    setSelectedColor(color);
-    setSelectedOption(null); // Reset size selection when color changes
+    if (selectedColor?.name !== color.name) {
+        setSelectedColor(color);
+        setSelectedOption(null); // Reset size selection when color changes
+    }
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
