@@ -65,14 +65,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
-    setSelectedOption(option);
+    setSelectedOption(prev => (prev?.value === option.value ? null : option));
   };
 
   const handleColorHover = (color: ProductColor) => {
-    if (selectedColor?.name !== color.name) {
-        setSelectedColor(color);
-        setSelectedOption(null); // Reset size selection when color changes
-    }
+    setSelectedColor(color);
+    setSelectedOption(null); // Reset size selection when color changes
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -123,7 +121,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
             if (product.colors && product.colors.length > 0) {
-                handleColorHover(product.colors[0]);
+                // Do not reset color on mouse leave, keep the last hovered one.
             }
             setSelectedOption(null);
         }}

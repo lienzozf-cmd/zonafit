@@ -150,28 +150,28 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: "/assets/images/marcas/youngla/hombre/superheroeroja.png",
+        src: "/assets/images/marcas/youngla/hombre/superhero/superheroroja.png",
         alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
         option: 'S',
       },
       {
-        src: "/assets/images/marcas/youngla/hombre/superheroenegra.png",
+        src: "/assets/images/marcas/youngla/hombre/superhero/superheronegra.png",
         alt: 'Black compression shirt',
         dataAiHint: 'black shirt',
         option: 'S',
       },
     ],
     colors: [
-      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroeroja.png' },
-      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superheroenegra.png' },
+      { name: 'Red', hex: '#ff0000', imageSrc: '/assets/images/marcas/youngla/hombre/superhero/superheroroja.png' },
+      { name: 'Black', hex: '#000000', imageSrc: '/assets/images/marcas/youngla/hombre/superhero/superheronegra.png' },
     ],
     options: {
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
       ],
     },
   },
@@ -215,9 +215,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
+        { value: 'S', stock: 1 },
         { value: 'M', stock: 1 },
-        { value: 'L', stock: 0 },
+        { value: 'L', stock: 1 },
       ],
     },
   },
@@ -261,9 +261,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
       ],
     },
   },
@@ -293,9 +293,9 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
       ],
     },
   },
@@ -936,8 +936,8 @@ export const products: Product[] = [
     brand: 'Vanquish',
     fabric_type: '90% Polyester, 10% Spandex',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/vanquish/Vanquishunconquerableshortsnegro.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/Vanquishunconquerableshortsnegro.png' }],
+    images: [{ src: '/assets/images/marcas/vanquish/shorts/Vanquishunconquerableshortsnegro.png', alt: 'Vanquish Unconquerable Shorts', dataAiHint: 'men shorts', option: 'M' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/vanquish/shorts/Vanquishunconquerableshortsnegro.png' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
   },
   {
@@ -1195,8 +1195,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/pantalones/Ease Woven Joggers gris.png', alt: 'Ease Woven Joggers', dataAiHint: 'men joggers', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/pantalones/Ease Woven Joggers gris.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] }
   },
   {
@@ -1227,8 +1227,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Algodón, 20% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/sudaderas/Legacy Hoodie negra.png', alt: 'Legacy Hoodie', dataAiHint: 'men hoodie', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/sudaderas/Legacy Hoodie negra.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] }
   },
   {
@@ -1275,8 +1275,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'M' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/pantalones/Rest Day Essentials Cargo Joggers negro.png', alt: 'Rest Day Essentials Cargo Joggers', dataAiHint: 'men joggers', option: 'M' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/pantalones/Rest Day Essentials Cargo Joggers negro.png' }],
     options: { type: 'talla', values: [{ value: 'M', stock: 1 }] }
   },
   {
@@ -1291,8 +1291,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '80% Algodón, 20% Poliéster',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Crest7.png', alt: 'CREST 7" SHORTS', dataAiHint: 'men shorts', option: 'S' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Crest7.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png', alt: 'CREST 7" SHORTS', dataAiHint: 'men shorts', option: 'S' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png' }],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] }
   },
   {
@@ -1307,8 +1307,8 @@ export const products: Product[] = [
     brand: 'Gymshark',
     fabric_type: '100% Algodón',
     is_compression: false,
-    images: [{ src: '/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
-    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png' }],
+    images: [{ src: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png', alt: 'Lifting Club Apparel Graphic Shorts', dataAiHint: 'men shorts', option: 'XL' }],
+    colors: [{ name: 'Default', hex: '#808080', imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png' }],
     options: { type: 'talla', values: [{ value: 'XL', stock: 1 }] }
   },
   {
@@ -1497,3 +1497,4 @@ export const products: Product[] = [
 
 
     
+
