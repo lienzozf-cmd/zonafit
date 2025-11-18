@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 const brands = [
   { src: '/assets/images/logos/vanquish.jpeg?v=2', alt: 'Vanquish', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/darc.png?v=2', alt: 'Darc Sport', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/darc.png?v=3', alt: 'Darc Sport', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/dragonp.png?v=2', alt: 'Dragon Pharma', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/gymshark.png?v=8', alt: 'Gymshark', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/gymshark.png?v=9', alt: 'Gymshark', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/youngla.png?v=3', alt: 'YoungLA', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/raw.png?v=2', alt: 'Raw', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/bumenergy.png?v=7', alt: 'Bum Energy', dataAiHint: 'logo fitness' },
