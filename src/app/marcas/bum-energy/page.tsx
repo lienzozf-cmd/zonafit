@@ -9,12 +9,12 @@ import { useProductStore } from '@/stores/product-store';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
 
-export default function C4EnergyPage() {
+export default function BumEnergyPage() {
   const { products } = useProductStore();
   const [sortOption, setSortOption] = useState('');
 
   const filteredProducts = products.filter(
-    (product) => product.brand === 'C4 Energy'
+    (product) => product.brand === 'Bum Energy'
   );
 
   const sortProducts = (products: Product[], option: string) => {
@@ -37,12 +37,12 @@ export default function C4EnergyPage() {
       <main className="bg-transparent text-white">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-center mb-8 text-white">
-            Marca - C4 Energy
+            Marca - Bum Energy
           </h1>
           <FilterSortControls
             sortOption={sortOption}
             setSortOption={setSortOption}
-            selectedBrand={'C4 Energy'}
+            selectedBrand={'Bum Energy'}
             setSelectedBrand={() => {}}
             brands={[]}
             hideBrandFilter={true}

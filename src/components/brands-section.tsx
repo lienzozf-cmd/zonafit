@@ -7,9 +7,9 @@ const brands = [
   { src: '/assets/images/logos/darc.jpeg', alt: 'Darc Sport', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/dragonp.png', alt: 'Dragon Pharma', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/gymsharkk.jpeg', alt: 'Gymshark', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/youngla.png', alt: 'YoungLA', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/youngla.png?v=2', alt: 'YoungLA', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/raw.png', alt: 'Raw', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/c4.png', alt: 'C4 Energy', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/BumEnergy.png', alt: 'Bum Energy', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/rgmnt.jpeg', alt: 'RGMNT', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/civilr.png?v=5', alt: 'Civil Regime', dataAiHint: 'logo fitness' },
 ];
