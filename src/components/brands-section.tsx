@@ -10,7 +10,7 @@ const brands = [
   { src: '/assets/images/logos/youngla.png?v=2', alt: 'YoungLA', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/raw.png', alt: 'Raw', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/bumenergy.png?v=6', alt: 'Bum Energy', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/rgmnt.jpeg', alt: 'RGMNT', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/rgmnt.png', alt: 'RGMNT', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/civilr.png?v=5', alt: 'Civil Regime', dataAiHint: 'logo fitness' },
 ];
 
