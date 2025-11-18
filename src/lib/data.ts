@@ -2108,7 +2108,7 @@ export const products: Product[] = [
     is_compression: false,
     images: [
       {
-        src: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png',
+        src: '/assets/images/marcas/gymshark/hombre/Crest7.png',
         alt: 'CREST 7" SHORTS',
         dataAiHint: 'men shorts',
         option: 'S',
@@ -2118,7 +2118,7 @@ export const products: Product[] = [
       {
         name: 'Default',
         hex: '#808080',
-        imageSrc: '/assets/images/marcas/gymshark/hombre/shorts/Crest7.png',
+        imageSrc: '/assets/images/marcas/gymshark/hombre/Crest7.png',
       },
     ],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
@@ -2137,7 +2137,7 @@ export const products: Product[] = [
     is_compression: false,
     images: [
       {
-        src: '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png',
+        src: '/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png',
         alt: 'Lifting Club Apparel Graphic Shorts',
         dataAiHint: 'men shorts',
         option: 'XL',
@@ -2148,7 +2148,7 @@ export const products: Product[] = [
         name: 'Default',
         hex: '#808080',
         imageSrc:
-          '/assets/images/marcas/gymshark/hombre/shorts/Liftingclubapparelgraphicshortsnegro.png',
+          '/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png',
       },
     ],
     options: { type: 'talla', values: [{ value: 'XL', stock: 1 }] },
