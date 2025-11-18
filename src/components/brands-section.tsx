@@ -60,7 +60,6 @@ const BrandsSection = () => {
           className="rounded-full inline-block m-2"
           style={{
             transitionDelay: `${index * 100}ms`,
-            transform: brand.alt === 'Civil Regime' ? 'scale(1.4)' : undefined,
           }}
         />
       ))}
