@@ -151,13 +151,13 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: '/assets/images/marcas/youngla/hombre/superhero/superheroroja.png',
+        src: '/assets/images/marcas/youngla/hombre/superheroeroja.png',
         alt: 'Red compression shirt front',
         dataAiHint: 'red shirt',
         option: 'S',
       },
       {
-        src: '/assets/images/marcas/youngla/hombre/superhero/superheronegra.png',
+        src: '/assets/images/marcas/youngla/hombre/superheroenegra.png',
         alt: 'Black compression shirt',
         dataAiHint: 'black shirt',
         option: 'S',
@@ -168,13 +168,13 @@ export const products: Product[] = [
         name: 'Red',
         hex: '#ff0000',
         imageSrc:
-          '/assets/images/marcas/youngla/hombre/superhero/superheroroja.png',
+          '/assets/images/marcas/youngla/hombre/superheroeroja.png',
       },
       {
         name: 'Black',
         hex: '#000000',
         imageSrc:
-          '/assets/images/marcas/youngla/hombre/superhero/superheronegra.png',
+          '/assets/images/marcas/youngla/hombre/superheroenegra.png',
       },
     ],
     options: {
