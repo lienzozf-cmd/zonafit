@@ -402,8 +402,8 @@ export const products: Product[] = [
   {
     id: 7,
     name: 'Proteína ISO Dragon Pharma - 2lb',
-    price: 'Q.450.00',
-    availability: 'Disponible',
+    price: 'Q.500.00',
+    availability: 'Agotado',
     description:
       'Isolat de proteína de suero de leche de la más alta pureza para una recuperación muscular óptima. Baja en carbohidratos y grasas, perfecta para definir.',
     gender: 'unisex',
@@ -429,8 +429,8 @@ export const products: Product[] = [
     options: {
       type: 'sabor',
       values: [
-        { value: 'Blueberry', stock: 1 },
-        { value: 'ChocolateBlanco', stock: 1 },
+        { value: 'Blueberry', stock: 0 },
+        { value: 'ChocolateBlanco', stock: 0 },
       ],
     },
   },
@@ -654,9 +654,9 @@ export const products: Product[] = [
   },
   {
     id: 1800,
-    name: 'Whey Protein Isolate',
-    price: 'Q.550.00',
-    availability: 'Disponible',
+    name: 'Whey Protein',
+    price: 'Q.515.00',
+    availability: 'Agotado',
     description:
       'Proteína de suero de leche de alta calidad, perfecta para la recuperación post-entrenamiento.',
     gender: 'unisex',
@@ -670,15 +670,12 @@ export const products: Product[] = [
         src: '/assets/images/marcas/dragonpharma/proteinaPDP.png',
         alt: 'Protein',
         dataAiHint: 'protein supplement',
-        option: 'Vainilla',
+        option: 'Pastel de cumpleaños',
       },
     ],
     options: {
       type: 'sabor',
-      values: [
-        { value: 'Vainilla', stock: 1 },
-        { value: 'Chocolate', stock: 1 },
-      ],
+      values: [{ value: 'Pastel de cumpleaños', stock: 0 }],
     },
   },
   {
