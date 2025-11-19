@@ -2330,7 +2330,7 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: '/assets/images/marcas/monster/monster-ultra-black.png',
+        src: 'https://picsum.photos/seed/monster-black/600/600',
         alt: 'Monster Ultra Black',
         dataAiHint: 'energy drink',
         option: 'Único',
@@ -2352,28 +2352,16 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: '/assets/images/marcas/bumenergy/bum-energy-mora-limonada.png',
+        src: 'https://picsum.photos/seed/bum-mora/600/600',
         alt: 'Bum Energy Mora y Limonada',
         dataAiHint: 'energy drink',
         option: 'Mora y Limonada',
       },
       {
-        src: '/assets/images/marcas/bumenergy/bum-energy-helado-cereza.png',
+        src: 'https://picsum.photos/seed/bum-cereza/600/600',
         alt: 'Bum Energy Helado de Cereza',
         dataAiHint: 'energy drink',
         option: 'Helado de Cereza',
-      },
-    ],
-    colors: [
-      {
-        name: 'Mora y Limonada',
-        hex: '#4b0082',
-        imageSrc: '/assets/images/marcas/bumenergy/bum-energy-mora-limonada.png',
-      },
-      {
-        name: 'Helado de Cereza',
-        hex: '#ffc0cb',
-        imageSrc: '/assets/images/marcas/bumenergy/bum-energy-helado-cereza.png',
       },
     ],
     options: {
@@ -2398,7 +2386,7 @@ export const products: Product[] = [
     servings_info: '40 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/raw/thavage-carlos-belcast.png',
+        src: 'https://picsum.photos/seed/thavage-belcast/600/600',
         alt: 'Pre-Workout Thavage Carlos Belcast',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2420,7 +2408,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dragonpharma/venom-inferno-limon.png',
+        src: 'https://picsum.photos/seed/venom-limon/600/600',
         alt: 'Venom Inferno - Brazo de 50 Limon',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2442,7 +2430,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dragonpharma/venom-mangonada.png',
+        src: 'https://picsum.photos/seed/venom-mango/600/600',
         alt: 'Venom Mangonada',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2464,7 +2452,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dymatize/iso-100-chocolate.png',
+        src: 'https://picsum.photos/seed/iso100-chocolate/600/600',
         alt: 'Iso 100 - Dynamatize - Chocolate',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2486,7 +2474,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dymatize/iso-100-cocoa-pebbles.png',
+        src: 'https://picsum.photos/seed/iso100-pebbles/600/600',
         alt: 'Iso 100 - Dynamatize - Cocoa Pebbles',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2508,7 +2496,7 @@ export const products: Product[] = [
     servings_info: '80 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/muscletech/creatina-muscletech.png',
+        src: 'https://picsum.photos/seed/creatine-muscletech/600/600',
         alt: 'Creatina Muscletech',
         dataAiHint: 'creatine powder',
         option: 'Único',
@@ -2530,7 +2518,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/raw/raw-sleep.png',
+        src: 'https://picsum.photos/seed/raw-sleep/600/600',
         alt: 'Raw Sleep',
         dataAiHint: 'sleep supplement',
         option: 'Único',
@@ -2552,7 +2540,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dragonpharma/dr-feaar.png',
+        src: 'https://picsum.photos/seed/dr-feaar/600/600',
         alt: 'Aminoácidos Dr. Feaar - Dragon Pharma',
         dataAiHint: 'amino acids',
         option: 'Único',
@@ -2574,7 +2562,7 @@ export const products: Product[] = [
     servings_info: '60 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dragonpharma/glutamina-dp.png',
+        src: 'https://picsum.photos/seed/glutamine-dp/600/600',
         alt: 'Glutamina - Dragon Pharma',
         dataAiHint: 'glutamine powder',
         option: 'Único',
@@ -2596,7 +2584,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/marcas/dragonpharma/greens-and-reds.png',
+        src: 'https://picsum.photos/seed/greens-reds/600/600',
         alt: 'Greens and Reds - Dragon Pharma',
         dataAiHint: 'superfood powder',
         option: 'Único',
@@ -2616,7 +2604,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     images: [
       {
-        src: '/assets/images/marcas/darcsport/creatine.png',
+        src: 'https://picsum.photos/seed/ds-creatine/600/600',
         alt: 'MICRONIZED CREATINE',
         dataAiHint: 'creatine powder',
         option: 'Único',
@@ -2636,7 +2624,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     images: [
       {
-        src: '/assets/images/marcas/darcsport/pre-workout.png',
+        src: 'https://picsum.photos/seed/ds-preworkout/600/600',
         alt: 'EXPLOSIVE PRE-WORKOUT',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2656,7 +2644,7 @@ export const products: Product[] = [
     brand: 'Darc Sport',
     images: [
       {
-        src: '/assets/images/marcas/darcsport/bcaa.png',
+        src: 'https://picsum.photos/seed/ds-bcaa/600/600',
         alt: 'BCAA 2:1:1',
         dataAiHint: 'bcaa supplement',
         option: 'Único',
@@ -2676,7 +2664,7 @@ export const products: Product[] = [
     brand: 'Dragon Pharma',
     images: [
       {
-        src: '/assets/images/marcas/dragonpharma/l-carnitine.png',
+        src: 'https://picsum.photos/seed/dp-lcarnitine/600/600',
         alt: 'L-CARNITINE LIQUID',
         dataAiHint: 'l-carnitine supplement',
         option: 'Único',
