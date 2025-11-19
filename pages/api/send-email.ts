@@ -1,8 +1,33 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
+import fs from 'fs/promises';
+import path from 'path';
+
+// Variable para mantener el contador de pedidos en memoria
+let orderCounter = 0;
+const counterFilePath = path.join(process.cwd(), 'order-counter.txt');
+
+// Función para leer el contador desde un archivo
+async function readCounter() {
+  try {
+    const data = await fs.readFile(counterFilePath, 'utf-8');
+    orderCounter = parseInt(data, 10);
+  } catch (error) {
+    // Si el archivo no existe, iniciamos en 0
+    orderCounter = 0;
+  }
+}
+
+// Función para escribir el contador en un archivo
+async function writeCounter() {
+  await fs.writeFile(counterFilePath, orderCounter.toString(), 'utf-8');
+}
+
+// Leemos el contador al iniciar el servidor
+readCounter();
 
 // Helper to generate HTML for the email
-const generateEmailHtml = (details: any) => {
+const generateEmailHtml = (details: any, orderId: string) => {
   const { shippingInfo, orderItems, orderTotal } = details;
   const itemsHtml = orderItems
     .map(
@@ -25,7 +50,7 @@ const generateEmailHtml = (details: any) => {
 
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px;">
-      <h1 style="color: #E50000; text-align: center;">¡Nuevo Pedido en ZONA FIT GT!</h1>
+      <h1 style="color: #E50000; text-align: center;">¡Nuevo Pedido #${orderId} en ZONA FIT GT!</h1>
       <p>Has recibido un nuevo pedido. Aquí están los detalles:</p>
       
       <h2 style="color: #333; border-bottom: 2px solid #E50000; padding-bottom: 5px;">Información del Cliente</h2>
@@ -64,15 +89,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
+  // Incrementar y formatear el número de pedido
+  orderCounter++;
+  const orderId = orderCounter.toString().padStart(6, '0');
+  await writeCounter(); // Guardar el nuevo valor
+
   const { shippingInfo, orderItems, orderTotal } = req.body;
 
   if (!shippingInfo || !orderItems || !orderTotal) {
     return res.status(400).json({ message: 'Missing order details' });
   }
 
-  // IMPORTANT: You need to set these environment variables in your .env file
-  // For Gmail, you will need to generate an "App Password"
-  // https://myaccount.google.com/apppasswords
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -85,9 +112,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const mailOptions = {
     from: `ZONA FIT GT <${process.env.EMAIL_USER}>`,
-    to: 'rabafam2118@gmail.com',
-    subject: `Nuevo Pedido de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-    html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }),
+    to: 'rabanalesf22@gmail.com', // Correo de notificación
+    subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+    html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId),
   };
 
   try {

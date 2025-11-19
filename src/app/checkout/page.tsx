@@ -21,12 +21,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const checkoutSchema = z.object({
-  firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.').max(50, 'El nombre no puede exceder los 50 caracteres.'),
-  lastName: z.string().min(2, 'El apellido debe tener al menos 2 caracteres.').max(50, 'El apellido no puede exceder los 50 caracteres.'),
+  firstName: z.string().trim().min(1, 'El nombre es requerido.'),
+  lastName: z.string().trim().min(1, 'El apellido es requerido.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().min(5, 'La dirección es requerida.').max(200, 'La dirección no puede exceder los 200 caracteres.'),
-  department: z.string().min(3, 'El departamento es requerido.').max(50, 'El departamento no puede exceder los 50 caracteres.'),
-  municipality: z.string().min(3, 'El municipio es requerido.').max(50, 'El municipio no puede exceder los 50 caracteres.'),
+  address: z.string().trim().min(1, 'La dirección es requerida.'),
+  department: z.string().trim().min(1, 'El departamento es requerido.'),
+  municipality: z.string().trim().min(1, 'El municipio es requerido.'),
 });
 
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
