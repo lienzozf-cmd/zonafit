@@ -71,6 +71,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     setSelectedOption(prev => (prev?.value === option.value ? null : option));
+    const imageForOption = product.images.find(img => img.option === option.value);
+    if (imageForOption) {
+      setCurrentImage(imageForOption.src);
+    }
   };
 
   const handleColorHover = (color: ProductColor) => {
@@ -134,7 +138,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 setCurrentImage(product.images[0].src);
             }
             setSelectedOption(null);
-            setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+            if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
+                setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+            }
         }}
     >
         <Link href={`/product/${product.id}`} className="product-image-link w-full">
