@@ -4,7 +4,14 @@ import './flows/send-gmail-flow';
 
 export const ai = genkit({
   plugins: [
-    googleAI(),
+    googleAI({
+      gmail: {
+        source: {
+          emailAddress: 'me',
+        },
+        auth: ['gmail.send'],
+      },
+    }),
   ],
   model: 'googleai/gemini-2.0-flash',
 });
