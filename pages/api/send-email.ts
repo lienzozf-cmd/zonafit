@@ -12,7 +12,8 @@ const counterFilePath = path.join(process.cwd(), 'order-counter.txt');
 async function readCounter() {
   try {
     const data = await fs.readFile(counterFilePath, 'utf-8');
-    orderCounter = parseInt(data, 10);
+    const count = parseInt(data, 10);
+    orderCounter = isNaN(count) ? 0 : count;
   } catch (error) {
     // Si el archivo no existe, iniciamos en 0
     orderCounter = 0;
@@ -113,7 +114,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const mailOptions = {
     from: `ZONA FIT GT <${process.env.EMAIL_USER}>`,
-    to: 'rabanalesf22@gmail.com', // Correo de notificación
+    to: 'rabafam2118@gmail.com', // Correo de notificación
     subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
     html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId),
   };
