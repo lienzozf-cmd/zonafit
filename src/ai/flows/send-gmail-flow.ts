@@ -56,6 +56,10 @@ const OrderDetailsSchema = z.object({
 
 export type OrderDetails = z.infer<typeof OrderDetailsSchema>;
 
+export async function sendGmail(details: OrderDetails) {
+  return await sendGmailFlow(details);
+}
+
 // Genkit flow to send the email
 const sendGmailFlow = ai.defineFlow(
   {
@@ -134,3 +138,5 @@ const sendGmailFlow = ai.defineFlow(
     });
   }
 );
+
+    

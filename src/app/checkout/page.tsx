@@ -19,6 +19,7 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { sendGmail } from '@/ai/flows/send-gmail-flow';
 
 const checkoutSchema = z.object({
   firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.').max(50, 'El nombre no puede exceder los 50 caracteres.'),
@@ -52,9 +53,12 @@ export default function CheckoutPage() {
     const orderDetails = {
       shippingInfo: data,
       orderItems: items.map(item => ({
-        ...item,
+        id: item.id,
+        name: item.name,
         price: item.price,
-        subtotal: (item.price * item.quantity).toFixed(2),
+        image: item.image,
+        option: item.option,
+        quantity: item.quantity,
       })),
       orderTotal: total,
     };
@@ -62,18 +66,7 @@ export default function CheckoutPage() {
     console.log('Datos del pedido:', orderDetails);
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ orderDetails }),
-      });
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Error al enviar el correo');
-      }
+      await sendGmail(orderDetails);
 
     } catch (error) {
       console.error('El envío de correo de notificación falló, pero el pedido fue procesado:', error);
@@ -223,3 +216,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
