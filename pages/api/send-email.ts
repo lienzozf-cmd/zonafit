@@ -29,14 +29,16 @@ async function writeCounter() {
 readCounter();
 
 // Helper to generate HTML for the email
-const generateEmailHtml = (details: any, orderId: string) => {
+const generateEmailHtml = (details: any, orderId: string, baseUrl: string) => {
   const { shippingInfo, orderItems, orderTotal } = details;
   const itemsHtml = orderItems
     .map(
-      (item: any) => `
+      (item: any) => {
+        const imageUrl = item.image.startsWith('http') ? item.image : `${baseUrl}${item.image}`;
+        return `
     <tr style="border-bottom: 1px solid #ddd;">
       <td style="padding: 10px; display: flex; align-items: center;">
-        <img src="${item.image}" alt="${item.name}" width="60" style="border-radius: 8px; margin-right: 15px;" />
+        <img src="${imageUrl}" alt="${item.name}" width="60" style="border-radius: 8px; margin-right: 15px;" />
         <div>
           <strong>${item.name}</strong><br>
           <small>${item.option}</small>
@@ -47,6 +49,7 @@ const generateEmailHtml = (details: any, orderId: string) => {
       <td style="padding: 10px; text-align: right;">Q${(item.price * item.quantity).toFixed(2)}</td>
     </tr>
   `
+      }
     )
     .join('');
 
@@ -101,6 +104,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!shippingInfo || !orderItems || !orderTotal) {
     return res.status(400).json({ message: 'Missing order details' });
   }
+  
+  const protocol = req.headers['x-forwarded-proto'] || 'http';
+  const host = req.headers.host;
+  const baseUrl = `${protocol}://${host}`;
+
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -116,7 +124,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     from: `ZONA FIT GT <${process.env.EMAIL_USER}>`,
     to: 'rabafam2118@gmail.com', // Correo de notificación
     subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-    html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId),
+    html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId, baseUrl),
   };
 
   try {
