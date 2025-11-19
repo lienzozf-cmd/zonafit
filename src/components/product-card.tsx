@@ -21,32 +21,39 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const { addItem } = useCart();
   const { toast } = useToast();
 
-  const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
+  const [availabilityMessage, setAvailabilityMessage] = useState('');
   
   useEffect(() => {
-    // Set initial image based on the first color if available, otherwise first image
+    // Set initial image and availability message
+    if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
+      const uniqueOption = product.options.values[0];
+      setSelectedOption(uniqueOption);
+      if (uniqueOption.stock > 0) {
+        setAvailabilityMessage(`Disponible: ${uniqueOption.stock} unidades`);
+      } else {
+        setAvailabilityMessage('Agotado');
+      }
+    } else {
+       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+    }
+
     if (selectedColor) {
       setCurrentImage(selectedColor.imageSrc);
     } else if (product.images.length > 0) {
       setCurrentImage(product.images[0].src);
     }
-  }, [product.images, selectedColor]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product.id, product.options.type, product.options.values, product.images, selectedColor]);
 
 
   useEffect(() => {
-    // No pre-selection to avoid button styling issues.
-  }, [product.id]);
-
-  useEffect(() => {
-    // Logic to update image and availability message
-    const newImageForOption = product.images.find(img => img.option === selectedOption?.value);
-    
-    if (newImageForOption) {
-      setCurrentImage(newImageForOption.src);
-    } else if (selectedColor) {
-      setCurrentImage(selectedColor.imageSrc);
+    // Update image based on selected option
+    const imageForOption = product.images.find(img => img.option === selectedOption?.value);
+    if (imageForOption) {
+      setCurrentImage(imageForOption.src);
     }
-
+    
+    // Update availability message based on selected option
     if (selectedOption) {
       const updatedProduct = products.find(p => p.id === product.id);
       const updatedOption = updatedProduct?.options.values.find(v => v.value === selectedOption.value);
@@ -57,12 +64,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             setAvailabilityMessage('Agotado');
         }
       }
-    } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
-      setAvailabilityMessage(`Selecciona un ${product.options.type}`);
-    } else {
-        setAvailabilityMessage('');
     }
-  }, [selectedOption, products, product, selectedColor]);
+  }, [selectedOption, products, product.id, product.images]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
@@ -71,9 +74,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   };
 
   const handleColorHover = (color: ProductColor) => {
-    setSelectedColor(color);
     setCurrentImage(color.imageSrc);
     setSelectedOption(null); // Reset size selection when color changes
+    setAvailabilityMessage(`Selecciona un ${product.options.type}`);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -131,6 +134,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 setCurrentImage(product.images[0].src);
             }
             setSelectedOption(null);
+            setAvailabilityMessage(`Selecciona un ${product.options.type}`);
         }}
     >
         <Link href={`/product/${product.id}`} className="product-image-link w-full">
