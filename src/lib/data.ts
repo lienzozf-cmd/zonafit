@@ -430,7 +430,7 @@ export const products: Product[] = [
       type: 'sabor',
       values: [
         { value: 'Blueberry', stock: 0 },
-        { value: 'ChocolateBlanco', stock: 0 },
+        { value: 'ChocolateBlanco', stock: 1 },
       ],
     },
   },
