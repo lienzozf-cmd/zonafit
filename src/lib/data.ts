@@ -401,8 +401,8 @@ export const products: Product[] = [
   },
   {
     id: 7,
-    name: 'Proteína ISO Dragon Pharma - 2lb',
-    price: 'Q.500.00',
+    name: 'Proteina ISO Dragon Pharma',
+    price: 'Q.515.00',
     availability: 'Agotado',
     description:
       'Isolat de proteína de suero de leche de la más alta pureza para una recuperación muscular óptima. Baja en carbohidratos y grasas, perfecta para definir.',
@@ -654,8 +654,8 @@ export const products: Product[] = [
   },
   {
     id: 1800,
-    name: 'Whey Protein',
-    price: 'Q.515.00',
+    name: 'Proteína whey Dragon Pharma',
+    price: 'Q.500.00',
     availability: 'Agotado',
     description:
       'Proteína de suero de leche de alta calidad, perfecta para la recuperación post-entrenamiento.',
