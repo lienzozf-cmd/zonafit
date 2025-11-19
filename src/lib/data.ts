@@ -2330,7 +2330,7 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: 'https://picsum.photos/seed/monster-black/600/600',
+        src: '/assets/images/suplementos/bebidas/monster-black.jpg',
         alt: 'Monster Ultra Black',
         dataAiHint: 'energy drink',
         option: 'Único',
@@ -2352,13 +2352,13 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: 'https://picsum.photos/seed/bum-mora/600/600',
+        src: '/assets/images/suplementos/bebidas/bum-mora.jpg',
         alt: 'Bum Energy Mora y Limonada',
         dataAiHint: 'energy drink',
         option: 'Mora y Limonada',
       },
       {
-        src: 'https://picsum.photos/seed/bum-cereza/600/600',
+        src: '/assets/images/suplementos/bebidas/bum-cereza.jpg',
         alt: 'Bum Energy Helado de Cereza',
         dataAiHint: 'energy drink',
         option: 'Helado de Cereza',
@@ -2386,7 +2386,7 @@ export const products: Product[] = [
     servings_info: '40 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/thavage-belcast/600/600',
+        src: '/assets/images/suplementos/pre-entrenos/thavage-belcast.jpg',
         alt: 'Pre-Workout Thavage Carlos Belcast',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2408,7 +2408,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/venom-limon/600/600',
+        src: '/assets/images/suplementos/pre-entrenos/venom-limon.jpg',
         alt: 'Venom Inferno - Brazo de 50 Limon',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2430,7 +2430,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/venom-mango/600/600',
+        src: '/assets/images/suplementos/pre-entrenos/venom-mango.jpg',
         alt: 'Venom Mangonada',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2452,7 +2452,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/iso100-chocolate/600/600',
+        src: '/assets/images/suplementos/proteinas/iso100-chocolate.jpg',
         alt: 'Iso 100 - Dynamatize - Chocolate',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2474,7 +2474,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/iso100-pebbles/600/600',
+        src: '/assets/images/suplementos/proteinas/iso100-pebbles.jpg',
         alt: 'Iso 100 - Dynamatize - Cocoa Pebbles',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2496,7 +2496,7 @@ export const products: Product[] = [
     servings_info: '80 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/creatine-muscletech/600/600',
+        src: '/assets/images/suplementos/creatinas/creatine-muscletech.jpg',
         alt: 'Creatina Muscletech',
         dataAiHint: 'creatine powder',
         option: 'Único',
@@ -2518,7 +2518,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/raw-sleep/600/600',
+        src: '/assets/images/suplementos/aminoacidos/raw-sleep.jpg',
         alt: 'Raw Sleep',
         dataAiHint: 'sleep supplement',
         option: 'Único',
@@ -2540,7 +2540,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/dr-feaar/600/600',
+        src: '/assets/images/suplementos/aminoacidos/dr-feaar.jpg',
         alt: 'Aminoácidos Dr. Feaar - Dragon Pharma',
         dataAiHint: 'amino acids',
         option: 'Único',
@@ -2562,7 +2562,7 @@ export const products: Product[] = [
     servings_info: '60 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/glutamine-dp/600/600',
+        src: '/assets/images/suplementos/aminoacidos/glutamine-dp.jpg',
         alt: 'Glutamina - Dragon Pharma',
         dataAiHint: 'glutamine powder',
         option: 'Único',
@@ -2584,92 +2584,12 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/greens-reds/600/600',
+        src: '/assets/images/suplementos/proteinas/greens-reds.jpg',
         alt: 'Greens and Reds - Dragon Pharma',
         dataAiHint: 'superfood powder',
         option: 'Único',
       },
     ],
     options: { type: 'sabor', values: [{ value: 'Único', stock: 5 }] },
-  },
-  {
-    id: 2659,
-    name: 'MICRONIZED CREATINE',
-    price: 'Q.345.00',
-    availability: 'Disponible',
-    description: 'Creatina micronizada para una mejor absorción y rendimiento.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'creatina',
-    brand: 'Darc Sport',
-    images: [
-      {
-        src: 'https://picsum.photos/seed/ds-creatine/600/600',
-        alt: 'MICRONIZED CREATINE',
-        dataAiHint: 'creatine powder',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'presentacion', values: [{ value: 'Único', stock: 10 }] },
-  },
-  {
-    id: 2660,
-    name: 'EXPLOSIVE PRE-WORKOUT',
-    price: 'Q.550.00',
-    availability: 'Disponible',
-    description: 'Pre-entreno explosivo para máxima energía y enfoque.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'pre-entreno',
-    brand: 'Darc Sport',
-    images: [
-      {
-        src: 'https://picsum.photos/seed/ds-preworkout/600/600',
-        alt: 'EXPLOSIVE PRE-WORKOUT',
-        dataAiHint: 'pre-workout supplement',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'sabor', values: [{ value: 'Único', stock: 10 }] },
-  },
-  {
-    id: 2661,
-    name: 'BCAA 2:1:1',
-    price: 'Q.450.00',
-    availability: 'Disponible',
-    description: 'Aminoácidos de cadena ramificada en la proporción ideal 2:1:1.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'aminoacidos',
-    brand: 'Darc Sport',
-    images: [
-      {
-        src: 'https://picsum.photos/seed/ds-bcaa/600/600',
-        alt: 'BCAA 2:1:1',
-        dataAiHint: 'bcaa supplement',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'sabor', values: [{ value: 'Único', stock: 10 }] },
-  },
-  {
-    id: 2662,
-    name: 'L-CARNITINE LIQUID',
-    price: 'Q.375.00',
-    availability: 'Disponible',
-    description: 'L-Carnitina líquida para una rápida absorción y metabolismo de grasas.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'l-carnitina',
-    brand: 'Dragon Pharma',
-    images: [
-      {
-        src: 'https://picsum.photos/seed/dp-lcarnitine/600/600',
-        alt: 'L-CARNITINE LIQUID',
-        dataAiHint: 'l-carnitine supplement',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'sabor', values: [{ value: 'Único', stock: 10 }] },
   },
 ];
