@@ -10,23 +10,6 @@ import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 
-// Initialize Genkit with the Google AI plugin that includes the Gmail tool
-ai.configure({
-  plugins: [
-    googleAI({
-      gmail: {
-        credentials: {
-          /* Your credentials will be managed by the environment */
-        },
-        source: {
-          emailAddress: 'me'
-        }
-      }
-    }),
-  ],
-});
-
-
 // Schema for shipping information
 const ShippingInfoSchema = z.object({
   firstName: z.string(),
