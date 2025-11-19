@@ -38,6 +38,15 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   }, [product.id]);
 
   useEffect(() => {
+    // Logic to update image and availability message
+    const newImageForOption = product.images.find(img => img.option === selectedOption?.value);
+    
+    if (newImageForOption) {
+      setCurrentImage(newImageForOption.src);
+    } else if (selectedColor) {
+      setCurrentImage(selectedColor.imageSrc);
+    }
+
     if (selectedOption) {
       const updatedProduct = products.find(p => p.id === product.id);
       const updatedOption = updatedProduct?.options.values.find(v => v.value === selectedOption.value);
@@ -48,14 +57,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             setAvailabilityMessage('Agotado');
         }
       }
-      
-      const newImageForOption = product.images.find(img => img.option === selectedOption.value);
-      if (newImageForOption) {
-          setCurrentImage(newImageForOption.src);
-      } else if (selectedColor) {
-          setCurrentImage(selectedColor.imageSrc);
-      }
-
     } else if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     } else {
