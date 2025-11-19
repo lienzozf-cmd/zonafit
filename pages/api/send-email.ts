@@ -74,7 +74,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // For Gmail, you will need to generate an "App Password"
   // https://myaccount.google.com/apppasswords
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // Use SSL
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -82,7 +84,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: `ZONA FIT GT <${process.env.EMAIL_USER}>`,
     to: 'rabafam2118@gmail.com',
     subject: `Nuevo Pedido de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
     html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }),
@@ -91,8 +93,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     await transporter.sendMail(mailOptions);
     res.status(200).json({ message: 'Email sent successfully' });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Error sending email' });
+    res.status(500).json({ message: `Error sending email: ${error.message}` });
   }
 }

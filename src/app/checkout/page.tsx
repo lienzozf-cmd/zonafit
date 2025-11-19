@@ -62,8 +62,6 @@ export default function CheckoutPage() {
       orderTotal: total,
     };
 
-    console.log('Datos del pedido:', orderDetails);
-
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -74,20 +72,25 @@ export default function CheckoutPage() {
       });
 
       if (!response.ok) {
-        throw new Error('Error al enviar el correo de notificación.');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error al enviar el correo de notificación.');
       }
       
-    } catch (error) {
-      console.error('El envío de correo de notificación falló, pero el pedido fue procesado:', error);
-      // Opcional: podrías mostrar un toast específico si el correo falla pero quieres continuar.
-    }
-
-    toast({
+      toast({
         title: '¡Pedido realizado con éxito!',
         description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
-    });
-    clearCart();
-    router.push('/');
+      });
+      clearCart();
+      router.push('/');
+
+    } catch (error: any) {
+      console.error('El envío de correo de notificación falló:', error);
+      toast({
+        title: 'Error al procesar el pedido',
+        description: error.message || 'No se pudo enviar la notificación. Por favor, intenta de nuevo.',
+        variant: 'destructive',
+      });
+    }
   }
 
   return (
