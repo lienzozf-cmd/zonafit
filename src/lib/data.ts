@@ -2330,7 +2330,7 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: '/assets/images/suplementos/bebidas/monster-black.jpg',
+        src: '/assets/images/marcas/monster/monster.png',
         alt: 'Monster Ultra Black',
         dataAiHint: 'energy drink',
         option: 'Único',
@@ -2352,13 +2352,13 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: '/assets/images/suplementos/bebidas/bum-mora.jpg',
+        src: '/assets/images/marcas/bumenergy/bumlemon.png',
         alt: 'Bum Energy Mora y Limonada',
         dataAiHint: 'energy drink',
         option: 'Mora y Limonada',
       },
       {
-        src: '/assets/images/suplementos/bebidas/bum-cereza.jpg',
+        src: '/assets/images/marcas/bebidas/bumcherry.png',
         alt: 'Bum Energy Helado de Cereza',
         dataAiHint: 'energy drink',
         option: 'Helado de Cereza',
@@ -2386,7 +2386,7 @@ export const products: Product[] = [
     servings_info: '40 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/pre-entrenos/thavage-belcast.jpg',
+        src: '/assets/images/marcas/raw/precarlosb.png',
         alt: 'Pre-Workout Thavage Carlos Belcast',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2408,7 +2408,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/pre-entrenos/venom-limon.jpg',
+        src: '/assets/images/marcas/dragonpharma/VENOM INFERNO BRAZO DE 50 LIMÓN.png',
         alt: 'Venom Inferno - Brazo de 50 Limon',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2430,7 +2430,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/pre-entrenos/venom-mango.jpg',
+        src: '/assets/images/marcas/dragonpharma/Venom Mangonada.png',
         alt: 'Venom Mangonada',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2452,7 +2452,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/proteinas/iso100-chocolate.jpg',
+        src: '/assets/images/marcas/suplementos/iso100choco.png',
         alt: 'Iso 100 - Dynamatize - Chocolate',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2474,7 +2474,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/proteinas/iso100-pebbles.jpg',
+        src: '/assets/images/marcas/suplementos/iso100cocoa.png',
         alt: 'Iso 100 - Dynamatize - Cocoa Pebbles',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2496,7 +2496,7 @@ export const products: Product[] = [
     servings_info: '80 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/creatinas/creatine-muscletech.jpg',
+        src: '/assets/images/marcas/suplementos/creatinamuscletech.png',
         alt: 'Creatina Muscletech',
         dataAiHint: 'creatine powder',
         option: 'Único',
@@ -2518,7 +2518,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/aminoacidos/raw-sleep.jpg',
+        src: '/assets/images/marcas/raw/rawsleep.png',
         alt: 'Raw Sleep',
         dataAiHint: 'sleep supplement',
         option: 'Único',
@@ -2540,7 +2540,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/aminoacidos/dr-feaar.jpg',
+        src: '/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.png',
         alt: 'Aminoácidos Dr. Feaar - Dragon Pharma',
         dataAiHint: 'amino acids',
         option: 'Único',
@@ -2562,7 +2562,7 @@ export const products: Product[] = [
     servings_info: '60 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/aminoacidos/glutamine-dp.jpg',
+        src: '/assets/images/marcas/dragonpharma/GLUTAMINE 30 SERVS.png',
         alt: 'Glutamina - Dragon Pharma',
         dataAiHint: 'glutamine powder',
         option: 'Único',
@@ -2584,7 +2584,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: '/assets/images/suplementos/proteinas/greens-reds.jpg',
+        src: '/assets/images/marcas/dragonpharma/GREENS & REDS.png',
         alt: 'Greens and Reds - Dragon Pharma',
         dataAiHint: 'superfood powder',
         option: 'Único',
