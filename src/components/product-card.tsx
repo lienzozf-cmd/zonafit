@@ -24,16 +24,17 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const [availabilityMessage, setAvailabilityMessage] = useState(`Selecciona un ${product.options.type}`);
   
   useEffect(() => {
+    // Set initial image based on the first color if available, otherwise first image
     if (selectedColor) {
       setCurrentImage(selectedColor.imageSrc);
     } else if (product.images.length > 0) {
       setCurrentImage(product.images[0].src);
     }
-  }, [selectedColor, product.images]);
+  }, [product.images, selectedColor]);
 
 
   useEffect(() => {
-    // We don't pre-select any options anymore to avoid the button styling issue.
+    // No pre-selection to avoid button styling issues.
   }, [product.id]);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       }
       
       const newImageForOption = product.images.find(img => img.option === selectedOption.value);
-      if (newImageForOption && !selectedColor) {
+      if (newImageForOption) {
           setCurrentImage(newImageForOption.src);
       } else if (selectedColor) {
           setCurrentImage(selectedColor.imageSrc);
@@ -70,6 +71,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleColorHover = (color: ProductColor) => {
     setSelectedColor(color);
+    setCurrentImage(color.imageSrc);
     setSelectedOption(null); // Reset size selection when color changes
   };
 
@@ -120,8 +122,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
-            if (product.colors && product.colors.length > 0) {
-                // Do not reset color on mouse leave, keep the last hovered one.
+            if (product.colors && product.colors.length > 0 && selectedColor) {
+                // When mouse leaves, reset to the selected color's image
+                setCurrentImage(selectedColor.imageSrc);
+            } else {
+                // Or to the first image if no colors
+                setCurrentImage(product.images[0].src);
             }
             setSelectedOption(null);
         }}
