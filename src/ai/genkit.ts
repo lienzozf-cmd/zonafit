@@ -8,6 +8,7 @@ export const ai = genkit({
         source: {
           emailAddress: 'me',
         },
+        auth: ['gmail.send'],
       },
     }),
   ],
