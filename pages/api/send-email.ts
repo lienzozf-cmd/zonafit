@@ -105,10 +105,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Missing order details' });
   }
   
-  const protocol = req.headers['x-forwarded-proto'] || 'http';
-  const host = req.headers.host;
-  const baseUrl = `${protocol}://${host}`;
-
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${req.headers.host}`;
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
