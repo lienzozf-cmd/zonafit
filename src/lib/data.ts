@@ -679,116 +679,6 @@ export const products: Product[] = [
     },
   },
   {
-    id: 1900,
-    name: 'Micronized Creatine',
-    price: 'Q.250.00',
-    availability: 'Disponible',
-    description:
-      'Aumenta tu fuerza y potencia con nuestra creatina micronizada de alta pureza.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'creatina',
-    brand: 'RAW',
-    benefits: 'Mejora el rendimiento, aumenta la fuerza.',
-    servings_info: '100 servicios por envase.',
-    images: [
-      {
-        src: '/assets/images/suplementos/creatinas/creatina.png',
-        alt: 'Creatine',
-        dataAiHint: 'creatine supplement',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'tamaño', values: [{ value: '500g', stock: 1 }] },
-  },
-  {
-    id: 2000,
-    name: 'Explosive Pre-Workout',
-    price: 'Q.400.00',
-    availability: 'Disponible',
-    description:
-      'Obtén la energía y el enfoque que necesitas para tus entrenamientos más intensos.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'pre-entreno',
-    brand: 'Bum Energy',
-    benefits: 'Aumenta la energía y el enfoque, mejora la resistencia.',
-    servings_info: '30 servicios por envase.',
-    images: [
-      {
-        src: '/assets/images/suplementos/pre-entrenos/pre-entreno.png',
-        alt: 'Pre-Workout',
-        dataAiHint: 'pre-workout supplement',
-        option: 'Fruit Punch',
-      },
-    ],
-    options: {
-      type: 'sabor',
-      values: [
-        { value: 'Fruit Punch', stock: 1 },
-        { value: 'Blue Raspberry', stock: 1 },
-      ],
-    },
-  },
-  {
-    id: 2100,
-    name: 'BCAA 2:1:1',
-    price: 'Q.350.00',
-    availability: 'Disponible',
-    description:
-      'Aminoácidos de cadena ramificada para apoyar la recuperación y reducir el dolor muscular.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'aminoacidos',
-    brand: 'Dragon Pharma',
-    benefits: 'Mejora la recuperación, reduce la fatiga muscular.',
-    servings_info: '40 servicios por envase.',
-    images: [
-      {
-        src: '/assets/images/suplementos/aminoacidos/aminoacidos.png',
-        alt: 'BCAA',
-        dataAiHint: 'bcaa supplement',
-        option: 'Watermelon',
-      },
-    ],
-    options: {
-      type: 'sabor',
-      values: [
-        { value: 'Watermelon', stock: 1 },
-        { value: 'Grape', stock: 1 },
-      ],
-    },
-  },
-  {
-    id: 2200,
-    name: 'L-Carnitine Liquid',
-    price: 'Q.300.00',
-    availability: 'Disponible',
-    description:
-      'Fórmula líquida de L-Carnitina para ayudar a convertir la grasa en energía.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'l-carnitina',
-    brand: 'RAW',
-    benefits: 'Apoya el metabolismo de las grasas, mejora la energía.',
-    servings_info: '32 servicios por envase.',
-    images: [
-      {
-        src: '/assets/images/suplementos/l-carnitina/lcarnitina.png',
-        alt: 'L-Carnitine',
-        dataAiHint: 'l-carnitine supplement',
-        option: 'Cherry',
-      },
-    ],
-    options: {
-      type: 'sabor',
-      values: [
-        { value: 'Cherry', stock: 1 },
-        { value: 'Orange', stock: 1 },
-      ],
-    },
-  },
-  {
     id: 2301,
     name: 'Minimal rope chain - 14K Gold SS "22"',
     price: 'Q.295.00',
@@ -2462,13 +2352,13 @@ export const products: Product[] = [
     servings_info: '1 lata.',
     images: [
       {
-        src: 'https://picsum.photos/seed/bum-energy-mora/600/600',
+        src: 'https://picsum.photos/seed/bum-mora/600/600',
         alt: 'Bum Energy Mora y Limonada',
         dataAiHint: 'energy drink',
         option: 'Mora y Limonada',
       },
       {
-        src: 'https://picsum.photos/seed/bum-energy-cereza/600/600',
+        src: 'https://picsum.photos/seed/bum-cherry/600/600',
         alt: 'Bum Energy Helado de Cereza',
         dataAiHint: 'energy drink',
         option: 'Helado de Cereza',
@@ -2478,12 +2368,12 @@ export const products: Product[] = [
       {
         name: 'Mora y Limonada',
         hex: '#4b0082',
-        imageSrc: 'https://picsum.photos/seed/bum-energy-mora/600/600',
+        imageSrc: 'https://picsum.photos/seed/bum-mora/600/600',
       },
       {
         name: 'Helado de Cereza',
         hex: '#ffc0cb',
-        imageSrc: 'https://picsum.photos/seed/bum-energy-cereza/600/600',
+        imageSrc: 'https://picsum.photos/seed/bum-cherry/600/600',
       },
     ],
     options: {
@@ -2530,7 +2420,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/venom-inferno-limon/600/600',
+        src: 'https://picsum.photos/seed/venom-inferno/600/600',
         alt: 'Venom Inferno - Brazo de 50 Limon',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2552,7 +2442,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/venom-mangonada/600/600',
+        src: 'https://picsum.photos/seed/venom-mango/600/600',
         alt: 'Venom Mangonada',
         dataAiHint: 'pre-workout supplement',
         option: 'Único',
@@ -2596,7 +2486,7 @@ export const products: Product[] = [
     servings_info: '71 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/iso100-pebbles/600/600',
+        src: 'https://picsum.photos/seed/iso100-cocoa/600/600',
         alt: 'Iso 100 - Dynamatize - Cocoa Pebbles',
         dataAiHint: 'protein powder',
         option: 'Único',
@@ -2618,7 +2508,7 @@ export const products: Product[] = [
     servings_info: '80 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/muscletech-creatine/600/600',
+        src: 'https://picsum.photos/seed/creatine-muscletech/600/600',
         alt: 'Creatina Muscletech',
         dataAiHint: 'creatine powder',
         option: 'Único',
@@ -2706,7 +2596,7 @@ export const products: Product[] = [
     servings_info: '30 servicios.',
     images: [
       {
-        src: 'https://picsum.photos/seed/greens-reds-dp/600/600',
+        src: 'https://picsum.photos/seed/greens-reds/600/600',
         alt: 'Greens and Reds - Dragon Pharma',
         dataAiHint: 'superfood powder',
         option: 'Único',
