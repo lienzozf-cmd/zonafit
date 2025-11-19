@@ -111,7 +111,7 @@ const sendGmailFlow = ai.defineFlow(
     const emailHtml = generateEmailHtml(details);
 
     // Use the built-in Gmail tool
-    await ai.tool('google.gmail').send({
+    await ai.run('google.gmail/send', {
       to: ['rabafam2118@gmail.com'],
       subject: `Nuevo Pedido de ${details.shippingInfo.firstName} ${details.shippingInfo.lastName}`,
       body: {
@@ -121,5 +121,3 @@ const sendGmailFlow = ai.defineFlow(
     });
   }
 );
-
-    
