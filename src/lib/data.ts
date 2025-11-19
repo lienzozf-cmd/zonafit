@@ -591,67 +591,7 @@ export const products: Product[] = [
       ],
     },
   },
-  {
-    id: 1100,
-    name: 'Hydrate Water Bottle',
-    price: 'Q.150.00',
-    availability: 'Disponible',
-    description: 'Mantente hidratado con estilo. Botella de agua duradera y libre de BPA.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'pachon',
-    brand: 'Generic',
-    images: [
-      {
-        src: '/assets/images/accesorios/pachones/pachon.png',
-        alt: 'Water Bottle',
-        dataAiHint: 'water bottle',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
-  },
-  {
-    id: 1300,
-    name: 'Training Gear',
-    price: 'Q.250.00',
-    availability: 'Disponible',
-    description:
-      'Equipo esencial para tus entrenamientos, desde bandas de resistencia hasta cuerdas para saltar.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'equipo',
-    brand: 'Generic',
-    images: [
-      {
-        src: '/assets/images/accesorios/equipo/equipo.png',
-        alt: 'Training Gear',
-        dataAiHint: 'gym gear',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'item', values: [{ value: 'Único', stock: 1 }] },
-  },
-  {
-    id: 1400,
-    name: 'SHARKHEAD CAP negro',
-    price: 'Q.200.00',
-    availability: 'Disponible',
-    description: 'Completa tu look con esta gorra de estilo de vida. Ajustable y cómoda.',
-    gender: 'unisex',
-    category: 'accesorio',
-    subcategory: 'gorra',
-    brand: 'Gymshark',
-    images: [
-      {
-        src: '/assets/images/marcas/gymshark/accesorios/SHARKHEAD CAP negro.png',
-        alt: 'Cap',
-        dataAiHint: 'fitness cap',
-        option: 'Único',
-      },
-    ],
-    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
-  },
+
   {
     id: 1800,
     name: 'Proteína whey Dragon Pharma',

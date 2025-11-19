@@ -1,17 +1,33 @@
 'use server';
 /**
- * @fileOverview Flujo para enviar un correo de confirmación de pedido.
+ * @fileOverview Flow to send an order confirmation email via Gmail.
  *
- * - sendOrderEmail: La función principal que se invoca para enviar el correo.
- * - OrderDetails: El tipo de datos para los detalles del pedido.
+ * - sendGmail: The main function to be called to send the email.
+ * - OrderDetails: The data type for order details.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import * as nodemailer from 'nodemailer';
-import { CartItem } from '@/lib/types';
+import { googleAI } from '@genkit-ai/google-genai';
 
-// Esquema para los datos de envío
+// Initialize Genkit with the Google AI plugin that includes the Gmail tool
+ai.configure({
+  plugins: [
+    googleAI({
+      gmail: {
+        credentials: {
+          /* Your credentials will be managed by the environment */
+        },
+        source: {
+          emailAddress: 'me'
+        }
+      }
+    }),
+  ],
+});
+
+
+// Schema for shipping information
 const ShippingInfoSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
@@ -21,7 +37,7 @@ const ShippingInfoSchema = z.object({
   municipality: z.string(),
 });
 
-// Esquema para los ítems del pedido
+// Schema for order items
 const OrderItemSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -31,7 +47,7 @@ const OrderItemSchema = z.object({
   quantity: z.number(),
 });
 
-// Esquema para los detalles completos del pedido
+// Schema for the complete order details
 const OrderDetailsSchema = z.object({
   shippingInfo: ShippingInfoSchema,
   orderItems: z.array(OrderItemSchema),
@@ -40,58 +56,14 @@ const OrderDetailsSchema = z.object({
 
 export type OrderDetails = z.infer<typeof OrderDetailsSchema>;
 
-// Herramienta (Tool) de Genkit para enviar correos electrónicos usando nodemailer
-const emailSender = ai.defineTool(
+// Genkit flow to send the email
+const sendGmailFlow = ai.defineFlow(
   {
-    name: 'emailSender',
-    description: 'Sends an email using nodemailer.',
-    inputSchema: z.object({
-      to: z.string(),
-      subject: z.string(),
-      html: z.string(),
-    }),
-    outputSchema: z.string(),
-  },
-  async (input) => {
-    // Configuración del transporte de nodemailer
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL_SERVER_USER,
-        pass: process.env.EMAIL_SERVER_PASSWORD,
-      },
-    });
-
-    const mailOptions = {
-      from: `"ZONA FIT GT" <${process.env.EMAIL_SERVER_USER}>`,
-      to: input.to,
-      subject: input.subject,
-      html: input.html,
-    };
-
-    try {
-      await transporter.sendMail(mailOptions);
-      return 'Correo enviado exitosamente.';
-    } catch (error) {
-      console.error('Error al enviar correo:', error);
-      // No lanzamos un error para no detener el flujo principal de la compra.
-      // El error queda registrado en la consola del servidor.
-      return `No se pudo enviar el correo: ${(error as Error).message}`;
-    }
-  }
-);
-
-// Flujo principal de Genkit
-const sendOrderEmailFlow = ai.defineFlow(
-  {
-    name: 'sendOrderEmailFlow',
+    name: 'sendGmailFlow',
     inputSchema: OrderDetailsSchema,
     outputSchema: z.void(),
   },
   async (details) => {
-    // Generar el contenido HTML del correo
     const generateEmailHtml = (details: OrderDetails) => {
       const { shippingInfo, orderItems, orderTotal } = details;
       const itemsHtml = orderItems
@@ -151,20 +123,14 @@ const sendOrderEmailFlow = ai.defineFlow(
 
     const emailHtml = generateEmailHtml(details);
 
-    // Usar la herramienta para enviar el correo
-    await emailSender({
-      to: 'rabafam2118@gmail.com',
+    // Use the built-in Gmail tool
+    await ai.tool('google.gmail').send({
+      to: ['rabafam2118@gmail.com'],
       subject: `Nuevo Pedido de ${details.shippingInfo.firstName} ${details.shippingInfo.lastName}`,
-      html: emailHtml,
+      body: {
+        mediaType: 'text/html',
+        content: emailHtml,
+      }
     });
   }
 );
-
-// Función exportada que el cliente llamará
-export async function sendOrderEmail(details: OrderDetails) {
-  try {
-    await sendOrderEmailFlow(details);
-  } catch (error) {
-    console.error("El envío de correo de notificación falló, pero el pedido fue procesado:", error);
-  }
-}

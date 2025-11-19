@@ -19,7 +19,6 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { sendOrderEmail } from '@/ai/flows/send-order-email-flow';
 
 const checkoutSchema = z.object({
   firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.').max(50, 'El nombre no puede exceder los 50 caracteres.'),
@@ -52,21 +51,35 @@ export default function CheckoutPage() {
   async function onSubmit(data: CheckoutFormValues) {
     const orderDetails = {
       shippingInfo: data,
-      orderItems: items,
+      orderItems: items.map(item => ({
+        ...item,
+        price: item.price,
+        subtotal: (item.price * item.quantity).toFixed(2),
+      })),
       orderTotal: total,
     };
 
     console.log('Datos del pedido:', orderDetails);
 
     try {
-      // Intenta enviar el correo, pero no detengas el flujo si falla.
-      await sendOrderEmail(orderDetails);
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderDetails }),
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error al enviar el correo');
+      }
+
     } catch (error) {
-      // El error ya se registra en el servidor, aquí no hacemos nada para no alarmar al cliente.
       console.error('El envío de correo de notificación falló, pero el pedido fue procesado:', error);
+      // Opcional: podrías mostrar un toast específico si el correo falla pero quieres continuar.
     }
 
-    // El resto del proceso continúa sin importar el resultado del envío de correo.
     toast({
         title: '¡Pedido realizado con éxito!',
         description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
