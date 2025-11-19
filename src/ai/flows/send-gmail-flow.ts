@@ -6,8 +6,25 @@
  * - OrderDetails: The data type for order details.
  */
 
-import { ai } from '@/ai/genkit';
+import { genkit } from 'genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 import { z } from 'genkit';
+
+// Configure Genkit with the Gmail tool
+export const ai = genkit({
+  plugins: [
+    googleAI({
+      gmail: {
+        source: {
+          emailAddress: 'me',
+        },
+        auth: ['gmail.send'],
+      },
+    }),
+  ],
+  model: 'googleai/gemini-2.0-flash',
+});
+
 
 // Schema for shipping information
 const ShippingInfoSchema = z.object({
