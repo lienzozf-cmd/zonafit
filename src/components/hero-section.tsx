@@ -12,7 +12,6 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 
 const banners = [
-  { src: '/assets/images/banners/banner1.png', alt: 'Banner 1' },
   { src: '/assets/images/banners/banner2.png?v=2', alt: 'Banner 2' },
   { src: '/assets/images/banners/banner3.png', alt: 'Banner 3' },
   { src: '/assets/images/banners/banner4.png', alt: 'Banner 4' },
