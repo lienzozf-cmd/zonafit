@@ -29,16 +29,14 @@ async function writeCounter() {
 readCounter();
 
 // Helper to generate HTML for the email
-const generateEmailHtml = (details: any, orderId: string, baseUrl: string) => {
+const generateEmailHtml = (details: any, orderId: string) => {
   const { shippingInfo, orderItems, orderTotal } = details;
   const itemsHtml = orderItems
     .map(
-      (item: any) => {
-        const imageUrl = item.image.startsWith('http') ? item.image : `${baseUrl}${item.image}`;
-        return `
+      (item: any, index: number) => `
     <tr style="border-bottom: 1px solid #ddd;">
       <td style="padding: 10px; display: flex; align-items: center;">
-        <img src="${imageUrl}" alt="${item.name}" width="60" style="border-radius: 8px; margin-right: 15px;" />
+        <img src="cid:image-${index}" alt="${item.name}" width="60" style="border-radius: 8px; margin-right: 15px;" />
         <div>
           <strong>${item.name}</strong><br>
           <small>${item.option}</small>
@@ -49,7 +47,6 @@ const generateEmailHtml = (details: any, orderId: string, baseUrl: string) => {
       <td style="padding: 10px; text-align: right;">Q${(item.price * item.quantity).toFixed(2)}</td>
     </tr>
   `
-      }
     )
     .join('');
 
@@ -105,8 +102,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Missing order details' });
   }
   
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `http://${req.headers.host}`;
-
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -117,11 +112,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     },
   });
 
+  const attachments = await Promise.all(
+    orderItems.map(async (item: any, index: number) => {
+      const imagePath = path.join(process.cwd(), 'public', item.image);
+      try {
+        const fileContent = await fs.readFile(imagePath);
+        return {
+          filename: path.basename(item.image),
+          content: fileContent,
+          cid: `image-${index}`,
+        };
+      } catch (error) {
+        console.error(`Could not read image file: ${imagePath}`, error);
+        return null; // Return null if image can't be read
+      }
+    })
+  );
+
+  const validAttachments = attachments.filter(Boolean) as any[];
+
   const mailOptions = {
     from: `ZONA FIT GT <${process.env.EMAIL_USER}>`,
     to: 'rabafam2118@gmail.com', // Correo de notificación
     subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-    html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId, baseUrl),
+    html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId),
+    attachments: validAttachments,
   };
 
   try {
