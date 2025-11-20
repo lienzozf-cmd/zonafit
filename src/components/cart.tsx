@@ -64,9 +64,9 @@ const Cart = () => {
                           />
                         </div>
                         <div className="flex flex-col justify-center gap-1 self-start">
-                          <span className="line-clamp-1 text-sm font-medium">{item.name}</span>
+                          <span className="line-clamp-2 text-sm font-medium">{item.name}</span>
                           <span className="line-clamp-1 text-xs text-muted-foreground">
-                            {item.option}
+                            Talla: {item.option}
                           </span>
                           <span className="line-clamp-1 text-sm font-medium">
                             Q{item.price.toFixed(2)}

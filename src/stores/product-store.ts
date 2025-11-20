@@ -5,49 +5,61 @@ import { products as initialProducts, type Product } from '@/lib/data';
 
 export type ProductStore = {
   products: Product[];
-  decreaseStock: (productId: number, optionValue: string) => void;
-  increaseStock: (productId: number, optionValue: string, quantity: number) => void;
+  decreaseStock: (productId: number, colorName: string, optionValue: string) => void;
+  increaseStock: (productId: number, colorName: string, optionValue: string, quantity: number) => void;
 };
 
 const productStore = createStore<ProductStore>((set, get) => ({
   products: initialProducts,
-  decreaseStock: (productId, optionValue) => {
+  decreaseStock: (productId, colorName, optionValue) => {
     set((state) => ({
       products: state.products.map((product) => {
         if (product.id === productId) {
-          return {
-            ...product,
-            options: {
-              ...product.options,
-              values: product.options.values.map((option) => {
-                if (option.value === optionValue && option.stock > 0) {
-                  return { ...option, stock: option.stock - 1 };
-                }
-                return option;
-              }),
-            },
-          };
+          const newColors = product.colors?.map(color => {
+            if (color.name === colorName) {
+              return {
+                ...color,
+                options: {
+                  ...color.options,
+                  values: color.options.values.map(option => {
+                    if (option.value === optionValue && option.stock > 0) {
+                      return { ...option, stock: option.stock - 1 };
+                    }
+                    return option;
+                  }),
+                },
+              };
+            }
+            return color;
+          });
+          return { ...product, colors: newColors };
         }
         return product;
       }),
     }));
   },
-  increaseStock: (productId, optionValue, quantity) => {
+  increaseStock: (productId, colorName, optionValue, quantity) => {
       set((state) => ({
         products: state.products.map((product) => {
           if (product.id === productId) {
-            return {
-              ...product,
-              options: {
-                ...product.options,
-                values: product.options.values.map((option) => {
-                  if (option.value === optionValue) {
-                    return { ...option, stock: option.stock + quantity };
-                  }
-                  return option;
-                }),
-              },
-            };
+            const newColors = product.colors?.map(color => {
+                if(color.name === colorName) {
+                    return {
+                        ...color,
+                        options: {
+                            ...color.options,
+                            values: color.options.values.map(option => {
+                                if (option.value === optionValue) {
+                                    return { ...option, stock: option.stock + quantity };
+                                }
+                                return option;
+                            }),
+                        },
+                    };
+                }
+                return color;
+            });
+            return { ...product, colors: newColors };
           }
           return product;
         }),

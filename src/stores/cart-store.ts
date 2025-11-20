@@ -45,8 +45,8 @@ export const createCartStore = () =>
     removeItem: (id) => {
       const itemToRemove = get().items.find((i) => i.id === id);
       if (itemToRemove) {
-        const [productId, optionValue] = itemToRemove.id.split('-');
-        productStore.getState().increaseStock(Number(productId), optionValue, itemToRemove.quantity);
+        const [productId, color, optionValue] = itemToRemove.id.split('-');
+        productStore.getState().increaseStock(Number(productId), color, optionValue, itemToRemove.quantity);
       }
 
       const newItems = get().items.filter((i) => i.id !== id);
@@ -58,17 +58,15 @@ export const createCartStore = () =>
     incrementQuantity: (id) => {
       const itemToIncrement = get().items.find((i) => i.id === id);
       if (itemToIncrement) {
-        const [productId, optionValue] = itemToIncrement.id.split('-');
-        const product = productStore.getState().products.find(p => p.id === Number(productId));
-        const option = product?.options.values.find(o => o.value === optionValue);
+        const [productId, color, optionValue] = itemToIncrement.id.split('-');
         
-        // Ensure there is stock to increment
         const currentStock = productStore.getState().products
           .find(p => p.id === Number(productId))
+          ?.colors?.find(c => c.name === color)
           ?.options.values.find(o => o.value === optionValue)?.stock ?? 0;
 
         if (currentStock > 0) {
-            productStore.getState().decreaseStock(Number(productId), optionValue);
+            productStore.getState().decreaseStock(Number(productId), color, optionValue);
             const newItems = get().items.map((i) =>
                 i.id === id ? { ...i, quantity: i.quantity + 1 } : i
             );
@@ -82,8 +80,8 @@ export const createCartStore = () =>
     decrementQuantity: (id) => {
       const existingItem = get().items.find((i) => i.id === id);
       if (existingItem) {
-        const [productId, optionValue] = existingItem.id.split('-');
-        productStore.getState().increaseStock(Number(productId), optionValue, 1);
+        const [productId, color, optionValue] = existingItem.id.split('-');
+        productStore.getState().increaseStock(Number(productId), color, optionValue, 1);
       }
       
       let newItems;
@@ -102,8 +100,8 @@ export const createCartStore = () =>
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
         get().items.forEach(item => {
-            const [productId, optionValue] = item.id.split('-');
-            productStore.getState().increaseStock(Number(productId), optionValue, item.quantity);
+            const [productId, color, optionValue] = item.id.split('-');
+            productStore.getState().increaseStock(Number(productId), color, optionValue, item.quantity);
         });
 
         set({
