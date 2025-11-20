@@ -33,7 +33,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       } else {
         setAvailabilityMessage('Agotado');
       }
-    } else {
+    } else if (product.colors && product.colors.length > 0) {
+      setAvailabilityMessage(`Selecciona un color y talla`);
+    }
+     else {
        setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     }
 
@@ -43,7 +46,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       setCurrentImage(product.images[0].src);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product.id, product.options.type, product.options.values, product.images, selectedColor]);
+  }, [product.id]);
 
 
   useEffect(() => {
@@ -55,23 +58,36 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     
     // Update availability message based on selected option
     if (selectedOption) {
-      const updatedProduct = products.find(p => p.id === product.id);
-      const updatedOption = updatedProduct?.options.values.find(v => v.value === selectedOption.value);
-      if (updatedOption) {
-        if(updatedOption.stock > 0) {
-            setAvailabilityMessage(`Disponible: ${updatedOption.stock} unidades`);
+        const productFromStore = products.find(p => p.id === product.id);
+        let optionFromStore: ProductOption | undefined;
+    
+        if (selectedColor) {
+            optionFromStore = productFromStore?.colors
+                ?.find(c => c.name === selectedColor.name)
+                ?.options.values.find(v => v.value === selectedOption.value);
         } else {
-            setAvailabilityMessage('Agotado');
+            optionFromStore = productFromStore?.options.values.find(v => v.value === selectedOption.value);
         }
-      }
+
+        if (optionFromStore) {
+            if(optionFromStore.stock > 0) {
+                setAvailabilityMessage(`Disponible: ${optionFromStore.stock} unidades`);
+            } else {
+                setAvailabilityMessage('Agotado');
+            }
+        }
+    } else if (product.colors?.length) {
+        setAvailabilityMessage(`Selecciona una talla`);
+    } else if (product.options.values.length > 1) {
+        setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     }
-  }, [selectedOption, products, product.id, product.images]);
+  }, [selectedOption, products, product, selectedColor]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     setSelectedOption(prev => (prev?.value === option.value ? null : option));
-    const imageForOption = product.images.find(img => img.option === option.value);
+    const imageForOption = product.images.find(img => img.option === option.value && (selectedColor ? img.color === selectedColor.name : true));
     if (imageForOption) {
       setCurrentImage(imageForOption.src);
     }
@@ -79,16 +95,26 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleColorHover = (color: ProductColor) => {
     setCurrentImage(color.imageSrc);
+    setSelectedColor(color);
     setSelectedOption(null); // Reset size selection when color changes
-    setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+    setAvailabilityMessage(`Selecciona un ${color.options.type || product.options.type}`);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent link navigation
+    if (product.colors && !selectedColor) {
+        toast({
+            title: 'Error',
+            description: `Por favor, selecciona un color.`,
+            variant: 'destructive',
+          });
+          return;
+    }
+    
     if (!selectedOption) {
       toast({
         title: 'Error',
-        description: `Por favor, selecciona un ${product.options.type}.`,
+        description: `Por favor, selecciona un ${selectedColor?.options.type || product.options.type}.`,
         variant: 'destructive',
       });
       return;
@@ -97,33 +123,45 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     if (selectedOption.stock <= 0) {
       toast({
         title: 'Error',
-        description: `No hay stock disponible para ${product.name} (${selectedOption.value}).`,
+        description: `No hay stock disponible para esta selección.`,
         variant: 'destructive',
       });
       return;
     }
     
     const priceAsNumber = parseFloat(product.price.replace(/Q\.|\s/g, ''));
+    const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-${selectedOption.value}`;
+    const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
+
 
     addItem({
-      id: `${product.id}-${selectedOption.value}`,
-      name: product.name,
+      id: cartItemId,
+      name: cartItemName,
       price: priceAsNumber,
       image: currentImage,
       option: selectedOption.value,
       quantity: 1,
     });
     
-    decreaseStock(product.id, selectedOption.value);
+    if (selectedColor) {
+        decreaseStock(product.id, selectedColor.name, selectedOption.value);
+    } else {
+        // Fallback for products without colors
+        decreaseStock(product.id, 'default', selectedOption.value);
+    }
 
     toast({
       title: 'Agregado al carrito',
-      description: `${product.name} (${selectedOption.value}) ha sido agregado a tu carrito.`,
+      description: `${cartItemName} (${selectedOption.value}) ha sido agregado a tu carrito.`,
     });
   };
   
-  const isSelectedOptionAvailable = selectedOption ? selectedOption.stock > 0 : product.options.values.some(o => o.stock > 0);
-  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
+  const isAvailable = product.colors
+    ? product.colors.some(c => c.options.values.some(v => v.stock > 0))
+    : product.options.values.some(v => v.stock > 0);
+
+  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único') || (product.colors && product.colors.length > 0);
+  const optionsToShow = selectedColor?.options.values || product.options.values;
 
   return (
     <div 
@@ -132,14 +170,11 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         onMouseLeave={() => {
             if (product.colors && product.colors.length > 0 && selectedColor) {
                 // When mouse leaves, reset to the selected color's image
+                // No need to reset selectedColor itself, so hover works again
                 setCurrentImage(selectedColor.imageSrc);
             } else {
                 // Or to the first image if no colors
                 setCurrentImage(product.images[0].src);
-            }
-            setSelectedOption(null);
-            if (!(product.options.values.length === 1 && product.options.values[0].value === 'Único')) {
-                setAvailabilityMessage(`Selecciona un ${product.options.type}`);
             }
         }}
     >
@@ -159,8 +194,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             </Link>
             <p className="product-price">{product.price}</p>
             <div className="flex justify-center my-2">
-                 <div className={`product-availability ${isSelectedOptionAvailable ? 'available' : 'unavailable'}`}>
-                    {isSelectedOptionAvailable ? 'Disponible' : 'Agotado'}
+                 <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>
+                    {isAvailable ? 'Disponible' : 'Agotado'}
                  </div>
             </div>
 
@@ -180,7 +215,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             <div className="product-info mt-auto">
                 {showOptions && (
                     <div className="size-options">
-                    {product.options.values.map((option) => (
+                    {optionsToShow.map((option) => (
+                        (option.value !== 'Único') &&
                         <button
                         key={option.value}
                         onClick={(e) => handleOptionClick(e, option)}
