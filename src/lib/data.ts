@@ -123,7 +123,7 @@ export type Product = {
   price: string;
   availability: string;
   images: { src: string; alt: string; dataAiHint: string; option?: string; color?: string; }[];
-  options?: { 
+  options: { 
     type: string; 
     values: ProductOption[];
   };
@@ -169,6 +169,10 @@ export const products: Product[] = [
         color: 'Negra',
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Roja',
@@ -180,6 +184,7 @@ export const products: Product[] = [
             values: [
                 { value: 'S', stock: 1 },
                 { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
             ],
         }
       },
@@ -192,6 +197,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
                 { value: 'L', stock: 1 },
             ],
         }
@@ -231,6 +237,10 @@ export const products: Product[] = [
         color: 'Gris',
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Azul',
@@ -240,6 +250,8 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
             ],
         }
       },
@@ -252,6 +264,7 @@ export const products: Product[] = [
             values: [
                 { value: 'S', stock: 1 },
                 { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
             ],
         }
       },
@@ -262,6 +275,8 @@ export const products: Product[] = [
         options: {
             type: 'talla',
             values: [
+                { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
                 { value: 'L', stock: 1 },
             ],
         }
@@ -301,6 +316,10 @@ export const products: Product[] = [
         color: 'Carmin Red'
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Black/Onyx Grey',
@@ -311,6 +330,7 @@ export const products: Product[] = [
           values: [
             { value: 'S', stock: 0 },
             { value: 'M', stock: 0 },
+            { value: 'L', stock: 0 },
           ],
         }
       },
@@ -322,6 +342,8 @@ export const products: Product[] = [
           type: 'talla',
           values: [
             { value: 'S', stock: 0 },
+            { value: 'M', stock: 0 },
+            { value: 'L', stock: 0 },
           ],
         }
       },
@@ -333,6 +355,7 @@ export const products: Product[] = [
           type: 'talla',
           values: [
             { value: 'S', stock: 0 },
+            { value: 'M', stock: 0 },
             { value: 'L', stock: 0 },
           ],
         }
@@ -360,6 +383,10 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Black/Red',
@@ -397,6 +424,10 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Green',
@@ -1065,7 +1096,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2602,
@@ -1087,7 +1125,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2603,
@@ -1109,7 +1154,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2604,
@@ -1131,7 +1183,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2605,
@@ -1175,7 +1234,14 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2609,
@@ -1220,7 +1286,14 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2611,
@@ -1242,7 +1315,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2612,
@@ -1286,7 +1366,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2614,
@@ -1314,6 +1401,10 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Black',
@@ -1321,7 +1412,11 @@ export const products: Product[] = [
         imageSrc: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png',
         options: {
             type: 'talla',
-            values: [{ value: 'M', stock: 1 }],
+            values: [
+                { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
+            ],
         }
       },
       {
@@ -1330,7 +1425,11 @@ export const products: Product[] = [
         imageSrc: '/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.png',
         options: {
             type: 'talla',
-            values: [{ value: 'S', stock: 1 }],
+            values: [
+                { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
+            ],
         }
       },
     ],
@@ -1355,7 +1454,14 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2616,
@@ -1399,7 +1505,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2618,
@@ -1428,6 +1541,10 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
     colors: [
       {
         name: 'Azul',
@@ -1436,7 +1553,11 @@ export const products: Product[] = [
           '/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.png',
         options: {
             type: 'talla',
-            values: [{ value: 'S', stock: 1 }],
+            values: [
+                { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
+            ],
         }
       },
       {
@@ -1446,7 +1567,11 @@ export const products: Product[] = [
           '/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees NEGRA.png',
         options: {
             type: 'talla',
-            values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 1 }],
+            values: [
+                { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
+            ],
         }
       },
     ],
@@ -1471,7 +1596,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2620,
@@ -1581,7 +1713,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2630,
@@ -1625,7 +1764,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2632,
@@ -1647,7 +1793,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2633,
@@ -1735,7 +1888,14 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2637,
@@ -1757,7 +1917,14 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2638,
@@ -1884,7 +2051,14 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2644,
@@ -1935,7 +2109,14 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: {
+      type: 'talla',
+      values: [
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
+        { value: 'L', stock: 1 },
+      ],
+    },
   },
   {
     id: 2646,
