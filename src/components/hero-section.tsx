@@ -12,11 +12,11 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 
 const banners = [
+  { src: '/assets/images/banners/banner8.png?v=2', alt: 'Banner 8' },
   { src: '/assets/images/banners/banner2.png?v=2', alt: 'Banner 2' },
   { src: '/assets/images/banners/banner3.png', alt: 'Banner 3' },
   { src: '/assets/images/banners/banner4.png', alt: 'Banner 4' },
   { src: '/assets/images/banners/banner5.png', alt: 'Banner 5' },
-  { src: '/assets/images/banners/banner8.png?v=2', alt: 'Banner 8' },
 ];
 
 const HeroSection = () => {
