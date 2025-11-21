@@ -12,7 +12,7 @@ import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useCartStore } from './store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 const Cart = () => {
   const { 

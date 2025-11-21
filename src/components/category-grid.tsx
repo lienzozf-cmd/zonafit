@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCartStore } from './store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 const CategoryGrid = () => {
   const products = useCartStore((state) => state.products);

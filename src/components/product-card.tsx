@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
-import { useCartStore } from './store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 
 interface ProductCardProps {

@@ -6,7 +6,7 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useCartStore } from '@/components/store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 export default function MochilasMaletasPage() {
   const products = useCartStore((state) => state.products);

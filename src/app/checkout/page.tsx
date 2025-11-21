@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useCartStore } from '@/components/store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),

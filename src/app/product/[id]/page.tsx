@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import { useCartStore } from '@/components/store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 
 const ProductDetailPage = () => {

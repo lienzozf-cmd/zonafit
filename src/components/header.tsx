@@ -10,7 +10,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
-import { useCartStore } from './store-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 const Header = () => {
   const { setIsCartOpen, itemCount, products } = useCartStore((state) => ({ 
