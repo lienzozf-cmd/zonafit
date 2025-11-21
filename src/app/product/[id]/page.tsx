@@ -8,16 +8,21 @@ import { Button } from '@/components/ui/button';
 import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import { useCartStore, useProductStore } from '@/components/store-provider';
+import { useCartStore } from '@/components/store-provider';
 
 
 const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const products = useProductStore((state) => state.products);
-  const getProductOption = useProductStore((state) => state.getProductOption);
-  const { addItem, getItem } = useCartStore((state) => ({ addItem: state.addItem, getItem: state.getItem }));
+  
+  const { products, getProductOption, addItem, getItem } = useCartStore((state) => ({
+    products: state.products,
+    getProductOption: state.getProductOption,
+    addItem: state.addItem,
+    getItem: state.getItem,
+  }));
+
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);

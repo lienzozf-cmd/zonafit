@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
-import { useCartStore, useProductStore } from './store-provider';
+import { useCartStore } from './store-provider';
 
 
 interface ProductCardProps {
@@ -12,9 +12,12 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const products = useProductStore((state) => state.products);
-  const getProductOption = useProductStore((state) => state.getProductOption);
-  const { addItem, getItem } = useCartStore((state) => ({ addItem: state.addItem, getItem: state.getItem }));
+  const { products, getItem, getProductOption, addItem } = useCartStore((state) => ({
+    products: state.products,
+    getItem: state.getItem,
+    getProductOption: state.getProductOption,
+    addItem: state.addItem,
+  }));
 
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 

@@ -1,11 +1,12 @@
 'use client';
 
-import { createStore, type StoreApi } from 'zustand';
+import { createStore } from 'zustand';
 import { produce } from 'immer';
+import { products as initialProducts, type Product, type ProductOption } from '@/lib/data';
 import type { CartItem } from '@/lib/types';
-import type { ProductStore } from './product-store';
 
 export type CartState = {
+  products: Product[];
   items: CartItem[];
   itemCount: number;
   total: number;
@@ -20,11 +21,13 @@ export type CartActions = {
   setIsCartOpen: (isOpen: boolean) => void;
   clearCart: () => void;
   getItem: (id: string) => CartItem | undefined;
+  getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
 };
 
 export type CartStore = CartState & CartActions;
 
 export const defaultInitState: CartState = {
+  products: initialProducts,
   items: [],
   itemCount: 0,
   total: 0,
@@ -36,17 +39,39 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = (productStore: StoreApi<ProductStore>) => {
+export const createCartStore = (initState: CartState = defaultInitState) => {
     return createStore<CartStore>((set, get) => ({
-      ...defaultInitState,
+      ...initState,
       getItem: (id) => {
         return get().items.find((i) => i.id === id);
       },
+      getProductOption: (productId, optionValue, colorName) => {
+        const product = get().products.find(p => p.id === productId);
+        if (!product) return undefined;
+    
+        if (colorName && product.colors) {
+            const color = product.colors.find(c => c.name === colorName);
+            return color?.options.values.find(o => o.value === optionValue);
+        }
+    
+        return product.options.values.find(o => o.value === optionValue);
+      },
       addItem: (item) => {
+        const option = get().getProductOption(item.productId, item.option, item.color);
+        if (!option) return;
+
+        const existingItem = get().getItem(item.id);
+        const stockInCart = existingItem?.quantity || 0;
+
+        if (option.stock <= stockInCart) {
+            console.error("No hay suficiente stock para añadir al carrito");
+            return; 
+        }
+
         set(produce((state: CartStore) => {
-            const existingItem = state.items.find((i) => i.id === item.id);
-            if (existingItem) {
-              existingItem.quantity += 1;
+            const draftExistingItem = state.items.find((i) => i.id === item.id);
+            if (draftExistingItem) {
+              draftExistingItem.quantity += 1;
             } else {
               state.items.push({ ...item, quantity: 1 });
             }
@@ -65,27 +90,25 @@ export const createCartStore = (productStore: StoreApi<ProductStore>) => {
         }));
       },
       incrementQuantity: (id) => {
-          const item = get().getItem(id);
-          if(!item) return;
-  
-          const { getProductOption } = productStore.getState();
-          const option = getProductOption(item.productId, item.option, item.color);
+        const item = get().getItem(id);
+        if(!item) return;
 
-          if(!option) return;
-          
-          const stockInCart = item.quantity;
-  
-          if (option.stock > stockInCart) {
-              set(produce((state: CartStore) => {
-                  const draftItem = state.items.find((i) => i.id === id);
-                  if (draftItem) {
-                      draftItem.quantity += 1;
-                  }
-                  const { itemCount, total } = updateTotal(state.items);
-                  state.itemCount = itemCount;
-                  state.total = total;
-              }));
-          }
+        const option = get().getProductOption(item.productId, item.option, item.color);
+        if(!option) return;
+        
+        const stockInCart = item.quantity;
+
+        if (option.stock > stockInCart) {
+            set(produce((state: CartStore) => {
+                const draftItem = state.items.find((i) => i.id === id);
+                if (draftItem) {
+                    draftItem.quantity += 1;
+                }
+                const { itemCount, total } = updateTotal(state.items);
+                state.itemCount = itemCount;
+                state.total = total;
+            }));
+        }
       },
       decrementQuantity: (id) => {
         set(produce((state: CartStore) => {
@@ -104,11 +127,11 @@ export const createCartStore = (productStore: StoreApi<ProductStore>) => {
       },
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       clearCart: () => {
-          // This should increase stock back, not decrease it.
-          // Correcting the logic here, though it's called on checkout.
-          const { increaseStock } = productStore.getState();
-          increaseStock(get().items);
-          set(defaultInitState);
+        set(produce((state: CartStore) => {
+          state.items = [];
+          state.itemCount = 0;
+          state.total = 0;
+        }));
       },
   }));
 }
