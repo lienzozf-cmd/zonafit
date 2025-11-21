@@ -1,7 +1,9 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import IntroWrapper from '@/components/intro-wrapper';
+import { StoreProvider } from '@/components/store-provider';
 
 export const metadata = {
   title: 'ZONA FIT GT',
@@ -19,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <IntroWrapper>{children}</IntroWrapper>
+        <StoreProvider>
+          <IntroWrapper>{children}</IntroWrapper>
+        </StoreProvider>
         <Toaster />
       </body>
     </html>

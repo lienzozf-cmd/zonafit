@@ -4,22 +4,23 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
-import { useCartStore } from '@/stores/cart-store';
 import { useToast } from '@/hooks/use-toast';
-import { useProductStore } from '@/stores/product-store';
+import { useCart } from '@/hooks/use-cart';
+import { useProduct } from '@/hooks/use-product';
+
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products } = useProductStore();
+  const { products } = useProduct();
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
-  const { addItem, getItem } = useCartStore();
+  const { addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');
@@ -37,7 +38,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       originalStock = optionData?.stock ?? 0;
     }
     
-    return originalStock;
+    const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);
+    const stockInCart = itemInCart?.quantity || 0;
+
+    return originalStock - stockInCart;
   };
   
   useEffect(() => {
@@ -155,11 +159,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
             if (product.colors && product.colors.length > 0 && selectedColor) {
-                // When mouse leaves, reset to the selected color's image
-                // No need to reset selectedColor itself, so hover works again
                 setCurrentImage(selectedColor.imageSrc);
             } else {
-                // Or to the first image if no colors
                 setCurrentImage(product.images[0].src);
             }
         }}
@@ -202,7 +203,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 {showOptions && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
-                      const isOptionDisabled = getAvailableStock(option, selectedColor) === 0;
+                      const stock = getAvailableStock(option, selectedColor);
+                      const isOptionDisabled = stock <= 0;
                       return (
                         (option.value !== 'Único') &&
                         <button

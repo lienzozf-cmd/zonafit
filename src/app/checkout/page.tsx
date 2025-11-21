@@ -14,11 +14,12 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useCartStore } from '@/stores/cart-store';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useCart } from '@/hooks/use-cart';
+import { useProduct } from '@/hooks/use-product';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),
@@ -32,7 +33,8 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCartStore();
+  const { items, total, clearCart } = useCart();
+  const { products, decreaseStock } = useProduct();
   const { toast } = useToast();
   const router = useRouter();
 
@@ -75,6 +77,8 @@ export default function CheckoutPage() {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Error al enviar el correo de notificación.');
       }
+      
+      decreaseStock(items);
       
       toast({
         title: '¡Pedido realizado con éxito!',

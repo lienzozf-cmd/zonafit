@@ -1,59 +1,63 @@
 
-import { create } from 'zustand';
+'use client';
+
+import { createStore } from 'zustand';
 import { produce } from 'immer';
 import { products as initialProducts, type Product, type ProductOption } from '@/lib/data';
+import type { CartItem } from '@/lib/types';
 
-export type ProductStore = {
+
+export type ProductStoreState = {
   products: Product[];
-  decreaseStock: (productId: number, quantity: number, optionValue: string, colorName?: string) => boolean;
-  increaseStock: (productId: number, quantity: number, optionValue: string, colorName?: string) => void;
 };
 
-export const useProductStore = create<ProductStore>((set, get) => ({
-  products: initialProducts,
-  decreaseStock: (productId, quantity, optionValue, colorName) => {
-    let stockUpdated = false;
-    set(produce((draft: ProductStore) => {
-      const product = draft.products.find(p => p.id === productId);
-      if (!product) return;
+export type ProductActions = {
+    decreaseStock: (cartItems: CartItem[]) => void;
+    increaseStock: (cartItems: CartItem[]) => void;
+    getProductOption: (product: Product, optionValue: string, colorName?: string) => ProductOption | undefined;
+};
 
-      let option: ProductOption | undefined;
+export type ProductStore = ProductStoreState & ProductActions;
 
-      if (colorName) {
-        const color = product.colors?.find(c => c.name === colorName);
-        if (color) {
-          option = color.options.values.find(v => v.value === optionValue);
+export const defaultInitState: ProductStoreState = {
+    products: initialProducts,
+};
+
+export const createProductStore = (initState: ProductStoreState = defaultInitState) => {
+  return createStore<ProductStore>((set, get) => ({
+    ...initState,
+    getProductOption: (product, optionValue, colorName) => {
+        if (colorName) {
+          const color = product.colors?.find(c => c.name === colorName);
+          return color?.options.values.find(v => v.value === optionValue);
         }
-      } else if (product.options) {
-        option = product.options.values.find(v => v.value === optionValue);
-      }
-      
-      if (option && option.stock >= quantity) {
-        option.stock -= quantity;
-        stockUpdated = true;
-      }
-    }));
-    return stockUpdated;
-  },
-  increaseStock: (productId, quantity, optionValue, colorName) => {
-    set(produce((draft: ProductStore) => {
-      const product = draft.products.find(p => p.id === productId);
-      if (!product) return;
+        return product.options.values.find(v => v.value === optionValue);
+    },
+    decreaseStock: (cartItems) => {
+        set(produce((draft: ProductStore) => {
+            cartItems.forEach(item => {
+                const product = draft.products.find(p => p.id === item.productId);
+                if (!product) return;
 
-      let option: ProductOption | undefined;
+                const option = get().getProductOption(product, item.option, item.color);
+                if (option && option.stock >= item.quantity) {
+                    option.stock -= item.quantity;
+                }
+            })
+        }));
+    },
+    increaseStock: (cartItems) => {
+        set(produce((draft: ProductStore) => {
+            cartItems.forEach(item => {
+                const product = draft.products.find(p => p.id === item.productId);
+                if (!product) return;
 
-      if (colorName) {
-        const color = product.colors?.find(c => c.name === colorName);
-        if (color) {
-          option = color.options.values.find(v => v.value === optionValue);
-        }
-      } else if (product.options) {
-        option = product.options.values.find(v => v.value === optionValue);
-      }
-
-      if (option) {
-        option.stock += quantity;
-      }
-    }));
-  },
-}));
+                const option = get().getProductOption(product, item.option, item.color);
+                if (option) {
+                    option.stock += item.quantity;
+                }
+            })
+        }));
+    },
+  }));
+};

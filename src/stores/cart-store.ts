@@ -1,21 +1,22 @@
 
 'use client';
 
-import { create } from 'zustand';
+import { createStore } from 'zustand';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
+import { type Product, type ProductOption } from '@/lib/data';
 import { useProductStore } from './product-store';
 
-type CartState = {
+export type CartState = {
   items: CartItem[];
   itemCount: number;
   total: number;
   isCartOpen: boolean;
 };
 
-type CartActions = {
+export type CartActions = {
   addItem: (item: CartItem) => void;
-  removeItem: (id: string) => void;
+  removeItem: (item: CartItem) => void;
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   setIsCartOpen: (isOpen: boolean) => void;
@@ -23,30 +24,40 @@ type CartActions = {
   getItem: (id: string) => CartItem | undefined;
 };
 
+export type CartStore = CartState & CartActions;
+
+export const defaultInitState: CartState = {
+  items: [],
+  itemCount: 0,
+  total: 0,
+  isCartOpen: false,
+};
+
 const updateTotal = (items: CartItem[]) => ({
   itemCount: items.reduce((acc, i) => acc + i.quantity, 0),
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const useCartStore = create<CartState & CartActions>((set, get) => ({
-  items: [],
-  itemCount: 0,
-  total: 0,
-  isCartOpen: false,
+export const createCartStore = (initState: CartState = defaultInitState) => {
+  return createStore<CartStore>((set, get) => ({
+    ...initState,
+    getItem: (id) => {
+      return get().items.find((i) => i.id === id);
+    },
+    addItem: (item) => {
+      const { products } = useProductStore.getState();
+      const product = products.find(p => p.id === item.productId);
+      if (!product) return;
 
-  getItem: (id) => {
-    return get().items.find((i) => i.id === id);
-  },
+      const option = useProductStore.getState().getProductOption(product, item.option, item.color);
+      if (!option || option.stock < 1) return;
 
-  addItem: (item) => {
-    const { decreaseStock } = useProductStore.getState();
-    const availableStock = decreaseStock(item.productId, 1, item.option, item.color);
-
-    if (availableStock !== false) {
       set(produce((draft: CartState) => {
         const existingItem = draft.items.find((i) => i.id === item.id);
         if (existingItem) {
-          existingItem.quantity += 1;
+          if (option.stock > existingItem.quantity) {
+            existingItem.quantity += 1;
+          }
         } else {
           draft.items.push({ ...item, quantity: 1 });
         }
@@ -54,79 +65,62 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
         draft.itemCount = newTotals.itemCount;
         draft.total = newTotals.total;
       }));
-    }
-  },
-  
-  removeItem: (id) => {
-    const itemToRemove = get().items.find((i) => i.id === id);
-    if (itemToRemove) {
-      const { increaseStock } = useProductStore.getState();
-      increaseStock(itemToRemove.productId, itemToRemove.quantity, itemToRemove.option, itemToRemove.color);
-    }
+    },
+    removeItem: (itemToRemove) => {
+      useProductStore.getState().increaseStock([itemToRemove]);
+      set(produce((draft: CartState) => {
+        draft.items = draft.items.filter((i) => i.id !== itemToRemove.id);
+        const newTotals = updateTotal(draft.items);
+        draft.itemCount = newTotals.itemCount;
+        draft.total = newTotals.total;
+      }));
+    },
+    incrementQuantity: (id) => {
+        const item = get().items.find((i) => i.id === id);
+        if(!item) return;
 
-    set(produce((draft: CartState) => {
-      const itemIndex = draft.items.findIndex((i) => i.id === id);
-      if (itemIndex > -1) {
-        draft.items.splice(itemIndex, 1);
-      }
-      const newTotals = updateTotal(draft.items);
-      draft.itemCount = newTotals.itemCount;
-      draft.total = newTotals.total;
-    }));
-  },
+        const { products } = useProductStore.getState();
+        const product = products.find(p => p.id === item.productId);
+        if(!product) return;
+        
+        const option = useProductStore.getState().getProductOption(product, item.option, item.color);
+        if(!option) return;
 
-  incrementQuantity: (id) => {
-    const item = get().items.find((i) => i.id === id);
-    if (item) {
-      const { decreaseStock } = useProductStore.getState();
-      const availableStock = decreaseStock(item.productId, 1, item.option, item.color);
-      if (availableStock !== false) {
-        set(produce((draft: CartState) => {
-          const draftItem = draft.items.find((i) => i.id === id);
-          if (draftItem) {
-            draftItem.quantity += 1;
-          }
-          const newTotals = updateTotal(draft.items);
-          draft.itemCount = newTotals.itemCount;
-          draft.total = newTotals.total;
-        }));
-      }
-    }
-  },
-
-  decrementQuantity: (id) => {
-    set(produce((draft: CartState) => {
-      const item = draft.items.find((i) => i.id === id);
-      if (item) {
-        const { increaseStock } = useProductStore.getState();
-        increaseStock(item.productId, 1, item.option, item.color);
-        if (item.quantity > 1) {
-          item.quantity -= 1;
-        } else {
-          const itemIndex = draft.items.findIndex((i) => i.id === id);
-          if (itemIndex > -1) {
-            draft.items.splice(itemIndex, 1);
+        if (option.stock > item.quantity) {
+            set(produce((draft: CartState) => {
+                const draftItem = draft.items.find((i) => i.id === id);
+                if (draftItem) {
+                    draftItem.quantity += 1;
+                }
+                const newTotals = updateTotal(draft.items);
+                draft.itemCount = newTotals.itemCount;
+                draft.total = newTotals.total;
+            }));
+        }
+    },
+    decrementQuantity: (id) => {
+      set(produce((draft: CartState) => {
+        const item = draft.items.find((i) => i.id === id);
+        if (item) {
+          if (item.quantity > 1) {
+            item.quantity -= 1;
+          } else {
+            useProductStore.getState().increaseStock([item]);
+            draft.items = draft.items.filter((i) => i.id !== id);
           }
         }
-      }
-      const newTotals = updateTotal(draft.items);
-      draft.itemCount = newTotals.itemCount;
-      draft.total = newTotals.total;
-    }));
-  },
-
-  setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
-  
-  clearCart: () => {
-    const { items } = get();
-    const { increaseStock } = useProductStore.getState();
-    items.forEach(item => {
-      increaseStock(item.productId, item.quantity, item.option, item.color);
-    });
-    set({
-      items: [],
-      itemCount: 0,
-      total: 0,
-    });
-  },
-}));
+        const newTotals = updateTotal(draft.items);
+        draft.itemCount = newTotals.itemCount;
+        draft.total = newTotals.total;
+      }));
+    },
+    setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
+    clearCart: () => {
+      set(produce((draft: CartState) => {
+        draft.items = [];
+        draft.itemCount = 0;
+        draft.total = 0;
+      }));
+    },
+  }));
+};

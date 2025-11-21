@@ -4,21 +4,21 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
-import { useCartStore } from '@/stores/cart-store';
 import { useToast } from '@/hooks/use-toast';
-import { useProductStore } from '@/stores/product-store';
 import { Button } from '@/components/ui/button';
 import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import { useCart } from '@/hooks/use-cart';
+import { useProduct } from '@/hooks/use-product';
 
 
 const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const { products } = useProductStore();
-  const { addItem, getItem } = useCartStore();
+  const { products } = useProduct();
+  const { addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);
@@ -58,7 +58,10 @@ const ProductDetailPage = () => {
       originalStock = optionData?.stock ?? 0;
     }
 
-    return originalStock;
+    const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);
+    const stockInCart = itemInCart?.quantity || 0;
+
+    return originalStock - stockInCart;
   };
   
   useEffect(() => {
@@ -264,10 +267,7 @@ const ProductDetailPage = () => {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {currentOptions.values.map((option) => {
-                      const originalStock = selectedColor 
-                        ? product.colors?.find(c => c.name === selectedColor.name)?.options.values.find(v => v.value === option.value)?.stock ?? 0
-                        : product.options.values.find(v => v.value === option.value)?.stock ?? 0;
-                      
+                      const stock = getAvailableStock(option, selectedColor);
                       const isSelected = selectedOption?.value === option.value;
                       
                       return (
@@ -275,7 +275,7 @@ const ProductDetailPage = () => {
                           key={option.value}
                           variant={isSelected ? 'destructive' : 'outline'}
                           onClick={() => handleOptionClick(option)}
-                          disabled={originalStock === 0}
+                          disabled={stock === 0}
                           className={`border-gray-600 ${isSelected ? '' : 'text-white hover:bg-gray-800'}`}
                         >
                           {option.value}
