@@ -24,9 +24,9 @@ const Footer = () => {
         <div className="footer-section links">
           <h3>Enlaces Útiles</h3>
           <ul>
-            <li><Link href="#">Políticas de Privacidad</Link></li>
-            <li><Link href="#">Términos y Condiciones</Link></li>
-            <li><Link href="#">No hay devoluciones</Link></li>
+            <li><Link href="/politicas-de-privacidad">Políticas de Privacidad</Link></li>
+            <li><Link href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
+            <li><Link href="/terminos-y-condiciones#devoluciones">No hay devoluciones</Link></li>
           </ul>
         </div>
       </div>
