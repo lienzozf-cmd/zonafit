@@ -542,96 +542,7 @@ export const products: Product[] = [
     ],
     options: { type: 'servicios', values: [{ value: 'Único', stock: 1 }] },
   },
-  {
-    id: 500,
-    name: 'Studio Crop Top',
-    price: 'Q.380.00',
-    availability: 'Disponible',
-    description:
-      'Top corto versátil y cómodo, ideal para el estudio o para un look casual.',
-    gender: 'mujer',
-    category: 'ropa',
-    subcategory: 'top',
-    brand: 'Gymshark',
-    fabric_type: '95% Cotton, 5% Elastane',
-    is_compression: false,
-    images: [
-      {
-        src: '/assets/images/marcas/gymshark/mujer/tops/top-studio.png',
-        alt: "Women's Top",
-        dataAiHint: 'woman top',
-        option: 'M',
-      },
-    ],
-    options: {
-      type: 'talla',
-      values: [
-        { value: 'XS', stock: 1 },
-        { value: 'S', stock: 1 },
-        { value: 'M', stock: 1 },
-      ],
-    },
-  },
-  {
-    id: 700,
-    name: 'Flex Legging',
-    price: 'Q.550.00',
-    availability: 'Disponible',
-    description:
-      'Leggings flexibles que se mueven contigo. Diseño que realza la figura y no transparenta.',
-    gender: 'mujer',
-    category: 'ropa',
-    subcategory: 'legging',
-    brand: 'Gymshark',
-    fabric_type: '87% Nylon, 13% Spandex',
-    is_compression: true,
-    images: [
-      {
-        src: '/assets/images/marcas/gymshark/mujer/leggings/legging-flex.png',
-        alt: 'Legging',
-        dataAiHint: 'woman legging',
-        option: 'M',
-      },
-    ],
-    options: {
-      type: 'talla',
-      values: [
-        { value: 'XS', stock: 1 },
-        { value: 'S', stock: 1 },
-        { value: 'M', stock: 1 },
-      ],
-    },
-  },
-  {
-    id: 1000,
-    name: 'Cropped Jacket',
-    price: 'Q.750.00',
-    availability: 'Disponible',
-    description:
-      'Chamarra corta moderna y funcional. Perfecta para combinar con tus leggings o tops favoritos.',
-    gender: 'mujer',
-    category: 'ropa',
-    subcategory: 'chamarra',
-    brand: 'Vanquish',
-    fabric_type: '100% Polyester',
-    is_compression: false,
-    images: [
-      {
-        src: '/assets/images/marcas/vanquish/mujer/chamarras/chamarra-cropped.png',
-        alt: "Women's Jacket",
-        dataAiHint: 'woman jacket',
-        option: 'M',
-      },
-    ],
-    options: {
-      type: 'talla',
-      values: [
-        { value: 'S', stock: 1 },
-        { value: 'M', stock: 1 },
-        { value: 'L', stock: 1 },
-      ],
-    },
-  },
+
 
   {
     id: 1800,
@@ -739,28 +650,7 @@ export const products: Product[] = [
     ],
     options: { type: 'material', values: [{ value: 'Silver', stock: 1 }] },
   },
-  {
-    id: 2508,
-    name: 'W237 On-The-Go Flare Romper',
-    price: 'Q.500.00',
-    availability: 'Disponible',
-    description: 'Romper cómodo y estilizado para un look casual y activo.',
-    gender: 'mujer',
-    category: 'ropa',
-    subcategory: 'top',
-    brand: 'YoungLA',
-    fabric_type: '95% Cotton, 5% Elastane',
-    is_compression: false,
-    images: [
-      {
-        src: '/assets/images/marcas/youngla/mujer/W237 On-The-Go Flare Romper NEGRO.png',
-        alt: 'W237 On-The-Go Flare Romper',
-        dataAiHint: 'woman romper',
-        option: 'Negro',
-      },
-    ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 0 }, { value: 'L', stock: 0 }] },
-  },
+  
   {
     id: 2519,
     name: 'Legacy Logo Tight Shorts',
@@ -937,28 +827,7 @@ export const products: Product[] = [
     ],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
-  {
-    id: 2538,
-    name: 'Training Fleece Joggers',
-    price: 'Q.375.00',
-    availability: 'Disponible',
-    description: 'Joggers de polar para entrenamiento, cálidos y cómodos.',
-    gender: 'mujer',
-    category: 'ropa',
-    subcategory: 'pantalon',
-    brand: 'Gymshark',
-    fabric_type: '80% Cotton, 20% Polyester',
-    is_compression: false,
-    images: [
-      {
-        src: '/assets/images/marcas/gymshark/mujer/Training Fleece Joggers verde.png',
-        alt: 'Training Fleece Joggers',
-        dataAiHint: 'woman joggers',
-        option: 'Verde',
-      },
-    ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
-  },
+  
   {
     id: 2539,
     name: 'Mesh Sports Bra',
