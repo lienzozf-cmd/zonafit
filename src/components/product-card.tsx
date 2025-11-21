@@ -26,7 +26,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
     
-    const currentOption = getProductOption(product, option.value, selectedColor?.name);
+    const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
     const originalStock = currentOption?.stock ?? 0;
     
     const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);

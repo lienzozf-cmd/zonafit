@@ -22,7 +22,7 @@ export type CartActions = {
   setIsCartOpen: (isOpen: boolean) => void;
   clearCart: () => void;
   getItem: (id: string) => CartItem | undefined;
-  getProductOption: (product: Product, optionValue: string, colorName?: string) => ProductOption | undefined;
+  getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
   decreaseStock: (cartItems: CartItem[]) => void;
 };
 
@@ -47,28 +47,22 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
     getItem: (id) => {
       return get().items.find((i) => i.id === id);
     },
-    getProductOption: (product, optionValue, colorName) => {
-        const currentProduct = get().products.find(p => p.id === product.id);
-        if (!currentProduct) return undefined;
+    getProductOption: (productId, optionValue, colorName) => {
+        const product = get().products.find(p => p.id === productId);
+        if (!product) return undefined;
         
         if (colorName) {
-          const color = currentProduct.colors?.find(c => c.name === colorName);
+          const color = product.colors?.find(c => c.name === colorName);
           return color?.options.values.find(v => v.value === optionValue);
         }
-        return currentProduct.options.values.find(v => v.value === optionValue);
+        return product.options.values.find(v => v.value === optionValue);
     },
     addItem: (item) => {
-      const option = get().getProductOption(item, item.option, item.color);
-      if (!option) return;
-
-      const existingItem = get().items.find((i) => i.id === item.id);
-      const stockInCart = existingItem?.quantity || 0;
-      
-      if (option.stock > stockInCart) {
-        set(produce((draft: CartState) => {
-          const draftExistingItem = draft.items.find((i) => i.id === item.id);
-          if (draftExistingItem) {
-            draftExistingItem.quantity += 1;
+      set(produce((draft: CartState) => {
+          const existingItem = draft.items.find((i) => i.id === item.id);
+          if (draft.items.find((i) => i.id === item.id)) {
+            const itemToUpdate = draft.items.find((i) => i.id === item.id)!;
+            itemToUpdate.quantity += 1;
           } else {
             draft.items.push({ ...item, quantity: 1 });
           }
@@ -77,7 +71,6 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
           draft.itemCount = newTotals.itemCount;
           draft.total = newTotals.total;
         }));
-      }
     },
     removeItem: (id) => {
       set(produce((draft: CartState) => {
@@ -91,7 +84,7 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
         const item = get().items.find((i) => i.id === id);
         if(!item) return;
 
-        const option = get().getProductOption(item, item.option, item.color);
+        const option = get().getProductOption(item.productId, item.option, item.color);
         if(!option) return;
         
         const stockInCart = item.quantity;
@@ -126,11 +119,7 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
       get().decreaseStock(get().items);
-      set(produce((draft: CartState) => {
-        draft.items = [];
-        draft.itemCount = 0;
-        draft.total = 0;
-      }));
+      set({ items: [], itemCount: 0, total: 0 });
     },
     decreaseStock: (cartItems) => {
         set(produce((draft: CartState) => {
