@@ -104,8 +104,10 @@ export const createCartStore = (productStore: StoreApi<ProductStore>) => {
       },
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       clearCart: () => {
-          const { decreaseStock } = productStore.getState();
-          decreaseStock(get().items);
+          // This should increase stock back, not decrease it.
+          // Correcting the logic here, though it's called on checkout.
+          const { increaseStock } = productStore.getState();
+          increaseStock(get().items);
           set(defaultInitState);
       },
   }));

@@ -12,8 +12,7 @@ import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useCartStore } from './store-provider';
-import { useProductStore } from './store-provider';
+import { useCartStore, useProductStore } from './store-provider';
 
 const Cart = () => {
   const { 
@@ -44,7 +43,7 @@ const Cart = () => {
   const handleRemoveItem = (id: string) => {
     const item = items.find(i => i.id === id);
     if(item) {
-      increaseStock([item]);
+      increaseStock([{...item, quantity: item.quantity}]);
       removeItem(id);
     }
   }
@@ -53,7 +52,7 @@ const Cart = () => {
     const item = items.find(i => i.id === id);
     if (item) {
         if (item.quantity > 1) {
-            increaseStock([{...item, quantity: -1}]); // Increase stock by 1
+            increaseStock([{...item, quantity: 1}]); // Increase stock by 1
             decrementQuantity(id);
         } else {
             handleRemoveItem(id);
