@@ -19,14 +19,14 @@ export const useProductStore = create<ProductStore>((set) => ({
           const color = product.colors.find(c => c.name === colorName);
           if (color) {
             const option = color.options.values.find(v => v.value === optionValue);
-            if (option) {
-              option.stock = Math.max(0, option.stock - quantity);
+            if (option && option.stock >= quantity) {
+              option.stock -= quantity;
             }
           }
         } else {
           const option = product.options.values.find(v => v.value === optionValue);
-          if (option) {
-            option.stock = Math.max(0, option.stock - quantity);
+          if (option && option.stock >= quantity) {
+            option.stock -= quantity;
           }
         }
       }

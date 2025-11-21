@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -12,7 +13,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, decreaseStock } = useProductStore();
+  const { products } = useProductStore();
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
@@ -143,8 +144,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       quantity: 1,
     });
     
-    decreaseStock(product.id, selectedColor ? selectedColor.name : 'default', selectedOption.value);
-
     toast({
       title: 'Agregado al carrito',
       description: `${cartItemName} (${selectedOption.value}) ha sido agregado a tu carrito.`,

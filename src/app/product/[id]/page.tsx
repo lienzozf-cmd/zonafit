@@ -17,7 +17,7 @@ const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const { products: storeProducts, decreaseStock } = useProductStore();
+  const { products: storeProducts } = useProductStore();
   const { addItem } = useCart();
   const { toast } = useToast();
 
@@ -118,8 +118,6 @@ const ProductDetailPage = () => {
       option: selectedOption!.value,
       quantity: 1,
     });
-
-    decreaseStock(product.id, selectedColor ? selectedColor.name : 'default', selectedOption!.value);
 
     toast({
       title: 'Agregado al carrito',
