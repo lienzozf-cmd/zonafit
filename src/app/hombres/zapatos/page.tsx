@@ -8,14 +8,14 @@ import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
-export default function PantalonesPage() {
+export default function ZapatosPage() {
   const products = useCartStore((state) => state.products);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
   const filteredProducts = products.filter(
     (product) =>
-      product.gender === 'hombre' && product.subcategory === 'pantalon'
+      product.gender === 'hombre' && product.subcategory === 'zapato'
   );
 
   const getBrands = (products: Product[]) => {
@@ -48,7 +48,7 @@ export default function PantalonesPage() {
       <main className="bg-transparent text-white">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-center mb-8 text-white">
-            Hombres - Pantalones
+            Hombres - Zapatos
           </h1>
           <FilterSortControls
             sortOption={sortOption}
