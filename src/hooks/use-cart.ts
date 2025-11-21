@@ -6,14 +6,16 @@ import { useStore } from 'zustand'
 import { CartStoreContext } from '@/components/store-provider'
 import { type CartStore } from '@/stores/cart-store'
 
-export const useCart = <T,>(
-  selector: (store: CartStore) => T,
-): T => {
+type Selector<T> = (store: CartStore) => T;
+
+export function useCart<T>(selector: Selector<T>): T;
+export function useCart(): CartStore;
+export function useCart<T>(selector?: Selector<T>): T | CartStore {
   const cartStoreContext = useContext(CartStoreContext)
 
   if (!cartStoreContext) {
     throw new Error(`useCart must be used within a StoreProvider`)
   }
 
-  return useStore(cartStoreContext, selector)
+  return useStore(cartStoreContext, selector as Selector<T>);
 }

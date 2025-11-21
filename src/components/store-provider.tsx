@@ -10,13 +10,11 @@ export const CartStoreContext = createContext<StoreApi<CartStore> | null>(
   null,
 )
 
-export interface CartStoreProviderProps {
-  children: ReactNode
-}
-
 export const StoreProvider = ({
   children,
-}: CartStoreProviderProps) => {
+}: {
+  children: ReactNode
+}) => {
   const storeRef = useRef<StoreApi<CartStore>>()
   if (!storeRef.current) {
     storeRef.current = createCartStore()
