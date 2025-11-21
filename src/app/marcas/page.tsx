@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
-import { useProductStore } from '@/stores/product-store';
+import { useProductStore } from '@/components/store-provider';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
 

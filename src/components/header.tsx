@@ -3,18 +3,19 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products, navLinks } from '@/lib/data';
+import { navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
 import { Search, ShoppingCart, Menu, X } from 'lucide-react';
-import { useCartStore } from '@/stores/cart-store';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
+import { useCartStore, useProductStore } from './store-provider';
 
 const Header = () => {
   const { itemCount, setIsCartOpen } = useCartStore();
+  const { products } = useProductStore();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');

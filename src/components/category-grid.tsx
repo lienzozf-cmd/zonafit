@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProductStore } from '@/stores/product-store';
+import { useProductStore } from '@/components/store-provider';
 
 const CategoryGrid = () => {
   const { products } = useProductStore();

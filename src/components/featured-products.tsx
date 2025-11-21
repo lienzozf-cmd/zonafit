@@ -1,5 +1,5 @@
 'use client';
-import { useProductStore } from '@/stores/product-store';
+import { useProductStore } from '@/components/store-provider';
 import ProductCard from './product-card';
 
 const FeaturedProducts = () => {
