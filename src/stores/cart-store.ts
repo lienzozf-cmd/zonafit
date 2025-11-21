@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext } from 'react';
 import { createStore } from 'zustand';
 import type { CartItem } from '@/lib/types';
@@ -21,8 +23,7 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = () =>
-  createStore<CartStore>((set, get) => ({
+export const cartStore = createStore<CartStore>((set, get) => ({
     items: [],
     itemCount: 0,
     total: 0,
@@ -111,5 +112,7 @@ export const createCartStore = () =>
         });
     }
   }));
+
+export const createCartStore = () => cartStore;
 
 export const CartStoreContext = createContext<ReturnType<typeof createCartStore> | null>(null);
