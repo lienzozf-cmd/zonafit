@@ -1942,12 +1942,12 @@ export const products: Product[] = [
         src: '/assets/images/Accesorios/Sets and Reps 3pk Crew.png',
         alt: 'Sets and Reps 3pk Crew Socks',
         dataAiHint: 'fitness socks',
-        option: 'Sets',
+        option: 'S',
       },
     ],
     options: {
-      type: 'color',
-      values: [{ value: 'negro, blanco y verde', stock: 1 }],
+      type: 'talla',
+      values: [{ value: 'S', stock: 1 }],
     },
   },
   {
