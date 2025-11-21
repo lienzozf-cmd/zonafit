@@ -8,38 +8,27 @@ interface IntroAnimationProps {
 }
 
 const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
-    const [isVisible, setIsVisible] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
 
     useEffect(() => {
-        const introShown = sessionStorage.getItem('introShown');
-        if (!introShown) {
-            setIsVisible(true);
-            document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
 
-            const fadeTimer = setTimeout(() => {
-                setIsFadingOut(true);
-            }, 2500);
+        const fadeTimer = setTimeout(() => {
+            setIsFadingOut(true);
+        }, 2500);
 
-            const removeTimer = setTimeout(() => {
-                setIsVisible(false);
-                document.body.style.overflow = '';
-                sessionStorage.setItem('introShown', 'true');
-                onIntroFinish();
-            }, 3500); // 1s for fade out animation
-
-            return () => {
-                clearTimeout(fadeTimer);
-                clearTimeout(removeTimer);
-            };
-        } else {
+        const removeTimer = setTimeout(() => {
+            document.body.style.overflow = '';
             onIntroFinish();
-        }
-    }, [onIntroFinish]);
+        }, 3500); // 1s for fade out animation
 
-    if (!isVisible) {
-        return null;
-    }
+        return () => {
+            clearTimeout(fadeTimer);
+            clearTimeout(removeTimer);
+            // Ensure body overflow is reset if component unmounts early
+            document.body.style.overflow = '';
+        };
+    }, [onIntroFinish]);
 
     return (
         <div className={`intro-screen ${isFadingOut ? 'fade-out' : ''}`}>
