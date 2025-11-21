@@ -765,7 +765,7 @@ export const products: Product[] = [
         option: 'Negro',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 0 }, { value: 'L', stock: 0 }] },
   },
   {
     id: 2519,
@@ -853,7 +853,7 @@ export const products: Product[] = [
         option: 'Negro',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 0 }, { value: 'L', stock: 0 }] },
   },
   {
     id: 2525,
@@ -875,7 +875,7 @@ export const products: Product[] = [
         option: 'Negro',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 0 }, { value: 'L', stock: 0 }] },
   },
   {
     id: 2527,
@@ -1945,10 +1945,7 @@ export const products: Product[] = [
         option: 'S',
       },
     ],
-    options: {
-      type: 'talla',
-      values: [{ value: 'S', stock: 1 }],
-    },
+    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
   {
     id: 2639,
@@ -1965,10 +1962,10 @@ export const products: Product[] = [
         src: '/assets/images/Accesorios/Silicone Lifting Straps negro.png',
         alt: 'Lifting Straps',
         dataAiHint: 'lifting straps',
-        option: 'Negro',
+        option: 'Único',
       },
     ],
-    options: { type: 'color', values: [{ value: 'Negro', stock: 1 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
   },
   {
     id: 2640,
@@ -1985,10 +1982,10 @@ export const products: Product[] = [
         src: '/assets/images/Accesorios/Silicone Lifting Straps morado.png',
         alt: 'Lifting Straps',
         dataAiHint: 'lifting straps',
-        option: 'Lila',
+        option: 'Único',
       },
     ],
-    options: { type: 'color', values: [{ value: 'Lila', stock: 1 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
   },
   {
     id: 2641,
