@@ -1,12 +1,12 @@
 
 'use client';
-import { useProductStore } from '@/providers/product-provider';
 import ProductCard from './product-card';
 import { useEffect, useState } from 'react';
 import type { Product } from '@/lib/data';
+import { useCartStore } from '@/stores/cart-store';
 
 const FeaturedProducts = () => {
-  const products = useProductStore((state) => state.products);
+  const products = useCartStore((state) => state.products);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   // Define a specific list of featured product IDs

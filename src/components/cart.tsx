@@ -14,7 +14,6 @@ import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
-import { useProductStore } from '@/providers/product-provider';
 
 const Cart = () => {
   const { 
@@ -25,9 +24,9 @@ const Cart = () => {
     setIsCartOpen, 
     removeItem, 
     incrementQuantity, 
-    decrementQuantity 
+    decrementQuantity,
+    getProductOption
   } = useCartStore((state) => state);
-  const { getProductOption } = useProductStore((state) => state);
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -52,8 +51,11 @@ const Cart = () => {
         const option = getProductOption(item.productId, item.option, item.color);
         if (option && item.quantity < option.stock) {
             incrementQuantity(id);
+        } else if (option && option.stock > 0 && item.quantity >= option.stock) {
+            // This case is tricky without a toast here. Silently fail.
+             console.log('No hay más stock para este producto.');
         } else {
-            console.error('No hay suficiente stock para añadir más al carrito');
+            incrementQuantity(id);
         }
     }
   };

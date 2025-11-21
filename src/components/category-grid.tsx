@@ -1,12 +1,13 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProductStore } from '@/providers/product-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 const CategoryGrid = () => {
-  const products = useProductStore((state) => state.products);
+  const products = useCartStore((state) => state.products);
   const [counts, setCounts] = useState({
     mujer: 0,
     hombre: 0,

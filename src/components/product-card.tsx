@@ -6,19 +6,16 @@ import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { useCartStore } from '@/stores/cart-store';
-import { useProductStore } from '@/providers/product-provider';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { getItem, addItem } = useCartStore((state) => ({
+  const { products, getItem, addItem, getProductOption } = useCartStore((state) => ({
+    products: state.products,
     getItem: state.getItem,
     addItem: state.addItem,
-  }));
-  const { products, getProductOption } = useProductStore((state) => ({
-    products: state.products,
     getProductOption: state.getProductOption,
   }));
 
@@ -28,6 +25,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
   const { toast } = useToast();
+  const { items } = useCartStore();
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   
@@ -37,16 +35,13 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
     const originalStock = currentOption?.stock ?? 0;
     
-    const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);
-    const stockInCart = itemInCart?.quantity || 0;
-
-    return originalStock - stockInCart;
+    return originalStock;
   };
   
   useEffect(() => {
     updateAvailabilityMessage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product, selectedOption, selectedColor, getItem]);
+  }, [product, selectedOption, selectedColor, items]);
   
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
@@ -141,7 +136,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       title: 'Agregado al carrito',
       description: `${cartItemName} (${selectedOption.value}) ha sido agregado a tu carrito.`,
     });
-    updateAvailabilityMessage();
   };
   
   const isAvailable = product.colors

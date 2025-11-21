@@ -55,16 +55,14 @@ const ProductDetailPage = () => {
     const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
     const originalStock = currentOption?.stock ?? 0;
     
-    const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);
-    const stockInCart = itemInCart?.quantity || 0;
-
-    return originalStock - stockInCart;
+    // We don't need to subtract from cart here, as the source of truth for stock is now the product store itself
+    return originalStock;
   };
   
   useEffect(() => {
     updateAvailabilityMessage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption, selectedColor, product, getItem]);
+  }, [selectedOption, selectedColor, product, items]);
 
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
@@ -88,6 +86,8 @@ const ProductDetailPage = () => {
     if (!product) return;
     setSelectedOption(option);
   };
+
+  const { items } = useCartStore();
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -150,8 +150,6 @@ const ProductDetailPage = () => {
       title: 'Agregado al carrito',
       description: `${cartItemName} (${selectedOption!.value}) ha sido agregado a tu carrito.`,
     });
-
-    updateAvailabilityMessage();
   };
 
   if (!product) {

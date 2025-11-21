@@ -7,10 +7,10 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useProductStore } from '@/providers/product-provider';
+import { useCartStore } from '@/stores/cart-store';
 
 export default function HombresPage() {
-  const products = useProductStore((state) => state.products);
+  const products = useCartStore((state) => state.products);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
