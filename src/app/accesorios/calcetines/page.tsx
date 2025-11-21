@@ -6,10 +6,10 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useProductStore } from '@/components/store-provider';
+import { useCartStore } from '@/components/store-provider';
 
 export default function CalcetinesPage() {
-  const products = useProductStore((state) => state.products);
+  const products = useCartStore((state) => state.products);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
