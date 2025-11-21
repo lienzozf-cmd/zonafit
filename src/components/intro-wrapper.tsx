@@ -8,13 +8,15 @@ export default function IntroWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const [introFinished, setIntroFinished] = useState(false);
+  const [introFinished, setIntroFinished] = useState(true); // Default to true on server
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
     if (sessionStorage.getItem('introShown')) {
       setIntroFinished(true);
+    } else {
+      setIntroFinished(false);
     }
   }, []);
 
@@ -24,6 +26,7 @@ export default function IntroWrapper({
   };
 
   if (!isClient) {
+    // Render nothing on the server to avoid hydration mismatch
     return null;
   }
 
