@@ -5,18 +5,20 @@ import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { useCartStore } from '@/stores/cart-store';
-
+import { useProductStore } from '@/providers/product-provider';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, getItem, getProductOption, addItem } = useCartStore((state) => ({
-    products: state.products,
+  const { getItem, addItem } = useCartStore((state) => ({
     getItem: state.getItem,
-    getProductOption: state.getProductOption,
     addItem: state.addItem,
+  }));
+  const { products, getProductOption } = useProductStore((state) => ({
+    products: state.products,
+    getProductOption: state.getProductOption,
   }));
 
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
