@@ -12,7 +12,7 @@ import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/stores/cart-store';
+import { useCartStore } from './store-provider';
 
 const Cart = () => {
   const { 
@@ -24,7 +24,7 @@ const Cart = () => {
     removeItem, 
     incrementQuantity, 
     decrementQuantity 
-  } = useCart();
+  } = useCartStore((state) => state);
   const router = useRouter();
 
   const handleCheckout = () => {

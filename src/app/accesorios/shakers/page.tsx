@@ -6,10 +6,10 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useCart } from '@/stores/cart-store';
+import { useProductStore } from '@/components/store-provider';
 
 export default function ShakersPage() {
-  const products = useCart((state) => state.products);
+  const products = useProductStore((state) => state.products);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 

@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCart } from '@/stores/cart-store';
+import { useProductStore } from './store-provider';
 
 const CategoryGrid = () => {
-  const products = useCart((state) => state.products);
+  const products = useProductStore((state) => state.products);
 
   const getProductCount = (category: 'mujer' | 'hombre' | 'accesorio' | 'suplemento' | 'joyeria') => {
     if (category === 'mujer' || category === 'hombre') {

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
-import { useCart } from '@/stores/cart-store';
+import { useCartStore, useProductStore } from './store-provider';
 
 
 interface ProductCardProps {
@@ -12,7 +12,10 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, getProductOption, addItem, getItem } = useCart();
+  const products = useProductStore((state) => state.products);
+  const getProductOption = useProductStore((state) => state.getProductOption);
+  const { addItem, getItem } = useCartStore((state) => ({ addItem: state.addItem, getItem: state.getItem }));
+
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);

@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/stores/cart-store';
+import { useCartStore } from '@/components/store-provider';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),
@@ -31,9 +31,11 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const items = useCart((state) => state.items);
-  const total = useCart((state) => state.total);
-  const clearCart = useCart((state) => state.clearCart);
+  const { items, total, clearCart } = useCartStore((state) => ({
+    items: state.items,
+    total: state.total,
+    clearCart: state.clearCart,
+  }));
   const { toast } = useToast();
   const router = useRouter();
 

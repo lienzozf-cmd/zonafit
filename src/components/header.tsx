@@ -10,10 +10,11 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/stores/cart-store';
+import { useCartStore, useProductStore } from './store-provider';
 
 const Header = () => {
-  const { products, setIsCartOpen, itemCount } = useCart();
+  const { setIsCartOpen, itemCount } = useCartStore((state) => ({ setIsCartOpen: state.setIsCartOpen, itemCount: state.itemCount }));
+  const products = useProductStore((state) => state.products);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');

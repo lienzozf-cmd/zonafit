@@ -1,9 +1,9 @@
 'use client';
-import { useCart } from '@/stores/cart-store';
+import { useProductStore } from '@/components/store-provider';
 import ProductCard from './product-card';
 
 const FeaturedProducts = () => {
-  const products = useCart((state) => state.products);
+  const products = useProductStore((state) => state.products);
   // Define a specific list of featured product IDs
   const featuredProductIds = [1, 2, 3, 4, 5, 2643, 6, 7, 8];
   
