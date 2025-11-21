@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -18,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),

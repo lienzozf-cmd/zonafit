@@ -1,7 +1,6 @@
-
 'use client';
 
-import { createStore } from 'zustand';
+import create from 'zustand';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
 import { products as initialProducts, type Product, type ProductOption } from '@/lib/data';
@@ -41,9 +40,8 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = (initState: CartState = defaultInitState) => {
-  return createStore<CartStore>((set, get) => ({
-    ...initState,
+export const useCart = create<CartStore>((set, get) => ({
+    ...defaultInitState,
     getItem: (id) => {
       return get().items.find((i) => i.id === id);
     },
@@ -143,5 +141,4 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
             });
         }));
     },
-  }));
-};
+}));

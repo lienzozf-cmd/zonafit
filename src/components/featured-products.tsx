@@ -1,6 +1,5 @@
-
 'use client';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 import ProductCard from './product-card';
 
 const FeaturedProducts = () => {

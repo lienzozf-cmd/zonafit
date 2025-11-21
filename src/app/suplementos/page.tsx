@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -7,7 +6,7 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 
 export default function SuplementosPage() {
   const products = useCart((state) => state.products);

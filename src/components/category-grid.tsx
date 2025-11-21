@@ -1,9 +1,8 @@
-
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 
 const CategoryGrid = () => {
   const products = useCart((state) => state.products);

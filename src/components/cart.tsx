@@ -1,4 +1,3 @@
-
 'use client';
 import Image from 'next/image';
 import confetti from 'canvas-confetti';
@@ -13,17 +12,19 @@ import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 
 const Cart = () => {
-  const items = useCart((state) => state.items);
-  const total = useCart((state) => state.total);
-  const itemCount = useCart((state) => state.itemCount);
-  const isCartOpen = useCart((state) => state.isCartOpen);
-  const setIsCartOpen = useCart((state) => state.setIsCartOpen);
-  const removeItem = useCart((state) => state.removeItem);
-  const incrementQuantity = useCart((state) => state.incrementQuantity);
-  const decrementQuantity = useCart((state) => state.decrementQuantity);
+  const { 
+    items, 
+    total, 
+    itemCount, 
+    isCartOpen, 
+    setIsCartOpen, 
+    removeItem, 
+    incrementQuantity, 
+    decrementQuantity 
+  } = useCart();
   const router = useRouter();
 
   const handleCheckout = () => {

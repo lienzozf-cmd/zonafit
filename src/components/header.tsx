@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -11,12 +10,10 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 
 const Header = () => {
-  const products = useCart((state) => state.products);
-  const setIsCartOpen = useCart((state) => state.setIsCartOpen);
-  const itemCount = useCart((state) => state.itemCount);
+  const { products, setIsCartOpen, itemCount } = useCart();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');

@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -9,17 +8,14 @@ import { Button } from '@/components/ui/button';
 import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import { useCart } from '@/hooks/use-cart';
+import { useCart } from '@/stores/cart-store';
 
 
 const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const products = useCart((state) => state.products);
-  const getProductOption = useCart((state) => state.getProductOption);
-  const addItem = useCart((state) => state.addItem);
-  const getItem = useCart((state) => state.getItem);
+  const { products, getProductOption, addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);
