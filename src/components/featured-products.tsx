@@ -1,12 +1,12 @@
 
 'use client';
-import { useCartStore } from '@/stores/cart-store';
+import { useProductStore } from '@/providers/product-provider';
 import ProductCard from './product-card';
 import { useEffect, useState } from 'react';
 import type { Product } from '@/lib/data';
 
 const FeaturedProducts = () => {
-  const products = useCartStore((state) => state.products);
+  const products = useProductStore((state) => state.products);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   // Define a specific list of featured product IDs
@@ -20,6 +20,10 @@ const FeaturedProducts = () => {
       setFeaturedProducts(filtered);
     }
   }, [products]);
+
+  if (featuredProducts.length === 0) {
+    return null; // Or a loading skeleton
+  }
 
   return (
     <section className="product-grid featured-product-grid">
