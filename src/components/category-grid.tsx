@@ -3,10 +3,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProduct } from '@/hooks/use-product';
+import { useCart } from '@/hooks/use-cart';
 
 const CategoryGrid = () => {
-  const { products } = useProduct();
+  const { products } = useCart();
 
   const getProductCount = (category: 'mujer' | 'hombre' | 'accesorio' | 'suplemento' | 'joyeria') => {
     if (category === 'mujer' || category === 'hombre') {

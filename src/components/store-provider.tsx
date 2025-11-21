@@ -5,35 +5,24 @@ import { type ReactNode, createContext, useRef, useContext } from 'react'
 import { type StoreApi, useStore } from 'zustand'
 
 import { type CartStore, createCartStore } from '@/stores/cart-store'
-import { type ProductStore, createProductStore } from '@/stores/product-store'
 
 export const CartStoreContext = createContext<StoreApi<CartStore> | null>(null)
-export const ProductStoreContext = createContext<StoreApi<ProductStore> | null>(null)
 
 export interface StoreProviderProps {
   children: ReactNode
 }
 
 export const StoreProvider = ({ children }: StoreProviderProps) => {
-  const productStoreRef = useRef<StoreApi<ProductStore>>()
-  const cartStoreRef = useRef<StoreApi<CartStore>>()
+  const storeRef = useRef<StoreApi<CartStore>>()
   
-  if (!productStoreRef.current) {
-    productStoreRef.current = createProductStore()
+  if (!storeRef.current) {
+    storeRef.current = createCartStore()
   }
-
-  if (!cartStoreRef.current) {
-    // Pass the product store instance to the cart store creator
-    cartStoreRef.current = createCartStore(productStoreRef.current)
-  }
-
 
   return (
-    <ProductStoreContext.Provider value={productStoreRef.current}>
-        <CartStoreContext.Provider value={cartStoreRef.current}>
-            {children}
-        </CartStoreContext.Provider>
-    </ProductStoreContext.Provider>
+    <CartStoreContext.Provider value={storeRef.current}>
+      {children}
+    </CartStoreContext.Provider>
   )
 }
 
@@ -47,16 +36,4 @@ export const useCartStore = <T,>(
     }
 
     return useStore(cartStoreContext, selector)
-}
-
-export const useProductStore = <T,>(
-    selector: (store: ProductStore) => T,
-  ): T => {
-    const productStoreContext = useContext(ProductStoreContext)
-
-    if (!productStoreContext) {
-        throw new Error('useProductStore must be used within a StoreProvider')
-    }
-
-    return useStore(productStoreContext, selector)
 }

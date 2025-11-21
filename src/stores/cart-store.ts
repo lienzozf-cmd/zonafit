@@ -1,16 +1,17 @@
 
 'use client';
 
-import { createStore, type StoreApi } from 'zustand';
+import { createStore } from 'zustand';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
-import type { ProductStore } from './product-store';
+import { products as initialProducts, type Product, type ProductOption } from '@/lib/data';
 
 export type CartState = {
   items: CartItem[];
   itemCount: number;
   total: number;
   isCartOpen: boolean;
+  products: Product[];
 };
 
 export type CartActions = {
@@ -21,6 +22,8 @@ export type CartActions = {
   setIsCartOpen: (isOpen: boolean) => void;
   clearCart: () => void;
   getItem: (id: string) => CartItem | undefined;
+  getProductOption: (product: Product, optionValue: string, colorName?: string) => ProductOption | undefined;
+  decreaseStock: (cartItems: CartItem[]) => void;
 };
 
 export type CartStore = CartState & CartActions;
@@ -30,6 +33,7 @@ export const defaultInitState: CartState = {
   itemCount: 0,
   total: 0,
   isCartOpen: false,
+  products: initialProducts,
 };
 
 const updateTotal = (items: CartItem[]) => ({
@@ -37,18 +41,24 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = (productStore: StoreApi<ProductStore>) => {
+export const createCartStore = (initState: CartState = defaultInitState) => {
   return createStore<CartStore>((set, get) => ({
-    ...defaultInitState,
+    ...initState,
     getItem: (id) => {
       return get().items.find((i) => i.id === id);
     },
+    getProductOption: (product, optionValue, colorName) => {
+        const currentProduct = get().products.find(p => p.id === product.id);
+        if (!currentProduct) return undefined;
+        
+        if (colorName) {
+          const color = currentProduct.colors?.find(c => c.name === colorName);
+          return color?.options.values.find(v => v.value === optionValue);
+        }
+        return currentProduct.options.values.find(v => v.value === optionValue);
+    },
     addItem: (item) => {
-      const { getProductOption } = productStore.getState();
-      const product = productStore.getState().products.find(p => p.id === item.productId);
-      if (!product) return;
-
-      const option = getProductOption(product, item.option, item.color);
+      const option = get().getProductOption(item, item.option, item.color);
       if (!option) return;
 
       const existingItem = get().items.find((i) => i.id === item.id);
@@ -81,11 +91,7 @@ export const createCartStore = (productStore: StoreApi<ProductStore>) => {
         const item = get().items.find((i) => i.id === id);
         if(!item) return;
 
-        const { getProductOption } = productStore.getState();
-        const product = productStore.getState().products.find(p => p.id === item.productId);
-        if(!product) return;
-        
-        const option = getProductOption(product, item.option, item.color);
+        const option = get().getProductOption(item, item.option, item.color);
         if(!option) return;
         
         const stockInCart = item.quantity;
@@ -119,13 +125,35 @@ export const createCartStore = (productStore: StoreApi<ProductStore>) => {
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
-      productStore.getState().decreaseStock(get().items);
-
+      get().decreaseStock(get().items);
       set(produce((draft: CartState) => {
         draft.items = [];
         draft.itemCount = 0;
         draft.total = 0;
       }));
+    },
+    decreaseStock: (cartItems) => {
+        set(produce((draft: CartState) => {
+            cartItems.forEach(item => {
+                const product = draft.products.find(p => p.id === item.productId);
+                if (!product) return;
+
+                if (item.color) {
+                    const color = product.colors?.find(c => c.name === item.color);
+                    if (color) {
+                        const option = color.options.values.find(o => o.value === item.option);
+                        if (option && option.stock >= item.quantity) {
+                            option.stock -= item.quantity;
+                        }
+                    }
+                } else {
+                    const option = product.options.values.find(o => o.value === item.option);
+                    if (option && option.stock >= item.quantity) {
+                        option.stock -= item.quantity;
+                    }
+                }
+            })
+        }));
     },
   }));
 };

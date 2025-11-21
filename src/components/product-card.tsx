@@ -6,7 +6,6 @@ import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { useCart } from '@/hooks/use-cart';
-import { useProduct } from '@/hooks/use-product';
 
 
 interface ProductCardProps {
@@ -14,13 +13,12 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, getProductOption } = useProduct();
+  const { products, getProductOption, addItem, getItem } = useCart();
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
-  const { addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');

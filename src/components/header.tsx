@@ -12,11 +12,9 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/use-cart';
-import { useProduct } from '@/hooks/use-product';
 
 const Header = () => {
-  const { itemCount, setIsCartOpen } = useCart();
-  const { products } = useProduct();
+  const { products, itemCount, setIsCartOpen } = useCart();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');

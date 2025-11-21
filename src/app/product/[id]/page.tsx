@@ -10,15 +10,13 @@ import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { useCart } from '@/hooks/use-cart';
-import { useProduct } from '@/hooks/use-product';
 
 
 const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const { products, getProductOption } = useProduct();
-  const { addItem, getItem } = useCart();
+  const { products, getProductOption, addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);

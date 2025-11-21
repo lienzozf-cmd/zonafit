@@ -7,10 +7,10 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useProduct } from '@/hooks/use-product';
+import { useCart } from '@/hooks/use-cart';
 
 export default function EquipoEntrenamientoPage() {
-  const { products } = useProduct();
+  const { products } = useCart();
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
