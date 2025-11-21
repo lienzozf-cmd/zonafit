@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -14,7 +13,8 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/use-cart';
 
 const Header = () => {
-  const { products, itemCount, setIsCartOpen } = useCart();
+  const { products, setIsCartOpen } = useCart();
+  const itemCount = useCart(state => state.itemCount); // Correctly subscribe to state changes
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
