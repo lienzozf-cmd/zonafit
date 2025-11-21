@@ -14,7 +14,7 @@ import { useCart } from '@/hooks/use-cart';
 
 const Header = () => {
   const { products, setIsCartOpen } = useCart();
-  const itemCount = useCart(state => state.itemCount); // Correctly subscribe to state changes
+  const itemCount = useCart(state => state.itemCount);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
