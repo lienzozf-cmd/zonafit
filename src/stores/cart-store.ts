@@ -1,3 +1,4 @@
+
 'use client';
 
 import { create } from 'zustand';
@@ -48,12 +49,13 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
   removeItem: (id) => {
     const itemToRemove = get().items.find((i) => i.id === id);
     if (itemToRemove) {
-      const [productId, color, optionValue] = itemToRemove.id.split('-');
-      if (productId && color && optionValue) {
+      const [productIdStr, color, optionValue] = itemToRemove.id.split('-');
+      const productId = parseInt(productIdStr, 10);
+      if (!isNaN(productId) && color && optionValue) {
         useProductStore
           .getState()
           .increaseStock(
-            Number(productId),
+            productId,
             color,
             optionValue,
             itemToRemove.quantity
@@ -70,8 +72,9 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
   incrementQuantity: (id) => {
     const itemToIncrement = get().items.find((i) => i.id === id);
     if (itemToIncrement) {
-      const [productId, color, optionValue] = itemToIncrement.id.split('-');
-      useProductStore.getState().decreaseStock(Number(productId), color, optionValue, 1);
+      const [productIdStr, color, optionValue] = itemToIncrement.id.split('-');
+      const productId = parseInt(productIdStr, 10);
+      useProductStore.getState().decreaseStock(productId, color, optionValue, 1);
       const newItems = get().items.map((i) =>
         i.id === id ? { ...i, quantity: i.quantity + 1 } : i
       );
@@ -84,8 +87,9 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
   decrementQuantity: (id) => {
     const existingItem = get().items.find((i) => i.id === id);
     if (existingItem) {
-      const [productId, color, optionValue] = existingItem.id.split('-');
-      useProductStore.getState().increaseStock(Number(productId), color, optionValue, 1);
+        const [productIdStr, color, optionValue] = existingItem.id.split('-');
+        const productId = parseInt(productIdStr, 10);
+        useProductStore.getState().increaseStock(productId, color, optionValue, 1);
     }
 
     let newItems;
@@ -104,11 +108,12 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
   setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
   clearCart: () => {
     get().items.forEach((item) => {
-      const [productId, color, optionValue] = item.id.split('-');
-      if (productId && color && optionValue) {
+      const [productIdStr, color, optionValue] = item.id.split('-');
+      const productId = parseInt(productIdStr, 10);
+      if (!isNaN(productId) && color && optionValue) {
         useProductStore
           .getState()
-          .increaseStock(Number(productId), color, optionValue, item.quantity);
+          .increaseStock(productId, color, optionValue, item.quantity);
       }
     });
 
