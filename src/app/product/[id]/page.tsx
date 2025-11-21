@@ -58,14 +58,7 @@ const ProductDetailPage = () => {
       originalStock = optionData?.stock ?? 0;
     }
 
-    const cartItemId = color 
-      ? `${product.id}-${color.name}-${option.value}` 
-      : `${product.id}-default-${option.value}`;
-      
-    const itemInCart = getItem(cartItemId);
-    const quantityInCart = itemInCart ? itemInCart.quantity : 0;
-    
-    return originalStock - quantityInCart;
+    return originalStock;
   };
   
   useEffect(() => {
