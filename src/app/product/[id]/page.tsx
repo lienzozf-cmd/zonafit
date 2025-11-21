@@ -106,7 +106,7 @@ const ProductDetailPage = () => {
       }
 
     const priceAsNumber = parseFloat(product.price.replace(/Q\.|\s/g, ''));
-    const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption!.value}` : `${product.id}-${selectedOption!.value}`;
+    const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption!.value}` : `${product.id}-default-${selectedOption!.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 
 
@@ -119,10 +119,7 @@ const ProductDetailPage = () => {
       quantity: 1,
     });
 
-    if (selectedColor) {
-        decreaseStock(product.id, selectedColor.name, selectedOption!.value);
-    }
-    // Note: Decrease stock for non-color products is not implemented in this logic branch.
+    decreaseStock(product.id, selectedColor ? selectedColor.name : 'default', selectedOption!.value);
 
     toast({
       title: 'Agregado al carrito',

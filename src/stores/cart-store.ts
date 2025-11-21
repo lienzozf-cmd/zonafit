@@ -23,72 +23,7 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-const decreaseStock = (productId: number, colorName: string, optionValue: string, quantity = 1) => {
-    useProductStore.setState(state => ({
-        products: state.products.map(p => {
-            if (p.id === productId) {
-                const newProduct = { ...p };
-                if (newProduct.colors && newProduct.colors.length > 0) {
-                    newProduct.colors = newProduct.colors.map(c => {
-                        if (c.name === colorName) {
-                            c.options.values = c.options.values.map(v => {
-                                if (v.value === optionValue) {
-                                    return { ...v, stock: Math.max(0, v.stock - quantity) };
-                                }
-                                return v;
-                            });
-                        }
-                        return c;
-                    });
-                } else {
-                    newProduct.options.values = newProduct.options.values.map(v => {
-                        if (v.value === optionValue) {
-                            return { ...v, stock: Math.max(0, v.stock - quantity) };
-                        }
-                        return v;
-                    });
-                }
-                return newProduct;
-            }
-            return p;
-        })
-    }));
-};
-
-const increaseStock = (productId: number, colorName: string, optionValue: string, quantity: number) => {
-    useProductStore.setState(state => ({
-        products: state.products.map(p => {
-            if (p.id === productId) {
-                const newProduct = { ...p };
-                if (newProduct.colors && newProduct.colors.length > 0) {
-                    newProduct.colors = newProduct.colors.map(c => {
-                        if (c.name === colorName) {
-                            c.options.values = c.options.values.map(v => {
-                                if (v.value === optionValue) {
-                                    return { ...v, stock: v.stock + quantity };
-                                }
-                                return v;
-                            });
-                        }
-                        return c;
-                    });
-                } else {
-                    newProduct.options.values = newProduct.options.values.map(v => {
-                        if (v.value === optionValue) {
-                            return { ...v, stock: v.stock + quantity };
-                        }
-                        return v;
-                    });
-                }
-                return newProduct;
-            }
-            return p;
-        })
-    }));
-};
-
-
-export const createCartStore = () => 
+export const createCartStore = (productStore: ReturnType<typeof useProductStore>) => 
   createStore<CartStore>((set, get) => ({
     items: [],
     itemCount: 0,
@@ -113,7 +48,9 @@ export const createCartStore = () =>
       const itemToRemove = get().items.find((i) => i.id === id);
       if (itemToRemove) {
         const [productId, color, optionValue] = itemToRemove.id.split('-');
-        increaseStock(Number(productId), color, optionValue, itemToRemove.quantity);
+        if (productId && color && optionValue) {
+           useProductStore.getState().increaseStock(Number(productId), color, optionValue, itemToRemove.quantity);
+        }
       }
 
       const newItems = get().items.filter((i) => i.id !== id);
@@ -126,7 +63,7 @@ export const createCartStore = () =>
       const itemToIncrement = get().items.find((i) => i.id === id);
       if (itemToIncrement) {
         const [productId, color, optionValue] = itemToIncrement.id.split('-');
-        decreaseStock(Number(productId), color, optionValue);
+        useProductStore.getState().decreaseStock(Number(productId), color, optionValue, 1);
         const newItems = get().items.map((i) =>
             i.id === id ? { ...i, quantity: i.quantity + 1 } : i
         );
@@ -140,7 +77,7 @@ export const createCartStore = () =>
       const existingItem = get().items.find((i) => i.id === id);
       if (existingItem) {
         const [productId, color, optionValue] = existingItem.id.split('-');
-        increaseStock(Number(productId), color, optionValue, 1);
+        useProductStore.getState().increaseStock(Number(productId), color, optionValue, 1);
       }
       
       let newItems;
@@ -160,7 +97,9 @@ export const createCartStore = () =>
     clearCart: () => {
         get().items.forEach(item => {
             const [productId, color, optionValue] = item.id.split('-');
-            increaseStock(Number(productId), color, optionValue, item.quantity);
+            if (productId && color && optionValue) {
+              useProductStore.getState().increaseStock(Number(productId), color, optionValue, item.quantity);
+            }
         });
 
         set({
