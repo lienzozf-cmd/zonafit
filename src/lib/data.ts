@@ -1970,29 +1970,7 @@ export const products: Product[] = [
       ],
     },
   },
-  {
-    id: 2646,
-    name: 'Hella Pocket Sweats',
-    price: 'Q.600.00',
-    availability: 'Disponible',
-    description:
-      'Pantalones de chándal con múltiples bolsillos, ahora en un nuevo color.',
-    gender: 'hombre',
-    category: 'ropa',
-    subcategory: 'pantalon',
-    brand: 'YoungLA',
-    fabric_type: '100% Cotton',
-    is_compression: false,
-    images: [
-      {
-        src: '/assets/images/marcas/youngla/hombre/2005 - Hella Pocket Sweats morado.png',
-        alt: 'Hella Pocket Sweats New Color',
-        dataAiHint: 'men pants',
-        option: 'S',
-      },
-    ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
-  },
+ 
   {
     id: 2647,
     name: 'Monster Ultra Black',

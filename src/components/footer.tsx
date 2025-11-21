@@ -10,9 +10,7 @@ const Footer = () => {
           <p>Copyright &copy; Esta página fue diseñada por "Bushido SynCode".</p>
         </div>
         <div className="footer-section contact">
-          <h3>Contacto</h3>
-          <p><a href="#">Página Web</a></p>
-          <p>Horario: Lunes - Viernes, 9 AM - 6 PM</p>
+          <p>Horario: Lunes - Domingo, 8 AM - 8 PM</p>
           <div className="socials">
             <a href="https://www.instagram.com/zonafitgt_/" target="_blank" rel="noopener noreferrer">
               <Image src="/assets/images/redesociales/instagram.png" alt="Instagram" width={30} height={30} data-ai-hint="instagram icon" />
