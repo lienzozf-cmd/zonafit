@@ -807,7 +807,7 @@ export const products: Product[] = [
   },
   {
     id: 2523,
-    name: 'Flex Shorts',
+    name: 'Flex Shorts Gris',
     price: 'Q.345.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -819,26 +819,12 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: '/assets/images/marcas/gymshark/mujer/Flex Shorts azul.png',
+        src: '/assets/images/marcas/gymshark/mujer/Flex Shorts gris.png',
         alt: 'Flex Shorts',
         dataAiHint: 'woman shorts',
-        color: 'Gris',
       },
     ],
-    options: { type: 'talla', values: [] },
-    colors: [
-        {
-          name: 'Gris',
-          hex: '#808080',
-          imageSrc: '/assets/images/marcas/gymshark/mujer/Flex Shorts azul.png',
-          options: {
-            type: 'talla',
-            values: [
-              { value: 'M', stock: 1 },
-            ],
-          },
-        },
-      ],
+    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
   },
   {
     id: 2524,
@@ -886,7 +872,7 @@ export const products: Product[] = [
   },
   {
     id: 2527,
-    name: 'Strength Department Graphic Joggers',
+    name: 'Strength Graphic Joggers',
     price: 'Q.375.00',
     availability: 'Disponible',
     description: 'Joggers con gráfico del departamento de fuerza para un look completo.',
@@ -898,7 +884,7 @@ export const products: Product[] = [
     is_compression: false,
     images: [
       {
-        src: '/assets/images/marcas/gymshark/mujer/Strength Department Graphic Joggers negro.png',
+        src: '/assets/images/marcas/gymshark/mujer/Strength  Graphic Joggers.png',
         alt: 'Strength Department Graphic Joggers',
         dataAiHint: 'woman joggers',
         option: 'Negro',
@@ -1041,7 +1027,7 @@ export const products: Product[] = [
   },
   {
     id: 2543,
-    name: 'Flex Shorts (Black)',
+    name: 'Flex Shorts Negros',
     price: 'Q.415.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',

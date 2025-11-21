@@ -184,7 +184,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                   src={currentImage}
                   alt={product.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
             </div>
         </Link>
@@ -199,7 +199,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                  </div>
             </div>
 
-            {product.colors && product.colors.length > 0 && (
+            {product.colors && product.colors.length > 1 && (
                 <div className="color-swatches">
                     {product.colors.map((color) => (
                     <div
