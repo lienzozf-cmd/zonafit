@@ -23,7 +23,6 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
   }
 
   if (!cartStoreRef.current) {
-    // Pass product store's state to the cart store
     cartStoreRef.current = createCartStore(productStoreRef.current)
   }
 
