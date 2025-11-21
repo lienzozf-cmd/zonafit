@@ -50,7 +50,7 @@ import {
           <Container style={container}>
             <Section style={logoContainer}>
               <Img
-                src='https://firebasestorage.googleapis.com/v0/b/zona-fit-gt.appspot.com/o/assets%2Flogos%2Flogo.png?alt=media&token=513689cf-133c-4731-8263-7e44923e1e6c'
+                src='https://firebasestorage.googleapis.com/v0/b/zona-fit-gt.appspot.com/o/assets%2Flogos%2Flogo.jpg?alt=media&token=513689cf-133c-4731-8263-7e44923e1e6c'
                 width="150"
                 height="80"
                 alt="ZONA FIT GT"
