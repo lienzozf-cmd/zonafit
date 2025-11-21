@@ -212,7 +212,7 @@ const Header = () => {
             <MobileMenu />
             <div className="site-branding">
               <Link href="/">
-                <Image src="/assets/images/logos/logo.jpg" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
               </Link>
             </div>
           </>
@@ -220,7 +220,7 @@ const Header = () => {
           <>
             <div className="site-branding">
               <Link href="/">
-                <Image src="/assets/images/logos/logo.jpg" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
               </Link>
             </div>
             {renderNavLinks(false)}
