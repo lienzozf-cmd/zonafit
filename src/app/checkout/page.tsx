@@ -19,7 +19,6 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/use-cart';
-import { useProduct } from '@/hooks/use-product';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),
@@ -34,7 +33,6 @@ type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
   const { items, total, clearCart } = useCart();
-  const { products, decreaseStock } = useProduct();
   const { toast } = useToast();
   const router = useRouter();
 
@@ -78,13 +76,12 @@ export default function CheckoutPage() {
         throw new Error(errorData.message || 'Error al enviar el correo de notificación.');
       }
       
-      decreaseStock(items);
+      clearCart();
       
       toast({
         title: '¡Pedido realizado con éxito!',
         description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
       });
-      clearCart();
       router.push('/');
 
     } catch (error: any) {

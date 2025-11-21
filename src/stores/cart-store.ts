@@ -1,7 +1,7 @@
 
 'use client';
 
-import { createStore, useStore } from 'zustand';
+import { createStore, type StoreApi } from 'zustand';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
 import type { ProductStore } from './product-store';
@@ -37,7 +37,7 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = (productStoreState: ProductStore) => {
+export const createCartStore = (productStore: StoreApi<ProductStore>) => {
   return createStore<CartStore>((set, get) => ({
     ...defaultInitState,
     getItem: (id) => {
@@ -45,8 +45,8 @@ export const createCartStore = (productStoreState: ProductStore) => {
     },
     addItem: (item) => {
       set(produce((draft: CartState) => {
-        const { products, getProductOption } = productStoreState;
-        const product = products.find(p => p.id === item.productId);
+        const { getProductOption } = productStore.getState();
+        const product = productStore.getState().products.find(p => p.id === item.productId);
         if (!product) return;
 
         const option = getProductOption(product, item.option, item.color);
@@ -80,8 +80,8 @@ export const createCartStore = (productStoreState: ProductStore) => {
         const item = get().items.find((i) => i.id === id);
         if(!item) return;
 
-        const { products, getProductOption } = productStoreState;
-        const product = products.find(p => p.id === item.productId);
+        const { getProductOption } = productStore.getState();
+        const product = productStore.getState().products.find(p => p.id === item.productId);
         if(!product) return;
         
         const option = getProductOption(product, item.option, item.color);
@@ -118,8 +118,7 @@ export const createCartStore = (productStoreState: ProductStore) => {
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
-      const { decreaseStock } = productStoreState;
-      decreaseStock(get().items);
+      productStore.getState().decreaseStock(get().items);
 
       set(produce((draft: CartState) => {
         draft.items = [];

@@ -39,9 +39,19 @@ export const createProductStore = (initState: ProductStoreState = defaultInitSta
                 const product = draft.products.find(p => p.id === item.productId);
                 if (!product) return;
 
-                const option = get().getProductOption(product, item.option, item.color);
-                if (option && option.stock >= item.quantity) {
-                    option.stock -= item.quantity;
+                if (item.color) {
+                    const color = product.colors?.find(c => c.name === item.color);
+                    if (color) {
+                        const option = color.options.values.find(o => o.value === item.option);
+                        if (option && option.stock >= item.quantity) {
+                            option.stock -= item.quantity;
+                        }
+                    }
+                } else {
+                    const option = product.options.values.find(o => o.value === item.option);
+                    if (option && option.stock >= item.quantity) {
+                        option.stock -= item.quantity;
+                    }
                 }
             })
         }));
@@ -52,9 +62,19 @@ export const createProductStore = (initState: ProductStoreState = defaultInitSta
                 const product = draft.products.find(p => p.id === item.productId);
                 if (!product) return;
 
-                const option = get().getProductOption(product, item.option, item.color);
-                if (option) {
-                    option.stock += item.quantity;
+                if (item.color) {
+                    const color = product.colors?.find(c => c.name === item.color);
+                    if (color) {
+                        const option = color.options.values.find(o => o.value === item.option);
+                        if (option) {
+                            option.stock += item.quantity;
+                        }
+                    }
+                } else {
+                    const option = product.options.values.find(o => o.value === item.option);
+                    if (option) {
+                        option.stock += item.quantity;
+                    }
                 }
             })
         }));

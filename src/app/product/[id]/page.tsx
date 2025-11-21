@@ -17,7 +17,7 @@ const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const { products } = useProduct();
+  const { products, getProductOption } = useProduct();
   const { addItem, getItem } = useCart();
   const { toast } = useToast();
 
@@ -44,20 +44,12 @@ const ProductDetailPage = () => {
     }
   }, [id, products]);
 
-  const getAvailableStock = (option: ProductOption | null, color: ProductColor | null) => {
+  const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
-    
-    let originalStock = 0;
-    
-    if (color) {
-      const colorData = product.colors?.find(c => c.name === color.name);
-      const optionData = colorData?.options.values.find(v => v.value === option.value);
-      originalStock = optionData?.stock ?? 0;
-    } else {
-      const optionData = product.options.values.find(v => v.value === option.value);
-      originalStock = optionData?.stock ?? 0;
-    }
 
+    const currentOption = getProductOption(product, option.value, selectedColor?.name);
+    const originalStock = currentOption?.stock ?? 0;
+    
     const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);
     const stockInCart = itemInCart?.quantity || 0;
 
@@ -71,7 +63,7 @@ const ProductDetailPage = () => {
 
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
-      const availableStock = getAvailableStock(selectedOption, selectedColor);
+      const availableStock = getAvailableStock(selectedOption);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else if (selectedColor) {
       setAvailabilityMessage(`Selecciona un ${selectedColor.options.type}`);
@@ -123,7 +115,7 @@ const ProductDetailPage = () => {
         return;
     }
   
-    const availableStock = getAvailableStock(selectedOption, selectedColor);
+    const availableStock = getAvailableStock(selectedOption);
     if (availableStock <= 0) {
       toast({
         title: 'Error',
@@ -168,7 +160,7 @@ const ProductDetailPage = () => {
   }
 
   const currentOptions = selectedColor ? selectedColor.options : product.options;
-  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption, selectedColor) <= 0;
+  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption) <= 0;
 
   return (
     <>
@@ -267,7 +259,7 @@ const ProductDetailPage = () => {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {currentOptions.values.map((option) => {
-                      const stock = getAvailableStock(option, selectedColor);
+                      const stock = getAvailableStock(option);
                       const isSelected = selectedOption?.value === option.value;
                       
                       return (

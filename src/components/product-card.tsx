@@ -14,7 +14,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products } = useProduct();
+  const { products, getProductOption } = useProduct();
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
@@ -25,18 +25,11 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   
-  const getAvailableStock = (option: ProductOption | null, color: ProductColor | null) => {
+  const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
     
-    let originalStock = 0;
-    if (color) {
-      const colorData = product.colors?.find(c => c.name === color.name);
-      const optionData = colorData?.options.values.find(v => v.value === option.value);
-      originalStock = optionData?.stock ?? 0;
-    } else {
-      const optionData = product.options.values.find(v => v.value === option.value);
-      originalStock = optionData?.stock ?? 0;
-    }
+    const currentOption = getProductOption(product, option.value, selectedColor?.name);
+    const originalStock = currentOption?.stock ?? 0;
     
     const itemInCart = getItem(selectedColor ? `${product.id}-${selectedColor.name}-${option.value}` : `${product.id}-default-${option.value}`);
     const stockInCart = itemInCart?.quantity || 0;
@@ -51,7 +44,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
-      const availableStock = getAvailableStock(selectedOption, selectedColor);
+      const availableStock = getAvailableStock(selectedOption);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
       const uniqueOption = product.options.values[0];
@@ -112,7 +105,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       return;
     }
     
-    const availableStock = getAvailableStock(selectedOption, selectedColor);
+    const availableStock = getAvailableStock(selectedOption);
     if (availableStock <= 0) {
       toast({
         title: 'Error',
@@ -151,7 +144,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único') || (product.colors && product.colors.length > 0);
   const optionsToShow = selectedColor?.options.values || product.options.values;
-  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption, selectedColor) <= 0;
+  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption) <= 0;
 
   return (
     <div 
@@ -203,7 +196,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 {showOptions && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
-                      const stock = getAvailableStock(option, selectedColor);
+                      const stock = getAvailableStock(option);
                       const isOptionDisabled = stock <= 0;
                       return (
                         (option.value !== 'Único') &&
