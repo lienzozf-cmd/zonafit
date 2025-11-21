@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section about">
           <h3>Acerca de Nosotros</h3>
-          <p>Copyright &copy; Esta página fue diseñada por "Bushido SynCode".</p>
+          <p>Copyright &copy; Esta página fue diseñada por "Bushido Code Gt".</p>
         </div>
         <div className="footer-section contact">
           <h3>Horarios</h3>
