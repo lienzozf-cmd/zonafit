@@ -58,7 +58,7 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
         return product.options.values.find(v => v.value === optionValue);
     },
     addItem: (item) => {
-      set(produce((state: CartState) => {
+      set(produce((state: CartStore) => {
           const existingItem = state.items.find((i) => i.id === item.id);
           if (existingItem) {
             existingItem.quantity += 1;
@@ -66,21 +66,21 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
             state.items.push({ ...item, quantity: 1 });
           }
           
-          const newTotals = updateTotal(state.items);
-          state.itemCount = newTotals.itemCount;
-          state.total = newTotals.total;
+          const { itemCount, total } = updateTotal(state.items);
+          state.itemCount = itemCount;
+          state.total = total;
         }));
     },
     removeItem: (id) => {
-      set(produce((state: CartState) => {
+      set(produce((state: CartStore) => {
         state.items = state.items.filter((i) => i.id !== id);
-        const newTotals = updateTotal(state.items);
-        state.itemCount = newTotals.itemCount;
-        state.total = newTotals.total;
+        const { itemCount, total } = updateTotal(state.items);
+        state.itemCount = itemCount;
+        state.total = total;
       }));
     },
     incrementQuantity: (id) => {
-        const item = get().items.find((i) => i.id === id);
+        const item = get().getItem(id);
         if(!item) return;
 
         const option = get().getProductOption(item.productId, item.option, item.color);
@@ -89,19 +89,19 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
         const stockInCart = item.quantity;
 
         if (option.stock > stockInCart) {
-            set(produce((state: CartState) => {
+            set(produce((state: CartStore) => {
                 const draftItem = state.items.find((i) => i.id === id);
                 if (draftItem) {
                     draftItem.quantity += 1;
                 }
-                const newTotals = updateTotal(state.items);
-                state.itemCount = newTotals.itemCount;
-                state.total = newTotals.total;
+                const { itemCount, total } = updateTotal(state.items);
+                state.itemCount = itemCount;
+                state.total = total;
             }));
         }
     },
     decrementQuantity: (id) => {
-      set(produce((state: CartState) => {
+      set(produce((state: CartStore) => {
         const item = state.items.find((i) => i.id === id);
         if (item) {
           if (item.quantity > 1) {
@@ -110,37 +110,37 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
             state.items = state.items.filter((i) => i.id !== id);
           }
         }
-        const newTotals = updateTotal(state.items);
-        state.itemCount = newTotals.itemCount;
-        state.total = newTotals.total;
+        const { itemCount, total } = updateTotal(state.items);
+        state.itemCount = itemCount;
+        state.total = total;
       }));
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
-      get().decreaseStock(get().items);
-      set({ items: [], itemCount: 0, total: 0 });
+        get().decreaseStock(get().items);
+        set(produce((state: CartStore) => {
+            state.items = [];
+            state.itemCount = 0;
+            state.total = 0;
+        }));
     },
     decreaseStock: (cartItems) => {
-        set(produce((state: CartState) => {
+        set(produce((state: CartStore) => {
             cartItems.forEach(item => {
                 const product = state.products.find(p => p.id === item.productId);
                 if (!product) return;
 
-                if (item.color) {
-                    const color = product.colors?.find(c => c.name === item.color);
-                    if (color) {
-                        const option = color.options.values.find(o => o.value === item.option);
-                        if (option && option.stock >= item.quantity) {
-                            option.stock -= item.quantity;
-                        }
-                    }
-                } else {
-                    const option = product.options.values.find(o => o.value === item.option);
+                const optionSource = item.color 
+                    ? product.colors?.find(c => c.name === item.color)?.options.values 
+                    : product.options.values;
+
+                if (optionSource) {
+                    const option = optionSource.find(o => o.value === item.option);
                     if (option && option.stock >= item.quantity) {
                         option.stock -= item.quantity;
                     }
                 }
-            })
+            });
         }));
     },
   }));
