@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useProductStore } from '@/stores/product-store';
 
 const CategoryGrid = () => {
@@ -20,6 +21,7 @@ const CategoryGrid = () => {
       image: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
       dataAiHint: 'woman fitness',
       className: 'mujer',
+      href: '/mujeres',
     },
     {
       name: 'Hombre',
@@ -27,6 +29,7 @@ const CategoryGrid = () => {
       image: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
       dataAiHint: 'man fitness',
       className: 'hombre',
+      href: '/hombres',
     },
     {
       name: 'Accesorios',
@@ -34,6 +37,7 @@ const CategoryGrid = () => {
       image: '/assets/images/marcas/youngla/hombre/maletagym.png',
       dataAiHint: 'gym accessories',
       className: 'accesorios',
+      href: '/accesorios',
     },
     {
       name: 'Suplementos',
@@ -41,6 +45,7 @@ const CategoryGrid = () => {
       image: '/assets/images/marcas/raw/prewcb.jpg',
       dataAiHint: 'supplements',
       className: 'suplementos',
+      href: '/suplementos',
     },
     {
       name: 'Joyería',
@@ -48,6 +53,7 @@ const CategoryGrid = () => {
       image: '/assets/images/marcas/rgmnt/tridente.png',
       dataAiHint: 'jewelry',
       className: 'joyeria',
+      href: '/joyeria',
     }
   ];
 
@@ -59,43 +65,30 @@ const CategoryGrid = () => {
       </div>
       <div className="image-grid">
         <div className="grid-row">
-            <div className={`grid-item ${categoryData[0].className}`}>
-              <Image src={categoryData[0].image} alt={categoryData[0].name} width={600} height={600} data-ai-hint={categoryData[0].dataAiHint} className="object-cover w-full h-full" />
-              <div className="overlay-text">
-                <h3>{categoryData[0].name}</h3>
-                <p>{categoryData[0].count} productos</p>
-              </div>
-            </div>
-            <div className={`grid-item ${categoryData[1].className}`}>
-              <Image src={categoryData[1].image} alt={categoryData[1].name} width={600} height={600} data-ai-hint={categoryData[1].dataAiHint} className="object-cover w-full h-full" />
-              <div className="overlay-text">
-                <h3>{categoryData[1].name}</h3>
-                <p>{categoryData[1].count} productos</p>
-              </div>
-            </div>
+            {categoryData.slice(0, 2).map(category => (
+                <div key={category.name} className={`grid-item ${category.className}`}>
+                    <Link href={category.href} className="w-full h-full block">
+                        <Image src={category.image} alt={category.name} width={600} height={600} data-ai-hint={category.dataAiHint} className="object-cover w-full h-full" />
+                        <div className="overlay-text">
+                            <h3>{category.name}</h3>
+                            <p>{category.count} productos</p>
+                        </div>
+                    </Link>
+                </div>
+            ))}
         </div>
         <div className="grid-row">
-            <div className={`grid-item ${categoryData[2].className}`}>
-              <Image src={categoryData[2].image} alt={categoryData[2].name} width={400} height={400} data-ai-hint={categoryData[2].dataAiHint} className="object-cover w-full h-full" />
-              <div className="overlay-text">
-                <h3>{categoryData[2].name}</h3>
-                <p>{categoryData[2].count} productos</p>
-              </div>
-            </div>
-            <div className={`grid-item ${categoryData[3].className}`}>
-              <Image src={categoryData[3].image} alt={categoryData[3].name} width={400} height={400} data-ai-hint={categoryData[3].dataAiHint} className="object-cover w-full h-full" />
-              <div className="overlay-text">
-                <h3>{categoryData[3].name}</h3>
-                <p>{categoryData[3].count} productos</p>
-              </div>
-            </div>
-            <div className={`grid-item ${categoryData[4].className}`}>
-                <Image src={categoryData[4].image} alt={categoryData[4].name} width={400} height={400} data-ai-hint={categoryData[4].dataAiHint} className="object-cover w-full h-full" />
-                <div className="overlay-text">
-                    <h3>{categoryData[4].name}</h3>
-                    <p>{categoryData[4].count} productos</p>
+            {categoryData.slice(2).map(category => (
+                 <div key={category.name} className={`grid-item ${category.className}`}>
+                    <Link href={category.href} className="w-full h-full block">
+                        <Image src={category.image} alt={category.name} width={400} height={400} data-ai-hint={category.dataAiHint} className="object-cover w-full h-full" />
+                        <div className="overlay-text">
+                            <h3>{category.name}</h3>
+                            <p>{category.count} productos</p>
+                        </div>
+                    </Link>
                 </div>
-            </div>
+            ))}
         </div>
       </div>
     </section>
