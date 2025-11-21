@@ -223,13 +223,7 @@ const Header = () => {
           </>
         )}
         <div className="header-icons">
-          {isMobile ? (
-            <Search
-                className="search-icon"
-                onClick={() => setIsMobileMenuOpen(true)}
-                color="hsl(var(--accent))"
-            />
-          ) : renderSearch(false)}
+          {!isMobile && renderSearch(false)}
           <div className="relative">
             <ShoppingCart className="cart-icon" color="hsl(var(--accent))" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (

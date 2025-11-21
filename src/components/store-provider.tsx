@@ -6,7 +6,9 @@ import { type StoreApi, useStore } from 'zustand'
 import { type CartStore, createCartStore } from '@/stores/cart-store'
 import { type ProductStore, createProductStore } from '@/stores/product-store'
 
-export const ProductStoreContext = createContext<StoreApi<ProductStore> | null>(null)
+export const ProductStoreContext = createContext<StoreApi<ProductStore> | null>(
+  null,
+)
 export const CartStoreContext = createContext<StoreApi<CartStore> | null>(null)
 
 export interface StoreProviderProps {
@@ -21,6 +23,7 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
     productStoreRef.current = createProductStore()
   }
 
+  // Pass the product store instance to the cart store creator
   if (!cartStoreRef.current) {
     cartStoreRef.current = createCartStore(productStoreRef.current)
   }

@@ -106,11 +106,7 @@ export const createCartStore = (productStore: StoreApi<ProductStore>) => {
       clearCart: () => {
           const { decreaseStock } = productStore.getState();
           decreaseStock(get().items);
-          set(produce((state: CartStore) => {
-              state.items = [];
-              state.itemCount = 0;
-              state.total = 0;
-          }));
+          set(defaultInitState);
       },
   }));
 }

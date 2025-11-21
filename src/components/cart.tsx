@@ -13,6 +13,7 @@ import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from './store-provider';
+import { useProductStore } from './store-provider';
 
 const Cart = () => {
   const { 
@@ -25,6 +26,7 @@ const Cart = () => {
     incrementQuantity, 
     decrementQuantity 
   } = useCartStore((state) => state);
+  const { increaseStock } = useProductStore((state) => state);
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -38,6 +40,27 @@ const Cart = () => {
     setIsCartOpen(false);
     router.push('/checkout');
   };
+
+  const handleRemoveItem = (id: string) => {
+    const item = items.find(i => i.id === id);
+    if(item) {
+      increaseStock([item]);
+      removeItem(id);
+    }
+  }
+
+  const handleDecrement = (id: string) => {
+    const item = items.find(i => i.id === id);
+    if (item) {
+        if (item.quantity > 1) {
+            increaseStock([{...item, quantity: -1}]); // Increase stock by 1
+            decrementQuantity(id);
+        } else {
+            handleRemoveItem(id);
+        }
+    }
+  };
+
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -76,7 +99,7 @@ const Cart = () => {
                       <div className="flex flex-col justify-center items-center gap-2">
                         <div className="flex items-center gap-2">
                            <div className="flex items-center cart-item-quantity-control">
-                            <button onClick={() => decrementQuantity(item.id)} className="text-black">-</button>
+                            <button onClick={() => handleDecrement(item.id)} className="text-black">-</button>
                             <span>{item.quantity}</span>
                             <button onClick={() => incrementQuantity(item.id)} className="text-black">+</button>
                           </div>
@@ -85,7 +108,7 @@ const Cart = () => {
                           variant="outline"
                           size="icon"
                           className="h-8 w-8 text-red-500"
-                          onClick={() => removeItem(item.id)}
+                          onClick={() => handleRemoveItem(item.id)}
                         >
                           <Trash className="h-4 w-4" />
                           <span className="sr-only">Remove item</span>
