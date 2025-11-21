@@ -10,7 +10,7 @@ import FilterSortControls from '@/components/filter-sort-controls';
 import { useCart } from '@/hooks/use-cart';
 
 export default function VanquishPage() {
-  const { products } = useCart();
+  const products = useCart((state) => state.products);
   const [sortOption, setSortOption] = useState('');
 
   const filteredProducts = products.filter(

@@ -16,16 +16,14 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/use-cart';
 
 const Cart = () => {
-  const { 
-    items,
-    total,
-    itemCount,
-    isCartOpen,
-    setIsCartOpen,
-    removeItem,
-    incrementQuantity,
-    decrementQuantity 
-  } = useCart();
+  const items = useCart((state) => state.items);
+  const total = useCart((state) => state.total);
+  const itemCount = useCart((state) => state.itemCount);
+  const isCartOpen = useCart((state) => state.isCartOpen);
+  const setIsCartOpen = useCart((state) => state.setIsCartOpen);
+  const removeItem = useCart((state) => state.removeItem);
+  const incrementQuantity = useCart((state) => state.incrementQuantity);
+  const decrementQuantity = useCart((state) => state.decrementQuantity);
   const router = useRouter();
 
   const handleCheckout = () => {

@@ -16,7 +16,10 @@ const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const { products, getProductOption, addItem, getItem } = useCart();
+  const products = useCart((state) => state.products);
+  const getProductOption = useCart((state) => state.getProductOption);
+  const addItem = useCart((state) => state.addItem);
+  const getItem = useCart((state) => state.getItem);
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);

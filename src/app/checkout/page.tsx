@@ -32,7 +32,9 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCart();
+  const items = useCart((state) => state.items);
+  const total = useCart((state) => state.total);
+  const clearCart = useCart((state) => state.clearCart);
   const { toast } = useToast();
   const router = useRouter();
 

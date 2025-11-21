@@ -58,26 +58,25 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
         return product.options.values.find(v => v.value === optionValue);
     },
     addItem: (item) => {
-      set(produce((draft: CartState) => {
-          const existingItem = draft.items.find((i) => i.id === item.id);
-          if (draft.items.find((i) => i.id === item.id)) {
-            const itemToUpdate = draft.items.find((i) => i.id === item.id)!;
-            itemToUpdate.quantity += 1;
+      set(produce((state: CartState) => {
+          const existingItem = state.items.find((i) => i.id === item.id);
+          if (existingItem) {
+            existingItem.quantity += 1;
           } else {
-            draft.items.push({ ...item, quantity: 1 });
+            state.items.push({ ...item, quantity: 1 });
           }
           
-          const newTotals = updateTotal(draft.items);
-          draft.itemCount = newTotals.itemCount;
-          draft.total = newTotals.total;
+          const newTotals = updateTotal(state.items);
+          state.itemCount = newTotals.itemCount;
+          state.total = newTotals.total;
         }));
     },
     removeItem: (id) => {
-      set(produce((draft: CartState) => {
-        draft.items = draft.items.filter((i) => i.id !== id);
-        const newTotals = updateTotal(draft.items);
-        draft.itemCount = newTotals.itemCount;
-        draft.total = newTotals.total;
+      set(produce((state: CartState) => {
+        state.items = state.items.filter((i) => i.id !== id);
+        const newTotals = updateTotal(state.items);
+        state.itemCount = newTotals.itemCount;
+        state.total = newTotals.total;
       }));
     },
     incrementQuantity: (id) => {
@@ -90,30 +89,30 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
         const stockInCart = item.quantity;
 
         if (option.stock > stockInCart) {
-            set(produce((draft: CartState) => {
-                const draftItem = draft.items.find((i) => i.id === id);
+            set(produce((state: CartState) => {
+                const draftItem = state.items.find((i) => i.id === id);
                 if (draftItem) {
                     draftItem.quantity += 1;
                 }
-                const newTotals = updateTotal(draft.items);
-                draft.itemCount = newTotals.itemCount;
-                draft.total = newTotals.total;
+                const newTotals = updateTotal(state.items);
+                state.itemCount = newTotals.itemCount;
+                state.total = newTotals.total;
             }));
         }
     },
     decrementQuantity: (id) => {
-      set(produce((draft: CartState) => {
-        const item = draft.items.find((i) => i.id === id);
+      set(produce((state: CartState) => {
+        const item = state.items.find((i) => i.id === id);
         if (item) {
           if (item.quantity > 1) {
             item.quantity -= 1;
           } else {
-            draft.items = draft.items.filter((i) => i.id !== id);
+            state.items = state.items.filter((i) => i.id !== id);
           }
         }
-        const newTotals = updateTotal(draft.items);
-        draft.itemCount = newTotals.itemCount;
-        draft.total = newTotals.total;
+        const newTotals = updateTotal(state.items);
+        state.itemCount = newTotals.itemCount;
+        state.total = newTotals.total;
       }));
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
@@ -122,9 +121,9 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
       set({ items: [], itemCount: 0, total: 0 });
     },
     decreaseStock: (cartItems) => {
-        set(produce((draft: CartState) => {
+        set(produce((state: CartState) => {
             cartItems.forEach(item => {
-                const product = draft.products.find(p => p.id === item.productId);
+                const product = state.products.find(p => p.id === item.productId);
                 if (!product) return;
 
                 if (item.color) {

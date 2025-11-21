@@ -4,7 +4,7 @@ import { useCart } from '@/hooks/use-cart';
 import ProductCard from './product-card';
 
 const FeaturedProducts = () => {
-  const { products } = useCart();
+  const products = useCart((state) => state.products);
   // Define a specific list of featured product IDs
   const featuredProductIds = [1, 2, 3, 4, 5, 2643, 6, 7, 8];
   

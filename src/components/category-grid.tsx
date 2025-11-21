@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useCart } from '@/hooks/use-cart';
 
 const CategoryGrid = () => {
-  const { products } = useCart();
+  const products = useCart((state) => state.products);
 
   const getProductCount = (category: 'mujer' | 'hombre' | 'accesorio' | 'suplemento' | 'joyeria') => {
     if (category === 'mujer' || category === 'hombre') {

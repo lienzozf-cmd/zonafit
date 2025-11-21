@@ -13,7 +13,11 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, getProductOption, addItem, getItem } = useCart();
+  const products = useCart((state) => state.products);
+  const getProductOption = useCart((state) => state.getProductOption);
+  const addItem = useCart((state) => state.addItem);
+  const getItem = useCart((state) => state.getItem);
+
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
