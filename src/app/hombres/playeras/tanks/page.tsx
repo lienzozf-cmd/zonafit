@@ -5,12 +5,12 @@ import { useState } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
-import { useProductStore } from '@/components/store-provider';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
+import { useProduct } from '@/hooks/use-product';
 
 export default function TanksPage() {
-  const { products } = useProductStore();
+  const { products } = useProduct();
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 

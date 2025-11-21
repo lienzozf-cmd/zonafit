@@ -1,3 +1,4 @@
+
 'use client';
 import BrandsSection from '@/components/brands-section';
 import CategoryGrid from '@/components/category-grid';

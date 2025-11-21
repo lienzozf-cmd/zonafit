@@ -27,14 +27,17 @@ export const createProductStore = (initState: ProductStoreState = defaultInitSta
   return createStore<ProductStore>((set, get) => ({
     ...initState,
     getProductOption: (product, optionValue, colorName) => {
+        const currentProduct = get().products.find(p => p.id === product.id);
+        if (!currentProduct) return undefined;
+        
         if (colorName) {
-          const color = product.colors?.find(c => c.name === colorName);
+          const color = currentProduct.colors?.find(c => c.name === colorName);
           return color?.options.values.find(v => v.value === optionValue);
         }
-        return product.options.values.find(v => v.value === optionValue);
+        return currentProduct.options.values.find(v => v.value === optionValue);
     },
     decreaseStock: (cartItems) => {
-        set(produce((draft: ProductStore) => {
+        set(produce((draft: ProductStoreState) => {
             cartItems.forEach(item => {
                 const product = draft.products.find(p => p.id === item.productId);
                 if (!product) return;
@@ -57,7 +60,7 @@ export const createProductStore = (initState: ProductStoreState = defaultInitSta
         }));
     },
     increaseStock: (cartItems) => {
-        set(produce((draft: ProductStore) => {
+        set(produce((draft: ProductStoreState) => {
             cartItems.forEach(item => {
                 const product = draft.products.find(p => p.id === item.productId);
                 if (!product) return;
