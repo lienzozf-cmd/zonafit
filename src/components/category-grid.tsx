@@ -8,24 +8,30 @@ import { useCartStore } from '@/stores/cart-store';
 
 const CategoryGrid = () => {
   const products = useCartStore((state) => state.products);
-  const [isClient, setIsClient] = useState(false);
+  const [counts, setCounts] = useState({
+    mujer: 0,
+    hombre: 0,
+    accesorio: 0,
+    suplemento: 0,
+    joyeria: 0,
+  });
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const getProductCount = (category: 'mujer' | 'hombre' | 'accesorio' | 'suplemento' | 'joyeria') => {
-    if (!isClient || !products) return 0;
-    if (category === 'mujer' || category === 'hombre') {
-      return products.filter(p => p.gender === category).length;
+    if (products && products.length > 0) {
+      setCounts({
+        mujer: products.filter(p => p.gender === 'mujer').length,
+        hombre: products.filter(p => p.gender === 'hombre').length,
+        accesorio: products.filter(p => p.category === 'accesorio').length,
+        suplemento: products.filter(p => p.category === 'suplemento').length,
+        joyeria: products.filter(p => p.category === 'joyeria').length,
+      });
     }
-    return products.filter(p => p.category === category).length;
-  };
+  }, [products]);
 
   const categoryData = [
     {
       name: 'Mujer',
-      count: getProductCount('mujer'),
+      count: counts.mujer,
       image: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
       dataAiHint: 'woman fitness',
       className: 'mujer',
@@ -33,7 +39,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Hombre',
-      count: getProductCount('hombre'),
+      count: counts.hombre,
       image: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
       dataAiHint: 'man fitness',
       className: 'hombre',
@@ -41,7 +47,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Accesorios',
-      count: getProductCount('accesorio'),
+      count: counts.accesorio,
       image: '/assets/images/marcas/youngla/hombre/maletagym.png',
       dataAiHint: 'gym accessories',
       className: 'accesorios',
@@ -49,7 +55,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Suplementos',
-      count: getProductCount('suplemento'),
+      count: counts.suplemento,
       image: '/assets/images/marcas/raw/prewcb.jpg',
       dataAiHint: 'supplements',
       className: 'suplementos',
@@ -57,7 +63,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Joyería',
-      count: getProductCount('joyeria'),
+      count: counts.joyeria,
       image: '/assets/images/marcas/rgmnt/tridente.png',
       dataAiHint: 'jewelry',
       className: 'joyeria',
