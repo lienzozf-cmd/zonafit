@@ -24,8 +24,18 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   
-  const getAvailableStock = (option: ProductOption, color: ProductColor | null) => {
-    if (!product) return 0;
+  const getAvailableStock = (option: ProductOption | null, color: ProductColor | null) => {
+    if (!product || !option) return 0;
+    
+    let originalStock = 0;
+    if (color) {
+      const colorData = product.colors?.find(c => c.name === color.name);
+      const optionData = colorData?.options.values.find(v => v.value === option.value);
+      originalStock = optionData?.stock ?? 0;
+    } else {
+      const optionData = product.options.values.find(v => v.value === option.value);
+      originalStock = optionData?.stock ?? 0;
+    }
     
     const cartItemId = color 
       ? `${product.id}-${color.name}-${option.value}` 
@@ -34,13 +44,13 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     const itemInCart = getItem(cartItemId);
     const quantityInCart = itemInCart ? itemInCart.quantity : 0;
     
-    return option.stock - quantityInCart;
+    return originalStock - quantityInCart;
   };
   
   useEffect(() => {
     updateAvailabilityMessage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product.id, selectedOption, selectedColor]);
+  }, [product, selectedOption, selectedColor, getItem]);
   
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
@@ -49,8 +59,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     } else if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
       const uniqueOption = product.options.values[0];
       setSelectedOption(uniqueOption);
-      const availableStock = getAvailableStock(uniqueOption, selectedColor);
-      setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else if (product.colors && product.colors.length > 0) {
       setAvailabilityMessage(`Selecciona un color y talla`);
     } else {
@@ -73,6 +81,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
+    e.preventDefault();
     setSelectedOption(prev => (prev?.value === option.value ? null : option));
   };
 
@@ -85,6 +94,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent link navigation
+    e.preventDefault();
     
     if (product.colors && product.colors.length > 0 && !selectedColor) {
         toast({
@@ -144,6 +154,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único') || (product.colors && product.colors.length > 0);
   const optionsToShow = selectedColor?.options.values || product.options.values;
+  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption, selectedColor) <= 0;
 
   return (
     <div 
@@ -198,7 +209,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 {showOptions && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
-                      const isOptionDisabled = getAvailableStock(option, selectedColor) <= 0;
+                      const isOptionDisabled = getAvailableStock(option, selectedColor) === 0;
                       return (
                         (option.value !== 'Único') &&
                         <button
@@ -219,9 +230,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 <button 
                     className="add-to-cart-button" 
                     onClick={handleAddToCart} 
-                    disabled={!selectedOption || getAvailableStock(selectedOption, selectedColor) <= 0}
+                    disabled={isAddToCartDisabled}
                 >
-                  {selectedOption && getAvailableStock(selectedOption, selectedColor) <= 0 ? 'Agotado' : 'AGREGAR'}
+                  {isAddToCartDisabled && selectedOption ? 'Agotado' : 'AGREGAR'}
                 </button>
             </div>
         </div>

@@ -44,40 +44,38 @@ const ProductDetailPage = () => {
     }
   }, [id, products]);
 
-  useEffect(() => {
-    if (product) {
-      updateAvailabilityMessage();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption, selectedColor, product]);
-
-  const getAvailableStock = () => {
-    if (!product || !selectedOption) return 0;
+  const getAvailableStock = (option: ProductOption | null, color: ProductColor | null) => {
+    if (!product || !option) return 0;
     
     let originalStock = 0;
     
-    if (selectedColor) {
-      const color = product.colors?.find(c => c.name === selectedColor.name);
-      const option = color?.options.values.find(v => v.value === selectedOption.value);
-      originalStock = option?.stock ?? 0;
+    if (color) {
+      const colorData = product.colors?.find(c => c.name === color.name);
+      const optionData = colorData?.options.values.find(v => v.value === option.value);
+      originalStock = optionData?.stock ?? 0;
     } else {
-      const option = product.options.values.find(v => v.value === selectedOption.value);
-      originalStock = option?.stock ?? 0;
+      const optionData = product.options.values.find(v => v.value === option.value);
+      originalStock = optionData?.stock ?? 0;
     }
 
-    const cartItemId = selectedColor 
-      ? `${product.id}-${selectedColor.name}-${selectedOption.value}` 
-      : `${product.id}-default-${selectedOption.value}`;
+    const cartItemId = color 
+      ? `${product.id}-${color.name}-${option.value}` 
+      : `${product.id}-default-${option.value}`;
       
     const itemInCart = getItem(cartItemId);
     const quantityInCart = itemInCart ? itemInCart.quantity : 0;
     
     return originalStock - quantityInCart;
   };
+  
+  useEffect(() => {
+    updateAvailabilityMessage();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOption, selectedColor, product, getItem]);
 
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
-      const availableStock = getAvailableStock();
+      const availableStock = getAvailableStock(selectedOption, selectedColor);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else if (selectedColor) {
       setAvailabilityMessage(`Selecciona un ${selectedColor.options.type}`);
@@ -129,7 +127,7 @@ const ProductDetailPage = () => {
         return;
     }
   
-    const availableStock = getAvailableStock();
+    const availableStock = getAvailableStock(selectedOption, selectedColor);
     if (availableStock <= 0) {
       toast({
         title: 'Error',
@@ -174,6 +172,7 @@ const ProductDetailPage = () => {
   }
 
   const currentOptions = selectedColor ? selectedColor.options : product.options;
+  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption, selectedColor) <= 0;
 
   return (
     <>
@@ -272,12 +271,12 @@ const ProductDetailPage = () => {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {currentOptions.values.map((option) => {
-                      const availableStock = getAvailableStock();
-                      const isSelected = selectedOption?.value === option.value;
                       const originalStock = selectedColor 
                         ? product.colors?.find(c => c.name === selectedColor.name)?.options.values.find(v => v.value === option.value)?.stock ?? 0
                         : product.options.values.find(v => v.value === option.value)?.stock ?? 0;
-
+                      
+                      const isSelected = selectedOption?.value === option.value;
+                      
                       return (
                         <Button
                           key={option.value}
@@ -303,9 +302,9 @@ const ProductDetailPage = () => {
                   size="lg"
                   className="w-full text-lg py-6"
                   onClick={handleAddToCart}
-                  disabled={getAvailableStock() === 0}
+                  disabled={isAddToCartDisabled}
                 >
-                  {getAvailableStock() === 0 && selectedOption ? 'Agotado' : 'AGREGAR AL CARRITO'}
+                  {isAddToCartDisabled && selectedOption ? 'Agotado' : 'AGREGAR AL CARRITO'}
                 </Button>
             </div>
           </div>

@@ -96,6 +96,10 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
   setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
   
   clearCart: (restock = true) => {
+    const { items } = get();
+    // This function will be called on successful checkout, so we just clear the cart.
+    // The actual stock should be managed server-side in a real application.
+    // For this client-side only app, we're not restocking on checkout completion.
     set({
       items: [],
       itemCount: 0,

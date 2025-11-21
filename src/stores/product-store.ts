@@ -1,6 +1,5 @@
 
 import { create } from 'zustand';
-import { produce } from 'immer';
 import { products as initialProducts, type Product } from '@/lib/data';
 
 export type ProductStore = {
