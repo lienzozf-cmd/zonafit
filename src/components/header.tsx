@@ -12,12 +12,15 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
+import { useProductStore } from '@/providers/product-provider';
 
 const Header = () => {
-  const { setIsCartOpen, itemCount, products } = useCartStore((state) => ({ 
+  const { setIsCartOpen, itemCount } = useCartStore((state) => ({ 
     setIsCartOpen: state.setIsCartOpen, 
     itemCount: state.itemCount,
-    products: state.products,
+  }));
+  const { products } = useProductStore((state) => ({
+      products: state.products,
   }));
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

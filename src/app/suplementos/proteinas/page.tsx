@@ -6,10 +6,10 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import { useCartStore } from '@/stores/cart-store';
+import { useProductStore } from '@/providers/product-provider';
 
 export default function ProteinasPage() {
-  const products = useCartStore((state) => state.products);
+  const products = useProductStore((state) => state.products);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
