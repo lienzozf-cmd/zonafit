@@ -19,7 +19,7 @@ export type CartActions = {
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   setIsCartOpen: (isOpen: boolean) => void;
-  clearCart: (restock?: boolean) => void;
+  clearCart: () => void;
   getItem: (id: string) => CartItem | undefined;
 };
 
@@ -95,11 +95,7 @@ export const useCartStore = create<CartState & CartActions>((set, get) => ({
 
   setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
   
-  clearCart: (restock = true) => {
-    const { items } = get();
-    // This function will be called on successful checkout, so we just clear the cart.
-    // The actual stock should be managed server-side in a real application.
-    // For this client-side only app, we're not restocking on checkout completion.
+  clearCart: () => {
     set({
       items: [],
       itemCount: 0,
