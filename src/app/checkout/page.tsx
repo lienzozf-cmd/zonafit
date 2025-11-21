@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useCart } from '@/hooks/use-cart';
+import { useCartStore } from '@/stores/cart-store';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
@@ -32,7 +32,7 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCart();
+  const { items, total, clearCart } = useCartStore();
   const { toast } = useToast();
   const router = useRouter();
 

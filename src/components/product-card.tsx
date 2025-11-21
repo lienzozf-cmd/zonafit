@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
-import { useCart } from '@/hooks/use-cart';
+import { useCartStore } from '@/stores/cart-store';
 import { useToast } from '@/hooks/use-toast';
 import { useProductStore } from '@/stores/product-store';
 
@@ -19,7 +19,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
-  const { addItem, getItem } = useCart();
+  const { addItem, getItem } = useCartStore();
   const { toast } = useToast();
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');

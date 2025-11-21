@@ -1,6 +1,7 @@
+
 'use client';
 import Image from 'next/image';
-import { useCart } from '@/hooks/use-cart';
+import { useCartStore } from '@/stores/cart-store';
 import confetti from 'canvas-confetti';
 import {
   Sheet,
@@ -24,7 +25,7 @@ const Cart = () => {
     removeItem,
     incrementQuantity,
     decrementQuantity,
-  } = useCart();
+  } = useCartStore();
   const router = useRouter();
 
   const handleCheckout = () => {

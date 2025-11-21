@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
-import { useCart } from '@/hooks/use-cart';
+import { useCartStore } from '@/stores/cart-store';
 import { useToast } from '@/hooks/use-toast';
 import { useProductStore } from '@/stores/product-store';
 import { Button } from '@/components/ui/button';
@@ -18,7 +18,7 @@ const ProductDetailPage = () => {
   const router = useRouter();
   const { id } = params;
   const { products } = useProductStore();
-  const { addItem, getItem } = useCart();
+  const { addItem, getItem } = useCartStore();
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);
