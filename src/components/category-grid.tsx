@@ -1,13 +1,20 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cart-store';
 
 const CategoryGrid = () => {
   const products = useCartStore((state) => state.products);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const getProductCount = (category: 'mujer' | 'hombre' | 'accesorio' | 'suplemento' | 'joyeria') => {
+    if (!isClient || !products) return 0;
     if (category === 'mujer' || category === 'hombre') {
       return products.filter(p => p.gender === category).length;
     }

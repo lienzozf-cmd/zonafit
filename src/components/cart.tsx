@@ -13,6 +13,7 @@ import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
+import { useProductStore } from '@/providers/product-provider';
 
 const Cart = () => {
   const { 
@@ -25,6 +26,7 @@ const Cart = () => {
     incrementQuantity, 
     decrementQuantity 
   } = useCartStore((state) => state);
+  const { getProductOption } = useProductStore((state) => state);
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -43,6 +45,18 @@ const Cart = () => {
     removeItem(id);
   }
 
+  const handleIncrement = (id: string) => {
+    const item = items.find(i => i.id === id);
+    if (item) {
+        const option = getProductOption(item.productId, item.option, item.color);
+        if (option && item.quantity < option.stock) {
+            incrementQuantity(id);
+        } else {
+            console.error('No hay suficiente stock para añadir más al carrito');
+        }
+    }
+  };
+
   const handleDecrement = (id: string) => {
     const item = items.find(i => i.id === id);
     if (item) {
@@ -53,7 +67,6 @@ const Cart = () => {
         }
     }
   };
-
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -94,7 +107,7 @@ const Cart = () => {
                            <div className="flex items-center cart-item-quantity-control">
                             <button onClick={() => handleDecrement(item.id)} className="text-black">-</button>
                             <span>{item.quantity}</span>
-                            <button onClick={() => incrementQuantity(item.id)} className="text-black">+</button>
+                            <button onClick={() => handleIncrement(item.id)} className="text-black">+</button>
                           </div>
                         </div>
                         <Button
