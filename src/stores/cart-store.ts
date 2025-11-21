@@ -23,6 +23,71 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
+const decreaseStock = (productId: number, colorName: string, optionValue: string, quantity = 1) => {
+    useProductStore.setState(state => ({
+        products: state.products.map(p => {
+            if (p.id === productId) {
+                const newProduct = { ...p };
+                if (newProduct.colors && newProduct.colors.length > 0) {
+                    newProduct.colors = newProduct.colors.map(c => {
+                        if (c.name === colorName) {
+                            c.options.values = c.options.values.map(v => {
+                                if (v.value === optionValue) {
+                                    return { ...v, stock: Math.max(0, v.stock - quantity) };
+                                }
+                                return v;
+                            });
+                        }
+                        return c;
+                    });
+                } else {
+                    newProduct.options.values = newProduct.options.values.map(v => {
+                        if (v.value === optionValue) {
+                            return { ...v, stock: Math.max(0, v.stock - quantity) };
+                        }
+                        return v;
+                    });
+                }
+                return newProduct;
+            }
+            return p;
+        })
+    }));
+};
+
+const increaseStock = (productId: number, colorName: string, optionValue: string, quantity: number) => {
+    useProductStore.setState(state => ({
+        products: state.products.map(p => {
+            if (p.id === productId) {
+                const newProduct = { ...p };
+                if (newProduct.colors && newProduct.colors.length > 0) {
+                    newProduct.colors = newProduct.colors.map(c => {
+                        if (c.name === colorName) {
+                            c.options.values = c.options.values.map(v => {
+                                if (v.value === optionValue) {
+                                    return { ...v, stock: v.stock + quantity };
+                                }
+                                return v;
+                            });
+                        }
+                        return c;
+                    });
+                } else {
+                    newProduct.options.values = newProduct.options.values.map(v => {
+                        if (v.value === optionValue) {
+                            return { ...v, stock: v.stock + quantity };
+                        }
+                        return v;
+                    });
+                }
+                return newProduct;
+            }
+            return p;
+        })
+    }));
+};
+
+
 export const createCartStore = () => 
   createStore<CartStore>((set, get) => ({
     items: [],
@@ -45,7 +110,6 @@ export const createCartStore = () =>
       });
     },
     removeItem: (id) => {
-      const { increaseStock } = useProductStore.getState();
       const itemToRemove = get().items.find((i) => i.id === id);
       if (itemToRemove) {
         const [productId, color, optionValue] = itemToRemove.id.split('-');
@@ -59,7 +123,6 @@ export const createCartStore = () =>
       });
     },
     incrementQuantity: (id) => {
-      const { decreaseStock } = useProductStore.getState();
       const itemToIncrement = get().items.find((i) => i.id === id);
       if (itemToIncrement) {
         const [productId, color, optionValue] = itemToIncrement.id.split('-');
@@ -74,7 +137,6 @@ export const createCartStore = () =>
       }
     },
     decrementQuantity: (id) => {
-      const { increaseStock } = useProductStore.getState();
       const existingItem = get().items.find((i) => i.id === id);
       if (existingItem) {
         const [productId, color, optionValue] = existingItem.id.split('-');
@@ -96,7 +158,6 @@ export const createCartStore = () =>
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
-        const { increaseStock } = useProductStore.getState();
         get().items.forEach(item => {
             const [productId, color, optionValue] = item.id.split('-');
             increaseStock(Number(productId), color, optionValue, item.quantity);

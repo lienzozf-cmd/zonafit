@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BrandsSection from '@/components/brands-section';
 import CategoryGrid from '@/components/category-grid';
 import FeaturedProducts from '@/components/featured-products';
@@ -12,10 +12,22 @@ import Footer from '@/components/footer';
 
 export default function Home() {
   const [introFinished, setIntroFinished] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    if (sessionStorage.getItem('introShown')) {
+      setIntroFinished(true);
+    }
+  }, []);
 
   const handleIntroFinish = () => {
     setIntroFinished(true);
   };
+  
+  if (!isClient) {
+    return null; 
+  }
 
   return (
     <>
