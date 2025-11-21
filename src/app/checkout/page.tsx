@@ -80,7 +80,7 @@ export default function CheckoutPage() {
         title: '¡Pedido realizado con éxito!',
         description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
       });
-      clearCart();
+      clearCart(false); // Do not restock items on successful checkout
       router.push('/');
 
     } catch (error: any) {

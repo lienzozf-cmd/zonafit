@@ -17,8 +17,8 @@ const ProductDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-  const { products: storeProducts } = useProductStore();
-  const { addItem } = useCart();
+  const { products } = useProductStore();
+  const { addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [product, setProduct] = useState<Product | null>(null);
@@ -28,7 +28,7 @@ const ProductDetailPage = () => {
   const [availabilityMessage, setAvailabilityMessage] = useState('');
 
   useEffect(() => {
-    const foundProduct = storeProducts.find((p) => p.id === Number(id));
+    const foundProduct = products.find((p) => p.id === Number(id));
     if (foundProduct) {
       setProduct(foundProduct);
       if (foundProduct.colors && foundProduct.colors.length > 0) {
@@ -42,27 +42,50 @@ const ProductDetailPage = () => {
           setSelectedOption(foundProduct.options.values[0]);
       }
     }
-  }, [id, storeProducts]);
+  }, [id, products]);
 
   useEffect(() => {
-    if (selectedColor) {
-      const updatedProduct = storeProducts.find(p => p.id === product?.id);
-      const updatedColor = updatedProduct?.colors?.find(c => c.name === selectedColor.name);
-      if (updatedColor) {
-        setSelectedColor(updatedColor);
-      }
+    if (product) {
+      updateAvailabilityMessage();
     }
-  }, [storeProducts, product, selectedColor]);
-  
-  useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOption, selectedColor, product]);
+
+  const getAvailableStock = () => {
+    if (!product || !selectedOption) return 0;
+    
+    let originalStock = 0;
+    
+    if (selectedColor) {
+      const color = product.colors?.find(c => c.name === selectedColor.name);
+      const option = color?.options.values.find(v => v.value === selectedOption.value);
+      originalStock = option?.stock ?? 0;
+    } else {
+      const option = product.options.values.find(v => v.value === selectedOption.value);
+      originalStock = option?.stock ?? 0;
+    }
+
+    const cartItemId = selectedColor 
+      ? `${product.id}-${selectedColor.name}-${selectedOption.value}` 
+      : `${product.id}-default-${selectedOption.value}`;
+      
+    const itemInCart = getItem(cartItemId);
+    const quantityInCart = itemInCart ? itemInCart.quantity : 0;
+    
+    return originalStock - quantityInCart;
+  };
+
+  const updateAvailabilityMessage = () => {
     if (selectedOption) {
-      setAvailabilityMessage(`Disponible: ${selectedOption.stock} unidades`);
+      const availableStock = getAvailableStock();
+      setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else if (selectedColor) {
       setAvailabilityMessage(`Selecciona un ${selectedColor.options.type}`);
     } else if (product?.options) {
       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     }
-  }, [selectedOption, selectedColor, product]);
+  }
+
 
   const handleColorClick = (color: ProductColor) => {
     setSelectedColor(color);
@@ -77,52 +100,67 @@ const ProductDetailPage = () => {
 
   const handleAddToCart = () => {
     if (!product) return;
+  
+    if (product.colors && product.colors.length > 0 && !selectedColor) {
+      toast({
+        title: 'Error',
+        description: `Por favor, selecciona un color.`,
+        variant: 'destructive',
+      });
+      return;
+    }
+  
+    if (product.options && (!selectedOption || (product.options.values.length > 1 && selectedOption.value === 'Único'))) {
+      const optionType = (selectedColor ? selectedColor.options.type : product.options.type) || 'opción';
+      toast({
+        title: 'Error',
+        description: `Por favor, selecciona una ${optionType}.`,
+        variant: 'destructive',
+      });
+      return;
+    }
 
-    if (product.colors && (!selectedColor || !selectedOption)) {
+    if (!selectedOption) {
         toast({
             title: 'Error',
-            description: `Por favor, selecciona un color y una ${selectedColor?.options.type || 'opción'}.`,
+            description: `Por favor, selecciona una opción.`,
             variant: 'destructive',
         });
         return;
     }
-
-    if (!product.colors && !selectedOption) {
-        toast({
-            title: 'Error',
-            description: `Por favor, selecciona una ${product.options?.type || 'opción'}.`,
-            variant: 'destructive',
-        });
-        return;
+  
+    const availableStock = getAvailableStock();
+    if (availableStock <= 0) {
+      toast({
+        title: 'Error',
+        description: `No hay stock disponible para esta selección.`,
+        variant: 'destructive',
+      });
+      return;
     }
-
-    if (selectedOption?.stock === 0) {
-        toast({
-          title: 'Error',
-          description: `No hay stock disponible para esta selección.`,
-          variant: 'destructive',
-        });
-        return;
-      }
-
+  
     const priceAsNumber = parseFloat(product.price.replace(/Q\.|\s/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption!.value}` : `${product.id}-default-${selectedOption!.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
-
-
+  
+  
     addItem({
       id: cartItemId,
+      productId: product.id,
       name: cartItemName,
       price: priceAsNumber,
       image: currentImage,
       option: selectedOption!.value,
+      color: selectedColor?.name,
       quantity: 1,
     });
-
+  
     toast({
       title: 'Agregado al carrito',
       description: `${cartItemName} (${selectedOption!.value}) ha sido agregado a tu carrito.`,
     });
+
+    updateAvailabilityMessage();
   };
 
   if (!product) {
@@ -233,17 +271,25 @@ const ProductDetailPage = () => {
                     {currentOptions.type.charAt(0).toUpperCase() + currentOptions.type.slice(1)}
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {currentOptions.values.map((option) => (
-                      <Button
-                        key={option.value}
-                        variant={selectedOption?.value === option.value ? 'destructive' : 'outline'}
-                        onClick={() => handleOptionClick(option)}
-                        disabled={option.stock <= 0}
-                        className={`border-gray-600 ${selectedOption?.value === option.value ? '' : 'text-white hover:bg-gray-800'}`}
-                      >
-                        {option.value}
-                      </Button>
-                    ))}
+                    {currentOptions.values.map((option) => {
+                      const availableStock = getAvailableStock();
+                      const isSelected = selectedOption?.value === option.value;
+                      const originalStock = selectedColor 
+                        ? product.colors?.find(c => c.name === selectedColor.name)?.options.values.find(v => v.value === option.value)?.stock ?? 0
+                        : product.options.values.find(v => v.value === option.value)?.stock ?? 0;
+
+                      return (
+                        <Button
+                          key={option.value}
+                          variant={isSelected ? 'destructive' : 'outline'}
+                          onClick={() => handleOptionClick(option)}
+                          disabled={originalStock === 0}
+                          className={`border-gray-600 ${isSelected ? '' : 'text-white hover:bg-gray-800'}`}
+                        >
+                          {option.value}
+                        </Button>
+                      )
+                    })}
                   </div>
                 </div>
               )}
@@ -257,9 +303,9 @@ const ProductDetailPage = () => {
                   size="lg"
                   className="w-full text-lg py-6"
                   onClick={handleAddToCart}
-                  disabled={selectedOption?.stock === 0}
+                  disabled={getAvailableStock() === 0}
                 >
-                  {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR AL CARRITO'}
+                  {getAvailableStock() === 0 && selectedOption ? 'Agotado' : 'AGREGAR AL CARRITO'}
                 </Button>
             </div>
           </div>

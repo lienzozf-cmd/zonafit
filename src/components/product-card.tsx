@@ -19,79 +19,61 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
-  const { addItem } = useCart();
+  const { addItem, getItem } = useCart();
   const { toast } = useToast();
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   
+  const getAvailableStock = (option: ProductOption, color: ProductColor | null) => {
+    if (!product) return 0;
+    
+    const cartItemId = color 
+      ? `${product.id}-${color.name}-${option.value}` 
+      : `${product.id}-default-${option.value}`;
+      
+    const itemInCart = getItem(cartItemId);
+    const quantityInCart = itemInCart ? itemInCart.quantity : 0;
+    
+    return option.stock - quantityInCart;
+  };
+  
   useEffect(() => {
-    // Set initial image and availability message
-    if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
+    updateAvailabilityMessage();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product.id, selectedOption, selectedColor]);
+  
+  const updateAvailabilityMessage = () => {
+    if (selectedOption) {
+      const availableStock = getAvailableStock(selectedOption, selectedColor);
+      setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
+    } else if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
       const uniqueOption = product.options.values[0];
       setSelectedOption(uniqueOption);
-      if (uniqueOption.stock > 0) {
-        setAvailabilityMessage(`Disponible: ${uniqueOption.stock} unidades`);
-      } else {
-        setAvailabilityMessage('Agotado');
-      }
+      const availableStock = getAvailableStock(uniqueOption, selectedColor);
+      setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else if (product.colors && product.colors.length > 0) {
       setAvailabilityMessage(`Selecciona un color y talla`);
+    } else {
+      setAvailabilityMessage(`Selecciona un ${product.options.type}`);
     }
-     else {
-       setAvailabilityMessage(`Selecciona un ${product.options.type}`);
-    }
-
-    if (selectedColor) {
-      setCurrentImage(selectedColor.imageSrc);
-    } else if (product.images.length > 0) {
-      setCurrentImage(product.images[0].src);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product.id]);
-
+  };
 
   useEffect(() => {
-    // Update image based on selected option
-    const imageForOption = product.images.find(img => img.option === selectedOption?.value);
+    // Update image based on selected color or option
+    if(selectedColor) {
+      const imageForColor = product.images.find(img => img.color === selectedColor.name);
+      setCurrentImage(imageForColor ? imageForColor.src : selectedColor.imageSrc);
+    }
+    const imageForOption = product.images.find(img => img.option === selectedOption?.value && (selectedColor ? img.color === selectedColor.name : true));
     if (imageForOption) {
       setCurrentImage(imageForOption.src);
     }
-    
-    // Update availability message based on selected option
-    if (selectedOption) {
-        const productFromStore = products.find(p => p.id === product.id);
-        let optionFromStore: ProductOption | undefined;
-    
-        if (selectedColor) {
-            optionFromStore = productFromStore?.colors
-                ?.find(c => c.name === selectedColor.name)
-                ?.options.values.find(v => v.value === selectedOption.value);
-        } else {
-            optionFromStore = productFromStore?.options.values.find(v => v.value === selectedOption.value);
-        }
-
-        if (optionFromStore) {
-            if(optionFromStore.stock > 0) {
-                setAvailabilityMessage(`Disponible: ${optionFromStore.stock} unidades`);
-            } else {
-                setAvailabilityMessage('Agotado');
-            }
-        }
-    } else if (product.colors?.length) {
-        setAvailabilityMessage(`Selecciona una talla`);
-    } else if (product.options.values.length > 1) {
-        setAvailabilityMessage(`Selecciona un ${product.options.type}`);
-    }
-  }, [selectedOption, products, product, selectedColor]);
+  }, [selectedOption, selectedColor, product]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     setSelectedOption(prev => (prev?.value === option.value ? null : option));
-    const imageForOption = product.images.find(img => img.option === option.value && (selectedColor ? img.color === selectedColor.name : true));
-    if (imageForOption) {
-      setCurrentImage(imageForOption.src);
-    }
   };
 
   const handleColorHover = (color: ProductColor) => {
@@ -103,25 +85,28 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent link navigation
-    if (product.colors && !selectedColor) {
+    
+    if (product.colors && product.colors.length > 0 && !selectedColor) {
         toast({
             title: 'Error',
             description: `Por favor, selecciona un color.`,
             variant: 'destructive',
-          });
-          return;
+        });
+        return;
     }
     
     if (!selectedOption) {
+      const optionType = (selectedColor ? selectedColor.options.type : product.options.type) || 'opción';
       toast({
         title: 'Error',
-        description: `Por favor, selecciona un ${selectedColor?.options.type || product.options.type}.`,
+        description: `Por favor, selecciona una ${optionType}.`,
         variant: 'destructive',
       });
       return;
     }
-
-    if (selectedOption.stock <= 0) {
+    
+    const availableStock = getAvailableStock(selectedOption, selectedColor);
+    if (availableStock <= 0) {
       toast({
         title: 'Error',
         description: `No hay stock disponible para esta selección.`,
@@ -137,10 +122,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
     addItem({
       id: cartItemId,
+      productId: product.id,
       name: cartItemName,
       price: priceAsNumber,
       image: currentImage,
       option: selectedOption.value,
+      color: selectedColor?.name,
       quantity: 1,
     });
     
@@ -148,6 +135,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       title: 'Agregado al carrito',
       description: `${cartItemName} (${selectedOption.value}) ha sido agregado a tu carrito.`,
     });
+    updateAvailabilityMessage();
   };
   
   const isAvailable = product.colors
@@ -209,17 +197,20 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             <div className="product-info mt-auto">
                 {showOptions && (
                     <div className="size-options">
-                    {optionsToShow.map((option) => (
+                    {optionsToShow.map((option) => {
+                      const isOptionDisabled = getAvailableStock(option, selectedColor) <= 0;
+                      return (
                         (option.value !== 'Único') &&
                         <button
-                        key={option.value}
-                        onClick={(e) => handleOptionClick(e, option)}
-                        className={selectedOption?.value === option.value ? 'active' : ''}
-                        disabled={option.stock <= 0}
+                          key={option.value}
+                          onClick={(e) => handleOptionClick(e, option)}
+                          className={selectedOption?.value === option.value ? 'active' : ''}
+                          disabled={isOptionDisabled}
                         >
-                        {option.value}
+                          {option.value}
                         </button>
-                    ))}
+                      )
+                    })}
                     </div>
                 )}
                 <p className="availability-message">
@@ -228,9 +219,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 <button 
                     className="add-to-cart-button" 
                     onClick={handleAddToCart} 
-                    disabled={!selectedOption || (selectedOption && selectedOption.stock <= 0)}
+                    disabled={!selectedOption || getAvailableStock(selectedOption, selectedColor) <= 0}
                 >
-                  {selectedOption?.stock === 0 ? 'Agotado' : 'AGREGAR'}
+                  {selectedOption && getAvailableStock(selectedOption, selectedColor) <= 0 ? 'Agotado' : 'AGREGAR'}
                 </button>
             </div>
         </div>
