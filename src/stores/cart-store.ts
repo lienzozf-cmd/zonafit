@@ -3,7 +3,7 @@
 import { createContext } from 'react';
 import { createStore } from 'zustand';
 import type { CartItem } from '@/lib/types';
-import { productStore } from './product-store';
+import { useProductStore } from './product-store';
 
 export type CartStore = {
   items: CartItem[];
@@ -23,7 +23,8 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const cartStore = createStore<CartStore>((set, get) => ({
+export const createCartStore = () => 
+  createStore<CartStore>((set, get) => ({
     items: [],
     itemCount: 0,
     total: 0,
@@ -44,10 +45,11 @@ export const cartStore = createStore<CartStore>((set, get) => ({
       });
     },
     removeItem: (id) => {
+      const { increaseStock } = useProductStore.getState();
       const itemToRemove = get().items.find((i) => i.id === id);
       if (itemToRemove) {
         const [productId, color, optionValue] = itemToRemove.id.split('-');
-        productStore.getState().increaseStock(Number(productId), color, optionValue, itemToRemove.quantity);
+        increaseStock(Number(productId), color, optionValue, itemToRemove.quantity);
       }
 
       const newItems = get().items.filter((i) => i.id !== id);
@@ -57,32 +59,26 @@ export const cartStore = createStore<CartStore>((set, get) => ({
       });
     },
     incrementQuantity: (id) => {
+      const { decreaseStock } = useProductStore.getState();
       const itemToIncrement = get().items.find((i) => i.id === id);
       if (itemToIncrement) {
         const [productId, color, optionValue] = itemToIncrement.id.split('-');
-        
-        const currentStock = productStore.getState().products
-          .find(p => p.id === Number(productId))
-          ?.colors?.find(c => c.name === color)
-          ?.options.values.find(o => o.value === optionValue)?.stock ?? 0;
-
-        if (currentStock > 0) {
-            productStore.getState().decreaseStock(Number(productId), color, optionValue);
-            const newItems = get().items.map((i) =>
-                i.id === id ? { ...i, quantity: i.quantity + 1 } : i
-            );
-            set({
-                items: newItems,
-                ...updateTotal(newItems)
-            });
-        }
+        decreaseStock(Number(productId), color, optionValue);
+        const newItems = get().items.map((i) =>
+            i.id === id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+        set({
+            items: newItems,
+            ...updateTotal(newItems)
+        });
       }
     },
     decrementQuantity: (id) => {
+      const { increaseStock } = useProductStore.getState();
       const existingItem = get().items.find((i) => i.id === id);
       if (existingItem) {
         const [productId, color, optionValue] = existingItem.id.split('-');
-        productStore.getState().increaseStock(Number(productId), color, optionValue, 1);
+        increaseStock(Number(productId), color, optionValue, 1);
       }
       
       let newItems;
@@ -100,9 +96,10 @@ export const cartStore = createStore<CartStore>((set, get) => ({
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
+        const { increaseStock } = useProductStore.getState();
         get().items.forEach(item => {
             const [productId, color, optionValue] = item.id.split('-');
-            productStore.getState().increaseStock(Number(productId), color, optionValue, item.quantity);
+            increaseStock(Number(productId), color, optionValue, item.quantity);
         });
 
         set({
@@ -112,7 +109,5 @@ export const cartStore = createStore<CartStore>((set, get) => ({
         });
     }
   }));
-
-export const createCartStore = () => cartStore;
 
 export const CartStoreContext = createContext<ReturnType<typeof createCartStore> | null>(null);
