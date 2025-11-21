@@ -15,41 +15,48 @@ export interface StoreProviderProps {
 }
 
 export const StoreProvider = ({ children }: StoreProviderProps) => {
-  const cartStoreRef = useRef<StoreApi<CartStore>>()
   const productStoreRef = useRef<StoreApi<ProductStore>>()
+  const cartStoreRef = useRef<StoreApi<CartStore>>()
   
-  if (!cartStoreRef.current) {
-    cartStoreRef.current = createCartStore()
-  }
   if (!productStoreRef.current) {
     productStoreRef.current = createProductStore()
   }
 
+  if (!cartStoreRef.current) {
+    // Pass product store's state to the cart store
+    cartStoreRef.current = createCartStore(productStoreRef.current.getState())
+  }
+
+
   return (
-    <CartStoreContext.Provider value={cartStoreRef.current}>
-        <ProductStoreContext.Provider value={productStoreRef.current}>
+    <ProductStoreContext.Provider value={productStoreRef.current}>
+        <CartStoreContext.Provider value={cartStoreRef.current}>
             {children}
-        </ProductStoreContext.Provider>
-    </CartStoreContext.Provider>
+        </CartStoreContext.Provider>
+    </ProductStoreContext.Provider>
   )
 }
 
-export const useCartStore = () => {
+export const useCartStore = <T,>(
+  selector: (store: CartStore) => T,
+): T => {
     const cartStoreContext = useContext(CartStoreContext)
 
     if (!cartStoreContext) {
         throw new Error('useCartStore must be used within a StoreProvider')
     }
 
-    return useStore(cartStoreContext)
+    return useStore(cartStoreContext, selector)
 }
 
-export const useProductStore = () => {
+export const useProductStore = <T,>(
+    selector: (store: ProductStore) => T,
+  ): T => {
     const productStoreContext = useContext(ProductStoreContext)
 
     if (!productStoreContext) {
         throw new Error('useProductStore must be used within a StoreProvider')
     }
 
-    return useStore(productStoreContext)
+    return useStore(productStoreContext, selector)
 }

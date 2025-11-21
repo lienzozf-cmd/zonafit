@@ -1,11 +1,12 @@
+
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProductStore } from '@/components/store-provider';
+import { useProduct } from '@/hooks/use-product';
 
 const CategoryGrid = () => {
-  const { products } = useProductStore();
+  const { products } = useProduct();
 
   const getProductCount = (category: 'mujer' | 'hombre' | 'accesorio' | 'suplemento' | 'joyeria') => {
     if (category === 'mujer' || category === 'hombre') {

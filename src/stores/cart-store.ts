@@ -1,11 +1,10 @@
 
 'use client';
 
-import { createStore } from 'zustand';
+import { createStore, useStore } from 'zustand';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
-import { type Product, type ProductOption } from '@/lib/data';
-import { useProductStore } from './product-store';
+import type { ProductStore } from './product-store';
 
 export type CartState = {
   items: CartItem[];
@@ -16,7 +15,7 @@ export type CartState = {
 
 export type CartActions = {
   addItem: (item: CartItem) => void;
-  removeItem: (item: CartItem) => void;
+  removeItem: (id: string) => void;
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   setIsCartOpen: (isOpen: boolean) => void;
@@ -38,38 +37,40 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = (initState: CartState = defaultInitState) => {
+export const createCartStore = (productStoreState: ProductStore) => {
   return createStore<CartStore>((set, get) => ({
-    ...initState,
+    ...defaultInitState,
     getItem: (id) => {
       return get().items.find((i) => i.id === id);
     },
     addItem: (item) => {
-      const { products } = useProductStore.getState();
-      const product = products.find(p => p.id === item.productId);
-      if (!product) return;
-
-      const option = useProductStore.getState().getProductOption(product, item.option, item.color);
-      if (!option || option.stock < 1) return;
-
       set(produce((draft: CartState) => {
+        const { products, getProductOption } = productStoreState;
+        const product = products.find(p => p.id === item.productId);
+        if (!product) return;
+
+        const option = getProductOption(product, item.option, item.color);
+        if (!option) return;
+
         const existingItem = draft.items.find((i) => i.id === item.id);
-        if (existingItem) {
-          if (option.stock > existingItem.quantity) {
+        const stockInCart = existingItem?.quantity || 0;
+        
+        if (option.stock > stockInCart) {
+          if (existingItem) {
             existingItem.quantity += 1;
+          } else {
+            draft.items.push({ ...item, quantity: 1 });
           }
-        } else {
-          draft.items.push({ ...item, quantity: 1 });
         }
+        
         const newTotals = updateTotal(draft.items);
         draft.itemCount = newTotals.itemCount;
         draft.total = newTotals.total;
       }));
     },
-    removeItem: (itemToRemove) => {
-      useProductStore.getState().increaseStock([itemToRemove]);
+    removeItem: (id) => {
       set(produce((draft: CartState) => {
-        draft.items = draft.items.filter((i) => i.id !== itemToRemove.id);
+        draft.items = draft.items.filter((i) => i.id !== id);
         const newTotals = updateTotal(draft.items);
         draft.itemCount = newTotals.itemCount;
         draft.total = newTotals.total;
@@ -79,14 +80,16 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
         const item = get().items.find((i) => i.id === id);
         if(!item) return;
 
-        const { products } = useProductStore.getState();
+        const { products, getProductOption } = productStoreState;
         const product = products.find(p => p.id === item.productId);
         if(!product) return;
         
-        const option = useProductStore.getState().getProductOption(product, item.option, item.color);
+        const option = getProductOption(product, item.option, item.color);
         if(!option) return;
+        
+        const stockInCart = item.quantity;
 
-        if (option.stock > item.quantity) {
+        if (option.stock > stockInCart) {
             set(produce((draft: CartState) => {
                 const draftItem = draft.items.find((i) => i.id === id);
                 if (draftItem) {
@@ -105,7 +108,6 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
           if (item.quantity > 1) {
             item.quantity -= 1;
           } else {
-            useProductStore.getState().increaseStock([item]);
             draft.items = draft.items.filter((i) => i.id !== id);
           }
         }
@@ -116,6 +118,9 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
     },
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     clearCart: () => {
+      const { decreaseStock } = productStoreState;
+      decreaseStock(get().items);
+
       set(produce((draft: CartState) => {
         draft.items = [];
         draft.itemCount = 0;

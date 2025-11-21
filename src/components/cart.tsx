@@ -14,8 +14,6 @@ import { Button } from './ui/button';
 import { Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/hooks/use-cart';
-import type { CartItem } from '@/lib/types';
-
 
 const Cart = () => {
   const { 
@@ -41,10 +39,6 @@ const Cart = () => {
     setIsCartOpen(false);
     router.push('/checkout');
   };
-
-  const handleRemoveItem = (itemToRemove: CartItem) => {
-    removeItem(itemToRemove);
-  }
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -92,7 +86,7 @@ const Cart = () => {
                           variant="outline"
                           size="icon"
                           className="h-8 w-8 text-red-500"
-                          onClick={() => handleRemoveItem(item)}
+                          onClick={() => removeItem(item.id)}
                         >
                           <Trash className="h-4 w-4" />
                           <span className="sr-only">Remove item</span>
