@@ -6,14 +6,14 @@ import { type StoreApi, useStore } from 'zustand'
 import { type CartStore, createCartStore } from '@/stores/cart-store'
 import { type ProductStore, createProductStore } from '@/stores/product-store'
 
-export const ProductStoreContext = createContext<StoreApi<ProductStore> | null>(null);
+export const ProductStoreContext = createContext<StoreApi<ProductStore> | null>(null)
 export const CartStoreContext = createContext<StoreApi<CartStore> | null>(null)
 
-export const StoreProvider = ({
-  children,
-}: {
+export interface StoreProviderProps {
   children: ReactNode
-}) => {
+}
+
+export const StoreProvider = ({ children }: StoreProviderProps) => {
   const productStoreRef = useRef<StoreApi<ProductStore>>()
   const cartStoreRef = useRef<StoreApi<CartStore>>()
 
@@ -22,14 +22,14 @@ export const StoreProvider = ({
   }
 
   if (!cartStoreRef.current) {
-    cartStoreRef.current = createCartStore(productStoreRef.current.getState)
+    cartStoreRef.current = createCartStore(productStoreRef.current)
   }
 
   return (
     <ProductStoreContext.Provider value={productStoreRef.current}>
-        <CartStoreContext.Provider value={cartStoreRef.current}>
+      <CartStoreContext.Provider value={cartStoreRef.current}>
         {children}
-        </CartStoreContext.Provider>
+      </CartStoreContext.Provider>
     </ProductStoreContext.Provider>
   )
 }

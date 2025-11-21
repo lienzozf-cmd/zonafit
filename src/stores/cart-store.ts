@@ -1,6 +1,6 @@
 'use client';
 
-import { createStore } from 'zustand';
+import { createStore, type StoreApi } from 'zustand';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
 import type { ProductStore } from './product-store';
@@ -36,7 +36,7 @@ const updateTotal = (items: CartItem[]) => ({
   total: items.reduce((acc, i) => acc + i.price * i.quantity, 0),
 });
 
-export const createCartStore = (getProductStoreState: () => ProductStore) => {
+export const createCartStore = (productStore: StoreApi<ProductStore>) => {
     return createStore<CartStore>((set, get) => ({
       ...defaultInitState,
       getItem: (id) => {
@@ -68,7 +68,7 @@ export const createCartStore = (getProductStoreState: () => ProductStore) => {
           const item = get().getItem(id);
           if(!item) return;
   
-          const { getProductOption } = getProductStoreState();
+          const { getProductOption } = productStore.getState();
           const option = getProductOption(item.productId, item.option, item.color);
 
           if(!option) return;
@@ -104,7 +104,7 @@ export const createCartStore = (getProductStoreState: () => ProductStore) => {
       },
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       clearCart: () => {
-          const { decreaseStock } = getProductStoreState();
+          const { decreaseStock } = productStore.getState();
           decreaseStock(get().items);
           set(produce((state: CartStore) => {
               state.items = [];
