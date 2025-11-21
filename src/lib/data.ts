@@ -813,7 +813,7 @@ export const products: Product[] = [
   },
   {
     id: 2523,
-    name: 'Flex Shorts (Blue)',
+    name: 'Flex Shorts',
     price: 'Q.345.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -828,15 +828,28 @@ export const products: Product[] = [
         src: '/assets/images/marcas/gymshark/mujer/Flex Shorts azul.png',
         alt: 'Flex Shorts',
         dataAiHint: 'woman shorts',
-        option: 'Azul',
+        color: 'Gris',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
+    options: { type: 'talla', values: [] },
+    colors: [
+        {
+          name: 'Gris',
+          hex: '#808080',
+          imageSrc: '/assets/images/marcas/gymshark/mujer/Flex Shorts azul.png',
+          options: {
+            type: 'talla',
+            values: [
+              { value: 'M', stock: 1 },
+            ],
+          },
+        },
+      ],
   },
   {
     id: 2524,
     name: 'Crop Top Flex',
-    price: 'Q.336.00',
+    price: 'Q.445.00',
     availability: 'Disponible',
     description: 'Crop top de la línea Flex para un ajuste perfecto y cómodo.',
     gender: 'mujer',
@@ -858,7 +871,7 @@ export const products: Product[] = [
   {
     id: 2525,
     name: 'Power Oversized Long Sleeve Top',
-    price: 'Q.280.00',
+    price: 'Q.295.00',
     availability: 'Disponible',
     description: 'Top de manga larga oversized para un look potente y relajado.',
     gender: 'mujer',
@@ -880,7 +893,7 @@ export const products: Product[] = [
   {
     id: 2527,
     name: 'Strength Department Graphic Joggers',
-    price: 'Q.345.00',
+    price: 'Q.375.00',
     availability: 'Disponible',
     description: 'Joggers con gráfico del departamento de fuerza para un look completo.',
     gender: 'mujer',
@@ -902,7 +915,7 @@ export const products: Product[] = [
   {
     id: 2535,
     name: 'Adapt Fleck Sports Bra',
-    price: 'Q.446.00',
+    price: 'Q.445.00',
     availability: 'Disponible',
     description:
       'Bra deportivo de la línea Adapt Fleck para un ajuste y soporte perfectos.',
@@ -969,7 +982,7 @@ export const products: Product[] = [
   {
     id: 2539,
     name: 'Mesh Sports Bra',
-    price: 'Q.266.00',
+    price: 'Q.265.00',
     availability: 'Disponible',
     description: 'Bra deportivo con detalles de malla para mayor transpirabilidad.',
     gender: 'mujer',
@@ -991,7 +1004,7 @@ export const products: Product[] = [
   {
     id: 2541,
     name: 'Ruched Sports Bra',
-    price: 'Q.291.00',
+    price: 'Q.290.00',
     availability: 'Disponible',
     description: 'Bra deportivo con diseño fruncido para un estilo único.',
     gender: 'mujer',
@@ -1035,7 +1048,7 @@ export const products: Product[] = [
   {
     id: 2543,
     name: 'Flex Shorts (Black)',
-    price: 'Q.270.00',
+    price: 'Q.415.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
     gender: 'mujer',
@@ -1057,7 +1070,7 @@ export const products: Product[] = [
   {
     id: 2544,
     name: 'Elevate Cycling Shorts',
-    price: 'Q.296.00',
+    price: 'Q.295.00',
     availability: 'Disponible',
     description: 'Shorts de ciclismo de la línea Elevate para un rendimiento superior.',
     gender: 'mujer',
@@ -1647,7 +1660,6 @@ export const products: Product[] = [
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 1 },
       ],
     },
   },
@@ -1949,7 +1961,7 @@ export const products: Product[] = [
   },
   {
     id: 2639,
-    name: 'SILICONE GRIP LIFTING STRAPS (Negro)',
+    name: 'SILICONE GRIP LIFTING STRAPS',
     price: 'Q.295.00',
     availability: 'Disponible',
     description: 'Straps de levantamiento con agarre de silicona para mayor seguridad.',
@@ -1962,14 +1974,13 @@ export const products: Product[] = [
         src: '/assets/images/Accesorios/Silicone Lifting Straps negro.png',
         alt: 'Lifting Straps',
         dataAiHint: 'lifting straps',
-        option: 'Único',
       },
     ],
     options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
   },
   {
     id: 2640,
-    name: 'SILICONE GRIP LIFTING STRAPS (Lila)',
+    name: 'SILICONE GRIP LIFTING STRAPS',
     price: 'Q.295.00',
     availability: 'Disponible',
     description: 'Straps de levantamiento con agarre de silicona para mayor seguridad.',
@@ -1982,7 +1993,6 @@ export const products: Product[] = [
         src: '/assets/images/Accesorios/Silicone Lifting Straps morado.png',
         alt: 'Lifting Straps',
         dataAiHint: 'lifting straps',
-        option: 'Único',
       },
     ],
     options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
