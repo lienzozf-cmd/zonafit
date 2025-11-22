@@ -56,6 +56,8 @@ export default function CheckoutPage() {
   });
 
   const triggerConfetti = () => {
+    if (typeof window === 'undefined') return;
+
     const duration = 2 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
