@@ -107,7 +107,6 @@ export default function CheckoutPage() {
       });
     } finally {
         clearCart();
-        router.push('/');
     }
   }
 
