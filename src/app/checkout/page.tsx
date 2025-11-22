@@ -19,7 +19,6 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 
@@ -91,16 +90,16 @@ export default function CheckoutPage() {
         body: JSON.stringify(orderDetails),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        const errorResult = await response.json().catch(() => ({ message: 'Error desconocido del servidor.' }));
-        console.error('Error al enviar correo de notificación:', errorResult.message);
+        console.error('Error al enviar correo de notificación:', result.message || result.warning);
         toast({
           title: '¡Pedido realizado con éxito!',
           description: "Gracias por tu compra. Hubo un problema con la notificación por correo, pero tu pedido fue recibido.",
           variant: "default"
         });
       } else {
-        const result = await response.json();
          toast({
           title: '¡Pedido realizado con éxito!',
           description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
@@ -290,5 +289,3 @@ export default function CheckoutPage() {
     </>
   );
 }
-
-    

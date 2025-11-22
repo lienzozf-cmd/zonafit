@@ -1,7 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { products } from '@/lib/data';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { Resend } from 'resend';
 import * as React from 'react';
@@ -18,7 +17,7 @@ const cartItemSchema = z.object({
   price: z.number(),
   image: z.string(),
   option: z.string(),
-  color: z.string().optional(),
+  color: z.string().optional().nullable(),
   quantity: z.number().min(1),
 });
 
@@ -34,6 +33,7 @@ const shippingInfoSchema = z.object({
 const orderSchema = z.object({
   shippingInfo: shippingInfoSchema,
   orderItems: z.array(cartItemSchema).min(1, 'El carrito no puede estar vacío.'),
+  orderTotal: z.number(),
 });
 
 export async function POST(req: NextRequest) {
@@ -50,33 +50,22 @@ export async function POST(req: NextRequest) {
     const validationResult = orderSchema.safeParse(body);
     
     if (!validationResult.success) {
+      console.error('Error de validación de Zod:', validationResult.error.flatten());
       return NextResponse.json({
         message: 'Datos del pedido inválidos.',
         errors: validationResult.error.flatten().fieldErrors,
       }, { status: 400 });
     }
 
-    const { shippingInfo, orderItems } = validationResult.data;
+    const { shippingInfo, orderItems, orderTotal } = validationResult.data;
 
-    let serverCalculatedTotal = 0;
     const itemsWithSubtotal = orderItems.map(item => {
-      // The price is already validated as a number by Zod from the client.
-      // We perform a server-side check to ensure the product exists, but use the client price for consistency.
-      const product = products.find((p) => p.id === item.productId);
-      if (!product) {
-        // This check is important for security, even if we trust the client price.
-        throw new Error(`Producto con ID ${item.productId} no encontrado en el servidor.`);
-      }
       const subtotal = item.price * item.quantity;
-      serverCalculatedTotal += subtotal;
       return {
         ...item,
-        price: item.price,
         subtotal: subtotal.toFixed(2),
       };
     });
-
-    serverCalculatedTotal = parseFloat(serverCalculatedTotal.toFixed(2));
     
     const { data, error } = await resend.emails.send({
         from: `ZONA FIT GT <${fromEmail}>`,
@@ -86,22 +75,20 @@ export async function POST(req: NextRequest) {
             orderDetails: {
               shippingInfo,
               orderItems: itemsWithSubtotal,
-              orderTotal: serverCalculatedTotal,
+              orderTotal: orderTotal,
             }
         }) as React.ReactElement,
       });
 
       if (error) {
         console.error('Error al enviar correo con Resend:', error);
-        // We still return a "success" to the client so the order process completes, but with a warning.
-        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 200 });
+        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 500 });
       }
 
       return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
 
   } catch (error: any) {
     console.error('Error catastrófico en el endpoint /api/send-email:', error);
-    // Return a generic server error but ensure it's in JSON format.
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message, orderId }, { status: 500 });
   }
 }
