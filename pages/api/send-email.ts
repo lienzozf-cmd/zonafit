@@ -133,7 +133,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const mailOptions = {
     from: `ZONA FIT GT <${process.env.EMAIL_USER}>`,
-    to: 'rabafam2118@gmail.com', // Correo de notificación
+    to: process.env.EMAIL_RECIPIENT, // Correo de notificación
     subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
     html: generateEmailHtml({ shippingInfo, orderItems, orderTotal }, orderId),
     attachments: validAttachments,
