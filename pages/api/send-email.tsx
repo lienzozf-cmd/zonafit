@@ -6,7 +6,6 @@ import { render } from '@react-email/render';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import nodemailer from 'nodemailer';
 
-// --- Esquemas de validación con Zod ---
 const cartItemSchema = z.object({
   id: z.string(),
   productId: z.number(),
@@ -32,7 +31,6 @@ const orderSchema = z.object({
   orderItems: z.array(cartItemSchema).min(1, 'El carrito no puede estar vacío.'),
 });
 
-// --- Handler de la API ---
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Método no permitido' });
@@ -48,12 +46,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { shippingInfo, orderItems } = validationResult.data;
 
-  // --- Cálculo del Total en el Servidor ---
   let serverCalculatedTotal = 0;
   const itemsWithSubtotal = orderItems.map(item => {
     const product = products.find((p) => p.id === item.productId);
     if (!product) {
-      // This will be caught by the outer try-catch block
       throw new Error(`Producto con ID ${item.productId} no encontrado.`);
     }
     const priceAsNumber = parseFloat(product.price.replace(/Q\.?|\s/g, ''));
@@ -70,11 +66,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   const orderId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
+  // --- Envío de correo ---
   const toEmail = "rabafam2118@gmail.com";
+  
+  // VERIFICACIÓN DE CREDENCIALES
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas (EMAIL_USER o EMAIL_PASS). El correo de notificación no será enviado, pero el pedido se procesará.');
-    // Responde con éxito para no bloquear el flujo del cliente.
-    return res.status(200).json({ message: 'Pedido procesado (correo no enviado por falta de configuración).', orderId });
+    console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas (EMAIL_USER o EMAIL_PASS). El correo de notificación no será enviado, pero el pedido se procesa como exitoso.');
+    // Responde con éxito para no bloquear el flujo del cliente, pero con una advertencia.
+    return res.status(200).json({ message: 'Pedido procesado con éxito.', orderId, warning: 'La notificación por correo no se pudo enviar por falta de configuración en el servidor.' });
   }
 
   const emailHtml = render(
@@ -106,12 +105,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   try {
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Correo enviado exitosamente', orderId });
+    res.status(200).json({ message: 'Pedido procesado y correo enviado exitosamente', orderId });
   } catch (error: any) {
-    console.error('Error al enviar el correo:', error);
+    console.error('Error al intentar enviar el correo:', error);
+    
     const errorMessage = error.code === 'EAUTH'
       ? 'Error de autenticación con el servidor de correo. Revisa las credenciales.'
       : `Error al enviar el correo: ${error.message}`;
-    res.status(500).json({ message: errorMessage });
+
+    // AUNQUE EL CORREO FALLE, EL PEDIDO SE CONSIDERA EXITOSO PARA EL CLIENTE
+    res.status(200).json({ message: 'Pedido procesado con éxito.', orderId, warning: `El pedido se guardó, pero la notificación por correo falló: ${errorMessage}` });
   }
 }

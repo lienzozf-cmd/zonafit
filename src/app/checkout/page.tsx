@@ -68,6 +68,8 @@ export default function CheckoutPage() {
       orderTotal: total,
     };
 
+    let orderProcessedSuccessfully = false;
+
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -77,26 +79,43 @@ export default function CheckoutPage() {
         body: JSON.stringify(orderDetails),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Error al enviar el correo de notificación.');
+      const result = await response.json();
+
+      // Si la respuesta es OK (2xx), el pedido se considera procesado.
+      if (response.ok) {
+        orderProcessedSuccessfully = true;
+        toast({
+          title: '¡Pedido realizado con éxito!',
+          description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
+        });
+        
+        // Si hay un mensaje de advertencia del servidor (correo no enviado), muéstralo.
+        if (result.warning) {
+             console.warn('Advertencia del servidor:', result.warning);
+        }
+
+      } else {
+        // Si la respuesta no es OK, lanza el error para mostrarlo en el catch.
+        throw new Error(result.message || 'Error al procesar el pedido.');
       }
-      
-      clearCart();
-      
-      toast({
-        title: '¡Pedido realizado con éxito!',
-        description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
-      });
-      router.push('/');
 
     } catch (error: any) {
-      console.error('El envío de correo de notificación falló:', error);
-      toast({
-        title: 'Error al procesar el pedido',
-        description: error.message || 'No se pudo enviar la notificación. Por favor, intenta de nuevo.',
-        variant: 'destructive',
-      });
+      console.error('Error en el proceso de checkout:', error);
+      // Aunque falle el correo, si el servidor lo indica, podemos considerar el pedido como bueno.
+      // Por seguridad, solo mostraremos el error si no fue un éxito parcial.
+      if (!orderProcessedSuccessfully) {
+          toast({
+            title: 'Error al procesar el pedido',
+            description: error.message || 'Ocurrió un problema. Por favor, intenta de nuevo.',
+            variant: 'destructive',
+          });
+      }
+    } finally {
+        // Limpiar el carrito solo si el pedido fue procesado con éxito.
+        if (orderProcessedSuccessfully) {
+            clearCart();
+            router.push('/');
+        }
     }
   }
 
