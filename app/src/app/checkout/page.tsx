@@ -21,17 +21,19 @@ import { useCartStore } from '@/stores/cart-store';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
-const checkoutSchema = z.object({
-  firstName: z.string().trim().min(1, 'El nombre es requerido.'),
-  lastName: z.string().trim().min(1, 'El apellido es requerido.'),
+const formSchema = z.object({
+  firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
+  lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().trim().min(1, 'La dirección es requerida.'),
-  department: z.string().trim().min(1, 'El departamento es requerido.'),
-  municipality: z.string().trim().min(1, 'El municipio es requerido.'),
+  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  department: z.string().trim().min(3, 'El departamento es requerido.'),
+  municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
 
-type CheckoutFormValues = z.infer<typeof checkoutSchema>;
+type CheckoutFormValues = z.infer<typeof formSchema>;
 
 export default function CheckoutPage() {
   const { items, total, clearCart } = useCartStore((state) => ({
@@ -40,11 +42,13 @@ export default function CheckoutPage() {
     clearCart: state.clearCart,
   }));
   const router = useRouter();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   const isCartEmpty = items.length === 0;
 
   const form = useForm<CheckoutFormValues>({
-    resolver: zodResolver(checkoutSchema),
+    resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -56,8 +60,6 @@ export default function CheckoutPage() {
   });
 
   const triggerConfetti = () => {
-    if (typeof window === 'undefined') return;
-
     const duration = 2 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
@@ -78,55 +80,58 @@ export default function CheckoutPage() {
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
     }, 250);
   };
-
-  async function onSubmit(data: CheckoutFormValues) {
-    if (isCartEmpty) {
-      return;
-    }
-    
-    triggerConfetti();
-
-    const orderDetails = {
-      shippingInfo: data,
-      orderItems: items.map(item => ({
-        id: item.id,
-        productId: item.productId,
-        name: item.name,
-        price: item.price,
-        image: item.image,
-        option: item.option,
-        color: item.color,
-        quantity: item.quantity,
-      })),
-      orderTotal: total,
-    };
-
+  
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
     try {
+      const orderPayload = {
+        customer: values,
+        items: items.map(item => ({
+            id: item.id,
+            productId: item.productId,
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            imageUrls: [item.image],
+            aiHint: ''
+        })),
+      };
+      
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(orderDetails),
+        body: JSON.stringify(orderPayload),
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        console.error('Error al enviar correo de notificación:', result.message || result.warning);
-      } else {
-        if (result.warning) {
-             console.warn('Advertencia del servidor:', result.warning);
-        }
+        throw new Error(result.error || "Algo salió mal.");
       }
 
-    } catch (error: any) {
-      console.error('Error en el proceso de checkout:', error);
+      triggerConfetti();
+
+      clearCart();
+      
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
+
+    } catch (error) {
+      console.error("Error al enviar el pedido:", error);
+      const errorMessage = error instanceof Error ? error.message : "No se pudo enviar el pedido. Por favor, inténtalo de nuevo.";
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
-        clearCart();
-        form.reset();
+        setIsLoading(false);
     }
   }
+
 
   if (isCartEmpty && !form.formState.isSubmitSuccessful) {
     return (
@@ -283,8 +288,8 @@ export default function CheckoutPage() {
                         )}
                       />
                    </div>
-                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={form.formState.isSubmitting || isCartEmpty}>
-                    {form.formState.isSubmitting ? 'Procesando...' : 'Confirmar Pedido'}
+                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={isLoading || isCartEmpty}>
+                    {isLoading ? 'Procesando...' : 'Confirmar Pedido'}
                   </Button>
                 </form>
               </Form>
