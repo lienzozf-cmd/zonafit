@@ -14,13 +14,13 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
+import confetti from 'canvas-confetti';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),
@@ -39,7 +39,6 @@ export default function CheckoutPage() {
     total: state.total,
     clearCart: state.clearCart,
   }));
-  const { toast } = useToast();
   const router = useRouter();
 
   const isCartEmpty = items.length === 0;
@@ -56,15 +55,21 @@ export default function CheckoutPage() {
     },
   });
 
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 },
+      zIndex: 9999,
+    });
+  };
+
   async function onSubmit(data: CheckoutFormValues) {
     if (isCartEmpty) {
-      toast({
-        title: 'Error en el pedido',
-        description: 'Tu carrito está vacío. Agrega productos antes de continuar.',
-        variant: 'destructive',
-      });
       return;
     }
+    
+    triggerConfetti();
 
     const orderDetails = {
       shippingInfo: data,
@@ -102,11 +107,6 @@ export default function CheckoutPage() {
 
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
-      toast({
-        title: 'Error Inesperado',
-        description: 'No se pudo procesar tu pedido. Por favor, intenta de nuevo.',
-        variant: 'destructive',
-      });
     } finally {
         clearCart();
         form.reset();
