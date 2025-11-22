@@ -17,11 +17,11 @@ const ProductDetailPage = () => {
   const router = useRouter();
   const { id } = params;
   
-  const { products, getProductOption, addItem, getItem } = useCartStore((state) => ({
+  const { products, getProductOption, addItem, items } = useCartStore((state) => ({
     products: state.products,
     getProductOption: state.getProductOption,
     addItem: state.addItem,
-    getItem: state.getItem,
+    items: state.items,
   }));
 
   const { toast } = useToast();
@@ -86,8 +86,6 @@ const ProductDetailPage = () => {
     if (!product) return;
     setSelectedOption(option);
   };
-
-  const { items } = useCartStore();
 
   const handleAddToCart = () => {
     if (!product) return;
