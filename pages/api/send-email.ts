@@ -112,29 +112,10 @@ const generateEmailHtml = (details: any, orderId: string) => {
 
 // --- Handler de la API ---
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // 1. Verificación de Método y Origen
+  // 1. Verificación de Método
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
-
-  const referer = req.headers.referer;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-
-  if (!appUrl || !referer) {
-      return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
-  }
-
-  try {
-      const refererOrigin = new URL(referer).origin;
-      const appOrigin = new URL(appUrl).origin;
-
-      if (refererOrigin !== appOrigin) {
-          return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
-      }
-  } catch (error) {
-      return res.status(400).json({ message: 'URL de origen o aplicación no válida.' });
-  }
-
 
   // 2. Validación de Datos con Zod
   const validationResult = orderSchema.safeParse(req.body);
