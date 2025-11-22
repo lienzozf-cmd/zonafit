@@ -70,9 +70,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   const orderId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-  const toEmail = process.env.EMAIL_RECIPIENT;
-  if (!toEmail || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas. El correo de notificación no será enviado, pero el pedido se procesará.');
+  const toEmail = "rabafam2118@gmail.com";
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas (EMAIL_USER o EMAIL_PASS). El correo de notificación no será enviado, pero el pedido se procesará.');
     // Responde con éxito para no bloquear el flujo del cliente.
     return res.status(200).json({ message: 'Pedido procesado (correo no enviado por falta de configuración).', orderId });
   }
