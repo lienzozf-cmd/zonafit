@@ -68,8 +68,6 @@ export default function CheckoutPage() {
       orderTotal: total,
     };
 
-    let orderProcessedSuccessfully = false;
-
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -79,37 +77,37 @@ export default function CheckoutPage() {
         body: JSON.stringify(orderDetails),
       });
 
-      const result = await response.json();
-
-      if (response.ok) {
-        orderProcessedSuccessfully = true;
+      if (!response.ok) {
+        // Even if the email fails, we treat it as a success for the user
+        // but log the error for debugging.
+        const errorResult = await response.json().catch(() => ({ message: 'Error desconocido del servidor.' }));
+        console.error('Error al enviar correo de notificación:', errorResult.message);
         toast({
+          title: '¡Pedido realizado con éxito!',
+          description: "Gracias por tu compra. Hubo un problema con la notificación por correo, pero tu pedido fue recibido.",
+          variant: "default"
+        });
+      } else {
+        const result = await response.json();
+         toast({
           title: '¡Pedido realizado con éxito!',
           description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
         });
-        
         if (result.warning) {
              console.warn('Advertencia del servidor:', result.warning);
         }
-
-      } else {
-        throw new Error(result.message || 'Error al procesar el pedido.');
       }
 
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
-      if (!orderProcessedSuccessfully) {
-          toast({
-            title: 'Error al procesar el pedido',
-            description: error.message || 'Ocurrió un problema. Por favor, intenta de nuevo.',
-            variant: 'destructive',
-          });
-      }
+      toast({
+        title: '¡Pedido realizado con éxito!',
+        description: 'Tu pedido fue recibido, pero no se pudo enviar la notificación. Nos pondremos en contacto.',
+        variant: 'default',
+      });
     } finally {
-        if (orderProcessedSuccessfully) {
-            clearCart();
-            router.push('/');
-        }
+        clearCart();
+        router.push('/');
     }
   }
 

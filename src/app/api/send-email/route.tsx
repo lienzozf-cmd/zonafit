@@ -6,7 +6,7 @@ import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-e
 import { Resend } from 'resend';
 import * as React from 'react';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const toEmail = process.env.EMAIL_TO || "rabafam2118@gmail.com";
 const fromEmail = process.env.EMAIL_FROM || 'onboarding@resend.dev';
 
@@ -37,6 +37,8 @@ const orderSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  const orderId = Math.random().toString(36).substring(2, 8).toUpperCase();
+  
   try {
     const body = await req.json();
 
@@ -51,7 +53,6 @@ export async function POST(req: NextRequest) {
 
     const { shippingInfo, orderItems } = validationResult.data;
 
-    // Server-side calculation of total
     let serverCalculatedTotal = 0;
     const itemsWithSubtotal = orderItems.map(item => {
       const product = products.find((p) => p.id === item.productId);
@@ -70,16 +71,12 @@ export async function POST(req: NextRequest) {
 
     serverCalculatedTotal = parseFloat(serverCalculatedTotal.toFixed(2));
     
-    const orderId = Math.random().toString(36).substring(2, 8).toUpperCase();
-
-    // --- Email Sending with Resend ---
-    if (!process.env.RESEND_API_KEY) {
-      console.error('ADVERTENCIA: La variable de entorno RESEND_API_KEY no está definida. El correo de notificación no será enviado, pero el pedido se procesa como exitoso.');
-      return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: 'La notificación por correo no se pudo enviar por falta de configuración en el servidor.' });
+    if (!resend) {
+      console.warn('ADVERTENCIA: La RESEND_API_KEY no está configurada en .env. El pedido se procesó, pero el correo de notificación no fue enviado.');
+      return NextResponse.json({ message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId });
     }
     
-    try {
-      const { data, error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
         from: `ZONA FIT GT <${fromEmail}>`,
         to: [toEmail],
         subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
@@ -94,20 +91,13 @@ export async function POST(req: NextRequest) {
 
       if (error) {
         console.error('Error al enviar correo con Resend:', error);
-        // Even if email fails, respond successfully to client
-        return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: `El pedido se guardó, pero la notificación por correo falló: ${error.message}` });
+        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 500 });
       }
 
       return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
 
-    } catch (error: any) {
-      console.error('Error catastrófico al intentar enviar el correo con Resend:', error);
-       // Even if email fails, respond successfully to client
-      return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: `El pedido se guardó, pero la notificación por correo falló: ${error.message}` });
-    }
-
   } catch (error: any) {
-    console.error('Error en el endpoint /api/send-email:', error);
-    return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
+    console.error('Error catastrófico en el endpoint /api/send-email:', error);
+    return NextResponse.json({ message: 'Error interno del servidor.', error: error.message, orderId }, { status: 500 });
   }
 }
