@@ -44,6 +44,12 @@ const Header = () => {
     router.push(`/product/${product.id}`);
   };
 
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    performSearch(term);
+  };
+
   const renderNavLinks = (isMobile = false) => {
     if (isMobile) {
       return (
@@ -126,51 +132,6 @@ const Header = () => {
     );
   };
   
-  const SearchDialog = () => (
-    <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-      <DialogTrigger asChild>
-        <Search
-          className="search-icon"
-          color="hsl(var(--accent))"
-        />
-      </DialogTrigger>
-      <DialogContent className="search-dialog-content">
-        <DialogTitle className='sr-only'>Buscador de Productos</DialogTitle>
-        <DialogDescription className='sr-only'>
-            Busca productos por nombre o marca en el catálogo de la tienda.
-        </DialogDescription>
-        <div className="search-dialog-header">
-            <Search className="search-icon" />
-            <input
-                type="text"
-                placeholder="Busca un producto o marca..."
-                className="search-dialog-input"
-                value={searchTerm}
-                onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                    performSearch(e.target.value);
-                }}
-            />
-        </div>
-        <div className="search-results-container">
-          {searchResults.length > 0 ? (
-            searchResults.map(result => (
-              <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
-                <div className="search-result-info">
-                  <div className="search-result-name">{result.name}</div>
-                  <div className="search-result-price">{result.price}</div>
-                </div>
-              </div>
-            ))
-          ) : (
-             searchTerm && <div className="no-results">No se encontraron resultados.</div>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-
   const MobileMenu = () => (
      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
         <SheetTrigger asChild>
@@ -212,7 +173,46 @@ const Header = () => {
         )}
 
         <div className="header-icons">
-          <SearchDialog />
+          <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+            <DialogTrigger asChild>
+              <Search
+                className="search-icon"
+                color="hsl(var(--accent))"
+              />
+            </DialogTrigger>
+            <DialogContent className="search-dialog-content">
+                <DialogTitle className='sr-only'>Buscador de Productos</DialogTitle>
+                <DialogDescription className='sr-only'>
+                    Busca productos por nombre o marca en el catálogo de la tienda.
+                </DialogDescription>
+                <div className="search-dialog-header">
+                    <Search className="search-icon" />
+                    <input
+                        type="text"
+                        placeholder="Busca un producto o marca..."
+                        className="search-dialog-input"
+                        value={searchTerm}
+                        onChange={handleSearchInputChange}
+                    />
+                </div>
+                <div className="search-results-container">
+                {searchResults.length > 0 ? (
+                    searchResults.map(result => (
+                    <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
+                        <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
+                        <div className="search-result-info">
+                        <div className="search-result-name">{result.name}</div>
+                        <div className="search-result-price">{result.price}</div>
+                        </div>
+                    </div>
+                    ))
+                ) : (
+                    searchTerm && <div className="no-results">No se encontraron resultados.</div>
+                )}
+                </div>
+            </DialogContent>
+        </Dialog>
+
           <div className="relative">
             <ShoppingCart className="cart-icon" color="hsl(var(--accent))" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (
