@@ -9,6 +9,7 @@ import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
@@ -19,11 +20,10 @@ const Header = () => {
     itemCount: state.itemCount,
     products: state.products,
   }));
-  const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
-  const searchContainerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const router = useRouter();
 
@@ -34,12 +34,12 @@ const Header = () => {
     }
     const results = products.filter(p => p.name.toLowerCase().includes(term.toLowerCase()));
     setSearchResults(results);
-    setIsSearchActive(true);
   };
   
   const handleSearchResultClick = (product: Product) => {
     setSearchTerm('');
     setSearchResults([]);
+    setIsSearchOpen(false);
     setIsMobileMenuOpen(false);
     router.push(`/product/${product.id}`);
   };
@@ -126,36 +126,32 @@ const Header = () => {
     );
   };
   
-  const renderSearch = (isMobile = false) => {
-    const searchComponent = (
-      <div className={`search-container ${isMobile ? 'mobile-search' : ''}`} ref={searchContainerRef}>
-        {(isMobile === false) && (
-          <Search
-            className="search-icon"
-            onClick={() => setIsSearchActive(!isSearchActive)}
-            color="hsl(var(--accent))"
-          />
-        )}
-        <div className={`search-box ${isMobile || isSearchActive ? 'active' : ''}`}>
-          <input
-            type="text"
-            placeholder="Buscar productos..."
-            value={searchTerm}
-            onChange={(e) => {
-              const term = e.target.value;
-              setSearchTerm(term);
-              performSearch(term);
-            }}
-            onFocus={() => setIsSearchActive(true)}
-          />
-           <button 
-            onClick={() => performSearch(searchTerm)}
-            className={`${isMobile ? 'opacity-0 pointer-events-none' : ''}`}
-          >
-            Buscar
-          </button>
+  const SearchDialog = () => (
+    <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+      <DialogTrigger asChild>
+        <Search
+          className="search-icon"
+          color="hsl(var(--accent))"
+        />
+      </DialogTrigger>
+      <DialogContent className="search-dialog-content top-[25%]">
+        <div className="search-dialog-header">
+            <Search className="search-icon" />
+            <input
+                type="text"
+                placeholder="Busca un producto o marca..."
+                className="search-dialog-input"
+                value={searchTerm}
+                onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    performSearch(e.target.value);
+                }}
+            />
+            <DialogClose className='search-dialog-close'>
+                <X />
+            </DialogClose>
         </div>
-        <div id="searchResults" className={isSearchActive && searchTerm ? 'active' : ''}>
+        <div className="search-results-container">
           {searchResults.length > 0 ? (
             searchResults.map(result => (
               <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
@@ -167,21 +163,12 @@ const Header = () => {
               </div>
             ))
           ) : (
-            (isSearchActive && searchTerm) && <div className="search-result-item">No se encontraron productos</div>
+             searchTerm && <div className="no-results">No se encontraron resultados.</div>
           )}
         </div>
-      </div>
-    );
-
-    if (isMobile) {
-       return (
-        <div className="p-4">
-            <div className="p-1">{searchComponent}</div>
-        </div>
-      );
-    }
-    return searchComponent;
-  }
+      </DialogContent>
+    </Dialog>
+  );
 
   const MobileMenu = () => (
      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -194,10 +181,7 @@ const Header = () => {
             <SheetHeader className="p-6 pb-2 border-b border-gray-700 flex flex-row items-center justify-between">
             <SheetTitle className='text-white'>Menú</SheetTitle>
             </SheetHeader>
-            <div>
-              {renderSearch(true)}
-            </div>
-            <div className="px-6 pt-0 pb-6">
+            <div className="px-6 pt-6 pb-6">
             {renderNavLinks(true)}
             </div>
         </SheetContent>
@@ -207,16 +191,7 @@ const Header = () => {
   return (
     <>
       <header className="site-header">
-        {isMobile ? (
-          <>
-            <MobileMenu />
-            <div className="site-branding">
-              <Link href="/">
-                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
-              </Link>
-            </div>
-          </>
-        ) : (
+        {isMobile ? <MobileMenu /> : (
           <>
             <div className="site-branding">
               <Link href="/">
@@ -226,8 +201,17 @@ const Header = () => {
             {renderNavLinks(false)}
           </>
         )}
+        
+        {isMobile && (
+             <div className="site-branding">
+              <Link href="/">
+                <Image src="/assets/images/logos/logo.png" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+              </Link>
+            </div>
+        )}
+
         <div className="header-icons">
-          {!isMobile && renderSearch(false)}
+          <SearchDialog />
           <div className="relative">
             <ShoppingCart className="cart-icon" color="hsl(var(--accent))" onClick={() => setIsCartOpen(true)}/>
             {itemCount > 0 && (

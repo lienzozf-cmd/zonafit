@@ -102,12 +102,6 @@ a:hover {
   gap: 20px;
 }
 
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
 .search-icon,
 .cart-icon {
   width: 32px;
@@ -122,74 +116,74 @@ a:hover {
   transform: scale(1.1);
 }
 
-.search-box {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  margin-top: 10px;
-  background-color: black;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-}
-
-.search-box.active {
-  display: flex;
-}
-
-.search-box input {
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 3px;
-  margin-right: 5px;
-}
-
-.search-box button {
-  background-color: var(--accent-color);
+/* Search Dialog Styles */
+.search-dialog-content {
+  background-color: #1a1a1a;
+  border-color: #333;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
+  padding: 0;
 }
 
-#searchResults {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 10px;
-  background-color: black;
-  border: 1px solid var(--accent-color);
-  border-radius: 5px;
-  width: 300px;
+.search-dialog-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.search-dialog-header .search-icon {
+    color: #999;
+}
+
+.search-dialog-input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  width: 100%;
+}
+
+.search-dialog-input:focus {
+  outline: none;
+}
+
+.search-dialog-close {
+  color: #999;
+  transition: color 0.2s;
+}
+
+.search-dialog-close:hover {
+  color: white;
+}
+
+.search-results-container {
   max-height: 400px;
   overflow-y: auto;
-  z-index: 1000;
-}
-
-#searchResults.active {
-  display: block;
 }
 
 .search-result-item {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 0.75rem 1rem;
   cursor: pointer;
   border-bottom: 1px solid #333;
+  transition: background-color 0.2s;
 }
 
 .search-result-item:hover {
-  background-color: #333;
+  background-color: #2a2a2a;
+}
+.search-result-item:last-child {
+    border-bottom: none;
 }
 
 .search-result-item img {
   width: 50px;
   height: 50px;
-  margin-right: 10px;
+  margin-right: 15px;
+  border-radius: 4px;
   object-fit: cover;
 }
 
@@ -199,13 +193,21 @@ a:hover {
 }
 
 .search-result-name {
-  font-weight: bold;
+  font-weight: 600;
   color: white;
 }
 
 .search-result-price {
   color: var(--accent-color);
+  font-size: 0.9em;
 }
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+}
+
 
 .site-navigation {
   flex-grow: 1;
