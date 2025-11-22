@@ -2,13 +2,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { products } from '@/lib/data';
-import { render } from '@react-email/render';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import { Resend } from 'resend';
+import * as React from 'react';
 
-// Cargar las variables de entorno desde el archivo .env
-dotenv.config();
+const resend = new Resend(process.env.RESEND_API_KEY);
+const toEmail = process.env.EMAIL_TO || "rabafam2118@gmail.com";
+const fromEmail = process.env.EMAIL_FROM || 'onboarding@resend.dev';
+
 
 const cartItemSchema = z.object({
   id: z.string(),
@@ -71,53 +72,38 @@ export async function POST(req: NextRequest) {
     
     const orderId = Math.random().toString(36).substring(2, 8).toUpperCase();
 
-    // --- Email Sending ---
-    const toEmail = "rabafam2118@gmail.com";
-    
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas (EMAIL_USER o EMAIL_PASS). El correo de notificación no será enviado, pero el pedido se procesa como exitoso.');
+    // --- Email Sending with Resend ---
+    if (!process.env.RESEND_API_KEY) {
+      console.error('ADVERTENCIA: La variable de entorno RESEND_API_KEY no está definida. El correo de notificación no será enviado, pero el pedido se procesa como exitoso.');
       return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: 'La notificación por correo no se pudo enviar por falta de configuración en el servidor.' });
     }
-
-    const emailHtml = render(
-      <OrderConfirmationEmail
-        orderDetails={{
-          shippingInfo,
-          orderItems: itemsWithSubtotal,
-          orderTotal: serverCalculatedTotal,
-        }}
-      />
-    );
-    
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const mailOptions = {
-      from: `"ZONA FIT GT" <${process.env.EMAIL_USER}>`,
-      to: toEmail,
-      subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-      html: emailHtml,
-    };
     
     try {
-      await transporter.sendMail(mailOptions);
-      return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId });
-    } catch (error: any) {
-      console.error('Error al intentar enviar el correo:', error);
-      
-      const errorMessage = error.code === 'EAUTH'
-        ? 'Error de autenticación con el servidor de correo. Revisa las credenciales.'
-        : `Error al enviar el correo: ${error.message}`;
+      const { data, error } = await resend.emails.send({
+        from: `ZONA FIT GT <${fromEmail}>`,
+        to: [toEmail],
+        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+        react: OrderConfirmationEmail({ 
+            orderDetails: {
+              shippingInfo,
+              orderItems: itemsWithSubtotal,
+              orderTotal: serverCalculatedTotal,
+            }
+        }) as React.ReactElement,
+      });
 
-      // EVEN IF THE EMAIL FAILS, CONSIDER THE ORDER SUCCESSFUL FOR THE CLIENT
-      return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: `El pedido se guardó, pero la notificación por correo falló: ${errorMessage}` });
+      if (error) {
+        console.error('Error al enviar correo con Resend:', error);
+        // Even if email fails, respond successfully to client
+        return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: `El pedido se guardó, pero la notificación por correo falló: ${error.message}` });
+      }
+
+      return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
+
+    } catch (error: any) {
+      console.error('Error catastrófico al intentar enviar el correo con Resend:', error);
+       // Even if email fails, respond successfully to client
+      return NextResponse.json({ message: 'Pedido procesado con éxito.', orderId, warning: `El pedido se guardó, pero la notificación por correo falló: ${error.message}` });
     }
 
   } catch (error: any) {
