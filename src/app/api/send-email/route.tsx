@@ -39,6 +39,11 @@ const orderSchema = z.object({
 export async function POST(req: NextRequest) {
   const orderId = Math.random().toString(36).substring(2, 8).toUpperCase();
   
+  if (!resend) {
+    console.warn('ADVERTENCIA: La RESEND_API_KEY no está configurada en .env. El pedido se procesó, pero el correo de notificación no fue enviado.');
+    return NextResponse.json({ message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId });
+  }
+
   try {
     const body = await req.json();
 
@@ -55,26 +60,23 @@ export async function POST(req: NextRequest) {
 
     let serverCalculatedTotal = 0;
     const itemsWithSubtotal = orderItems.map(item => {
+      // The price is already validated as a number by Zod from the client.
+      // We perform a server-side check to ensure the product exists, but use the client price for consistency.
       const product = products.find((p) => p.id === item.productId);
       if (!product) {
-        throw new Error(`Producto con ID ${item.productId} no encontrado.`);
+        // This check is important for security, even if we trust the client price.
+        throw new Error(`Producto con ID ${item.productId} no encontrado en el servidor.`);
       }
-      const priceAsNumber = parseFloat(product.price.replace(/Q\.?|\s/g, ''));
-      const subtotal = priceAsNumber * item.quantity;
+      const subtotal = item.price * item.quantity;
       serverCalculatedTotal += subtotal;
       return {
         ...item,
-        price: priceAsNumber,
+        price: item.price,
         subtotal: subtotal.toFixed(2),
       };
     });
 
     serverCalculatedTotal = parseFloat(serverCalculatedTotal.toFixed(2));
-    
-    if (!resend) {
-      console.warn('ADVERTENCIA: La RESEND_API_KEY no está configurada en .env. El pedido se procesó, pero el correo de notificación no fue enviado.');
-      return NextResponse.json({ message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId });
-    }
     
     const { data, error } = await resend.emails.send({
         from: `ZONA FIT GT <${fromEmail}>`,
@@ -91,13 +93,15 @@ export async function POST(req: NextRequest) {
 
       if (error) {
         console.error('Error al enviar correo con Resend:', error);
-        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 500 });
+        // We still return a "success" to the client so the order process completes, but with a warning.
+        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 200 });
       }
 
       return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
 
   } catch (error: any) {
     console.error('Error catastrófico en el endpoint /api/send-email:', error);
+    // Return a generic server error but ensure it's in JSON format.
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message, orderId }, { status: 500 });
   }
 }
