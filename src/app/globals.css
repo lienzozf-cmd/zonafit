@@ -118,27 +118,29 @@ a:hover {
 
 /* Search Dialog Styles */
 .search-dialog-content {
-  background-color: #1a1a1a;
-  border-color: #333;
-  color: white;
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
   padding: 0;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-dialog-header {
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid hsl(var(--border));
 }
 
 .search-dialog-header .search-icon {
-    color: #999;
+  color: hsl(var(--muted-foreground));
 }
 
 .search-dialog-input {
   background: transparent;
   border: none;
-  color: white;
+  color: hsl(var(--foreground));
   font-size: 1rem;
   padding: 0.5rem;
   margin-left: 0.5rem;
@@ -150,12 +152,12 @@ a:hover {
 }
 
 .search-dialog-close {
-  color: #999;
+  color: hsl(var(--muted-foreground));
   transition: color 0.2s;
 }
 
 .search-dialog-close:hover {
-  color: white;
+  color: hsl(var(--foreground));
 }
 
 .search-results-container {
@@ -168,12 +170,12 @@ a:hover {
   align-items: center;
   padding: 0.75rem 1rem;
   cursor: pointer;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid hsl(var(--border));
   transition: background-color 0.2s;
 }
 
 .search-result-item:hover {
-  background-color: #2a2a2a;
+  background-color: hsl(var(--secondary));
 }
 .search-result-item:last-child {
     border-bottom: none;
@@ -194,7 +196,7 @@ a:hover {
 
 .search-result-name {
   font-weight: 600;
-  color: white;
+  color: hsl(var(--foreground));
 }
 
 .search-result-price {
@@ -205,7 +207,7 @@ a:hover {
 .no-results {
     text-align: center;
     padding: 2rem;
-    color: #999;
+    color: hsl(var(--muted-foreground));
 }
 
 

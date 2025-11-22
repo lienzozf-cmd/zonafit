@@ -134,7 +134,7 @@ const Header = () => {
           color="hsl(var(--accent))"
         />
       </DialogTrigger>
-      <DialogContent className="search-dialog-content top-[25%]">
+      <DialogContent className="search-dialog-content">
         <div className="search-dialog-header">
             <Search className="search-icon" />
             <input
