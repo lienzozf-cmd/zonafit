@@ -6,13 +6,14 @@ import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { useCartStore } from '@/stores/cart-store';
+import { X } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, getItem, addItem, getProductOption } = useCartStore((state) => ({
+  const { products, addItem, getProductOption } = useCartStore((state) => ({
     products: state.products,
     getItem: state.getItem,
     addItem: state.addItem,
@@ -181,14 +182,21 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
             {product.colors && product.colors.length > 1 && (
                 <div className="color-swatches">
-                    {product.colors.map((color) => (
-                    <div
-                        key={color.name}
-                        className="color-swatch"
-                        style={{ backgroundColor: color.hex }}
-                        onMouseEnter={() => handleColorHover(color)}
-                    ></div>
-                    ))}
+                    {product.colors.map((color) => {
+                      const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+                      return (
+                        <div
+                            key={color.name}
+                            className="color-swatch relative flex items-center justify-center"
+                            style={{ backgroundColor: color.hex }}
+                            onMouseEnter={!isColorSoldOut ? () => handleColorHover(color) : undefined}
+                        >
+                            {isColorSoldOut && (
+                              <X className="h-5 w-5 text-white" style={{ filter: 'drop-shadow(0 0 2px black)'}} />
+                            )}
+                        </div>
+                      )
+                    })}
                 </div>
             )}
 
