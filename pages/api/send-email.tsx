@@ -72,9 +72,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const toEmail = process.env.EMAIL_RECIPIENT;
   if (!toEmail || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas. El pedido se procesará sin enviar notificación por correo.');
-    // Simula una respuesta exitosa para que el flujo del frontend no se rompa.
-    return res.status(200).json({ message: 'Pedido procesado (sin envío de correo)', orderId });
+    console.error('ADVERTENCIA: Las variables de entorno para el envío de correo no están definidas.');
+    return res.status(500).json({ message: 'La configuración del servidor de correo está incompleta.' });
   }
 
   const emailHtml = render(
