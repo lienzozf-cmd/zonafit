@@ -1,11 +1,10 @@
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
 import { z } from 'zod';
 import { products } from '@/lib/data';
-
-require('dotenv').config();
 
 // --- Esquemas de validación con Zod ---
 const cartItemSchema = z.object({
@@ -54,7 +53,6 @@ readCounter(); // Leer el contador al iniciar
 
 // --- Generador de HTML para el correo ---
 const generateEmailHtml = (details: any, orderId: string) => {
-    // (Tu función `generateEmailHtml` existente va aquí, sin cambios)
     const { shippingInfo, orderItems, orderTotal } = details;
     const itemsHtml = orderItems
       .map(
@@ -119,10 +117,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const referer = req.headers.referer || '';
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  if (!referer.startsWith(appUrl)) {
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
+  if (!appUrl || !referer.startsWith(appUrl)) {
     return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
   }
+
 
   // 2. Validación de Datos con Zod
   const validationResult = orderSchema.safeParse(req.body);
