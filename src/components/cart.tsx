@@ -28,14 +28,17 @@ const Cart = () => {
   } = useCartStore((state) => state);
   const router = useRouter();
 
-  const handleCheckout = () => {
+  const triggerConfetti = () => {
     confetti({
       particleCount: 150,
       spread: 80,
       origin: { y: 0.6 },
       zIndex: 9999,
     });
+  };
 
+  const handleCheckout = () => {
+    triggerConfetti();
     setIsCartOpen(false);
     router.push('/checkout');
   };
