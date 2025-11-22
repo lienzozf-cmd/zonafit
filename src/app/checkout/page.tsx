@@ -57,10 +57,12 @@ export default function CheckoutPage() {
       shippingInfo: data,
       orderItems: items.map(item => ({
         id: item.id,
+        productId: item.productId,
         name: item.name,
         price: item.price,
         image: item.image,
         option: item.option,
+        color: item.color,
         quantity: item.quantity,
       })),
       orderTotal: total,
