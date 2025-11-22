@@ -13,11 +13,8 @@ const Footer = () => {
           <h3>Horarios</h3>
           <p>Lunes - Domingo, 8 AM - 8 PM</p>
           <div className="socials">
-            <a href="https://www.instagram.com/zonafitgt_/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/bushido_code_gt" target="_blank" rel="noopener noreferrer">
               <Image src="/assets/images/redesociales/instagram.png" alt="Instagram" width={30} height={30} data-ai-hint="instagram icon" />
-            </a>
-            <a href="https://www.tiktok.com/@zonafitgt_" target="_blank" rel="noopener noreferrer">
-              <Image src="/assets/images/redesociales/tiktok.png" alt="TikTok" width={30} height={30} data-ai-hint="tiktok icon" />
             </a>
           </div>
         </div>
@@ -26,7 +23,7 @@ const Footer = () => {
           <ul>
             <li><Link href="/politicas-de-privacidad">Políticas de Privacidad</Link></li>
             <li><Link href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
-            <li><Link href="/terminos-y-condiciones#devoluciones">No hay devoluciones</Link></li>
+            <li><Link href="/terminos-y-condiciones#devoluciones"><strong className="uppercase">NO HAY CAMBIO NI DEVOLUCIONES</strong></Link></li>
           </ul>
         </div>
       </div>
