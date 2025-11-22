@@ -38,6 +38,10 @@ import {
   interface OrderConfirmationEmailProps {
     orderDetails: OrderDetails;
   }
+
+  // Asume que las imágenes están en la carpeta `public`.
+  // Necesitamos la URL completa para que las imágenes se carguen en los correos.
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   
   export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailProps) => {
     const { shippingInfo, orderItems, orderTotal } = orderDetails;
@@ -50,7 +54,7 @@ import {
           <Container style={container}>
             <Section style={logoContainer}>
               <Img
-                src='https://firebasestorage.googleapis.com/v0/b/zona-fit-gt.appspot.com/o/assets%2Flogos%2Flogo.png?alt=media&token=513689cf-133c-4731-8263-7e44923e1e6c'
+                src={`${baseUrl}/assets/images/logos/logo.png`}
                 width="150"
                 height="80"
                 alt="ZONA FIT GT"
@@ -85,7 +89,7 @@ import {
                       <td style={tableCell}>
                         <Row>
                           <Column style={{ paddingRight: '15px' }}>
-                             <Img src={item.image} alt={item.name} width="60" height="60" style={productImage} />
+                             <Img src={`${baseUrl}${item.image}`} alt={item.name} width="60" height="60" style={productImage} />
                           </Column>
                           <Column>
                             <Text style={{ ...text, margin: 0, fontWeight: 'bold' }}>{item.name}</Text>
