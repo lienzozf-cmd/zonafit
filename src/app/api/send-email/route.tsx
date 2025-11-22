@@ -7,7 +7,7 @@ import { Resend } from 'resend';
 import * as React from 'react';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const toEmail = "rabafam2118@gmail.com";
+const toEmail = "rabanalesf22@gmail.com";
 const fromEmail = 'onboarding@resend.dev';
 
 
