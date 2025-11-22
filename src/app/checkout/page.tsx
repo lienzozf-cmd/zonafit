@@ -81,7 +81,6 @@ export default function CheckoutPage() {
 
       const result = await response.json();
 
-      // Si la respuesta es OK (2xx), el pedido se considera procesado.
       if (response.ok) {
         orderProcessedSuccessfully = true;
         toast({
@@ -89,20 +88,16 @@ export default function CheckoutPage() {
           description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
         });
         
-        // Si hay un mensaje de advertencia del servidor (correo no enviado), muéstralo.
         if (result.warning) {
              console.warn('Advertencia del servidor:', result.warning);
         }
 
       } else {
-        // Si la respuesta no es OK, lanza el error para mostrarlo en el catch.
         throw new Error(result.message || 'Error al procesar el pedido.');
       }
 
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
-      // Aunque falle el correo, si el servidor lo indica, podemos considerar el pedido como bueno.
-      // Por seguridad, solo mostraremos el error si no fue un éxito parcial.
       if (!orderProcessedSuccessfully) {
           toast({
             title: 'Error al procesar el pedido',
@@ -111,7 +106,6 @@ export default function CheckoutPage() {
           });
       }
     } finally {
-        // Limpiar el carrito solo si el pedido fue procesado con éxito.
         if (orderProcessedSuccessfully) {
             clearCart();
             router.push('/');
