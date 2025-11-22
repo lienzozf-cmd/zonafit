@@ -60,6 +60,8 @@ export default function CheckoutPage() {
   });
 
   const triggerConfetti = () => {
+    if (typeof window === 'undefined') return;
+
     const duration = 2 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
@@ -69,9 +71,6 @@ export default function CheckoutPage() {
     }
 
     const interval = window.setInterval(function() {
-      if (typeof window === 'undefined') {
-        return clearInterval(interval);
-      }
       const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {

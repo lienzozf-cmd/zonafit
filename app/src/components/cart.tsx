@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import confetti from 'canvas-confetti';
@@ -72,6 +73,7 @@ const Cart = () => {
             // This case is tricky without a toast here. Silently fail.
              console.log('No hay más stock para este producto.');
         } else {
+            // Allow increment even if stock can't be verified, maybe stock info is not perfect
             incrementQuantity(id);
         }
     }
