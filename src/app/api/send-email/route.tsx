@@ -7,8 +7,8 @@ import { Resend } from 'resend';
 import * as React from 'react';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const toEmail = process.env.EMAIL_TO || "rabafam2118@gmail.com";
-const fromEmail = process.env.EMAIL_FROM || 'onboarding@resend.dev';
+const toEmail = "rabafam2118@gmail.com";
+const fromEmail = 'onboarding@resend.dev';
 
 
 const cartItemSchema = z.object({
