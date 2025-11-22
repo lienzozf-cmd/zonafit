@@ -10,7 +10,7 @@ export default function TerminosYCondicionesPage() {
         <div className="container mx-auto px-4 py-12 md:px-8">
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-accent">Términos y Condiciones</h1>
           <div className="prose prose-invert max-w-4xl mx-auto text-gray-300">
-            <p className="text-lg">Última actualización: 1 de Agosto de 2024</p>
+            <p className="text-lg">Última actualización: 20 de noviembre 2025</p>
             
             <h2 className="text-2xl font-semibold text-white mt-8">1. Aceptación de los Términos</h2>
             <p>
