@@ -1,4 +1,3 @@
-
 'use client';
 import Image from 'next/image';
 import confetti from 'canvas-confetti';
@@ -30,11 +29,11 @@ const Cart = () => {
   const router = useRouter();
 
   const handleCheckout = () => {
-    // Trigger fireworks
     confetti({
-      particleCount: 100,
-      spread: 70,
+      particleCount: 150,
+      spread: 80,
       origin: { y: 0.6 },
+      zIndex: 9999,
     });
 
     setIsCartOpen(false);
