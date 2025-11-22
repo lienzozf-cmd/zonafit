@@ -3,9 +3,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import { z } from 'zod';
 import { products } from '@/lib/data';
-import { Resend } from 'resend';
-import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { render } from '@react-email/render';
+import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
+import nodemailer from 'nodemailer';
 
 // --- Esquemas de validación con Zod ---
 const cartItemSchema = z.object({
@@ -52,16 +52,26 @@ async function writeCounter() {
 
 readCounter(); // Leer el contador al iniciar
 
-// Inicializar Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-
 // --- Handler de la API ---
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // 1. Verificación de Método
+  // 1. Verificación de Método y Seguridad
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
+
+  // Verificación de Referer para seguridad básica
+  const referer = req.headers.referer;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
+  if (!appUrl) {
+    console.error('NEXT_PUBLIC_APP_URL no está definido en las variables de entorno.');
+    return res.status(500).json({ message: 'Configuración del servidor incompleta.' });
+  }
+
+  if (!referer || !referer.startsWith(appUrl)) {
+    return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
+  }
+
 
   // 2. Validación de Datos con Zod
   const validationResult = orderSchema.safeParse(req.body);
@@ -109,29 +119,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     />
   );
 
+  // 5. Configurar Nodemailer
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-  // 5. Preparar y Enviar Correo con Resend
   const toEmail = process.env.EMAIL_RECIPIENT;
-  if (!toEmail) {
-    console.error('La variable de entorno EMAIL_RECIPIENT no está definida.');
+  if (!toEmail || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error('Las variables de entorno para el envío de correo no están definidas.');
     return res.status(500).json({ message: 'La configuración del servidor de correo está incompleta.' });
   }
 
-  try {
-    const { data, error } = await resend.emails.send({
-        from: `ZONA FIT GT <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
-        to: [toEmail],
-        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-        html: emailHtml,
-    });
+  const mailOptions = {
+    from: `"ZONA FIT GT" <${process.env.EMAIL_USER}>`,
+    to: toEmail,
+    subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+    html: emailHtml,
+  };
 
-    if (error) {
-        throw new Error('Error al enviar el correo desde Resend', { cause: error });
-    }
-    
+  // 6. Enviar Correo con Nodemailer
+  try {
+    await transporter.sendMail(mailOptions);
     res.status(200).json({ message: 'Correo enviado exitosamente', orderId });
   } catch (error: any) {
     console.error('Error al enviar el correo:', error);
-    res.status(500).json({ message: `Error al enviar el correo: ${error.message}` });
+    // Devuelve un error más específico para el cliente
+    const errorMessage = error.code === 'EAUTH'
+      ? 'Error de autenticación con el servidor de correo. Revisa las credenciales.'
+      : `Error al enviar el correo: ${error.message}`;
+    res.status(500).json({ message: errorMessage });
   }
 }
