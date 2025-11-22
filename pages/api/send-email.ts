@@ -5,6 +5,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { z } from 'zod';
 import { products } from '@/lib/data';
+import { URL } from 'url';
 
 // --- Esquemas de validación con Zod ---
 const cartItemSchema = z.object({
@@ -116,11 +117,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: 'Método no permitido' });
   }
 
-  const referer = req.headers.referer || '';
+  const referer = req.headers.referer;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-  if (!appUrl || !referer.startsWith(appUrl)) {
-    return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
+  if (!appUrl || !referer) {
+      return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
+  }
+
+  try {
+      const refererOrigin = new URL(referer).origin;
+      const appOrigin = new URL(appUrl).origin;
+
+      if (refererOrigin !== appOrigin) {
+          return res.status(403).json({ message: 'Origen de la solicitud no válido.' });
+      }
+  } catch (error) {
+      return res.status(400).json({ message: 'URL de origen o aplicación no válida.' });
   }
 
 
