@@ -19,6 +19,7 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
+import { useEffect } from 'react';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),
@@ -40,6 +41,19 @@ export default function CheckoutPage() {
   const { toast } = useToast();
   const router = useRouter();
 
+  const isCartEmpty = items.length === 0;
+
+  useEffect(() => {
+    if (isCartEmpty) {
+      router.push('/');
+      toast({
+        title: 'Tu carrito está vacío',
+        description: 'Agrega productos a tu carrito para poder pagar.',
+        variant: 'destructive',
+      });
+    }
+  }, [isCartEmpty, router, toast]);
+
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
@@ -53,6 +67,15 @@ export default function CheckoutPage() {
   });
 
   async function onSubmit(data: CheckoutFormValues) {
+    if (isCartEmpty) {
+      toast({
+        title: 'Error en el pedido',
+        description: 'Tu carrito está vacío. Agrega productos antes de continuar.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     const orderDetails = {
       shippingInfo: data,
       orderItems: items.map(item => ({
@@ -78,8 +101,6 @@ export default function CheckoutPage() {
       });
 
       if (!response.ok) {
-        // Even if the email fails, we treat it as a success for the user
-        // but log the error for debugging.
         const errorResult = await response.json().catch(() => ({ message: 'Error desconocido del servidor.' }));
         console.error('Error al enviar correo de notificación:', errorResult.message);
         toast({
@@ -108,6 +129,17 @@ export default function CheckoutPage() {
     } finally {
         clearCart();
     }
+  }
+
+  if (isCartEmpty) {
+    return (
+      <>
+        <Header />
+        <div className="text-center py-20 text-white">
+          <p>Tu carrito está vacío. Redirigiendo...</p>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -233,7 +265,7 @@ export default function CheckoutPage() {
                         )}
                       />
                    </div>
-                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={form.formState.isSubmitting}>
+                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={form.formState.isSubmitting || isCartEmpty}>
                     {form.formState.isSubmitting ? 'Procesando...' : 'Confirmar Pedido'}
                   </Button>
                 </form>
