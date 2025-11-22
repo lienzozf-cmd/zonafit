@@ -20,6 +20,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 import { useEffect } from 'react';
+import Link from 'next/link';
+import { ShoppingCart } from 'lucide-react';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(1, 'El nombre es requerido.'),
@@ -42,17 +44,6 @@ export default function CheckoutPage() {
   const router = useRouter();
 
   const isCartEmpty = items.length === 0;
-
-  useEffect(() => {
-    if (isCartEmpty) {
-      router.push('/');
-      toast({
-        title: 'Tu carrito está vacío',
-        description: 'Agrega productos a tu carrito para poder pagar.',
-        variant: 'destructive',
-      });
-    }
-  }, [isCartEmpty, router, toast]);
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
@@ -128,16 +119,26 @@ export default function CheckoutPage() {
       });
     } finally {
         clearCart();
+        form.reset();
     }
   }
 
-  if (isCartEmpty) {
+  if (isCartEmpty && !form.formState.isSubmitSuccessful) {
     return (
       <>
         <Header />
-        <div className="text-center py-20 text-white">
-          <p>Tu carrito está vacío. Redirigiendo...</p>
-        </div>
+        <main className="bg-transparent text-white">
+          <div className="container mx-auto px-4 py-20 text-center">
+            <ShoppingCart className="mx-auto h-16 w-16 text-gray-500" />
+            <h1 className="mt-4 text-2xl font-bold">Tu carrito está vacío</h1>
+            <p className="mt-2 text-gray-400">
+              Parece que no has añadido ningún producto a tu carrito todavía.
+            </p>
+            <Button asChild variant="destructive" className="mt-6">
+              <Link href="/marcas">Explorar productos</Link>
+            </Button>
+          </div>
+        </main>
       </>
     );
   }
@@ -153,31 +154,43 @@ export default function CheckoutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Resumen del Pedido</h2>
-              <div className="space-y-4">
-                {items.map(item => (
-                  <div key={item.id} className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
-                      <div>
-                        <p className="font-medium">{item.name}</p>
-                        <p className="text-sm text-gray-400">{item.option} x {item.quantity}</p>
-                      </div>
+              {isCartEmpty && form.formState.isSubmitSuccessful ? (
+                 <div className="rounded-lg border border-accent bg-gray-900/50 p-8 text-center">
+                    <h3 className="text-xl font-bold text-accent">¡Gracias por tu compra!</h3>
+                    <p className="mt-2 text-gray-300">Tu pedido ha sido procesado con éxito. Nos pondremos en contacto contigo pronto para coordinar el envío.</p>
+                    <Button asChild variant="secondary" className="mt-6">
+                       <Link href="/marcas">Seguir Comprando</Link>
+                    </Button>
+                 </div>
+              ) : (
+                <>
+                <div className="space-y-4">
+                    {items.map(item => (
+                    <div key={item.id} className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                        <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
+                        <div>
+                            <p className="font-medium">{item.name}</p>
+                            <p className="text-sm text-gray-400">{item.option} x {item.quantity}</p>
+                        </div>
+                        </div>
+                        <p className="font-semibold">Q{(item.price * item.quantity).toFixed(2)}</p>
                     </div>
-                    <p className="font-semibold">Q{(item.price * item.quantity).toFixed(2)}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 border-t border-gray-700 pt-4">
-                 <div className="flex justify-between text-lg font-bold">
-                   <span>Total</span>
-                   <span>Q{total.toFixed(2)}</span>
-                 </div>
-                 <div className="mt-4 p-4 bg-gray-900 border border-accent rounded-lg">
-                    <p className="text-center text-accent-foreground">
-                        <span className="font-bold">Nota sobre el envío:</span> Por favor, comunícate con nosotros a través de nuestras redes sociales para coordinar y calcular el costo de envío de tu pedido.
-                    </p>
-                 </div>
-              </div>
+                    ))}
+                </div>
+                <div className="mt-6 border-t border-gray-700 pt-4">
+                    <div className="flex justify-between text-lg font-bold">
+                    <span>Total</span>
+                    <span>Q{total.toFixed(2)}</span>
+                    </div>
+                    <div className="mt-4 p-4 bg-gray-900 border border-accent rounded-lg">
+                        <p className="text-center text-accent-foreground">
+                            <span className="font-bold">Nota sobre el envío:</span> Por favor, comunícate con nosotros a través de nuestras redes sociales para coordinar y calcular el costo de envío de tu pedido.
+                        </p>
+                    </div>
+                </div>
+                </>
+              )}
             </div>
             <div>
               <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Detalles del Cliente</h2>
@@ -277,3 +290,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
