@@ -94,16 +94,7 @@ export default function CheckoutPage() {
 
       if (!response.ok) {
         console.error('Error al enviar correo de notificación:', result.message || result.warning);
-        toast({
-          title: '¡Pedido realizado con éxito!',
-          description: "Gracias por tu compra. Hubo un problema con la notificación por correo, pero tu pedido fue recibido.",
-          variant: "default"
-        });
       } else {
-         toast({
-          title: '¡Pedido realizado con éxito!',
-          description: 'Gracias por tu compra. Nos pondremos en contacto contigo pronto.',
-        });
         if (result.warning) {
              console.warn('Advertencia del servidor:', result.warning);
         }
@@ -112,9 +103,9 @@ export default function CheckoutPage() {
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
       toast({
-        title: '¡Pedido realizado con éxito!',
-        description: 'Tu pedido fue recibido, pero no se pudo enviar la notificación. Nos pondremos en contacto.',
-        variant: 'default',
+        title: 'Error Inesperado',
+        description: 'No se pudo procesar tu pedido. Por favor, intenta de nuevo.',
+        variant: 'destructive',
       });
     } finally {
         clearCart();

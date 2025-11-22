@@ -133,10 +133,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       quantity: 1,
     });
     
-    toast({
-      title: 'Agregado al carrito',
-      description: `${cartItemName} (${selectedOption.value}) ha sido agregado a tu carrito.`,
-    });
   };
   
   const isAvailable = product.colors
