@@ -5,6 +5,9 @@ import { products } from '@/lib/data';
 import { render } from '@react-email/render';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const cartItemSchema = z.object({
   id: z.string(),
