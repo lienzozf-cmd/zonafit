@@ -69,6 +69,9 @@ export default function CheckoutPage() {
     }
 
     const interval = window.setInterval(function() {
+      if (typeof window === 'undefined') {
+        return clearInterval(interval);
+      }
       const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {
@@ -293,5 +296,3 @@ export default function CheckoutPage() {
     </>
   );
 }
-
-    
