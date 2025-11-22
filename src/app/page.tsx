@@ -18,7 +18,6 @@ export default function Home() {
         <BrandsSection />
         <br />
         <CategoryGrid />
-        <InfoSection />
       </main>
       <h2
         style={{
@@ -33,6 +32,7 @@ export default function Home() {
       </h2>
       <FeaturedProducts />
       <SocialSection />
+      <InfoSection />
       <Footer />
     </>
   );
