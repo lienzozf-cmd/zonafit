@@ -151,9 +151,6 @@ const Header = () => {
                     performSearch(e.target.value);
                 }}
             />
-            <DialogClose className='search-dialog-close'>
-                <X />
-            </DialogClose>
         </div>
         <div className="search-results-container">
           {searchResults.length > 0 ? (
