@@ -85,16 +85,9 @@ export default function CheckoutPage() {
     setIsLoading(true);
     try {
       const orderPayload = {
-        customer: values,
-        items: items.map(item => ({
-            id: item.id,
-            productId: item.productId,
-            name: item.name,
-            quantity: item.quantity,
-            price: item.price,
-            imageUrls: [item.image],
-            aiHint: ''
-        })),
+        shippingInfo: values,
+        orderItems: items,
+        orderTotal: total,
       };
       
       const response = await fetch('/api/send-email', {
@@ -108,14 +101,14 @@ export default function CheckoutPage() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Algo salió mal.");
+        throw new Error(result.error || result.message || "Algo salió mal.");
       }
 
       triggerConfetti();
-
-      clearCart();
       
       setTimeout(() => {
+        clearCart();
+        form.reset();
         router.push("/");
       }, 2000);
 
