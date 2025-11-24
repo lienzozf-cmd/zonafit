@@ -997,6 +997,13 @@ footer {
   left: 0;
 }
 
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  color: #22c55e; /* green-500 */
+}
+
+
 @media (max-width: 1024px) {
   .site-header {
     display: grid;
