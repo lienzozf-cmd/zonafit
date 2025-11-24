@@ -269,7 +269,7 @@ const ProductDetailPage = () => {
                           variant={isSelected ? 'destructive' : 'outline'}
                           onClick={() => handleOptionClick(option)}
                           disabled={stock === 0}
-                          className={`border-gray-600 ${isSelected ? '' : 'text-white hover:bg-gray-800'} relative`}
+                          className="relative"
                         >
                           {option.value}
                            {stock === 0 && <span className="sold-out-x">X</span>}
