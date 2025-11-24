@@ -1,16 +1,21 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { render } from '@react-email/render';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
-import { Resend } from 'resend';
-import * as React from 'react';
+import nodemailer from 'nodemailer';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import { products } from '@/lib/data';
+import 'dotenv/config';
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const toEmail = "rabanalesf22@gmail.com";
-const fromEmail = 'onboarding@resend.dev';
-
+// Configure Nodemailer transporter
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
 
 const cartItemSchema = z.object({
   id: z.string(),
@@ -49,6 +54,12 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Acceso no autorizado.' }, { status: 403 });
     }
   }
+
+  // Check for email credentials early
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Error: Credenciales de correo no configuradas en el archivo .env');
+      return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
+  }
   
   let payload;
   try {
@@ -69,14 +80,9 @@ export async function POST(req: NextRequest) {
 
   const { shippingInfo, orderItems: clientItems } = validationResult.data;
   
-  const orderId = await getNextOrderId();
-
-  if (!resend) {
-    console.warn('ADVERTENCIA: La RESEND_API_KEY no está configurada en .env. El pedido se procesó, pero el correo de notificación no fue enviado.');
-    return NextResponse.json({ message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId });
-  }
-
   try {
+    const orderId = await getNextOrderId();
+    
     let serverCalculatedTotal = 0;
     const validatedItems = [];
 
@@ -104,30 +110,30 @@ export async function POST(req: NextRequest) {
       });
     }
 
-
-    const { data, error } = await resend.emails.send({
-        from: `ZONA FIT GT <${fromEmail}>`,
-        to: [toEmail],
-        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-        react: OrderConfirmationEmail({ 
-            orderDetails: {
+    const emailHtml = render(
+        <OrderConfirmationEmail 
+            orderDetails={{
               shippingInfo,
               orderItems: validatedItems,
               orderTotal: serverCalculatedTotal,
               orderId,
-            }
-        }) as React.ReactElement,
-      });
+            }}
+        />
+    );
 
-      if (error) {
-        console.error('Error al enviar correo con Resend:', error);
-        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 500 });
-      }
+    const mailOptions = {
+        from: `"${"ZONA FIT GT"}" <${process.env.EMAIL_USER}>`,
+        to: process.env.EMAIL_RECIPIENT,
+        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+        html: emailHtml,
+    };
 
-      return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
+    await transporter.sendMail(mailOptions);
+
+    return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId });
 
   } catch (error: any) {
     console.error('Error catastrófico en el endpoint /api/send-email:', error);
-    return NextResponse.json({ message: 'Error interno del servidor.', error: error.message, orderId }, { status: 500 });
+    return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
