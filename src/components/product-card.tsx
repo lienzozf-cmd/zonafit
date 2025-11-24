@@ -78,6 +78,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   };
 
   const handleColorHover = (color: ProductColor) => {
+    const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+    if (isColorSoldOut) return;
+
     setCurrentImage(color.imageSrc);
     setSelectedColor(color);
     setSelectedOption(null); // Reset size selection when color changes
@@ -178,21 +181,14 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
             {product.colors && product.colors.length > 1 && (
                 <div className="color-swatches">
-                    {product.colors.map((color) => {
-                      const isColorSoldOut = color.options.values.every(v => v.stock === 0);
-                      return (
+                    {product.colors.map((color) => (
                         <div
                             key={color.name}
-                            className="color-swatch relative flex items-center justify-center"
+                            className="color-swatch"
                             style={{ backgroundColor: color.hex }}
-                            onMouseEnter={!isColorSoldOut ? () => handleColorHover(color) : undefined}
-                        >
-                            {isColorSoldOut && (
-                              <X className="h-5 w-5 text-white" style={{ filter: 'drop-shadow(0 0 2px black)'}} />
-                            )}
-                        </div>
-                      )
-                    })}
+                            onMouseEnter={() => handleColorHover(color)}
+                        />
+                    ))}
                 </div>
             )}
 
@@ -211,6 +207,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                           disabled={isOptionDisabled}
                         >
                           {option.value}
+                           {isOptionDisabled && <span className="sold-out-x">X</span>}
                         </button>
                       )
                     })}

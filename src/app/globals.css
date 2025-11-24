@@ -506,6 +506,7 @@ main > .container {
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 5px;
+  position: relative;
 }
 
 .size-options button:disabled {
@@ -1092,3 +1093,16 @@ footer {
     background-color: white;
     border-color: var(--accent-color);
   }
+
+  .sold-out-x {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 1.5rem; /* Adjust size as needed */
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.7;
+}
+

@@ -245,7 +245,7 @@ const ProductDetailPage = () => {
                       return (
                         <Button key={color.name} variant={selectedColor?.name === color.name ? 'destructive' : 'outline'} onClick={() => !isColorSoldOut && handleColorClick(color)} disabled={isColorSoldOut} className='relative'>
                             {color.name}
-                            {isColorSoldOut && <X className="absolute h-full w-full text-red-500 opacity-70" />}
+                            {isColorSoldOut && <span className="sold-out-x">X</span>}
                         </Button>
                       )
                     })}
@@ -272,7 +272,7 @@ const ProductDetailPage = () => {
                           className={`border-gray-600 ${isSelected ? '' : 'text-white hover:bg-gray-800'} relative`}
                         >
                           {option.value}
-                           {stock === 0 && <X className="absolute h-full w-full text-red-500 opacity-70" />}
+                           {stock === 0 && <span className="sold-out-x">X</span>}
                         </Button>
                       )
                     })}
