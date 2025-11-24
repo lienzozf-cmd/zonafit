@@ -29,6 +29,11 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const { items } = useCartStore();
 
   const [availabilityMessage, setAvailabilityMessage] = useState('');
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
@@ -46,12 +51,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   useEffect(() => {
     // Pre-select the option if there's only one and it's 'Único'
-    if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
+    if (product.options.values.length === 1 && (product.options.values[0].value === 'Único' || product.category === 'joyeria' || product.category === 'accesorio')) {
       setSelectedOption(product.options.values[0]);
-    }
-     // Pre-select for jewelry or other single-option items
-    if ((product.category === 'joyeria' || product.category === 'accesorio') && product.options.values.length === 1) {
-       setSelectedOption(product.options.values[0]);
     }
   }, [product]);
   
@@ -155,7 +156,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único') || (product.colors && product.colors.length > 0);
   const optionsToShow = selectedColor?.options.values || product.options.values;
-  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption) <= 0;
+  const isAddToCartDisabled = !selectedOption || (isClient && getAvailableStock(selectedOption) <= 0);
 
   return (
     <div 
@@ -204,7 +205,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             )}
 
             <div className="product-info mt-auto">
-                {showOptions && (
+                {showOptions && isClient && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
                       const stock = getAvailableStock(option);
@@ -225,7 +226,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                     </div>
                 )}
                 <p className="availability-message">
-                    {availabilityMessage}
+                    {isClient ? availabilityMessage : ''}
                 </p>
                 <button 
                     className="add-to-cart-button" 
