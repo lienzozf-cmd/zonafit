@@ -127,6 +127,7 @@ export const useCartStore = create<AppState>()(
         items: state.items,
         total: state.total,
         itemCount: state.itemCount,
+        products: state.products, // Persist products to save stock changes
       }),
       onRehydrateStorage: () => (state, error) => {
         if (state) {

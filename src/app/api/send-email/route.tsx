@@ -11,12 +11,12 @@ import 'dotenv/config';
 
 // Define validation schemas with Zod
 const CustomerSchema = z.object({
-  firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.'),
-  lastName: z.string().min(2, 'El apellido debe tener al menos 2 caracteres.'),
+  firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
+  lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().min(10, 'La dirección debe ser más detallada.'),
-  municipality: z.string().min(3, 'El municipio es requerido.'),
-  department: z.string().min(3, 'El departamento es requerido.'),
+  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  department: z.string().trim().min(3, 'El departamento es requerido.'),
+  municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
 
 const CartItemSchema = z.object({
@@ -136,28 +136,19 @@ export async function POST(req: NextRequest) {
     console.warn(
       'ADVERTENCIA: Las credenciales de correo no están configuradas en el archivo .env. El pedido se procesará, pero el correo electrónico de notificación no se enviará. Por favor, configura las variables de entorno EMAIL_USER, EMAIL_PASS y EMAIL_RECIPIENT.'
     );
-
-    // Still process stock update even if email is not sent
-    for (const item of clientItems) {
-        await updateStock(item.productId, item.option, item.color, item.quantity);
-    }
     
     // Return a success response to the client so the UI doesn't break
+    const tempOrderId = await getNextOrderId(); // Still generate an ID for the user
     return NextResponse.json(
-        { message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId: 'N/A' },
+        { message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId: tempOrderId },
         { status: 200 }
       );
   }
 
   try {
     const attachments = [];
-
-    // First, update stock for all items
-    for (const item of clientItems) {
-        await updateStock(item.productId, item.option, item.color, item.quantity);
-    }
     
-    // Then, prepare attachments
+    // Prepare attachments
     for (const item of clientItems) {
       const imageCid = `product-image-${item.productId}-${item.option.replace(/\s/g, '_')}`;
       if (item.image) {
