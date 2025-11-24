@@ -16,7 +16,6 @@ import {
 import { Input } from '@/components/ui/input';
 import Header from '@/components/header';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 import Link from 'next/link';
 import { ShoppingCart, CheckCircle } from 'lucide-react';
@@ -42,7 +41,6 @@ export default function CheckoutPage() {
     total: state.total,
     processOrder: state.processOrder,
   }));
-  const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
@@ -63,7 +61,7 @@ export default function CheckoutPage() {
   });
 
   const triggerConfetti = () => {
-    const duration = 1 * 1000; // Duración de la animación en milisegundos
+    const duration = 2 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
   
@@ -79,7 +77,6 @@ export default function CheckoutPage() {
       }
   
       const particleCount = 50 * (timeLeft / duration);
-      // Dispara confeti desde ambos lados de la pantalla
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
     }, 250);
@@ -117,11 +114,9 @@ export default function CheckoutPage() {
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
       
-      setTimeout(() => {
-        processOrder();
-        form.reset();
-      }, 500)
-
+      // Update stock and clear cart
+      processOrder();
+      form.reset();
 
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);

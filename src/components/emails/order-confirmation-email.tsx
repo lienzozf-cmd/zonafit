@@ -33,23 +33,22 @@ import {
       subtotal: string;
     }[];
     orderTotal: number;
+    orderId: string;
   }
   
   interface OrderConfirmationEmailProps {
     orderDetails: OrderDetails;
   }
 
-  // Asume que las imágenes están en la carpeta `public`.
-  // Necesitamos la URL completa para que las imágenes se carguen en los correos.
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   
   export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailProps) => {
-    const { shippingInfo, orderItems, orderTotal } = orderDetails;
+    const { shippingInfo, orderItems, orderTotal, orderId } = orderDetails;
     
     return (
       <Html>
         <Head />
-        <Preview>¡Nuevo Pedido en ZONA FIT GT!</Preview>
+        <Preview>¡Nuevo Pedido en ZONA FIT GT! #{orderId}</Preview>
         <Body style={main}>
           <Container style={container}>
             <Section style={logoContainer}>
@@ -60,7 +59,7 @@ import {
                 alt="ZONA FIT GT"
               />
             </Section>
-            <Heading style={heading}>¡Nuevo Pedido Recibido!</Heading>
+            <Heading style={heading}>¡Nuevo Pedido #{orderId}!</Heading>
             <Text style={paragraph}>Has recibido un nuevo pedido a través de tu tienda en línea.</Text>
             
             <Section style={section}>

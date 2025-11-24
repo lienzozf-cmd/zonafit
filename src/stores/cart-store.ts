@@ -81,31 +81,29 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        set(produce((state: AppState) => {
-            state.items.forEach(cartItem => {
-                const product = state.products.find(p => p.id === cartItem.productId);
-                if (product) {
-                    if (cartItem.color && product.colors) {
-                        const color = product.colors.find(c => c.name === cartItem.color);
-                        if (color) {
-                            const option = color.options.values.find(o => o.value === cartItem.option);
-                            if (option) {
-                                option.stock = Math.max(0, option.stock - cartItem.quantity);
-                            }
-                        }
-                    } else {
-                        const option = product.options.values.find(o => o.value === cartItem.option);
-                        if (option) {
-                            option.stock = Math.max(0, option.stock - cartItem.quantity);
-                        }
-                    }
+        const { items, products } = get();
+        const newProducts = produce(products, draft => {
+          items.forEach(cartItem => {
+            const product = draft.find(p => p.id === cartItem.productId);
+            if (product) {
+              if (cartItem.color && product.colors) {
+                const color = product.colors.find(c => c.name === cartItem.color);
+                if (color) {
+                  const option = color.options.values.find(o => o.value === cartItem.option);
+                  if (option) {
+                    option.stock = Math.max(0, option.stock - cartItem.quantity);
+                  }
                 }
-            });
-            // Clear cart after processing
-            state.items = [];
-            state.itemCount = 0;
-            state.total = 0;
-        }));
+              } else {
+                const option = product.options.values.find(o => o.value === cartItem.option);
+                if (option) {
+                  option.stock = Math.max(0, option.stock - cartItem.quantity);
+                }
+              }
+            }
+          });
+        });
+        set({ products: newProducts, items: [], itemCount: 0, total: 0 });
       },
       getItem: (id) => get().items.find((i) => i.id === id),
       getProductOption: (productId, optionValue, colorName) => {
@@ -121,13 +119,13 @@ export const useCartStore = create<AppState>()(
       },
     }),
     {
-      name: 'cart-storage', // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+      name: 'cart-storage',
+      storage: createJSONStorage(() => localStorage), 
       partialize: (state) => ({
         items: state.items,
         total: state.total,
         itemCount: state.itemCount,
-        products: state.products, // Persist products to save stock changes
+        products: state.products, 
       }),
       onRehydrateStorage: () => (state, error) => {
         if (state) {

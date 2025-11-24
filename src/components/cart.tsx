@@ -30,7 +30,7 @@ const Cart = () => {
   const router = useRouter();
 
   const triggerConfetti = () => {
-    const duration = 1 * 1000;
+    const duration = 2 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
   
@@ -68,7 +68,6 @@ const Cart = () => {
         if (option && item.quantity < option.stock) {
             incrementQuantity(id);
         } else if (option && option.stock > 0 && item.quantity >= option.stock) {
-            // This case is tricky without a toast here. Silently fail.
              console.log('No hay más stock para este producto.');
         } else {
             incrementQuantity(id);
