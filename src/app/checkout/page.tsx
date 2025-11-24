@@ -21,15 +21,18 @@ import { useCartStore } from '@/stores/cart-store';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const checkoutSchema = z.object({
-  firstName: z.string().trim().min(1, 'El nombre es requerido.'),
-  lastName: z.string().trim().min(1, 'El apellido es requerido.'),
+  firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
+  lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().trim().min(1, 'La dirección es requerida.'),
-  department: z.string().trim().min(1, 'El departamento es requerido.'),
-  municipality: z.string().trim().min(1, 'El municipio es requerido.'),
+  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  department: z.string().trim().min(3, 'El departamento es requerido.'),
+  municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
+
 
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
@@ -40,6 +43,9 @@ export default function CheckoutPage() {
     clearCart: state.clearCart,
   }));
   const router = useRouter();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
   const isCartEmpty = items.length === 0;
 
@@ -56,6 +62,7 @@ export default function CheckoutPage() {
   });
 
   const triggerConfetti = () => {
+    if (typeof window === 'undefined') return;
     confetti({
       particleCount: 150,
       spread: 80,
@@ -69,20 +76,11 @@ export default function CheckoutPage() {
       return;
     }
     
-    triggerConfetti();
+    setIsLoading(true);
 
     const orderDetails = {
       shippingInfo: data,
-      orderItems: items.map(item => ({
-        id: item.id,
-        productId: item.productId,
-        name: item.name,
-        price: item.price,
-        image: item.image,
-        option: item.option,
-        color: item.color,
-        quantity: item.quantity,
-      })),
+      orderItems: items,
       orderTotal: total,
     };
 
@@ -98,22 +96,31 @@ export default function CheckoutPage() {
       const result = await response.json();
 
       if (!response.ok) {
-        console.error('Error al enviar correo de notificación:', result.message || result.warning);
-      } else {
-        if (result.warning) {
-             console.warn('Advertencia del servidor:', result.warning);
-        }
+        throw new Error(result.error || result.message || "Algo salió mal al procesar el pedido.");
       }
+      
+      triggerConfetti();
+      setIsSubmitSuccessful(true);
+      
+      setTimeout(() => {
+        clearCart();
+        form.reset();
+      }, 500)
+
 
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
+       toast({
+        title: "Error al enviar pedido",
+        description: error.message || "No se pudo completar el pedido. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
     } finally {
-        clearCart();
-        form.reset();
+        setIsLoading(false);
     }
   }
 
-  if (isCartEmpty && !form.formState.isSubmitSuccessful) {
+  if (isCartEmpty && !isSubmitSuccessful) {
     return (
       <>
         <Header />
@@ -144,7 +151,7 @@ export default function CheckoutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Resumen del Pedido</h2>
-              {isCartEmpty && form.formState.isSubmitSuccessful ? (
+              {isCartEmpty && isSubmitSuccessful ? (
                  <div className="rounded-lg border border-accent bg-gray-900/50 p-8 text-center">
                     <h3 className="text-xl font-bold text-accent">¡Gracias por tu compra!</h3>
                     <p className="mt-2 text-gray-300">Tu pedido ha sido procesado con éxito. Nos pondremos en contacto contigo pronto para coordinar el envío.</p>
@@ -183,72 +190,47 @@ export default function CheckoutPage() {
               )}
             </div>
             <div>
-              <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Detalles del Cliente</h2>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                     <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Nombre</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Juan" {...field} className="bg-gray-800 border-gray-600" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Apellido</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Pérez" {...field} className="bg-gray-800 border-gray-600" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Número de teléfono</FormLabel>
-                        <FormControl>
-                          <Input placeholder="12345678" {...field} className="bg-gray-800 border-gray-600" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="address"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Dirección exacta</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ej: 1ra Calle, 2-3, Zona 4" {...field} className="bg-gray-800 border-gray-600" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {!isSubmitSuccessful && (
+                <>
+                  <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Detalles del Cliente</h2>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="firstName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Nombre</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Juan" {...field} className="bg-gray-800 border-gray-600" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="lastName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Apellido</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Pérez" {...field} className="bg-gray-800 border-gray-600" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
                       <FormField
                         control={form.control}
-                        name="department"
+                        name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Departamento</FormLabel>
+                            <FormLabel>Número de teléfono</FormLabel>
                             <FormControl>
-                              <Input placeholder="Guatemala" {...field} className="bg-gray-800 border-gray-600" />
+                              <Input placeholder="12345678" {...field} className="bg-gray-800 border-gray-600" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -256,23 +238,52 @@ export default function CheckoutPage() {
                       />
                       <FormField
                         control={form.control}
-                        name="municipality"
+                        name="address"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Municipio</FormLabel>
+                            <FormLabel>Dirección exacta</FormLabel>
                             <FormControl>
-                              <Input placeholder="Guatemala" {...field} className="bg-gray-800 border-gray-600" />
+                              <Input placeholder="Ej: 1ra Calle, 2-3, Zona 4" {...field} className="bg-gray-800 border-gray-600" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                   </div>
-                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={form.formState.isSubmitting || isCartEmpty}>
-                    {form.formState.isSubmitting ? 'Procesando...' : 'Confirmar Pedido'}
-                  </Button>
-                </form>
-              </Form>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="department"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Departamento</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Guatemala" {...field} className="bg-gray-800 border-gray-600" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="municipality"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Municipio</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Guatemala" {...field} className="bg-gray-800 border-gray-600" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={isLoading || isCartEmpty}>
+                        {isLoading ? 'Procesando...' : 'Confirmar Pedido'}
+                      </Button>
+                    </form>
+                  </Form>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -280,3 +291,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
