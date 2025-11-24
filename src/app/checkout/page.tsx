@@ -37,10 +37,10 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCartStore((state) => ({
+  const { items, total, processOrder } = useCartStore((state) => ({
     items: state.items,
     total: state.total,
-    clearCart: state.clearCart,
+    processOrder: state.processOrder,
   }));
   const router = useRouter();
   const { toast } = useToast();
@@ -103,7 +103,7 @@ export default function CheckoutPage() {
       setIsSubmitSuccessful(true);
       
       setTimeout(() => {
-        clearCart();
+        processOrder();
         form.reset();
       }, 500)
 
@@ -291,5 +291,3 @@ export default function CheckoutPage() {
     </>
   );
 }
-
-    

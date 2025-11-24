@@ -20,8 +20,7 @@ interface AppState {
   decrementQuantity: (id: string) => void;
   clearCart: () => void;
   getItem: (id: string) => CartItem | undefined;
-  decreaseStock: (items: CartItem[]) => void;
-  increaseStock: (items: CartItem[]) => void;
+  processOrder: () => void;
   getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
 }
 
@@ -41,23 +40,19 @@ export const useCartStore = create<AppState>()(
       products: initialProducts,
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       addItem: (item) => {
-        const existingItem = get().items.find((i) => i.id === item.id);
-        if (existingItem) {
-            get().incrementQuantity(item.id);
-        } else {
-            set((state) => {
-                const newItems = [...state.items, { ...item, quantity: 1 }];
-                const { itemCount, total } = calculateTotals(newItems);
-                get().decreaseStock([{ ...item, quantity: 1 }]);
-                return { items: newItems, itemCount, total };
-            });
-        }
+        set(produce((state: AppState) => {
+            const existingItem = state.items.find((i) => i.id === item.id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                state.items.push({ ...item, quantity: 1 });
+            }
+            const { itemCount, total } = calculateTotals(state.items);
+            state.itemCount = itemCount;
+            state.total = total;
+        }));
       },
       removeItem: (id: string) => {
-        const itemToRemove = get().items.find((i) => i.id === id);
-        if (itemToRemove) {
-          get().increaseStock([itemToRemove]);
-        }
         set((state) => {
           const newItems = state.items.filter((i) => i.id !== id);
           const { itemCount, total } = calculateTotals(newItems);
@@ -65,22 +60,15 @@ export const useCartStore = create<AppState>()(
         });
       },
       incrementQuantity: (id) => {
-        const itemToIncrement = get().items.find((i) => i.id === id);
-        if (itemToIncrement) {
-          get().decreaseStock([{ ...itemToIncrement, quantity: 1 }]);
-          set((state) => {
+        set((state) => {
             const newItems = state.items.map((i) =>
               i.id === id ? { ...i, quantity: i.quantity + 1 } : i
             );
             const { itemCount, total } = calculateTotals(newItems);
             return { items: newItems, itemCount, total };
-          });
-        }
+        });
       },
       decrementQuantity: (id) => {
-        const itemToDecrement = get().items.find((i) => i.id === id);
-         if (itemToDecrement) {
-          get().increaseStock([{ ...itemToDecrement, quantity: 1 }]);
           set((state) => {
              const newItems = state.items.map((i) =>
               i.id === id ? { ...i, quantity: Math.max(0, i.quantity - 1) } : i
@@ -88,59 +76,38 @@ export const useCartStore = create<AppState>()(
             const { itemCount, total } = calculateTotals(newItems);
             return { items: newItems, itemCount, total };
           });
-         }
       },
       clearCart: () => {
-        get().increaseStock(get().items);
         set({ items: [], itemCount: 0, total: 0 })
       },
-      getItem: (id) => get().items.find((i) => i.id === id),
-      decreaseStock: (itemsToDecrease) => {
+      processOrder: () => {
         set(produce((state: AppState) => {
-            itemsToDecrease.forEach(item => {
-            const product = state.products.find(p => p.id === item.productId);
-            if (product) {
-              if (product.colors && item.color) {
-                const color = product.colors.find(c => c.name === item.color);
-                if (color) {
-                  const option = color.options.values.find(o => o.value === item.option);
-                  if (option) {
-                    option.stock = Math.max(0, option.stock - item.quantity);
-                  }
-                }
-              } else {
-                const option = product.options.values.find(o => o.value === item.option);
-                if (option) {
-                  option.stock = Math.max(0, option.stock - item.quantity);
-                }
-              }
-            }
-          });
-        }));
-      },
-      increaseStock: (itemsToIncrease) => {
-        set(produce((state: AppState) => {
-            itemsToIncrease.forEach(item => {
-              const product = state.products.find(p => p.id === item.productId);
-              if (product) {
-                if (product.colors && item.color) {
-                    const color = product.colors.find(c => c.name === item.color);
-                    if (color) {
-                      const option = color.options.values.find(o => o.value === item.option);
-                      if (option) {
-                        option.stock += item.quantity;
-                      }
+            state.items.forEach(cartItem => {
+                const product = state.products.find(p => p.id === cartItem.productId);
+                if (product) {
+                    if (cartItem.color && product.colors) {
+                        const color = product.colors.find(c => c.name === cartItem.color);
+                        if (color) {
+                            const option = color.options.values.find(o => o.value === cartItem.option);
+                            if (option) {
+                                option.stock = Math.max(0, option.stock - cartItem.quantity);
+                            }
+                        }
+                    } else {
+                        const option = product.options.values.find(o => o.value === cartItem.option);
+                        if (option) {
+                            option.stock = Math.max(0, option.stock - cartItem.quantity);
+                        }
                     }
-                  } else {
-                    const option = product.options.values.find(o => o.value === item.option);
-                    if (option) {
-                      option.stock += item.quantity;
-                    }
-                  }
-              }
+                }
             });
+            // Clear cart after processing
+            state.items = [];
+            state.itemCount = 0;
+            state.total = 0;
         }));
       },
+      getItem: (id) => get().items.find((i) => i.id === id),
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
         if (!product) return undefined;
@@ -166,11 +133,6 @@ export const useCartStore = create<AppState>()(
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;
-            
-            // On rehydration, we need to reconcile the cart with the product stock.
-            // This is a simplified approach. A more robust solution might involve
-            // checking if stock is sufficient and notifying the user if not.
-            state.decreaseStock(state.items);
         }
       }
     }

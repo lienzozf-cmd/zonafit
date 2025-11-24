@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { products } from '@/lib/data';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
@@ -137,6 +136,12 @@ export async function POST(req: NextRequest) {
     console.warn(
       'ADVERTENCIA: Las credenciales de correo no están configuradas en el archivo .env. El pedido se procesará, pero el correo electrónico de notificación no se enviará. Por favor, configura las variables de entorno EMAIL_USER, EMAIL_PASS y EMAIL_RECIPIENT.'
     );
+
+    // Still process stock update even if email is not sent
+    for (const item of clientItems) {
+        await updateStock(item.productId, item.option, item.color, item.quantity);
+    }
+    
     // Return a success response to the client so the UI doesn't break
     return NextResponse.json(
         { message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId: 'N/A' },
@@ -147,6 +152,12 @@ export async function POST(req: NextRequest) {
   try {
     const attachments = [];
 
+    // First, update stock for all items
+    for (const item of clientItems) {
+        await updateStock(item.productId, item.option, item.color, item.quantity);
+    }
+    
+    // Then, prepare attachments
     for (const item of clientItems) {
       const imageCid = `product-image-${item.productId}-${item.option.replace(/\s/g, '_')}`;
       if (item.image) {
