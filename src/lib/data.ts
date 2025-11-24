@@ -519,7 +519,7 @@ export const products: Product[] = [
         dataAiHint: 'creatine powder',
       },
     ],
-    options: { type: 'servicios', values: [{ value: 'Único', stock: 3 }] },
+    options: { type: 'servicios', values: [{ value: 'Único', stock: 2 }] },
   },
   {
     id: 9,
