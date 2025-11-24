@@ -182,9 +182,9 @@ export const products: Product[] = [
         options: {
             type: 'talla',
             values: [
-                { value: 'S', stock: 0 },
-                { value: 'M', stock: 0 },
-                { value: 'L', stock: 0 },
+                { value: 'S', stock: 1 },
+                { value: 'M', stock: 1 },
+                { value: 'L', stock: 1 },
             ],
         }
       },
@@ -196,9 +196,9 @@ export const products: Product[] = [
         options: {
             type: 'talla',
             values: [
-                { value: 'S', stock: 0 },
+                { value: 'S', stock: 1 },
                 { value: 'M', stock: 1 },
-                { value: 'L', stock: 0 },
+                { value: 'L', stock: 1 },
             ],
         }
       },
