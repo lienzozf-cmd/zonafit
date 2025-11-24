@@ -1,21 +1,17 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { render } from '@react-email/render';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+import * as React from 'react';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import { products } from '@/lib/data';
 import 'dotenv/config';
 
-// Configure Nodemailer transporter
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
+
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const toEmail = "rabanalesf22@gmail.com";
+const fromEmail = 'onboarding@resend.dev';
+
 
 const cartItemSchema = z.object({
   id: z.string(),
@@ -55,12 +51,6 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Check for email credentials early
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('Error: Credenciales de correo no configuradas en el archivo .env');
-      return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
-  }
-  
   let payload;
   try {
       payload = await req.json();
@@ -110,27 +100,31 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const emailHtml = render(
-        <OrderConfirmationEmail 
-            orderDetails={{
+    if (!resend) {
+        console.warn('ADVERTENCIA: La RESEND_API_KEY no está configurada en .env. El pedido se procesó, pero el correo de notificación no fue enviado.');
+        return NextResponse.json({ message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId });
+    }
+    
+    const { data, error } = await resend.emails.send({
+        from: `ZONA FIT GT <${fromEmail}>`,
+        to: [toEmail],
+        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+        react: OrderConfirmationEmail({ 
+            orderDetails: {
               shippingInfo,
               orderItems: validatedItems,
               orderTotal: serverCalculatedTotal,
               orderId,
-            }}
-        />
-    );
+            }
+        }) as React.ReactElement,
+    });
 
-    const mailOptions = {
-        from: `"${"ZONA FIT GT"}" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_RECIPIENT,
-        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-        html: emailHtml,
-    };
+    if (error) {
+        console.error('Error al enviar correo con Resend:', error);
+        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 500 });
+    }
 
-    await transporter.sendMail(mailOptions);
-
-    return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId });
+    return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
 
   } catch (error: any) {
     console.error('Error catastrófico en el endpoint /api/send-email:', error);
