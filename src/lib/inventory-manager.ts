@@ -8,6 +8,31 @@ import type { Product } from './data';
 
 let products: Product[] = initialProducts;
 
+const counterFilePath = path.join(process.cwd(), 'order-counter.txt');
+
+async function readCounter(): Promise<number> {
+  try {
+    const data = await fs.readFile(counterFilePath, 'utf-8');
+    return parseInt(data.trim(), 10);
+  } catch (error) {
+    // If the file doesn't exist, start at 0
+    return 0;
+  }
+}
+
+async function writeCounter(value: number): Promise<void> {
+  await fs.writeFile(counterFilePath, value.toString(), 'utf-8');
+}
+
+export async function getNextOrderId(): Promise<string> {
+    const currentId = await readCounter();
+    const nextId = currentId + 1;
+    await writeCounter(nextId);
+    // Pad with leading zeros to make it 6 digits
+    return nextId.toString().padStart(6, '0');
+}
+
+
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
   const product = products.find(p => p.id === productId);
 

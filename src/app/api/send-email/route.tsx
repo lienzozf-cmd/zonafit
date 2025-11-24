@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { products } from '@/lib/data';
-import { updateStock } from '@/lib/inventory-manager';
+import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
 import 'dotenv/config';
@@ -34,13 +34,6 @@ const orderSchema = z.object({
   orderTotal: z.number(),
 });
 
-// Helper para generar un ID de pedido único basado en el tiempo
-function generateOrderId(): string {
-    const now = new Date();
-    const timestamp = now.toISOString().replace(/[-:.]/g, ''); // Elimina caracteres no numéricos
-    const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase(); // Parte aleatoria
-    return `${timestamp.slice(8, 14)}-${randomPart}`; // Formato HHMMSS-RANDOM
-}
 
 function formatItemsToHtml(items: any[], total: number) {
     const itemsHtml = items.map(item => {
@@ -123,7 +116,7 @@ export async function POST(req: NextRequest) {
   const { shippingInfo, orderItems: clientItems } = validationResult.data;
   
   try {
-    const orderId = generateOrderId();
+    const orderId = await getNextOrderId();
     
     let serverCalculatedTotal = 0;
     const validatedItems = [];
@@ -136,7 +129,7 @@ export async function POST(req: NextRequest) {
         throw new Error(`Producto no encontrado con ID: ${item.productId}`);
       }
 
-      const price = parseFloat(product.price.replace(/Q|\s/g, ''));
+      const price = parseFloat(product.price.replace(/Q|\s|,/g, ''));
       
       if (price !== item.price) {
            console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
