@@ -50,11 +50,13 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   }, [product, selectedOption, selectedColor, items]);
 
   useEffect(() => {
-    // Pre-select the option if there's only one and it's 'Único'
-    if (product.options.values.length === 1 && (product.options.values[0].value === 'Único' || product.category === 'joyeria' || product.category === 'accesorio')) {
-      setSelectedOption(product.options.values[0]);
+    // Pre-select the first available option.
+    const options = selectedColor ? selectedColor.options.values : product.options.values;
+    const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
+    if (firstAvailableOption && !selectedOption) {
+      setSelectedOption(firstAvailableOption);
     }
-  }, [product]);
+  }, [product, selectedColor, items, getAvailableStock, selectedOption]);
   
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
