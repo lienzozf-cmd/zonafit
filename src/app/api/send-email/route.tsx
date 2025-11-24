@@ -1,17 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
-import { Resend } from 'resend';
-import * as React from 'react';
-import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import { products } from '@/lib/data';
+import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
+import fs from 'fs/promises';
+import path from 'path';
 import 'dotenv/config';
 
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const toEmail = "rabanalesf22@gmail.com";
-const fromEmail = 'onboarding@resend.dev';
-
+const shippingInfoSchema = z.object({
+  firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
+  lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
+  phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
+  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  department: z.string().trim().min(3, 'El departamento es requerido.'),
+  municipality: z.string().trim().min(3, 'El municipio es requerido.'),
+});
 
 const cartItemSchema = z.object({
   id: z.string(),
@@ -24,20 +27,55 @@ const cartItemSchema = z.object({
   quantity: z.number().min(1),
 });
 
-const shippingInfoSchema = z.object({
-  firstName: z.string().trim().min(1, 'El nombre es requerido.'),
-  lastName: z.string().trim().min(1, 'El apellido es requerido.'),
-  phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().trim().min(1, 'La dirección es requerida.'),
-  department: z.string().trim().min(1, 'El departamento es requerido.'),
-  municipality: z.string().trim().min(1, 'El municipio es requerido.'),
-});
-
 const orderSchema = z.object({
   shippingInfo: shippingInfoSchema,
   orderItems: z.array(cartItemSchema).min(1, 'El carrito no puede estar vacío.'),
   orderTotal: z.number(),
 });
+
+function formatItemsToHtml(items: any[], total: number) {
+    const itemsHtml = items.map(item => {
+        const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`;
+        
+        return `
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 10px; vertical-align: top;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td style="width: 80px; padding-right: 15px;">
+                            <img src="cid:${imageCid}" alt="${item.name}" width="60" height="60" style="border-radius: 8px; object-fit: cover; display: block; border: 0;">
+                        </td>
+                        <td>
+                            <p style="margin: 0; font-size: 14px;">${item.name} (${item.option})</p>
+                            <p style="margin: 5px 0 0; font-size: 12px; color: #555;">Cantidad: ${item.quantity}</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="padding: 10px; text-align: right; vertical-align: top;">Q${(item.price * item.quantity).toFixed(2)}</td>
+        </tr>
+    `}).join('');
+
+    return `
+        <table style="width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 14px;">
+            <thead>
+                <tr style="border-bottom: 2px solid #eee;">
+                    <th style="text-align: left; padding: 10px; font-size: 16px;">Producto</th>
+                    <th style="text-align: right; padding: 10px; font-size: 16px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${itemsHtml}
+            </tbody>
+            <tfoot>
+                <tr style="border-top: 2px solid #000; font-weight: bold;">
+                    <td style="padding: 15px 10px 0;">Total del Pedido</td>
+                    <td style="padding: 15px 10px 0; text-align: right;">Q${total.toFixed(2)}</td>
+                </tr>
+            </tfoot>
+        </table>
+    `;
+}
 
 export async function POST(req: NextRequest) {
   if (process.env.NODE_ENV === 'production') {
@@ -68,6 +106,11 @@ export async function POST(req: NextRequest) {
     }, { status: 400 });
   }
 
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error('Error: Credenciales de correo no configuradas en el archivo .env');
+    return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
+  }
+
   const { shippingInfo, orderItems: clientItems } = validationResult.data;
   
   try {
@@ -75,6 +118,7 @@ export async function POST(req: NextRequest) {
     
     let serverCalculatedTotal = 0;
     const validatedItems = [];
+    const attachments = [];
 
     for (const item of clientItems) {
       const product = products.find(p => p.id === item.productId);
@@ -98,33 +142,61 @@ export async function POST(req: NextRequest) {
         name: item.name, 
         subtotal: (price * item.quantity).toFixed(2),
       });
+
+      if (item.image) {
+        const imagePath = path.join(process.cwd(), 'public', item.image);
+        try {
+            const imageContent = await fs.readFile(imagePath);
+            attachments.push({
+                filename: path.basename(item.image),
+                content: imageContent,
+                cid: `${item.productId}-${item.option}-${item.color || 'default'}`
+            });
+        } catch (err) {
+            console.error(`Error reading image file for attachment ${item.productId}:`, err);
+        }
+    }
     }
 
-    if (!resend) {
-        console.warn('ADVERTENCIA: La RESEND_API_KEY no está configurada en .env. El pedido se procesó, pero el correo de notificación no fue enviado.');
-        return NextResponse.json({ message: 'Pedido procesado con éxito (notificación por correo deshabilitada).', orderId });
-    }
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+        },
+    });
     
-    const { data, error } = await resend.emails.send({
-        from: `ZONA FIT GT <${fromEmail}>`,
-        to: [toEmail],
-        subject: `Nuevo Pedido #${orderId} de ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-        react: OrderConfirmationEmail({ 
-            orderDetails: {
-              shippingInfo,
-              orderItems: validatedItems,
-              orderTotal: serverCalculatedTotal,
-              orderId,
-            }
-        }) as React.ReactElement,
+    const shopName = "ZONA FIT GT";
+    const itemsHtml = formatItemsToHtml(validatedItems, serverCalculatedTotal);
+
+    await transporter.sendMail({
+        from: `"${shopName}" <${process.env.EMAIL_USER}>`,
+        to: "rabanalesf22@gmail.com",
+        subject: `Nuevo Pedido #${orderId} - ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+        html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+                <div style="background-color: #E50000; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
+                    <h1 style="font-size: 24px; color: #fff;">Nuevo Pedido #${orderId}</h1>
+                </div>
+                <div style="padding: 20px;">
+                    <h2 style="font-size: 20px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Detalles del Cliente</h2>
+                    <p><strong>Nombre:</strong> ${shippingInfo.firstName} ${shippingInfo.lastName}</p>
+                    <p><strong>Teléfono:</strong> ${shippingInfo.phone}</p>
+                    <p><strong>Dirección:</strong> ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}</p>
+                    <h2 style="font-size: 20px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px;">Artículos del Pedido</h2>
+                    ${itemsHtml}
+                </div>
+                 <div style="background-color: #f5f5f5; padding: 15px; border-top: 1px solid #eee; text-align: center;">
+                    <p style="margin: 0; color: #555;">Este es un correo automático. Contacta al cliente para coordinar el envío.</p>
+                </div>
+            </div>
+        `,
+        attachments: attachments,
     });
 
-    if (error) {
-        console.error('Error al enviar correo con Resend:', error);
-        return NextResponse.json({ message: 'Pedido procesado con éxito, pero la notificación por correo falló.', orderId, warning: error.message }, { status: 500 });
-    }
-
-    return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId, data });
+    return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId });
 
   } catch (error: any) {
     console.error('Error catastrófico en el endpoint /api/send-email:', error);
