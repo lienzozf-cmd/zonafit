@@ -6,7 +6,7 @@ import Image from 'next/image';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
+import { Check, Shield, ArrowLeft, Pill, Server, X } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { useCartStore } from '@/stores/cart-store';
@@ -240,11 +240,15 @@ const ProductDetailPage = () => {
                 <div>
                   <h3 className="text-lg font-medium mb-2">Color</h3>
                   <div className="flex flex-wrap gap-2">
-                    {product.colors.map(color => (
-                        <Button key={color.name} variant={selectedColor?.name === color.name ? 'destructive' : 'outline'} onClick={() => handleColorClick(color)}>
+                    {product.colors.map(color => {
+                      const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+                      return (
+                        <Button key={color.name} variant={selectedColor?.name === color.name ? 'destructive' : 'outline'} onClick={() => !isColorSoldOut && handleColorClick(color)} disabled={isColorSoldOut} className='relative'>
                             {color.name}
+                            {isColorSoldOut && <X className="absolute h-full w-full text-red-500 opacity-70" />}
                         </Button>
-                    ))}
+                      )
+                    })}
                   </div>
                 </div>
               )}
@@ -265,9 +269,10 @@ const ProductDetailPage = () => {
                           variant={isSelected ? 'destructive' : 'outline'}
                           onClick={() => handleOptionClick(option)}
                           disabled={stock === 0}
-                          className={`border-gray-600 ${isSelected ? '' : 'text-white hover:bg-gray-800'}`}
+                          className={`border-gray-600 ${isSelected ? '' : 'text-white hover:bg-gray-800'} relative`}
                         >
                           {option.value}
+                           {stock === 0 && <X className="absolute h-full w-full text-red-500 opacity-70" />}
                         </Button>
                       )
                     })}

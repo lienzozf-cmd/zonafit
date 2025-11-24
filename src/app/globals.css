@@ -508,8 +508,15 @@ main > .container {
   border-radius: 5px;
 }
 
+.size-options button:disabled {
+    background-color: #333;
+    color: #666;
+    border-color: #444;
+    cursor: not-allowed;
+}
+
 .size-options button.active,
-.size-options button:hover {
+.size-options button:hover:not(:disabled) {
   transform: scale(1.1);
   background-color: var(--accent-color);
   color: black;
@@ -537,10 +544,16 @@ main > .container {
   margin-top: 5px;
 }
 
-.add-to-cart-button:hover {
+.add-to-cart-button:hover:not(:disabled) {
     background-color: #A50000;
     transform: scale(1.05);
 }
+
+.add-to-cart-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
 
 .color-swatches {
   display: flex;
