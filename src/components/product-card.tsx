@@ -195,14 +195,22 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
             {product.colors && product.colors.length > 1 && (
                 <div className="color-swatches">
-                    {product.colors.map((color) => (
-                        <div
-                            key={color.name}
-                            className="color-swatch"
-                            style={{ backgroundColor: color.hex }}
-                            onMouseEnter={() => handleColorHover(color)}
-                        />
-                    ))}
+                    {product.colors.map((color) => {
+                        const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+                        return (
+                            <div key={color.name} className="relative">
+                                <div
+                                    className="color-swatch"
+                                    style={{ 
+                                        backgroundColor: color.hex,
+                                        cursor: isColorSoldOut ? 'not-allowed' : 'pointer',
+                                    }}
+                                    onMouseEnter={() => handleColorHover(color)}
+                                />
+                                {isColorSoldOut && <span className="sold-out-x-swatch">X</span>}
+                            </div>
+                        )
+                    })}
                 </div>
             )}
 
