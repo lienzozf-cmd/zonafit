@@ -43,6 +43,17 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     updateAvailabilityMessage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product, selectedOption, selectedColor, items]);
+
+  useEffect(() => {
+    // Pre-select the option if there's only one and it's 'Único'
+    if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
+      setSelectedOption(product.options.values[0]);
+    }
+     // Pre-select for jewelry or other single-option items
+    if ((product.category === 'joyeria' || product.category === 'accesorio') && product.options.values.length === 1) {
+       setSelectedOption(product.options.values[0]);
+    }
+  }, [product]);
   
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
@@ -198,12 +209,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                     {optionsToShow.map((option) => {
                       const stock = getAvailableStock(option);
                       const isOptionDisabled = stock <= 0;
+                      const isSelected = selectedOption?.value === option.value;
                       return (
-                        (option.value !== 'Único') &&
                         <button
                           key={option.value}
                           onClick={(e) => handleOptionClick(e, option)}
-                          className={selectedOption?.value === option.value ? 'active' : ''}
+                          className={isSelected ? 'active' : ''}
                           disabled={isOptionDisabled}
                         >
                           {option.value}
