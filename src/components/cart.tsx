@@ -30,7 +30,7 @@ const Cart = () => {
   const router = useRouter();
 
   const triggerConfetti = () => {
-    const duration = 1 * 1000; // Duración de la animación en milisegundos
+    const duration = 2 * 1000; // La animación durará 2 segundos
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
   
@@ -46,8 +46,9 @@ const Cart = () => {
       }
   
       const particleCount = 50 * (timeLeft / duration);
-      // Dispara confeti desde ambos lados de la pantalla
+      // Dispara confeti desde el lado izquierdo
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+      // Dispara confeti desde el lado derecho
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
     }, 250);
   };
