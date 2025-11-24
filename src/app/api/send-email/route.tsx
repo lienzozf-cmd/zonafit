@@ -1,8 +1,9 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { products } from '@/lib/data';
-import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
+import { updateStock } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
 import 'dotenv/config';
@@ -32,6 +33,14 @@ const orderSchema = z.object({
   orderItems: z.array(cartItemSchema).min(1, 'El carrito no puede estar vacío.'),
   orderTotal: z.number(),
 });
+
+// Helper para generar un ID de pedido único basado en el tiempo
+function generateOrderId(): string {
+    const now = new Date();
+    const timestamp = now.toISOString().replace(/[-:.]/g, ''); // Elimina caracteres no numéricos
+    const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase(); // Parte aleatoria
+    return `${timestamp.slice(8, 14)}-${randomPart}`; // Formato HHMMSS-RANDOM
+}
 
 function formatItemsToHtml(items: any[], total: number) {
     const itemsHtml = items.map(item => {
@@ -114,7 +123,7 @@ export async function POST(req: NextRequest) {
   const { shippingInfo, orderItems: clientItems } = validationResult.data;
   
   try {
-    const orderId = await getNextOrderId();
+    const orderId = generateOrderId();
     
     let serverCalculatedTotal = 0;
     const validatedItems = [];
@@ -203,3 +212,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
+
+    
