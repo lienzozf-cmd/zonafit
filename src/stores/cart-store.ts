@@ -125,15 +125,11 @@ export const useCartStore = create<AppState>()(
         items: state.items,
         total: state.total,
         itemCount: state.itemCount,
-        // We no longer persist products, so they are always fresh from data.ts
+        products: state.products, // Now we persist the products to keep stock updated
       }),
       onRehydrateStorage: () => (state, error) => {
         if (state) {
-            // On rehydration, merge persisted state with fresh initialProducts
-            state.products = initialProducts.map(initialProduct => {
-              const persistedProduct = state.products.find(p => p.id === initialProduct.id);
-              return persistedProduct || initialProduct;
-            });
+            // Recalculate totals on rehydration
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;
