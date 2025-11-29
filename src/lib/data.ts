@@ -1512,7 +1512,7 @@ export const products: Product[] = [
     gender: 'unisex',
     category: 'accesorio',
     subcategory: 'calcetin',
-    brand: 'YoungLA',
+    brand: 'Gymshark',
     images: [
       {
         src: '/assets/images/Accesorios/Crew Socks 3pk negro, blanco, gris.png',
@@ -1817,7 +1817,7 @@ export const products: Product[] = [
     gender: 'unisex',
     category: 'accesorio',
     subcategory: 'equipo',
-    brand: 'YoungLA',
+    brand: 'Gymshark',
     images: [
       {
         src: '/assets/images/Accesorios/Silicone Lifting Straps morado.png',
@@ -2114,7 +2114,7 @@ export const products: Product[] = [
   },
   {
     id: 2654,
-    name: 'Creatina Muscletech',
+    name: 'Creatina Platinum',
     price: 'Q.365.00',
     availability: 'Disponible',
     description: 'Creatina de alta calidad para mejorar la fuerza y el rendimiento.',
@@ -2231,7 +2231,7 @@ export const products: Product[] = [
     is_compression: false,
     images: [
       {
-        src: '/assets/images/marcas/darcsport/metal_hoodie.png',
+        src: '/assets/images/marcas/darcsport/Metal WLVS ”Pierce”Hoodie.png',
         alt: 'Metal WLVS Pierce Hoodie',
         dataAiHint: 'men hoodie'
       }
