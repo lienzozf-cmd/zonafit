@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
         from: `"${shopName}" <${process.env.EMAIL_USER}>`,
-        to: "rabanalesf22@gmail.com",
+        to: ["rabanalesf22@gmail.com", "tu-otro-correo@ejemplo.com"],
         subject: `Nuevo Pedido #${orderId} - ${shippingInfo.firstName} ${shippingInfo.lastName}`,
         html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
