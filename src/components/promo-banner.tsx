@@ -18,6 +18,22 @@ const PromoBanner = () => {
         {content}
         {content}
         {content}
+        {content}
+        {content}
+        {content}
+        {content}
+      </div>
+      <div className="promo-banner-content" aria-hidden="true">
+        {content}
+        {content}
+        {content}
+        {content}
+        {content}
+        {content}
+        {content}
+        {content}
+        {content}
+        {content}
       </div>
     </div>
   );
