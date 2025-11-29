@@ -7,7 +7,8 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section about">
           <h3>Acerca de Nosotros</h3>
-          <p>Copyright © Esta página fue diseñada por "Lumen & Co".</p>
+          <p>Copyright © Zona Fit Gt</p>
+          <p>Esta página fue diseñada por © "Lumen & Co".</p>
         </div>
         <div className="footer-section contact">
           <h3>Horarios</h3>
