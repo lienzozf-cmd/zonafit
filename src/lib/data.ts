@@ -1957,7 +1957,7 @@ export const products: Product[] = [
     gender: 'unisex',
     category: 'suplemento',
     subcategory: 'pre-entreno',
-    brand: 'Bum Energy',
+    brand: 'RAW',
     benefits: 'Aumento de energía y enfoque.',
     servings_info: '1 lata.',
     images: [
