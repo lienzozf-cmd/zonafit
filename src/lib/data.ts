@@ -1956,7 +1956,7 @@ export const products: Product[] = [
     id: 2647,
     name: 'Monster Ultra Black',
     price: 'Q.33.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Bebida energética Monster Ultra Black sin azúcar.',
     gender: 'unisex',
     category: 'suplemento',
@@ -1971,13 +1971,13 @@ export const products: Product[] = [
         dataAiHint: 'energy drink',
       },
     ],
-    options: { type: 'sabor', values: [{ value: 'Único', stock: 0 }] },
+    options: { type: 'sabor', values: [{ value: 'Único', stock: 9 }] },
   },
   {
     id: 2648,
     name: 'Bum Energy',
     price: 'Q.33.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Bebida energética Bum Energy para un impulso extra.',
     gender: 'unisex',
     category: 'suplemento',
@@ -1990,20 +1990,20 @@ export const products: Product[] = [
         src: '/assets/images/marcas/bumenergy/bumlemon.png',
         alt: 'Bum Energy Mora y Limonada',
         dataAiHint: 'energy drink',
-        option: 'Mora y Limonada',
+        option: 'Blueberry Lemon',
       },
       {
         src: '/assets/images/marcas/bebidas/bumcherry.png',
         alt: 'Bum Energy Helado de Cereza',
         dataAiHint: 'energy drink',
-        option: 'Helado de Cereza',
+        option: 'Cherry Frost',
       },
     ],
     options: {
       type: 'sabor',
       values: [
-        { value: 'Mora y Limonada', stock: 0 },
-        { value: 'Helado de Cereza', stock: 0 },
+        { value: 'Blueberry Lemon', stock: 6 },
+        { value: 'Cherry Frost', stock: 7 },
       ],
     },
   },
@@ -2219,8 +2219,8 @@ export const products: Product[] = [
   },
   {
     id: 2659,
-    name: 'Metal WLVS "Pierce" Hoodie',
-    price: 'Q.650.00',
+    name: 'Metal WLVS "Pierce" Hoodie in Black',
+    price: 'Q.625.00',
     availability: 'Disponible',
     description: 'Sudadera con capucha de la colección Metal WLVS.',
     gender: 'hombre',
@@ -2240,7 +2240,31 @@ export const products: Product[] = [
       type: 'talla',
       values: [{value: 'S', stock: 1}]
     }
-  }
+  },
+  {
+    id: 2660,
+    name: 'Gains Seamless Washed Shorts',
+    price: 'Q.575.00',
+    availability: 'Disponible',
+    description: 'Shorts sin costuras de la colección Gains para un confort y estilo inigualables.',
+    gender: 'mujer',
+    category: 'ropa',
+    subcategory: 'short',
+    brand: 'Gymshark',
+    fabric_type: '89% Nylon, 11% Elastane',
+    is_compression: true,
+    images: [
+      {
+        src: '/assets/images/marcas/gymshark/mujer/gains_seamless_washed_shorts_gris.png',
+        alt: 'Gains Seamless Washed Shorts',
+        dataAiHint: 'woman shorts',
+      },
+    ],
+    options: {
+      type: 'talla',
+      values: [{ value: 'L', stock: 1 }],
+    },
+  },
 ];
 
 
