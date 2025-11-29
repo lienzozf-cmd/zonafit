@@ -7,13 +7,13 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section about">
           <h3>Acerca de Nosotros</h3>
-          <p>Copyright &copy; Esta página fue diseñada por "Bushido Code Gt".</p>
+          <p>Copyright © Esta página fue diseñada por "Lumen & Co".</p>
         </div>
         <div className="footer-section contact">
           <h3>Horarios</h3>
           <p>Lunes - Domingo, 8 AM - 8 PM</p>
           <div className="socials">
-            <a href="https://www.instagram.com/bushido_code_gt" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
               <Image src="/assets/images/redesociales/instagram.png" alt="Instagram" width={30} height={30} data-ai-hint="instagram icon" />
             </a>
           </div>
