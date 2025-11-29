@@ -210,6 +210,11 @@ export default function CheckoutPage() {
                           <span className="font-bold">Nota sobre el envío:</span> Por favor, comunícate con nosotros a través de nuestras redes sociales para coordinar y calcular el costo de envío de tu pedido.
                       </p>
                   </div>
+                  <div className="mt-4 p-4 bg-gray-900 border border-cyan-500 rounded-lg">
+                      <p className="text-center text-cyan-200">
+                          <span className="font-bold">Nota sobre el pago:</span> Por el momento solo aceptamos pago contra entrega. Si deseas pagar con depósito previo, contáctanos en redes sociales con tu número de pedido para que te proporcionemos el número de cuenta.
+                      </p>
+                  </div>
               </div>
             </div>
             <div>
