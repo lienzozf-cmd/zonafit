@@ -250,7 +250,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 2 },
+                { value: 'M', stock: 0 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -263,7 +263,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 1 },
+                { value: 'M', stock: 2 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -938,32 +938,7 @@ export const products: Product[] = [
     ],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
-  {
-    id: 2601,
-    name: 'Darc Samurai',
-    price: 'Q.595.00',
-    availability: 'Disponible',
-    description: 'Playera premium de Darc Sport con diseño exclusivo de Dragon Ball.',
-    gender: 'hombre',
-    category: 'ropa',
-    subcategory: 'playera',
-    brand: 'Darc Sport',
-    fabric_type: '100% Algodón',
-    is_compression: false,
-    images: [
-      {
-        src: '/assets/images/marcas/darcsport/Premium Tee dragon ball broly.jpeg',
-        alt: 'Premium Tee dragon ball',
-        dataAiHint: 'men shirt',
-      },
-    ],
-    options: {
-      type: 'talla',
-      values: [
-        { value: 'S', stock: 1 },
-      ],
-    },
-  },
+  
   {
     id: 2602,
     name: 'Premium Tee SAMURAI bushido',
