@@ -18,6 +18,10 @@ const PromoBanner = () => {
         {content}
         {content}
         {content}
+        {content}
+        {content}
+        {content}
+        {content}
       </div>
     </div>
   );
