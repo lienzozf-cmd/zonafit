@@ -208,7 +208,7 @@ export const products: Product[] = [
     id: 2,
     name: 'Warrior Compression Tees',
     price: 'Q.450.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Desata al guerrero que llevas dentro. Esta playera de compresión ofrece un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.',
     gender: 'hombre',
@@ -263,7 +263,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 0 },
+                { value: 'M', stock: 1 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -276,7 +276,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 0 },
+                { value: 'M', stock: 2 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -448,7 +448,7 @@ export const products: Product[] = [
     id: 6,
     name: 'Trident Pendant - Gold 14K SS "22.5"',
     price: 'Q.475.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Eleva tu estilo con este colgante exclusivo de RGMNT. Hecho con materiales de primera calidad para un look audaz y duradero.',
     gender: 'unisex',
@@ -463,7 +463,7 @@ export const products: Product[] = [
         option: 'Gold',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 0 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 2 }] },
   },
   {
     id: 7,
@@ -594,7 +594,7 @@ export const products: Product[] = [
     id: 2302,
     name: 'Minimal Rope Bracelet Gold -14K Gold SS "8"',
     price: 'Q.255.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.',
     gender: 'unisex',
@@ -608,7 +608,7 @@ export const products: Product[] = [
         dataAiHint: 'gold bracelet',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 0 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 1 }] },
   },
   {
     id: 2303,
@@ -648,7 +648,7 @@ export const products: Product[] = [
         dataAiHint: 'silver bracelet',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Silver', stock: 1 }] },
+    options: { type: 'material', values: [{ value: 'Silver', stock: 2 }] },
   },
   
   {
@@ -1049,7 +1049,7 @@ export const products: Product[] = [
     id: 2605,
     name: 'Vanquish Unconquerable Shorts',
     price: 'Q.345.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Shorts de alto rendimiento para entrenamientos intensos.',
     gender: 'hombre',
     category: 'ropa',
@@ -1065,13 +1065,13 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 0 }] },
+    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
   },
   {
     id: 2608,
     name: '4071 - Gods & Heroes Tees',
     price: 'Q.435.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Playera de la colección Dioses y Héroes.',
     gender: 'hombre',
     category: 'ropa',
@@ -1090,7 +1090,7 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
+        { value: 'S', stock: 1 },
         { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
@@ -1123,7 +1123,7 @@ export const products: Product[] = [
     id: 2610,
     name: 'The Boys Graphic Tees',
     price: 'Q.430.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Playera con gráfico de la serie "The Boys".',
     gender: 'hombre',
     category: 'ropa',
@@ -1143,7 +1143,7 @@ export const products: Product[] = [
       type: 'talla',
       values: [
         { value: 'S', stock: 0 },
-        { value: 'M', stock: 0 },
+        { value: 'M', stock: 1 },
         { value: 'L', stock: 0 },
       ],
     },
@@ -1181,7 +1181,7 @@ export const products: Product[] = [
     id: 2612,
     name: 'UFC™ Cut-Off hoodies',
     price: 'Q.495.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Sudadera sin mangas con licencia oficial de UFC™.',
     gender: 'hombre',
     category: 'ropa',
@@ -1197,13 +1197,13 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 0 }] },
+    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
   },
   {
     id: 2613,
     name: 'UFC™ Jersey',
     price: 'Q.445.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Jersey con licencia oficial de UFC™.',
     gender: 'hombre',
     category: 'ropa',
@@ -1222,7 +1222,7 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
+        { value: 'S', stock: 1 },
         { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
@@ -1232,7 +1232,7 @@ export const products: Product[] = [
     id: 2614,
     name: 'Revenge Tees',
     price: 'Q.395.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Playera de la colección "Revenge".',
     gender: 'hombre',
     category: 'ropa',
@@ -1267,7 +1267,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 0 },
+                { value: 'M', stock: 1 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -1279,7 +1279,7 @@ export const products: Product[] = [
         options: {
             type: 'talla',
             values: [
-                { value: 'S', stock: 0 },
+                { value: 'S', stock: 1 },
                 { value: 'M', stock: 0 },
                 { value: 'L', stock: 0 },
             ],
@@ -1290,8 +1290,8 @@ export const products: Product[] = [
   {
     id: 2615,
     name: 'GRAND SLAM BASEBALL JERSEYS',
-    price: 'Q.405.00',
-    availability: 'Agotado',
+    price: 'Q.495.00',
+    availability: 'Disponible',
     description: 'Jersey de béisbol de la colección "Grand Slam".',
     gender: 'hombre',
     category: 'ropa',
@@ -1311,7 +1311,7 @@ export const products: Product[] = [
       type: 'talla',
       values: [
         { value: 'S', stock: 0 },
-        { value: 'M', stock: 0 },
+        { value: 'M', stock: 1 },
         { value: 'L', stock: 0 },
       ],
     },
@@ -1319,8 +1319,8 @@ export const products: Product[] = [
   {
     id: 2616,
     name: 'Effortless Sets',
-    price: 'Q.375.00',
-    availability: 'Agotado',
+    price: 'Q.370.00',
+    availability: 'Disponible',
     description: 'Conjunto "Effortless" para un look cómodo y coordinado.',
     gender: 'hombre',
     category: 'ropa',
@@ -1336,13 +1336,13 @@ export const products: Product[] = [
         option: 'M',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'M', stock: 0 }] },
+    options: { type: 'talla', values: [{ value: 'M', stock: 1 }] },
   },
   {
     id: 2617,
     name: 'Digital Compression Tees',
     price: 'Q.325.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Playera de compresión con un diseño digital moderno.',
     gender: 'hombre',
     category: 'ropa',
@@ -1361,7 +1361,7 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
+        { value: 'S', stock: 1 },
         { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
@@ -1371,7 +1371,7 @@ export const products: Product[] = [
     id: 2618,
     name: 'Combat Compression',
     price: 'Q.315.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Ropa de compresión para combate, diseñada para el máximo rendimiento.',
     gender: 'hombre',
@@ -1408,7 +1408,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 0 },
+                { value: 'M', stock: 2 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -1421,7 +1421,7 @@ export const products: Product[] = [
         options: {
             type: 'talla',
             values: [
-                { value: 'S', stock: 0 },
+                { value: 'S', stock: 2 },
                 { value: 'M', stock: 0 },
                 { value: 'L', stock: 0 },
             ],
@@ -1432,8 +1432,8 @@ export const products: Product[] = [
   {
     id: 2619,
     name: 'Iron Compression',
-    price: 'Q.375.00',
-    availability: 'Agotado',
+    price: 'Q.376.00',
+    availability: 'Disponible',
     description: 'Compresión de hierro para un soporte inquebrantable.',
     gender: 'hombre',
     category: 'ropa',
@@ -1452,7 +1452,7 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
+        { value: 'S', stock: 1 },
         { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
@@ -1462,7 +1462,7 @@ export const products: Product[] = [
     id: 2620,
     name: 'YoungLA Keychains',
     price: 'Q.130.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Llavero oficial de YoungLA para llevar contigo.',
     gender: 'unisex',
     category: 'accesorio',
@@ -1475,7 +1475,7 @@ export const products: Product[] = [
         dataAiHint: 'keychain',
       },
     ],
-    options: { type: 'color', values: [{ value: 'Único', stock: 0 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 2 }] },
   },
   {
     id: 2626,
@@ -1900,7 +1900,7 @@ export const products: Product[] = [
     id: 2644,
     name: 'Warrior Compression Hoodies',
     price: 'Q.480.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Sudadera con capucha de compresión para un look de guerrero y un rendimiento superior.',
     gender: 'hombre',
@@ -1920,8 +1920,8 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
-        { value: 'M', stock: 0 },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 1 },
       ],
     },
   },
@@ -2074,7 +2074,7 @@ export const products: Product[] = [
     id: 2652,
     name: 'Iso 100 - Dynamatize - Chocolate',
     price: 'Q.675.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Proteína aislada de alta calidad sabor chocolate.',
     gender: 'unisex',
     category: 'suplemento',
@@ -2089,13 +2089,13 @@ export const products: Product[] = [
         dataAiHint: 'protein powder',
       },
     ],
-    options: { type: 'sabor', values: [{ value: 'Único', stock: 0 }] },
+    options: { type: 'sabor', values: [{ value: 'Único', stock: 1 }] },
   },
   {
     id: 2653,
     name: 'Iso 100 - Dynamatize - Cocoa Pebbles',
     price: 'Q.685.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Proteína aislada con el delicioso y único sabor de Cocoa Pebbles.',
     gender: 'unisex',
     category: 'suplemento',
@@ -2110,13 +2110,13 @@ export const products: Product[] = [
         dataAiHint: 'protein powder',
       },
     ],
-    options: { type: 'sabor', values: [{ value: 'Único', stock: 0 }] },
+    options: { type: 'sabor', values: [{ value: 'Único', stock: 2 }] },
   },
   {
     id: 2654,
     name: 'Creatina Muscletech',
     price: 'Q.365.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Creatina de alta calidad para mejorar la fuerza y el rendimiento.',
     gender: 'unisex',
     category: 'suplemento',
@@ -2131,7 +2131,7 @@ export const products: Product[] = [
         dataAiHint: 'creatine powder',
       },
     ],
-    options: { type: 'presentación', values: [{ value: 'Único', stock: 0 }] },
+    options: { type: 'presentación', values: [{ value: 'Único', stock: 1 }] },
   },
   {
     id: 2655,
@@ -2245,3 +2245,6 @@ export const products: Product[] = [
 
 
 
+
+
+    
