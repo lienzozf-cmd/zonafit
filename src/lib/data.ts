@@ -504,7 +504,7 @@ export const products: Product[] = [
     id: 8,
     name: 'Creatina Monohidratada Dragon Pharma 60 serv',
     price: 'Q.345.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     description: 'Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.',
     gender: 'unisex',
     category: 'suplemento',
@@ -519,7 +519,7 @@ export const products: Product[] = [
         dataAiHint: 'creatine powder',
       },
     ],
-    options: { type: 'servicios', values: [{ value: 'Único', stock: 2 }] },
+    options: { type: 'servicios', values: [{ value: 'Único', stock: 0 }] },
   },
   {
     id: 9,
@@ -697,7 +697,7 @@ export const products: Product[] = [
   },
   {
     id: 2523,
-    name: 'Flex Shorts Gris',
+    name: 'Flex Shorts',
     price: 'Q.345.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -736,7 +736,7 @@ export const products: Product[] = [
         option: 'Negro',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 0 }, { value: 'L', stock: 0 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
   {
     id: 2525,
@@ -758,7 +758,7 @@ export const products: Product[] = [
         option: 'Negro',
       },
     ],
-    options: { type: 'talla', values: [{ value: 'S', stock: 1 }, { value: 'M', stock: 0 }, { value: 'L', stock: 0 }] },
+    options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
   {
     id: 2527,
@@ -896,7 +896,7 @@ export const products: Product[] = [
   },
   {
     id: 2543,
-    name: 'Flex Shorts Negros',
+    name: 'Flex Shorts',
     price: 'Q.270.00',
     availability: 'Disponible',
     description: 'Shorts Flex para máxima flexibilidad y comodidad.',
@@ -955,15 +955,12 @@ export const products: Product[] = [
         src: '/assets/images/marcas/darcsport/Premium Tee dragon ball broly.jpeg',
         alt: 'Premium Tee dragon ball',
         dataAiHint: 'men shirt',
-        option: 'S',
       },
     ],
     options: {
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1013,15 +1010,12 @@ export const products: Product[] = [
         src: '/assets/images/marcas/darcsport/Premium Tee dragon ball gogeta.jpeg',
         alt: 'Premium Tee dragon ball classic',
         dataAiHint: 'men shirt',
-        option: 'S',
       },
     ],
     options: {
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1042,15 +1036,12 @@ export const products: Product[] = [
         src: '/assets/images/marcas/darcsport/Through Fire And Storm Premium Oversized Tee in Wolf Gray .png',
         alt: 'Darc Sport T-shirt',
         dataAiHint: 'men shirt',
-        option: 'S',
       },
     ],
     options: {
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1577,8 +1568,6 @@ export const products: Product[] = [
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1628,8 +1617,6 @@ export const products: Product[] = [
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1657,8 +1644,6 @@ export const products: Product[] = [
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1751,9 +1736,7 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
         { value: 'M', stock: 1 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -1952,22 +1935,19 @@ export const products: Product[] = [
     category: 'ropa',
     subcategory: 'playera',
     brand: 'Darc Sport',
-    fabric_type: '100% Cotton',
+    fabric_type: '100% Algodón',
     is_compression: false,
     images: [
       {
         src: '/assets/images/marcas/darcsport/Premium Tee dragon ball broly.jpeg',
         alt: 'Gods & Heroes Tees New Color',
         dataAiHint: 'graphic tee',
-        option: 'M',
       },
     ],
     options: {
       type: 'talla',
       values: [
         { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
-        { value: 'L', stock: 0 },
       ],
     },
   },
@@ -2031,7 +2011,7 @@ export const products: Product[] = [
     id: 2649,
     name: 'BUM Essential Pre-workout',
     price: 'Q.400.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Pre-entreno Thavage edición Carlos Belcast para un rendimiento superior.',
     gender: 'unisex',
     category: 'suplemento',
@@ -2262,5 +2242,6 @@ export const products: Product[] = [
     }
   }
 ];
+
 
 
