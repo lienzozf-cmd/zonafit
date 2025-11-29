@@ -574,7 +574,7 @@ export const products: Product[] = [
     id: 2301,
     name: 'Minimal Rope Chain - Gold 14K SS "22"',
     price: 'Q.295.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     description:
       'Cadena de cuerda minimalista en oro de 14K. Un toque de elegancia para cualquier ocasión.',
     gender: 'unisex',
@@ -588,13 +588,13 @@ export const products: Product[] = [
         dataAiHint: 'gold chain',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 2 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 0 }] },
   },
   {
     id: 2302,
     name: 'Minimal Rope Bracelet Gold -14K Gold SS "8"',
     price: 'Q.255.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     description:
       'Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.',
     gender: 'unisex',
@@ -608,13 +608,13 @@ export const products: Product[] = [
         dataAiHint: 'gold bracelet',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 1 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 0 }] },
   },
   {
     id: 2303,
     name: 'Minimal Rope Chain - SS Silver "20"',
     price: 'Q.285.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     description:
       'Cadena de cuerda minimalista en plata de ley. Un accesorio versátil y moderno.',
     gender: 'unisex',
@@ -628,13 +628,13 @@ export const products: Product[] = [
         dataAiHint: 'silver chain',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Silver', stock: 2 }] },
+    options: { type: 'material', values: [{ value: 'Silver', stock: 0 }] },
   },
   {
     id: 2304,
     name: 'Minimal Rope Bracelet - SS Silver "8"',
     price: 'Q.235.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     description:
       'Pulsera de cuerda minimalista en plata de ley. El complemento perfecto para tu look diario.',
     gender: 'unisex',
@@ -648,7 +648,7 @@ export const products: Product[] = [
         dataAiHint: 'silver bracelet',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Silver', stock: 2 }] },
+    options: { type: 'material', values: [{ value: 'Silver', stock: 0 }] },
   },
   
   {
@@ -1993,7 +1993,7 @@ export const products: Product[] = [
         option: 'Blueberry Lemon',
       },
       {
-        src: '/assets/images/marcas/bebidas/bumcherry.png',
+        src: '/assets/images/marcas/bumenergy/bumcherry.png',
         alt: 'Bum Energy Helado de Cereza',
         dataAiHint: 'energy drink',
         option: 'Cherry Frost',
