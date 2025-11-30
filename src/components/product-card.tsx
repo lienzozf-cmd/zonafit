@@ -33,6 +33,17 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Set initial option on mount
+    const options = product.options?.values || [];
+    const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
+    
+    if (product.options?.values.length === 1 && product.options.values[0].value === 'Único') {
+      setSelectedOption(product.options.values[0]);
+    } else if (firstAvailableOption) {
+      setSelectedOption(firstAvailableOption);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   const getAvailableStock = (option: ProductOption | null) => {
@@ -47,18 +58,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   useEffect(() => {
     updateAvailabilityMessage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product, selectedOption, selectedColor, items]);
+  }, [selectedOption, selectedColor, items]);
 
-  useEffect(() => {
-    const options = selectedColor ? selectedColor.options.values : product.options.values;
-    const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
-    
-    if (!selectedColor && product.options.values.length === 1) {
-        setSelectedOption(product.options.values[0]);
-    } else if (firstAvailableOption && !selectedOption) {
-        setSelectedOption(firstAvailableOption);
-    }
-  }, [product, selectedColor, items, getAvailableStock, selectedOption]);
   
   const updateAvailabilityMessage = () => {
     if (selectedOption) {
