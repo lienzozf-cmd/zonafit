@@ -263,7 +263,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 1 },
+                { value: 'M', stock: 2 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -943,7 +943,7 @@ export const products: Product[] = [
     id: 2602,
     name: 'Premium Tee SAMURAI bushido',
     price: 'Q.595.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Playera premium de Darc Sport con diseño de Samurai Bushido.',
     gender: 'hombre',
     category: 'ropa',
@@ -956,13 +956,12 @@ export const products: Product[] = [
         src: '/assets/images/marcas/darcsport/Premium Tee  samurai bushido.png',
         alt: 'Premium Tee SAMURAI bushido',
         dataAiHint: 'men shirt',
-        option: 'S',
       },
     ],
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
+        { value: 'S', stock: 1 },
         { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
@@ -2249,3 +2248,4 @@ export const products: Product[] = [
     
 
     
+
