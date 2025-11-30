@@ -13,11 +13,11 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
-  const { products, addItem, getProductOption } = useCartStore((state) => ({
+  const { products, addItem, getProductOption, items } = useCartStore((state) => ({
     products: state.products,
-    getItem: state.getItem,
     addItem: state.addItem,
     getProductOption: state.getProductOption,
+    items: state.items
   }));
 
   const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
@@ -26,39 +26,36 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const [currentImage, setCurrentImage] = useState(product.images[0].src);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
   const { toast } = useToast();
-  const { items } = useCartStore();
-
+  
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    
     // Set initial option on mount
     const options = product.options?.values || [];
-    const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
-    
-    if (product.options?.values.length === 1 && product.options.values[0].value === 'Único') {
-      setSelectedOption(product.options.values[0]);
-    } else if (firstAvailableOption) {
-      setSelectedOption(firstAvailableOption);
+    if (options.length === 1) {
+      setSelectedOption(options[0]);
+    } else {
+       const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
+       if (firstAvailableOption) {
+        setSelectedOption(firstAvailableOption);
+       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [product.id]);
   
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
     
     const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
-    const originalStock = currentOption?.stock ?? 0;
-    
-    return originalStock;
+    return currentOption?.stock ?? 0;
   };
   
   useEffect(() => {
     updateAvailabilityMessage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption, selectedColor, items]);
+  }, [selectedOption, selectedColor, items, product]);
 
   
   const updateAvailabilityMessage = () => {
@@ -137,7 +134,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       return;
     }
     
-    const priceAsNumber = parseFloat(product.price.replace(/Q\.|\s/g, ''));
+    const priceAsNumber = parseFloat(product.price.replace(/Q\\.|\s/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 
@@ -159,7 +156,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     ? product.colors.some(c => c.options.values.some(v => v.stock > 0))
     : product.options.values.some(v => v.stock > 0);
 
-  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único') || (product.colors && product.colors.length > 0);
+  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
   const optionsToShow = selectedColor?.options.values || product.options.values;
   const isAddToCartDisabled = !selectedOption || (isClient && getAvailableStock(selectedOption) <= 0);
 
