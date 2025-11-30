@@ -33,19 +33,16 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   useEffect(() => {
     setIsClient(true);
     // Set initial option on mount
-    const options = product.options?.values || [];
-    if (options.length === 1 && options[0].value !== 'Único') {
-      setSelectedOption(options[0]);
-    } else if (options.length === 1 && options[0].value === 'Único' && options[0].stock > 0) {
-      setSelectedOption(options[0]);
+    const options = selectedColor?.options.values || product.options?.values || [];
+    const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
+
+    if (firstAvailableOption) {
+      setSelectedOption(firstAvailableOption);
     } else {
-       const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
-       if (firstAvailableOption) {
-        setSelectedOption(firstAvailableOption);
-       }
+      setSelectedOption(null);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product.id]);
+  }, [product.id, selectedColor]);
   
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
@@ -64,13 +61,14 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     if (selectedOption) {
       const availableStock = getAvailableStock(selectedOption);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
-    } else if (product.options.values.length === 1 && product.options.values[0].value === 'Único') {
-      const uniqueOption = product.options.values[0];
-      setSelectedOption(uniqueOption);
-    } else if (product.colors && product.colors.length > 0) {
-      setAvailabilityMessage(`Selecciona un color y talla`);
     } else {
-      setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+      const totalStock = (selectedColor?.options.values || product.options.values).reduce((sum, o) => sum + o.stock, 0);
+      if (totalStock > 0) {
+        const optionType = selectedColor?.options.type || product.options.type || 'opción';
+        setAvailabilityMessage(`Selecciona un ${optionType}`);
+      } else {
+        setAvailabilityMessage('Agotado');
+      }
     }
   };
 
@@ -99,8 +97,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
     setCurrentImage(color.imageSrc);
     setSelectedColor(color);
-    setSelectedOption(null); // Reset size selection when color changes
-    setAvailabilityMessage(`Selecciona un ${color.options.type || product.options.type}`);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -158,7 +154,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   (product.colors && product.colors.some(c => c.options.values.some(v => v.stock > 0)));
 
 
-  const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
+  const showOptions = !((selectedColor?.options.values.length === 1 && selectedColor?.options.values[0].value === 'Único') || (product.options.values.length === 1 && product.options.values[0].value === 'Único'));
   const optionsToShow = selectedColor?.options.values || product.options.values;
   const isAddToCartDisabled = !selectedOption || (isClient && getAvailableStock(selectedOption) <= 0);
 
@@ -168,7 +164,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
             if (product.colors && product.colors.length > 0 && selectedColor) {
-                setCurrentImage(selectedColor.imageSrc);
+                const imageForColor = product.images.find(img => img.color === selectedColor.name);
+                setCurrentImage(imageForColor ? imageForColor.src : selectedColor.imageSrc);
             } else {
                 setCurrentImage(product.images[0].src);
             }
