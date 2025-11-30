@@ -121,17 +121,15 @@ export const useCartStore = create<AppState>()(
     {
       name: 'cart-storage',
       storage: createJSONStorage(() => localStorage), 
-      merge: (persistedState: any, currentState: AppState) => {
-        // Merge the persisted state with the current state,
-        // but ensure the products array is always fresh from the initial data file.
-        // This prevents outdated stock from being used on page load.
+      merge: (persistedState, currentState) => {
+        // This custom merge function ensures that the `products` array is always taken from the initial, code-defined state (`currentState`),
+        // effectively refreshing the product data (like stock) on every app load.
+        // Other parts of the state, like the cart items, are still persisted.
         return {
-          ...currentState,
           ...persistedState,
-          products: initialProducts.map(initialProduct => {
-            const persistedProduct = persistedState.products?.find((p: Product) => p.id === initialProduct.id);
-            return persistedProduct || initialProduct;
-          }),
+          ...currentState,
+          products: currentState.products, // Always use fresh product data from the code.
+          items: (persistedState as AppState)?.items ?? [], // Persist cart items.
         };
       },
       onRehydrateStorage: () => (state, error) => {
@@ -140,11 +138,6 @@ export const useCartStore = create<AppState>()(
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;
-            // Ensure products are fresh
-            state.products = initialProducts.map(initialProduct => {
-              const persistedProduct = state.products?.find((p: Product) => p.id === initialProduct.id);
-              return persistedProduct || initialProduct;
-            });
         }
       }
     }

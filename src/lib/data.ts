@@ -654,7 +654,7 @@ export const products: Product[] = [
   {
     id: 2519,
     name: 'Legacy Logo Tight Shorts',
-    price: 'Q.340.00',
+    price: 'Q.240.00',
     availability: 'Disponible',
     description: 'Shorts ajustados con el logo Legacy para un look clásico y atlético.',
     gender: 'mujer',
@@ -719,7 +719,7 @@ export const products: Product[] = [
   {
     id: 2524,
     name: 'Crop Top Flex',
-    price: 'Q.335.00',
+    price: 'Q.336.00',
     availability: 'Disponible',
     description: 'Crop top de la línea Flex para un ajuste perfecto y cómodo.',
     gender: 'mujer',
@@ -785,7 +785,7 @@ export const products: Product[] = [
   {
     id: 2535,
     name: 'Adapt Fleck Sports Bra',
-    price: 'Q.445.00',
+    price: 'Q.446.00',
     availability: 'Disponible',
     description:
       'Bra deportivo de la línea Adapt Fleck para un ajuste y soporte perfectos.',
@@ -831,7 +831,7 @@ export const products: Product[] = [
   {
     id: 2539,
     name: 'Mesh Sports Bra',
-    price: 'Q.265.00',
+    price: 'Q.266.00',
     availability: 'Disponible',
     description: 'Bra deportivo con detalles de malla para mayor transpirabilidad.',
     gender: 'mujer',
@@ -853,7 +853,7 @@ export const products: Product[] = [
   {
     id: 2541,
     name: 'Ruched Sports Bra',
-    price: 'Q.290.00',
+    price: 'Q.291.00',
     availability: 'Disponible',
     description: 'Bra deportivo con diseño fruncido para un estilo único.',
     gender: 'mujer',
@@ -919,7 +919,7 @@ export const products: Product[] = [
   {
     id: 2544,
     name: 'Elevate Cycling Shorts',
-    price: 'Q.295.00',
+    price: 'Q.296.00',
     availability: 'Disponible',
     description: 'Shorts de ciclismo de la línea Elevate para un rendimiento superior.',
     gender: 'mujer',
@@ -1452,7 +1452,7 @@ export const products: Product[] = [
   {
     id: 2626,
     name: 'Crew Socks 3pk (Blancos)',
-    price: 'Q.235.00',
+    price: 'Q.236.00',
     availability: 'Disponible',
     description: 'Paquete de 3 calcetines blancos, un básico indispensable.',
     gender: 'unisex',
@@ -1622,7 +1622,7 @@ export const products: Product[] = [
   {
     id: 2633,
     name: 'Rest Day Essentials Cargo Joggers',
-    price: 'Q.410.00',
+    price: 'Q.411.00',
     availability: 'Disponible',
     description: 'Joggers cargo, esenciales para tus días de descanso.',
     gender: 'hombre',
@@ -1644,7 +1644,7 @@ export const products: Product[] = [
   {
     id: 2634,
     name: 'Crest 7" Shorts',
-    price: 'Q.295.00',
+    price: 'Q.296.00',
     availability: 'Disponible',
     description: 'Shorts de 7 pulgadas de la línea Crest.',
     gender: 'hombre',
@@ -1744,7 +1744,7 @@ export const products: Product[] = [
   {
     id: 2638,
     name: 'Sets and Reps 3pk Crew Socks',
-    price: 'Q.250.00',
+    price: 'Q.251.00',
     availability: 'Disponible',
     description:
       'Calcetines para tus sets y reps, en un conveniente paquete de 3.',
@@ -1764,7 +1764,7 @@ export const products: Product[] = [
   {
     id: 2639,
     name: 'SILICONE GRIP LIFTING STRAPS',
-    price: 'Q.295.00',
+    price: 'Q.275.00',
     availability: 'Disponible',
     description: 'Straps de levantamiento con agarre de silicona para mayor seguridad.',
     gender: 'unisex',
@@ -1783,7 +1783,7 @@ export const products: Product[] = [
   {
     id: 2640,
     name: 'Redeveloped Silicone Lifting Straps',
-    price: 'Q.275.00',
+    price: 'Q.295.00',
     availability: 'Disponible',
     description: 'Straps de levantamiento con agarre de silicona para mayor seguridad.',
     gender: 'unisex',
@@ -1802,7 +1802,7 @@ export const products: Product[] = [
   {
     id: 2641,
     name: '14OZ SHAKER BOTTLE',
-    price: 'Q.225.00',
+    price: 'Q.226.00',
     availability: 'Disponible',
     description: 'Shaker de 14oz para mezclar tus suplementos.',
     gender: 'unisex',
@@ -1823,7 +1823,7 @@ export const products: Product[] = [
     id: 2642,
     name: 'TU MARIDO MOISES SHAKER CUP',
     price: 'Q.170.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description: 'Shaker exclusivo "tu marido moises" de Dragon Pharma.',
     gender: 'unisex',
     category: 'accesorio',
@@ -1836,7 +1836,7 @@ export const products: Product[] = [
         dataAiHint: 'shaker bottle',
       },
     ],
-    options: { type: 'color', values: [{ value: 'Único', stock: 0 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
   },
   {
     id: 2643,
@@ -2192,7 +2192,7 @@ export const products: Product[] = [
   {
     id: 2659,
     name: 'Metal WLVS "Pierce" Hoodie in Black',
-    price: 'Q.650.00',
+    price: 'Q.625.00',
     availability: 'Disponible',
     description: 'Sudadera con capucha de la colección Metal WLVS.',
     gender: 'hombre',
@@ -2246,7 +2246,5 @@ export const products: Product[] = [
     
 
     
-
-
 
 
