@@ -34,7 +34,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     setIsClient(true);
     // Set initial option on mount
     const options = product.options?.values || [];
-    if (options.length === 1) {
+    if (options.length === 1 && options[0].value !== 'Único') {
+      setSelectedOption(options[0]);
+    } else if (options.length === 1 && options[0].value === 'Único' && options[0].stock > 0) {
       setSelectedOption(options[0]);
     } else {
        const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
@@ -152,9 +154,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     
   };
   
-  const isAvailable = product.colors
-    ? product.colors.some(c => c.options.values.some(v => v.stock > 0))
-    : product.options.values.some(v => v.stock > 0);
+  const isAvailable = product.options?.values.some(v => v.stock > 0) || 
+  (product.colors && product.colors.some(c => c.options.values.some(v => v.stock > 0)));
+
 
   const showOptions = !(product.options.values.length === 1 && product.options.values[0].value === 'Único');
   const optionsToShow = selectedColor?.options.values || product.options.values;
