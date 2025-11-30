@@ -574,7 +574,7 @@ export const products: Product[] = [
     id: 2301,
     name: 'Minimal Rope Chain - Gold 14K SS "22"',
     price: 'Q.295.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Cadena de cuerda minimalista en oro de 14K. Un toque de elegancia para cualquier ocasión.',
     gender: 'unisex',
@@ -588,13 +588,13 @@ export const products: Product[] = [
         dataAiHint: 'gold chain',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 0 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 2 }] },
   },
   {
     id: 2302,
     name: 'Minimal Rope Bracelet Gold -14K Gold SS "8"',
     price: 'Q.255.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.',
     gender: 'unisex',
@@ -608,13 +608,13 @@ export const products: Product[] = [
         dataAiHint: 'gold bracelet',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Gold', stock: 0 }] },
+    options: { type: 'material', values: [{ value: 'Gold', stock: 1 }] },
   },
   {
     id: 2303,
     name: 'Minimal Rope Chain - SS Silver "20"',
     price: 'Q.285.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Cadena de cuerda minimalista en plata de ley. Un accesorio versátil y moderno.',
     gender: 'unisex',
@@ -628,13 +628,13 @@ export const products: Product[] = [
         dataAiHint: 'silver chain',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Silver', stock: 0 }] },
+    options: { type: 'material', values: [{ value: 'Silver', stock: 2 }] },
   },
   {
     id: 2304,
     name: 'Minimal Rope Bracelet - SS Silver "8"',
     price: 'Q.235.00',
-    availability: 'Agotado',
+    availability: 'Disponible',
     description:
       'Pulsera de cuerda minimalista en plata de ley. El complemento perfecto para tu look diario.',
     gender: 'unisex',
@@ -648,7 +648,7 @@ export const products: Product[] = [
         dataAiHint: 'silver bracelet',
       },
     ],
-    options: { type: 'material', values: [{ value: 'Silver', stock: 0 }] },
+    options: { type: 'material', values: [{ value: 'Silver', stock: 2 }] },
   },
   
   {
@@ -956,7 +956,6 @@ export const products: Product[] = [
         src: '/assets/images/marcas/darcsport/Premium Tee  samurai bushido.png',
         alt: 'Premium Tee SAMURAI bushido',
         dataAiHint: 'men shirt',
-        option: 'S',
       },
     ],
     options: {
@@ -1824,7 +1823,7 @@ export const products: Product[] = [
     id: 2642,
     name: 'TU MARIDO MOISES SHAKER CUP',
     price: 'Q.170.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     description: 'Shaker exclusivo "tu marido moises" de Dragon Pharma.',
     gender: 'unisex',
     category: 'accesorio',
@@ -2247,4 +2246,5 @@ export const products: Product[] = [
     
 
     
+
 
