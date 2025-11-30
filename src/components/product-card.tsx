@@ -50,11 +50,13 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   }, [product, selectedOption, selectedColor, items]);
 
   useEffect(() => {
-    // Pre-select the first available option.
     const options = selectedColor ? selectedColor.options.values : product.options.values;
     const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
-    if (firstAvailableOption && !selectedOption) {
-      setSelectedOption(firstAvailableOption);
+    
+    if (!selectedColor && product.options.values.length === 1) {
+        setSelectedOption(product.options.values[0]);
+    } else if (firstAvailableOption && !selectedOption) {
+        setSelectedOption(firstAvailableOption);
     }
   }, [product, selectedColor, items, getAvailableStock, selectedOption]);
   
