@@ -263,7 +263,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 2 },
+                { value: 'M', stock: 1 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -1062,8 +1062,8 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 1 },
-        { value: 'M', stock: 0 },
+        { value: 'S', stock: 0 },
+        { value: 'M', stock: 1 },
         { value: 'L', stock: 0 },
       ],
     },
@@ -1094,7 +1094,7 @@ export const products: Product[] = [
   {
     id: 2610,
     name: 'The Boys Graphic Tees',
-    price: 'Q.430.00',
+    price: 'Q.450.00',
     availability: 'Disponible',
     description: 'Playera con gráfico de la serie "The Boys".',
     gender: 'hombre',
@@ -1114,8 +1114,8 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
-        { value: 'M', stock: 1 },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
     },
@@ -1404,7 +1404,7 @@ export const products: Product[] = [
   {
     id: 2619,
     name: 'Iron Compression',
-    price: 'Q.376.00',
+    price: 'Q.375.00',
     availability: 'Disponible',
     description: 'Compresión de hierro para un soporte inquebrantable.',
     gender: 'hombre',
@@ -2045,7 +2045,7 @@ export const products: Product[] = [
   {
     id: 2652,
     name: 'Iso 100 - Dynamatize - Chocolate',
-    price: 'Q.675.00',
+    price: 'Q.665.00',
     availability: 'Disponible',
     description: 'Proteína aislada de alta calidad sabor chocolate.',
     gender: 'unisex',
