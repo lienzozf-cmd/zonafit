@@ -51,12 +51,8 @@ const ProductDetailPage = () => {
 
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
-
     const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
-    const originalStock = currentOption?.stock ?? 0;
-    
-    // We don't need to subtract from cart here, as the source of truth for stock is now the product store itself
-    return originalStock;
+    return currentOption?.stock ?? 0;
   };
   
   useEffect(() => {
