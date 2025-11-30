@@ -263,7 +263,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 2 },
+                { value: 'M', stock: 1 },
                 { value: 'L', stock: 0 },
             ],
         }
