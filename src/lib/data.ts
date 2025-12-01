@@ -92,6 +92,7 @@ export const navLinks = [
       { title: 'Gymshark', href: '/marcas/gymshark' },
       { title: 'Darc Sport', href: '/marcas/darc-sport' },
       { title: 'Vanquish', href: '/marcas/vanquish' },
+      { title: 'Dfyne', href: '/marcas/dfyne' },
       { title: 'Dragon Pharma', href: '/marcas/dragon-pharma' },
       { title: 'RAW', href: '/marcas/raw' },
       { title: 'RGMNT', href: '/marcas/rgmnt' },
@@ -263,7 +264,7 @@ export const products: Product[] = [
             type: 'talla',
             values: [
                 { value: 'S', stock: 0 },
-                { value: 'M', stock: 1 },
+                { value: 'M', stock: 2 },
                 { value: 'L', stock: 0 },
             ],
         }
@@ -464,41 +465,6 @@ export const products: Product[] = [
       },
     ],
     options: { type: 'material', values: [{ value: 'Gold', stock: 2 }] },
-  },
-  {
-    id: 7,
-    name: 'Proteina ISO Dragon Pharma',
-    price: 'Q.515.00',
-    availability: 'Agotado',
-    description:
-      'Isolat de proteína de suero de leche de la más alta pureza para una recuperación muscular óptima. Baja en carbohidratos y grasas, perfecta para definir.',
-    gender: 'unisex',
-    category: 'suplemento',
-    subcategory: 'proteina',
-    brand: 'Dragon Pharma',
-    benefits: 'Recuperación muscular rápida, bajo en carbohidratos y grasas.',
-    servings_info: 'Aproximadamente 30 servicios por envase.',
-    images: [
-      {
-        src: '/assets/images/marcas/dragonpharma/isoproteinblb.png',
-        alt: 'Blueberry protein powder',
-        dataAiHint: 'protein powder',
-        option: 'Blueberry',
-      },
-      {
-        src: '/assets/images/marcas/dragonpharma/proteinachb.png',
-        alt: 'White chocolate protein powder',
-        dataAiHint: 'protein powder',
-        option: 'ChocolateBlanco',
-      },
-    ],
-    options: {
-      type: 'sabor',
-      values: [
-        { value: 'Blueberry', stock: 0 },
-        { value: 'ChocolateBlanco', stock: 0 },
-      ],
-    },
   },
   {
     id: 8,
@@ -1057,8 +1023,8 @@ export const products: Product[] = [
     options: {
       type: 'talla',
       values: [
-        { value: 'S', stock: 0 },
-        { value: 'M', stock: 1 },
+        { value: 'S', stock: 1 },
+        { value: 'M', stock: 0 },
         { value: 'L', stock: 0 },
       ],
     },
