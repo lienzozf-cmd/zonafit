@@ -542,8 +542,6 @@ export const products: Product[] = [
     ],
     options: { type: 'servicios', values: [{ value: 'Único', stock: 0 }] },
   },
-
-
   {
     id: 1800,
     name: 'Proteína whey Dragon Pharma',
@@ -650,7 +648,6 @@ export const products: Product[] = [
     ],
     options: { type: 'material', values: [{ value: 'Silver', stock: 2 }] },
   },
-  
   {
     id: 2519,
     name: 'Legacy Logo Tight Shorts',
@@ -681,7 +678,7 @@ export const products: Product[] = [
     description: 'Bra deportivo Legacy para un soporte y estilo inigualables.',
     gender: 'mujer',
     category: 'ropa',
-    subcategory: 'bra-deportivo',
+    subcategory: 'bras-deportivo',
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
@@ -791,7 +788,7 @@ export const products: Product[] = [
       'Bra deportivo de la línea Adapt Fleck para un ajuste y soporte perfectos.',
     gender: 'mujer',
     category: 'ropa',
-    subcategory: 'bra-deportivo',
+    subcategory: 'bras-deportivo',
     brand: 'Gymshark',
     fabric_type: '79% Nylon, 15% Polyester, 6% Elastane',
     is_compression: true,
@@ -827,7 +824,6 @@ export const products: Product[] = [
     ],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
-  
   {
     id: 2539,
     name: 'Mesh Sports Bra',
@@ -836,7 +832,7 @@ export const products: Product[] = [
     description: 'Bra deportivo con detalles de malla para mayor transpirabilidad.',
     gender: 'mujer',
     category: 'ropa',
-    subcategory: 'bra-deportivo',
+    subcategory: 'bras-deportivo',
     brand: 'Gymshark',
     fabric_type: '88% Polyester, 12% Elastane',
     is_compression: true,
@@ -858,7 +854,7 @@ export const products: Product[] = [
     description: 'Bra deportivo con diseño fruncido para un estilo único.',
     gender: 'mujer',
     category: 'ropa',
-    subcategory: 'bra-deportivo',
+    subcategory: 'bras-deportivo',
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
@@ -880,7 +876,7 @@ export const products: Product[] = [
     description: 'Bra deportivo con tirantes decorativos para un look moderno.',
     gender: 'mujer',
     category: 'ropa',
-    subcategory: 'bra-deportivo',
+    subcategory: 'bras-deportivo',
     brand: 'Gymshark',
     fabric_type: '87% Nylon, 13% Spandex',
     is_compression: true,
@@ -938,7 +934,6 @@ export const products: Product[] = [
     ],
     options: { type: 'talla', values: [{ value: 'S', stock: 1 }] },
   },
-  
   {
     id: 2602,
     name: 'Premium Tee SAMURAI bushido',
@@ -1923,7 +1918,6 @@ export const products: Product[] = [
       ],
     },
   },
- 
   {
     id: 2647,
     name: 'Monster Ultra Black',
@@ -2237,14 +2231,115 @@ export const products: Product[] = [
       values: [{ value: 'L', stock: 1 }],
     },
   },
+  {
+    id: 2661,
+    name: 'Impact Bra',
+    price: 'Q.460.00',
+    availability: 'Disponible',
+    description: 'Bra deportivo de alto impacto para un soporte superior durante tus entrenamientos más intensos.',
+    gender: 'mujer',
+    category: 'ropa',
+    subcategory: 'bras-deportivo',
+    brand: 'DFYNE',
+    fabric_type: '78% Nylon, 22% Elastane',
+    is_compression: true,
+    images: [
+      {
+        src: '/assets/images/marcas/dfyne/impact-bra-black.png',
+        alt: 'Impact Bra Black',
+        dataAiHint: 'sports bra black',
+      },
+    ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
+    colors: [
+        {
+            name: 'Negro',
+            hex: '#000000',
+            imageSrc: '/assets/images/marcas/dfyne/impact-bra-black.png',
+            options: {
+                type: 'talla',
+                values: [{ value: 'S', stock: 1 }],
+            }
+        }
+    ]
+  },
+  {
+    id: 2662,
+    name: 'Impact Short',
+    price: 'Q.540.00',
+    availability: 'Disponible',
+    description: 'Shorts de alto impacto diseñados para moverse contigo, ofreciendo comodidad y estilo.',
+    gender: 'mujer',
+    category: 'ropa',
+    subcategory: 'short',
+    brand: 'DFYNE',
+    fabric_type: '78% Nylon, 22% Elastane',
+    is_compression: true,
+    images: [
+      {
+        src: '/assets/images/marcas/dfyne/impact-short-black.png',
+        alt: 'Impact Short Black',
+        dataAiHint: 'woman shorts black',
+      },
+    ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
+    colors: [
+        {
+            name: 'Negro',
+            hex: '#000000',
+            imageSrc: '/assets/images/marcas/dfyne/impact-short-black.png',
+            options: {
+                type: 'talla',
+                values: [{ value: 'S', stock: 1 }],
+            }
+        }
+    ]
+  },
+  {
+    id: 2663,
+    name: 'Compression Batman',
+    price: 'Q.595.00',
+    availability: 'Agotado',
+    description: 'Conviértete en el caballero de la noche del gimnasio con esta playera de compresión de Batman. Oferta especial: antes Q.750.00, ahora Q.595.00.',
+    gender: 'hombre',
+    category: 'ropa',
+    subcategory: 'playera',
+    brand: 'YoungLA',
+    fabric_type: '88% Polyester, 12% Spandex',
+    is_compression: true,
+    images: [
+      {
+        src: '/assets/images/marcas/youngla/hombre/batman-compression.png',
+        alt: 'Batman Compression black',
+        dataAiHint: 'batman shirt black',
+      },
+    ],
+    options: {
+        type: 'talla',
+        values: [],
+    },
+    colors: [
+        {
+            name: 'Negra',
+            hex: '#000000',
+            imageSrc: '/assets/images/marcas/youngla/hombre/batman-compression.png',
+            options: {
+                type: 'talla',
+                values: [
+                    { value: 'S', stock: 0 },
+                    { value: 'M', stock: 0 },
+                    { value: 'L', stock: 0 },
+                ],
+            }
+        }
+    ]
+  }
 ];
 
-
-
-
-
     
-
-    
-
-
