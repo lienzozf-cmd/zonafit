@@ -5,7 +5,7 @@ const PromoBanner = () => {
   const content = (
     <span className="flex items-center gap-2">
       <Flame className="h-6 w-6" />
-      Ofertas por el Bono Fit
+      ofertas por el black fit
     </span>
   );
 
