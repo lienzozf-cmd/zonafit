@@ -1,4 +1,3 @@
-
 'use client';
 import ProductCard from './product-card';
 import { useEffect, useState } from 'react';
@@ -10,7 +9,7 @@ const FeaturedProducts = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   // Define a specific list of featured product IDs
-  const featuredProductIds = [1, 2, 3, 4, 5, 2643, 6, 8];
+  const featuredProductIds = [1, 2, 3, 2663, 5, 2643, 6, 8];
 
   useEffect(() => {
     if (products && products.length > 0) {
@@ -19,7 +18,7 @@ const FeaturedProducts = () => {
       ).sort((a, b) => featuredProductIds.indexOf(a.id) - featuredProductIds.indexOf(b.id));
       setFeaturedProducts(filtered);
     }
-  }, [products]);
+  }, [products, featuredProductIds]);
 
   if (featuredProducts.length === 0) {
     return null; // Or a loading skeleton
