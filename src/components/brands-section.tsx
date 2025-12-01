@@ -13,6 +13,7 @@ const brands = [
   { src: '/assets/images/logos/bumenergy.png?v=7', alt: 'Bum Energy', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/rgmnt.png?v=2', alt: 'RGMNT', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/civilr.png?v=7', alt: 'Civil Regime', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/dfyne.png', alt: 'Dfyne', dataAiHint: 'logo fitness' },
 ];
 
 const BrandsSection = () => {
