@@ -27,7 +27,7 @@ const checkoutSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
   lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  address: z.string().trim().min(5, 'La dirección debe ser más detallada.'),
   department: z.string().trim().min(3, 'El departamento es requerido.'),
   municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
@@ -107,7 +107,18 @@ export default function CheckoutPage() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || result.message || "Algo salió mal al procesar el pedido.");
+        const errorMsg = result.message || "Algo salió mal al procesar el pedido.";
+        
+        if (result.errors) {
+            Object.keys(result.errors).forEach((key) => {
+                const field = key as keyof CheckoutFormValues;
+                const message = result.errors[field]?.[0];
+                if (message) {
+                    form.setError(field, { type: 'server', message });
+                }
+            });
+        }
+        throw new Error(errorMsg);
       }
       
       triggerConfetti();
@@ -196,7 +207,7 @@ export default function CheckoutPage() {
                           <p className="text-sm text-gray-400">{item.option} x {item.quantity}</p>
                       </div>
                       </div>
-                      <p className="font-semibold">Q{(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="font-semibold">Q{typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00'}</p>
                   </div>
                   ))}
               </div>
@@ -315,3 +326,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
