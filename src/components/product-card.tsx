@@ -38,6 +38,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 
     if (firstAvailableOption) {
       setSelectedOption(firstAvailableOption);
+    } else if (options.length > 0) {
+      setSelectedOption(options[0]); // Select first option even if unavailable
     } else {
       setSelectedOption(null);
     }
@@ -132,7 +134,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       return;
     }
     
-    const priceAsNumber = parseFloat(product.price.replace(/Q\\.|\s/g, ''));
+    const priceAsNumber = parseFloat(product.price.replace(/[^0-9.]/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 
