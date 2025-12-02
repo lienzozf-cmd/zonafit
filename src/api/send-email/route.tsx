@@ -12,7 +12,7 @@ const shippingInfoSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
   lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  address: z.string().trim().min(5, 'La dirección debe ser más detallada.'),
   department: z.string().trim().min(3, 'El departamento es requerido.'),
   municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
@@ -210,3 +210,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
+
+    
