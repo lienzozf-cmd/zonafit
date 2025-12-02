@@ -36,17 +36,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     const options = selectedColor?.options.values || product.options?.values || [];
     const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
 
-    if (options.length === 1 && options[0].value !== 'Único') {
-        setSelectedOption(options[0]);
-    } else if (firstAvailableOption) {
-      setSelectedOption(firstAvailableOption);
-    } else if (options.length > 0 && options[0].value !== 'Único') {
-      setSelectedOption(options[0]); // Select first option even if unavailable
+    if (firstAvailableOption) {
+        setSelectedOption(firstAvailableOption);
     } else if (options.length > 0 && options[0].value === 'Único') {
-      setSelectedOption(options[0]);
-    }
-     else {
-      setSelectedOption(null);
+        setSelectedOption(options[0]);
+    } else {
+        setSelectedOption(null); // Do not select any option if all are out of stock
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.id, selectedColor]);
