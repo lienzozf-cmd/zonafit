@@ -36,10 +36,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     const options = selectedColor?.options.values || product.options?.values || [];
     const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
 
-    if (firstAvailableOption) {
-        setSelectedOption(firstAvailableOption);
-    } else if (options.length > 0 && options[0].value === 'Único') {
+    if (options.length === 1 && options[0].value === 'Único') {
         setSelectedOption(options[0]);
+    } else if (firstAvailableOption) {
+        setSelectedOption(firstAvailableOption);
     } else {
         setSelectedOption(null); // Do not select any option if all are out of stock
     }
@@ -134,8 +134,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       return;
     }
     
-    const priceAsString = product.price.replace(',', '.');
-    const priceAsNumber = parseFloat(priceAsString.replace(/[^0-9.]/g, ''));
+    const priceAsNumber = parseFloat(product.price.replace(/Q|\s|,/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 

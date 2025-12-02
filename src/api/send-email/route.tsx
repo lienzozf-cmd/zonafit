@@ -1,4 +1,5 @@
 
+
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
@@ -129,8 +130,7 @@ export async function POST(req: NextRequest) {
         throw new Error(`Producto no encontrado con ID: ${item.productId}`);
       }
       
-      const priceAsString = product.price.replace(',', '.');
-      const price = parseFloat(priceAsString.replace(/[^0-9.]/g, ''));
+      const price = parseFloat(product.price.replace(/Q|\s|,/g, ''));
       
       if (price !== item.price) {
            console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
