@@ -26,7 +26,7 @@ interface AppState {
 
 const calculateTotals = (items: CartItem[]) => {
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = items.reduce((sum, item) => sum + (item.price || 0) * item.quantity, 0);
   return { itemCount, total };
 };
 
@@ -42,10 +42,13 @@ export const useCartStore = create<AppState>()(
       addItem: (item) => {
         set(produce((state: AppState) => {
             const existingItem = state.items.find((i) => i.id === item.id);
+            const priceAsNumber = Number(item.price);
+            const validPrice = isNaN(priceAsNumber) ? 0 : priceAsNumber;
+
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                state.items.push({ ...item, quantity: 1 });
+                state.items.push({ ...item, price: validPrice, quantity: 1 });
             }
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
@@ -122,15 +125,16 @@ export const useCartStore = create<AppState>()(
       name: 'cart-storage',
       storage: createJSONStorage(() => localStorage), 
       merge: (persistedState, currentState) => {
-        // This custom merge function ensures that the `products` array is always taken from the initial, code-defined state (`currentState`),
-        // effectively refreshing the product data (like stock) on every app load.
-        // Other parts of the state, like the cart items, are still persisted.
-        return {
-          ...persistedState,
-          ...currentState,
-          products: currentState.products, // Always use fresh product data from the code.
-          items: (persistedState as AppState)?.items ?? [], // Persist cart items.
-        };
+        const state = { ...currentState, ...persistedState };
+        state.products = currentState.products;
+
+        if((persistedState as AppState)?.items){
+           state.items = (persistedState as AppState).items;
+        } else {
+          state.items = [];
+        }
+
+        return state;
       },
       onRehydrateStorage: () => (state, error) => {
         if (state) {

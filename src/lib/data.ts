@@ -1014,7 +1014,7 @@ export const products: Product[] = [
     is_compression: false,
     images: [
       {
-        src: '/assets/images/marcas/youngla/hombre/403 Elite Tees AZUL.png',
+        src: '/assets/images/marcas/youngla/hombre/4071 - Gods & Heroes Tees.png',
         alt: 'Gods & Heroes Tees',
         dataAiHint: 'graphic tee',
         option: 'M',
