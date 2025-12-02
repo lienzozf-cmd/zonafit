@@ -118,7 +118,7 @@ const Cart = () => {
                             Talla: {item.option}
                           </span>
                           <span className="line-clamp-1 text-sm font-medium">
-                            Q{item.price.toFixed(2)}
+                            Q{typeof item.price === 'number' ? item.price.toFixed(2) : '0.00'}
                           </span>
                         </div>
                       </div>
