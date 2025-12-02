@@ -1040,6 +1040,7 @@ footer {
 
   .site-branding #site-logo {
     height: 60px;
+    width: auto;
     margin: 0;
   }
 
