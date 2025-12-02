@@ -13,12 +13,11 @@ interface AppState {
   isCartOpen: boolean;
   products: Product[];
   setIsCartOpen: (isOpen: boolean) => void;
-  addItem: (item: CartItem) => void;
+  addItem: (item: Omit<CartItem, 'quantity'>) => void;
   removeItem: (id: string) => void;
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   clearCart: () => void;
-  getItem: (id: string) => CartItem | undefined;
   processOrder: () => void;
   getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
 }
@@ -41,7 +40,7 @@ export const useCartStore = create<AppState>()(
       addItem: (item) => {
         set(produce((state: AppState) => {
             const existingItem = state.items.find((i) => i.id === item.id);
-
+            
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -105,7 +104,6 @@ export const useCartStore = create<AppState>()(
         });
         set({ products: newProducts, items: [], itemCount: 0, total: 0 });
       },
-      getItem: (id) => get().items.find((i) => i.id === id),
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
         if (!product) return undefined;
