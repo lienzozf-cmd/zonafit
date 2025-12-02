@@ -46,7 +46,6 @@ export const useCartStore = create<AppState>()(
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                // The price from the component is already a valid number.
                 state.items.push({ ...item, quantity: 1 });
             }
             const { itemCount, total } = calculateTotals(state.items);
