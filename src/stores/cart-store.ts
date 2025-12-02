@@ -42,13 +42,12 @@ export const useCartStore = create<AppState>()(
       addItem: (item) => {
         set(produce((state: AppState) => {
             const existingItem = state.items.find((i) => i.id === item.id);
-            const priceAsNumber = Number(item.price);
-            const validPrice = isNaN(priceAsNumber) ? 0 : priceAsNumber;
 
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                state.items.push({ ...item, price: validPrice, quantity: 1 });
+                // The price from the component is already a valid number.
+                state.items.push({ ...item, quantity: 1 });
             }
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
@@ -126,7 +125,8 @@ export const useCartStore = create<AppState>()(
       storage: createJSONStorage(() => localStorage), 
       merge: (persistedState, currentState) => {
         const state = { ...currentState, ...persistedState };
-        state.products = currentState.products;
+        // Always use the latest product data from the code, not from storage.
+        state.products = initialProducts;
 
         if((persistedState as AppState)?.items){
            state.items = (persistedState as AppState).items;
