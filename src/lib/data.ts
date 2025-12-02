@@ -1797,7 +1797,7 @@ export const products: Product[] = [
         dataAiHint: 'shaker bottle',
       },
     ],
-    options: { type: 'color', values: [{ value: 'Único', stock: 1 }] },
+    options: { type: 'color', values: [{ value: 'Único', stock: 0 }] },
   },
   {
     id: 2643,
@@ -2187,7 +2187,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: '/assets/images/marcas/gymshark/mujer/gains_seamless_washed_shorts_gris.png',
+        src: '/assets/images/marcas/gymshark/mujer/gainswashed.png',
         alt: 'Gains Seamless Washed Shorts',
         dataAiHint: 'woman shorts',
       },
@@ -2211,7 +2211,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: '/assets/images/marcas/dfyne/impact-bra-black.png',
+        src: '/assets/images/marcas/dfyne/impactbra.png',
         alt: 'Impact Bra Black',
         dataAiHint: 'sports bra black',
       },
@@ -2224,7 +2224,7 @@ export const products: Product[] = [
         {
             name: 'Negro',
             hex: '#000000',
-            imageSrc: '/assets/images/marcas/dfyne/impact-bra-black.png',
+            imageSrc: '/assets/images/marcas/dfyne/impactbra.png',
             options: {
                 type: 'talla',
                 values: [{ value: 'S', stock: 1 }],
@@ -2246,7 +2246,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: '/assets/images/marcas/dfyne/impact-short-black.png',
+        src: '/assets/images/marcas/dfyne/impactshort.png',
         alt: 'Impact Short Black',
         dataAiHint: 'woman shorts black',
       },
@@ -2259,7 +2259,7 @@ export const products: Product[] = [
         {
             name: 'Negro',
             hex: '#000000',
-            imageSrc: '/assets/images/marcas/dfyne/impact-short-black.png',
+            imageSrc: '/assets/images/marcas/dfyne/impactshort.png',
             options: {
                 type: 'talla',
                 values: [{ value: 'S', stock: 1 }],
@@ -2270,7 +2270,7 @@ export const products: Product[] = [
   {
     id: 2663,
     name: 'Compression Batman',
-    price: 'Q.595.00',
+    price: 'Q.750.00',
     availability: 'Agotado',
     description: 'Conviértete en el caballero de la noche del gimnasio con esta playera de compresión de Batman. Oferta especial: antes Q.750.00, ahora Q.595.00.',
     gender: 'hombre',
@@ -2281,7 +2281,7 @@ export const products: Product[] = [
     is_compression: true,
     images: [
       {
-        src: '/assets/images/marcas/youngla/hombre/batman-compression.png',
+        src: '/assets/images/marcas/youngla/hombre/compressbatman.png',
         alt: 'Batman Compression black',
         dataAiHint: 'batman shirt black',
       },
@@ -2294,7 +2294,7 @@ export const products: Product[] = [
         {
             name: 'Negra',
             hex: '#000000',
-            imageSrc: '/assets/images/marcas/youngla/hombre/batman-compression.png',
+            imageSrc: '/assets/images/marcas/youngla/hombre/compressbatman.png',
             options: {
                 type: 'talla',
                 values: [
