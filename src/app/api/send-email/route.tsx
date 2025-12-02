@@ -1,4 +1,5 @@
 
+
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
@@ -12,7 +13,7 @@ const shippingInfoSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
   lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
-  address: z.string().trim().min(10, 'La dirección debe ser más detallada.'),
+  address: z.string().trim().min(5, 'La dirección debe ser más detallada.'),
   department: z.string().trim().min(3, 'El departamento es requerido.'),
   municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
@@ -128,8 +129,8 @@ export async function POST(req: NextRequest) {
       if (!product) {
         throw new Error(`Producto no encontrado con ID: ${item.productId}`);
       }
-
-      const price = parseFloat(product.price.replace(/Q\.?|\s|,/g, ''));
+      
+      const price = parseFloat(product.price.replace(/[^0-9.]/g, ''));
       
       if (price !== item.price) {
            console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
@@ -175,7 +176,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
         from: `"${shopName}" <${process.env.EMAIL_USER}>`,
-        to: "rabanalesf22@gmail.com",
+        to: ["rabanalesf22@gmail.com", "rabafam2118@gmail.com"],
         subject: `Nuevo Pedido #${orderId} - ${shippingInfo.firstName} ${shippingInfo.lastName}`,
         html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
@@ -189,9 +190,14 @@ export async function POST(req: NextRequest) {
                     <p><strong>Dirección:</strong> ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}</p>
                     <h2 style="font-size: 20px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px;">Artículos del Pedido</h2>
                     ${itemsHtml}
+                    <div style="margin-top: 20px; padding: 15px; background-color: #f0f8ff; border: 1px solid #bde5f8; border-radius: 5px;">
+                      <h3 style="margin-top:0; color: #005f73;">Información de Pago y Envío</h3>
+                      <p style="margin-bottom:10px;"><strong>Pago:</strong> El método de pago es contra entrega. Si el cliente desea pagar con depósito, debe contactarte por redes sociales con su número de pedido (#${orderId}) para recibir los detalles de la cuenta bancaria.</p>
+                      <p style="margin-bottom:0;"><strong>Envío:</strong> Contacta al cliente para coordinar la logística y el costo del envío.</p>
+                    </div>
                 </div>
                  <div style="background-color: #f5f5f5; padding: 15px; border-top: 1px solid #eee; text-align: center;">
-                    <p style="margin: 0; color: #555;">Este es un correo automático. Contacta al cliente para coordinar el envío.</p>
+                    <p style="margin: 0; color: #555;">Este es un correo automático. Por favor, gestiona el pedido.</p>
                 </div>
             </div>
         `,

@@ -40,8 +40,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
         setSelectedOption(options[0]);
     } else if (firstAvailableOption) {
         setSelectedOption(firstAvailableOption);
-    } else {
-        setSelectedOption(null); // Do not select any option if all are out of stock
+    } else if (options.length > 0) {
+        setSelectedOption(null); // Explicitly set to null if no stock
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.id, selectedColor]);
