@@ -8,7 +8,6 @@ const FeaturedProducts = () => {
   const products = useCartStore((state) => state.products);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
-  // Define a specific list of featured product IDs
   const featuredProductIds = [1, 2, 3, 2663, 5, 2643, 6, 8];
 
   useEffect(() => {
@@ -18,7 +17,7 @@ const FeaturedProducts = () => {
       ).sort((a, b) => featuredProductIds.indexOf(a.id) - featuredProductIds.indexOf(b.id));
       setFeaturedProducts(filtered);
     }
-  }, [products, featuredProductIds]);
+  }, [products]);
 
   if (featuredProducts.length === 0) {
     return null; // Or a loading skeleton
