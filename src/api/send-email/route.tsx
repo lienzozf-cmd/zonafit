@@ -128,8 +128,9 @@ export async function POST(req: NextRequest) {
       if (!product) {
         throw new Error(`Producto no encontrado con ID: ${item.productId}`);
       }
-
-      const price = parseFloat(product.price.replace(/Q\.?|\s|,/g, ''));
+      
+      const priceAsString = product.price.replace(',', '.');
+      const price = parseFloat(priceAsString.replace(/[^0-9.]/g, ''));
       
       if (price !== item.price) {
            console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
@@ -210,5 +211,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
-
-    

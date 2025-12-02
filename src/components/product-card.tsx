@@ -36,11 +36,16 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     const options = selectedColor?.options.values || product.options?.values || [];
     const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
 
-    if (firstAvailableOption) {
+    if (options.length === 1 && options[0].value !== 'Único') {
+        setSelectedOption(options[0]);
+    } else if (firstAvailableOption) {
       setSelectedOption(firstAvailableOption);
-    } else if (options.length > 0) {
+    } else if (options.length > 0 && options[0].value !== 'Único') {
       setSelectedOption(options[0]); // Select first option even if unavailable
-    } else {
+    } else if (options.length > 0 && options[0].value === 'Único') {
+      setSelectedOption(options[0]);
+    }
+     else {
       setSelectedOption(null);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,9 +69,9 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       const availableStock = getAvailableStock(selectedOption);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else {
-      const totalStock = (selectedColor?.options.values || product.options.values).reduce((sum, o) => sum + o.stock, 0);
+      const totalStock = (selectedColor?.options.values || product.options?.values || []).reduce((sum, o) => sum + o.stock, 0);
       if (totalStock > 0) {
-        const optionType = selectedColor?.options.type || product.options.type || 'opción';
+        const optionType = selectedColor?.options.type || product.options?.type || 'opción';
         setAvailabilityMessage(`Selecciona un ${optionType}`);
       } else {
         setAvailabilityMessage('Agotado');
@@ -134,7 +139,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       return;
     }
     
-    const priceAsNumber = parseFloat(product.price.replace(/[^0-9.]/g, ''));
+    const priceAsString = product.price.replace(',', '.');
+    const priceAsNumber = parseFloat(priceAsString.replace(/[^0-9.]/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 
