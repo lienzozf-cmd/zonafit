@@ -130,8 +130,9 @@ export async function POST(req: NextRequest) {
         throw new Error(`Producto no encontrado con ID: ${item.productId}`);
       }
       
-      const price = parseFloat(product.price.replace(/[^0-9.]/g, ''));
-      
+      const priceString = product.price || '0';
+      const price = parseFloat(priceString.replace('Q.', '').replace(/,/g, ''));
+
       if (price !== item.price) {
            console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
       }
@@ -190,11 +191,6 @@ export async function POST(req: NextRequest) {
                     <p><strong>Dirección:</strong> ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}</p>
                     <h2 style="font-size: 20px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px;">Artículos del Pedido</h2>
                     ${itemsHtml}
-                    <div style="margin-top: 20px; padding: 15px; background-color: #f0f8ff; border: 1px solid #bde5f8; border-radius: 5px;">
-                      <h3 style="margin-top:0; color: #005f73;">Información de Pago y Envío</h3>
-                      <p style="margin-bottom:10px;"><strong>Pago:</strong> El método de pago es contra entrega. Si el cliente desea pagar con depósito, debe contactarte por redes sociales con su número de pedido (#${orderId}) para recibir los detalles de la cuenta bancaria.</p>
-                      <p style="margin-bottom:0;"><strong>Envío:</strong> Contacta al cliente para coordinar la logística y el costo del envío.</p>
-                    </div>
                 </div>
                  <div style="background-color: #f5f5f5; padding: 15px; border-top: 1px solid #eee; text-align: center;">
                     <p style="margin: 0; color: #555;">Este es un correo automático. Por favor, gestiona el pedido.</p>
