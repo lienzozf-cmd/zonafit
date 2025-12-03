@@ -273,7 +273,7 @@ const ProductDetailPage = () => {
                             variant={isSelected ? 'default' : 'outline'}
                             onClick={() => !isColorSoldOut && handleColorClick(color)} 
                             disabled={isColorSoldOut} 
-                            className='relative'
+                            className={`relative ${isColorSoldOut ? 'bg-black text-gray-500' : ''}`}
                             style={(isSelected && !isColorSoldOut) ? { backgroundColor: color.hex, color: '#fff', borderColor: color.hex } : {}}
                         >
                             {color.name}
