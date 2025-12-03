@@ -2029,7 +2029,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "M",
-          "stock": 0
+          "stock": 1
         }
       ]
     }

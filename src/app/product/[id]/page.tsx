@@ -125,7 +125,7 @@ const ProductDetailPage = () => {
     }
   
     const priceString = product.price || '0';
-    const priceAsNumber = parseFloat(priceString.replace('Q.', '').replace(/,/g, ''));
+    const priceAsNumber = parseFloat(priceString.replace(/[^\d.]/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption!.value}` : `${product.id}-default-${selectedOption!.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
   
@@ -206,29 +206,29 @@ const ProductDetailPage = () => {
 
             {/* Product Features */}
             {(product.feature1 || product.feature2 || product.feature3) && (
-              <div className="mb-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700/50">
-                <h3 className="text-lg font-bold mb-3 text-gray-200">Características Adicionales</h3>
-                <ul className="space-y-2">
-                  {product.feature1 && (
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" />
-                      <span className="text-gray-300">{product.feature1}</span>
-                    </li>
-                  )}
-                  {product.feature2 && (
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" />
-                      <span className="text-gray-300">{product.feature2}</span>
-                    </li>
-                  )}
-                  {product.feature3 && (
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" />
-                      <span className="text-gray-300">{product.feature3}</span>
-                    </li>
-                  )}
-                </ul>
-              </div>
+                <div className="mb-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700/50">
+                    <h3 className="text-lg font-bold mb-3 text-gray-200">Características Adicionales</h3>
+                    <ul className="space-y-2">
+                        {product.feature1 && (
+                            <li className="flex items-start">
+                                <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" />
+                                <span className="text-gray-300">{product.feature1}</span>
+                            </li>
+                        )}
+                        {product.feature2 && (
+                            <li className="flex items-start">
+                                <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" />
+                                <span className="text-gray-300">{product.feature2}</span>
+                            </li>
+                        )}
+                        {product.feature3 && (
+                            <li className="flex items-start">
+                                <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" />
+                                <span className="text-gray-300">{product.feature3}</span>
+                            </li>
+                        )}
+                    </ul>
+                </div>
             )}
             
             {product.category === 'ropa' && (
@@ -266,8 +266,16 @@ const ProductDetailPage = () => {
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map(color => {
                       const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+                      const isSelected = selectedColor?.name === color.name;
                       return (
-                        <Button key={color.name} variant={selectedColor?.name === color.name ? 'destructive' : 'outline'} onClick={() => !isColorSoldOut && handleColorClick(color)} disabled={isColorSoldOut} className='relative'>
+                        <Button 
+                            key={color.name} 
+                            variant={isSelected ? 'default' : 'outline'}
+                            onClick={() => !isColorSoldOut && handleColorClick(color)} 
+                            disabled={isColorSoldOut} 
+                            className='relative'
+                            style={(isSelected && !isColorSoldOut) ? { backgroundColor: color.hex, color: '#fff', borderColor: color.hex } : {}}
+                        >
                             {color.name}
                             {isColorSoldOut && <span className="sold-out-x">X</span>}
                         </Button>
