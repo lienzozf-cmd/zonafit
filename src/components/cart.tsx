@@ -55,8 +55,10 @@ const Cart = () => {
 
   const handleCheckout = () => {
     triggerConfetti();
-    setIsCartOpen(false);
-    router.push('/checkout');
+    setTimeout(() => {
+      setIsCartOpen(false);
+      router.push('/checkout');
+    }, 2000);
   };
 
   const handleRemoveItem = (id: string) => {

@@ -18,7 +18,7 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import { useCartStore } from '@/stores/cart-store';
 import Link from 'next/link';
-import { ShoppingCart, CheckCircle } from 'lucide-react';
+import { ShoppingCart, CheckCircle, Send, Truck, WalletCards } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
@@ -32,14 +32,14 @@ const checkoutSchema = z.object({
   municipality: z.string().trim().min(3, 'El municipio es requerido.'),
 });
 
-
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, processOrder } = useCartStore((state) => ({
+  const { items, total, processOrder, clearCart } = useCartStore((state) => ({
     items: state.items,
     total: state.total,
     processOrder: state.processOrder,
+    clearCart: state.clearCart,
   }));
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -64,18 +64,16 @@ export default function CheckoutPage() {
     const duration = 2 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
-  
+
     function randomInRange(min: number, max: number) {
       return Math.random() * (max - min) + min;
     }
-  
+
     const interval = window.setInterval(function() {
       const timeLeft = animationEnd - Date.now();
-  
       if (timeLeft <= 0) {
         return clearInterval(interval);
       }
-  
       const particleCount = 50 * (timeLeft / duration);
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
@@ -83,67 +81,52 @@ export default function CheckoutPage() {
   };
 
   async function onSubmit(data: CheckoutFormValues) {
-    if (isCartEmpty) {
-      return;
-    }
-    
+    if (isCartEmpty) return;
     setIsLoading(true);
 
-    const orderDetails = {
-      shippingInfo: data,
-      orderItems: items,
-      orderTotal: total,
-    };
+    const orderDetails = { shippingInfo: data, orderItems: items, orderTotal: total };
 
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderDetails),
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        const errorMsg = result.message || "Algo salió mal al procesar el pedido.";
-        
+        const errorMsg = result.message || 'Algo salió mal al procesar el pedido.';
         if (result.errors) {
-            Object.keys(result.errors).forEach((key) => {
-                const field = key as keyof CheckoutFormValues;
-                const message = result.errors[field]?.[0];
-                if (message) {
-                    form.setError(field, { type: 'server', message });
-                }
-            });
+          Object.keys(result.errors).forEach((key) => {
+            const field = key as keyof CheckoutFormValues;
+            const message = result.errors[field]?.[0];
+            if (message) form.setError(field, { type: 'server', message });
+          });
         }
         throw new Error(errorMsg);
       }
-      
+
       triggerConfetti();
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
-      
-      // Update stock and clear cart
       processOrder();
       form.reset();
-
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
-       toast({
-        title: "Error al enviar pedido",
-        description: error.message || "No se pudo completar el pedido. Por favor, inténtalo de nuevo.",
-        variant: "destructive",
+      toast({
+        title: 'Error al enviar pedido',
+        description: error.message || 'No se pudo completar el pedido. Por favor, inténtalo de nuevo.',
+        variant: 'destructive',
       });
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
   }
 
   if (isSubmitSuccessful && orderId) {
     return (
-        <>
+      <>
         <Header />
         <main className="bg-transparent text-white">
           <div className="container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
@@ -153,9 +136,9 @@ export default function CheckoutPage() {
               Tu pedido ha sido procesado con éxito. Nos pondremos en contacto contigo pronto para coordinar el envío.
             </p>
             <div className="mt-8 bg-gray-900/80 p-6 rounded-lg border border-gray-700 w-full max-w-sm">
-                <p className="text-gray-400">Tu número de orden es:</p>
-                <p className="text-4xl font-bold tracking-widest text-white mt-2">{orderId}</p>
-                <p className="text-xs text-gray-500 mt-4">¡Tómale una captura de pantalla como referencia!</p>
+              <p className="text-gray-400">Tu número de orden es:</p>
+              <p className="text-4xl font-bold tracking-widest text-white mt-2">{orderId}</p>
+              <p className="text-xs text-gray-500 mt-4">¡Tómale una captura de pantalla como referencia!</p>
             </div>
             <Button asChild variant="secondary" className="mt-8 bg-cyan-500 hover:bg-cyan-600 text-white">
               <Link href="/marcas">Seguir Comprando</Link>
@@ -189,49 +172,15 @@ export default function CheckoutPage() {
   return (
     <>
       <Header />
-      <main className="bg-transparent text-white">
-        <div className="container mx-auto px-6 md:px-12 py-16">
-          <h1 className="text-3xl font-bold text-center mb-8 text-white">
-            Información de Envío
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <main className="bg-black text-white flex justify-center py-12">
+        <div className="w-full max-w-6xl px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
             <div>
-              <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Resumen del Pedido</h2>
-              <div className="space-y-4">
-                  {items.map(item => (
-                  <div key={item.id} className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                      <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
-                      <div>
-                          <p className="font-medium">{item.name}</p>
-                          <p className="text-sm text-gray-400">{item.option} x {item.quantity}</p>
-                      </div>
-                      </div>
-                      <p className="font-semibold">Q{typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00'}</p>
-                  </div>
-                  ))}
-              </div>
-              <div className="mt-6 border-t border-gray-700 pt-4">
-                  <div className="flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span>Q{total.toFixed(2)}</span>
-                  </div>
-                  <div className="mt-4 p-4 bg-gray-900 border border-accent rounded-lg">
-                      <p className="text-center text-accent-foreground">
-                          <span className="font-bold">Nota sobre el envío:</span> Por favor, comunícate con nosotros a través de nuestras redes sociales para coordinar y calcular el costo de envío de tu pedido.
-                      </p>
-                  </div>
-                  <div className="mt-4 p-4 bg-gray-900 border border-cyan-500 rounded-lg">
-                      <p className="text-center text-cyan-200">
-                          <span className="font-bold">Nota sobre el pago:</span> Por el momento solo aceptamos pago contra entrega. Si deseas pagar con depósito previo, contáctanos en redes sociales con tu número de pedido para que te proporcionemos el número de cuenta.
-                      </p>
-                  </div>
-              </div>
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Detalles del Cliente</h2>
+              <h2 className="text-2xl font-bold mb-2">Información de Envío</h2>
+              <p className="text-sm text-gray-400 mb-8">Introduce tus datos para el pago contra entrega.</p>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -240,7 +189,7 @@ export default function CheckoutPage() {
                         <FormItem>
                           <FormLabel>Nombre</FormLabel>
                           <FormControl>
-                            <Input placeholder="Juan" {...field} className="bg-gray-800 border-gray-600" />
+                            <Input placeholder="Tu nombre" {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -253,7 +202,7 @@ export default function CheckoutPage() {
                         <FormItem>
                           <FormLabel>Apellido</FormLabel>
                           <FormControl>
-                            <Input placeholder="Pérez" {...field} className="bg-gray-800 border-gray-600" />
+                            <Input placeholder="Tu apellido" {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -265,9 +214,9 @@ export default function CheckoutPage() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Número de teléfono</FormLabel>
+                        <FormLabel>Número de Teléfono</FormLabel>
                         <FormControl>
-                          <Input placeholder="12345678" {...field} className="bg-gray-800 border-gray-600" />
+                          <Input placeholder="Ej: 12345678" {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -278,9 +227,9 @@ export default function CheckoutPage() {
                     name="address"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Dirección exacta</FormLabel>
+                        <FormLabel>Dirección Exacta</FormLabel>
                         <FormControl>
-                          <Input placeholder="Ej: 1ra Calle, 2-3, Zona 4" {...field} className="bg-gray-800 border-gray-600" />
+                          <Input placeholder="Ej: Calle, avenida, no. de casa, etc." {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -289,37 +238,82 @@ export default function CheckoutPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
-                      name="department"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Departamento</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Guatemala" {...field} className="bg-gray-800 border-gray-600" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
                       name="municipality"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Municipio</FormLabel>
                           <FormControl>
-                            <Input placeholder="Guatemala" {...field} className="bg-gray-800 border-gray-600" />
+                            <Input placeholder="Tu municipio" {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                     <FormField
+                      control={form.control}
+                      name="department"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Departamento</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Tu departamento" {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
-                  <Button type="submit" variant="destructive" className="w-full text-lg py-6" disabled={isLoading || isCartEmpty}>
-                    {isLoading ? 'Procesando...' : 'Confirmar Pedido'}
+                  <Button type="submit" className="w-full text-base font-semibold py-6 bg-red-600 text-white hover:bg-red-700 flex items-center justify-center gap-2 rounded-lg" disabled={isLoading || isCartEmpty}>
+                    {isLoading ? 'Procesando...' : <><Send size={20} /> Enviar Pedido</>}
                   </Button>
                 </form>
               </Form>
             </div>
+
+            <div className="bg-[#1C2033] p-8 rounded-lg">
+              <h2 className="text-2xl font-bold mb-6">Resumen de tu Pedido</h2>
+              <div className="space-y-4">
+                  {items.map(item => (
+                  <div key={item.id} className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                      <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
+                      <div>
+                          <p className="font-medium">{item.name}</p>
+                          <p className="text-sm text-gray-400">Cantidad: {item.quantity}</p>
+                      </div>
+                      </div>
+                      <p className="font-semibold">Q{typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00'}</p>
+                  </div>
+                  ))}
+              </div>
+              <div className="mt-6 border-t border-slate-700 pt-4">
+                  <div className="flex justify-between text-lg font-bold mb-6">
+                  <span>Total (productos)</span>
+                  <span>Q{total.toFixed(2)}</span>
+                  </div>
+                  <div className="mt-6 space-y-4">
+                      <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
+                          <Truck size={32} className="text-red-500 mt-1 flex-shrink-0" />
+                          <div>
+                              <h3 className="font-semibold">Nota sobre el envío</h3>
+                              <p className="text-sm text-gray-400">
+                                  El precio del envío deberá comunicarse con nosotros por Instagram, Facebook o TikTok porque depende de su ubicación se calcula el envío.
+                              </p>
+                          </div>
+                      </div>
+                      <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
+                          <WalletCards size={32} className="text-red-500 mt-1 flex-shrink-0" />
+                          <div>
+                              <h3 className="font-semibold">Nota sobre el pago</h3>
+                              <p className="text-sm text-gray-400">
+                                  El método de pago principal es contra entrega. Si deseas pagar con depósito, por favor contáctanos en redes sociales con tu número de orden para brindarte los detalles de la cuenta.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>

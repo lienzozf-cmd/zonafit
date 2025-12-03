@@ -134,7 +134,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       return;
     }
     
-    const priceAsNumber = parseFloat(product.price.replace(/[^\d.]/g, ''));
+    const priceString = product.price || '0';
+    const priceAsNumber = parseFloat(priceString.replace('Q.', '').replace(/,/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 
@@ -189,9 +190,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             </Link>
             <p className="product-price">{product.price}</p>
             <div className="flex justify-center my-2">
-                 <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>
-                    {isAvailable ? 'Disponible' : 'Agotado'}
-                 </div>
+                 <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>{isAvailable ? 'Disponible' : 'Agotado'}</div>
             </div>
 
             {product.colors && product.colors.length > 1 && (
