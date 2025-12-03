@@ -147,6 +147,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
       image: currentImage,
       option: selectedOption.value,
       color: selectedColor?.name,
+      quantity: 1
     });
     
   };
@@ -252,3 +253,4 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
 };
 
 export default ProductCard;
+
