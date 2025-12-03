@@ -1,3 +1,4 @@
+
 'use client';
 
 import { create } from 'zustand';
@@ -13,7 +14,7 @@ interface AppState {
   isCartOpen: boolean;
   products: Product[];
   setIsCartOpen: (isOpen: boolean) => void;
-  addItem: (item: Omit<CartItem, 'quantity'>) => void;
+  addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
@@ -44,7 +45,7 @@ export const useCartStore = create<AppState>()(
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                state.items.push({ ...item, quantity: 1 });
+                state.items.push(item);
             }
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;

@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import confetti from 'canvas-confetti';
@@ -169,3 +170,4 @@ const Cart = () => {
 };
 
 export default Cart;
+
