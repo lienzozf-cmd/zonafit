@@ -137,6 +137,9 @@ export type Product = {
   fabric_type?: string;
   is_compression?: boolean;
   colors?: ProductColor[];
+  feature1?: string;
+  feature2?: string;
+  feature3?: string;
   // Suplemento
   benefits?: string;
   servings_info?: string;
@@ -155,6 +158,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
+    "feature1": "Ajuste de compresión para soporte muscular",
+    "feature2": "Tejido transpirable de secado rápido",
+    "feature3": "Diseño exclusivo de edición limitada",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/superheroeroja.png",
@@ -232,6 +238,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "90% Nylon, 10% Elastane",
     "is_compression": true,
+    "feature1": "Compresión graduada para mejorar la circulación",
+    "feature2": "Material ultra-ligero y elástico",
+    "feature3": "Diseño ergonómico para libertad de movimiento",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/warriorazul.png",
@@ -337,6 +346,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "64% Nylon, 28% Polyester, 8% Elastane",
     "is_compression": false,
+    "feature1": "Tecnología sin costuras para evitar roces",
+    "feature2": "Ventilación estratégica en zonas clave",
+    "feature3": "Tejido flexible que se adapta a tus movimientos",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/onyxnegra.jpg",
@@ -442,6 +454,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "95% Algodón, 5% Elastano",
     "is_compression": false,
+    "feature1": "Ajuste atlético que realza la figura",
+    "feature2": "Tejido suave y elástico para mayor comodidad",
+    "feature3": "Diseño llamativo en dos tonos",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png",
@@ -491,6 +506,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "96% Nylon, 4% Elastane",
     "is_compression": true,
+    "feature1": "Diseño sin costuras para máxima comodidad",
+    "feature2": "Tecnología de absorción de sudor",
+    "feature3": "Corte 'crop' que realza la figura",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.jpg",
@@ -538,6 +556,9 @@ export const products: Product[] = [
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
+    "feature1": "Diseño exclusivo de Tridente",
+    "feature2": "Chapado en oro de 14K para durabilidad",
+    "feature3": "Perfecto para un look audaz y distintivo",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/tridente.png",
@@ -568,6 +589,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
     "servings_info": "60 servicios.",
+    "feature1": "Aumenta la fuerza y potencia muscular.",
+    "feature2": "Mejora el rendimiento en entrenamientos de alta intensidad.",
+    "feature3": "Fórmula micronizada para una rápida absorción.",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/creatinaDP.png",
@@ -597,6 +621,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
     "servings_info": "200 servicios.",
+    "feature1": "Formato económico de 200 servicios.",
+    "feature2": "Acelera la recuperación entre series.",
+    "feature3": "Creatina monohidratada 100% pura.",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/creatinaDP.png",
@@ -626,6 +653,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Apoya el crecimiento muscular, rápida absorción.",
     "servings_info": "30 servicios por envase.",
+    "feature1": "Promueve el crecimiento muscular magro.",
+    "feature2": "Rápida absorción para una recuperación eficiente.",
+    "feature3": "Delicioso sabor a pastel de cumpleaños.",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/proteinaPDP.png",
@@ -654,6 +684,9 @@ export const products: Product[] = [
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
+    "feature1": "Diseño de cuerda clásico y elegante",
+    "feature2": "Resistente al sudor y al agua",
+    "feature3": "Cierre seguro y fácil de usar",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain gold.png",
@@ -681,6 +714,9 @@ export const products: Product[] = [
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
+    "feature1": "Complemento perfecto para la cadena de cuerda",
+    "feature2": "Materiales hipoalergénicos de alta calidad",
+    "feature3": "Ajuste cómodo y seguro para el día a día",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet gold.png",
@@ -708,6 +744,9 @@ export const products: Product[] = [
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
+    "feature1": "Plata de ley 925 para un brillo duradero",
+    "feature2": "Diseño versátil para cualquier ocasión",
+    "feature3": "Ligera y cómoda para uso diario",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain silver.png",
@@ -735,6 +774,9 @@ export const products: Product[] = [
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
+    "feature1": "Hecha con plata de ley 925 de alta pureza",
+    "feature2": "Estilo minimalista y moderno",
+    "feature3": "Ideal para combinar con otras pulseras",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet silver.png",
@@ -764,6 +806,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Ajuste ceñido que realza la figura",
+    "feature2": "Tejido elástico para máxima movilidad",
+    "feature3": "Logotipo clásico de Legacy",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Legacy Logo Tight Shorts NEGRO.png",
@@ -794,6 +839,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Soporte medio para entrenamientos versátiles",
+    "feature2": "Diseño clásico con espalda cruzada",
+    "feature3": "Almohadillas removibles para un ajuste personalizable",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/legacy bra negro.png",
@@ -824,6 +872,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Cintura alta para mayor cobertura y soporte",
+    "feature2": "Tejido sin costuras para una sensación suave",
+    "feature3": "Detalles de contorno que realzan la figura",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts gris.png",
@@ -853,6 +904,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Diseño crop top moderno y funcional",
+    "feature2": "Manga larga con agujeros para los pulgares",
+    "feature3": "Tejido flexible y transpirable",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Crop Top Flex negro.png",
@@ -883,6 +937,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Ajuste 'oversized' para máxima comodidad",
+    "feature2": "Material de algodón suave y transpirable",
+    "feature3": "Ideal para usar sobre tu bra deportivo",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Power Oversized Long Sleeve Top negro.png",
@@ -913,6 +970,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Ajuste cómodo y relajado",
+    "feature2": "Cintura ajustable con cordón",
+    "feature3": "Gráfico audaz para un estilo único",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Strength  Graphic Joggers.png",
@@ -943,6 +1003,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "79% Nylon, 15% Polyester, 6% Elastane",
     "is_compression": true,
+    "feature1": "Tejido sin costuras con patrón 'fleck'",
+    "feature2": "Soporte medio con copas removibles",
+    "feature3": "Cintura elástica para un ajuste seguro",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Sports Bra morado.png",
@@ -973,6 +1036,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "79% Nylon, 15% Polyester, 6% Elastane",
     "is_compression": true,
+    "feature1": "Cintura alta que no se enrolla",
+    "feature2": "Tecnología de absorción de sudor",
+    "feature3": "Patrón 'fleck' único en su clase",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Seamless Shorts morado.png",
@@ -1003,6 +1069,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "88% Polyester, 12% Elastane",
     "is_compression": true,
+    "feature1": "Paneles de malla para ventilación",
+    "feature2": "Soporte ligero para actividades de bajo impacto",
+    "feature3": "Diseño elegante y minimalista",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Mesh Sports Bra negro.png",
@@ -1033,6 +1102,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Detalle fruncido en el frente",
+    "feature2": "Soporte medio y copas removibles",
+    "feature3": "Tejido suave y cómodo",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Ruched Sports Bra negro.png",
@@ -1063,6 +1135,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Diseño de tirantes único en la espalda",
+    "feature2": "Soporte ligero y ajuste cómodo",
+    "feature3": "Perfecto para yoga, pilates o uso diario",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Strap Feature Sports Bra negro.png",
@@ -1093,6 +1168,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
+    "feature1": "Tejido elástico que se mueve contigo",
+    "feature2": "Ajuste que realza la figura",
+    "feature3": "Diseño versátil para gimnasio o calle",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts negro.png",
@@ -1123,6 +1201,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "78% Polyester, 22% Elastane",
     "is_compression": true,
+    "feature1": "Tejido de alto rendimiento 'Elevate'",
+    "feature2": "Cintura alta para un ajuste seguro",
+    "feature3": "Resistente y duradero para cualquier actividad",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Elevate Cycling Shorts negro.png",
@@ -1153,6 +1234,9 @@ export const products: Product[] = [
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Gráfico exclusivo 'Samurai Bushido'",
+    "feature2": "Algodón premium para máxima suavidad",
+    "feature3": "Corte 'oversized' para un estilo urbano",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Premium Tee  samurai bushido.png",
@@ -1182,6 +1266,9 @@ export const products: Product[] = [
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Colaboración oficial Darc Sport x Dragon Ball",
+    "feature2": "Gráfico de alta calidad de Gogeta",
+    "feature3": "Ajuste 'oversized' para comodidad y estilo",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball gogeta.jpeg",
@@ -1211,6 +1298,9 @@ export const products: Product[] = [
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Gráfico 'Through Fire and Storm'",
+    "feature2": "Ajuste 'oversized' para un look relajado",
+    "feature3": "Algodón suave y duradero",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Through Fire And Storm Premium Oversized Tee in Wolf Gray .png",
@@ -1240,6 +1330,9 @@ export const products: Product[] = [
     "brand": "Vanquish",
     "fabric_type": "90% Polyester, 10% Spandex",
     "is_compression": false,
+    "feature1": "Tejido ligero y transpirable",
+    "feature2": "Bolsillos con cremallera para seguridad",
+    "feature3": "Corte atlético para libertad de movimiento",
     "images": [
       {
         "src": "/assets/images/marcas/vanquish/Vanquishunconquerableshortsnegro.png",
@@ -1270,6 +1363,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Gráfico inspirado en mitología",
+    "feature2": "Algodón de alta densidad",
+    "feature3": "Estilo 'vintage' con lavado especial",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4071 - Gods & Heroes Tees.png",
@@ -1308,6 +1404,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Múltiples bolsillos cargo funcionales",
+    "feature2": "Tejido de felpa francesa para máxima comodidad",
+    "feature3": "Ajuste relajado para uso diario",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/2005 - Hella Pocket Sweats morado.png",
@@ -1338,6 +1437,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Colaboración oficial con la serie 'The Boys'",
+    "feature2": "Gráfico de alta calidad y durabilidad",
+    "feature3": "Ajuste perfecto para fans de la serie",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4095 - The Boys® Graphic Tees.png",
@@ -1376,6 +1478,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Corte 'cut-off' para máxima ventilación",
+    "feature2": "Gráfico oficial de 'The Boys®'",
+    "feature3": "Perfecta para entrenamientos intensos",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3005 - The Boys® Cut-Offs.png",
@@ -1414,6 +1519,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "80% Cotton, 20% Polyester",
     "is_compression": false,
+    "feature1": "Colaboración oficial con UFC™",
+    "feature2": "Diseño 'cut-off' con capucha",
+    "feature3": "Ideal para un look urbano y deportivo",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/5003 - UFC™ Cut-Off hoodies ROJO.png",
@@ -1444,6 +1552,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Polyester",
     "is_compression": false,
+    "feature1": "Tejido de jersey transpirable",
+    "feature2": "Logotipos oficiales de UFC™",
+    "feature3": "Corte atlético para un rendimiento óptimo",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4207 - UFC™ Jersey GRIS.png",
@@ -1482,6 +1593,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Gráfico 'Revenge' de alto impacto",
+    "feature2": "Algodón 'heavyweight' para mayor durabilidad",
+    "feature3": "Estilo urbano y moderno",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png",
@@ -1559,6 +1673,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "100% Polyester",
     "is_compression": false,
+    "feature1": "Diseño clásico de jersey de béisbol",
+    "feature2": "Tejido ligero y transpirable",
+    "feature3": "Perfecto para un look casual y deportivo",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3002 GRAND SLAM BASEBALL JERSEYS NEGRO.png",
@@ -1597,6 +1714,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "95% Cotton, 5% Elastane",
     "is_compression": false,
+    "feature1": "Conjunto coordinado de sudadera y pantalón",
+    "feature2": "Tejido suave y elástico",
+    "feature3": "Ideal para días de descanso o uso casual",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/5092 - Effortless Sets NEGRO.png",
@@ -1627,6 +1747,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
+    "feature1": "Ajuste de compresión para soporte",
+    "feature2": "Gráfico digital único",
+    "feature3": "Costuras planas para evitar irritación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/437 Digital Compression Tees Roja.png",
@@ -1665,6 +1788,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
+    "feature1": "Diseñada para artes marciales y 'grappling'",
+    "feature2": "Material ultra resistente a la abrasión",
+    "feature3": "Mantiene los músculos calientes y listos",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.png",
@@ -1742,6 +1868,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "90% Polyester, 10% Spandex",
     "is_compression": true,
+    "feature1": "Máximo nivel de compresión",
+    "feature2": "Ideal para levantamiento de pesas",
+    "feature3": "Ayuda a prevenir lesiones musculares",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/425 - IRON COMPRESSION TEES VERDE.png",
@@ -1778,6 +1907,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "equipo",
     "brand": "YoungLA",
+    "feature1": "Logo icónico de YoungLA",
+    "feature2": "Material de alta durabilidad",
+    "feature3": "Perfecto para llaves o para decorar tu maleta",
     "images": [
       {
         "src": "/assets/images/Accesorios/933 YoungLA Keychains negro.png",
@@ -1805,6 +1937,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "calcetin",
     "brand": "Gymshark",
+    "feature1": "Tejido de algodón suave y transpirable",
+    "feature2": "Soporte en el arco para mayor comodidad",
+    "feature3": "Paquete de 3 pares para mayor conveniencia",
     "images": [
       {
         "src": "/assets/images/Accesorios/Crew Socks 3pk blancos talla s.png",
@@ -1837,6 +1972,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "calcetin",
     "brand": "Gymshark",
+    "feature1": "Tres colores versátiles en un solo paquete",
+    "feature2": "Ajuste cómodo y seguro",
+    "feature3": "Ideal para entrenamiento y uso diario",
     "images": [
       {
         "src": "/assets/images/Accesorios/Crew Socks 3pk negro, blanco, gris.png",
@@ -1866,6 +2004,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Poliéster",
     "is_compression": false,
+    "feature1": "Tejido 'woven' ligero y resistente",
+    "feature2": "Corte 'tapered' moderno",
+    "feature3": "Bolsillos con cremallera para seguridad",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.png",
@@ -1896,6 +2037,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "88% Poliéster, 12% Elastano",
     "is_compression": false,
+    "feature1": "Tejido que absorbe el sudor",
+    "feature2": "Ligera y transpirable",
+    "feature3": "Ideal para capas o para usar sola",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Element Long Sleeve T-Shirt negra y rojo.png",
@@ -1926,6 +2070,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "80% Algodón, 20% Poliéster",
     "is_compression": false,
+    "feature1": "Logo 'Legacy' bordado",
+    "feature2": "Interior de felpa suave",
+    "feature3": "Capucha ajustable con cordón",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.png",
@@ -1956,6 +2103,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Gráfico conmemorativo del Reino Unido",
+    "feature2": "Algodón suave y cómodo",
+    "feature3": "Ajuste regular para uso diario",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Built in the UK T-Shirt azul.png",
@@ -1986,6 +2136,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Gráfico motivacional 'Sets N Reps'",
+    "feature2": "Corte 'oversized' para un look moderno",
+    "feature3": "Perfecta para el gimnasio y la calle",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Sets N Reps T-Shirt verde.png",
@@ -2016,6 +2169,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Bolsillos cargo para mayor utilidad",
+    "feature2": "Tejido de algodón cómodo",
+    "feature3": "Cintura y tobillos elásticos",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.png",
@@ -2046,6 +2202,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "80% Algodón, 20% Poliéster",
     "is_compression": false,
+    "feature1": "Largo de 7 pulgadas para cobertura ideal",
+    "feature2": "Tejido suave de mezcla de algodón",
+    "feature3": "Bolsillos laterales abiertos",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Crest7.png",
@@ -2076,6 +2235,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Gráfico exclusivo 'Lifting Club'",
+    "feature2": "Material de algodón transpirable",
+    "feature3": "Cintura elástica con cordón",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png",
@@ -2106,6 +2268,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Gráfico 'Strength Dept.' en la espalda",
+    "feature2": "Ajuste regular cómodo",
+    "feature3": "100% algodón para suavidad",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Strength Dept Graphic T-Shirt blanca.png",
@@ -2136,6 +2301,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Diseño 'vintage' inspirado en el levantamiento británico",
+    "feature2": "Algodón 'heavyweight' de alta calidad",
+    "feature3": "Perfecta para un look retro en el gimnasio",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/British Lifting Goods Graphic T-Shirt azul.png",
@@ -2172,6 +2340,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "calcetin",
     "brand": "Gymshark",
+    "feature1": "Amortiguación en talón y punta",
+    "feature2": "Tejido que absorbe la humedad",
+    "feature3": "Diseño acanalado para un ajuste seguro",
     "images": [
       {
         "src": "/assets/images/Accesorios/Sets and Reps 3pk Crew.png",
@@ -2199,6 +2370,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "equipo",
     "brand": "Gymshark",
+    "feature1": "Agarre de silicona para máxima adherencia",
+    "feature2": "Acolchado de neopreno para comodidad en la muñeca",
+    "feature3": "Costuras reforzadas para mayor durabilidad",
     "images": [
       {
         "src": "/assets/images/Accesorios/Silicone Lifting Straps negro.png",
@@ -2226,6 +2400,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "equipo",
     "brand": "Gymshark",
+    "feature1": "Diseño mejorado para un agarre superior",
+    "feature2": "Material duradero y resistente",
+    "feature3": "Ajuste seguro y cómodo",
     "images": [
       {
         "src": "/assets/images/Accesorios/Silicone Lifting Straps morado.png",
@@ -2253,6 +2430,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "shaker",
     "brand": "Gymshark",
+    "feature1": "Capacidad de 14oz (400ml)",
+    "feature2": "Bola mezcladora para batidos sin grumos",
+    "feature3": "Libre de BPA y a prueba de fugas",
     "images": [
       {
         "src": "/assets/images/Accesorios/14OZ SHAKER BOTTLE.png",
@@ -2281,6 +2461,9 @@ export const products: Product[] = [
     "category": "accesorio",
     "subcategory": "shaker",
     "brand": "Dragon Pharma",
+    "feature1": "Diseño exclusivo de edición limitada",
+    "feature2": "Construcción robusta y duradera",
+    "feature3": "Tapa a rosca a prueba de derrames",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/TU MARIDO MOISES SHAKER CUP .png",
@@ -2310,6 +2493,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
+    "feature1": "Colaboración oficial con DC Comics",
+    "feature2": "Ajuste de compresión para un look de superhéroe",
+    "feature3": "Material de secado rápido",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
@@ -2348,6 +2534,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "90% Nylon, 10% Elastane",
     "is_compression": true,
+    "feature1": "Diseño híbrido de sudadera y compresión",
+    "feature2": "Capucha para mayor concentración",
+    "feature3": "Tejido flexible para un rango completo de movimiento",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.png",
@@ -2382,6 +2571,9 @@ export const products: Product[] = [
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
+    "feature1": "Colaboración oficial Darc Sport x Dragon Ball",
+    "feature2": "Gráfico de Broly de alta definición",
+    "feature3": "Algodón 'heavyweight' para un look premium",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball broly.jpeg",
@@ -2411,6 +2603,9 @@ export const products: Product[] = [
     "brand": "Monster",
     "benefits": "Energía sin azúcar.",
     "servings_info": "1 lata.",
+    "feature1": "Cero azúcar y cero calorías",
+    "feature2": "Sabor refrescante a cereza negra",
+    "feature3": "Impulso de energía para cualquier momento del día",
     "images": [
       {
         "src": "/assets/images/marcas/monster/monster.png",
@@ -2440,6 +2635,9 @@ export const products: Product[] = [
     "brand": "Bum Energy",
     "benefits": "Aumento de energía y enfoque.",
     "servings_info": "1 lata.",
+    "feature1": "Formulada para energía limpia y sostenida",
+    "feature2": "Sin colorantes artificiales",
+    "feature3": "Dos deliciosos sabores para elegir",
     "images": [
       {
         "src": "/assets/images/marcas/bumenergy/bumlemon.png",
@@ -2480,6 +2678,9 @@ export const products: Product[] = [
     "brand": "RAW",
     "benefits": "Energía explosiva y enfoque mental.",
     "servings_info": "40 servicios.",
+    "feature1": "Fórmula potente para entrenamientos intensos",
+    "feature2": "Mejora la conexión mente-músculo",
+    "feature3": "Edición especial con sabor único",
     "images": [
       {
         "src": "/assets/images/marcas/raw/precarlosb.png",
@@ -2509,6 +2710,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Extrema energía y vascularización.",
     "servings_info": "30 servicios.",
+    "feature1": "Máxima energía y potencia",
+    "feature2": "Aumenta la vascularización y el 'pump'",
+    "feature3": "Fórmula de alta estimulación",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/VENOM INFERNO BRAZO DE 50 LIMÓN.png",
@@ -2538,6 +2742,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Energía y sabor tropical.",
     "servings_info": "30 servicios.",
+    "feature1": "Sabor exótico y refrescante",
+    "feature2": "Potente mezcla de estimulantes",
+    "feature3": "Mejora el enfoque y la resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/Venom Mangonada.png",
@@ -2567,6 +2774,9 @@ export const products: Product[] = [
     "brand": "Dymatize",
     "benefits": "Recuperación muscular rápida, 25g de proteína por servicio.",
     "servings_info": "71 servicios.",
+    "feature1": "25g de proteína hidrolizada y aislada",
+    "feature2": "Absorción ultra rápida para post-entreno",
+    "feature3": "Bajo en carbohidratos y grasas",
     "images": [
       {
         "src": "/assets/images/marcas/suplementos/iso100choco.png",
@@ -2596,6 +2806,9 @@ export const products: Product[] = [
     "brand": "Dymatize",
     "benefits": "Recuperación muscular rápida y sabor increíble.",
     "servings_info": "71 servicios.",
+    "feature1": "Sabor oficial de cereal Cocoa Pebbles",
+    "feature2": "Ideal para batidos y recetas",
+    "feature3": "5.5g de BCAAs por servicio",
     "images": [
       {
         "src": "/assets/images/marcas/suplementos/iso100cocoa.png",
@@ -2625,6 +2838,9 @@ export const products: Product[] = [
     "brand": "Muscletech",
     "benefits": "Aumento de fuerza y volumen muscular.",
     "servings_info": "80 servicios.",
+    "feature1": "100% creatina monohidratada micronizada",
+    "feature2": "Aumenta la fuerza y el rendimiento",
+    "feature3": "Marca de confianza en suplementación",
     "images": [
       {
         "src": "/assets/images/marcas/suplementos/creatinamuscletech.png",
@@ -2654,6 +2870,9 @@ export const products: Product[] = [
     "brand": "RAW",
     "benefits": "Promueve un sueño reparador y profundo.",
     "servings_info": "30 servicios.",
+    "feature1": "Mejora la calidad y duración del sueño",
+    "feature2": "Optimiza la recuperación muscular nocturna",
+    "feature3": "Fórmula no adictiva con ingredientes naturales",
     "images": [
       {
         "src": "/assets/images/marcas/raw/rawsleep.png",
@@ -2683,6 +2902,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Mejora la síntesis de proteínas y la recuperación muscular.",
     "servings_info": "30 servicios.",
+    "feature1": "Contiene los 9 aminoácidos esenciales",
+    "feature2": "Promueve la recuperación muscular",
+    "feature3": "Sabor refrescante a frambuesa y limón",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.png",
@@ -2712,6 +2934,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Reduce el dolor muscular y apoya el sistema inmunológico.",
     "servings_info": "60 servicios.",
+    "feature1": "Reduce el dolor muscular post-entrenamiento",
+    "feature2": "Apoya la salud del sistema digestivo",
+    "feature3": "Fortalece el sistema inmunológico",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/GLUTAMINE 30 SERVS.png",
@@ -2741,6 +2966,9 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Apoyo al sistema inmunológico y bienestar general.",
     "servings_info": "30 servicios.",
+    "feature1": "Mezcla completa de frutas y verduras",
+    "feature2": "Potente dosis de antioxidantes",
+    "feature3": "Apoya la salud digestiva y el sistema inmune",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/GREENS & REDS.png",
@@ -2770,6 +2998,9 @@ export const products: Product[] = [
     "brand": "Darc Sport",
     "fabric_type": "100% Cotton",
     "is_compression": false,
+    "feature1": "Gráfico 'Metal WLVS' de edición limitada",
+    "feature2": "Algodón de alta calidad para mayor comodidad",
+    "feature3": "Capucha amplia y bolsillo canguro",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Metal WLVS ”Pierce”Hoodie.png",
@@ -2799,6 +3030,9 @@ export const products: Product[] = [
     "brand": "Gymshark",
     "fabric_type": "89% Nylon, 11% Elastane",
     "is_compression": true,
+    "feature1": "Efecto de lavado único en cada prenda",
+    "feature2": "Tecnología sin costuras para un ajuste suave",
+    "feature3": "Cintura alta con excelente soporte",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/gainswashed.png",
@@ -2828,6 +3062,9 @@ export const products: Product[] = [
     "brand": "DFYNE",
     "fabric_type": "78% Nylon, 22% Elastane",
     "is_compression": true,
+    "feature1": "Soporte de alto impacto",
+    "feature2": "Tejido que absorbe el sudor",
+    "feature3": "Diseño elegante con espalda cruzada",
     "images": [
       {
         "src": "/assets/images/marcas/dfyne/impactbra.png",
@@ -2868,6 +3105,9 @@ export const products: Product[] = [
     "brand": "DFYNE",
     "fabric_type": "78% Nylon, 22% Elastane",
     "is_compression": true,
+    "feature1": "Cintura alta que no se desliza",
+    "feature2": "Material a prueba de sentadillas",
+    "feature3": "Costuras planas para mayor comodidad",
     "images": [
       {
         "src": "/assets/images/marcas/dfyne/impactshort.png",
@@ -2908,6 +3148,9 @@ export const products: Product[] = [
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
+    "feature1": "Colaboración oficial YoungLA x Batman",
+    "feature2": "Logo icónico de Batman en el pecho",
+    "feature3": "Tejido de compresión que se ajusta como una segunda piel",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/compressbatman.png",
