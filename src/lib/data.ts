@@ -2601,7 +2601,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Monster",
-    "benefits": "Energía sin azúcar.",
+    "benefits": "Energía sin azúcar, cero calorías, sabor intenso a cereza negra.",
     "servings_info": "1 lata.",
     "feature1": "Cero azúcar y cero calorías",
     "feature2": "Sabor refrescante a cereza negra",
@@ -2633,7 +2633,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Bum Energy",
-    "benefits": "Aumento de energía y enfoque.",
+    "benefits": "Aumento de energía y enfoque, sin colorantes artificiales.",
     "servings_info": "1 lata.",
     "feature1": "Formulada para energía limpia y sostenida",
     "feature2": "Sin colorantes artificiales",
@@ -2676,7 +2676,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "RAW",
-    "benefits": "Energía explosiva y enfoque mental.",
+    "benefits": "Energía explosiva, enfoque mental y bombeos musculares intensos.",
     "servings_info": "40 servicios.",
     "feature1": "Fórmula potente para entrenamientos intensos",
     "feature2": "Mejora la conexión mente-músculo",
@@ -2708,7 +2708,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Dragon Pharma",
-    "benefits": "Extrema energía y vascularización.",
+    "benefits": "Extrema energía, vascularización mejorada y máxima potencia.",
     "servings_info": "30 servicios.",
     "feature1": "Máxima energía y potencia",
     "feature2": "Aumenta la vascularización y el 'pump'",
@@ -2740,7 +2740,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Dragon Pharma",
-    "benefits": "Energía y sabor tropical.",
+    "benefits": "Energía intensa, sabor tropical refrescante y enfoque mejorado.",
     "servings_info": "30 servicios.",
     "feature1": "Sabor exótico y refrescante",
     "feature2": "Potente mezcla de estimulantes",
@@ -2772,7 +2772,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dymatize",
-    "benefits": "Recuperación muscular rápida, 25g de proteína por servicio.",
+    "benefits": "Recuperación muscular rápida, 25g de proteína por servicio, bajo en carbohidratos.",
     "servings_info": "71 servicios.",
     "feature1": "25g de proteína hidrolizada y aislada",
     "feature2": "Absorción ultra rápida para post-entreno",
@@ -2804,7 +2804,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dymatize",
-    "benefits": "Recuperación muscular rápida y sabor increíble.",
+    "benefits": "Recuperación muscular rápida, sabor increíble, 5.5g de BCAAs.",
     "servings_info": "71 servicios.",
     "feature1": "Sabor oficial de cereal Cocoa Pebbles",
     "feature2": "Ideal para batidos y recetas",
@@ -2836,7 +2836,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "creatina",
     "brand": "Muscletech",
-    "benefits": "Aumento de fuerza y volumen muscular.",
+    "benefits": "Aumento de fuerza, volumen muscular y recuperación rápida.",
     "servings_info": "80 servicios.",
     "feature1": "100% creatina monohidratada micronizada",
     "feature2": "Aumenta la fuerza y el rendimiento",
@@ -2868,7 +2868,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "RAW",
-    "benefits": "Promueve un sueño reparador y profundo.",
+    "benefits": "Promueve un sueño reparador, optimiza la recuperación y no es adictivo.",
     "servings_info": "30 servicios.",
     "feature1": "Mejora la calidad y duración del sueño",
     "feature2": "Optimiza la recuperación muscular nocturna",
@@ -2900,7 +2900,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "Dragon Pharma",
-    "benefits": "Mejora la síntesis de proteínas y la recuperación muscular.",
+    "benefits": "Mejora la síntesis de proteínas, acelera la recuperación muscular y tiene un gran sabor.",
     "servings_info": "30 servicios.",
     "feature1": "Contiene los 9 aminoácidos esenciales",
     "feature2": "Promueve la recuperación muscular",
@@ -2932,7 +2932,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "Dragon Pharma",
-    "benefits": "Reduce el dolor muscular y apoya el sistema inmunológico.",
+    "benefits": "Reduce el dolor muscular, apoya el sistema inmunológico y mejora la salud digestiva.",
     "servings_info": "60 servicios.",
     "feature1": "Reduce el dolor muscular post-entrenamiento",
     "feature2": "Apoya la salud del sistema digestivo",
@@ -2964,7 +2964,7 @@ export const products: Product[] = [
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dragon Pharma",
-    "benefits": "Apoyo al sistema inmunológico y bienestar general.",
+    "benefits": "Apoyo inmunológico, bienestar general y salud digestiva.",
     "servings_info": "30 servicios.",
     "feature1": "Mezcla completa de frutas y verduras",
     "feature2": "Potente dosis de antioxidantes",
@@ -3137,55 +3137,36 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": 2663,
-    "name": "Compression Batman",
-    "price": "Q.750.00",
-    "availability": "Agotado",
-    "description": "Conviértete en el caballero de la noche del gimnasio con esta playera de compresión de Batman. Oferta especial: antes Q.750.00, ahora Q.595.00.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "88% Polyester, 12% Spandex",
-    "is_compression": true,
-    "feature1": "Colaboración oficial YoungLA x Batman",
-    "feature2": "Logo icónico de Batman en el pecho",
-    "feature3": "Tejido de compresión que se ajusta como una segunda piel",
+    "id": 2664,
+    "name": "Proteina Itholate sabor Napolitano",
+    "price": "Q.550.00",
+    "availability": "Disponible",
+    "description": "Aislado de proteína de suero de leche de la más alta calidad con un delicioso sabor a helado napolitano. Perfecta para una recuperación muscular rápida y limpia.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "proteina",
+    "brand": "RAW",
+    "benefits": "Aislado de proteína de alta pureza para una rápida absorción, bajo en grasas y carbohidratos, delicioso sabor a napolitano.",
+    "servings_info": "25 servicios.",
+    "feature1": "25g de aislado de proteína por servicio",
+    "feature2": "Rápida digestión y absorción",
+    "feature3": "Sabor gourmet a helado napolitano",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/compressbatman.png",
-        "alt": "Batman Compression black",
-        "dataAiHint": "batman shirt black"
+        "src": "/assets/images/marcas/raw/raw-protein-napolitano.png",
+        "alt": "Proteina Itholate sabor Napolitano",
+        "dataAiHint": "protein powder"
       }
     ],
     "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Negra",
-        "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/compressbatman.png",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "S",
-              "stock": 0
-            },
-            {
-              "value": "M",
-              "stock": 0
-            },
-            {
-              "value": "L",
-              "stock": 0
-            }
-          ]
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 2
         }
-      }
-    ]
+      ]
+    }
   }
 ];
 
