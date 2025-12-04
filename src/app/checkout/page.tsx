@@ -46,6 +46,8 @@ export default function CheckoutPage() {
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
 
+  const shippingCost = 35;
+  const orderTotal = total + shippingCost;
   const isCartEmpty = items.length === 0;
 
   const form = useForm<CheckoutFormValues>({
@@ -84,7 +86,7 @@ export default function CheckoutPage() {
     if (isCartEmpty) return;
     setIsLoading(true);
 
-    const orderDetails = { shippingInfo: data, orderItems: items, orderTotal: total };
+    const orderDetails = { shippingInfo: data, orderItems: items, orderTotal: orderTotal };
 
     try {
       const response = await fetch('/api/send-email', {
@@ -286,29 +288,37 @@ export default function CheckoutPage() {
                   </div>
                   ))}
               </div>
-              <div className="mt-6 border-t border-slate-700 pt-4">
-                  <div className="flex justify-between text-lg font-bold mb-6">
-                  <span>Total (productos)</span>
-                  <span>Q{total.toFixed(2)}</span>
+              <div className="mt-6 border-t border-slate-700 pt-4 space-y-2">
+                  <div className="flex justify-between text-base">
+                    <span>Subtotal</span>
+                    <span>Q{total.toFixed(2)}</span>
                   </div>
-                  <div className="mt-6 space-y-4">
-                      <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
-                          <Truck size={32} className="text-red-500 mt-1 flex-shrink-0" />
-                          <div>
-                              <h3 className="font-semibold">Nota sobre el envío</h3>
-                              <p className="text-sm text-gray-400">
-                                  El precio del envío deberá comunicarse con nosotros por Instagram, Facebook o TikTok porque depende de su ubicación se calcula el envío.
-                              </p>
-                          </div>
+                  <div className="flex justify-between text-base">
+                    <span>Envío</span>
+                    <span>Q{shippingCost.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-lg font-bold pt-2 border-t border-slate-600 mt-2">
+                    <span>Total del Pedido</span>
+                    <span>Q{orderTotal.toFixed(2)}</span>
+                  </div>
+              </div>
+              <div className="mt-6 space-y-4">
+                  <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
+                      <Truck size={32} className="text-red-500 mt-1 flex-shrink-0" />
+                      <div>
+                          <h3 className="font-semibold">Nota sobre el envío</h3>
+                          <p className="text-sm text-gray-400">
+                              Su envío tendrá un valor de Q.35 a cualquier parte del país.
+                          </p>
                       </div>
-                      <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
-                          <WalletCards size={32} className="text-red-500 mt-1 flex-shrink-0" />
-                          <div>
-                              <h3 className="font-semibold">Nota sobre el pago</h3>
-                              <p className="text-sm text-gray-400">
-                                  El método de pago principal es contra entrega. Si deseas pagar con depósito, por favor contáctanos en redes sociales con tu número de orden para brindarte los detalles de la cuenta.
-                              </p>
-                          </div>
+                  </div>
+                  <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
+                      <WalletCards size={32} className="text-red-500 mt-1 flex-shrink-0" />
+                      <div>
+                          <h3 className="font-semibold">Nota sobre el pago</h3>
+                          <p className="text-sm text-gray-400">
+                              El método de pago principal es contra entrega. Si deseas pagar con depósito, por favor contáctanos en redes sociales con tu número de orden para brindarte los detalles de la cuenta.
+                          </p>
                       </div>
                   </div>
               </div>
@@ -320,3 +330,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
