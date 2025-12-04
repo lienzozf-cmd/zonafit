@@ -36,7 +36,7 @@ const orderSchema = z.object({
 });
 
 
-function formatItemsToHtml(items: any[], total: number) {
+function formatItemsToHtml(items: any[], productTotal: number, shippingCost: number, grandTotal: number) {
     const itemsHtml = items.map(item => {
         const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`;
         
@@ -71,9 +71,17 @@ function formatItemsToHtml(items: any[], total: number) {
                 ${itemsHtml}
             </tbody>
             <tfoot>
+                <tr>
+                    <td style="padding: 15px 10px 5px;">Subtotal</td>
+                    <td style="padding: 15px 10px 5px; text-align: right;">Q${productTotal.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px 10px;">Envío</td>
+                    <td style="padding: 5px 10px; text-align: right;">Q${shippingCost.toFixed(2)}</td>
+                </tr>
                 <tr style="border-top: 2px solid #000; font-weight: bold;">
                     <td style="padding: 15px 10px 0;">Total del Pedido</td>
-                    <td style="padding: 15px 10px 0; text-align: right;">Q${total.toFixed(2)}</td>
+                    <td style="padding: 15px 10px 0; text-align: right;">Q${grandTotal.toFixed(2)}</td>
                 </tr>
             </tfoot>
         </table>
@@ -114,12 +122,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
   }
 
-  const { shippingInfo, orderItems: clientItems } = validationResult.data;
+  const { shippingInfo, orderItems: clientItems, orderTotal: grandTotal } = validationResult.data;
   
   try {
     const orderId = await getNextOrderId();
+    const shippingCost = 35;
     
-    let serverCalculatedTotal = 0;
+    let serverCalculatedProductTotal = 0;
     const validatedItems = [];
     const attachments = [];
 
@@ -138,7 +147,7 @@ export async function POST(req: NextRequest) {
       
       await updateStock(item.productId, item.option, item.quantity, item.color ?? undefined);
 
-      serverCalculatedTotal += price * item.quantity;
+      serverCalculatedProductTotal += price * item.quantity;
       validatedItems.push({ 
         ...item, 
         price, 
@@ -161,6 +170,13 @@ export async function POST(req: NextRequest) {
     }
     }
 
+    if (Math.abs(grandTotal - (serverCalculatedProductTotal + shippingCost)) > 0.01) {
+        console.warn(`Total mismatch. Client: ${grandTotal}, Server: ${serverCalculatedProductTotal + shippingCost}. Using server total.`);
+    }
+    
+    const finalGrandTotal = serverCalculatedProductTotal + shippingCost;
+
+
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -172,7 +188,7 @@ export async function POST(req: NextRequest) {
     });
     
     const shopName = "ZONA FIT GT";
-    const itemsHtml = formatItemsToHtml(validatedItems, serverCalculatedTotal);
+    const itemsHtml = formatItemsToHtml(validatedItems, serverCalculatedProductTotal, shippingCost, finalGrandTotal);
 
     await transporter.sendMail({
         from: `"${shopName}" <${process.env.EMAIL_USER}>`,
@@ -206,3 +222,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
+
+    
