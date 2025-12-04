@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
   const products = useCartStore((state) => state.products);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
-  const featuredProductIds = [1, 2, 3, 2664, 2661, 2643, 6, 8];
+  const featuredProductIds = [1, 2, 3, 2664, 2662, 2643, 6, 8];
 
   useEffect(() => {
     if (products && products.length > 0) {
