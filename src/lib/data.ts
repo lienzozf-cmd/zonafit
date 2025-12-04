@@ -3138,7 +3138,7 @@ export const products: Product[] = [
   },
   {
     "id": 2664,
-    "name": "Proteina Itholate",
+    "name": "Proteina Itholate 25 Servicios Raw",
     "price": "Q.550.00",
     "availability": "Disponible",
     "description": "Aislado de proteína de suero de leche de la más alta calidad con un delicioso sabor a helado napolitano. Perfecta para una recuperación muscular rápida y limpia.",
@@ -3153,7 +3153,7 @@ export const products: Product[] = [
     "feature3": "Sabor gourmet a helado napolitano",
     "images": [
       {
-        "src": "/assets/images/marcas/raw/raw-protein-napolitano.png",
+        "src": "/assets/images/marcas/raw/proteinanapolitano.png",
         "alt": "Proteina Itholate sabor Napolitano",
         "dataAiHint": "protein powder"
       }
