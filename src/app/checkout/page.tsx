@@ -317,7 +317,7 @@ export default function CheckoutPage() {
                       <div>
                           <h3 className="font-semibold">Nota sobre el pago</h3>
                           <p className="text-sm text-gray-400">
-                          El método de pago principal es PREVIO DEPÓSITO a la siguiente cuenta: Banco Industrial, 00000, Carlos Rabanales. Por favor, envíanos el comprobante a nuestras redes sociales para confirmar tu pedido.
+                          El método de pago principal es PREVIO DEPÓSITO a la siguiente cuenta: Banco Industrial, Monetaria, no de cuenta 5600015308, Carlos Rabanales. Por favor, envíanos el comprobante a nuestras redes sociales para confirmar tu pedido.
                           </p>
                       </div>
                   </div>
