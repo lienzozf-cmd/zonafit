@@ -317,7 +317,7 @@ export default function CheckoutPage() {
                       <div>
                           <h3 className="font-semibold">Nota sobre el pago</h3>
                           <p className="text-sm text-gray-400">
-                              El método de pago principal es contra entrega. Si deseas pagar con depósito, por favor contáctanos en redes sociales con tu número de orden para brindarte los detalles de la cuenta.
+                          El método de pago principal es PREVIO DEPÓSITO a la siguiente cuenta: [Tu Banco, Número de Cuenta, Nombre del Titular]. Por favor, envíanos el comprobante a nuestras redes sociales para confirmar tu pedido.
                           </p>
                       </div>
                   </div>
@@ -331,4 +331,5 @@ export default function CheckoutPage() {
   );
 }
 
+    
     
