@@ -3139,7 +3139,7 @@ export const products: Product[] = [
   {
     "id": 2664,
     "name": "Proteina Itholate 25 Servicios Raw",
-    "price": "Q.550.00",
+    "price": "Q.595.00",
     "availability": "Disponible",
     "description": "Aislado de proteína de suero de leche de la más alta calidad con un delicioso sabor a helado napolitano. Perfecta para una recuperación muscular rápida y limpia.",
     "gender": "unisex",
