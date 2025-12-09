@@ -2504,7 +2504,7 @@ export const products: Product[] = [
         "color": "Roja"
       },
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/supermancharcol.png",
         "alt": "Superman Compression Tee Charcoal",
         "dataAiHint": "superman shirt",
         "color": "Charcoal"
@@ -3202,4 +3202,5 @@ export const products: Product[] = [
 ];
 
     
+
 
