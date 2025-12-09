@@ -572,7 +572,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "Gold",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -2485,7 +2485,7 @@ export const products: Product[] = [
     "id": 2643,
     "name": "Superman Compression Tees",
     "price": "Q.515.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Playera de compresión con el icónico logo de Superman para un rendimiento heroico.",
     "gender": "hombre",
     "category": "ropa",
@@ -2501,26 +2501,57 @@ export const products: Product[] = [
         "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
         "alt": "Superman Compression Tee",
         "dataAiHint": "superman shirt",
-        "option": "M"
+        "color": "Blue"
+      },
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Superman Compression Tee Charcoal",
+        "dataAiHint": "superman shirt",
+        "color": "Charcoal"
       }
     ],
     "options": {
       "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        },
-        {
-          "value": "M",
-          "stock": 0
-        },
-        {
-          "value": "L",
-          "stock": 0
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Blue",
+        "hex": "#0000FF",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 0
+            },
+            {
+              "value": "L",
+              "stock": 0
+            }
+          ]
         }
-      ]
-    }
+      },
+      {
+        "name": "Charcoal",
+        "hex": "#36454F",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "id": 2644,
@@ -2618,7 +2649,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "Único",
-          "stock": 9
+          "stock": 8
         }
       ]
     }
@@ -2853,7 +2884,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -3138,7 +3169,7 @@ export const products: Product[] = [
   },
   {
     "id": 2664,
-    "name": "Proteina Itholate 25 Servicios Raw",
+    "name": "Proteina Itholate",
     "price": "Q.595.00",
     "availability": "Disponible",
     "description": "Aislado de proteína de suero de leche de la más alta calidad con un delicioso sabor a helado napolitano. Perfecta para una recuperación muscular rápida y limpia.",
