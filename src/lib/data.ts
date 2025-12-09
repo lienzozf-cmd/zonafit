@@ -2501,7 +2501,7 @@ export const products: Product[] = [
         "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
         "alt": "Superman Compression Tee",
         "dataAiHint": "superman shirt",
-        "color": "Blue"
+        "color": "Roja"
       },
       {
         "src": "/assets/images/placeholder.png",
@@ -2516,8 +2516,8 @@ export const products: Product[] = [
     },
     "colors": [
       {
-        "name": "Blue",
-        "hex": "#0000FF",
+        "name": "Roja",
+        "hex": "#ff0000",
         "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
         "options": {
           "type": "talla",
@@ -3066,7 +3066,7 @@ export const products: Product[] = [
     "feature3": "Cintura alta con excelente soporte",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/gainswashed.png",
+        "src": "/assets/images/marcas/gymshark/mujer/gains_seamless_washed_shorts_gris.png",
         "alt": "Gains Seamless Washed Shorts",
         "dataAiHint": "woman shorts"
       }
@@ -3202,3 +3202,4 @@ export const products: Product[] = [
 ];
 
     
+
