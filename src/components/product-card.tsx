@@ -74,30 +74,25 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     }
   };
 
-  useEffect(() => {
-    // Update image based on selected color or option
-    if(selectedColor) {
-      const imageForColor = product.images.find(img => img.color === selectedColor.name);
-      setCurrentImage(imageForColor ? imageForColor.src : selectedColor.imageSrc);
-    }
-    const imageForOption = product.images.find(img => img.option === selectedOption?.value && (selectedColor ? img.color === selectedColor.name : true));
-    if (imageForOption) {
-      setCurrentImage(imageForOption.src);
-    }
-  }, [selectedOption, selectedColor, product]);
-
-
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     e.preventDefault();
-    setSelectedOption(prev => (prev?.value === option.value ? null : option));
+    setSelectedOption(prev => {
+        const newOption = prev?.value === option.value ? null : option;
+        const imageForOption = product.images.find(img => img.option === newOption?.value && (selectedColor ? img.color === selectedColor.name : true));
+        if (imageForOption) {
+            setCurrentImage(imageForOption.src);
+        }
+        return newOption;
+    });
   };
 
   const handleColorHover = (color: ProductColor) => {
     const isColorSoldOut = color.options.values.every(v => v.stock === 0);
     if (isColorSoldOut) return;
-
-    setCurrentImage(color.imageSrc);
+  
+    const imageForColor = product.images.find(img => img.color === color.name);
+    setCurrentImage(imageForColor ? imageForColor.src : color.imageSrc);
     setSelectedColor(color);
   };
 

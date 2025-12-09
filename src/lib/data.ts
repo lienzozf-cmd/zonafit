@@ -2540,7 +2540,7 @@ export const products: Product[] = [
       {
         "name": "Charcoal",
         "hex": "#36454F",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/supermancharcol.png",
         "options": {
           "type": "talla",
           "values": [
