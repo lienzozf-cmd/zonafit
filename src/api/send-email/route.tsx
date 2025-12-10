@@ -3,7 +3,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { products } from '@/lib/data';
 import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
@@ -122,38 +121,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
   }
 
-  const { shippingInfo, orderItems: clientItems, orderTotal: grandTotal } = validationResult.data;
+  const { shippingInfo, orderItems, orderTotal } = validationResult.data;
   
   try {
     const orderId = await getNextOrderId();
     const shippingCost = 35;
     
-    let serverCalculatedProductTotal = 0;
-    const validatedItems = [];
     const attachments = [];
 
-    for (const item of clientItems) {
-      const product = products.find(p => p.id === item.productId);
-
-      if (!product) {
-        throw new Error(`Producto no encontrado con ID: ${item.productId}`);
-      }
-      
-      const price = parseFloat(product.price.replace(/[^\d.]/g, ''));
-      
-      if (price !== item.price) {
-           console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
-      }
-      
+    for (const item of orderItems) {
       await updateStock(item.productId, item.option, item.quantity, item.color ?? undefined);
-
-      serverCalculatedProductTotal += price * item.quantity;
-      validatedItems.push({ 
-        ...item, 
-        price, 
-        name: item.name, 
-        subtotal: (price * item.quantity).toFixed(2),
-      });
 
       if (item.image) {
         const imagePath = path.join(process.cwd(), 'public', item.image);
@@ -169,13 +146,8 @@ export async function POST(req: NextRequest) {
         }
     }
     }
-
-    if (Math.abs(grandTotal - (serverCalculatedProductTotal + shippingCost)) > 0.01) {
-        console.warn(`Total mismatch. Client: ${grandTotal}, Server: ${serverCalculatedProductTotal + shippingCost}. Using server total.`);
-    }
     
-    const finalGrandTotal = serverCalculatedProductTotal + shippingCost;
-
+    const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -188,7 +160,7 @@ export async function POST(req: NextRequest) {
     });
     
     const shopName = "ZONA FIT GT";
-    const itemsHtml = formatItemsToHtml(validatedItems, serverCalculatedProductTotal, shippingCost, finalGrandTotal);
+    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, orderTotal);
 
     await transporter.sendMail({
         from: `"${shopName}" <${process.env.EMAIL_USER}>`,
@@ -222,5 +194,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
-
-    
