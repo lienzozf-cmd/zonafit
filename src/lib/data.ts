@@ -3198,10 +3198,91 @@ export const products: Product[] = [
         }
       ]
     }
+  },
+  {
+    "id": 2665,
+    "name": "Warrior X Compression Tees",
+    "price": "Q.485.00",
+    "availability": "Disponible",
+    "description": "Lleva tu entrenamiento al siguiente nivel con la Warrior X. Un diseño agresivo y una compresión superior para un rendimiento de élite.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "90% Nylon, 10% Elastane",
+    "is_compression": true,
+    "feature1": "Diseño exclusivo Warrior X",
+    "feature2": "Compresión mejorada para soporte y recuperación",
+    "feature3": "Tejido resistente y transpirable",
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/warriorx-negra-roja.png",
+        "alt": "Warrior X Negra/Roja",
+        "dataAiHint": "compression shirt",
+        "color": "Negra/Roja"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/warriorx-negra-azul.png",
+        "alt": "Warrior X Negra/Azul",
+        "dataAiHint": "compression shirt",
+        "color": "Negra/Azul"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negra/Roja",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorx-negra-roja.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 0
+            },
+            {
+              "value": "M",
+              "stock": 0
+            },
+            {
+              "value": "L",
+              "stock": 0
+            }
+          ]
+        }
+      },
+      {
+        "name": "Negra/Azul",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorx-negra-azul.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 0
+            },
+            {
+              "value": "L",
+              "stock": 0
+            }
+          ]
+        }
+      }
+    ]
   }
 ];
 
     
+
 
 
 
