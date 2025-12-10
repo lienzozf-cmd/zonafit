@@ -125,7 +125,7 @@ const ProductDetailPage = () => {
     }
   
     const priceString = product.price || '0';
-    const priceAsNumber = parseFloat(priceString.replace(/[^\d.]/g, ''));
+    const priceAsNumber = parseFloat(priceString.replace('Q.', ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption!.value}` : `${product.id}-default-${selectedOption!.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
   
