@@ -2517,7 +2517,7 @@ export const products: Product[] = [
     "colors": [
       {
         "name": "Roja",
-        "hex": "#FF0000",
+        "hex": "#ff0000",
         "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
         "options": {
           "type": "talla",
@@ -3172,7 +3172,7 @@ export const products: Product[] = [
     "name": "Proteina Itholate",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Aislado de proteína de suero de leche de la más alta calidad con un delicioso sabor a helado napolitano. Perfecta para una recuperación muscular rápida y limpia.",
+    "description": "Aislado de proteína de suero de leche de la más alta calidad. Perfecta para una recuperación muscular rápida y limpia.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
@@ -3205,5 +3205,3 @@ export const products: Product[] = [
 
 
 
-
-    
