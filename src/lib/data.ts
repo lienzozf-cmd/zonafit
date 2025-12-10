@@ -3216,13 +3216,13 @@ export const products: Product[] = [
     "feature3": "Tejido resistente y transpirable",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/warriorx-negra-roja.png",
+        "src": "/assets/images/marcas/youngla/hombre/warrioxred.png",
         "alt": "Warrior X Negra/Roja",
         "dataAiHint": "compression shirt",
         "color": "Negra/Roja"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/warriorx-negra-azul.png",
+        "src": "/assets/images/marcas/youngla/hombre/warrioxblueb.png",
         "alt": "Warrior X Negra/Azul",
         "dataAiHint": "compression shirt",
         "color": "Negra/Azul"
@@ -3236,7 +3236,7 @@ export const products: Product[] = [
       {
         "name": "Negra/Roja",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorx-negra-roja.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warrioxred.png",
         "options": {
           "type": "talla",
           "values": [
@@ -3258,7 +3258,7 @@ export const products: Product[] = [
       {
         "name": "Negra/Azul",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorx-negra-azul.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warrioxblueb.png",
         "options": {
           "type": "talla",
           "values": [
@@ -3282,6 +3282,7 @@ export const products: Product[] = [
 ];
 
     
+
 
 
 
