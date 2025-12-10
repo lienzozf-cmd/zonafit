@@ -198,7 +198,10 @@ const ProductDetailPage = () => {
           <div className="flex flex-col">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.name}</h1>
             {selectedColor && <p className="text-xl text-gray-400 mb-2">{selectedColor.name}</p>}
-            <p className="text-2xl text-accent font-semibold mb-4" style={{color: 'hsl(var(--accent))'}}>{product.price}</p>
+            <div className="flex items-baseline gap-4 mb-4">
+              {product.originalPrice && <p className="text-xl text-gray-500 line-through">{product.originalPrice}</p>}
+              <p className="text-3xl text-accent font-semibold" style={{color: 'hsl(var(--accent))'}}>{product.price}</p>
+            </div>
 
             <div className="prose prose-invert max-w-none mb-6">
               <p>{product.description}</p>

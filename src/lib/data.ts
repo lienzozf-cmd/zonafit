@@ -122,6 +122,7 @@ export type Product = {
   id: number;
   name: string;
   price: string;
+  originalPrice?: string;
   availability: string;
   images: { src: string; alt: string; dataAiHint: string; option?: string; color?: string; }[];
   options: { 
@@ -149,7 +150,8 @@ export const products: Product[] = [
   {
     "id": 1,
     "name": "Superhero Compression Tees",
-    "price": "Q.435.00",
+    "price": "Q.391.50",
+    "originalPrice": "Q.435.00",
     "availability": "Agotado",
     "description": "Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.",
     "gender": "hombre",
@@ -229,7 +231,8 @@ export const products: Product[] = [
   {
     "id": 2,
     "name": "Warrior Compression Tees",
-    "price": "Q.450.00",
+    "price": "Q.405.00",
+    "originalPrice": "Q.450.00",
     "availability": "Disponible",
     "description": "Desata al guerrero que llevas dentro. Esta playera de compresión ofrece un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.",
     "gender": "hombre",
@@ -337,7 +340,8 @@ export const products: Product[] = [
   {
     "id": 3,
     "name": "ONYX 5.0 SEAMLESS-T SHIRT",
-    "price": "Q.675.00",
+    "price": "Q.607.50",
+    "originalPrice": "Q.675.00",
     "availability": "Agotado",
     "description": "Experimenta la tecnología sin costuras con la Onyx 5.0. Diseñada para un máximo confort y un rendimiento sin restricciones, esta camiseta es perfecta para cualquier tipo de entrenamiento.",
     "gender": "hombre",
@@ -445,7 +449,8 @@ export const products: Product[] = [
   {
     "id": 4,
     "name": "Power T-Shirt Black and Red",
-    "price": "Q.450.00",
+    "price": "Q.405.00",
+    "originalPrice": "Q.450.00",
     "availability": "Agotado",
     "description": "Potencia y estilo se unen en esta T-Shirt. Con un ajuste atlético y un diseño audaz en negro y rojo, es la prenda perfecta tanto para dentro como para fuera del gimnasio.",
     "gender": "hombre",
@@ -497,7 +502,8 @@ export const products: Product[] = [
   {
     "id": 5,
     "name": "Vital Seamless Crop Top Green",
-    "price": "Q.450.00",
+    "price": "Q.405.00",
+    "originalPrice": "Q.450.00",
     "availability": "Agotado",
     "description": "El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.",
     "gender": "mujer",
@@ -549,7 +555,8 @@ export const products: Product[] = [
   {
     "id": 6,
     "name": "Trident Pendant - Gold 14K SS \"22.5\"",
-    "price": "Q.475.00",
+    "price": "Q.427.50",
+    "originalPrice": "Q.475.00",
     "availability": "Disponible",
     "description": "Eleva tu estilo con este colgante exclusivo de RGMNT. Hecho con materiales de primera calidad para un look audaz y duradero.",
     "gender": "unisex",
@@ -580,7 +587,8 @@ export const products: Product[] = [
   {
     "id": 8,
     "name": "Creatina Monohidratada Dragon Pharma 60 serv",
-    "price": "Q.345.00",
+    "price": "Q.310.50",
+    "originalPrice": "Q.345.00",
     "availability": "Agotado",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.",
     "gender": "unisex",
@@ -612,7 +620,8 @@ export const products: Product[] = [
   {
     "id": 9,
     "name": "Creatina Monohidratada Dragon Pharma 200 serv",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Agotado",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio en formato grande.",
     "gender": "unisex",
@@ -644,7 +653,8 @@ export const products: Product[] = [
   {
     "id": 1800,
     "name": "Proteína whey Dragon Pharma",
-    "price": "Q.500.00",
+    "price": "Q.450.00",
+    "originalPrice": "Q.500.00",
     "availability": "Agotado",
     "description": "Proteína de suero de leche de alta calidad, perfecta para la recuperación post-entrenamiento.",
     "gender": "unisex",
@@ -677,7 +687,8 @@ export const products: Product[] = [
   {
     "id": 2301,
     "name": "Minimal Rope Chain - Gold 14K SS \"22\"",
-    "price": "Q.295.00",
+    "price": "Q.265.50",
+    "originalPrice": "Q.295.00",
     "availability": "Disponible",
     "description": "Cadena de cuerda minimalista en oro de 14K. Un toque de elegancia para cualquier ocasión.",
     "gender": "unisex",
@@ -707,7 +718,8 @@ export const products: Product[] = [
   {
     "id": 2302,
     "name": "Minimal Rope Bracelet Gold -14K Gold SS \"8\"",
-    "price": "Q.255.00",
+    "price": "Q.229.50",
+    "originalPrice": "Q.255.00",
     "availability": "Disponible",
     "description": "Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.",
     "gender": "unisex",
@@ -737,7 +749,8 @@ export const products: Product[] = [
   {
     "id": 2303,
     "name": "Minimal Rope Chain - SS Silver \"20\"",
-    "price": "Q.285.00",
+    "price": "Q.256.50",
+    "originalPrice": "Q.285.00",
     "availability": "Disponible",
     "description": "Cadena de cuerda minimalista en plata de ley. Un accesorio versátil y moderno.",
     "gender": "unisex",
@@ -767,7 +780,8 @@ export const products: Product[] = [
   {
     "id": 2304,
     "name": "Minimal Rope Bracelet - SS Silver \"8\"",
-    "price": "Q.235.00",
+    "price": "Q.211.50",
+    "originalPrice": "Q.235.00",
     "availability": "Disponible",
     "description": "Pulsera de cuerda minimalista en plata de ley. El complemento perfecto para tu look diario.",
     "gender": "unisex",
@@ -797,7 +811,8 @@ export const products: Product[] = [
   {
     "id": 2519,
     "name": "Legacy Logo Tight Shorts",
-    "price": "Q.240.00",
+    "price": "Q.216.00",
+    "originalPrice": "Q.240.00",
     "availability": "Disponible",
     "description": "Shorts ajustados con el logo Legacy para un look clásico y atlético.",
     "gender": "mujer",
@@ -830,7 +845,8 @@ export const products: Product[] = [
   {
     "id": 2520,
     "name": "Legacy Bra",
-    "price": "Q.245.00",
+    "price": "Q.220.50",
+    "originalPrice": "Q.245.00",
     "availability": "Disponible",
     "description": "Bra deportivo Legacy para un soporte y estilo inigualables.",
     "gender": "mujer",
@@ -863,7 +879,8 @@ export const products: Product[] = [
   {
     "id": 2523,
     "name": "Flex Shorts",
-    "price": "Q.345.00",
+    "price": "Q.310.50",
+    "originalPrice": "Q.345.00",
     "availability": "Disponible",
     "description": "Shorts Flex para máxima flexibilidad y comodidad.",
     "gender": "mujer",
@@ -895,7 +912,8 @@ export const products: Product[] = [
   {
     "id": 2524,
     "name": "Crop Top Flex",
-    "price": "Q.336.00",
+    "price": "Q.302.40",
+    "originalPrice": "Q.336.00",
     "availability": "Disponible",
     "description": "Crop top de la línea Flex para un ajuste perfecto y cómodo.",
     "gender": "mujer",
@@ -928,7 +946,8 @@ export const products: Product[] = [
   {
     "id": 2525,
     "name": "Power Oversized Long Sleeve Top",
-    "price": "Q.280.00",
+    "price": "Q.252.00",
+    "originalPrice": "Q.280.00",
     "availability": "Disponible",
     "description": "Top de manga larga oversized para un look potente y relajado.",
     "gender": "mujer",
@@ -961,7 +980,8 @@ export const products: Product[] = [
   {
     "id": 2527,
     "name": "Strength Graphic Joggers",
-    "price": "Q.345.00",
+    "price": "Q.310.50",
+    "originalPrice": "Q.345.00",
     "availability": "Disponible",
     "description": "Joggers con gráfico del departamento de fuerza para un look completo.",
     "gender": "mujer",
@@ -994,7 +1014,8 @@ export const products: Product[] = [
   {
     "id": 2535,
     "name": "Adapt Fleck Sports Bra",
-    "price": "Q.446.00",
+    "price": "Q.401.40",
+    "originalPrice": "Q.446.00",
     "availability": "Disponible",
     "description": "Bra deportivo de la línea Adapt Fleck para un ajuste y soporte perfectos.",
     "gender": "mujer",
@@ -1027,7 +1048,8 @@ export const products: Product[] = [
   {
     "id": 2536,
     "name": "Adapt Fleck Seamless Shorts",
-    "price": "Q.400.00",
+    "price": "Q.360.00",
+    "originalPrice": "Q.400.00",
     "availability": "Disponible",
     "description": "Shorts sin costuras de la línea Adapt Fleck para un confort inigualable.",
     "gender": "mujer",
@@ -1060,7 +1082,8 @@ export const products: Product[] = [
   {
     "id": 2539,
     "name": "Mesh Sports Bra",
-    "price": "Q.266.00",
+    "price": "Q.239.40",
+    "originalPrice": "Q.266.00",
     "availability": "Disponible",
     "description": "Bra deportivo con detalles de malla para mayor transpirabilidad.",
     "gender": "mujer",
@@ -1093,7 +1116,8 @@ export const products: Product[] = [
   {
     "id": 2541,
     "name": "Ruched Sports Bra",
-    "price": "Q.291.00",
+    "price": "Q.261.90",
+    "originalPrice": "Q.291.00",
     "availability": "Disponible",
     "description": "Bra deportivo con diseño fruncido para un estilo único.",
     "gender": "mujer",
@@ -1126,7 +1150,8 @@ export const products: Product[] = [
   {
     "id": 2542,
     "name": "Strap Feature Sports Bra",
-    "price": "Q.285.00",
+    "price": "Q.256.50",
+    "originalPrice": "Q.285.00",
     "availability": "Disponible",
     "description": "Bra deportivo con tirantes decorativos para un look moderno.",
     "gender": "mujer",
@@ -1159,7 +1184,8 @@ export const products: Product[] = [
   {
     "id": 2543,
     "name": "Flex Shorts",
-    "price": "Q.270.00",
+    "price": "Q.243.00",
+    "originalPrice": "Q.270.00",
     "availability": "Disponible",
     "description": "Shorts Flex para máxima flexibilidad y comodidad.",
     "gender": "mujer",
@@ -1192,7 +1218,8 @@ export const products: Product[] = [
   {
     "id": 2544,
     "name": "Elevate Cycling Shorts",
-    "price": "Q.296.00",
+    "price": "Q.266.40",
+    "originalPrice": "Q.296.00",
     "availability": "Disponible",
     "description": "Shorts de ciclismo de la línea Elevate para un rendimiento superior.",
     "gender": "mujer",
@@ -1225,7 +1252,8 @@ export const products: Product[] = [
   {
     "id": 2602,
     "name": "Premium Tee SAMURAI bushido",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Samurai Bushido.",
     "gender": "hombre",
@@ -1257,7 +1285,8 @@ export const products: Product[] = [
   {
     "id": 2603,
     "name": "Premium Oversized Gogeta",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño clásico de Dragon Ball.",
     "gender": "hombre",
@@ -1289,7 +1318,8 @@ export const products: Product[] = [
   {
     "id": 2604,
     "name": "Through Fire And Storm \"Premium\" Oversized Tee in Wolf Gray",
-    "price": "Q.435.00",
+    "price": "Q.391.50",
+    "originalPrice": "Q.435.00",
     "availability": "Disponible",
     "description": "Playera básica de Darc Sport, ideal para cualquier entrenamiento.",
     "gender": "hombre",
@@ -1321,7 +1351,8 @@ export const products: Product[] = [
   {
     "id": 2605,
     "name": "Vanquish Unconquerable Shorts",
-    "price": "Q.345.00",
+    "price": "Q.310.50",
+    "originalPrice": "Q.345.00",
     "availability": "Disponible",
     "description": "Shorts de alto rendimiento para entrenamientos intensos.",
     "gender": "hombre",
@@ -1354,7 +1385,8 @@ export const products: Product[] = [
   {
     "id": 2608,
     "name": "4071 - Gods & Heroes Tees",
-    "price": "Q.435.00",
+    "price": "Q.391.50",
+    "originalPrice": "Q.435.00",
     "availability": "Disponible",
     "description": "Playera de la colección Dioses y Héroes.",
     "gender": "hombre",
@@ -1395,7 +1427,8 @@ export const products: Product[] = [
   {
     "id": 2609,
     "name": "Hella Pocket Sweats",
-    "price": "Q.600.00",
+    "price": "Q.540.00",
+    "originalPrice": "Q.600.00",
     "availability": "Agotado",
     "description": "Pantalones de chándal con múltiples bolsillos, funcionales y con estilo.",
     "gender": "hombre",
@@ -1428,7 +1461,8 @@ export const products: Product[] = [
   {
     "id": 2610,
     "name": "The Boys Graphic Tees",
-    "price": "Q.450.00",
+    "price": "Q.405.00",
+    "originalPrice": "Q.450.00",
     "availability": "Disponible",
     "description": "Playera con gráfico de la serie \"The Boys\".",
     "gender": "hombre",
@@ -1469,7 +1503,8 @@ export const products: Product[] = [
   {
     "id": 2611,
     "name": "The Boys® Cut-Offs",
-    "price": "Q.450.00",
+    "price": "Q.405.00",
+    "originalPrice": "Q.450.00",
     "availability": "Agotado",
     "description": "Playera sin mangas con gráfico oficial de la serie \"The Boys®\".",
     "gender": "hombre",
@@ -1510,7 +1545,8 @@ export const products: Product[] = [
   {
     "id": 2612,
     "name": "UFC™ Cut-Off hoodies",
-    "price": "Q.495.00",
+    "price": "Q.445.50",
+    "originalPrice": "Q.495.00",
     "availability": "Disponible",
     "description": "Sudadera sin mangas con licencia oficial de UFC™.",
     "gender": "hombre",
@@ -1543,7 +1579,8 @@ export const products: Product[] = [
   {
     "id": 2613,
     "name": "UFC™ Jersey",
-    "price": "Q.445.00",
+    "price": "Q.400.50",
+    "originalPrice": "Q.445.00",
     "availability": "Disponible",
     "description": "Jersey con licencia oficial de UFC™.",
     "gender": "hombre",
@@ -1584,7 +1621,8 @@ export const products: Product[] = [
   {
     "id": 2614,
     "name": "Revenge Tees",
-    "price": "Q.395.00",
+    "price": "Q.355.50",
+    "originalPrice": "Q.395.00",
     "availability": "Disponible",
     "description": "Playera de la colección \"Revenge\".",
     "gender": "hombre",
@@ -1664,7 +1702,8 @@ export const products: Product[] = [
   {
     "id": 2615,
     "name": "GRAND SLAM BASEBALL JERSEYS",
-    "price": "Q.495.00",
+    "price": "Q.445.50",
+    "originalPrice": "Q.495.00",
     "availability": "Disponible",
     "description": "Jersey de béisbol de la colección \"Grand Slam\".",
     "gender": "hombre",
@@ -1705,7 +1744,8 @@ export const products: Product[] = [
   {
     "id": 2616,
     "name": "Effortless Sets",
-    "price": "Q.370.00",
+    "price": "Q.333.00",
+    "originalPrice": "Q.370.00",
     "availability": "Disponible",
     "description": "Conjunto \"Effortless\" para un look cómodo y coordinado.",
     "gender": "hombre",
@@ -1738,7 +1778,8 @@ export const products: Product[] = [
   {
     "id": 2617,
     "name": "Digital Compression Tees",
-    "price": "Q.325.00",
+    "price": "Q.292.50",
+    "originalPrice": "Q.325.00",
     "availability": "Disponible",
     "description": "Playera de compresión con un diseño digital moderno.",
     "gender": "hombre",
@@ -1779,7 +1820,8 @@ export const products: Product[] = [
   {
     "id": 2618,
     "name": "Combat Compression",
-    "price": "Q.315.00",
+    "price": "Q.283.50",
+    "originalPrice": "Q.315.00",
     "availability": "Disponible",
     "description": "Ropa de compresión para combate, diseñada para el máximo rendimiento.",
     "gender": "hombre",
@@ -1859,7 +1901,8 @@ export const products: Product[] = [
   {
     "id": 2619,
     "name": "Iron Compression",
-    "price": "Q.375.00",
+    "price": "Q.337.50",
+    "originalPrice": "Q.375.00",
     "availability": "Disponible",
     "description": "Compresión de hierro para un soporte inquebrantable.",
     "gender": "hombre",
@@ -1900,7 +1943,8 @@ export const products: Product[] = [
   {
     "id": 2620,
     "name": "YoungLA Keychains",
-    "price": "Q.130.00",
+    "price": "Q.117.00",
+    "originalPrice": "Q.130.00",
     "availability": "Disponible",
     "description": "Llavero oficial de YoungLA para llevar contigo.",
     "gender": "unisex",
@@ -1930,7 +1974,8 @@ export const products: Product[] = [
   {
     "id": 2626,
     "name": "Crew Socks 3pk (Blancos)",
-    "price": "Q.236.00",
+    "price": "Q.212.40",
+    "originalPrice": "Q.236.00",
     "availability": "Disponible",
     "description": "Paquete de 3 calcetines blancos, un básico indispensable.",
     "gender": "unisex",
@@ -1965,7 +2010,8 @@ export const products: Product[] = [
   {
     "id": 2627,
     "name": "Crew Socks 3pk (Mixto)",
-    "price": "Q.235.00",
+    "price": "Q.211.50",
+    "originalPrice": "Q.235.00",
     "availability": "Disponible",
     "description": "Paquete de 3 calcetines en colores mixtos (blanco, gris, negro).",
     "gender": "unisex",
@@ -1995,7 +2041,8 @@ export const products: Product[] = [
   {
     "id": 2628,
     "name": "Ease Woven Joggers",
-    "price": "Q.375.00",
+    "price": "Q.337.50",
+    "originalPrice": "Q.375.00",
     "availability": "Disponible",
     "description": "Joggers tejidos para una comodidad excepcional.",
     "gender": "hombre",
@@ -2028,7 +2075,8 @@ export const products: Product[] = [
   {
     "id": 2629,
     "name": "Element Long Sleeve T-Shirt",
-    "price": "Q.340.00",
+    "price": "Q.306.00",
+    "originalPrice": "Q.340.00",
     "availability": "Disponible",
     "description": "Playera de manga larga, ligera y cómoda.",
     "gender": "hombre",
@@ -2061,7 +2109,8 @@ export const products: Product[] = [
   {
     "id": 2630,
     "name": "Legacy Hoodie",
-    "price": "Q.280.00",
+    "price": "Q.252.00",
+    "originalPrice": "Q.280.00",
     "availability": "Disponible",
     "description": "Sudadera con capucha, un clásico de Gymshark.",
     "gender": "hombre",
@@ -2094,7 +2143,8 @@ export const products: Product[] = [
   {
     "id": 2631,
     "name": "Built in the UK T-Shirt",
-    "price": "Q.240.00",
+    "price": "Q.216.00",
+    "originalPrice": "Q.240.00",
     "availability": "Disponible",
     "description": "Playera conmemorativa \"Built in the UK\".",
     "gender": "hombre",
@@ -2127,7 +2177,8 @@ export const products: Product[] = [
   {
     "id": 2632,
     "name": "Sets N Reps T-Shirt",
-    "price": "Q.380.00",
+    "price": "Q.342.00",
+    "originalPrice": "Q.380.00",
     "availability": "Disponible",
     "description": "Playera ideal para tus entrenamientos de series y repeticiones.",
     "gender": "hombre",
@@ -2160,7 +2211,8 @@ export const products: Product[] = [
   {
     "id": 2633,
     "name": "Rest Day Essentials Cargo Joggers",
-    "price": "Q.411.00",
+    "price": "Q.369.90",
+    "originalPrice": "Q.411.00",
     "availability": "Disponible",
     "description": "Joggers cargo, esenciales para tus días de descanso.",
     "gender": "hombre",
@@ -2193,7 +2245,8 @@ export const products: Product[] = [
   {
     "id": 2634,
     "name": "Crest 7\" Shorts",
-    "price": "Q.296.00",
+    "price": "Q.266.40",
+    "originalPrice": "Q.296.00",
     "availability": "Disponible",
     "description": "Shorts de 7 pulgadas de la línea Crest.",
     "gender": "hombre",
@@ -2226,7 +2279,8 @@ export const products: Product[] = [
   {
     "id": 2635,
     "name": "Lifting Club Apparel Graphic Shorts",
-    "price": "Q.245.00",
+    "price": "Q.220.50",
+    "originalPrice": "Q.245.00",
     "availability": "Disponible",
     "description": "Shorts con gráfico del \"Lifting Club Apparel\".",
     "gender": "hombre",
@@ -2259,7 +2313,8 @@ export const products: Product[] = [
   {
     "id": 2636,
     "name": "Strength Dept Graphic T-Shirt",
-    "price": "Q.255.00",
+    "price": "Q.229.50",
+    "originalPrice": "Q.255.00",
     "availability": "Disponible",
     "description": "Playera del departamento de fuerza.",
     "gender": "hombre",
@@ -2292,7 +2347,8 @@ export const products: Product[] = [
   {
     "id": 2637,
     "name": "British Lifting Goods Graphic T-Shirt",
-    "price": "Q.285.00",
+    "price": "Q.256.50",
+    "originalPrice": "Q.285.00",
     "availability": "Agotado",
     "description": "Playera con gráfico de \"British Lifting Goods\".",
     "gender": "hombre",
@@ -2333,7 +2389,8 @@ export const products: Product[] = [
   {
     "id": 2638,
     "name": "Sets and Reps 3pk Crew Socks",
-    "price": "Q.251.00",
+    "price": "Q.225.90",
+    "originalPrice": "Q.251.00",
     "availability": "Disponible",
     "description": "Calcetines para tus sets y reps, en un conveniente paquete de 3.",
     "gender": "unisex",
@@ -2363,7 +2420,8 @@ export const products: Product[] = [
   {
     "id": 2639,
     "name": "SILICONE GRIP LIFTING STRAPS",
-    "price": "Q.275.00",
+    "price": "Q.247.50",
+    "originalPrice": "Q.275.00",
     "availability": "Disponible",
     "description": "Straps de levantamiento con agarre de silicona para mayor seguridad.",
     "gender": "unisex",
@@ -2393,7 +2451,8 @@ export const products: Product[] = [
   {
     "id": 2640,
     "name": "Redeveloped Silicone Lifting Straps",
-    "price": "Q.295.00",
+    "price": "Q.265.50",
+    "originalPrice": "Q.295.00",
     "availability": "Disponible",
     "description": "Straps de levantamiento con agarre de silicona para mayor seguridad.",
     "gender": "unisex",
@@ -2423,7 +2482,8 @@ export const products: Product[] = [
   {
     "id": 2641,
     "name": "14OZ SHAKER BOTTLE",
-    "price": "Q.226.00",
+    "price": "Q.203.40",
+    "originalPrice": "Q.226.00",
     "availability": "Disponible",
     "description": "Shaker de 14oz para mezclar tus suplementos.",
     "gender": "unisex",
@@ -2454,7 +2514,8 @@ export const products: Product[] = [
   {
     "id": 2642,
     "name": "TU MARIDO MOISES SHAKER CUP",
-    "price": "Q.170.00",
+    "price": "Q.153.00",
+    "originalPrice": "Q.170.00",
     "availability": "Disponible",
     "description": "Shaker exclusivo \"tu marido moises\" de Dragon Pharma.",
     "gender": "unisex",
@@ -2484,7 +2545,8 @@ export const products: Product[] = [
   {
     "id": 2643,
     "name": "Superman Compression Tees",
-    "price": "Q.515.00",
+    "price": "Q.463.50",
+    "originalPrice": "Q.515.00",
     "availability": "Disponible",
     "description": "Playera de compresión con el icónico logo de Superman para un rendimiento heroico.",
     "gender": "hombre",
@@ -2556,7 +2618,8 @@ export const products: Product[] = [
   {
     "id": 2644,
     "name": "Warrior Compression Hoodies",
-    "price": "Q.480.00",
+    "price": "Q.432.00",
+    "originalPrice": "Q.480.00",
     "availability": "Disponible",
     "description": "Sudadera con capucha de compresión para un look de guerrero y un rendimiento superior.",
     "gender": "hombre",
@@ -2593,7 +2656,8 @@ export const products: Product[] = [
   {
     "id": 2645,
     "name": "Premium Oversized Broly",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera de la colección Dioses y Héroes, ahora en un nuevo color.",
     "gender": "hombre",
@@ -2625,7 +2689,8 @@ export const products: Product[] = [
   {
     "id": 2647,
     "name": "Monster Ultra Black",
-    "price": "Q.33.00",
+    "price": "Q.29.70",
+    "originalPrice": "Q.33.00",
     "availability": "Disponible",
     "description": "Bebida energética Monster Ultra Black sin azúcar.",
     "gender": "unisex",
@@ -2657,7 +2722,8 @@ export const products: Product[] = [
   {
     "id": 2648,
     "name": "Bum Energy",
-    "price": "Q.33.00",
+    "price": "Q.29.70",
+    "originalPrice": "Q.33.00",
     "availability": "Disponible",
     "description": "Bebida energética Bum Energy para un impulso extra.",
     "gender": "unisex",
@@ -2700,7 +2766,8 @@ export const products: Product[] = [
   {
     "id": 2649,
     "name": "BUM Essential Pre-workout",
-    "price": "Q.400.00",
+    "price": "Q.360.00",
+    "originalPrice": "Q.400.00",
     "availability": "Disponible",
     "description": "Pre-entreno Thavage edición Carlos Belcast para un rendimiento superior.",
     "gender": "unisex",
@@ -2732,7 +2799,8 @@ export const products: Product[] = [
   {
     "id": 2650,
     "name": "VENOM INFERNO BRAZO DE 50 LIMÓN",
-    "price": "Q.485.00",
+    "price": "Q.436.50",
+    "originalPrice": "Q.485.00",
     "availability": "Disponible",
     "description": "Pre-entreno Venom Inferno para una intensidad máxima en tus entrenamientos.",
     "gender": "unisex",
@@ -2764,7 +2832,8 @@ export const products: Product[] = [
   {
     "id": 2651,
     "name": "Venom Mangonada",
-    "price": "Q.530.00",
+    "price": "Q.477.00",
+    "originalPrice": "Q.530.00",
     "availability": "Disponible",
     "description": "Pre-entreno Venom con delicioso sabor a mangonada.",
     "gender": "unisex",
@@ -2796,7 +2865,8 @@ export const products: Product[] = [
   {
     "id": 2652,
     "name": "Iso 100 - Dynamatize - Chocolate",
-    "price": "Q.665.00",
+    "price": "Q.598.50",
+    "originalPrice": "Q.665.00",
     "availability": "Disponible",
     "description": "Proteína aislada de alta calidad sabor chocolate.",
     "gender": "unisex",
@@ -2828,7 +2898,8 @@ export const products: Product[] = [
   {
     "id": 2653,
     "name": "Iso 100 - Dynamatize - Cocoa Pebbles",
-    "price": "Q.685.00",
+    "price": "Q.616.50",
+    "originalPrice": "Q.685.00",
     "availability": "Disponible",
     "description": "Proteína aislada con el delicioso y único sabor de Cocoa Pebbles.",
     "gender": "unisex",
@@ -2860,7 +2931,8 @@ export const products: Product[] = [
   {
     "id": 2654,
     "name": "Creatina Platinum",
-    "price": "Q.365.00",
+    "price": "Q.328.50",
+    "originalPrice": "Q.365.00",
     "availability": "Disponible",
     "description": "Creatina de alta calidad para mejorar la fuerza y el rendimiento.",
     "gender": "unisex",
@@ -2892,7 +2964,8 @@ export const products: Product[] = [
   {
     "id": 2655,
     "name": "Raw Sleep",
-    "price": "Q.385.00",
+    "price": "Q.346.50",
+    "originalPrice": "Q.385.00",
     "availability": "Disponible",
     "description": "Fórmula para mejorar la calidad del sueño y la recuperación nocturna.",
     "gender": "unisex",
@@ -2924,7 +2997,8 @@ export const products: Product[] = [
   {
     "id": 2656,
     "name": "DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemon",
-    "price": "Q.350.00",
+    "price": "Q.315.00",
+    "originalPrice": "Q.350.00",
     "availability": "Disponible",
     "description": "Fórmula avanzada de aminoácidos esenciales para la recuperación y el rendimiento.",
     "gender": "unisex",
@@ -2956,7 +3030,8 @@ export const products: Product[] = [
   {
     "id": 2657,
     "name": "Glutamina - Dragon Pharma",
-    "price": "Q.345.00",
+    "price": "Q.310.50",
+    "originalPrice": "Q.345.00",
     "availability": "Agotado",
     "description": "Glutamina pura para apoyar la recuperación muscular y la salud intestinal.",
     "gender": "unisex",
@@ -2988,7 +3063,8 @@ export const products: Product[] = [
   {
     "id": 2658,
     "name": "GREENS & REDS",
-    "price": "Q.485.00",
+    "price": "Q.436.50",
+    "originalPrice": "Q.485.00",
     "availability": "Disponible",
     "description": "Superalimentos en polvo para una dosis diaria de vitaminas, minerales y antioxidantes.",
     "gender": "unisex",
@@ -3020,7 +3096,8 @@ export const products: Product[] = [
   {
     "id": 2659,
     "name": "Metal WLVS \"Pierce\" Hoodie in Black",
-    "price": "Q.625.00",
+    "price": "Q.562.50",
+    "originalPrice": "Q.625.00",
     "availability": "Disponible",
     "description": "Sudadera con capucha de la colección Metal WLVS.",
     "gender": "hombre",
@@ -3052,7 +3129,8 @@ export const products: Product[] = [
   {
     "id": 2660,
     "name": "Gains Seamless Washed Shorts",
-    "price": "Q.575.00",
+    "price": "Q.517.50",
+    "originalPrice": "Q.575.00",
     "availability": "Disponible",
     "description": "Shorts sin costuras de la colección Gains para un confort y estilo inigualables.",
     "gender": "mujer",
@@ -3066,7 +3144,7 @@ export const products: Product[] = [
     "feature3": "Cintura alta con excelente soporte",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/gains_seamless_washed_shorts_gris.png",
+        "src": "/assets/images/marcas/gymshark/mujer/gainswashed.png",
         "alt": "Gains Seamless Washed Shorts",
         "dataAiHint": "woman shorts"
       }
@@ -3084,7 +3162,8 @@ export const products: Product[] = [
   {
     "id": 2661,
     "name": "Impact Bra",
-    "price": "Q.460.00",
+    "price": "Q.414.00",
+    "originalPrice": "Q.460.00",
     "availability": "Disponible",
     "description": "Bra deportivo de alto impacto para un soporte superior durante tus entrenamientos más intensos.",
     "gender": "mujer",
@@ -3127,7 +3206,8 @@ export const products: Product[] = [
   {
     "id": 2662,
     "name": "Impact Short",
-    "price": "Q.540.00",
+    "price": "Q.486.00",
+    "originalPrice": "Q.540.00",
     "availability": "Disponible",
     "description": "Shorts de alto impacto diseñados para moverse contigo, ofreciendo comodidad y estilo.",
     "gender": "mujer",
@@ -3170,7 +3250,8 @@ export const products: Product[] = [
   {
     "id": 2664,
     "name": "Proteina Itholate",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Aislado de proteína de suero de leche de la más alta calidad. Perfecta para una recuperación muscular rápida y limpia.",
     "gender": "unisex",
@@ -3202,7 +3283,8 @@ export const products: Product[] = [
   {
     "id": 2665,
     "name": "Warrior X Compression Tees",
-    "price": "Q.485.00",
+    "price": "Q.436.50",
+    "originalPrice": "Q.485.00",
     "availability": "Disponible",
     "description": "Lleva tu entrenamiento al siguiente nivel con la Warrior X. Un diseño agresivo y una compresión superior para un rendimiento de élite.",
     "gender": "hombre",
@@ -3282,6 +3364,7 @@ export const products: Product[] = [
 ];
 
     
+
 
 
 
