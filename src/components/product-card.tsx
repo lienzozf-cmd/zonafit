@@ -182,7 +182,10 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             <Link href={`/product/${product.id}`}>
                 <h3 className="product-name">{product.name}</h3>
             </Link>
-            <p className="product-price">{product.price}</p>
+            <div className="flex justify-center items-center gap-2">
+                {product.originalPrice && <p className="text-gray-500 line-through text-lg">{product.originalPrice}</p>}
+                <p className="product-price">{product.price}</p>
+            </div>
             <div className="flex justify-center my-2">
                  <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>{isAvailable ? 'Disponible' : 'Agotado'}</div>
             </div>
