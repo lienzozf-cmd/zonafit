@@ -77,14 +77,13 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation(); // Prevent link navigation
     e.preventDefault();
-    setSelectedOption(prev => {
-        const newOption = prev?.value === option.value ? null : option;
-        const imageForOption = product.images.find(img => img.option === newOption?.value && (selectedColor ? img.color === selectedColor.name : true));
-        if (imageForOption) {
-            setCurrentImage(imageForOption.src);
-        }
-        return newOption;
-    });
+    const newOption = selectedOption?.value === option.value ? null : option;
+    setSelectedOption(newOption);
+    
+    const imageForOption = product.images.find(img => img.option === newOption?.value && (selectedColor ? img.color === selectedColor.name : true));
+    if (imageForOption) {
+        setCurrentImage(imageForOption.src);
+    }
   };
 
   const handleColorHover = (color: ProductColor) => {
@@ -130,7 +129,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     }
     
     const priceString = product.price || '0';
-    const priceAsNumber = parseFloat(priceString.replace('Q.', '').replace(/,/g, ''));
+    const priceAsNumber = parseFloat(priceString.replace(/[^\d.]/g, ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
 
