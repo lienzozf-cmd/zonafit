@@ -2517,7 +2517,7 @@ export const products: Product[] = [
     "colors": [
       {
         "name": "Roja",
-        "hex": "#ff0000",
+        "hex": "#FF0000",
         "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
         "options": {
           "type": "talla",
@@ -3204,3 +3204,6 @@ export const products: Product[] = [
     
 
 
+
+
+    
