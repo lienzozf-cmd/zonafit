@@ -3275,7 +3275,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "Napolitano",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
