@@ -14,7 +14,7 @@ const Footer = () => {
           <h3>Horarios</h3>
           <p>Lunes - Domingo, 8 AM - 8 PM</p>
           <div className="socials">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/lienzo_blanco_gt" target="_blank" rel="noopener noreferrer">
               <Image src="/assets/images/redesociales/instagram.png" alt="Instagram" width={30} height={30} data-ai-hint="instagram icon" />
             </a>
           </div>
