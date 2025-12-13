@@ -3360,10 +3360,135 @@ export const products: Product[] = [
         }
       }
     ]
-  }
+  },
+  {
+    "id": 2666,
+    "name": "Inosuke Series Premium Tee in Black",
+    "price": "Q.595.00",
+    "availability": "Disponible",
+    "description": "Playera premium de Darc Sport con diseño de Inosuke de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
+    "gender": "unisex",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "feature1": "Colaboración oficial Darc Sport x Demon Slayer",
+    "feature2": "Gráfico de Inosuke de alta calidad",
+    "feature3": "Corte premium para un ajuste perfecto",
+    "images": [
+        {
+            "src": "/assets/images/marcas/darcsport/Inosuke Tee.png",
+            "alt": "Inosuke Series Premium Tee in Black",
+            "dataAiHint": "anime shirt"
+        }
+    ],
+    "options": {
+        "type": "talla",
+        "values": [
+            { "value": "S", "stock": 1 },
+            { "value": "M", "stock": 0 },
+            { "value": "L", "stock": 0 }
+        ]
+    }
+},
+{
+    "id": 2667,
+    "name": "Tanjiro Series Premium Tee in Black",
+    "price": "Q.595.00",
+    "availability": "Disponible",
+    "description": "Playera premium de Darc Sport con diseño de Tanjiro de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
+    "gender": "unisex",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "feature1": "Colaboración oficial Darc Sport x Demon Slayer",
+    "feature2": "Gráfico de Tanjiro de alta calidad",
+    "feature3": "Corte premium para un ajuste perfecto",
+    "images": [
+        {
+            "src": "/assets/images/marcas/darcsport/Tanjiro Tee.png",
+            "alt": "Tanjiro Series Premium Tee in Black",
+            "dataAiHint": "anime shirt"
+        }
+    ],
+    "options": {
+        "type": "talla",
+        "values": [
+            { "value": "S", "stock": 1 },
+            { "value": "M", "stock": 0 },
+            { "value": "L", "stock": 0 }
+        ]
+    }
+},
+{
+    "id": 2668,
+    "name": "Nezuko Series Premium Tee in Black",
+    "price": "Q.595.00",
+    "availability": "Disponible",
+    "description": "Playera premium de Darc Sport con diseño de Nezuko de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
+    "gender": "unisex",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "feature1": "Colaboración oficial Darc Sport x Demon Slayer",
+    "feature2": "Gráfico de Nezuko de alta calidad",
+    "feature3": "Corte premium para un ajuste perfecto",
+    "images": [
+        {
+            "src": "/assets/images/marcas/darcsport/Nezuko Tee.png",
+            "alt": "Nezuko Series Premium Tee in Black",
+            "dataAiHint": "anime shirt"
+        }
+    ],
+    "options": {
+        "type": "talla",
+        "values": [
+            { "value": "S", "stock": 1 },
+            { "value": "M", "stock": 0 },
+            { "value": "L", "stock": 0 }
+        ]
+    }
+},
+{
+    "id": 2669,
+    "name": "Zenitsu Series Premium Tee in Black",
+    "price": "Q.595.00",
+    "availability": "Disponible",
+    "description": "Playera premium de Darc Sport con diseño de Zenitsu de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
+    "gender": "unisex",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "feature1": "Colaboración oficial Darc Sport x Demon Slayer",
+    "feature2": "Gráfico de Zenitsu de alta calidad",
+    "feature3": "Corte premium para un ajuste perfecto",
+    "images": [
+        {
+            "src": "/assets/images/marcas/darcsport/Zenitsu Tee.png",
+            "alt": "Zenitsu Series Premium Tee in Black",
+            "dataAiHint": "anime shirt"
+        }
+    ],
+    "options": {
+        "type": "talla",
+        "values": [
+            { "value": "S", "stock": 1 },
+            { "value": "M", "stock": 0 },
+            { "value": "L", "stock": 0 }
+        ]
+    }
+}
 ];
 
     
+
 
 
 
