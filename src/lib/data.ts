@@ -3484,10 +3484,43 @@ export const products: Product[] = [
             { "value": "L", "stock": 0 }
         ]
     }
+},
+{
+    "id": 2670,
+    "name": "OnlyUs Forever Premium Oversized",
+    "price": "Q.540.00",
+    "availability": "Disponible",
+    "description": "Playera de gran tamaño de primera calidad de la colección OnlyUs Forever para una comodidad y estilo inigualables.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "feature1": "Diseño exclusivo de OnlyUs Forever",
+    "feature2": "Ajuste extragrande para máxima comodidad",
+    "feature3": "Tejido de algodón de primera calidad",
+    "images": [
+      {
+        "src": "/assets/images/marcas/darcsport/OnlyUs_Forever_Premium_Oversized.png",
+        "alt": "OnlyUs Forever Premium Oversized Tee",
+        "dataAiHint": "men shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    }
 }
 ];
 
     
+
 
 
 
