@@ -3249,7 +3249,7 @@ export const products: Product[] = [
   },
   {
     "id": 2664,
-    "name": "Proteina Itholate",
+    "name": "Proteina Itholate Carlos Belcast",
     "price": "Q.535.50",
     "originalPrice": "Q.595.00",
     "availability": "Disponible",
@@ -3275,7 +3275,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "Napolitano",
-          "stock": 1
+          "stock": 2
         }
       ]
     }
