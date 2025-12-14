@@ -126,6 +126,9 @@ export async function POST(req: NextRequest) {
     const shippingCost = 35;
     
     const attachments = [];
+    const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const grandTotal = productTotal + shippingCost;
+
 
     for (const item of orderItems) {
       await updateStock(item.productId, item.option, item.quantity, item.color ?? undefined);
@@ -144,9 +147,6 @@ export async function POST(req: NextRequest) {
         }
     }
     }
-    
-    const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const grandTotal = productTotal + shippingCost;
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -193,4 +193,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
+    
+
     
