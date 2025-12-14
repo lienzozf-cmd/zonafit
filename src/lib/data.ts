@@ -3389,7 +3389,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "S",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "M",
@@ -3430,7 +3430,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "S",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "M",
@@ -3471,7 +3471,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "S",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "M",
@@ -3512,7 +3512,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "S",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "M",
