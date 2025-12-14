@@ -3378,7 +3378,7 @@ export const products: Product[] = [
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
         {
-            "src": "/assets/images/marcas/darcsport/Inosuke Tee.png",
+            "src": "/assets/images/marcas/darcsport/inosuke.png",
             "alt": "Inosuke Series Premium Tee in Black",
             "dataAiHint": "anime shirt"
         }
@@ -3409,7 +3409,7 @@ export const products: Product[] = [
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
         {
-            "src": "/assets/images/marcas/darcsport/Tanjiro Tee.png",
+            "src": "/assets/images/marcas/darcsport/tanjiro.png",
             "alt": "Tanjiro Series Premium Tee in Black",
             "dataAiHint": "anime shirt"
         }
@@ -3440,7 +3440,7 @@ export const products: Product[] = [
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
         {
-            "src": "/assets/images/marcas/darcsport/Nezuko Tee.png",
+            "src": "/assets/images/marcas/darcsport/nezuko.png",
             "alt": "Nezuko Series Premium Tee in Black",
             "dataAiHint": "anime shirt"
         }
@@ -3471,7 +3471,7 @@ export const products: Product[] = [
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
         {
-            "src": "/assets/images/marcas/darcsport/Zenitsu Tee.png",
+            "src": "/assets/images/marcas/darcsport/zenitsu.png",
             "alt": "Zenitsu Series Premium Tee in Black",
             "dataAiHint": "anime shirt"
         }
@@ -3502,9 +3502,14 @@ export const products: Product[] = [
     "feature3": "Tejido de algodón de primera calidad",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/OnlyUs_Forever_Premium_Oversized.png",
+        "src": "/assets/images/marcas/darcsport/onlyus.jpg",
         "alt": "OnlyUs Forever Premium Oversized Tee",
         "dataAiHint": "men shirt"
+      },
+      {
+        "src": "/assets/images/marcas/darcsport/onlyus1.jpg",
+        "alt": "OnlyUs Forever Premium Oversized Tee Back",
+        "dataAiHint": "men shirt back"
       }
     ],
     "options": {
@@ -3520,6 +3525,7 @@ export const products: Product[] = [
 ];
 
     
+
 
 
 
