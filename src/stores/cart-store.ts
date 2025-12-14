@@ -121,7 +121,7 @@ export const useCartStore = create<AppState>()(
       name: 'cart-storage',
       storage: createJSONStorage(() => localStorage), 
       merge: (persistedState, currentState) => {
-        const state = { ...currentState, ...persistedState };
+        const state = { ...currentState, ...(persistedState as any) };
         // Always use the latest product data from the code, not from storage.
         state.products = initialProducts;
 
