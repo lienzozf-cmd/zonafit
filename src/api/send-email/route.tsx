@@ -6,7 +6,6 @@ import { z } from 'zod';
 import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
-import 'dotenv/config';
 
 const shippingInfoSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
