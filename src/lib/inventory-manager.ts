@@ -5,12 +5,23 @@ import { products as initialProducts } from './data';
 import type { Product } from './data';
 
 let products: Product[] = JSON.parse(JSON.stringify(initialProducts));
+let orderCounter: number | null = null;
 
 const dataFilePath = path.join(process.cwd(), 'src', 'lib', 'data.ts');
 const counterFilePath = path.join(process.cwd(), 'order-counter.txt');
 
+async function initializeCounter(): Promise<void> {
+    if (orderCounter === null) {
+        try {
+            const data = await fs.readFile(counterFilePath, 'utf-8');
+            orderCounter = parseInt(data.trim(), 10);
+        } catch (error) {
+            orderCounter = 0;
+        }
+    }
+}
+
 async function persistProducts(updatedProducts: Product[]): Promise<void> {
-    const dataFilePath = path.join(process.cwd(), 'src', 'lib', 'data.ts');
     try {
         const originalFileContent = await fs.readFile(dataFilePath, 'utf-8');
         const productsArrayString = JSON.stringify(updatedProducts, null, 2);
@@ -35,24 +46,11 @@ async function persistProducts(updatedProducts: Product[]): Promise<void> {
     }
 }
 
-async function readCounter(): Promise<number> {
-  try {
-    const data = await fs.readFile(counterFilePath, 'utf-8');
-    return parseInt(data.trim(), 10);
-  } catch (error) {
-    return 0;
-  }
-}
-
-async function writeCounter(value: number): Promise<void> {
-  await fs.writeFile(counterFilePath, value.toString(), 'utf-8');
-}
 
 export async function getNextOrderId(): Promise<string> {
-    const currentId = await readCounter();
-    const nextId = currentId + 1;
-    await writeCounter(nextId);
-    return nextId.toString().padStart(6, '0');
+    await initializeCounter();
+    orderCounter = (orderCounter ?? 0) + 1;
+    return orderCounter.toString().padStart(6, '0');
 }
 
 
@@ -85,8 +83,9 @@ export async function updateStock(productId: number, optionValue: string, quanti
   }
 
   optionToUpdate.stock -= quantity;
+  
+  await initializeCounter();
+  await fs.writeFile(counterFilePath, (orderCounter ?? 0).toString(), 'utf-8');
 
   await persistProducts(productsCopy);
 }
-
-    
