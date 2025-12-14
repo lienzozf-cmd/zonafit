@@ -13,9 +13,9 @@ import { useCartStore } from '@/stores/cart-store';
 
 
 const ProductDetailPage = () => {
-  const params = useParams();
+  const params = useParams<{ id: string }>();
   const router = useRouter();
-  const { id } = params;
+  const { id } = params!;
   
   const { products, getProductOption, addItem, items } = useCartStore((state) => ({
     products: state.products,
