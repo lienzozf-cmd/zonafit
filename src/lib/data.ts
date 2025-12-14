@@ -1400,7 +1400,7 @@ export const products: Product[] = [
     "feature3": "Estilo 'vintage' con lavado especial",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/4071 - Gods & Heroes Tees.png",
+        "src": "/assets/images/marcas/youngla/hombre/Godsh.png",
         "alt": "Gods & Heroes Tees",
         "dataAiHint": "graphic tee",
         "option": "M"
@@ -2023,7 +2023,7 @@ export const products: Product[] = [
     "feature3": "Ideal para entrenamiento y uso diario",
     "images": [
       {
-        "src": "/assets/images/Accesorios/Crew Socks 3pk negro, blanco, gris.png",
+        "src": "/assets/images/Accesorios/Crewsbng.png",
         "alt": "Crew Socks 3pk",
         "dataAiHint": "fitness socks"
       }
@@ -3078,7 +3078,7 @@ export const products: Product[] = [
     "feature3": "Apoya la salud digestiva y el sistema inmune",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/GREENS & REDS.png",
+        "src": "/assets/images/marcas/dragonpharma/greensr.png",
         "alt": "Greens and Reds - Dragon Pharma",
         "dataAiHint": "superfood powder"
       }
