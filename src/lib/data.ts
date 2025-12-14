@@ -3364,7 +3364,8 @@ export const products: Product[] = [
   {
     "id": 2666,
     "name": "Inosuke Series Premium Tee in Black",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Inosuke de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
     "gender": "unisex",
@@ -3395,7 +3396,8 @@ export const products: Product[] = [
 {
     "id": 2667,
     "name": "Tanjiro Series Premium Tee in Black",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Tanjiro de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
     "gender": "unisex",
@@ -3426,7 +3428,8 @@ export const products: Product[] = [
 {
     "id": 2668,
     "name": "Nezuko Series Premium Tee in Black",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Nezuko de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
     "gender": "unisex",
@@ -3457,7 +3460,8 @@ export const products: Product[] = [
 {
     "id": 2669,
     "name": "Zenitsu Series Premium Tee in Black",
-    "price": "Q.595.00",
+    "price": "Q.535.50",
+    "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Zenitsu de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
     "gender": "unisex",
@@ -3488,7 +3492,8 @@ export const products: Product[] = [
 {
     "id": 2670,
     "name": "OnlyUs Forever Premium Oversized",
-    "price": "Q.540.00",
+    "price": "Q.486.00",
+    "originalPrice": "Q.540.00",
     "availability": "Disponible",
     "description": "Playera de gran tamaño de primera calidad de la colección OnlyUs Forever para una comodidad y estilo inigualables.",
     "gender": "hombre",
@@ -3525,6 +3530,7 @@ export const products: Product[] = [
 ];
 
     
+
 
 
 
