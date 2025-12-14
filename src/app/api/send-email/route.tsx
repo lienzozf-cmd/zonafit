@@ -1,13 +1,10 @@
 
-
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { products } from '@/lib/data';
 import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
-import 'dotenv/config';
 
 const shippingInfoSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
@@ -36,7 +33,7 @@ const orderSchema = z.object({
 });
 
 
-function formatItemsToHtml(items: any[], total: number) {
+function formatItemsToHtml(items: any[], productTotal: number, shippingCost: number, grandTotal: number) {
     const itemsHtml = items.map(item => {
         const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`;
         
@@ -71,9 +68,17 @@ function formatItemsToHtml(items: any[], total: number) {
                 ${itemsHtml}
             </tbody>
             <tfoot>
+                <tr>
+                    <td style="padding: 15px 10px 5px;">Subtotal</td>
+                    <td style="padding: 15px 10px 5px; text-align: right;">Q${productTotal.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px 10px;">Envío</td>
+                    <td style="padding: 5px 10px; text-align: right;">Q${shippingCost.toFixed(2)}</td>
+                </tr>
                 <tr style="border-top: 2px solid #000; font-weight: bold;">
                     <td style="padding: 15px 10px 0;">Total del Pedido</td>
-                    <td style="padding: 15px 10px 0; text-align: right;">Q${total.toFixed(2)}</td>
+                    <td style="padding: 15px 10px 0; text-align: right;">Q${grandTotal.toFixed(2)}</td>
                 </tr>
             </tfoot>
         </table>
@@ -114,38 +119,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
   }
 
-  const { shippingInfo, orderItems: clientItems } = validationResult.data;
+  const { shippingInfo, orderItems } = validationResult.data;
   
   try {
     const orderId = await getNextOrderId();
+    const shippingCost = 35;
     
-    let serverCalculatedTotal = 0;
-    const validatedItems = [];
     const attachments = [];
+    const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const grandTotal = productTotal + shippingCost;
 
-    for (const item of clientItems) {
-      const product = products.find(p => p.id === item.productId);
 
-      if (!product) {
-        throw new Error(`Producto no encontrado con ID: ${item.productId}`);
-      }
-      
-      const priceString = product.price || '0';
-      const price = parseFloat(priceString.replace('Q.', '').replace(/,/g, ''));
-
-      if (price !== item.price) {
-           console.warn(`Price mismatch for ${product.name}. Client: ${item.price}, Server: ${price}. Using server price.`);
-      }
-      
+    for (const item of orderItems) {
       await updateStock(item.productId, item.option, item.quantity, item.color ?? undefined);
-
-      serverCalculatedTotal += price * item.quantity;
-      validatedItems.push({ 
-        ...item, 
-        price, 
-        name: item.name, 
-        subtotal: (price * item.quantity).toFixed(2),
-      });
 
       if (item.image) {
         const imagePath = path.join(process.cwd(), 'public', item.image);
@@ -173,7 +159,7 @@ export async function POST(req: NextRequest) {
     });
     
     const shopName = "ZONA FIT GT";
-    const itemsHtml = formatItemsToHtml(validatedItems, serverCalculatedTotal);
+    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, grandTotal);
 
     await transporter.sendMail({
         from: `"${shopName}" <${process.env.EMAIL_USER}>`,
@@ -207,3 +193,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
+    
+
+    
