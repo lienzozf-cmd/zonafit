@@ -3389,7 +3389,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
