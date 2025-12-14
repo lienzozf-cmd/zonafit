@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
   }
 
-  const { shippingInfo, orderItems, orderTotal } = validationResult.data;
+  const { shippingInfo, orderItems } = validationResult.data;
   
   try {
     const orderId = await getNextOrderId();
@@ -146,6 +146,7 @@ export async function POST(req: NextRequest) {
     }
     
     const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const grandTotal = productTotal + shippingCost;
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -158,7 +159,7 @@ export async function POST(req: NextRequest) {
     });
     
     const shopName = "ZONA FIT GT";
-    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, orderTotal);
+    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, grandTotal);
 
     await transporter.sendMail({
         from: `"${shopName}" <${process.env.EMAIL_USER}>`,
@@ -192,5 +193,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
-
-    
