@@ -3378,22 +3378,31 @@ export const products: Product[] = [
     "feature2": "Gráfico de Inosuke de alta calidad",
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
-        {
-            "src": "/assets/images/marcas/darcsport/inosuke.png",
-            "alt": "Inosuke Series Premium Tee in Black",
-            "dataAiHint": "anime shirt"
-        }
+      {
+        "src": "/assets/images/marcas/darcsport/inosuke.png",
+        "alt": "Inosuke Series Premium Tee in Black",
+        "dataAiHint": "anime shirt"
+      }
     ],
     "options": {
-        "type": "talla",
-        "values": [
-            { "value": "S", "stock": 1 },
-            { "value": "M", "stock": 0 },
-            { "value": "L", "stock": 0 }
-        ]
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 0
+        },
+        {
+          "value": "M",
+          "stock": 0
+        },
+        {
+          "value": "L",
+          "stock": 0
+        }
+      ]
     }
-},
-{
+  },
+  {
     "id": 2667,
     "name": "Tanjiro Series Premium Tee in Black",
     "price": "Q.535.50",
@@ -3410,22 +3419,31 @@ export const products: Product[] = [
     "feature2": "Gráfico de Tanjiro de alta calidad",
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
-        {
-            "src": "/assets/images/marcas/darcsport/tanjiro.png",
-            "alt": "Tanjiro Series Premium Tee in Black",
-            "dataAiHint": "anime shirt"
-        }
+      {
+        "src": "/assets/images/marcas/darcsport/tanjiro.png",
+        "alt": "Tanjiro Series Premium Tee in Black",
+        "dataAiHint": "anime shirt"
+      }
     ],
     "options": {
-        "type": "talla",
-        "values": [
-            { "value": "S", "stock": 1 },
-            { "value": "M", "stock": 0 },
-            { "value": "L", "stock": 0 }
-        ]
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        },
+        {
+          "value": "M",
+          "stock": 0
+        },
+        {
+          "value": "L",
+          "stock": 0
+        }
+      ]
     }
-},
-{
+  },
+  {
     "id": 2668,
     "name": "Nezuko Series Premium Tee in Black",
     "price": "Q.535.50",
@@ -3442,22 +3460,31 @@ export const products: Product[] = [
     "feature2": "Gráfico de Nezuko de alta calidad",
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
-        {
-            "src": "/assets/images/marcas/darcsport/nezuko.png",
-            "alt": "Nezuko Series Premium Tee in Black",
-            "dataAiHint": "anime shirt"
-        }
+      {
+        "src": "/assets/images/marcas/darcsport/nezuko.png",
+        "alt": "Nezuko Series Premium Tee in Black",
+        "dataAiHint": "anime shirt"
+      }
     ],
     "options": {
-        "type": "talla",
-        "values": [
-            { "value": "S", "stock": 1 },
-            { "value": "M", "stock": 0 },
-            { "value": "L", "stock": 0 }
-        ]
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        },
+        {
+          "value": "M",
+          "stock": 0
+        },
+        {
+          "value": "L",
+          "stock": 0
+        }
+      ]
     }
-},
-{
+  },
+  {
     "id": 2669,
     "name": "Zenitsu Series Premium Tee in Black",
     "price": "Q.535.50",
@@ -3474,22 +3501,31 @@ export const products: Product[] = [
     "feature2": "Gráfico de Zenitsu de alta calidad",
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
-        {
-            "src": "/assets/images/marcas/darcsport/zenitsu.png",
-            "alt": "Zenitsu Series Premium Tee in Black",
-            "dataAiHint": "anime shirt"
-        }
+      {
+        "src": "/assets/images/marcas/darcsport/zenitsu.png",
+        "alt": "Zenitsu Series Premium Tee in Black",
+        "dataAiHint": "anime shirt"
+      }
     ],
     "options": {
-        "type": "talla",
-        "values": [
-            { "value": "S", "stock": 1 },
-            { "value": "M", "stock": 0 },
-            { "value": "L", "stock": 0 }
-        ]
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        },
+        {
+          "value": "M",
+          "stock": 0
+        },
+        {
+          "value": "L",
+          "stock": 0
+        }
+      ]
     }
-},
-{
+  },
+  {
     "id": 2670,
     "name": "OnlyUs Forever Premium Oversized",
     "price": "Q.486.00",
@@ -3526,7 +3562,7 @@ export const products: Product[] = [
         }
       ]
     }
-}
+  }
 ];
 
     
