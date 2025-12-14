@@ -3507,12 +3507,12 @@ export const products: Product[] = [
     "feature3": "Tejido de algodón de primera calidad",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/onlyus.jpg",
+        "src": "/assets/images/marcas/darcsport/onlyus1.jpg",
         "alt": "OnlyUs Forever Premium Oversized Tee",
         "dataAiHint": "men shirt"
       },
       {
-        "src": "/assets/images/marcas/darcsport/onlyus1.jpg",
+        "src": "/assets/images/marcas/darcsport/onlyus.jpg",
         "alt": "OnlyUs Forever Premium Oversized Tee Back",
         "dataAiHint": "men shirt back"
       }
