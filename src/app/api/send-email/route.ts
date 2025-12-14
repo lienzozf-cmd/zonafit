@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { updateStock, getNextOrderId } from '@/lib/inventory-manager'; 
+import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
 
+// --- Esquemas de Validación ---
 const shippingInfoSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
   lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
@@ -33,9 +34,11 @@ const orderSchema = z.object({
 
 type CartItem = z.infer<typeof cartItemSchema>;
 
+// --- Helper para HTML ---
 function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost: number, grandTotal: number) {
   const itemsHtml = items.map(item => {
-    const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/\s+/g, '-');
+    // Usamos un CID único y seguro para la imagen
+    const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/[^a-zA-Z0-9-]/g, '-');
     
     return `
     <tr style="border-bottom: 1px solid #eee;">
@@ -85,16 +88,16 @@ function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost
   `;
 }
 
+// --- Handler Principal ---
 export async function POST(req: NextRequest) {
+  // Validación de CORS/Origen (Opcional en producción estricta)
   if (process.env.NODE_ENV === 'production') {
     const origin = req.headers.get('origin');
     const referer = req.headers.get('referer');
     const allowedOrigin = process.env.NEXT_PUBLIC_APP_URL || "https://zona-fit-gt-online.web.app";
-    const isAllowed = (origin && origin === allowedOrigin) || (referer && referer?.startsWith(allowedOrigin + '/'));
-    if (!isAllowed) {
-        // Descomentar si deseas bloquear accesos externos
-        // return NextResponse.json({ error: 'Acceso no autorizado.' }, { status: 403 });
-    }
+    // Descomenta esto solo si quieres bloquear peticiones externas:
+    // const isAllowed = (origin && origin === allowedOrigin) || (referer && referer?.startsWith(allowedOrigin + '/'));
+    // if (!isAllowed) return NextResponse.json({ error: 'Acceso no autorizado.' }, { status: 403 });
   }
 
   let payload;
@@ -115,7 +118,8 @@ export async function POST(req: NextRequest) {
   }
 
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    return NextResponse.json({ error: "Configuración de servidor incompleta." }, { status: 500 });
+    console.error('Faltan credenciales EMAIL_USER o EMAIL_PASS');
+    return NextResponse.json({ error: "Error de configuración del servidor." }, { status: 500 });
   }
 
   const { shippingInfo, orderItems } = validationResult.data;
@@ -132,17 +136,20 @@ export async function POST(req: NextRequest) {
 
       if (item.image) {
         try {
+          // Lógica robusta para encontrar la imagen
           const imageRelPath = item.image.startsWith('/') ? item.image.slice(1) : item.image;
           const imagePath = path.join(process.cwd(), 'public', imageRelPath);
-          await fs.access(imagePath);
+          
+          await fs.access(imagePath); // Verifica si existe antes de leer
           const imageContent = await fs.readFile(imagePath);
+          
           attachments.push({
             filename: path.basename(item.image),
             content: imageContent,
-            cid: `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/\s+/g, '-')
+            cid: `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/[^a-zA-Z0-9-]/g, '-')
           });
         } catch (err) {
-          console.warn(`No se pudo adjuntar imagen:`, err);
+          console.warn(`Advertencia: No se encontró la imagen ${item.image}. Se enviará sin foto.`, err);
         }
       }
     }
@@ -164,24 +171,31 @@ export async function POST(req: NextRequest) {
       to: ["rabanalesf22@gmail.com", "rabafam2118@gmail.com"],
       subject: `Nuevo Pedido #${orderId} - ${shippingInfo.firstName} ${shippingInfo.lastName}`,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee;">
-          <h1 style="background-color: #E50000; color: #fff; padding: 20px; text-align: center;">Pedido #${orderId}</h1>
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+          <div style="background-color: #E50000; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="font-size: 24px; color: #fff; margin: 0;">Nuevo Pedido #${orderId}</h1>
+          </div>
           <div style="padding: 20px;">
-            <h3>Cliente</h3>
-            <p>${shippingInfo.firstName} ${shippingInfo.lastName}</p>
-            <p>${shippingInfo.address}, ${shippingInfo.municipality}</p>
-            <h3>Productos</h3>
+            <h2 style="font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Detalles del Cliente</h2>
+            <p><strong>Nombre:</strong> ${shippingInfo.firstName} ${shippingInfo.lastName}</p>
+            <p><strong>Teléfono:</strong> ${shippingInfo.phone}</p>
+            <p><strong>Dirección:</strong> ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}</p>
+            
+            <h2 style="font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px;">Artículos del Pedido</h2>
             ${itemsHtml}
+          </div>
+          <div style="background-color: #f9f9f9; padding: 15px; text-align: center; font-size: 12px; color: #666;">
+            Este es un correo automático del sistema de pedidos.
           </div>
         </div>
       `,
       attachments: attachments,
     });
 
-    return NextResponse.json({ message: 'Pedido procesado', orderId });
+    return NextResponse.json({ message: 'Pedido procesado correctamente', orderId });
 
   } catch (error: any) {
-    console.error('Error:', error);
-    return NextResponse.json({ message: 'Error interno.', error: error.message }, { status: 500 });
+    console.error('Error crítico en el endpoint:', error);
+    return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
   }
 }
