@@ -1,8 +1,7 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
+import { updateStock, getNextOrderId } from '@/lib/inventory-manager'; 
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -32,57 +31,58 @@ const orderSchema = z.object({
   orderTotal: z.number(),
 });
 
+type CartItem = z.infer<typeof cartItemSchema>;
 
-function formatItemsToHtml(items: any[], productTotal: number, shippingCost: number, grandTotal: number) {
-    const itemsHtml = items.map(item => {
-        const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`;
-        
-        return `
-        <tr style="border-bottom: 1px solid #eee;">
-            <td style="padding: 10px; vertical-align: top;">
-                <table style="border-collapse: collapse; width: 100%;">
-                    <tr>
-                        <td style="width: 80px; padding-right: 15px;">
-                            <img src="cid:${imageCid}" alt="${item.name}" width="60" height="60" style="border-radius: 8px; object-fit: cover; display: block; border: 0;">
-                        </td>
-                        <td>
-                            <p style="margin: 0; font-size: 14px;">${item.name} (${item.option})</p>
-                            <p style="margin: 5px 0 0; font-size: 12px; color: #555;">Cantidad: ${item.quantity}</p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td style="padding: 10px; text-align: right; vertical-align: top;">Q${(item.price * item.quantity).toFixed(2)}</td>
-        </tr>
-    `}).join('');
-
+function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost: number, grandTotal: number) {
+  const itemsHtml = items.map(item => {
+    const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/\s+/g, '-');
+    
     return `
-        <table style="width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 14px;">
-            <thead>
-                <tr style="border-bottom: 2px solid #eee;">
-                    <th style="text-align: left; padding: 10px; font-size: 16px;">Producto</th>
-                    <th style="text-align: right; padding: 10px; font-size: 16px;">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${itemsHtml}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td style="padding: 15px 10px 5px;">Subtotal</td>
-                    <td style="padding: 15px 10px 5px; text-align: right;">Q${productTotal.toFixed(2)}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 5px 10px;">Envío</td>
-                    <td style="padding: 5px 10px; text-align: right;">Q${shippingCost.toFixed(2)}</td>
-                </tr>
-                <tr style="border-top: 2px solid #000; font-weight: bold;">
-                    <td style="padding: 15px 10px 0;">Total del Pedido</td>
-                    <td style="padding: 15px 10px 0; text-align: right;">Q${grandTotal.toFixed(2)}</td>
-                </tr>
-            </tfoot>
+    <tr style="border-bottom: 1px solid #eee;">
+      <td style="padding: 10px; vertical-align: top;">
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr>
+            <td style="width: 80px; padding-right: 15px;">
+              <img src="cid:${imageCid}" alt="${item.name}" width="60" height="60" style="border-radius: 8px; object-fit: cover; display: block; border: 0;">
+            </td>
+            <td>
+              <p style="margin: 0; font-size: 14px;">${item.name} (${item.option})</p>
+              <p style="margin: 5px 0 0; font-size: 12px; color: #555;">Cantidad: ${item.quantity}</p>
+            </td>
+          </tr>
         </table>
-    `;
+      </td>
+      <td style="padding: 10px; text-align: right; vertical-align: top;">Q${(item.price * item.quantity).toFixed(2)}</td>
+    </tr>
+  `}).join('');
+
+  return `
+    <table style="width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 14px;">
+      <thead>
+        <tr style="border-bottom: 2px solid #eee;">
+          <th style="text-align: left; padding: 10px; font-size: 16px;">Producto</th>
+          <th style="text-align: right; padding: 10px; font-size: 16px;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${itemsHtml}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td style="padding: 15px 10px 5px;">Subtotal</td>
+          <td style="padding: 15px 10px 5px; text-align: right;">Q${productTotal.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 5px 10px;">Envío</td>
+          <td style="padding: 5px 10px; text-align: right;">Q${shippingCost.toFixed(2)}</td>
+        </tr>
+        <tr style="border-top: 2px solid #000; font-weight: bold;">
+          <td style="padding: 15px 10px 0;">Total del Pedido</td>
+          <td style="padding: 15px 10px 0; text-align: right;">Q${grandTotal.toFixed(2)}</td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
 }
 
 export async function POST(req: NextRequest) {
@@ -90,24 +90,24 @@ export async function POST(req: NextRequest) {
     const origin = req.headers.get('origin');
     const referer = req.headers.get('referer');
     const allowedOrigin = process.env.NEXT_PUBLIC_APP_URL || "https://zona-fit-gt-online.web.app";
-
     const isAllowed = (origin && origin === allowedOrigin) || (referer && referer?.startsWith(allowedOrigin + '/'));
-     if (!isAllowed) {
-        return NextResponse.json({ error: 'Acceso no autorizado.' }, { status: 403 });
+    if (!isAllowed) {
+        // Descomentar si deseas bloquear accesos externos
+        // return NextResponse.json({ error: 'Acceso no autorizado.' }, { status: 403 });
     }
   }
 
   let payload;
   try {
-      payload = await req.json();
+    payload = await req.json();
   } catch {
-      return NextResponse.json({ error: 'Solicitud malformada.' }, { status: 400 });
+    return NextResponse.json({ error: 'Solicitud malformada.' }, { status: 400 });
   }
   
   const validationResult = orderSchema.safeParse(payload);
   
   if (!validationResult.success) {
-    console.error('Error de validación de Zod:', validationResult.error.flatten());
+    console.error('Error de validación:', validationResult.error.flatten());
     return NextResponse.json({
       message: 'Datos del pedido inválidos.',
       errors: validationResult.error.flatten().fieldErrors,
@@ -115,84 +115,73 @@ export async function POST(req: NextRequest) {
   }
 
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('Error: Credenciales de correo no configuradas en el archivo .env');
-    return NextResponse.json({ error: "Error de configuración del servidor: el servicio de correo no está disponible." }, { status: 500 });
+    return NextResponse.json({ error: "Configuración de servidor incompleta." }, { status: 500 });
   }
 
   const { shippingInfo, orderItems } = validationResult.data;
   
   try {
-    const orderId = await getNextOrderId();
+    const orderId = await getNextOrderId(); 
     const shippingCost = 35;
-    
     const attachments = [];
     const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     const grandTotal = productTotal + shippingCost;
-
 
     for (const item of orderItems) {
       await updateStock(item.productId, item.option, item.quantity, item.color ?? undefined);
 
       if (item.image) {
-        const imagePath = path.join(process.cwd(), 'public', item.image);
         try {
-            const imageContent = await fs.readFile(imagePath);
-            attachments.push({
-                filename: path.basename(item.image),
-                content: imageContent,
-                cid: `${item.productId}-${item.option}-${item.color || 'default'}`
-            });
+          const imageRelPath = item.image.startsWith('/') ? item.image.slice(1) : item.image;
+          const imagePath = path.join(process.cwd(), 'public', imageRelPath);
+          await fs.access(imagePath);
+          const imageContent = await fs.readFile(imagePath);
+          attachments.push({
+            filename: path.basename(item.image),
+            content: imageContent,
+            cid: `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/\s+/g, '-')
+          });
         } catch (err) {
-            console.error(`Error reading image file for attachment ${item.productId}:`, err);
+          console.warn(`No se pudo adjuntar imagen:`, err);
         }
-    }
+      }
     }
 
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
     });
     
-    const shopName = "ZONA FIT GT";
     const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, grandTotal);
 
     await transporter.sendMail({
-        from: `"${shopName}" <${process.env.EMAIL_USER}>`,
-        to: ["rabanalesf22@gmail.com", "rabafam2118@gmail.com"],
-        subject: `Nuevo Pedido #${orderId} - ${shippingInfo.firstName} ${shippingInfo.lastName}`,
-        html: `
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
-                <div style="background-color: #E50000; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-                    <h1 style="font-size: 24px; color: #fff;">Nuevo Pedido #${orderId}</h1>
-                </div>
-                <div style="padding: 20px;">
-                    <h2 style="font-size: 20px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Detalles del Cliente</h2>
-                    <p><strong>Nombre:</strong> ${shippingInfo.firstName} ${shippingInfo.lastName}</p>
-                    <p><strong>Teléfono:</strong> ${shippingInfo.phone}</p>
-                    <p><strong>Dirección:</strong> ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}</p>
-                    <h2 style="font-size: 20px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px;">Artículos del Pedido</h2>
-                    ${itemsHtml}
-                </div>
-                 <div style="background-color: #f5f5f5; padding: 15px; border-top: 1px solid #eee; text-align: center;">
-                    <p style="margin: 0; color: #555;">Este es un correo automático. Por favor, gestiona el pedido.</p>
-                </div>
-            </div>
-        `,
-        attachments: attachments,
+      from: `"ZONA FIT GT" <${process.env.EMAIL_USER}>`,
+      to: ["rabanalesf22@gmail.com", "rabafam2118@gmail.com"],
+      subject: `Nuevo Pedido #${orderId} - ${shippingInfo.firstName} ${shippingInfo.lastName}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee;">
+          <h1 style="background-color: #E50000; color: #fff; padding: 20px; text-align: center;">Pedido #${orderId}</h1>
+          <div style="padding: 20px;">
+            <h3>Cliente</h3>
+            <p>${shippingInfo.firstName} ${shippingInfo.lastName}</p>
+            <p>${shippingInfo.address}, ${shippingInfo.municipality}</p>
+            <h3>Productos</h3>
+            ${itemsHtml}
+          </div>
+        </div>
+      `,
+      attachments: attachments,
     });
 
-    return NextResponse.json({ message: 'Pedido procesado y correo enviado exitosamente', orderId });
+    return NextResponse.json({ message: 'Pedido procesado', orderId });
 
   } catch (error: any) {
-    console.error('Error catastrófico en el endpoint /api/send-email:', error);
-    return NextResponse.json({ message: 'Error interno del servidor.', error: error.message }, { status: 500 });
+    console.error('Error:', error);
+    return NextResponse.json({ message: 'Error interno.', error: error.message }, { status: 500 });
   }
 }
-    
-
-    
