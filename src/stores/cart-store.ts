@@ -144,24 +144,9 @@ export const useCartStore = create<AppState>()(
     {
       name: 'cart-storage',
       storage: createJSONStorage(() => localStorage), 
-      merge: (persistedState, currentState) => {
-        const state = { ...currentState, ...(persistedState as any) };
-        state.products = initialProducts;
-
-        if((persistedState as AppState)?.items){
-           state.items = (persistedState as AppState).items;
-        } else {
-          state.items = [];
-        }
-
-        return state;
-      },
-      onRehydrateStorage: () => (state, error) => {
-        if (state) {
-            const { itemCount, total } = calculateTotals(state.items);
-            state.itemCount = itemCount;
-            state.total = total;
-        }
+      onRehydrateStorage: (state) => {
+        // Esto se ejecuta cuando el estado se carga desde localStorage.
+        // No necesitamos hacer nada especial aquí ahora, pero es bueno tenerlo.
       }
     }
   )

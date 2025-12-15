@@ -107,11 +107,13 @@ export default function CheckoutPage() {
         }
         throw new Error(errorMsg);
       }
+      
+      // Llamar a processOrder aquí, SOLO si la respuesta es OK.
+      processOrder();
 
       triggerConfetti();
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
-      processOrder(); // This will now update the stock in the Zustand store
       form.reset();
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
