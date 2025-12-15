@@ -18,6 +18,10 @@ export async function getNextOrderId(): Promise<string> {
         try {
             const data = await fs.readFile(counterFilePath, 'utf-8');
             orderCounter = parseInt(data.trim(), 10);
+            if (isNaN(orderCounter)) {
+              // Handle case where file is empty or corrupt
+              orderCounter = 0;
+            }
         } catch (error) {
             console.log('Counter file not found or unreadable, starting from 0.');
             orderCounter = 0;
@@ -43,11 +47,6 @@ export async function getNextOrderId(): Promise<string> {
  * @param {string} [colorName] - The name of the color variant, if applicable.
  */
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
-    if (process.env.NODE_ENV === 'production') {
-        console.warn('Stock update on filesystem is disabled in production.');
-        return;
-    }
-
     try {
         let fileContent = await fs.readFile(dataFilePath, 'utf-8');
         
