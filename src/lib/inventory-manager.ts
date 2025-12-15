@@ -4,6 +4,7 @@ import path from 'path';
 import { products as initialProducts } from './data';
 import type { Product } from './data';
 
+// Use a "let" para que el array de productos en memoria sea mutable.
 let products: Product[] = JSON.parse(JSON.stringify(initialProducts));
 let orderCounter: number | null = null;
 
@@ -21,40 +22,16 @@ async function initializeCounter(): Promise<void> {
     }
 }
 
-async function persistProducts(updatedProducts: Product[]): Promise<void> {
-    try {
-        const originalFileContent = await fs.readFile(dataFilePath, 'utf-8');
-        const productsArrayString = JSON.stringify(updatedProducts, null, 2);
-
-        const regex = /(export const products: Product\[] = )(\[[\s\S]*?\];)/;
-        
-        if (!regex.test(originalFileContent)) {
-             throw new Error("Regex failed to match the products array in data.ts. Inventory not updated.");
-        }
-
-        const newFileContent = originalFileContent.replace(
-            regex,
-            `$1${productsArrayString};`
-        );
-
-        await fs.writeFile(dataFilePath, newFileContent, 'utf-8');
-        
-        products = updatedProducts;
-    } catch (error) {
-        console.error("Failed to persist inventory update:", error);
-        throw new Error("Server error while updating inventory data.");
-    }
-}
-
-
 export async function getNextOrderId(): Promise<string> {
     await initializeCounter();
     orderCounter = (orderCounter ?? 0) + 1;
+    await fs.writeFile(counterFilePath, orderCounter.toString(), 'utf-8');
     return orderCounter.toString().padStart(6, '0');
 }
 
 
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
+  // Crea una copia profunda del array de productos en memoria para modificarlo
   const productsCopy: Product[] = JSON.parse(JSON.stringify(products));
 
   const product = productsCopy.find(p => p.id === productId);
@@ -84,8 +61,6 @@ export async function updateStock(productId: number, optionValue: string, quanti
 
   optionToUpdate.stock -= quantity;
   
-  await initializeCounter();
-  await fs.writeFile(counterFilePath, (orderCounter ?? 0).toString(), 'utf-8');
-
-  await persistProducts(productsCopy);
+  // Actualiza el array en memoria con la copia modificada
+  products = productsCopy;
 }
