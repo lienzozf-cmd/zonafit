@@ -3366,7 +3366,7 @@ export const products: Product[] = [
     "name": "Inosuke Series Premium Tee in Black",
     "price": "Q.535.50",
     "originalPrice": "Q.595.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera premium de Darc Sport con diseño de Inosuke de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
     "gender": "hombre",
     "category": "ropa",
