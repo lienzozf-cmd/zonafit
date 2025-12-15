@@ -2617,7 +2617,7 @@ export const products: Product[] = [
   },
   {
     "id": 2644,
-    "name": "Warrior Compression Hoodies",
+    "name": "Warrior X Compression Hoodies",
     "price": "Q.432.00",
     "originalPrice": "Q.480.00",
     "availability": "Disponible",
@@ -3368,7 +3368,7 @@ export const products: Product[] = [
     "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Inosuke de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
-    "gender": "unisex",
+    "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
@@ -3389,7 +3389,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
@@ -3409,7 +3409,7 @@ export const products: Product[] = [
     "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Tanjiro de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
-    "gender": "unisex",
+    "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
@@ -3450,7 +3450,7 @@ export const products: Product[] = [
     "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Nezuko de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
-    "gender": "unisex",
+    "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
@@ -3491,7 +3491,7 @@ export const products: Product[] = [
     "originalPrice": "Q.595.00",
     "availability": "Disponible",
     "description": "Playera premium de Darc Sport con diseño de Zenitsu de la serie Demon Slayer. Confeccionada en algodón de alta calidad para un estilo y comodidad excepcionales.",
-    "gender": "unisex",
+    "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
