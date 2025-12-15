@@ -1,66 +1,84 @@
-
 import fs from 'fs/promises';
 import path from 'path';
-import { products as initialProducts } from './data';
-import type { Product } from './data';
 
-// Use a "let" para que el array de productos en memoria sea mutable.
-let products: Product[] = JSON.parse(JSON.stringify(initialProducts));
-let orderCounter: number | null = null;
-
+// --- Paths ---
 const dataFilePath = path.join(process.cwd(), 'src', 'lib', 'data.ts');
 const counterFilePath = path.join(process.cwd(), 'order-counter.txt');
 
-async function initializeCounter(): Promise<void> {
-    if (orderCounter === null) {
-        try {
-            const data = await fs.readFile(counterFilePath, 'utf-8');
-            orderCounter = parseInt(data.trim(), 10);
-        } catch (error) {
-            orderCounter = 0;
-        }
-    }
-}
-
+/**
+ * Retrieves the next order ID by reading, incrementing, and writing to a counter file.
+ * This ensures the order ID is persistent across server instances.
+ * @returns {Promise<string>} The next order ID, padded with leading zeros.
+ */
 export async function getNextOrderId(): Promise<string> {
-    await initializeCounter();
-    orderCounter = (orderCounter ?? 0) + 1;
-    await fs.writeFile(counterFilePath, orderCounter.toString(), 'utf-8');
-    return orderCounter.toString().padStart(6, '0');
+    let currentCounter = 0;
+    try {
+        const data = await fs.readFile(counterFilePath, 'utf-8');
+        currentCounter = parseInt(data.trim(), 10);
+    } catch (error) {
+        // If the file doesn't exist, we start at 0.
+        console.log('Counter file not found, starting from 0.');
+    }
+
+    const nextCounter = currentCounter + 1;
+    await fs.writeFile(counterFilePath, nextCounter.toString(), 'utf-8');
+    
+    return nextCounter.toString().padStart(6, '0');
 }
 
-
+/**
+ * Updates the stock of a product variant directly in the `src/lib/data.ts` file.
+ * This ensures that stock changes are persisted on the filesystem.
+ * @param {number} productId - The ID of the product to update.
+ * @param {string} optionValue - The value of the option (e.g., "S", "M", "L").
+ * @param {number} quantity - The quantity to decrement from the stock.
+ * @param {string} [colorName] - The name of the color variant, if applicable.
+ */
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
-  // Crea una copia profunda del array de productos en memoria para modificarlo
-  const productsCopy: Product[] = JSON.parse(JSON.stringify(products));
+    try {
+        let fileContent = await fs.readFile(dataFilePath, 'utf-8');
 
-  const product = productsCopy.find(p => p.id === productId);
+        // Regex to find the product object by its ID
+        const productRegex = new RegExp(`(id:\\s*${productId},[\\s\\S]*?options:\\s*{[\\s\\S]*?values:\\s*\\[[\\s\\S]*?\\][\\s\\S]*?})`, 'g');
+        const productMatch = fileContent.match(productRegex);
 
-  if (!product) {
-    throw new Error(`Producto no encontrado con ID: ${productId}`);
-  }
+        if (!productMatch || productMatch.length === 0) {
+            throw new Error(`Producto no encontrado en data.ts con ID: ${productId}`);
+        }
 
-  let optionToUpdate;
+        let productString = productMatch[0];
+        let updatedProductString = productString;
 
-  if (colorName && product.colors) {
-    const color = product.colors.find(c => c.name === colorName);
-    if (color) {
-      optionToUpdate = color.options.values.find(o => o.value === optionValue);
+        // Regex to find the specific stock value to update
+        // This handles finding the right option within the correct color block or the main options block
+        const stockRegex = new RegExp(
+            (colorName
+                ? `(name:\\s*['|"]${colorName}['|"],[\\s\\S]*?value:\\s*['|"]${optionValue}['|"],[\\s\\S]*?stock:\\s*)(\\d+)`
+                : `(value:\\s*['|"]${optionValue}['|"],[\\s\\S]*?stock:\\s*)(\\d+)`
+            ), 'g'
+        );
+
+        let matchFound = false;
+        updatedProductString = productString.replace(stockRegex, (match, prefix, currentStockStr) => {
+            matchFound = true;
+            const currentStock = parseInt(currentStockStr, 10);
+            if (currentStock < quantity) {
+                throw new Error(`Stock insuficiente para ${productId} (${optionValue}/${colorName || 'N/A'}). Solicitado: ${quantity}, Disponible: ${currentStock}`);
+            }
+            const newStock = currentStock - quantity;
+            return `${prefix}${newStock}`;
+        });
+
+        if (!matchFound) {
+            throw new Error(`Opción de stock no encontrada para el producto: ${productId} (${optionValue} / ${colorName || 'N/A'})`);
+        }
+
+        fileContent = fileContent.replace(productString, updatedProductString);
+
+        await fs.writeFile(dataFilePath, fileContent, 'utf-8');
+
+    } catch (error) {
+        console.error("Error al actualizar el stock en el archivo:", error);
+        throw error;
     }
-  } else if (product.options) {
-    optionToUpdate = product.options.values.find(o => o.value === optionValue);
-  }
-
-  if (!optionToUpdate) {
-    throw new Error(`Opción no encontrada para el producto: ${productId} (${optionValue} / ${colorName || 'N/A'})`);
-  }
-
-  if (optionToUpdate.stock < quantity) {
-    throw new Error(`Stock insuficiente para ${product.name} (${optionValue} / ${colorName || 'N/A'}). Solicitado: ${quantity}, Disponible: ${optionToUpdate.stock}`);
-  }
-
-  optionToUpdate.stock -= quantity;
-  
-  // Actualiza el array en memoria con la copia modificada
-  products = productsCopy;
 }
