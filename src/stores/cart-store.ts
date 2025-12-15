@@ -53,9 +53,8 @@ export const useCartStore = create<AppState>()(
                   state.items.push(item);
               }
             } else {
-              // Optionally: show a toast or log a message that stock is exceeded
               console.warn(`Cannot add more of ${item.name}. Stock limit reached.`);
-              return; // Do not update state if stock is insufficient
+              return; 
             }
             
             const { itemCount, total } = calculateTotals(state.items);
@@ -147,7 +146,6 @@ export const useCartStore = create<AppState>()(
       storage: createJSONStorage(() => localStorage), 
       merge: (persistedState, currentState) => {
         const state = { ...currentState, ...(persistedState as any) };
-        // Always use the latest product data from the code, not from storage.
         state.products = initialProducts;
 
         if((persistedState as AppState)?.items){
@@ -160,7 +158,6 @@ export const useCartStore = create<AppState>()(
       },
       onRehydrateStorage: () => (state, error) => {
         if (state) {
-            // Recalculate totals on rehydration
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;

@@ -111,7 +111,7 @@ export default function CheckoutPage() {
       triggerConfetti();
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
-      processOrder();
+      processOrder(); // This will now update the stock in the Zustand store
       form.reset();
     } catch (error: any) {
       console.error('Error en el proceso de checkout:', error);
@@ -150,7 +150,7 @@ export default function CheckoutPage() {
     );
   }
 
-  if (isCartEmpty) {
+  if (isCartEmpty && !isSubmitSuccessful) {
     return (
       <>
         <Header />
