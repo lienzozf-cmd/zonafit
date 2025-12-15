@@ -103,10 +103,11 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        const { items, products } = get();
-        const newProducts = produce(products, draft => {
+        const { items } = get();
+        
+        set(produce((state: AppState) => {
           items.forEach(cartItem => {
-            const product = draft.find(p => p.id === cartItem.productId);
+            const product = state.products.find(p => p.id === cartItem.productId);
             if (product) {
               if (cartItem.color && product.colors) {
                 const color = product.colors.find(c => c.name === cartItem.color);
@@ -124,8 +125,10 @@ export const useCartStore = create<AppState>()(
               }
             }
           });
-        });
-        set({ products: newProducts, items: [], itemCount: 0, total: 0 });
+          state.items = [];
+          state.itemCount = 0;
+          state.total = 0;
+        }));
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
