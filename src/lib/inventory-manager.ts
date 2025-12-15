@@ -25,70 +25,79 @@ export async function getNextOrderId(): Promise<string> {
     }
     
     orderCounter++;
-    // No se escribe en el archivo para evitar reinicios del servidor en desarrollo.
-    // En producción, esto se reiniciará con el servidor. Para persistencia real se necesita una DB.
+    
+    try {
+        await fs.writeFile(counterFilePath, orderCounter.toString(), 'utf-8');
+    } catch (writeError) {
+        console.error("Could not write to counter file, continuing without persistence for this session.", writeError);
+    }
+
     return orderCounter.toString().padStart(6, '0');
 }
 
 /**
  * Updates the stock of a product variant in the `src/lib/data.ts` file.
- * NOTE: This file-based update approach is not suitable for a production server
- * environment which is typically read-only. This is for demonstration or specific
- * build-process scenarios.
  * @param {number} productId - The ID of the product to update.
  * @param {string} optionValue - The value of the option (e.g., "S", "M", "L").
  * @param {number} quantity - The quantity to decrement from the stock.
  * @param {string} [colorName] - The name of the color variant, if applicable.
  */
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
-    // Esta función permanecerá vacía en el entorno de producción
-    // para evitar errores de escritura en el sistema de archivos.
-    // El stock se manejará en memoria a través del store de Zustand.
     if (process.env.NODE_ENV === 'production') {
+        console.warn('Stock update on filesystem is disabled in production.');
         return;
     }
 
     try {
         let fileContent = await fs.readFile(dataFilePath, 'utf-8');
         
-        // This is a complex operation and prone to errors.
-        // A proper database is recommended for production environments.
-        const productRegex = new RegExp(`(id:\\s*${productId},[\\s\\S]*?options:\\s*{[\\s\\S]*?values:\\s*\\[[\\s\\S]*?\\][\\s\\S]*?})`, 'g');
-        const productMatch = fileContent.match(productRegex);
-
-        if (!productMatch || productMatch.length === 0) {
-            console.warn(`Producto no encontrado en data.ts con ID: ${productId}`);
-            return;
-        }
-        
-        // This is a simplified regex and might not cover all edge cases.
-        const stockRegex = new RegExp(
-            colorName
-                ? `(name:\\s*['"\`]${colorName}['"\`][\\s\\S]*?value:\\s*['"\`]${optionValue}['"\`][\\s\\S]*?stock:\\s*)(\\d+)`
-                : `(value:\\s*['"\`]${optionValue}['"\`][\\s\\S]*?stock:\\s*)(\\d+)`
-        );
-
         let updated = false;
-        const updatedContent = fileContent.replace(productRegex, (productBlock) => {
-            return productBlock.replace(stockRegex, (match, prefix, currentStockStr) => {
+
+        // Create a dynamic regex to find the product object
+        const productStartRegex = new RegExp(`(\\{\\s*id:\\s*${productId},[\\s\\S]*?\\})`, 'g');
+        
+        let updatedContent = fileContent.replace(productStartRegex, (productBlock) => {
+            let tempBlock = productBlock;
+            let productUpdated = false;
+
+            if (colorName) {
+                // Regex for color variants
+                const colorRegex = new RegExp(`(name:\\s*['"\`]${colorName}['"\`][\\s\\S]*?value:\\s*['"\`]${optionValue}['"\`][\\s\\S]*?stock:\\s*)(\\d+)`, 'g');
+                tempBlock = tempBlock.replace(colorRegex, (match, prefix, currentStockStr) => {
+                    const currentStock = parseInt(currentStockStr, 10);
+                    const newStock = Math.max(0, currentStock - quantity);
+                    productUpdated = true;
+                    return `${prefix}${newStock}`;
+                });
+            } else {
+                // Regex for products without color variants
+                const optionRegex = new RegExp(`(value:\\s*['"\`]${optionValue}['"\`][\\s\\S]*?stock:\\s*)(\\d+)`, 'g');
+                
+                // This check ensures we are not accidentally changing a color's option stock
+                // when no color is specified. This is a safeguard.
+                if (!/colors: \[[^\]]+\]/.test(productBlock)) {
+                     tempBlock = tempBlock.replace(optionRegex, (match, prefix, currentStockStr) => {
+                        const currentStock = parseInt(currentStockStr, 10);
+                        const newStock = Math.max(0, currentStock - quantity);
+                        productUpdated = true;
+                        return `${prefix}${newStock}`;
+                    });
+                }
+            }
+
+            if (productUpdated) {
                 updated = true;
-                const currentStock = parseInt(currentStockStr, 10);
-                const newStock = Math.max(0, currentStock - quantity);
-                return `${prefix}${newStock}`;
-            });
+            }
+            return tempBlock;
         });
 
         if (updated) {
             await fs.writeFile(dataFilePath, updatedContent, 'utf-8');
-            // También actualizamos el contador para persistirlo junto con el stock
-            if (orderCounter !== -1) {
-              await fs.writeFile(counterFilePath, orderCounter.toString(), 'utf-8');
-            }
+            console.log(`Stock updated successfully for product ID: ${productId}`);
         } else {
-            console.warn(`Opción de stock no encontrada para el producto: ${productId} (${optionValue} / ${colorName || 'N/A'})`);
+            console.warn(`Stock option not found or not updated for product: ${productId} (Option: ${optionValue}, Color: ${colorName || 'N/A'})`);
         }
     } catch (error) {
-        console.error("Error al intentar actualizar el stock en el archivo:", error);
-        // No lanzamos el error para no detener el proceso de compra
+        console.error("Error trying to update stock in file:", error);
     }
 }

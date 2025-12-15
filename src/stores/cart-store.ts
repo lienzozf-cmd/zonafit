@@ -42,11 +42,22 @@ export const useCartStore = create<AppState>()(
         set(produce((state: AppState) => {
             const existingItem = state.items.find((i) => i.id === item.id);
             
-            if (existingItem) {
-                existingItem.quantity += 1;
+            const productOption = get().getProductOption(item.productId, item.option, item.color);
+            const availableStock = productOption?.stock ?? 0;
+            const currentQuantityInCart = existingItem?.quantity ?? 0;
+
+            if (currentQuantityInCart < availableStock) {
+              if (existingItem) {
+                  existingItem.quantity += 1;
+              } else {
+                  state.items.push(item);
+              }
             } else {
-                state.items.push(item);
+              // Optionally: show a toast or log a message that stock is exceeded
+              console.warn(`Cannot add more of ${item.name}. Stock limit reached.`);
+              return; // Do not update state if stock is insufficient
             }
+            
             const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;
@@ -60,13 +71,24 @@ export const useCartStore = create<AppState>()(
         });
       },
       incrementQuantity: (id) => {
-        set((state) => {
-            const newItems = state.items.map((i) =>
-              i.id === id ? { ...i, quantity: i.quantity + 1 } : i
-            );
-            const { itemCount, total } = calculateTotals(newItems);
-            return { items: newItems, itemCount, total };
-        });
+        set(produce((state: AppState) => {
+            const item = state.items.find((i) => i.id === id);
+            if (!item) return;
+
+            const productOption = get().getProductOption(item.productId, item.option, item.color);
+            const availableStock = productOption?.stock ?? 0;
+            
+            if (item.quantity < availableStock) {
+              item.quantity += 1;
+            } else {
+              console.warn(`Cannot increment quantity for ${item.name}. Stock limit reached.`);
+              return;
+            }
+
+            const { itemCount, total } = calculateTotals(state.items);
+            state.itemCount = itemCount;
+            state.total = total;
+        }));
       },
       decrementQuantity: (id) => {
           set((state) => {
@@ -94,7 +116,7 @@ export const useCartStore = create<AppState>()(
                     option.stock = Math.max(0, option.stock - cartItem.quantity);
                   }
                 }
-              } else {
+              } else if (product.options) {
                 const option = product.options.values.find(o => o.value === cartItem.option);
                 if (option) {
                   option.stock = Math.max(0, option.stock - cartItem.quantity);
