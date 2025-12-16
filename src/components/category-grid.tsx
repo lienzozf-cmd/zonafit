@@ -1,37 +1,17 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cart-store';
 
 const CategoryGrid = () => {
-  const products = useCartStore((state) => state.products);
-  const [counts, setCounts] = useState({
-    mujer: 0,
-    hombre: 0,
-    accesorio: 0,
-    suplemento: 0,
-    joyeria: 0,
-  });
-
-  useEffect(() => {
-    if (products && products.length > 0) {
-      setCounts({
-        mujer: products.filter(p => p.gender === 'mujer').length,
-        hombre: products.filter(p => p.gender === 'hombre').length,
-        accesorio: products.filter(p => p.category === 'accesorio').length,
-        suplemento: products.filter(p => p.category === 'suplemento').length,
-        joyeria: products.filter(p => p.category === 'joyeria').length,
-      });
-    }
-  }, [products]);
-
+  // Simplified for now to prevent build loops.
+  // The counts can be re-implemented in a more performant way if needed.
   const categoryData = [
     {
       name: 'Mujer',
-      count: counts.mujer,
+      count: 'Ver',
       image: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
       dataAiHint: 'woman fitness',
       className: 'mujer',
@@ -39,7 +19,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Hombre',
-      count: counts.hombre,
+      count: 'Ver',
       image: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
       dataAiHint: 'man fitness',
       className: 'hombre',
@@ -47,7 +27,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Accesorios',
-      count: counts.accesorio,
+      count: 'Ver',
       image: '/assets/images/marcas/youngla/hombre/maletagym.png',
       dataAiHint: 'gym accessories',
       className: 'accesorios',
@@ -55,7 +35,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Suplementos',
-      count: counts.suplemento,
+      count: 'Ver',
       image: '/assets/images/marcas/raw/prewcb.jpg',
       dataAiHint: 'supplements',
       className: 'suplementos',
@@ -63,7 +43,7 @@ const CategoryGrid = () => {
     },
     {
       name: 'Joyería',
-      count: counts.joyeria,
+      count: 'Ver',
       image: '/assets/images/marcas/rgmnt/tridente.png',
       dataAiHint: 'jewelry',
       className: 'joyeria',
