@@ -597,7 +597,7 @@ export const products: Product[] = [
     "brand": "Dragon Pharma",
     "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
     "servings_info": "60 servicios.",
-    "feature1": "Aumenta la fuerza y potencia muscular.",
+    "feature1": "Aumenta la fuerza y la potencia muscular.",
     "feature2": "Mejora el rendimiento en entrenamientos de alta intensidad.",
     "feature3": "Fórmula micronizada para una rápida absorción.",
     "images": [
@@ -720,7 +720,7 @@ export const products: Product[] = [
     "name": "Minimal Rope Bracelet Gold -14K Gold SS \"8\"",
     "price": "Q.229.50",
     "originalPrice": "Q.255.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.",
     "gender": "unisex",
     "category": "joyeria",
@@ -741,7 +741,7 @@ export const products: Product[] = [
       "values": [
         {
           "value": "Gold",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -3580,3 +3580,4 @@ export const products: Product[] = [
 
 
     
+
