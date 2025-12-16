@@ -142,7 +142,7 @@ export const useCartStore = create<AppState>()(
       },
     }),
     {
-      name: 'cart-storage',
+      name: 'cart-storage-v2',
       storage: createJSONStorage(() => localStorage), 
       onRehydrateStorage: (state) => {
         // Esto se ejecuta cuando el estado se carga desde localStorage.
