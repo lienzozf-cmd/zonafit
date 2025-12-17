@@ -655,7 +655,7 @@
       "values": [
         {
           "value": "Silver",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -2438,7 +2438,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "M",
