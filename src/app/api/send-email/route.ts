@@ -1,3 +1,4 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
@@ -9,10 +10,12 @@ import path from 'path';
 const shippingInfoSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
   lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
+  email: z.string().email('Por favor, introduce un correo electrónico válido.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
   address: z.string().trim().min(5, 'La dirección debe ser más detallada.'),
   department: z.string().trim().min(3, 'El departamento es requerido.'),
   municipality: z.string().trim().min(3, 'El municipio es requerido.'),
+  paymentMethod: z.enum(['deposit', 'cod']),
 });
 
 const cartItemSchema = z.object({
@@ -35,7 +38,7 @@ const orderSchema = z.object({
 type CartItem = z.infer<typeof cartItemSchema>;
 
 // --- Helper para HTML ---
-function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost: number, grandTotal: number) {
+function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost: number, codCommission: number, grandTotal: number) {
   const itemsHtml = items.map(item => {
     // Usamos un CID único y seguro para la imagen
     const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/[^a-zA-Z0-9-]/g, '-');
@@ -79,6 +82,12 @@ function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost
           <td style="padding: 5px 10px;">Envío</td>
           <td style="padding: 5px 10px; text-align: right;">Q${shippingCost.toFixed(2)}</td>
         </tr>
+        ${codCommission > 0 ? `
+        <tr>
+          <td style="padding: 5px 10px;">Comisión Contra Entrega</td>
+          <td style="padding: 5px 10px; text-align: right;">Q${codCommission.toFixed(2)}</td>
+        </tr>
+        ` : ''}
         <tr style="border-top: 2px solid #000; font-weight: bold;">
           <td style="padding: 15px 10px 0;">Total del Pedido</td>
           <td style="padding: 15px 10px 0; text-align: right;">Q${grandTotal.toFixed(2)}</td>
@@ -90,14 +99,9 @@ function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost
 
 // --- Handler Principal ---
 export async function POST(req: NextRequest) {
-  // Validación de CORS/Origen (Opcional en producción estricta)
   if (process.env.NODE_ENV === 'production') {
     const origin = req.headers.get('origin');
-    const referer = req.headers.get('referer');
     const allowedOrigin = process.env.NEXT_PUBLIC_APP_URL || "https://zona-fit-gt-online.web.app";
-    // Descomenta esto solo si quieres bloquear peticiones externas:
-    // const isAllowed = (origin && origin === allowedOrigin) || (referer && referer?.startsWith(allowedOrigin + '/'));
-    // if (!isAllowed) return NextResponse.json({ error: 'Acceso no autorizado.' }, { status: 403 });
   }
 
   let payload;
@@ -122,25 +126,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error de configuración del servidor." }, { status: 500 });
   }
 
-  const { shippingInfo, orderItems } = validationResult.data;
+  const { shippingInfo, orderItems, orderTotal } = validationResult.data;
   
   try {
     const orderId = await getNextOrderId(); 
     const shippingCost = 35;
     const attachments = [];
     const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const grandTotal = productTotal + shippingCost;
+    const codCommission = shippingInfo.paymentMethod === 'cod' ? productTotal * 0.04 : 0;
+    const grandTotal = orderTotal;
 
     for (const item of orderItems) {
       await updateStock(Number(item.productId), item.option, item.quantity, item.color ?? undefined);
 
       if (item.image) {
         try {
-          // Lógica robusta para encontrar la imagen
           const imageRelPath = item.image.startsWith('/') ? item.image.slice(1) : item.image;
           const imagePath = path.join(process.cwd(), 'public', imageRelPath);
           
-          await fs.access(imagePath); // Verifica si existe antes de leer
+          await fs.access(imagePath);
           const imageContent = await fs.readFile(imagePath);
           
           attachments.push({
@@ -164,7 +168,8 @@ export async function POST(req: NextRequest) {
       },
     });
     
-    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, grandTotal);
+    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, codCommission, grandTotal);
+    const paymentMethodText = shippingInfo.paymentMethod === 'cod' ? 'Pago Contra Entrega' : 'Previo Depósito';
 
     await transporter.sendMail({
       from: `"ZONA FIT GT" <${process.env.EMAIL_USER}>`,
@@ -178,8 +183,10 @@ export async function POST(req: NextRequest) {
           <div style="padding: 20px;">
             <h2 style="font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Detalles del Cliente</h2>
             <p><strong>Nombre:</strong> ${shippingInfo.firstName} ${shippingInfo.lastName}</p>
+            <p><strong>Correo:</strong> ${shippingInfo.email}</p>
             <p><strong>Teléfono:</strong> ${shippingInfo.phone}</p>
             <p><strong>Dirección:</strong> ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}</p>
+            <p><strong>Método de Pago:</strong> ${paymentMethodText}</p>
             
             <h2 style="font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px;">Artículos del Pedido</h2>
             ${itemsHtml}
