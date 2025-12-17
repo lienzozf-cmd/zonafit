@@ -132,6 +132,27 @@ export default function AdminPage() {
     toast({ title: 'Has cerrado sesión.' });
   };
 
+  const handleValueChange = (productId: number, newValue: string, originalValue: string, colorName?: string) => {
+    setEditableProducts(
+      produce((draft) => {
+        const product = draft.find((p) => p.id === productId);
+        if (!product) return;
+
+        if (colorName && product.colors) {
+          const color = product.colors.find((c) => c.name === colorName);
+          if (color) {
+            const option = color.options.values.find((o) => o.value === originalValue);
+            if (option) option.value = newValue;
+          }
+        } else if (product.options) {
+          const option = product.options.values.find((o) => o.value === originalValue);
+          if (option) option.value = newValue;
+        }
+      })
+    );
+  };
+
+
   const handleStockChange = (productId: number, optionValue: string, newStock: number, colorName?: string) => {
     setEditableProducts(
       produce((draft) => {
@@ -184,61 +205,89 @@ export default function AdminPage() {
     }
   };
 
-  const renderProductRows = (product: Product) => {
+  const renderProductRows = (product: Product, productIndex: number) => {
+    const isProductEven = productIndex % 2 === 0;
+
     if (product.colors && product.colors.length > 0) {
-      return product.colors.flatMap((color) =>
-        color.options.values.map((option, optionIndex) => (
-          <TableRow key={`${product.id}-${color.name}-${option.value}`}>
-            {optionIndex === 0 && (
-              <>
-                <TableCell rowSpan={color.options.values.length} className="align-top font-medium">
-                  {product.name}
-                </TableCell>
-                <TableCell rowSpan={color.options.values.length} className="align-top">
-                  {color.name}
-                </TableCell>
-              </>
-            )}
-            <TableCell>{option.value}</TableCell>
-            <TableCell>{product.price}</TableCell>
-            <TableCell>
-              <Input
-                type="number"
-                value={option.stock}
-                onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0, color.name)}
-                className="w-20"
-              />
-            </TableCell>
-          </TableRow>
-        ))
-      );
+        return product.colors.flatMap((color) =>
+            color.options.values.map((option, optionIndex) => {
+                const rowClasses = isProductEven
+                    ? 'bg-white text-black hover:bg-white'
+                    : 'bg-gray-800 text-white hover:bg-gray-800';
+
+                return (
+                    <TableRow key={`${product.id}-${color.name}-${option.value}`} className={rowClasses}>
+                        {optionIndex === 0 && (
+                            <>
+                                <TableCell rowSpan={color.options.values.length} className="align-top font-medium">
+                                    {product.name}
+                                </TableCell>
+                                <TableCell rowSpan={color.options.values.length} className="align-top">
+                                    {color.name}
+                                </TableCell>
+                            </>
+                        )}
+                        <TableCell>
+                            <Input
+                                type="text"
+                                value={option.value}
+                                onChange={(e) => handleValueChange(product.id, e.target.value, option.value, color.name)}
+                                className="w-24 bg-gray-200 text-black"
+                            />
+                        </TableCell>
+                        <TableCell>{product.price}</TableCell>
+                        <TableCell>
+                            <Input
+                                type="number"
+                                value={option.stock}
+                                onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0, color.name)}
+                                className="w-20 bg-gray-200 text-black"
+                            />
+                        </TableCell>
+                    </TableRow>
+                );
+            })
+        );
     } else {
-      return product.options.values.map((option, optionIndex) => (
-        <TableRow key={`${product.id}-${option.value}`}>
-          {optionIndex === 0 && (
-            <>
-              <TableCell rowSpan={product.options.values.length} className="align-top font-medium">
-                {product.name}
-              </TableCell>
-              <TableCell rowSpan={product.options.values.length} className="align-top">
-                N/A
-              </TableCell>
-            </>
-          )}
-          <TableCell>{option.value}</TableCell>
-          <TableCell>{product.price}</TableCell>
-          <TableCell>
-            <Input
-              type="number"
-              value={option.stock}
-              onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0)}
-              className="w-20"
-            />
-          </TableCell>
-        </TableRow>
-      ));
+        return product.options.values.map((option, optionIndex) => {
+            const rowClasses = isProductEven
+                ? 'bg-white text-black hover:bg-white'
+                : 'bg-gray-800 text-white hover:bg-gray-800';
+
+            return (
+                <TableRow key={`${product.id}-${option.value}`} className={rowClasses}>
+                    {optionIndex === 0 && (
+                        <>
+                            <TableCell rowSpan={product.options.values.length} className="align-top font-medium">
+                                {product.name}
+                            </TableCell>
+                            <TableCell rowSpan={product.options.values.length} className="align-top">
+                                N/A
+                            </TableCell>
+                        </>
+                    )}
+                    <TableCell>
+                         <Input
+                            type="text"
+                            value={option.value}
+                            onChange={(e) => handleValueChange(product.id, e.target.value, option.value)}
+                            className="w-24 bg-gray-200 text-black"
+                        />
+                    </TableCell>
+                    <TableCell>{product.price}</TableCell>
+                    <TableCell>
+                        <Input
+                            type="number"
+                            value={option.stock}
+                            onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0)}
+                            className="w-20 bg-gray-200 text-black"
+                        />
+                    </TableCell>
+                </TableRow>
+            );
+        });
     }
-  };
+};
 
   if (!isAuthenticated) {
     return (
