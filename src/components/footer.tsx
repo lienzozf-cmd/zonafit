@@ -25,6 +25,7 @@ const Footer = () => {
             <li><Link href="/politicas-de-privacidad">Políticas de Privacidad</Link></li>
             <li><Link href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
             <li><Link href="/terminos-y-condiciones#devoluciones"><strong className="uppercase">NO HAY CAMBIO NI DEVOLUCIONES</strong></Link></li>
+            <li><Link href="/admin" style={{fontSize: '2px', color: 'transparent'}}>.</Link></li>
           </ul>
         </div>
       </div>
