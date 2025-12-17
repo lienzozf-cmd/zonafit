@@ -31,20 +31,24 @@ const ProductDetailPage = () => {
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
   const [currentImage, setCurrentImage] = useState('');
   const [availabilityMessage, setAvailabilityMessage] = useState('');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const foundProduct = products.find((p) => p.id === Number(id));
-    if (foundProduct) {
-      setProduct(foundProduct);
-      if (foundProduct.colors && foundProduct.colors.length > 0) {
-        setSelectedColor(foundProduct.colors[0]);
-        setCurrentImage(foundProduct.colors[0].imageSrc);
-      } else {
-        setCurrentImage(foundProduct.images[0].src);
-      }
-      
-      if (foundProduct.options?.values.length === 1 && foundProduct.options.values[0].value === 'Único') {
-          setSelectedOption(foundProduct.options.values[0]);
+    setIsClient(true);
+    if (products && products.length > 0) {
+      const foundProduct = products.find((p) => p.id === Number(id));
+      if (foundProduct) {
+        setProduct(foundProduct);
+        if (foundProduct.colors && foundProduct.colors.length > 0) {
+          setSelectedColor(foundProduct.colors[0]);
+          setCurrentImage(foundProduct.colors[0].imageSrc);
+        } else {
+          setCurrentImage(foundProduct.images[0].src);
+        }
+        
+        if (foundProduct.options?.values.length === 1 && foundProduct.options.values[0].value === 'Único') {
+            setSelectedOption(foundProduct.options.values[0]);
+        }
       }
     }
   }, [id, products]);
@@ -143,7 +147,7 @@ const ProductDetailPage = () => {
   
   };
 
-  if (!product) {
+  if (!isClient || !product) {
     return (
       <>
         <Header />
@@ -339,3 +343,5 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
+
+    
