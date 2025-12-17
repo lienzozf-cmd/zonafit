@@ -118,39 +118,10 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        const { items } = get();
-        
-        const updatedProducts = produce(get().products, draft => {
-            items.forEach(cartItem => {
-              const product = draft.find(p => p.id === cartItem.productId);
-              if (product) {
-                if (cartItem.color && product.colors) {
-                  const color = product.colors.find(c => c.name === cartItem.color);
-                  if (color) {
-                    const option = color.options.values.find(o => o.value === cartItem.option);
-                    if (option) {
-                      option.stock = Math.max(0, option.stock - cartItem.quantity);
-                    }
-                  }
-                } else if (product.options) {
-                  const option = product.options.values.find(o => o.value === cartItem.option);
-                  if (option) {
-                    option.stock = Math.max(0, option.stock - cartItem.quantity);
-                  }
-                }
-              }
-            });
-        });
-      
-        set({ products: updatedProducts, items: [], itemCount: 0, total: 0 });
-
-        fetch('/api/products', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updatedProducts),
-        }).catch(error => {
-            console.error('Failed to sync stock with backend:', error);
-        });
+        // Clear the cart locally. The stock is now handled server-side in the /api/send-email route.
+        set({ items: [], itemCount: 0, total: 0 });
+        // Fetch the latest products from the server to reflect the stock change.
+        get().fetchProducts();
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
