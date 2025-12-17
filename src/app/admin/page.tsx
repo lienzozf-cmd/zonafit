@@ -37,7 +37,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Trash, PlusCircle } from 'lucide-react';
+import { Trash, PlusCircle, LogOut } from 'lucide-react';
 
 const loginSchema = z.object({
   username: z.string().min(1, 'El usuario es requerido'),
@@ -125,6 +125,11 @@ export default function AdminPage() {
         variant: 'destructive',
       });
     }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    toast({ title: 'Has cerrado sesión.' });
   };
 
   const handleStockChange = (productId: number, optionValue: string, newStock: number, colorName?: string) => {
@@ -282,6 +287,10 @@ export default function AdminPage() {
           </Dialog>
           <Button onClick={handleSave} disabled={isSaving} className="bg-red-600 hover:bg-red-700">
             {isSaving ? 'Guardando...' : 'Guardar Cambios'}
+          </Button>
+          <Button onClick={handleLogout} variant="outline">
+            <LogOut className="mr-2 h-4 w-4" />
+            Cerrar Sesión
           </Button>
         </div>
       </div>
