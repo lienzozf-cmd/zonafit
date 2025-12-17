@@ -35,23 +35,25 @@ const ProductDetailPage = () => {
 
   useEffect(() => {
     setIsClient(true);
-    if (products && products.length > 0) {
+    if (products.length > 0) {
       const foundProduct = products.find((p) => p.id === Number(id));
       if (foundProduct) {
         setProduct(foundProduct);
-        if (foundProduct.colors && foundProduct.colors.length > 0) {
-          setSelectedColor(foundProduct.colors[0]);
-          setCurrentImage(foundProduct.colors[0].imageSrc);
+        const initialColor = foundProduct.colors && foundProduct.colors.length > 0 ? foundProduct.colors[0] : null;
+        setSelectedColor(initialColor);
+        setCurrentImage(initialColor ? initialColor.imageSrc : foundProduct.images[0].src);
+
+        const options = initialColor?.options.values || foundProduct.options?.values || [];
+        if (options.length === 1 && options[0].value === 'Único') {
+          setSelectedOption(options[0]);
         } else {
-          setCurrentImage(foundProduct.images[0].src);
+          setSelectedOption(null);
         }
-        
-        if (foundProduct.options?.values.length === 1 && foundProduct.options.values[0].value === 'Único') {
-            setSelectedOption(foundProduct.options.values[0]);
-        }
+      } else {
+        router.push('/');
       }
     }
-  }, [id, products]);
+  }, [id, products, router]);
 
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;
@@ -60,18 +62,20 @@ const ProductDetailPage = () => {
   };
   
   useEffect(() => {
-    updateAvailabilityMessage();
+    if (product) {
+      updateAvailabilityMessage();
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption, selectedColor, product, items]);
 
   const updateAvailabilityMessage = () => {
+    if (!product) return;
     if (selectedOption) {
       const availableStock = getAvailableStock(selectedOption);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
-    } else if (selectedColor) {
-      setAvailabilityMessage(`Selecciona un ${selectedColor.options.type}`);
-    } else if (product?.options) {
-      setAvailabilityMessage(`Selecciona un ${product.options.type}`);
+    } else {
+      const optionType = selectedColor?.options.type || product.options?.type || 'opción';
+      setAvailabilityMessage(`Selecciona un ${optionType}`);
     }
   }
 
@@ -79,7 +83,7 @@ const ProductDetailPage = () => {
   const handleColorClick = (color: ProductColor) => {
     setSelectedColor(color);
     setCurrentImage(color.imageSrc);
-    setSelectedOption(null); // Reset size selection
+    setSelectedOption(null); 
   };
 
   const handleOptionClick = (option: ProductOption) => {
@@ -267,7 +271,7 @@ const ProductDetailPage = () => {
 
             {/* Options */}
             <div className="mt-auto space-y-4">
-              {product.colors && (
+              {product.colors && product.colors.length > 0 && (
                 <div>
                   <h3 className="text-lg font-medium mb-2">Color</h3>
                   <div className="flex flex-wrap gap-2">
