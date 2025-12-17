@@ -147,4 +147,4 @@ export type Product = {
   servings_info?: string;
 };
 
-export const products: Product[] = productsData;
+export const products: Product[] = productsData as unknown as Product[];

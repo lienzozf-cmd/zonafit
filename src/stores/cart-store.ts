@@ -13,6 +13,7 @@ interface AppState {
   isCartOpen: boolean;
   products: Product[];
   setProducts: (products: Product[]) => void;
+  fetchProducts: () => Promise<void>;
   setIsCartOpen: (isOpen: boolean) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
@@ -38,6 +39,20 @@ export const useCartStore = create<AppState>()(
       isCartOpen: false,
       products: initialProducts,
       setProducts: (products) => set({ products }),
+      fetchProducts: async () => {
+        try {
+          const response = await fetch('/api/products');
+          if (!response.ok) {
+            throw new Error('Failed to fetch products');
+          }
+          const serverProducts = await response.json();
+          set({ products: serverProducts });
+        } catch (error) {
+          console.error("Failed to fetch latest products:", error);
+          // Optionally fall back to initial products or handle the error
+          set({ products: initialProducts });
+        }
+      },
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       addItem: (item) => {
         set(produce((state: AppState) => {
@@ -127,17 +142,14 @@ export const useCartStore = create<AppState>()(
             });
         });
       
-        // Optimistically update the local state
         set({ products: updatedProducts, items: [], itemCount: 0, total: 0 });
 
-        // Asynchronously update the backend
         fetch('/api/products', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedProducts),
         }).catch(error => {
             console.error('Failed to sync stock with backend:', error);
-            // Here you could implement a retry mechanism or notify the user/admin
         });
       },
       getProductOption: (productId, optionValue, colorName) => {
@@ -160,13 +172,7 @@ export const useCartStore = create<AppState>()(
           if (error) {
             console.log('An error happened during hydration', error)
           } else {
-             // Fetch the latest products from the server upon rehydration
-             fetch('/api/products')
-                .then(res => res.json())
-                .then(serverProducts => {
-                    state?.setProducts(serverProducts);
-                })
-                .catch(err => console.error("Failed to fetch latest products on rehydration:", err));
+             state?.fetchProducts();
           }
         }
       }
