@@ -16,8 +16,8 @@ const shippingInfoSchema = z.object({
 });
 
 const cartItemSchema = z.object({
-  id: z.string(),
-  productId: z.number(),
+  id: z.union([z.string(), z.number()]),
+  productId: z.union([z.string(), z.number()]),
   name: z.string(),
   price: z.number(),
   image: z.string(),
@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
     const grandTotal = productTotal + shippingCost;
 
     for (const item of orderItems) {
-      await updateStock(item.productId, item.option, item.quantity, item.color ?? undefined);
+      await updateStock(Number(item.productId), item.option, item.quantity, item.color ?? undefined);
 
       if (item.image) {
         try {
