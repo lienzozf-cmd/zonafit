@@ -212,8 +212,8 @@ export default function AdminPage() {
         return product.colors.flatMap((color) =>
             color.options.values.map((option, optionIndex) => {
                 const rowClasses = isProductEven
-                    ? 'bg-white text-black hover:bg-white'
-                    : 'bg-gray-800 text-white hover:bg-gray-800';
+                    ? 'bg-white text-black'
+                    : 'bg-black text-white';
 
                 return (
                     <TableRow key={`${product.id}-${color.name}-${option.value}`} className={rowClasses}>
@@ -227,14 +227,7 @@ export default function AdminPage() {
                                 </TableCell>
                             </>
                         )}
-                        <TableCell>
-                            <Input
-                                type="text"
-                                value={option.value}
-                                onChange={(e) => handleValueChange(product.id, e.target.value, option.value, color.name)}
-                                className="w-24 bg-gray-200 text-black"
-                            />
-                        </TableCell>
+                        <TableCell>{option.value}</TableCell>
                         <TableCell>{product.price}</TableCell>
                         <TableCell>
                             <Input
@@ -251,8 +244,8 @@ export default function AdminPage() {
     } else {
         return product.options.values.map((option, optionIndex) => {
             const rowClasses = isProductEven
-                ? 'bg-white text-black hover:bg-white'
-                : 'bg-gray-800 text-white hover:bg-gray-800';
+                ? 'bg-white text-black'
+                : 'bg-black text-white';
 
             return (
                 <TableRow key={`${product.id}-${option.value}`} className={rowClasses}>
@@ -266,14 +259,7 @@ export default function AdminPage() {
                             </TableCell>
                         </>
                     )}
-                    <TableCell>
-                         <Input
-                            type="text"
-                            value={option.value}
-                            onChange={(e) => handleValueChange(product.id, e.target.value, option.value)}
-                            className="w-24 bg-gray-200 text-black"
-                        />
-                    </TableCell>
+                    <TableCell>{option.value}</TableCell>
                     <TableCell>{product.price}</TableCell>
                     <TableCell>
                         <Input
@@ -476,3 +462,5 @@ function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues)
     </form>
   );
 }
+
+    
