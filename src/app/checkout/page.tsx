@@ -18,18 +18,21 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import { useCartStore } from '@/stores/cart-store';
 import Link from 'next/link';
-import { ShoppingCart, CheckCircle, Send, Truck, WalletCards } from 'lucide-react';
+import { ShoppingCart, CheckCircle, Send, Truck, WalletCards, CreditCard } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
   lastName: z.string().trim().min(2, 'El apellido debe tener al menos 2 caracteres.'),
+  email: z.string().email('Por favor, introduce un correo electrónico válido.'),
   phone: z.string().regex(/^\d{8}$/, 'El número de teléfono debe tener 8 dígitos.'),
   address: z.string().trim().min(5, 'La dirección debe ser más detallada.'),
   department: z.string().trim().min(3, 'El departamento es requerido.'),
   municipality: z.string().trim().min(3, 'El municipio es requerido.'),
+  paymentMethod: z.enum(['deposit', 'cod'], { required_error: 'Debes seleccionar un método de pago.' }),
 });
 
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
@@ -45,21 +48,32 @@ export default function CheckoutPage() {
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
 
-  const shippingCost = 35;
-  const orderTotal = total + shippingCost;
-  const isCartEmpty = items.length === 0;
-
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
+      email: '',
       phone: '',
       address: '',
       department: '',
       municipality: '',
+      paymentMethod: 'deposit',
     },
   });
+
+  const paymentMethod = form.watch('paymentMethod');
+  const shippingCost = 35;
+  const codCommissionPercentage = 0.04; // 4%
+
+  const codCommission = paymentMethod === 'cod' ? total * codCommissionPercentage : 0;
+  const orderTotal = total + shippingCost + codCommission;
+  const isCartEmpty = items.length === 0;
+
+  useEffect(() => {
+    // Esto es necesario para asegurar que la re-renderización ocurra cuando el método de pago cambie.
+  }, [paymentMethod]);
+
 
   const triggerConfetti = () => {
     const duration = 2 * 1000;
@@ -108,7 +122,6 @@ export default function CheckoutPage() {
         throw new Error(errorMsg);
       }
       
-      // Llamar a processOrder aquí, SOLO si la respuesta es OK.
       processOrder();
 
       triggerConfetti();
@@ -181,7 +194,7 @@ export default function CheckoutPage() {
             
             <div>
               <h2 className="text-2xl font-bold mb-2">Información de Envío</h2>
-              <p className="text-sm text-gray-400 mb-8">Introduce tus datos para el pago contra entrega.</p>
+              <p className="text-sm text-gray-400 mb-8">Introduce tus datos para completar la compra.</p>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -212,6 +225,19 @@ export default function CheckoutPage() {
                       )}
                     />
                   </div>
+                   <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Correo Electrónico</FormLabel>
+                          <FormControl>
+                            <Input placeholder="tu@correo.com" {...field} className="bg-[#1C2033] border-slate-700 rounded-lg" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   <FormField
                     control={form.control}
                     name="phone"
@@ -266,6 +292,42 @@ export default function CheckoutPage() {
                       )}
                     />
                   </div>
+
+                  <FormField
+                    control={form.control}
+                    name="paymentMethod"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel>Método de Pago</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-2"
+                          >
+                            <FormItem className="flex items-center space-x-3 space-y-0 p-4 rounded-lg bg-[#1C2033] border border-slate-700 has-[[data-state=checked]]:border-red-500">
+                              <FormControl>
+                                <RadioGroupItem value="deposit" />
+                              </FormControl>
+                              <FormLabel className="font-normal flex items-center gap-2 cursor-pointer">
+                                <WalletCards /> Previo Depósito
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 p-4 rounded-lg bg-[#1C2033] border border-slate-700 has-[[data-state=checked]]:border-red-500">
+                              <FormControl>
+                                <RadioGroupItem value="cod" />
+                              </FormControl>
+                              <FormLabel className="font-normal flex items-center gap-2 cursor-pointer">
+                                <CreditCard/> Pago Contra Entrega (+4% Comisión)
+                              </FormLabel>
+                            </FormItem>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
                   <Button type="submit" className="w-full text-base font-semibold py-6 bg-red-600 text-white hover:bg-red-700 flex items-center justify-center gap-2 rounded-lg" disabled={isLoading || isCartEmpty}>
                     {isLoading ? 'Procesando...' : <><Send size={20} /> Enviar Pedido</>}
                   </Button>
@@ -298,6 +360,12 @@ export default function CheckoutPage() {
                     <span>Envío</span>
                     <span>Q{shippingCost.toFixed(2)}</span>
                   </div>
+                  {paymentMethod === 'cod' && (
+                    <div className="flex justify-between text-base text-cyan-400">
+                        <span>Comisión por servicio contra entrega (4%)</span>
+                        <span>Q{codCommission.toFixed(2)}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between text-lg font-bold pt-2 border-t border-slate-600 mt-2">
                     <span>Total del Pedido</span>
                     <span>Q{orderTotal.toFixed(2)}</span>
@@ -313,21 +381,33 @@ export default function CheckoutPage() {
                           </p>
                       </div>
                   </div>
-                  <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
-                      <WalletCards size={32} className="text-red-500 mt-1 flex-shrink-0" />
-                      <div>
-                          <h3 className="font-semibold">Nota sobre el pago</h3>
-                          <p className="text-sm text-gray-400">
-                          El método de pago es mediante previo depósito. Por favor, envíanos el comprobante a nuestras redes sociales para confirmar tu pedido. Los datos bancarios son:
-                          </p>
-                          <ul className="text-sm text-gray-300 list-disc pl-5 mt-2">
-                            <li><strong>Banco:</strong> Banco Industrial</li>
-                            <li><strong>Tipo de Cuenta:</strong> Monetaria</li>
-                            <li><strong>No. de Cuenta:</strong> 5600015308</li>
-                            <li><strong>A nombre de:</strong> Carlos Rabanales</li>
-                          </ul>
-                      </div>
-                  </div>
+                  {paymentMethod === 'deposit' ? (
+                     <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
+                        <WalletCards size={32} className="text-red-500 mt-1 flex-shrink-0" />
+                        <div>
+                            <h3 className="font-semibold">Nota sobre el pago (Previo Depósito)</h3>
+                            <p className="text-sm text-gray-400">
+                            Por favor, envíanos el comprobante a nuestras redes sociales para confirmar tu pedido. Los datos bancarios son:
+                            </p>
+                            <ul className="text-sm text-gray-300 list-disc pl-5 mt-2">
+                              <li><strong>Banco:</strong> Banco Industrial</li>
+                              <li><strong>Tipo de Cuenta:</strong> Monetaria</li>
+                              <li><strong>No. de Cuenta:</strong> 5600015308</li>
+                              <li><strong>A nombre de:</strong> Carlos Rabanales</li>
+                            </ul>
+                        </div>
+                    </div>
+                  ) : (
+                    <div className="p-4 bg-black/30 border border-white/10 rounded-lg flex items-start gap-3">
+                        <CreditCard size={32} className="text-red-500 mt-1 flex-shrink-0" />
+                        <div>
+                            <h3 className="font-semibold">Nota sobre el pago (Contra Entrega)</h3>
+                            <p className="text-sm text-gray-400">
+                                Pagarás el monto total en efectivo al momento de recibir tu paquete. Por favor, ten el monto exacto preparado.
+                            </p>
+                        </div>
+                    </div>
+                  )}
               </div>
             </div>
 
