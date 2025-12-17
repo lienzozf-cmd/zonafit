@@ -71,7 +71,7 @@ export default function CheckoutPage() {
   const isCartEmpty = items.length === 0;
 
   useEffect(() => {
-    // Esto es necesario para asegurar que la re-renderización ocurra cuando el método de pago cambie.
+    // This is necessary to ensure re-rendering occurs when the payment method changes.
   }, [paymentMethod]);
 
 
@@ -417,3 +417,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
