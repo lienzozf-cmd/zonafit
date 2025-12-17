@@ -298,7 +298,7 @@ export default function AdminPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {editableProducts.sort((a, b) => a.name.localeCompare(b.name)).flatMap(renderProductRows)}
+            {[...editableProducts].sort((a, b) => a.name.localeCompare(b.name)).flatMap(renderProductRows)}
           </TableBody>
         </Table>
       </div>
