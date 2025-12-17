@@ -1,4 +1,3 @@
-
 'use client';
 
 import { create } from 'zustand';
@@ -13,6 +12,7 @@ interface AppState {
   itemCount: number;
   isCartOpen: boolean;
   products: Product[];
+  setProducts: (products: Product[]) => void;
   setIsCartOpen: (isOpen: boolean) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
@@ -37,6 +37,7 @@ export const useCartStore = create<AppState>()(
       itemCount: 0,
       isCartOpen: false,
       products: initialProducts,
+      setProducts: (products) => set({ products }),
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       addItem: (item) => {
         set(produce((state: AppState) => {
@@ -104,30 +105,40 @@ export const useCartStore = create<AppState>()(
       processOrder: () => {
         const { items } = get();
         
-        set(produce((state: AppState) => {
-          items.forEach(cartItem => {
-            const product = state.products.find(p => p.id === cartItem.productId);
-            if (product) {
-              if (cartItem.color && product.colors) {
-                const color = product.colors.find(c => c.name === cartItem.color);
-                if (color) {
-                  const option = color.options.values.find(o => o.value === cartItem.option);
+        const updatedProducts = produce(get().products, draft => {
+            items.forEach(cartItem => {
+              const product = draft.find(p => p.id === cartItem.productId);
+              if (product) {
+                if (cartItem.color && product.colors) {
+                  const color = product.colors.find(c => c.name === cartItem.color);
+                  if (color) {
+                    const option = color.options.values.find(o => o.value === cartItem.option);
+                    if (option) {
+                      option.stock = Math.max(0, option.stock - cartItem.quantity);
+                    }
+                  }
+                } else if (product.options) {
+                  const option = product.options.values.find(o => o.value === cartItem.option);
                   if (option) {
                     option.stock = Math.max(0, option.stock - cartItem.quantity);
                   }
                 }
-              } else if (product.options) {
-                const option = product.options.values.find(o => o.value === cartItem.option);
-                if (option) {
-                  option.stock = Math.max(0, option.stock - cartItem.quantity);
-                }
               }
-            }
-          });
-          state.items = [];
-          state.itemCount = 0;
-          state.total = 0;
-        }));
+            });
+        });
+      
+        // Optimistically update the local state
+        set({ products: updatedProducts, items: [], itemCount: 0, total: 0 });
+
+        // Asynchronously update the backend
+        fetch('/api/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedProducts),
+        }).catch(error => {
+            console.error('Failed to sync stock with backend:', error);
+            // Here you could implement a retry mechanism or notify the user/admin
+        });
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
@@ -145,8 +156,19 @@ export const useCartStore = create<AppState>()(
       name: 'cart-storage-v2',
       storage: createJSONStorage(() => localStorage), 
       onRehydrateStorage: (state) => {
-        // Esto se ejecuta cuando el estado se carga desde localStorage.
-        // No necesitamos hacer nada especial aquí ahora, pero es bueno tenerlo.
+        return (state, error) => {
+          if (error) {
+            console.log('An error happened during hydration', error)
+          } else {
+             // Fetch the latest products from the server upon rehydration
+             fetch('/api/products')
+                .then(res => res.json())
+                .then(serverProducts => {
+                    state?.setProducts(serverProducts);
+                })
+                .catch(err => console.error("Failed to fetch latest products on rehydration:", err));
+          }
+        }
       }
     }
   )
