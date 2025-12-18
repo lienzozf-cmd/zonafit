@@ -131,28 +131,7 @@ export default function AdminPage() {
     setIsAuthenticated(false);
     toast({ title: 'Has cerrado sesión.' });
   };
-
-  const handleValueChange = (productId: number, newValue: string, originalValue: string, colorName?: string) => {
-    setEditableProducts(
-      produce((draft) => {
-        const product = draft.find((p) => p.id === productId);
-        if (!product) return;
-
-        if (colorName && product.colors) {
-          const color = product.colors.find((c) => c.name === colorName);
-          if (color) {
-            const option = color.options.values.find((o) => o.value === originalValue);
-            if (option) option.value = newValue;
-          }
-        } else if (product.options) {
-          const option = product.options.values.find((o) => o.value === originalValue);
-          if (option) option.value = newValue;
-        }
-      })
-    );
-  };
-
-
+  
   const handleStockChange = (productId: number, optionValue: string, newStock: number, colorName?: string) => {
     setEditableProducts(
       produce((draft) => {
@@ -208,54 +187,20 @@ export default function AdminPage() {
   const renderProductRows = (product: Product, productIndex: number) => {
     const isProductEven = productIndex % 2 === 0;
 
+    const rowClasses = isProductEven ? 'bg-white text-black' : 'bg-black text-white';
+    const noHoverClasses = 'hover:bg-transparent';
+
     if (product.colors && product.colors.length > 0) {
         return product.colors.flatMap((color) =>
-            color.options.values.map((option, optionIndex) => {
-                const rowClasses = isProductEven
-                    ? 'bg-white text-black'
-                    : 'bg-black text-white';
-
-                return (
-                    <TableRow key={`${product.id}-${color.name}-${option.value}`} className={rowClasses}>
-                        {optionIndex === 0 && (
-                            <>
-                                <TableCell rowSpan={color.options.values.length} className="align-top font-medium">
-                                    {product.name}
-                                </TableCell>
-                                <TableCell rowSpan={color.options.values.length} className="align-top">
-                                    {color.name}
-                                </TableCell>
-                            </>
-                        )}
-                        <TableCell>{option.value}</TableCell>
-                        <TableCell>{product.price}</TableCell>
-                        <TableCell>
-                            <Input
-                                type="number"
-                                value={option.stock}
-                                onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0, color.name)}
-                                className="w-20 bg-gray-200 text-black"
-                            />
-                        </TableCell>
-                    </TableRow>
-                );
-            })
-        );
-    } else {
-        return product.options.values.map((option, optionIndex) => {
-            const rowClasses = isProductEven
-                ? 'bg-white text-black'
-                : 'bg-black text-white';
-
-            return (
-                <TableRow key={`${product.id}-${option.value}`} className={rowClasses}>
+            color.options.values.map((option, optionIndex) => (
+                <TableRow key={`${product.id}-${color.name}-${option.value}`} className={`${rowClasses} ${noHoverClasses}`}>
                     {optionIndex === 0 && (
                         <>
-                            <TableCell rowSpan={product.options.values.length} className="align-top font-medium">
+                            <TableCell rowSpan={color.options.values.length} className="align-top font-medium">
                                 {product.name}
                             </TableCell>
-                            <TableCell rowSpan={product.options.values.length} className="align-top">
-                                N/A
+                            <TableCell rowSpan={color.options.values.length} className="align-top">
+                                {color.name}
                             </TableCell>
                         </>
                     )}
@@ -265,13 +210,38 @@ export default function AdminPage() {
                         <Input
                             type="number"
                             value={option.stock}
-                            onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0)}
+                            onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0, color.name)}
                             className="w-20 bg-gray-200 text-black"
                         />
                     </TableCell>
                 </TableRow>
-            );
-        });
+            ))
+        );
+    } else {
+        return product.options.values.map((option, optionIndex) => (
+            <TableRow key={`${product.id}-${option.value}`} className={`${rowClasses} ${noHoverClasses}`}>
+                {optionIndex === 0 && (
+                    <>
+                        <TableCell rowSpan={product.options.values.length} className="align-top font-medium">
+                            {product.name}
+                        </TableCell>
+                        <TableCell rowSpan={product.options.values.length} className="align-top">
+                            N/A
+                        </TableCell>
+                    </>
+                )}
+                <TableCell>{option.value}</TableCell>
+                <TableCell>{product.price}</TableCell>
+                <TableCell>
+                    <Input
+                        type="number"
+                        value={option.stock}
+                        onChange={(e) => handleStockChange(product.id, option.value, parseInt(e.target.value) || 0)}
+                        className="w-20 bg-gray-200 text-black"
+                    />
+                </TableCell>
+            </TableRow>
+        ));
     }
 };
 
@@ -305,6 +275,7 @@ export default function AdminPage() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[800px] bg-gray-800 text-white border-gray-700">
                <ProductForm 
+                  allProducts={products}
                   onFormSubmit={async (newProductData) => {
                     const newId = Math.max(...editableProducts.map(p => p.id), 0) + 1;
                     const newProduct: Product = { ...newProductData, id: newId, availability: 'Disponible' };
@@ -333,7 +304,7 @@ export default function AdminPage() {
       <div className="overflow-x-auto rounded-lg border border-gray-700 bg-gray-800">
         <Table>
           <TableHeader>
-            <TableRow className="hover:bg-gray-700/50">
+            <TableRow className="border-b border-gray-700 hover:bg-gray-700/50">
               <TableHead className="text-white">Producto</TableHead>
               <TableHead className="text-white">Color</TableHead>
               <TableHead className="text-white">Talla/Opción</TableHead>
@@ -351,7 +322,7 @@ export default function AdminPage() {
 }
 
 
-function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues) => void }) {
+function ProductForm({ onFormSubmit, allProducts }: { onFormSubmit: (data: ProductFormValues) => void; allProducts: Product[] }) {
   const form = useForm<ProductFormValues>({
     resolver: zodResolver(productSchema),
     defaultValues: {
@@ -363,7 +334,7 @@ function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues)
       category: 'ropa',
       subcategory: '',
       brand: '',
-      images: [{ src: '', alt: '', dataAiHint: '' }],
+      images: [],
       options: { type: 'talla', values: [{ value: '', stock: 0 }] },
       colors: [],
     },
@@ -373,18 +344,48 @@ function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues)
   const { fields: optionFields, append: appendOption, remove: removeOption } = useFieldArray({ control: form.control, name: 'options.values' });
   const { fields: colorFields, append: appendColor, remove: removeColor } = useFieldArray({ control: form.control, name: 'colors' });
 
+  const uniqueBrands = [...new Set(allProducts.map(p => p.brand))];
+  const uniqueSubcategories = [...new Set(allProducts.map(p => p.subcategory))];
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const src = event.target?.result as string;
+          appendImage({
+            src: src,
+            alt: form.getValues('name') || file.name,
+            dataAiHint: 'product image', // Or generate a hint based on the name
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  };
+
   return (
     <form onSubmit={form.handleSubmit(onFormSubmit)} className="space-y-6 max-h-[80vh] overflow-y-auto p-2">
       <DialogHeader>
         <DialogTitle>Añadir Nuevo Producto</DialogTitle>
       </DialogHeader>
       
-      {/* Campos Principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input placeholder="Nombre del Producto" {...form.register('name')} />
         <Input placeholder="Precio (ej: Q.123.45)" {...form.register('price')} />
-        <Input placeholder="Marca" {...form.register('brand')} />
-        <Input placeholder="Subcategoría" {...form.register('subcategory')} />
+        
+        <Select onValueChange={(value) => form.setValue('brand', value)} defaultValue={form.getValues('brand')}>
+          <SelectTrigger><SelectValue placeholder="Marca" /></SelectTrigger>
+          <SelectContent>{uniqueBrands.map(b => <SelectItem key={b} value={b}>{b}</SelectItem>)}</SelectContent>
+        </Select>
+
+        <Select onValueChange={(value) => form.setValue('subcategory', value)} defaultValue={form.getValues('subcategory')}>
+          <SelectTrigger><SelectValue placeholder="Subcategoría" /></SelectTrigger>
+          <SelectContent>{uniqueSubcategories.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
+        </Select>
+
          <Select onValueChange={(value) => form.setValue('gender', value as any)} defaultValue={form.getValues('gender')}>
           <SelectTrigger><SelectValue placeholder="Género" /></SelectTrigger>
           <SelectContent><SelectItem value="hombre">Hombre</SelectItem><SelectItem value="mujer">Mujer</SelectItem><SelectItem value="unisex">Unisex</SelectItem></SelectContent>
@@ -396,21 +397,21 @@ function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues)
       </div>
       <Textarea placeholder="Descripción" {...form.register('description')} />
 
-      {/* Imágenes */}
       <div className="space-y-2">
         <h3 className="font-semibold">Imágenes</h3>
-        {imageFields.map((field, index) => (
-          <div key={field.id} className="flex gap-2 items-center">
-            <Input placeholder="URL de la imagen" {...form.register(`images.${index}.src`)} />
-            <Input placeholder="Texto Alt" {...form.register(`images.${index}.alt`)} defaultValue={form.getValues('name')} />
-            <Input placeholder="AI Hint" {...form.register(`images.${index}.dataAiHint`)} />
-            <Button type="button" variant="destructive" size="icon" onClick={() => removeImage(index)}><Trash className="h-4 w-4"/></Button>
-          </div>
-        ))}
-        <Button type="button" onClick={() => appendImage({ src: '', alt: form.getValues('name') || '', dataAiHint: '' })}>Añadir Imagen</Button>
+        <div className="grid grid-cols-3 gap-2">
+            {imageFields.map((field, index) => (
+                <div key={field.id} className="relative">
+                    <img src={field.src} alt={`Preview ${index}`} className="w-full h-24 object-cover rounded-md" />
+                    <Button type="button" variant="destructive" size="icon" className="absolute top-1 right-1 h-6 w-6" onClick={() => removeImage(index)}>
+                        <Trash className="h-4 w-4"/>
+                    </Button>
+                </div>
+            ))}
+        </div>
+        <Input id="image-upload" type="file" multiple accept="image/*" onChange={handleFileChange} className="mt-2" />
       </div>
 
-      {/* Opciones (si no hay colores) */}
       <div className="space-y-2">
         <h3 className="font-semibold">Opciones (si no hay colores)</h3>
         <Input placeholder="Tipo de Opción (ej: talla, sabor)" {...form.register('options.type')} />
@@ -424,7 +425,6 @@ function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues)
         <Button type="button" onClick={() => appendOption({ value: '', stock: 0 })}>Añadir Opción</Button>
       </div>
 
-      {/* Colores */}
       <div className="space-y-2">
          <h3 className="font-semibold">Colores (Opcional)</h3>
          {colorFields.map((field, colorIndex) => {
@@ -462,5 +462,7 @@ function ProductForm({ onFormSubmit }: { onFormSubmit: (data: ProductFormValues)
     </form>
   );
 }
+
+    
 
     
