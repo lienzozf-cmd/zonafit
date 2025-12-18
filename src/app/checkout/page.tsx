@@ -23,6 +23,7 @@ import confetti from 'canvas-confetti';
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import type { Product } from '@/lib/data';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
@@ -38,10 +39,11 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, processOrder } = useCartStore((state) => ({
+  const { items, total, processOrder, products } = useCartStore((state) => ({
     items: state.items,
     total: state.total,
     processOrder: state.processOrder,
+    products: state.products,
   }));
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -61,13 +63,21 @@ export default function CheckoutPage() {
       paymentMethod: 'deposit',
     },
   });
+  
+  const getProductById = (id: number): Product | undefined => {
+    return products.find(p => p.id === id);
+  };
 
   const paymentMethod = form.watch('paymentMethod');
   const shippingCost = 35;
   const codCommissionPercentage = 0.04; // 4%
+  const christmasDiscountPercentage = 0.10; // 10%
 
-  const codCommission = paymentMethod === 'cod' ? total * codCommissionPercentage : 0;
-  const orderTotal = total + shippingCost + codCommission;
+  const subtotal = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const christmasDiscount = subtotal * christmasDiscountPercentage;
+  const totalAfterDiscount = subtotal - christmasDiscount;
+  const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
+  const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
 
   useEffect(() => {
@@ -338,31 +348,45 @@ export default function CheckoutPage() {
             <div className="bg-[#1C2033] p-8 rounded-lg">
               <h2 className="text-2xl font-bold mb-6">Resumen de tu Pedido</h2>
               <div className="space-y-4">
-                  {items.map(item => (
-                  <div key={item.id} className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                      <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
-                      <div>
-                          <p className="font-medium">{item.name}</p>
-                          <p className="text-sm text-gray-400">Cantidad: {item.quantity}</p>
-                      </div>
-                      </div>
-                      <p className="font-semibold">Q{typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00'}</p>
-                  </div>
-                  ))}
+                  {items.map(item => {
+                    const product = getProductById(item.productId);
+                    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : null;
+
+                    return (
+                        <div key={item.id} className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                            <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
+                            <div>
+                                <p className="font-medium">{item.name}</p>
+                                <p className="text-sm text-gray-400">Cantidad: {item.quantity}</p>
+                            </div>
+                            </div>
+                            <div className="text-right">
+                                {originalPrice && (
+                                    <p className="text-sm text-gray-500 line-through">Q{originalPrice.toFixed(2)}</p>
+                                )}
+                                <p className="font-semibold">Q{(item.price * item.quantity).toFixed(2)}</p>
+                            </div>
+                        </div>
+                    )
+                  })}
               </div>
               <div className="mt-6 border-t border-slate-700 pt-4 space-y-2">
                   <div className="flex justify-between text-base">
                     <span>Subtotal</span>
-                    <span>Q{total.toFixed(2)}</span>
+                    <span>Q{subtotal.toFixed(2)}</span>
+                  </div>
+                   <div className="flex justify-between text-base text-green-400">
+                      <span>Descuento Navideño (10%)</span>
+                      <span>-Q{christmasDiscount.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-base">
                     <span>Envío</span>
                     <span>Q{shippingCost.toFixed(2)}</span>
                   </div>
                   {paymentMethod === 'cod' && (
-                    <div className="flex justify-between text-base text-cyan-400">
-                        <span>Comisión por servicio contra entrega (4%)</span>
+                    <div className="flex justify-between text-base text-orange-500">
+                        <span>Comision forza 4%</span>
                         <span>Q{codCommission.toFixed(2)}</span>
                     </div>
                   )}
