@@ -3444,7 +3444,7 @@
       {
         "name": "Gris",
         "hex": "#808080",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgrisml.jpg",
         "options": {
           "type": "talla",
           "values": [
@@ -3485,7 +3485,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/darcsport/uzuidarc.png",
         "options": {
           "type": "talla",
           "values": [
@@ -3526,7 +3526,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/clubgymshark.png",
         "options": {
           "type": "talla",
           "values": [
@@ -3567,7 +3567,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/pantsdark.png",
         "options": {
           "type": "talla",
           "values": [
@@ -3608,7 +3608,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/ccrew.png",
         "options": {
           "type": "talla",
           "values": [
@@ -3643,12 +3643,23 @@
     ],
     "options": {
       "type": "color",
-      "values": [
-        {
-          "value": "Negro",
-          "stock": 1
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/Accesorios/ironbull.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
         }
-      ]
-    }
+      }
+    ]
   }
 ]
