@@ -24,13 +24,39 @@ export default function PantalonesPage() {
     return [...new Set(brands)];
   };
 
+  const isProductAvailable = (product: Product) => {
+    if (product.colors && product.colors.length > 0) {
+      return product.colors.some(color => color.options.values.some(option => option.stock > 0));
+    }
+    return product.options.values.some(option => option.stock > 0);
+  };
+
   const sortProducts = (products: Product[], option: string) => {
-    const sorted = [...products];
+    const sorted = [...products].sort((a, b) => {
+        const aAvailable = isProductAvailable(a);
+        const bAvailable = isProductAvailable(b);
+        if (aAvailable && !bAvailable) return -1;
+        if (!aAvailable && bAvailable) return 1;
+        return 0;
+    });
+
     switch (option) {
       case 'price-asc':
-        return sorted.sort((a, b) => parseFloat(a.price.replace(/Q|\s/g, '')) - parseFloat(b.price.replace(/Q|\s/g, '')));
+        return sorted.sort((a, b) => {
+            const aAvailable = isProductAvailable(a);
+            const bAvailable = isProductAvailable(b);
+            if (aAvailable && !bAvailable) return -1;
+            if (!aAvailable && bAvailable) return 1;
+            return parseFloat(a.price.replace(/Q|\s/g, '')) - parseFloat(b.price.replace(/Q|\s/g, ''));
+        });
       case 'price-desc':
-        return sorted.sort((a, b) => parseFloat(b.price.replace(/Q|\s/g, '')) - parseFloat(a.price.replace(/Q|\s/g, '')));
+        return sorted.sort((a, b) => {
+            const aAvailable = isProductAvailable(a);
+            const bAvailable = isProductAvailable(b);
+            if (aAvailable && !bAvailable) return -1;
+            if (!aAvailable && bAvailable) return 1;
+            return parseFloat(b.price.replace(/Q|\s/g, '')) - parseFloat(a.price.replace(/Q|\s/g, ''));
+        });
       default:
         return sorted;
     }
