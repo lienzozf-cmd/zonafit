@@ -57,7 +57,7 @@ const productColorSchema = z.object({
   imageSrc: z.string().min(1, 'La URL de la imagen es requerida'),
   options: z.object({
     type: z.string().min(1, 'El tipo de opción es requerido'),
-    values: z.array(productOptionSchema),
+    values: z.array(productOptionSchema).min(1, 'Se requiere al menos una opción para el color'),
   }),
 });
 
@@ -358,7 +358,7 @@ function ProductForm({ onFormSubmit, allProducts }: { onFormSubmit: (data: Produ
           appendImage({
             src: src,
             alt: form.getValues('name') || file.name,
-            dataAiHint: 'product image', // Or generate a hint based on the name
+            dataAiHint: 'product image',
           });
         };
         reader.readAsDataURL(file);
@@ -427,31 +427,9 @@ function ProductForm({ onFormSubmit, allProducts }: { onFormSubmit: (data: Produ
 
       <div className="space-y-2">
          <h3 className="font-semibold">Colores (Opcional)</h3>
-         {colorFields.map((field, colorIndex) => {
-            const { fields: colorOptionFields, append: appendColorOption, remove: removeColorOption } = useFieldArray({
-                control: form.control,
-                name: `colors.${colorIndex}.options.values`
-            });
-            return (
-              <div key={field.id} className="p-4 border border-gray-600 rounded-md space-y-3">
-                 <div className="flex gap-2 items-center">
-                  <Input placeholder="Nombre del Color (ej: Negro)" {...form.register(`colors.${colorIndex}.name`)} />
-                  <Input placeholder="Hex (ej: #000000)" {...form.register(`colors.${colorIndex}.hex`)} />
-                  <Input placeholder="URL Imagen del Color" {...form.register(`colors.${colorIndex}.imageSrc`)} />
-                   <Button type="button" variant="destructive" size="icon" onClick={() => removeColor(colorIndex)}><Trash className="h-4 w-4"/></Button>
-                </div>
-                <Input placeholder="Tipo de Opción (ej: talla)" {...form.register(`colors.${colorIndex}.options.type`)} />
-                {colorOptionFields.map((optionField, optionIndex) => (
-                    <div key={optionField.id} className="flex gap-2 items-center ml-4">
-                        <Input placeholder="Valor (ej: S, M)" {...form.register(`colors.${colorIndex}.options.values.${optionIndex}.value`)} />
-                        <Input type="number" placeholder="Stock" {...form.register(`colors.${colorIndex}.options.values.${optionIndex}.stock`)} />
-                        <Button type="button" variant="ghost" size="icon" onClick={() => removeColorOption(optionIndex)}><Trash className="h-4 w-4"/></Button>
-                    </div>
-                ))}
-                <Button type="button" className="ml-4" onClick={() => appendColorOption({ value: '', stock: 0 })}>Añadir Opción al Color</Button>
-              </div>
-            )
-         })}
+         {colorFields.map((field, colorIndex) => (
+            <ColorFieldArray key={field.id} colorIndex={colorIndex} control={form.control} removeColor={removeColor} />
+         ))}
          <Button type="button" onClick={() => appendColor({ name: '', hex: '', imageSrc: '', options: { type: 'talla', values: [{ value: '', stock: 0 }]}})}>Añadir Color</Button>
       </div>
 
@@ -463,6 +441,29 @@ function ProductForm({ onFormSubmit, allProducts }: { onFormSubmit: (data: Produ
   );
 }
 
-    
+function ColorFieldArray({ colorIndex, control, removeColor }: { colorIndex: number, control: any, removeColor: (index: number) => void }) {
+    const { fields: colorOptionFields, append: appendColorOption, remove: removeColorOption } = useFieldArray({
+        control,
+        name: `colors.${colorIndex}.options.values`
+    });
 
-    
+    return (
+        <div className="p-4 border border-gray-600 rounded-md space-y-3">
+            <div className="flex gap-2 items-center">
+                <Input placeholder="Nombre del Color (ej: Negro)" {...control.register(`colors.${colorIndex}.name`)} />
+                <Input placeholder="Hex (ej: #000000)" {...control.register(`colors.${colorIndex}.hex`)} />
+                <Input placeholder="URL Imagen del Color" {...control.register(`colors.${colorIndex}.imageSrc`)} />
+                <Button type="button" variant="destructive" size="icon" onClick={() => removeColor(colorIndex)}><Trash className="h-4 w-4"/></Button>
+            </div>
+            <Input placeholder="Tipo de Opción (ej: talla)" {...control.register(`colors.${colorIndex}.options.type`)} />
+            {colorOptionFields.map((optionField, optionIndex) => (
+                <div key={optionField.id} className="flex gap-2 items-center ml-4">
+                    <Input placeholder="Valor (ej: S, M)" {...control.register(`colors.${colorIndex}.options.values.${optionIndex}.value`)} />
+                    <Input type="number" placeholder="Stock" {...control.register(`colors.${colorIndex}.options.values.${optionIndex}.stock`)} />
+                    <Button type="button" variant="ghost" size="icon" onClick={() => removeColorOption(optionIndex)}><Trash className="h-4 w-4"/></Button>
+                </div>
+            ))}
+            <Button type="button" className="ml-4" onClick={() => appendColorOption({ value: '', stock: 0 })}>Añadir Opción al Color</Button>
+        </div>
+    )
+}
