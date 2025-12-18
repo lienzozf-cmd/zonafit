@@ -274,6 +274,28 @@
             }
           ]
         }
+      },
+      {
+        "name": "Carmin Red",
+        "hex": "#FF0033",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxroja.jpg",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 0
+            },
+            {
+              "value": "L",
+              "stock": 0
+            }
+          ]
+        }
       }
     ]
   },
@@ -3409,7 +3431,7 @@
     "feature3": "Propiedades de absorción de sudor para mantenerte seco.",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
+        "src": "/assets/images/marcas/gymshark/hombre/onyxgrisml.jpg",
         "alt": "Onyx 5.0 long sleeve gris",
         "dataAiHint": "men long sleeve"
       }
@@ -3450,7 +3472,7 @@
     "feature3": "Corte atlético para un ajuste perfecto.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/darcsport/uzuidarc.png",
         "alt": "BREATH OF WOLVES LONDON UZUI",
         "dataAiHint": "men shirt"
       }
@@ -3491,7 +3513,7 @@
     "feature3": "Gráfico audaz del 'Conditioning Club'.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/gymshark/hombre/clubgymshark.png",
         "alt": "Conditioning Club Oversized T-Shirt",
         "dataAiHint": "men shirt"
       }
@@ -3532,7 +3554,7 @@
     "feature3": "Bolsillos prácticos para tus pertenencias.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/pantsdark.png",
         "alt": "2079-Dark Wave Joggers",
         "dataAiHint": "men joggers"
       }
@@ -3573,7 +3595,7 @@
     "feature3": "Ajuste relajado para uso diario.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/gymshark/hombre/ccrew.png",
         "alt": "Collegiate Crew",
         "dataAiHint": "men shirt"
       }
@@ -3614,7 +3636,7 @@
     "feature3": "Cierre de velcro para un ajuste seguro.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/Accesorios/ironbull.png",
         "alt": "Rodilleras - Knee Wraps",
         "dataAiHint": "knee wraps"
       }
