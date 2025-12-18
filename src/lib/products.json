@@ -800,7 +800,7 @@
     "name": "Power Oversized Long Sleeve Top",
     "price": "Q.252.00",
     "originalPrice": "Q.280.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Top de manga larga oversized para un look potente y relajado.",
     "gender": "mujer",
     "category": "ropa",
@@ -834,7 +834,7 @@
     "name": "Strength Graphic Joggers",
     "price": "Q.310.50",
     "originalPrice": "Q.345.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Joggers con gráfico del departamento de fuerza para un look completo.",
     "gender": "mujer",
     "category": "ropa",
@@ -858,7 +858,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1399,7 +1399,7 @@
     "name": "UFC™ Cut-Off hoodies",
     "price": "Q.445.50",
     "originalPrice": "Q.495.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Sudadera sin mangas con licencia oficial de UFC™.",
     "gender": "hombre",
     "category": "ropa",
@@ -1423,7 +1423,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1433,7 +1433,7 @@
     "name": "UFC™ Jersey",
     "price": "Q.400.50",
     "originalPrice": "Q.445.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Jersey con licencia oficial de UFC™.",
     "gender": "hombre",
     "category": "ropa",
@@ -1457,7 +1457,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
@@ -1475,7 +1475,7 @@
     "name": "Revenge Tees",
     "price": "Q.355.50",
     "originalPrice": "Q.395.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera de la colección \"Revenge\".",
     "gender": "hombre",
     "category": "ropa",
@@ -1518,7 +1518,7 @@
             },
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "L",
@@ -1632,7 +1632,7 @@
     "name": "Digital Compression Tees",
     "price": "Q.292.50",
     "originalPrice": "Q.325.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera de compresión con un diseño digital moderno.",
     "gender": "hombre",
     "category": "ropa",
@@ -1656,7 +1656,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
@@ -1963,7 +1963,7 @@
     "name": "Legacy Hoodie",
     "price": "Q.252.00",
     "originalPrice": "Q.280.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Sudadera con capucha, un clásico de Gymshark.",
     "gender": "hombre",
     "category": "ropa",
@@ -1987,7 +1987,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -2065,7 +2065,7 @@
     "name": "Rest Day Essentials Cargo Joggers",
     "price": "Q.369.90",
     "originalPrice": "Q.411.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Joggers cargo, esenciales para tus días de descanso.",
     "gender": "hombre",
     "category": "ropa",
@@ -2089,7 +2089,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -2399,7 +2399,7 @@
     "name": "Superman Compression Tees",
     "price": "Q.463.50",
     "originalPrice": "Q.515.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera de compresión con el icónico logo de Superman para un rendimiento heroico.",
     "gender": "hombre",
     "category": "ropa",
@@ -2472,7 +2472,7 @@
     "name": "Warrior X Compression Hoodies",
     "price": "Q.432.00",
     "originalPrice": "Q.480.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Sudadera con capucha de compresión para un look de guerrero y un rendimiento superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -2496,11 +2496,11 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -3137,7 +3137,7 @@
     "name": "Warrior X Compression Tees",
     "price": "Q.436.50",
     "originalPrice": "Q.485.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Lleva tu entrenamiento al siguiente nivel con la Warrior X. Un diseño agresivo y una compresión superior para un rendimiento de élite.",
     "gender": "hombre",
     "category": "ropa",
@@ -3202,7 +3202,7 @@
             },
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "L",
