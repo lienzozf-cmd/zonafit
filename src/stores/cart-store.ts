@@ -1,3 +1,4 @@
+
 'use client';
 
 import { create } from 'zustand';
@@ -24,10 +25,18 @@ interface AppState {
   getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
 }
 
-const calculateTotals = (items: CartItem[]) => {
+const calculateTotals = (items: CartItem[], products: Product[]) => {
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const subtotal = items.reduce((acc, item) => {
+    const product = products.find(p => p.id === item.productId);
+    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : item.price;
+    return acc + (originalPrice * item.quantity);
+  }, 0);
+
   const total = items.reduce((sum, item) => sum + (item.price || 0) * item.quantity, 0);
-  return { itemCount, total };
+  
+  return { itemCount, total, subtotal };
 };
 
 export const useCartStore = create<AppState>()(
@@ -72,7 +81,7 @@ export const useCartStore = create<AppState>()(
               return; 
             }
             
-            const { itemCount, total } = calculateTotals(state.items);
+            const { itemCount, total } = calculateTotals(state.items, state.products);
             state.itemCount = itemCount;
             state.total = total;
         }));
@@ -80,7 +89,7 @@ export const useCartStore = create<AppState>()(
       removeItem: (id: string) => {
         set((state) => {
           const newItems = state.items.filter((i) => i.id !== id);
-          const { itemCount, total } = calculateTotals(newItems);
+          const { itemCount, total } = calculateTotals(newItems, state.products);
           return { items: newItems, itemCount, total };
         });
       },
@@ -99,7 +108,7 @@ export const useCartStore = create<AppState>()(
               return;
             }
 
-            const { itemCount, total } = calculateTotals(state.items);
+            const { itemCount, total } = calculateTotals(state.items, state.products);
             state.itemCount = itemCount;
             state.total = total;
         }));
@@ -109,7 +118,7 @@ export const useCartStore = create<AppState>()(
              const newItems = state.items.map((i) =>
               i.id === id ? { ...i, quantity: Math.max(0, i.quantity - 1) } : i
             ).filter(i => i.quantity > 0);
-            const { itemCount, total } = calculateTotals(newItems);
+            const { itemCount, total } = calculateTotals(newItems, state.products);
             return { items: newItems, itemCount, total };
           });
       },
@@ -117,9 +126,7 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        // Clear the cart locally. The stock is now handled server-side in the /api/send-email route.
         set({ items: [], itemCount: 0, total: 0 });
-        // Fetch the latest products from the server to reflect the stock change.
         get().fetchProducts();
       },
       getProductOption: (productId, optionValue, colorName) => {
