@@ -1,3 +1,4 @@
+
 [
   {
     "id": 1,
@@ -1717,7 +1718,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "L",
@@ -1735,7 +1736,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "M",
