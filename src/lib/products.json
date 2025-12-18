@@ -153,7 +153,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "M",
@@ -195,7 +195,7 @@
     "name": "ONYX 5.0 SEAMLESS-T SHIRT",
     "price": "Q.607.50",
     "originalPrice": "Q.675.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Experimenta la tecnología sin costuras con la Onyx 5.0. Diseñada para un máximo confort y un rendimiento sin restricciones, esta camiseta es perfecta para cualquier tipo de entrenamiento.",
     "gender": "hombre",
     "category": "ropa",
@@ -240,7 +240,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "M",
@@ -257,28 +257,6 @@
         "name": "Light Grey",
         "hex": "#D3D3D3",
         "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "S",
-              "stock": 0
-            },
-            {
-              "value": "M",
-              "stock": 0
-            },
-            {
-              "value": "L",
-              "stock": 0
-            }
-          ]
-        }
-      },
-      {
-        "name": "Carmin Red",
-        "hex": "#960018",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxroja.jpg",
         "options": {
           "type": "talla",
           "values": [
@@ -1476,7 +1454,7 @@
     "name": "Revenge Tees",
     "price": "Q.355.50",
     "originalPrice": "Q.395.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Playera de la colección \"Revenge\".",
     "gender": "hombre",
     "category": "ropa",
@@ -3415,5 +3393,45 @@
         }
       ]
     }
+  },
+  {
+    "id": 2671,
+    "name": "Onyx 5.0 long sleeve",
+    "price": "Q.750.00",
+    "availability": "Disponible",
+    "description": "Playera de manga larga Onyx 5.0 para hombre. Estilo y comodidad para tu entrenamiento.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Gymshark",
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
+        "alt": "Onyx 5.0 long sleeve gris",
+        "dataAiHint": "men long sleeve"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Gris",
+        "hex": "#808080",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
+
+    
