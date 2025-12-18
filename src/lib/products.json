@@ -1400,7 +1400,7 @@
     "name": "UFC™ Cut-Off hoodies",
     "price": "Q.445.50",
     "originalPrice": "Q.495.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Sudadera sin mangas con licencia oficial de UFC™.",
     "gender": "hombre",
     "category": "ropa",
@@ -1424,10 +1424,11 @@
       "values": [
         {
           "value": "M",
-          "stock": 0
+          "stock": 1
         }
       ]
-    }
+    },
+    "colors": []
   },
   {
     "id": 2613,
@@ -3438,7 +3439,12 @@
     ],
     "options": {
       "type": "talla",
-      "values": []
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        }
+      ]
     },
     "colors": [
       {
@@ -3643,23 +3649,13 @@
     ],
     "options": {
       "type": "color",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Negro",
-        "hex": "#000000",
-        "imageSrc": "/assets/images/Accesorios/ironbull.png",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "Único",
-              "stock": 1
-            }
-          ]
+      "values": [
+        {
+          "value": "Único",
+          "stock": 1
         }
-      }
-    ]
+      ]
+    },
+    "colors": []
   }
 ]
