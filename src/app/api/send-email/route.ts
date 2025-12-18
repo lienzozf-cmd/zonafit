@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { updateStock, getNextOrderId } from '@/lib/inventory-manager';
 import fs from 'fs/promises';
 import path from 'path';
+import type { Product } from '@/lib/data';
 
 // --- Esquemas de Validación ---
 const shippingInfoSchema = z.object({
@@ -37,10 +38,32 @@ const orderSchema = z.object({
 
 type CartItem = z.infer<typeof cartItemSchema>;
 
+// Helper para leer productos
+async function getProducts(): Promise<Product[]> {
+    const productsFilePath = path.join(process.cwd(), 'src', 'lib', 'products.json');
+    try {
+        const data = await fs.readFile(productsFilePath, 'utf-8');
+        return JSON.parse(data) as Product[];
+    } catch (error) {
+        console.error('Error reading products file:', error);
+        return [];
+    }
+}
+
+
 // --- Helper para HTML ---
-function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost: number, codCommission: number, grandTotal: number) {
+function formatItemsToHtml(
+    items: CartItem[], 
+    allProducts: Product[],
+    productSubtotal: number, 
+    shippingCost: number, 
+    codCommission: number,
+    christmasDiscount: number,
+    grandTotal: number
+) {
   const itemsHtml = items.map(item => {
-    // Usamos un CID único y seguro para la imagen
+    const product = allProducts.find(p => p.id === item.productId);
+    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : item.price;
     const imageCid = `${item.productId}-${item.option}-${item.color || 'default'}`.replace(/[^a-zA-Z0-9-]/g, '-');
     
     return `
@@ -58,7 +81,10 @@ function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost
           </tr>
         </table>
       </td>
-      <td style="padding: 10px; text-align: right; vertical-align: top;">Q${(item.price * item.quantity).toFixed(2)}</td>
+      <td style="padding: 10px; text-align: right; vertical-align: top;">
+        ${originalPrice > item.price ? `<p style="margin:0; font-size: 12px; text-decoration: line-through; color: #999;">Q${originalPrice.toFixed(2)}</p>` : ''}
+        <p style="margin:0; font-size: 14px; font-weight: bold;">Q${(item.price * item.quantity).toFixed(2)}</p>
+      </td>
     </tr>
   `}).join('');
 
@@ -76,7 +102,11 @@ function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost
       <tfoot>
         <tr>
           <td style="padding: 15px 10px 5px;">Subtotal</td>
-          <td style="padding: 15px 10px 5px; text-align: right;">Q${productTotal.toFixed(2)}</td>
+          <td style="padding: 15px 10px 5px; text-align: right;">Q${productSubtotal.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 5px 10px; color: #22c55e;">Descuento Navideño (10%)</td>
+          <td style="padding: 5px 10px; text-align: right; color: #22c55e;">-Q${christmasDiscount.toFixed(2)}</td>
         </tr>
         <tr>
           <td style="padding: 5px 10px;">Envío</td>
@@ -84,8 +114,8 @@ function formatItemsToHtml(items: CartItem[], productTotal: number, shippingCost
         </tr>
         ${codCommission > 0 ? `
         <tr>
-          <td style="padding: 5px 10px;">Comisión Contra Entrega</td>
-          <td style="padding: 5px 10px; text-align: right;">Q${codCommission.toFixed(2)}</td>
+          <td style="padding: 5px 10px; color: #f97316;">Comision forza 4%</td>
+          <td style="padding: 5px 10px; text-align: right; color: #f97316;">Q${codCommission.toFixed(2)}</td>
         </tr>
         ` : ''}
         <tr style="border-top: 2px solid #000; font-weight: bold;">
@@ -129,12 +159,21 @@ export async function POST(req: NextRequest) {
   const { shippingInfo, orderItems, orderTotal } = validationResult.data;
   
   try {
+    const allProducts = await getProducts();
     const orderId = await getNextOrderId(); 
     const shippingCost = 35;
     const attachments = [];
-    const productTotal = orderItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const codCommission = shippingInfo.paymentMethod === 'cod' ? productTotal * 0.04 : 0;
-    const grandTotal = orderTotal;
+
+    const productSubtotal = orderItems.reduce((acc, item) => {
+        const product = allProducts.find(p => p.id === item.productId);
+        const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : item.price;
+        return acc + (originalPrice * item.quantity);
+    }, 0);
+
+    const christmasDiscount = productSubtotal * 0.10;
+    const totalAfterDiscount = productSubtotal - christmasDiscount;
+    const codCommission = shippingInfo.paymentMethod === 'cod' ? productSubtotal * 0.04 : 0;
+    const grandTotal = totalAfterDiscount + shippingCost + codCommission;
 
     for (const item of orderItems) {
       await updateStock(Number(item.productId), item.option, item.quantity, item.color ?? undefined);
@@ -168,7 +207,7 @@ export async function POST(req: NextRequest) {
       },
     });
     
-    const itemsHtml = formatItemsToHtml(orderItems, productTotal, shippingCost, codCommission, grandTotal);
+    const itemsHtml = formatItemsToHtml(orderItems, allProducts, productSubtotal, shippingCost, codCommission, christmasDiscount, grandTotal);
     const paymentMethodText = shippingInfo.paymentMethod === 'cod' ? 'Pago Contra Entrega' : 'Previo Depósito';
 
     await transporter.sendMail({

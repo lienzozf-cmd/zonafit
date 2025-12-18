@@ -73,10 +73,15 @@ export default function CheckoutPage() {
   const codCommissionPercentage = 0.04; // 4%
   const christmasDiscountPercentage = 0.10; // 10%
 
-  const subtotal = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const subtotal = items.reduce((acc, item) => {
+    const product = getProductById(item.productId);
+    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : item.price;
+    return acc + (originalPrice * item.quantity);
+  }, 0);
+
   const christmasDiscount = subtotal * christmasDiscountPercentage;
   const totalAfterDiscount = subtotal - christmasDiscount;
-  const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
+  const codCommission = paymentMethod === 'cod' ? subtotal * codCommissionPercentage : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
 
