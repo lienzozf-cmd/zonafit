@@ -135,7 +135,7 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "L",
@@ -3404,6 +3404,9 @@
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Gymshark",
+    "feature1": "Tejido sin costuras para máxima comodidad.",
+    "feature2": "Diseño ergonómico para total libertad de movimiento.",
+    "feature3": "Propiedades de absorción de sudor para mantenerte seco.",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
@@ -3431,7 +3434,199 @@
         }
       }
     ]
+  },
+  {
+    "id": 2672,
+    "name": "BREATH OF WOLVES LONDON UZUI",
+    "price": "Q.670.00",
+    "availability": "Disponible",
+    "description": "Playera de edición especial con diseño exclusivo de Darc Sport, perfecta para destacar en el gimnasio.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "feature1": "Diseño exclusivo de edición limitada.",
+    "feature2": "Algodón de alta calidad para máxima comodidad.",
+    "feature3": "Corte atlético para un ajuste perfecto.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "BREATH OF WOLVES LONDON UZUI",
+        "dataAiHint": "men shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2673,
+    "name": "Conditioning Club Oversized T-Shirt",
+    "price": "Q.415.00",
+    "availability": "Disponible",
+    "description": "Una playera oversized de Gymshark diseñada para la máxima comodidad y estilo durante y después del entrenamiento.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Gymshark",
+    "feature1": "Corte extragrande para libertad de movimiento.",
+    "feature2": "Tejido de algodón suave y transpirable.",
+    "feature3": "Gráfico audaz del 'Conditioning Club'.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Conditioning Club Oversized T-Shirt",
+        "dataAiHint": "men shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "XXL",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2674,
+    "name": "2079-Dark Wave Joggers",
+    "price": "Q.580.00",
+    "availability": "Disponible",
+    "description": "Joggers de YoungLA con un diseño moderno y un ajuste cómodo, ideales para el día a día.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "jogger",
+    "brand": "YoungLA",
+    "feature1": "Diseño 'Dark Wave' único.",
+    "feature2": "Cintura elástica para un ajuste seguro.",
+    "feature3": "Bolsillos prácticos para tus pertenencias.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "2079-Dark Wave Joggers",
+        "dataAiHint": "men joggers"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2675,
+    "name": "Collegiate Crew",
+    "price": "Q.545.00",
+    "availability": "Disponible",
+    "description": "Una playera de estilo universitario de Gymshark que combina comodidad y un look clásico.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Gymshark",
+    "feature1": "Estilo clásico universitario.",
+    "feature2": "Tejido de felpa para mayor calidez.",
+    "feature3": "Ajuste relajado para uso diario.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Collegiate Crew",
+        "dataAiHint": "men shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2676,
+    "name": "Rodilleras - Knee Wraps",
+    "price": "Q.370.00",
+    "availability": "Disponible",
+    "description": "Rodilleras de Ironbull para proporcionar el máximo soporte y protección durante tus levantamientos pesados.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "subcategory": "equipo",
+    "brand": "Ironbull",
+    "feature1": "Soporte máximo para levantamientos pesados.",
+    "feature2": "Material elástico y duradero.",
+    "feature3": "Cierre de velcro para un ajuste seguro.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Rodilleras - Knee Wraps",
+        "dataAiHint": "knee wraps"
+      }
+    ],
+    "options": {
+      "type": "color",
+      "values": [
+        {
+          "value": "Negro",
+          "stock": 1
+        }
+      ]
+    }
   }
 ]
-
-    
