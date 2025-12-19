@@ -99,6 +99,12 @@
     "feature3": "Diseño ergonómico para libertad de movimiento",
     "images": [
       {
+        "src": "/assets/images/marcas/youngla/hombre/warriorgris.png",
+        "alt": "Gray compression shirt",
+        "dataAiHint": "gray shirt",
+        "color": "Gris"
+      },
+      {
         "src": "/assets/images/marcas/youngla/hombre/warriorazul.png",
         "alt": "Blue compression shirt",
         "dataAiHint": "blue shirt",
@@ -109,12 +115,6 @@
         "alt": "Black compression shirt",
         "dataAiHint": "black shirt",
         "color": "Negra"
-      },
-      {
-        "src": "/assets/images/marcas/youngla/hombre/warriorgris.png",
-        "alt": "Gray compression shirt",
-        "dataAiHint": "gray shirt",
-        "color": "Gris"
       }
     ],
     "options": {
@@ -122,6 +122,28 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Gris",
+        "hex": "#808080",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorgris.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 0
+            },
+            {
+              "value": "M",
+              "stock": 2
+            },
+            {
+              "value": "L",
+              "stock": 0
+            }
+          ]
+        }
+      },
       {
         "name": "Azul",
         "hex": "#0000ff",
@@ -158,28 +180,6 @@
             {
               "value": "M",
               "stock": 0
-            },
-            {
-              "value": "L",
-              "stock": 0
-            }
-          ]
-        }
-      },
-      {
-        "name": "Gris",
-        "hex": "#808080",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorgris.png",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "S",
-              "stock": 0
-            },
-            {
-              "value": "M",
-              "stock": 2
             },
             {
               "value": "L",
@@ -835,7 +835,7 @@
     "name": "Strength Graphic Joggers",
     "price": "Q.310.50",
     "originalPrice": "Q.345.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Joggers con gráfico del departamento de fuerza para un look completo.",
     "gender": "mujer",
     "category": "ropa",
@@ -1316,7 +1316,7 @@
     "name": "The Boys Graphic Tees",
     "price": "Q.405.00",
     "originalPrice": "Q.450.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera con gráfico de la serie \"The Boys\".",
     "gender": "hombre",
     "category": "ropa",
@@ -1477,7 +1477,7 @@
     "name": "Revenge Tees",
     "price": "Q.355.50",
     "originalPrice": "Q.395.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera de la colección \"Revenge\".",
     "gender": "hombre",
     "category": "ropa",
@@ -2169,7 +2169,7 @@
     "name": "Strength Dept Graphic T-Shirt",
     "price": "Q.229.50",
     "originalPrice": "Q.255.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera del departamento de fuerza.",
     "gender": "hombre",
     "category": "ropa",
