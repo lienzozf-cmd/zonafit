@@ -625,7 +625,7 @@
       "values": [
         {
           "value": "Silver",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -1340,7 +1340,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
@@ -1538,7 +1538,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "M",
@@ -1856,7 +1856,7 @@
         },
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -2193,7 +2193,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
