@@ -25,18 +25,10 @@ interface AppState {
   getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
 }
 
-const calculateTotals = (items: CartItem[], products: Product[]) => {
+const calculateTotals = (items: CartItem[]) => {
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
-
-  const subtotal = items.reduce((acc, item) => {
-    const product = products.find(p => p.id === item.productId);
-    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : item.price;
-    return acc + (originalPrice * item.quantity);
-  }, 0);
-
   const total = items.reduce((sum, item) => sum + (item.price || 0) * item.quantity, 0);
-  
-  return { itemCount, total, subtotal };
+  return { itemCount, total };
 };
 
 export const useCartStore = create<AppState>()(
@@ -81,7 +73,7 @@ export const useCartStore = create<AppState>()(
               return; 
             }
             
-            const { itemCount, total } = calculateTotals(state.items, state.products);
+            const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;
         }));
@@ -89,7 +81,7 @@ export const useCartStore = create<AppState>()(
       removeItem: (id: string) => {
         set((state) => {
           const newItems = state.items.filter((i) => i.id !== id);
-          const { itemCount, total } = calculateTotals(newItems, state.products);
+          const { itemCount, total } = calculateTotals(newItems);
           return { items: newItems, itemCount, total };
         });
       },
@@ -108,7 +100,7 @@ export const useCartStore = create<AppState>()(
               return;
             }
 
-            const { itemCount, total } = calculateTotals(state.items, state.products);
+            const { itemCount, total } = calculateTotals(state.items);
             state.itemCount = itemCount;
             state.total = total;
         }));
@@ -118,7 +110,7 @@ export const useCartStore = create<AppState>()(
              const newItems = state.items.map((i) =>
               i.id === id ? { ...i, quantity: Math.max(0, i.quantity - 1) } : i
             ).filter(i => i.quantity > 0);
-            const { itemCount, total } = calculateTotals(newItems, state.products);
+            const { itemCount, total } = calculateTotals(newItems);
             return { items: newItems, itemCount, total };
           });
       },
@@ -126,29 +118,39 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        const orderedItems = get().items;
-        set(produce((state: AppState) => {
-            orderedItems.forEach(item => {
-                const product = state.products.find(p => p.id === item.productId);
-                if (!product) return;
-
-                if (item.color && product.colors) {
-                    const color = product.colors.find(c => c.name === item.color);
-                    if (color) {
-                        const option = color.options.values.find(o => o.value === item.option);
-                        if (option) option.stock = Math.max(0, option.stock - item.quantity);
-                    }
-                } else if (product.options) {
-                    const option = product.options.values.find(o => o.value === item.option);
-                    if (option) option.stock = Math.max(0, option.stock - item.quantity);
+        set(
+          produce((state: AppState) => {
+            const { items } = state;
+            items.forEach((item) => {
+              const product = state.products.find((p) => p.id === item.productId);
+              if (!product) return;
+    
+              if (item.color && product.colors) {
+                const color = product.colors.find((c) => c.name === item.color);
+                if (color) {
+                  const option = color.options.values.find(
+                    (o) => o.value === item.option
+                  );
+                  if (option) {
+                    option.stock = Math.max(0, option.stock - item.quantity);
+                  }
                 }
+              } else if (product.options) {
+                const option = product.options.values.find(
+                  (o) => o.value === item.option
+                );
+                if (option) {
+                  option.stock = Math.max(0, option.stock - item.quantity);
+                }
+              }
             });
-            
-            // Reset cart
+    
+            // Reset cart state after processing
             state.items = [];
             state.itemCount = 0;
             state.total = 0;
-        }));
+          })
+        );
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
