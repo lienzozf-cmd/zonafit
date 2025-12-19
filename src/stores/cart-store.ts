@@ -126,8 +126,29 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        set({ items: [], itemCount: 0, total: 0 });
-        get().fetchProducts();
+        const orderedItems = get().items;
+        set(produce((state: AppState) => {
+            orderedItems.forEach(item => {
+                const product = state.products.find(p => p.id === item.productId);
+                if (!product) return;
+
+                if (item.color && product.colors) {
+                    const color = product.colors.find(c => c.name === item.color);
+                    if (color) {
+                        const option = color.options.values.find(o => o.value === item.option);
+                        if (option) option.stock = Math.max(0, option.stock - item.quantity);
+                    }
+                } else if (product.options) {
+                    const option = product.options.values.find(o => o.value === item.option);
+                    if (option) option.stock = Math.max(0, option.stock - item.quantity);
+                }
+            });
+            
+            // Reset cart
+            state.items = [];
+            state.itemCount = 0;
+            state.total = 0;
+        }));
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
