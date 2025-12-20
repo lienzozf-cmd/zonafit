@@ -2718,7 +2718,7 @@
   },
   {
     "id": 2652,
-    "name": "Iso 100 - Dynamatize - Chocolate",
+    "name": "Iso 100 - Dynamatize - Chocolate 3LB",
     "price": "Q.598.50",
     "originalPrice": "Q.665.00",
     "availability": "Disponible",
@@ -2728,13 +2728,13 @@
     "subcategory": "proteina",
     "brand": "Dymatize",
     "benefits": "Recuperación muscular rápida, 25g de proteína por servicio, bajo en carbohidratos.",
-    "servings_info": "71 servicios.",
+    "servings_info": "43 servicios.",
     "feature1": "25g de proteína hidrolizada y aislada",
     "feature2": "Absorción ultra rápida para post-entreno",
     "feature3": "Bajo en carbohidratos y grasas",
     "images": [
       {
-        "src": "/assets/images/marcas/suplementos/iso100choco.png",
+        "src": "/assets/images/marcas/suplementos/isodc.png",
         "alt": "Iso 100 - Dynamatize - Chocolate",
         "dataAiHint": "protein powder"
       }
@@ -2751,7 +2751,7 @@
   },
   {
     "id": 2653,
-    "name": "Iso 100 - Dynamatize - Cocoa Pebbles",
+    "name": "Iso 100 - Dynamatize - Cocoa Pebbles 3LB",
     "price": "Q.616.50",
     "originalPrice": "Q.685.00",
     "availability": "Disponible",
@@ -2761,13 +2761,13 @@
     "subcategory": "proteina",
     "brand": "Dymatize",
     "benefits": "Recuperación muscular rápida, sabor increíble, 5.5g de BCAAs.",
-    "servings_info": "71 servicios.",
+    "servings_info": "42 servicios.",
     "feature1": "Sabor oficial de cereal Cocoa Pebbles",
     "feature2": "Ideal para batidos y recetas",
     "feature3": "5.5g de BCAAs por servicio",
     "images": [
       {
-        "src": "/assets/images/marcas/suplementos/iso100cocoa.png",
+        "src": "/assets/images/marcas/suplementos/isodpe.png",
         "alt": "Iso 100 - Dynamatize - Cocoa Pebbles",
         "dataAiHint": "protein powder"
       }
