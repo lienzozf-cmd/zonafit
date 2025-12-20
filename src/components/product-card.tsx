@@ -170,14 +170,12 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
     >
         <Link href={`/product/${product.id}`} className="product-image-link w-full">
             <div className="product-carousel">
-                <div className="relative h-full w-full p-4">
-                  <Image
-                    src={currentImage}
-                    alt={product.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+                <Image
+                  src={currentImage}
+                  alt={product.name}
+                  fill
+                  className="object-contain"
+                />
             </div>
         </Link>
         <div className='flex flex-col flex-grow mt-4'>
