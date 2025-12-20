@@ -174,7 +174,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                   src={currentImage}
                   alt={product.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
             </div>
         </Link>
