@@ -2767,7 +2767,7 @@
     "feature3": "5.5g de BCAAs por servicio",
     "images": [
       {
-        "src": "/assets/images/marcas/suplementos/isodpe.png",
+        "src": "/assets/images/marcas/suplementos/isodpe_full.png",
         "alt": "Iso 100 - Dynamatize - Cocoa Pebbles",
         "dataAiHint": "protein powder"
       }
@@ -2787,7 +2787,7 @@
     "name": "Creatina Platinum",
     "price": "Q.328.50",
     "originalPrice": "Q.365.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Creatina de alta calidad para mejorar la fuerza y el rendimiento.",
     "gender": "unisex",
     "category": "suplemento",
