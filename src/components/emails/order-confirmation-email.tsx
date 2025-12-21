@@ -46,8 +46,6 @@ import {
   interface OrderConfirmationEmailProps {
     orderDetails: OrderDetails;
   }
-
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   
   export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailProps) => {
     const { 
@@ -99,7 +97,7 @@ import {
                       <td style={tableCell}>
                         <Row>
                           <Column style={{ paddingRight: '15px' }}>
-                             <Img src={item.image.startsWith('http') ? item.image : `${baseUrl}${item.image}`} alt={item.name} width="60" height="60" style={productImage} />
+                             <Img src={item.image} alt={item.name} width="60" height="60" style={productImage} />
                           </Column>
                           <Column>
                             <Text style={{ ...text, margin: 0, fontWeight: 'bold' }}>{item.name}</Text>
