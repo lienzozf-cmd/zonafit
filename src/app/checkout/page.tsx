@@ -115,7 +115,11 @@ export default function CheckoutPage() {
     if (isCartEmpty) return;
     setIsLoading(true);
 
-    const orderDetails = { shippingInfo: data, orderItems: items, orderTotal: orderTotal };
+    const orderDetails = {
+      shippingInfo: data,
+      orderItems: items,
+      orderTotal: orderTotal,
+    };
 
     try {
       const response = await fetch('/api/send-email', {
