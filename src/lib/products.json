@@ -1,4 +1,3 @@
-
 [
   {
     "id": 1,
@@ -432,7 +431,7 @@
       "values": [
         {
           "value": "Gold",
-          "stock": 3
+          "stock": 2
         }
       ]
     }
