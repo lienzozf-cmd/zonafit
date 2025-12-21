@@ -118,6 +118,10 @@ export default function CheckoutPage() {
     const orderDetails = {
       shippingInfo: data,
       orderItems: items,
+      orderSubtotal: subtotal,
+      orderDiscount: christmasDiscount,
+      orderShipping: shippingCost,
+      orderCommission: codCommission,
       orderTotal: orderTotal,
     };
 

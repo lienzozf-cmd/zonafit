@@ -1,3 +1,4 @@
+
 import {
     Body,
     Container,
@@ -34,6 +35,10 @@ import {
       quantity: number;
       subtotal: string;
     }[];
+    orderSubtotal: number;
+    orderDiscount: number;
+    orderShipping: number;
+    orderCommission: number;
     orderTotal: number;
     orderId: string;
   }
@@ -45,7 +50,16 @@ import {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   
   export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailProps) => {
-    const { shippingInfo, orderItems, orderTotal, orderId } = orderDetails;
+    const { 
+        shippingInfo, 
+        orderItems, 
+        orderSubtotal,
+        orderDiscount,
+        orderShipping,
+        orderCommission,
+        orderTotal, 
+        orderId 
+    } = orderDetails;
     const paymentMethodText = shippingInfo.paymentMethod === 'cod' ? 'Pago Contra Entrega' : 'Previo Depósito';
     
     return (
@@ -104,8 +118,27 @@ import {
             
             <Hr style={hr} />
   
-            <Section style={{ ...section, textAlign: 'right' as const }}>
-              <Text style={totalText}>Total del Pedido: <span style={totalAmount}>Q{orderTotal.toFixed(2)}</span></Text>
+            <Section style={{ ...section, paddingLeft: '48px', paddingRight: '48px' }}>
+                <Row>
+                    <Column align="right">
+                        <Text style={summaryText}>Subtotal:</Text>
+                        <Text style={summaryText}>Descuento:</Text>
+                        <Text style={summaryText}>Envío:</Text>
+                        {orderCommission > 0 && (
+                            <Text style={summaryText}>Comisión (4%):</Text>
+                        )}
+                        <Text style={totalText}>Total del Pedido:</Text>
+                    </Column>
+                    <Column align="right" style={{width: '120px'}}>
+                        <Text style={summaryText}>Q{orderSubtotal.toFixed(2)}</Text>
+                        <Text style={{ ...summaryText, color: '#22c55e' }}>-Q{orderDiscount.toFixed(2)}</Text>
+                        <Text style={summaryText}>Q{orderShipping.toFixed(2)}</Text>
+                        {orderCommission > 0 && (
+                             <Text style={{...summaryText, color: '#f97316'}}>Q{orderCommission.toFixed(2)}</Text>
+                        )}
+                        <Text style={totalAmount}>Q{orderTotal.toFixed(2)}</Text>
+                    </Column>
+                </Row>
             </Section>
   
             <Section style={reminderSection}>
@@ -210,15 +243,25 @@ import {
     borderRadius: '8px',
     marginRight: '15px',
   };
+
+  const summaryText = {
+    ...text,
+    margin: '0 0 8px 0',
+  };
   
   const totalText = {
+    ...text,
     fontSize: '18px',
     fontWeight: 'bold' as const,
     color: '#333',
+    margin: '8px 0 0 0',
   };
   
   const totalAmount = {
+    fontSize: '18px',
+    fontWeight: 'bold' as const,
     color: '#E50000',
+    margin: '8px 0 0 0',
   };
   
   const reminderSection = {
@@ -234,4 +277,3 @@ import {
     lineHeight: '1.5',
     color: '#525f7f',
   };
-  
