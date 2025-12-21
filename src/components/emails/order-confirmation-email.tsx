@@ -22,6 +22,8 @@ import {
       address: string;
       department: string;
       municipality: string;
+      email: string;
+      paymentMethod: 'deposit' | 'cod';
     };
     orderItems: {
       id: string;
@@ -44,6 +46,7 @@ import {
   
   export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailProps) => {
     const { shippingInfo, orderItems, orderTotal, orderId } = orderDetails;
+    const paymentMethodText = shippingInfo.paymentMethod === 'cod' ? 'Pago Contra Entrega' : 'Previo Depósito';
     
     return (
       <Html>
@@ -51,22 +54,16 @@ import {
         <Preview>¡Nuevo Pedido en ZONA FIT GT! #{orderId}</Preview>
         <Body style={main}>
           <Container style={container}>
-            <Section style={logoContainer}>
-              <Img
-                src={`${baseUrl}/assets/images/logos/logo.png`}
-                width="150"
-                height="80"
-                alt="ZONA FIT GT"
-              />
-            </Section>
             <Heading style={heading}>¡Nuevo Pedido #{orderId}!</Heading>
             <Text style={paragraph}>Has recibido un nuevo pedido a través de tu tienda en línea.</Text>
             
             <Section style={section}>
               <Heading as="h2" style={subheading}>Información del Cliente</Heading>
               <Text style={text}><span style={bold}>Nombre:</span> {shippingInfo.firstName} {shippingInfo.lastName}</Text>
+              <Text style={text}><span style={bold}>Correo Electrónico:</span> {shippingInfo.email}</Text>
               <Text style={text}><span style={bold}>Teléfono:</span> {shippingInfo.phone}</Text>
               <Text style={text}><span style={bold}>Dirección:</span> {shippingInfo.address}, {shippingInfo.municipality}, {shippingInfo.department}</Text>
+              <Text style={text}><span style={bold}>Método de Pago:</span> {paymentMethodText}</Text>
             </Section>
             
             <Hr style={hr} />
@@ -140,12 +137,7 @@ import {
     border: '1px solid #eee',
     borderRadius: '5px',
   };
-  
-  const logoContainer = {
-    textAlign: 'center' as const,
-    padding: '20px 0',
-  };
-  
+    
   const heading = {
     color: '#E50000',
     fontSize: '28px',
