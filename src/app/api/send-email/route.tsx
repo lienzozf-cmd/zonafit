@@ -9,7 +9,15 @@ import type { CartItem } from '@/lib/types';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { shippingInfo, orderItems, orderTotal } = body;
+    const { 
+        shippingInfo, 
+        orderItems,
+        orderSubtotal,
+        orderDiscount,
+        orderShipping,
+        orderCommission,
+        orderTotal 
+    } = body;
 
     // --- Validación de Datos ---
     if (!shippingInfo || !orderItems || !orderTotal || orderItems.length === 0) {
@@ -31,6 +39,10 @@ export async function POST(request: Request) {
         ...item,
         subtotal: (item.price * item.quantity).toFixed(2),
       })),
+      orderSubtotal,
+      orderDiscount,
+      orderShipping,
+      orderCommission,
       orderTotal,
       orderId,
     };
