@@ -277,3 +277,5 @@ import {
     lineHeight: '1.5',
     color: '#525f7f',
   };
+
+    
