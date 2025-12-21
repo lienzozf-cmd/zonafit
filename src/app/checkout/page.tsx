@@ -82,7 +82,7 @@ export default function CheckoutPage() {
 
   const christmasDiscount = subtotal * christmasDiscountPercentage;
   const totalAfterDiscount = subtotal - christmasDiscount;
-  const codCommission = paymentMethod === 'cod' ? subtotal * codCommissionPercentage : 0;
+  const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
 
@@ -462,3 +462,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
