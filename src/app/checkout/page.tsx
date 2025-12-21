@@ -39,11 +39,12 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, processOrder, products } = useCartStore((state) => ({
+  const { items, total, processOrder, products, fetchProducts } = useCartStore((state) => ({
     items: state.items,
     total: state.total,
     processOrder: state.processOrder,
     products: state.products,
+    fetchProducts: state.fetchProducts
   }));
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -123,22 +124,29 @@ export default function CheckoutPage() {
         body: JSON.stringify(orderDetails),
       });
 
-      const result = await response.json();
-
       if (!response.ok) {
-        const errorMsg = result.message || 'Algo salió mal al procesar el pedido.';
-        if (result.errors) {
-          Object.keys(result.errors).forEach((key) => {
-            const field = key as keyof CheckoutFormValues;
-            const message = result.errors[field]?.[0];
-            if (message) form.setError(field, { type: 'server', message });
-          });
+        let errorMsg = 'Algo salió mal al procesar el pedido.';
+        try {
+          const result = await response.json();
+          errorMsg = result.message || `Unexpected token '<', "${result.error}"... is not valid JSON`;
+           if (result.errors) {
+            Object.keys(result.errors).forEach((key) => {
+              const field = key as keyof CheckoutFormValues;
+              const message = result.errors[field]?.[0];
+              if (message) form.setError(field, { type: 'server', message });
+            });
+          }
+        } catch (e) {
+            // This means the response was not JSON, likely an HTML error page
+             errorMsg = 'Error inesperado del servidor. Por favor, intenta de nuevo.';
         }
         throw new Error(errorMsg);
       }
       
+      const result = await response.json();
+      triggerConfetti();
       processOrder();
-
+      fetchProducts(); // Refresh products to get updated stock
       
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
@@ -154,11 +162,6 @@ export default function CheckoutPage() {
       setIsLoading(false);
     }
   }
-
-  const handleFormSubmit = (data: CheckoutFormValues) => {
-    triggerConfetti();
-    onSubmit(data);
-  };
 
   if (isSubmitSuccessful && orderId) {
     return (
@@ -216,7 +219,7 @@ export default function CheckoutPage() {
               <h2 className="text-2xl font-bold mb-2">Información de Envío</h2>
               <p className="text-sm text-gray-400 mb-8">Introduce tus datos para completar la compra.</p>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-5">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
