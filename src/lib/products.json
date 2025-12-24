@@ -1,3 +1,4 @@
+
 [
   {
     "id": 1,
@@ -1954,7 +1955,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -3420,7 +3421,7 @@
     "id": 2671,
     "name": "Onyx 5.0 long sleeve",
     "price": "Q.750.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera de manga larga Onyx 5.0 para hombre. Estilo y comodidad para tu entrenamiento.",
     "gender": "hombre",
     "category": "ropa",
@@ -3438,12 +3439,7 @@
     ],
     "options": {
       "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
+      "values": []
     },
     "colors": [
       {
