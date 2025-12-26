@@ -5,6 +5,8 @@ import nodemailer from 'nodemailer';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import type { CartItem } from '@/lib/types';
+import path from 'path';
+import fs from 'fs/promises';
 
 export async function POST(request: Request) {
   try {
@@ -33,16 +35,31 @@ export async function POST(request: Request) {
     }
     
     // --- Prepare Email Details ---
-    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
-
-    const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
-      const imageUrl = item.image.startsWith('/') ? `${baseUrl}${item.image}` : item.image;
-      return {
-        ...item,
-        image: imageUrl,
-        subtotal: (item.price * item.quantity).toFixed(2),
-      };
-    });
+    const publicDir = path.join(process.cwd(), 'public');
+    const itemsWithAbsoluteImageUrls = await Promise.all(
+      orderItems.map(async (item: CartItem) => {
+        try {
+          const imagePath = path.join(publicDir, item.image);
+          const imageBuffer = await fs.readFile(imagePath);
+          const imageBase64 = imageBuffer.toString('base64');
+          const mimeType = path.extname(item.image) === '.png' ? 'image/png' : 'image/jpeg';
+          
+          return {
+            ...item,
+            image: `data:${mimeType};base64,${imageBase64}`,
+            subtotal: (item.price * item.quantity).toFixed(2),
+          };
+        } catch (error) {
+          console.error(`Error processing image for item ${item.id}:`, error);
+          // Fallback if image processing fails
+          return {
+            ...item,
+            image: '', // No image will be shown
+            subtotal: (item.price * item.quantity).toFixed(2),
+          };
+        }
+      })
+    );
 
     const emailData = {
       shippingInfo,
@@ -68,7 +85,7 @@ export async function POST(request: Request) {
 
     const mailOptions = {
       from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
-      to: process.env.SMTP_EMAIL, // Send to yourself
+      to: 'rabanalesf22@gmail.com, rabafam2118@gmail.com', // Send to both
       subject: `¡Nuevo Pedido! Orden #${orderId}`,
       html: emailHtml,
     };
