@@ -38,7 +38,7 @@ export const useCartStore = create<AppState>()(
       total: 0,
       itemCount: 0,
       isCartOpen: false,
-      products: [], // Initialize with an empty array
+      products: [], // Initialize with an empty array, will be fetched from server.
       setProducts: (products) => set({ products }),
       fetchProducts: async () => {
         try {
@@ -50,7 +50,6 @@ export const useCartStore = create<AppState>()(
           set({ products: serverProducts });
         } catch (error) {
           console.error("Failed to fetch latest products:", error);
-          // In case of error, the product list will remain empty or as it was.
         }
       },
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
@@ -118,7 +117,6 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        // This function will clear the cart. Stock update is now handled server-side.
         set({
           items: [],
           itemCount: 0,
@@ -138,13 +136,20 @@ export const useCartStore = create<AppState>()(
       },
     }),
     {
-      name: 'cart-storage-v2',
+      name: 'cart-storage-v3', // Changed version to clear old storage
       storage: createJSONStorage(() => localStorage), 
+      partialize: (state) => ({ 
+        items: state.items,
+        isCartOpen: state.isCartOpen,
+        itemCount: state.itemCount,
+        total: state.total
+      }), // Only persist cart-related items
       onRehydrateStorage: (state) => {
         return (state, error) => {
           if (error) {
             console.log('An error happened during hydration', error)
           } else {
+             // We still fetch products, but now it's the ONLY source for product data
              state?.fetchProducts();
           }
         }
