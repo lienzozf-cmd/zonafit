@@ -94,7 +94,7 @@ import {
                 <tbody>
                   {orderItems.map((item) => (
                     <tr key={item.id} style={tableRow}>
-                      <td style={tableCell}>
+                       <td style={tableCell}>
                         <Row>
                           <Column style={{ paddingRight: '15px' }}>
                              <img src={item.image} alt={item.name} width="60" height="60" style={productImage} />
@@ -153,7 +153,7 @@ import {
   
   export default OrderConfirmationEmail;
   
-  // --- Estilos ---
+  // --- Styles ---
   
   const main = {
     backgroundColor: '#f6f9fc',
@@ -172,14 +172,14 @@ import {
   const heading = {
     color: '#E50000',
     fontSize: '28px',
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     textAlign: 'center' as const,
   };
   
   const subheading = {
     color: '#333',
     fontSize: '20px',
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     borderBottom: '2px solid #E50000',
     paddingBottom: '5px',
     margin: '0 0 15px 0',
@@ -235,6 +235,7 @@ import {
   
   const tableCell = {
     padding: '15px 12px',
+    verticalAlign: 'top',
   };
   
   const productImage = {
