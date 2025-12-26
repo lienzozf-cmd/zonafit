@@ -11,11 +11,11 @@ import path from 'path';
 // Helper to convert image to base64
 async function imageToBase64(imagePath: string): Promise<string | null> {
   try {
-    // Make sure the path starts from the project's public directory
-    const fullPath = path.join(process.cwd(), 'public', imagePath);
+    // Ensure the path starts from the project's public directory
+    const fullPath = path.join(process.cwd(), 'public', imagePath.startsWith('/') ? imagePath : `/${imagePath}`);
     const file = await fs.readFile(fullPath);
-    const contentType = imagePath.endsWith('.png') ? 'image/png' : imagePath.endsWith('.jpg') || imagePath.endsWith('.jpeg') ? 'image/jpeg' : 'image/webp';
-    return `data:${contentType};base64,${file.toString('base64')}`;
+    const contentType = path.extname(fullPath).slice(1) || 'png';
+    return `data:image/${contentType};base64,${file.toString('base64')}`;
   } catch (error) {
     console.error(`Error reading image file at ${imagePath}:`, error);
     return null; // Return null if image can't be read
@@ -35,20 +35,20 @@ export async function POST(request: Request) {
         orderTotal 
     } = body;
 
-    // --- Validación de Datos ---
+    // --- Data Validation ---
     if (!shippingInfo || !orderItems || !orderTotal || orderItems.length === 0) {
-      return NextResponse.json({ message: 'Faltan datos en el pedido.' }, { status: 400 });
+      return NextResponse.json({ message: 'Missing order data.' }, { status: 400 });
     }
 
-    // --- Generación de ID de Orden ---
+    // --- Order ID Generation ---
     const orderId = await getNextOrderId();
 
-    // --- Actualización de Inventario ---
+    // --- Inventory Update ---
     for (const item of orderItems) {
       await updateStock(item.productId, item.option, item.quantity, item.color);
     }
     
-    // --- Preparación de Detalles del Correo con imágenes en base64 ---
+    // --- Prepare Email Details with base64 images ---
     const itemsWithBase64Images = await Promise.all(
         orderItems.map(async (item: CartItem) => {
             const base64Image = await imageToBase64(item.image);
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
 
     const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
-    // --- Configuración de Nodemailer ---
+    // --- Nodemailer Setup ---
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -84,26 +84,26 @@ export async function POST(request: Request) {
 
     const mailOptions = {
       from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
-      to: process.env.SMTP_EMAIL, // Se envía a ti mismo
+      to: process.env.SMTP_EMAIL, // Send to yourself
       subject: `¡Nuevo Pedido! Orden #${orderId}`,
       html: emailHtml,
     };
 
-    // --- Envío del Correo ---
+    // --- Send Email ---
     await transporter.sendMail(mailOptions);
-    console.log(`Correo de confirmación enviado para la orden #${orderId}`);
+    console.log(`Confirmation email sent for order #${orderId}`);
     
-    // --- Respuesta Exitosa ---
+    // --- Success Response ---
     return NextResponse.json({ 
       success: true,
-      message: 'Pedido recibido y correo enviado correctamente',
+      message: 'Order received and email sent successfully',
       orderId: orderId 
     }, { status: 200 });
 
   } catch (error: any) {
-    console.error('Error en API send-email:', error);
+    console.error('Error in send-email API:', error);
     return NextResponse.json(
-      { message: 'Error interno del servidor', error: error.message || 'Error desconocido' },
+      { message: 'Internal Server Error', error: error.message || 'Unknown error' },
       { status: 500 }
     );
   }
