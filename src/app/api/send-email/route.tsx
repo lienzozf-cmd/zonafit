@@ -35,31 +35,20 @@ export async function POST(request: Request) {
     }
     
     // --- Prepare Email Details ---
-    const publicDir = path.join(process.cwd(), 'public');
-    const itemsWithAbsoluteImageUrls = await Promise.all(
-      orderItems.map(async (item: CartItem) => {
-        try {
-          const imagePath = path.join(publicDir, item.image);
-          const imageBuffer = await fs.readFile(imagePath);
-          const imageBase64 = imageBuffer.toString('base64');
-          const mimeType = path.extname(item.image) === '.png' ? 'image/png' : 'image/jpeg';
-          
-          return {
+    // Use the request headers to build the base URL.
+    const protocol = request.headers.get('x-forwarded-proto') || 'http';
+    const host = request.headers.get('host') || '';
+    const baseURL = `${protocol}://${host}`;
+
+    const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
+        // Ensure the image URL starts with a slash
+        const imageUrl = item.image.startsWith('/') ? item.image : `/${item.image}`;
+        return {
             ...item,
-            image: `data:${mimeType};base64,${imageBase64}`,
+            image: `${baseURL}${imageUrl}`, // Create absolute URL
             subtotal: (item.price * item.quantity).toFixed(2),
-          };
-        } catch (error) {
-          console.error(`Error processing image for item ${item.id}:`, error);
-          // Fallback if image processing fails
-          return {
-            ...item,
-            image: '', // No image will be shown
-            subtotal: (item.price * item.quantity).toFixed(2),
-          };
-        }
-      })
-    );
+        };
+    });
 
     const emailData = {
       shippingInfo,
