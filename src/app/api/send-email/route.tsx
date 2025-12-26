@@ -5,22 +5,6 @@ import nodemailer from 'nodemailer';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import type { CartItem } from '@/lib/types';
-import fs from 'fs/promises';
-import path from 'path';
-
-// Helper to convert image to base64
-async function imageToBase64(imagePath: string): Promise<string | null> {
-  try {
-    // Ensure the path starts from the project's public directory
-    const fullPath = path.join(process.cwd(), 'public', imagePath.startsWith('/') ? imagePath : `/${imagePath}`);
-    const file = await fs.readFile(fullPath);
-    const contentType = path.extname(fullPath).slice(1) || 'png';
-    return `data:image/${contentType};base64,${file.toString('base64')}`;
-  } catch (error) {
-    console.error(`Error reading image file at ${imagePath}:`, error);
-    return null; // Return null if image can't be read
-  }
-}
 
 export async function POST(request: Request) {
   try {
@@ -48,21 +32,21 @@ export async function POST(request: Request) {
       await updateStock(item.productId, item.option, item.quantity, item.color);
     }
     
-    // --- Prepare Email Details with base64 images ---
-    const itemsWithBase64Images = await Promise.all(
-        orderItems.map(async (item: CartItem) => {
-            const base64Image = await imageToBase64(item.image);
-            return {
-                ...item,
-                image: base64Image || item.image, // Fallback to original path if conversion fails
-                subtotal: (item.price * item.quantity).toFixed(2),
-            };
-        })
-    );
+    // --- Prepare Email Details ---
+    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+
+    const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
+      const imageUrl = item.image.startsWith('/') ? `${baseUrl}${item.image}` : item.image;
+      return {
+        ...item,
+        image: imageUrl,
+        subtotal: (item.price * item.quantity).toFixed(2),
+      };
+    });
 
     const emailData = {
       shippingInfo,
-      orderItems: itemsWithBase64Images,
+      orderItems: itemsWithAbsoluteImageUrls,
       orderSubtotal,
       orderDiscount,
       orderShipping,

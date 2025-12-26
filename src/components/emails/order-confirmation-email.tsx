@@ -97,7 +97,7 @@ import {
                        <td style={tableCell}>
                         <Row>
                           <Column style={{ paddingRight: '15px' }}>
-                             <img src={item.image} alt={item.name} width="60" height="60" style={productImage} />
+                             <Img src={item.image} alt={item.name} width="60" height="60" style={productImage} />
                           </Column>
                           <Column>
                             <Text style={{ ...text, margin: 0, fontWeight: 'bold' }}>{item.name}</Text>
