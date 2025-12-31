@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import IntroAnimation from './intro-animation';
 import { useCartStore } from '@/stores/cart-store';
+import '@/lib/firebase'; // Import to initialize Firebase and Analytics
 
 export default function IntroWrapper({
   children,
