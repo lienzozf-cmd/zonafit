@@ -135,7 +135,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "L",
@@ -1230,7 +1230,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1624,7 +1624,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -3574,7 +3574,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -3615,7 +3615,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }

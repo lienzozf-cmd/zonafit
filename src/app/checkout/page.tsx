@@ -114,6 +114,7 @@ export default function CheckoutPage() {
   async function onSubmit(data: CheckoutFormValues) {
     if (isCartEmpty) return;
     setIsLoading(true);
+    triggerConfetti();
 
     const orderDetails = {
       shippingInfo: data,
@@ -152,7 +153,7 @@ export default function CheckoutPage() {
       }
       
       const result = await response.json();
-      triggerConfetti();
+      
       processOrder();
       fetchProducts(); // Refresh products to get updated stock
       
