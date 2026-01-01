@@ -183,7 +183,6 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
                 <h3 className="product-name">{product.name}</h3>
             </Link>
             <div className="flex justify-center items-center gap-2">
-                {product.originalPrice && <p className="text-gray-500 line-through text-lg">{product.originalPrice}</p>}
                 <p className="product-price">{product.price}</p>
             </div>
             <div className="flex justify-center my-2">
