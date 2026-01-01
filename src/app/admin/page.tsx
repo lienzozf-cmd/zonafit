@@ -6,15 +6,14 @@ import * as z from 'zod';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, LogOut, FileDown } from 'lucide-react';
 
 import { useCartStore } from '@/stores/cart-store';
-import type { Product, ProductColor, ProductOption } from '@/lib/data';
+import type { Product, ProductOption } from '@/lib/data';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { FileDown } from 'lucide-react';
 
 const loginSchema = z.object({
   username: z.string().min(1, 'El usuario es requerido'),
@@ -48,6 +47,11 @@ export default function AdminPage() {
       });
     }
   };
+  
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    toast({ title: 'Sesión cerrada', description: 'Has cerrado sesión correctamente.' });
+  };
 
   const generatePdf = () => {
     const doc = new jsPDF();
@@ -80,41 +84,41 @@ export default function AdminPage() {
         product.options.values.forEach(option => processOption(option));
       }
     });
-
-    const tableRows = [...availableRows, ...unavailableRows];
     
     doc.text("Reporte de Inventario - ZONA FIT GT", 14, 15);
-    (doc as any).autoTable({
-        head: [tableColumn],
-        body: tableRows,
-        startY: 20,
-        headStyles: { fillColor: [229, 0, 0] },
-        didDrawCell: (data: any) => {
-          if (data.section === 'body' && data.column.index === 5) {
-            const stock = data.cell.raw;
-            if (typeof stock === 'number' && stock <= 0) {
-              doc.setFillColor(255, 235, 238); // Light red background
-              doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
-              doc.setTextColor(153, 27, 27); // Darker red text
-            }
-          }
-        },
-        willDrawCell: (data: any) => {
-          if (data.section === 'body') {
-            const rowData = data.row.raw;
-            const stock = Array.isArray(rowData) ? rowData[5] : 0;
-             if (typeof stock === 'number' && stock <= 0) {
-                 doc.setFillColor(255, 235, 238);
-             }
-          }
-        },
-        bodyStyles: {
-            // This is a bit of a hack. We can't apply conditional row styles directly,
-            // so we set a default and override with didDrawCell/willDrawCell.
-            // We set a white background so that cells don't become transparent.
-            fillColor: [255, 255, 255] 
-        }
-    });
+
+    // Tabla de Disponibles
+    if (availableRows.length > 0) {
+        (doc as any).autoTable({
+            head: [tableColumn],
+            body: availableRows,
+            startY: 20,
+            headStyles: { fillColor: [22, 163, 74] }, // Green header
+            didDrawPage: (data: any) => {
+                // Header for available products
+                doc.text("Productos Disponibles", 14, data.cursor.y + 15);
+            },
+            margin: { top: 30 }
+        });
+    }
+
+    // Tabla de Agotados
+    if (unavailableRows.length > 0) {
+        const unavailableStartY = availableRows.length > 0 ? (doc as any).autoTable.previous.finalY + 20 : 20;
+        (doc as any).autoTable({
+            head: [tableColumn],
+            body: unavailableRows,
+            startY: unavailableStartY,
+            headStyles: { fillColor: [220, 38, 38] }, // Red header
+            didDrawPage: (data: any) => {
+                // Header for unavailable products
+                doc.text("Productos Agotados", 14, data.cursor.y + 15);
+            },
+            margin: { top: 30 },
+            styles: { fillColor: [254, 226, 226] } // Light red for all unavailable rows
+        });
+    }
+
 
     doc.save("reporte_inventario.pdf");
   };
@@ -143,17 +147,27 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="container mx-auto p-8 bg-gray-900 text-white min-h-screen">
-      <h1 className="text-3xl font-bold mb-8">Panel de Administración</h1>
-      <div className="bg-gray-800 p-6 rounded-lg">
-        <h2 className="text-xl font-semibold mb-4">Reportes de Inventario</h2>
-        <p className="text-gray-400 mb-4">
-          Haz clic en el botón para generar un PDF con el estado actual del inventario de todos los productos.
-        </p>
-        <Button onClick={generatePdf} className="bg-red-600 hover:bg-red-700">
-          <FileDown className="mr-2 h-4 w-4" />
-          Generar PDF de Inventario
-        </Button>
+    <div className="relative min-h-screen bg-gray-900 p-8 text-white">
+      <Button variant="ghost" onClick={() => router.back()} className="absolute top-4 left-4 hover:bg-gray-700">
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Regresar
+      </Button>
+       <Button variant="ghost" onClick={handleLogout} className="absolute top-4 right-4 hover:bg-gray-700">
+        <LogOut className="mr-2 h-4 w-4" />
+        Cerrar Sesión
+      </Button>
+      <div className="container mx-auto">
+        <h1 className="text-center text-3xl font-bold mb-8">Panel de Administración</h1>
+        <div className="mx-auto max-w-lg bg-gray-800 p-6 rounded-lg">
+          <h2 className="text-xl font-semibold mb-4">Reportes de Inventario</h2>
+          <p className="text-gray-400 mb-4">
+            Haz clic en el botón para generar un PDF con el estado actual del inventario de todos los productos.
+          </p>
+          <Button onClick={generatePdf} className="bg-red-600 hover:bg-red-700">
+            <FileDown className="mr-2 h-4 w-4" />
+            Generar PDF de Inventario
+          </Button>
+        </div>
       </div>
     </div>
   );
