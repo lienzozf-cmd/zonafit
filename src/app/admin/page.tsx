@@ -52,45 +52,70 @@ export default function AdminPage() {
   const generatePdf = () => {
     const doc = new jsPDF();
     const tableColumn = ["ID", "Producto", "Color", "Talla/Opción", "Precio", "Stock"];
-    const tableRows: (string | number)[][] = [];
+    const availableRows: (string | number)[][] = [];
+    const unavailableRows: (string | number)[][] = [];
 
     products.forEach(product => {
+      const processOption = (option: ProductOption, colorName: string = 'N/A') => {
+        const row = [
+          product.id,
+          product.name,
+          colorName,
+          option.value,
+          product.price,
+          option.stock,
+        ];
+        if (option.stock > 0) {
+          availableRows.push(row);
+        } else {
+          unavailableRows.push(row);
+        }
+      };
+
       if (product.colors && product.colors.length > 0) {
         product.colors.forEach(color => {
-          color.options.values.forEach(option => {
-            const productData = [
-              product.id,
-              product.name,
-              color.name,
-              option.value,
-              product.price,
-              option.stock > 0 ? option.stock : 'Agotado',
-            ];
-            tableRows.push(productData);
-          });
+          color.options.values.forEach(option => processOption(option, color.name));
         });
       } else {
-        product.options.values.forEach(option => {
-          const productData = [
-            product.id,
-            product.name,
-            'N/A',
-            option.value,
-            product.price,
-            option.stock > 0 ? option.stock : 'Agotado',
-          ];
-          tableRows.push(productData);
-        });
+        product.options.values.forEach(option => processOption(option));
       }
     });
 
+    const tableRows = [...availableRows, ...unavailableRows];
+    
+    doc.text("Reporte de Inventario - ZONA FIT GT", 14, 15);
     (doc as any).autoTable({
         head: [tableColumn],
         body: tableRows,
         startY: 20,
         headStyles: { fillColor: [229, 0, 0] },
+        didDrawCell: (data: any) => {
+          if (data.section === 'body' && data.column.index === 5) {
+            const stock = data.cell.raw;
+            if (typeof stock === 'number' && stock <= 0) {
+              doc.setFillColor(255, 235, 238); // Light red background
+              doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
+              doc.setTextColor(153, 27, 27); // Darker red text
+            }
+          }
+        },
+        willDrawCell: (data: any) => {
+          if (data.section === 'body') {
+            const rowData = data.row.raw;
+            const stock = Array.isArray(rowData) ? rowData[5] : 0;
+             if (typeof stock === 'number' && stock <= 0) {
+                 doc.setFillColor(255, 235, 238);
+             }
+          }
+        },
+        bodyStyles: {
+            // This is a bit of a hack. We can't apply conditional row styles directly,
+            // so we set a default and override with didDrawCell/willDrawCell.
+            // We set a white background so that cells don't become transparent.
+            fillColor: [255, 255, 255] 
+        }
     });
-    doc.text("Reporte de Inventario - ZONA FIT GT", 14, 15);
+
     doc.save("reporte_inventario.pdf");
   };
 
