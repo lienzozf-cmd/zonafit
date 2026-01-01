@@ -79,12 +79,9 @@ export default function AdminPage() {
         const availableRows: (string | number)[][] = [];
         const unavailableRows: (string | number)[][] = [];
         let totalStock = 0;
-        let totalVariants = 0;
 
         categoryProducts.forEach(product => {
             const processOption = (option: ProductOption, colorName: string = 'N/A') => {
-                totalVariants++;
-                totalStock += option.stock;
                 const row = [
                     product.id,
                     product.name,
@@ -95,6 +92,7 @@ export default function AdminPage() {
                 ];
                 if (option.stock > 0) {
                     availableRows.push(row);
+                    totalStock += option.stock;
                 } else {
                     unavailableRows.push(row);
                 }
@@ -122,9 +120,15 @@ export default function AdminPage() {
 
         // Tabla de Disponibles
         if (availableRows.length > 0) {
+            const summaryRow = [{
+                content: `Total Disponible: ${totalStock} unidades`,
+                colSpan: 6,
+                styles: { halign: 'right', fontStyle: 'bold', fillColor: [230, 255, 230] }
+            }];
+
             (doc as any).autoTable({
                 head: [tableColumn],
-                body: availableRows,
+                body: [...availableRows, summaryRow],
                 startY: startY,
                 headStyles: { fillColor: [22, 163, 74] }, // Verde
             });
@@ -149,13 +153,7 @@ export default function AdminPage() {
           startY += 10;
         }
 
-
-        // Resumen de la categoría
-        doc.setFontSize(10);
-        doc.text(`Resumen de ${category.name}:`, 14, startY + 5);
-        doc.text(`- Total de Productos (variantes): ${totalVariants}`, 16, startY + 10);
-        doc.text(`- Productos Disponibles (unidades): ${totalStock}`, 16, startY + 15);
-        startY += 25; // Espacio para la siguiente categoría
+        startY += 10; // Espacio para la siguiente categoría
     });
 
     doc.save("reporte_inventario_por_categoria.pdf");
