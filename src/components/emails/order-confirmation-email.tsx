@@ -120,7 +120,9 @@ import {
                 <Row>
                     <Column align="right">
                         <Text style={summaryText}>Subtotal:</Text>
-                        <Text style={summaryText}>Descuento:</Text>
+                        {orderDiscount > 0 && (
+                            <Text style={summaryText}>Descuento:</Text>
+                        )}
                         <Text style={summaryText}>Envío:</Text>
                         {orderCommission > 0 && (
                             <Text style={summaryText}>Comisión (4%):</Text>
@@ -129,7 +131,9 @@ import {
                     </Column>
                     <Column align="right" style={{width: '120px'}}>
                         <Text style={summaryText}>Q{orderSubtotal.toFixed(2)}</Text>
-                        <Text style={{ ...summaryText, color: '#22c55e' }}>-Q{orderDiscount.toFixed(2)}</Text>
+                        {orderDiscount > 0 && (
+                            <Text style={{ ...summaryText, color: '#22c55e' }}>-Q{orderDiscount.toFixed(2)}</Text>
+                        )}
                         <Text style={summaryText}>Q{orderShipping.toFixed(2)}</Text>
                         {orderCommission > 0 && (
                              <Text style={{...summaryText, color: '#f97316'}}>Q{orderCommission.toFixed(2)}</Text>
