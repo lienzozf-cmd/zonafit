@@ -74,12 +74,10 @@ export default function CheckoutPage() {
   const codCommissionPercentage = 0.04; // 4%
 
   const subtotal = items.reduce((acc, item) => {
-    const product = getProductById(item.productId);
-    // Use the current item price from the cart, which is already the discounted one if applicable.
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const totalAfterDiscount = subtotal; // No more christmas discount
+  const totalAfterDiscount = subtotal; // No more discount
   const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
@@ -369,9 +367,6 @@ export default function CheckoutPage() {
               <h2 className="text-2xl font-bold mb-6">Resumen de tu Pedido</h2>
               <div className="space-y-4">
                   {items.map(item => {
-                    const product = getProductById(item.productId);
-                    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : null;
-
                     return (
                         <div key={item.id} className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
@@ -382,9 +377,6 @@ export default function CheckoutPage() {
                             </div>
                             </div>
                             <div className="text-right">
-                                {originalPrice && (
-                                    <p className="text-sm text-gray-500 line-through">Q{originalPrice.toFixed(2)}</p>
-                                )}
                                 <p className="font-semibold">Q{(item.price * item.quantity).toFixed(2)}</p>
                             </div>
                         </div>
@@ -457,5 +449,3 @@ export default function CheckoutPage() {
     </>
   );
 }
-
-    
