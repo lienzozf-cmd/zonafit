@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
@@ -10,7 +10,9 @@ import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
 export default function HombresPage() {
-  const products = useCartStore((state) => state.products);
+  const { products } = useCartStore((state) => ({
+    products: state.products,
+  }));
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 

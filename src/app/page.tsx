@@ -7,6 +7,8 @@ import SocialSection from '@/components/social-section';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import InfoSection from '@/components/info-section';
+import { useEffect } from 'react';
+import { useCartStore } from '@/stores/cart-store';
 
 export default function Home() {
   return (
