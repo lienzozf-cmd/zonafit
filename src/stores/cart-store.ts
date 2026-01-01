@@ -117,12 +117,12 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        get().fetchProducts();
         set({
           items: [],
           itemCount: 0,
           total: 0,
         });
+        get().fetchProducts();
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);

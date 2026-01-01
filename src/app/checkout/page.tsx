@@ -39,12 +39,10 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, total, processOrder, products, fetchProducts } = useCartStore((state) => ({
+  const { items, processOrder, products } = useCartStore((state) => ({
     items: state.items,
-    total: state.total,
     processOrder: state.processOrder,
     products: state.products,
-    fetchProducts: state.fetchProducts
   }));
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -110,7 +108,6 @@ export default function CheckoutPage() {
   async function onSubmit(data: CheckoutFormValues) {
     if (isCartEmpty) return;
     setIsLoading(true);
-    triggerConfetti();
 
     const orderDetails = {
       shippingInfo: data,
@@ -150,8 +147,8 @@ export default function CheckoutPage() {
       
       const result = await response.json();
       
-      processOrder();
-      fetchProducts(); // Refresh products to get updated stock
+      triggerConfetti();
+      processOrder(); // This will clear the cart and fetch updated products
       
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
