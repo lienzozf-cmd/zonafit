@@ -22,6 +22,19 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
+// Define las categorías y sus filtros
+const categories = [
+    { name: 'Ropa de Hombre', color: [255, 165, 0], filter: (p: Product) => p.gender === 'hombre' && p.category === 'ropa' },
+    { name: 'Ropa de Mujer', color: [255, 105, 180], filter: (p: Product) => p.gender === 'mujer' && p.category === 'ropa' },
+    { name: 'Joyería', color: [255, 215, 0], filter: (p: Product) => p.category === 'joyeria' },
+    { name: 'Proteínas', color: [138, 43, 226], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'proteina' },
+    { name: 'Creatinas', color: [0, 191, 255], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'creatina' },
+    { name: 'Pre-Entrenos', color: [255, 69, 0], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'pre-entreno' },
+    { name: 'Aminoácidos', color: [50, 205, 50], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'aminoacidos' },
+    { name: 'L-Carnitina', color: [255, 20, 147], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'l-carnitina' },
+    { name: 'Accesorios', color: [100, 149, 237], filter: (p: Product) => p.category === 'accesorio' },
+];
+
 export default function AdminPage() {
   const { products } = useCartStore((state) => ({
     products: state.products,
@@ -55,72 +68,97 @@ export default function AdminPage() {
 
   const generatePdf = () => {
     const doc = new jsPDF();
-    const tableColumn = ["ID", "Producto", "Color", "Talla/Opción", "Precio", "Stock"];
-    const availableRows: (string | number)[][] = [];
-    const unavailableRows: (string | number)[][] = [];
+    doc.text("Reporte General de Inventario - ZONA FIT GT", 14, 15);
+    let startY = 25;
 
-    products.forEach(product => {
-      const processOption = (option: ProductOption, colorName: string = 'N/A') => {
-        const row = [
-          product.id,
-          product.name,
-          colorName,
-          option.value,
-          product.price,
-          option.stock,
-        ];
-        if (option.stock > 0) {
-          availableRows.push(row);
-        } else {
-          unavailableRows.push(row);
+    categories.forEach(category => {
+        const categoryProducts = products.filter(category.filter);
+        if (categoryProducts.length === 0) return;
+
+        const tableColumn = ["ID", "Producto", "Color", "Talla/Opción", "Precio", "Stock"];
+        const availableRows: (string | number)[][] = [];
+        const unavailableRows: (string | number)[][] = [];
+        let totalStock = 0;
+        let totalVariants = 0;
+
+        categoryProducts.forEach(product => {
+            const processOption = (option: ProductOption, colorName: string = 'N/A') => {
+                totalVariants++;
+                totalStock += option.stock;
+                const row = [
+                    product.id,
+                    product.name,
+                    colorName,
+                    option.value,
+                    product.price,
+                    option.stock,
+                ];
+                if (option.stock > 0) {
+                    availableRows.push(row);
+                } else {
+                    unavailableRows.push(row);
+                }
+            };
+
+            if (product.colors && product.colors.length > 0) {
+                product.colors.forEach(color => {
+                    color.options.values.forEach(option => processOption(option, color.name));
+                });
+            } else {
+                product.options.values.forEach(option => processOption(option));
+            }
+        });
+
+        // Título de la categoría
+        doc.setFontSize(16);
+        doc.setTextColor(category.color[0], category.color[1], category.color[2]);
+        if (startY > 250) { 
+            doc.addPage();
+            startY = 15;
         }
-      };
+        doc.text(category.name, 14, startY);
+        doc.setTextColor(0, 0, 0);
+        startY += 8;
 
-      if (product.colors && product.colors.length > 0) {
-        product.colors.forEach(color => {
-          color.options.values.forEach(option => processOption(option, color.name));
-        });
-      } else {
-        product.options.values.forEach(option => processOption(option));
-      }
+        // Tabla de Disponibles
+        if (availableRows.length > 0) {
+            (doc as any).autoTable({
+                head: [tableColumn],
+                body: availableRows,
+                startY: startY,
+                headStyles: { fillColor: [22, 163, 74] }, // Verde
+            });
+            startY = (doc as any).autoTable.previous.finalY + 2;
+        }
+
+        // Tabla de Agotados
+        if (unavailableRows.length > 0) {
+            (doc as any).autoTable({
+                head: [tableColumn],
+                body: unavailableRows,
+                startY: startY,
+                headStyles: { fillColor: [220, 38, 38] }, // Rojo
+                styles: { fillColor: [254, 226, 226] } 
+            });
+            startY = (doc as any).autoTable.previous.finalY + 2;
+        }
+        
+        if (availableRows.length === 0 && unavailableRows.length === 0) {
+          doc.setFontSize(10);
+          doc.text("No hay productos en esta categoría.", 14, startY);
+          startY += 10;
+        }
+
+
+        // Resumen de la categoría
+        doc.setFontSize(10);
+        doc.text(`Resumen de ${category.name}:`, 14, startY + 5);
+        doc.text(`- Total de Productos (variantes): ${totalVariants}`, 16, startY + 10);
+        doc.text(`- Productos Disponibles (unidades): ${totalStock}`, 16, startY + 15);
+        startY += 25; // Espacio para la siguiente categoría
     });
-    
-    doc.text("Reporte de Inventario - ZONA FIT GT", 14, 15);
 
-    // Tabla de Disponibles
-    if (availableRows.length > 0) {
-        (doc as any).autoTable({
-            head: [tableColumn],
-            body: availableRows,
-            startY: 20,
-            headStyles: { fillColor: [22, 163, 74] }, // Green header
-            didDrawPage: (data: any) => {
-                // Header for available products
-                doc.text("Productos Disponibles", 14, data.cursor.y + 15);
-            },
-            margin: { top: 30 }
-        });
-    }
-
-    // Tabla de Agotados
-    if (unavailableRows.length > 0) {
-        const unavailableStartY = availableRows.length > 0 ? (doc as any).autoTable.previous.finalY + 20 : 20;
-        (doc as any).autoTable({
-            head: [tableColumn],
-            body: unavailableRows,
-            startY: unavailableStartY,
-            headStyles: { fillColor: [220, 38, 38] }, // Red header
-            didDrawPage: (data: any) => {
-                // Header for unavailable products
-                doc.text("Productos Agotados", 14, data.cursor.y + 15);
-            },
-            margin: { top: 30 },
-            styles: { fillColor: [254, 226, 226] } // Light red for all unavailable rows
-        });
-    }
-
-
-    doc.save("reporte_inventario.pdf");
+    doc.save("reporte_inventario_por_categoria.pdf");
   };
 
   if (!isAuthenticated) {
@@ -157,7 +195,7 @@ export default function AdminPage() {
         <div className="mx-auto max-w-lg bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">Reportes de Inventario</h2>
           <p className="text-gray-400 mb-4">
-            Haz clic en el botón para generar un PDF con el estado actual del inventario de todos los productos.
+            Haz clic en el botón para generar un PDF con el estado actual del inventario, organizado por categorías.
           </p>
           <Button onClick={generatePdf} className="bg-red-600 hover:bg-red-700">
             <FileDown className="mr-2 h-4 w-4" />
