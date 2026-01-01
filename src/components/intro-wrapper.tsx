@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import IntroAnimation from './intro-animation';
 import { useCartStore } from '@/stores/cart-store';
-import '@/lib/firebase'; // Import to initialize Firebase and Analytics
+import { getFirebaseApp } from '@/lib/firebase'; 
 
 export default function IntroWrapper({
   children,
@@ -16,6 +16,8 @@ export default function IntroWrapper({
 
   useEffect(() => {
     setIsClient(true);
+    // Initialize Firebase app
+    getFirebaseApp();
     // Fetch latest products on every initial load while intro is handled.
     fetchProducts();
     
