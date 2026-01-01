@@ -72,16 +72,14 @@ export default function CheckoutPage() {
   const paymentMethod = form.watch('paymentMethod');
   const shippingCost = 35;
   const codCommissionPercentage = 0.04; // 4%
-  const christmasDiscountPercentage = 0.10; // 10%
 
   const subtotal = items.reduce((acc, item) => {
     const product = getProductById(item.productId);
-    const originalPrice = product?.originalPrice ? parseFloat(product.originalPrice.replace('Q.', '')) : item.price;
-    return acc + (originalPrice * item.quantity);
+    // Use the current item price from the cart, which is already the discounted one if applicable.
+    return acc + (item.price * item.quantity);
   }, 0);
 
-  const christmasDiscount = subtotal * christmasDiscountPercentage;
-  const totalAfterDiscount = subtotal - christmasDiscount;
+  const totalAfterDiscount = subtotal; // No more christmas discount
   const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
@@ -120,7 +118,7 @@ export default function CheckoutPage() {
       shippingInfo: data,
       orderItems: items,
       orderSubtotal: subtotal,
-      orderDiscount: christmasDiscount,
+      orderDiscount: 0, // No discount
       orderShipping: shippingCost,
       orderCommission: codCommission,
       orderTotal: orderTotal,
@@ -397,10 +395,6 @@ export default function CheckoutPage() {
                   <div className="flex justify-between text-base">
                     <span>Subtotal</span>
                     <span>Q{subtotal.toFixed(2)}</span>
-                  </div>
-                   <div className="flex justify-between text-base text-green-400">
-                      <span>Descuento Navideño (10%)</span>
-                      <span>-Q{christmasDiscount.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-base">
                     <span>Envío</span>
