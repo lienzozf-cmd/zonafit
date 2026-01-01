@@ -68,7 +68,10 @@ export default function AdminPage() {
 
   const generatePdf = () => {
     const doc = new jsPDF();
-    doc.text("Reporte General de Inventario - ZONA FIT GT", 14, 15);
+    const today = new Date();
+    const dateStr = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    
+    doc.text(`REPORTE INVENTARIO - ${dateStr}`, 14, 15);
     let startY = 25;
     const categoryTotals: { name: string; stock: number }[] = [];
     let grandTotalStock = 0;
@@ -180,7 +183,7 @@ export default function AdminPage() {
         foot: [[ 'Gran Total de Inventario', grandTotalStock ]]
     });
 
-    doc.save("reporte_inventario_por_categoria.pdf");
+    doc.save(`REPORTE INVENTARIO - ${dateStr}.pdf`);
   };
 
   if (!isAuthenticated) {
