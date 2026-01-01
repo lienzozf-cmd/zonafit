@@ -70,6 +70,8 @@ export default function AdminPage() {
     const doc = new jsPDF();
     doc.text("Reporte General de Inventario - ZONA FIT GT", 14, 15);
     let startY = 25;
+    const categoryTotals: { name: string; stock: number }[] = [];
+    let grandTotalStock = 0;
 
     categories.forEach(category => {
         const categoryProducts = products.filter(category.filter);
@@ -107,7 +109,9 @@ export default function AdminPage() {
             }
         });
 
-        // Título de la categoría
+        categoryTotals.push({ name: category.name, stock: totalStock });
+        grandTotalStock += totalStock;
+
         doc.setFontSize(16);
         doc.setTextColor(category.color[0], category.color[1], category.color[2]);
         if (startY > 250) { 
@@ -118,7 +122,6 @@ export default function AdminPage() {
         doc.setTextColor(0, 0, 0);
         startY += 8;
 
-        // Tabla de Disponibles
         if (availableRows.length > 0) {
             const summaryRow = [{
                 content: `Total Disponible: ${totalStock} unidades`,
@@ -130,18 +133,17 @@ export default function AdminPage() {
                 head: [tableColumn],
                 body: [...availableRows, summaryRow],
                 startY: startY,
-                headStyles: { fillColor: [22, 163, 74] }, // Verde
+                headStyles: { fillColor: [22, 163, 74] },
             });
             startY = (doc as any).autoTable.previous.finalY + 2;
         }
 
-        // Tabla de Agotados
         if (unavailableRows.length > 0) {
             (doc as any).autoTable({
                 head: [tableColumn],
                 body: unavailableRows,
                 startY: startY,
-                headStyles: { fillColor: [220, 38, 38] }, // Rojo
+                headStyles: { fillColor: [220, 38, 38] },
                 styles: { fillColor: [254, 226, 226] } 
             });
             startY = (doc as any).autoTable.previous.finalY + 2;
@@ -153,7 +155,29 @@ export default function AdminPage() {
           startY += 10;
         }
 
-        startY += 10; // Espacio para la siguiente categoría
+        startY += 10;
+    });
+
+    if (startY > 220) {
+        doc.addPage();
+        startY = 15;
+    } else {
+        startY += 10;
+    }
+
+    doc.setFontSize(16);
+    doc.text("Resumen General de Inventario", 14, startY);
+    startY += 10;
+
+    const summaryBody = categoryTotals.map(ct => [ct.name, ct.stock]);
+    
+    (doc as any).autoTable({
+        head: [['Categoría', 'Total de Unidades Disponibles']],
+        body: summaryBody,
+        startY: startY,
+        headStyles: { fillColor: [41, 128, 185] },
+        footStyles: { fillColor: [44, 62, 80], textColor: [255, 255, 255], fontStyle: 'bold' },
+        foot: [[ 'Gran Total de Inventario', grandTotalStock ]]
     });
 
     doc.save("reporte_inventario_por_categoria.pdf");
