@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
 
 import { useCartStore } from '@/stores/cart-store';
 import type { Product, ProductColor, ProductOption } from '@/lib/data';
@@ -27,6 +29,7 @@ export default function AdminPage() {
   }));
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -34,7 +37,7 @@ export default function AdminPage() {
   });
 
   const onSubmit = (data: LoginFormValues) => {
-    if (data.username === 'admin' && data.password === 'ordinalzonafit22') {
+    if (data.username === 'admin' && data.password === 'Ordinalzonafit22') {
       setIsAuthenticated(true);
       toast({ title: '¡Bienvenido!', description: 'Has iniciado sesión correctamente.' });
     } else {
@@ -95,6 +98,10 @@ export default function AdminPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-900 text-white">
         <div className="w-full max-w-md space-y-8 rounded-lg bg-gray-800 p-8 shadow-lg">
+          <Button variant="ghost" onClick={() => router.back()} className="absolute top-4 left-4 hover:bg-gray-700">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Regresar
+          </Button>
           <h1 className="text-center text-3xl font-bold">Acceso de Administrador</h1>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <Input {...form.register('username')} placeholder="Usuario" className="bg-gray-700 border-gray-600"/>
