@@ -148,10 +148,6 @@ export default function AdminPage() {
 
   return (
     <div className="relative min-h-screen bg-gray-900 p-8 text-white">
-      <Button variant="ghost" onClick={() => router.back()} className="absolute top-4 left-4 hover:bg-gray-700">
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Regresar
-      </Button>
        <Button variant="ghost" onClick={handleLogout} className="absolute top-4 right-4 hover:bg-gray-700">
         <LogOut className="mr-2 h-4 w-4" />
         Cerrar Sesión
