@@ -12,7 +12,7 @@ import { useCartStore } from '@/stores/cart-store';
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-black">
       <Header />
       <HeroSection />
       <main>
@@ -36,6 +36,6 @@ export default function Home() {
       <SocialSection />
       <InfoSection />
       <Footer />
-    </>
+    </div>
   );
 }
