@@ -13,14 +13,16 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
 
+        // Reduced fade-out timer from 2.5s to 1.5s
         const fadeTimer = setTimeout(() => {
             setIsFadingOut(true);
-        }, 2500);
+        }, 1500); 
 
+        // Reduced total duration from 3.5s to 2.5s
         const removeTimer = setTimeout(() => {
             document.body.style.overflow = '';
             onIntroFinish();
-        }, 3500); // 1s for fade out animation
+        }, 2500); 
 
         return () => {
             clearTimeout(fadeTimer);

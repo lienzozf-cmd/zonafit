@@ -7,9 +7,6 @@ import IntroWrapper from '@/components/intro-wrapper';
 export const metadata = {
   title: 'ZONA FIT GT',
   description: 'Your one-stop shop for fitness apparel, supplements, and accessories.',
-  icons: {
-    icon: '/assets/images/logos/minilogo.png',
-  },
 };
 
 export default function RootLayout({
@@ -19,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/assets/images/logos/minilogo.png" sizes="any" />
+      </head>
       <body>
         <IntroWrapper>{children}</IntroWrapper>
         <Toaster />
