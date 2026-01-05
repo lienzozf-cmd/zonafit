@@ -1140,7 +1140,7 @@ footer {
 }
 
 .promo-banner {
-  background-color: hsl(var(--accent));
+  background-color: transparent;
   color: hsl(var(--primary-foreground));
   padding: 0.5rem 0;
   white-space: nowrap;
@@ -1150,18 +1150,15 @@ footer {
 
 .promo-banner-content {
   display: flex;
-  animation: marquee 20s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
-.promo-banner-content span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.25rem;
-    font-weight: bold;
-    padding: 0 2rem;
-    text-transform: uppercase;
+.promo-banner-content .carousel__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding-left: 1rem;
 }
+
 
 @keyframes marquee {
   from {
