@@ -5,6 +5,7 @@ import IntroAnimation from './intro-animation';
 import { useCartStore } from '@/stores/cart-store';
 import { getFirebaseApp } from '@/lib/firebase';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 export default function IntroWrapper({
   children,
@@ -14,6 +15,7 @@ export default function IntroWrapper({
   const [introFinished, setIntroFinished] = useState(true);
   const [isClient, setIsClient] = useState(false);
   const fetchProducts = useCartStore((state) => state.fetchProducts);
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsClient(true);
@@ -53,6 +55,7 @@ export default function IntroWrapper({
 
   return (
     <motion.div
+      key={pathname}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, ease: 'easeInOut' }}
