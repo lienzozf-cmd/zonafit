@@ -335,13 +335,23 @@ a:hover {
   border-radius: 16px;
   border: none;
   padding: 2px;
-  background: conic-gradient(#E50000, #E50000, #000, #E50000);
   position: relative;
-  animation: spinning 2.5s linear infinite;
   transition: transform 0.2s ease-out;
+  overflow: hidden;
 }
 .blob-button:hover {
   transform: scale(1.05);
+}
+.blob-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(#E50000, #000, #E50000);
+  animation: spinning 2.5s linear infinite;
+  transform: translate(-50%, -50%);
 }
 .blob-button::after {
   content: "";
