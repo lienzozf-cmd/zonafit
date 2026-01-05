@@ -4,9 +4,9 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import IntroWrapper from '@/components/intro-wrapper';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'ZONA FIT GT',
-  description: 'Your one-stop shop for fitness apparel, supplements, and accessories.',
+  description: 'Tu tienda integral de ropa, suplementos y accesorios de fitness.',
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <link rel="icon" href="/assets/images/logos/minilogo.png" sizes="any" />
       </head>
