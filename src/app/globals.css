@@ -320,27 +320,6 @@ a:hover {
   z-index: 1;
 }
 
-.buy-now-button {
-  background-color: var(--accent-color);
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  z-index: 2;
-}
-
-.buy-now-button:hover {
-  background-color: black;
-  color: var(--accent-color);
-  transform: scale(1.05);
-}
-
 @keyframes led-glow {
   0%, 100% {
     box-shadow: 0 0 5px #E50000, 0 0 10px #E50000, 0 0 20px #E50000, 0 0 30px #E50000;
@@ -359,6 +338,10 @@ a:hover {
   background: radial-gradient(circle 80px at 80% -10%, #E50000, #181b1b);
   position: relative;
   animation: led-glow 2.5s linear infinite;
+  transition: transform 0.2s ease-out;
+}
+.blob-button:hover {
+  transform: scale(1.05);
 }
 .blob-button::after {
   content: "";
