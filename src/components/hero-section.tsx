@@ -80,7 +80,6 @@ const HeroSection = () => {
       <div className="banner-content">
         <Link href="/marcas" passHref>
           <button className="blob-button">
-            <div className="blob1"></div>
             <div className="inner-text">Comprar Ahora</div>
           </button>
         </Link>

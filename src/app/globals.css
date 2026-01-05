@@ -322,10 +322,10 @@ a:hover {
 
 @keyframes spinning {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -363,22 +363,6 @@ a:hover {
   right: 0;
   box-shadow: 0 0 20px #e5000038;
   z-index: -1;
-}
-
-.blob1 {
-  position: absolute;
-  width: 70px;
-  height: 100%;
-  border-radius: 16px;
-  bottom: 0;
-  left: 0;
-  background: radial-gradient(
-    circle 60px at 0% 100%,
-    #e50000,
-    #ff6b6b80,
-    transparent
-  );
-  box-shadow: -10px 10px 30px #e500002d;
 }
 
 .inner-text {
