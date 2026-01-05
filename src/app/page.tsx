@@ -7,21 +7,50 @@ import SocialSection from '@/components/social-section';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import InfoSection from '@/components/info-section';
-import { useEffect } from 'react';
-import { useCartStore } from '@/stores/cart-store';
+import { motion } from 'framer-motion';
 
 export default function Home() {
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
     <div className="bg-black">
       <Header />
       <HeroSection />
       <main>
         <br />
-        <BrandsSection />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
+        >
+          <BrandsSection />
+        </motion.div>
         <br />
-        <CategoryGrid />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
+        >
+          <CategoryGrid />
+        </motion.div>
       </main>
-      <h2
+      <motion.h2
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
         style={{
           color: 'white',
           textAlign: 'center',
@@ -31,10 +60,31 @@ export default function Home() {
         }}
       >
         NUESTROS PRODUCTOS MÁS SOLICITADOS
-      </h2>
-      <FeaturedProducts />
-      <SocialSection />
-      <InfoSection />
+      </motion.h2>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <FeaturedProducts />
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <SocialSection />
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <InfoSection />
+      </motion.div>
       <Footer />
     </div>
   );
