@@ -1140,7 +1140,6 @@ footer {
 }
 
 .promo-banner {
-  background-color: transparent;
   color: hsl(var(--primary-foreground));
   padding: 0.5rem 0;
   white-space: nowrap;
@@ -1152,13 +1151,6 @@ footer {
   display: flex;
   animation: marquee 30s linear infinite;
 }
-
-.promo-banner-content .carousel__slide {
-  flex: 0 0 auto;
-  min-width: 0;
-  padding-left: 1rem;
-}
-
 
 @keyframes marquee {
   from {
