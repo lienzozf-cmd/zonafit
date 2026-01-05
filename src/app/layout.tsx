@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/assets/images/logos/minilogo.png" sizes="any" />
+        <link rel="icon" href="/assets/images/logos/favicon.png" sizes="any" />
       </head>
       <body>
         <IntroWrapper>{children}</IntroWrapper>
