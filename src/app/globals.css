@@ -320,12 +320,12 @@ a:hover {
   z-index: 1;
 }
 
-@keyframes led-glow {
-  0%, 100% {
-    box-shadow: 0 0 5px #E50000, 0 0 10px #E50000, 0 0 20px #E50000, 0 0 30px #E50000;
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    box-shadow: 0 0 10px #E50000, 0 0 20px #E50000, 0 0 30px #E50000, 0 0 40px #E50000;
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -335,9 +335,9 @@ a:hover {
   border-radius: 16px;
   border: none;
   padding: 2px;
-  background: radial-gradient(circle 80px at 80% -10%, #E50000, #181b1b);
+  background: conic-gradient(#E50000, #E50000, #000, #E50000);
   position: relative;
-  animation: led-glow 2.5s linear infinite;
+  animation: spinning 2.5s linear infinite;
   transition: transform 0.2s ease-out;
 }
 .blob-button:hover {
