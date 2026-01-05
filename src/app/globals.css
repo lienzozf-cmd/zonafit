@@ -341,34 +341,65 @@ a:hover {
   transform: scale(1.05);
 }
 
-@keyframes animated-gradient {
-  to {
-    --angle: 360deg;
-  }
-}
-
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.glowing-button-container {
+.blob-button {
+  cursor: pointer;
+  font-size: 1.4rem;
+  border-radius: 16px;
+  border: none;
+  padding: 2px;
+  background: radial-gradient(circle 80px at 80% -10%, #E50000, #181b1b);
   position: relative;
-  display: inline-block;
-  padding: 3px;
-  z-index: 1;
+}
+.blob-button::after {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 60%;
+  border-radius: 120px;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 20px #E5000038;
+  z-index: -1;
 }
 
-.glowing-button-container::before {
-  content: '';
+.blob1 {
   position: absolute;
-  inset: 0;
-  background: conic-gradient(from var(--angle), red, orange, yellow, green, blue, indigo, violet, red);
-  border-radius: 8px;
-  animation: animated-gradient 4s linear infinite;
-  z-index: -1;
-  filter: blur(5px);
+  width: 70px;
+  height: 100%;
+  border-radius: 16px;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(
+    circle 60px at 0% 100%,
+    #e50000,
+    #ff6b6b80,
+    transparent
+  );
+  box-shadow: -10px 10px 30px #e500002d;
+}
+
+.inner-text {
+  padding: 14px 25px;
+  border-radius: 14px;
+  color: #fff;
+  z-index: 3;
+  position: relative;
+  background: radial-gradient(circle 80px at 80% -50%, #777777, #0f1111);
+}
+.inner-text::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 14px;
+  background: radial-gradient(
+    circle 60px at 0% 100%,
+    #ff6b6b1a,
+    #e5000011,
+    transparent
+  );
+  position: absolute;
 }
 
 

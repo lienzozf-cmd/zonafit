@@ -79,11 +79,11 @@ const HeroSection = () => {
       </Carousel>
       <div className="banner-content">
         <Link href="/marcas" passHref>
-          <div className="glowing-button-container">
-            <button className="buy-now-button">
-              Comprar Ahora
-            </button>
-          </div>
+          <button className="blob-button">
+            <div className="blob1"></div>
+            <div className="blob2"></div>
+            <div className="inner-text">Comprar Ahora</div>
+          </button>
         </Link>
       </div>
       <div className="carousel-dots">
