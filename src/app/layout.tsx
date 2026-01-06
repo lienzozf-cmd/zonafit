@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'ZONA FIT GT',
   description: 'Tu tienda integral de ropa, suplementos y accesorios de fitness.',
   icons: {
-    icon: '/assets/images/logos/favicon.png',
+    icon: '/assets/images/favicon.ico',
   },
 };
 
