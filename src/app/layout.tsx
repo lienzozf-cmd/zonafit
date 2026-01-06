@@ -7,6 +7,9 @@ import IntroWrapper from '@/components/intro-wrapper';
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
   description: 'Tu tienda integral de ropa, suplementos y accesorios de fitness.',
+  icons: {
+    icon: '/assets/images/logos/favicon.png',
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/assets/images/logos/favicon.png" sizes="any" />
       </head>
       <body>
         <IntroWrapper>{children}</IntroWrapper>
