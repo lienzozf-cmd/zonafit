@@ -10,7 +10,10 @@ import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
 export default function BrasDeportivosPage() {
-  const products = useCartStore((state) => state.products);
+  const { products, sessionId } = useCartStore((state) => ({
+    products: state.products,
+    sessionId: state.sessionId,
+  }));
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
@@ -86,8 +89,13 @@ export default function BrasDeportivosPage() {
           />
           {displayedProducts.length > 0 ? (
             <div className="product-grid">
-              {displayedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {displayedProducts.map((product, index) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  sessionId={sessionId}
+                  index={index}
+                />
               ))}
             </div>
           ) : (

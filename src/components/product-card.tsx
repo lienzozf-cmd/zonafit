@@ -10,9 +10,11 @@ import { X } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
+  sessionId: string;
+  index: number;
 }
 
-const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
+const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
   const { products, addItem, getProductOption, items } = useCartStore((state) => ({
     products: state.products,
     addItem: state.addItem,
@@ -155,6 +157,8 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
   const optionsToShow = selectedColor?.options.values || product.options.values;
   const isAddToCartDisabled = !selectedOption || (isClient && getAvailableStock(selectedOption) <= 0);
 
+  const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
+
   return (
     <div 
         className="product-item flex flex-col"
@@ -168,7 +172,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             }
         }}
     >
-        <Link href={`/product/${product.id}`} className="product-image-link w-full">
+        <Link href={productUrl} className="product-image-link w-full">
             <div className="product-carousel">
                 <Image
                   src={currentImage}
@@ -179,7 +183,7 @@ const ProductCard = ({ product: initialProduct }: ProductCardProps) => {
             </div>
         </Link>
         <div className='flex flex-col flex-grow mt-4'>
-            <Link href={`/product/${product.id}`}>
+            <Link href={productUrl}>
                 <h3 className="product-name">{product.name}</h3>
             </Link>
             <div className="flex justify-center items-center gap-2">
