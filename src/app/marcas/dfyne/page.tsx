@@ -10,7 +10,10 @@ import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
 export default function DfynePage() {
-  const products = useCartStore((state) => state.products);
+  const { products, sessionId } = useCartStore((state) => ({
+    products: state.products,
+    sessionId: state.sessionId,
+  }));
   const [sortOption, setSortOption] = useState('');
 
   const filteredProducts = products.filter(
@@ -75,8 +78,13 @@ export default function DfynePage() {
           />
           {displayedProducts.length > 0 ? (
             <div className="product-grid">
-              {displayedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {displayedProducts.map((product, index) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  sessionId={sessionId}
+                  index={index}
+                />
               ))}
             </div>
           ) : (

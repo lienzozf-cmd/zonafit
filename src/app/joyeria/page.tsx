@@ -10,8 +10,9 @@ import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
 export default function JoyeriaPage() {
-  const { products } = useCartStore((state) => ({
+  const { products, sessionId } = useCartStore((state) => ({
     products: state.products,
+    sessionId: state.sessionId,
   }));
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
@@ -87,8 +88,13 @@ export default function JoyeriaPage() {
           />
           {displayedProducts.length > 0 ? (
             <div className="product-grid">
-              {displayedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {displayedProducts.map((product, index) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  sessionId={sessionId}
+                  index={index}
+                />
               ))}
             </div>
           ) : (

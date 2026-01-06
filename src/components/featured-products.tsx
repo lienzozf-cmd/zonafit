@@ -5,7 +5,10 @@ import type { Product } from '@/lib/data';
 import { useCartStore } from '@/stores/cart-store';
 
 const FeaturedProducts = () => {
-  const products = useCartStore((state) => state.products);
+  const { products, sessionId } = useCartStore((state) => ({
+    products: state.products,
+    sessionId: state.sessionId,
+  }));
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   const featuredProductIds = [1, 2, 2671, 2664, 2662, 2643, 6, 8];
@@ -25,8 +28,13 @@ const FeaturedProducts = () => {
 
   return (
     <section className="product-grid featured-product-grid">
-      {featuredProducts.map((product) => (
-        <ProductCard key={product.id} product={product} />
+      {featuredProducts.map((product, index) => (
+        <ProductCard
+          key={product.id}
+          product={product}
+          sessionId={sessionId}
+          index={index}
+        />
       ))}
     </section>
   );

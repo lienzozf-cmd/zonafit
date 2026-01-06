@@ -13,6 +13,7 @@ interface AppState {
   itemCount: number;
   isCartOpen: boolean;
   products: Product[];
+  sessionId: string;
   setProducts: (products: Product[]) => void;
   fetchProducts: () => Promise<void>;
   setIsCartOpen: (isOpen: boolean) => void;
@@ -39,6 +40,7 @@ export const useCartStore = create<AppState>()(
       itemCount: 0,
       isCartOpen: false,
       products: [], // Initialize with an empty array, will be fetched from server.
+      sessionId: Math.random().toString(36).substring(2, 11),
       setProducts: (products) => set({ products }),
       fetchProducts: async () => {
         try {
@@ -143,13 +145,17 @@ export const useCartStore = create<AppState>()(
         items: state.items,
         isCartOpen: state.isCartOpen,
         itemCount: state.itemCount,
-        total: state.total
+        total: state.total,
+        sessionId: state.sessionId,
       }), // Only persist cart-related items
       onRehydrateStorage: (state) => {
         return (state, error) => {
           if (error) {
             console.log('An error happened during hydration', error)
           } else {
+             if (!state?.sessionId) {
+                state!.sessionId = Math.random().toString(36).substring(2, 11);
+             }
              // We still fetch products, but now it's the ONLY source for product data
              state?.fetchProducts();
           }
