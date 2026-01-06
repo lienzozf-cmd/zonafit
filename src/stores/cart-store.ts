@@ -14,6 +14,7 @@ interface AppState {
   isCartOpen: boolean;
   products: Product[];
   sessionId: string;
+  setSessionId: (id: string) => void;
   setProducts: (products: Product[]) => void;
   fetchProducts: () => Promise<void>;
   setIsCartOpen: (isOpen: boolean) => void;
@@ -39,8 +40,9 @@ export const useCartStore = create<AppState>()(
       total: 0,
       itemCount: 0,
       isCartOpen: false,
-      products: [], // Initialize with an empty array, will be fetched from server.
-      sessionId: Math.random().toString(36).substring(2, 11),
+      products: [], 
+      sessionId: '', 
+      setSessionId: (id: string) => set({ sessionId: id }),
       setProducts: (products) => set({ products }),
       fetchProducts: async () => {
         try {
@@ -139,7 +141,7 @@ export const useCartStore = create<AppState>()(
       },
     }),
     {
-      name: 'cart-storage-v3', // Changed version to clear old storage
+      name: 'cart-storage-v3',
       storage: createJSONStorage(() => localStorage), 
       partialize: (state) => ({ 
         items: state.items,
@@ -147,17 +149,18 @@ export const useCartStore = create<AppState>()(
         itemCount: state.itemCount,
         total: state.total,
         sessionId: state.sessionId,
-      }), // Only persist cart-related items
+      }),
       onRehydrateStorage: (state) => {
-        return (state, error) => {
+        return (restoredState, error) => {
           if (error) {
             console.log('An error happened during hydration', error)
           } else {
-             if (!state?.sessionId) {
-                state!.sessionId = Math.random().toString(36).substring(2, 11);
-             }
-             // We still fetch products, but now it's the ONLY source for product data
-             state?.fetchProducts();
+            // This now runs safely on the client
+            if (!restoredState?.sessionId) {
+              const newId = Math.random().toString(36).substring(2, 11);
+              restoredState?.setSessionId(newId);
+            }
+            restoredState?.fetchProducts();
           }
         }
       }

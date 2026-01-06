@@ -15,10 +15,15 @@ export default function IntroWrapper({
   const [introFinished, setIntroFinished] = useState(true);
   const [isClient, setIsClient] = useState(false);
   const fetchProducts = useCartStore((state) => state.fetchProducts);
+  const setSessionId = useCartStore((state) => state.setSessionId);
+  const sessionId = useCartStore((state) => state.sessionId);
   const pathname = usePathname();
 
   useEffect(() => {
     setIsClient(true);
+    if (!sessionId) {
+      setSessionId(Math.random().toString(36).substring(2, 11));
+    }
     // Initialize Firebase app
     getFirebaseApp();
     // Fetch latest products on every initial load while intro is handled.
@@ -34,7 +39,7 @@ export default function IntroWrapper({
       // If sessionStorage is disabled, default to not showing the intro.
       setIntroFinished(true);
     }
-  }, [fetchProducts]);
+  }, [fetchProducts, sessionId, setSessionId]);
 
   const handleIntroFinish = () => {
     setIntroFinished(true);
