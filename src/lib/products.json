@@ -1071,7 +1071,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1696,7 +1696,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "M",
