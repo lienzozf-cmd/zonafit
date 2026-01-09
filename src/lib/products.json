@@ -3025,7 +3025,7 @@
     "id": 2664,
     "name": "Proteina Itholate Carlos Belcast",
     "price": "Q.595.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Aislado de proteína de suero de leche de la más alta calidad. Perfecta para una recuperación muscular rápida y limpia.",
     "gender": "unisex",
     "category": "suplemento",
@@ -3048,7 +3048,7 @@
       "values": [
         {
           "value": "Napolitano",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
