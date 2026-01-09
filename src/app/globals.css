@@ -1067,13 +1067,16 @@ footer {
 
   .site-branding {
     grid-column: 2 / 3;
-    justify-self: center;
+    justify-self: center; /* Center the container in the grid cell */
+    display: flex; /* Allow content inside to be aligned */
+    justify-content: center; /* Center the link/image horizontally */
+    align-items: center; /* Center the link/image vertically */
   }
 
   .site-branding #site-logo {
-    height: 60px;
-    width: auto;
-    margin: 0;
+    height: 60px; /* Adjust height for mobile */
+    width: auto; /* Maintain aspect ratio */
+    margin: 0; /* Remove margin */
   }
 
   .header-icons {
