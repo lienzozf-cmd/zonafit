@@ -14,9 +14,10 @@ export default function IntroWrapper({
 }) {
   const [introFinished, setIntroFinished] = useState(true);
   const [isClient, setIsClient] = useState(false);
-  const fetchProducts = useCartStore((state) => state.fetchProducts);
-  const setSessionId = useCartStore((state) => state.setSessionId);
-  const sessionId = useCartStore((state) => state.sessionId);
+  const { setSessionId, sessionId } = useCartStore((state) => ({
+    setSessionId: state.setSessionId,
+    sessionId: state.sessionId,
+  }));
   const pathname = usePathname();
 
   useEffect(() => {
@@ -26,8 +27,7 @@ export default function IntroWrapper({
     }
     // Initialize Firebase app
     getFirebaseApp();
-    // Fetch latest products on every initial load while intro is handled.
-    fetchProducts();
+    // Products are now loaded statically, no need to fetch.
 
     try {
       if (sessionStorage.getItem('introShown')) {
@@ -39,7 +39,7 @@ export default function IntroWrapper({
       // If sessionStorage is disabled, default to not showing the intro.
       setIntroFinished(true);
     }
-  }, [fetchProducts, sessionId, setSessionId]);
+  }, [sessionId, setSessionId]);
 
   const handleIntroFinish = () => {
     setIntroFinished(true);
