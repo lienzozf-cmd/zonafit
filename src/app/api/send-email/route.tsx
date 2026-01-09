@@ -11,6 +11,7 @@ import fs from 'fs/promises';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    console.log("Received order body:", body); // Added for debugging
     const { 
         shippingInfo, 
         orderItems,
@@ -22,8 +23,8 @@ export async function POST(request: Request) {
     } = body;
 
     // --- Data Validation ---
-    if (!shippingInfo || !orderItems || !orderTotal || orderItems.length === 0) {
-      return NextResponse.json({ message: 'Missing order data.' }, { status: 400 });
+    if (!shippingInfo || !orderItems || !orderTotal || orderItems.length === 0 || !shippingInfo.email) {
+      return NextResponse.json({ message: 'Missing order data or email.' }, { status: 400 });
     }
 
     // --- Order ID Generation ---
