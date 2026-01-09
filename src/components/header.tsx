@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { navLinks, products } from '@/lib/data';
+import { navLinks } from '@/lib/data';
 import type { Product } from '@/lib/data';
 import { Search, ShoppingCart, Menu } from 'lucide-react';
 import Cart from './cart';
@@ -15,7 +15,8 @@ import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 
 const Header = () => {
-  const { setIsCartOpen, itemCount } = useCartStore((state) => ({ 
+  const { products, setIsCartOpen, itemCount } = useCartStore((state) => ({ 
+    products: state.products,
     setIsCartOpen: state.setIsCartOpen, 
     itemCount: state.itemCount,
   }));
@@ -161,7 +162,7 @@ const Header = () => {
           <>
             <div className="site-branding">
               <Link href="/">
-                <Image src="/assets/images/logos/logo.webp" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+                <Image src="/assets/images/logos/logo.webp" alt="Zona Fit Logo" id="site-logo" width={150} height={37} data-ai-hint="logo" />
               </Link>
             </div>
             {renderNavLinks(false)}
@@ -171,7 +172,7 @@ const Header = () => {
         {isMobile && (
              <div className="site-branding">
               <Link href="/">
-                <Image src="/assets/images/logos/logo.webp" alt="Zona Fit Logo" id="site-logo" width={150} height={80} data-ai-hint="logo" />
+                <Image src="/assets/images/logos/logo.webp" alt="Zona Fit Logo" id="site-logo" width={150} height={37} data-ai-hint="logo" />
               </Link>
             </div>
         )}
