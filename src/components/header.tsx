@@ -9,7 +9,7 @@ import { Search, ShoppingCart, Menu } from 'lucide-react';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
@@ -185,6 +185,7 @@ const Header = () => {
               />
             </button>
             <DialogContent className="search-dialog-content">
+                <DialogTitle className="sr-only">Búsqueda de productos</DialogTitle>
                 <div className="search-dialog-header">
                     <Search className="search-icon" />
                     <input
