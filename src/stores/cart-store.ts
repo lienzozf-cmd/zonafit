@@ -46,12 +46,10 @@ export const useCartStore = create<AppState>()(
       setProducts: (products) => set({ products }),
       fetchProducts: async () => {
         try {
-          const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-            ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-            : 'http://localhost:9000';
-          const response = await fetch(`${baseUrl}/api/products`);
+          // Use a relative path, which works for both client-side and server-side fetching within the same origin.
+          const response = await fetch('/api/products');
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`Network response was not ok: ${response.statusText}`);
           }
           const products = await response.json();
           set({ products });
