@@ -17,13 +17,13 @@
     "feature3": "Diseño exclusivo de edición limitada",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/superheroeroja.png",
+        "src": "/assets/images/marcas/youngla/hombre/superheroeroja.webp",
         "alt": "Red compression shirt front",
         "dataAiHint": "red shirt",
         "color": "Roja"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/superheroenegra.png",
+        "src": "/assets/images/marcas/youngla/hombre/superheroenegra.webp",
         "alt": "Black compression shirt",
         "dataAiHint": "black shirt",
         "color": "Negra"
@@ -37,7 +37,7 @@
       {
         "name": "Roja",
         "hex": "#ff0000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/superheroeroja.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/superheroeroja.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -59,7 +59,7 @@
       {
         "name": "Negra",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/superheroenegra.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/superheroenegra.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -97,19 +97,19 @@
     "feature3": "Diseño ergonómico para libertad de movimiento",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/warriorgris.png",
+        "src": "/assets/images/marcas/youngla/hombre/warriorgris.webp",
         "alt": "Gray compression shirt",
         "dataAiHint": "gray shirt",
         "color": "Gris"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/warriorazul.png",
+        "src": "/assets/images/marcas/youngla/hombre/warriorazul.webp",
         "alt": "Blue compression shirt",
         "dataAiHint": "blue shirt",
         "color": "Azul"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/warriornegra.png",
+        "src": "/assets/images/marcas/youngla/hombre/warriornegra.webp",
         "alt": "Black compression shirt",
         "dataAiHint": "black shirt",
         "color": "Negra"
@@ -123,7 +123,7 @@
       {
         "name": "Gris",
         "hex": "#808080",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorgris.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorgris.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -145,7 +145,7 @@
       {
         "name": "Azul",
         "hex": "#0000ff",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorazul.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warriorazul.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -167,7 +167,7 @@
       {
         "name": "Negra",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warriornegra.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warriornegra.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -205,19 +205,19 @@
     "feature3": "Tejido flexible que se adapta a tus movimientos",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxnegra.jpg",
+        "src": "/assets/images/marcas/gymshark/hombre/onyxnegra.webp",
         "alt": "Onyx Seamless T-Shirt",
         "dataAiHint": "black shirt",
         "color": "Black/Onyx Grey"
       },
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
+        "src": "/assets/images/marcas/gymshark/hombre/onyxgris.webp",
         "alt": "Onyx Seamless T-Shirt light grey",
         "dataAiHint": "light grey shirt",
         "color": "Light Grey"
       },
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxroja.jpg",
+        "src": "/assets/images/marcas/gymshark/hombre/onyxroja.webp",
         "alt": "Onyx Seamless T-Shirt carmin red",
         "dataAiHint": "red shirt",
         "color": "Carmin Red"
@@ -231,7 +231,7 @@
       {
         "name": "Black/Onyx Grey",
         "hex": "#343434",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxnegra.jpg",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxnegra.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -253,7 +253,7 @@
       {
         "name": "Light Grey",
         "hex": "#D3D3D3",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgris.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgris.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -275,7 +275,7 @@
       {
         "name": "Carmin Red",
         "hex": "#FF0033",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxroja.jpg",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxroja.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -313,7 +313,7 @@
     "feature3": "Diseño llamativo en dos tonos",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png",
+        "src": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.webp",
         "alt": "Black and red t-shirt",
         "dataAiHint": "black red shirt",
         "option": "S"
@@ -327,7 +327,7 @@
       {
         "name": "Black/Red",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -365,7 +365,7 @@
     "feature3": "Corte 'crop' que realza la figura",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.jpg",
+        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
         "alt": "Green crop top",
         "dataAiHint": "green crop top",
         "option": "S"
@@ -379,7 +379,7 @@
       {
         "name": "Green",
         "hex": "#008000",
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelgyms.jpg",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -415,7 +415,7 @@
     "feature3": "Perfecto para un look audaz y distintivo",
     "images": [
       {
-        "src": "/assets/images/marcas/rgmnt/tridente.png",
+        "src": "/assets/images/marcas/rgmnt/tridente.webp",
         "alt": "Jewelry",
         "dataAiHint": "men jewelry",
         "option": "Gold"
@@ -448,7 +448,7 @@
     "feature3": "Fórmula micronizada para una rápida absorción.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/creatinaDP.png",
+        "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
         "alt": "Creatine container 60 servings",
         "dataAiHint": "creatine powder"
       }
@@ -480,7 +480,7 @@
     "feature3": "Creatina monohidratada 100% pura.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/creatinaDP.png",
+        "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
         "alt": "Creatine container 200 servings",
         "dataAiHint": "creatine powder"
       }
@@ -512,7 +512,7 @@
     "feature3": "Delicioso sabor a pastel de cumpleaños.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.png",
+        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
         "alt": "Protein",
         "dataAiHint": "protein supplement",
         "option": "Pastel de cumpleaños"
@@ -543,7 +543,7 @@
     "feature3": "Cierre seguro y fácil de usar",
     "images": [
       {
-        "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain gold.png",
+        "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain gold.webp",
         "alt": "Gold Rope Chain",
         "dataAiHint": "gold chain"
       }
@@ -573,7 +573,7 @@
     "feature3": "Ajuste cómodo y seguro para el día a día",
     "images": [
       {
-        "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet gold.png",
+        "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet gold.webp",
         "alt": "Gold Rope Bracelet",
         "dataAiHint": "gold bracelet"
       }
@@ -603,7 +603,7 @@
     "feature3": "Ligera y cómoda para uso diario",
     "images": [
       {
-        "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain silver.png",
+        "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain silver.webp",
         "alt": "Silver Rope Chain",
         "dataAiHint": "silver chain"
       }
@@ -633,7 +633,7 @@
     "feature3": "Ideal para combinar con otras pulseras",
     "images": [
       {
-        "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet silver.png",
+        "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet silver.webp",
         "alt": "Silver Rope Bracelet",
         "dataAiHint": "silver bracelet"
       }
@@ -665,7 +665,7 @@
     "feature3": "Logotipo clásico de Legacy",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Legacy Logo Tight Shorts NEGRO.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Legacy Logo Tight Shorts NEGRO.webp",
         "alt": "Legacy Logo Tight Shorts",
         "dataAiHint": "woman shorts",
         "option": "Negro"
@@ -698,7 +698,7 @@
     "feature3": "Almohadillas removibles para un ajuste personalizable",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/legacy bra negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/legacy bra negro.webp",
         "alt": "Legacy Bra",
         "dataAiHint": "sports bra",
         "option": "Negro"
@@ -731,7 +731,7 @@
     "feature3": "Detalles de contorno que realzan la figura",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts gris.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts gris.webp",
         "alt": "Flex Shorts",
         "dataAiHint": "woman shorts"
       }
@@ -763,7 +763,7 @@
     "feature3": "Tejido flexible y transpirable",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Crop Top Flex negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Crop Top Flex negro.webp",
         "alt": "Crop Top Flex",
         "dataAiHint": "woman top",
         "option": "Negro"
@@ -796,7 +796,7 @@
     "feature3": "Ideal para usar sobre tu bra deportivo",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Power Oversized Long Sleeve Top negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Power Oversized Long Sleeve Top negro.webp",
         "alt": "Power Oversized Long Sleeve Top",
         "dataAiHint": "woman top",
         "option": "Negro"
@@ -829,7 +829,7 @@
     "feature3": "Gráfico audaz para un estilo único",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Strength  Graphic Joggers.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Strength  Graphic Joggers.webp",
         "alt": "Strength Department Graphic Joggers",
         "dataAiHint": "woman joggers",
         "option": "Negro"
@@ -862,7 +862,7 @@
     "feature3": "Cintura elástica para un ajuste seguro",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Sports Bra morado.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Sports Bra morado.webp",
         "alt": "Adapt Fleck Sports Bra",
         "dataAiHint": "sports bra",
         "option": "Morado"
@@ -895,7 +895,7 @@
     "feature3": "Patrón 'fleck' único en su clase",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Seamless Shorts morado.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Seamless Shorts morado.webp",
         "alt": "Adapt Fleck Seamless Shorts",
         "dataAiHint": "woman shorts",
         "option": "Morado"
@@ -928,7 +928,7 @@
     "feature3": "Diseño elegante y minimalista",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Mesh Sports Bra negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Mesh Sports Bra negro.webp",
         "alt": "Mesh Sports Bra",
         "dataAiHint": "sports bra",
         "option": "Negro"
@@ -961,7 +961,7 @@
     "feature3": "Tejido suave y cómodo",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Ruched Sports Bra negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Ruched Sports Bra negro.webp",
         "alt": "Ruched Sports Bra",
         "dataAiHint": "sports bra",
         "option": "Negro"
@@ -994,7 +994,7 @@
     "feature3": "Perfecto para yoga, pilates o uso diario",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Strap Feature Sports Bra negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Strap Feature Sports Bra negro.webp",
         "alt": "Strap Feature Sports Bra",
         "dataAiHint": "sports bra",
         "option": "negro"
@@ -1027,7 +1027,7 @@
     "feature3": "Diseño versátil para gimnasio o calle",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts negro.webp",
         "alt": "Flex Shorts",
         "dataAiHint": "woman shorts",
         "option": "Negro"
@@ -1060,7 +1060,7 @@
     "feature3": "Resistente y duradero para cualquier actividad",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/Elevate Cycling Shorts negro.png",
+        "src": "/assets/images/marcas/gymshark/mujer/Elevate Cycling Shorts negro.webp",
         "alt": "Elevate Cycling Shorts",
         "dataAiHint": "woman shorts",
         "option": "Negro"
@@ -1093,7 +1093,7 @@
     "feature3": "Corte 'oversized' para un estilo urbano",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/Premium Tee  samurai bushido.png",
+        "src": "/assets/images/marcas/darcsport/Premium Tee  samurai bushido.webp",
         "alt": "Premium Tee SAMURAI bushido",
         "dataAiHint": "men shirt"
       }
@@ -1125,7 +1125,7 @@
     "feature3": "Ajuste 'oversized' para comodidad y estilo",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball gogeta.jpeg",
+        "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball gogeta.webp",
         "alt": "Premium Tee dragon ball classic",
         "dataAiHint": "men shirt"
       }
@@ -1157,7 +1157,7 @@
     "feature3": "Algodón suave y duradero",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/Through Fire And Storm Premium Oversized Tee in Wolf Gray .png",
+        "src": "/assets/images/marcas/darcsport/Through Fire And Storm Premium Oversized Tee in Wolf Gray .webp",
         "alt": "Darc Sport T-shirt",
         "dataAiHint": "men shirt"
       }
@@ -1189,7 +1189,7 @@
     "feature3": "Corte atlético para libertad de movimiento",
     "images": [
       {
-        "src": "/assets/images/marcas/vanquish/Vanquishunconquerableshortsnegro.png",
+        "src": "/assets/images/marcas/vanquish/Vanquishunconquerableshortsnegro.webp",
         "alt": "Vanquish Unconquerable Shorts",
         "dataAiHint": "men shorts",
         "option": "M"
@@ -1222,7 +1222,7 @@
     "feature3": "Estilo 'vintage' con lavado especial",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/Godsh.png",
+        "src": "/assets/images/marcas/youngla/hombre/Godsh.webp",
         "alt": "Gods & Heroes Tees",
         "dataAiHint": "graphic tee",
         "option": "M"
@@ -1263,7 +1263,7 @@
     "feature3": "Ajuste relajado para uso diario",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/2005 - Hella Pocket Sweats morado.png",
+        "src": "/assets/images/marcas/youngla/hombre/2005 - Hella Pocket Sweats morado.webp",
         "alt": "Hella Pocket Sweats",
         "dataAiHint": "men pants",
         "option": "S"
@@ -1296,7 +1296,7 @@
     "feature3": "Ajuste perfecto para fans de la serie",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/4095 - The Boys® Graphic Tees.png",
+        "src": "/assets/images/marcas/youngla/hombre/4095 - The Boys® Graphic Tees.webp",
         "alt": "The Boys Graphic Tees",
         "dataAiHint": "graphic tee",
         "option": "M"
@@ -1337,7 +1337,7 @@
     "feature3": "Perfecta para entrenamientos intensos",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/3005 - The Boys® Cut-Offs.png",
+        "src": "/assets/images/marcas/youngla/hombre/3005 - The Boys® Cut-Offs.webp",
         "alt": "The Boys® Graphic Tees",
         "dataAiHint": "graphic tee",
         "option": "S"
@@ -1378,7 +1378,7 @@
     "feature3": "Ideal para un look urbano y deportivo",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/5003 - UFC™ Cut-Off hoodies ROJO.png",
+        "src": "/assets/images/marcas/youngla/hombre/5003 - UFC™ Cut-Off hoodies ROJO.webp",
         "alt": "UFC™ Cut-Off hoodies",
         "dataAiHint": "ufc hoodie",
         "option": "M"
@@ -1412,7 +1412,7 @@
     "feature3": "Corte atlético para un rendimiento óptimo",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/4207 - UFC™ Jersey GRIS.png",
+        "src": "/assets/images/marcas/youngla/hombre/4207 - UFC™ Jersey GRIS.webp",
         "alt": "UFC™ Jersey",
         "dataAiHint": "ufc jersey",
         "option": "S"
@@ -1453,13 +1453,13 @@
     "feature3": "Estilo urbano y moderno",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png",
+        "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.webp",
         "alt": "Revenge Tees Black",
         "dataAiHint": "graphic tee black",
         "option": "S"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.png",
+        "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.webp",
         "alt": "Revenge Tees Green",
         "dataAiHint": "graphic tee green",
         "option": "S"
@@ -1473,7 +1473,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -1495,7 +1495,7 @@
       {
         "name": "Green",
         "hex": "#008000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -1533,7 +1533,7 @@
     "feature3": "Perfecto para un look casual y deportivo",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/3002 GRAND SLAM BASEBALL JERSEYS NEGRO.png",
+        "src": "/assets/images/marcas/youngla/hombre/3002 GRAND SLAM BASEBALL JERSEYS NEGRO.webp",
         "alt": "GRAND SLAM BASEBALL JERSEYS",
         "dataAiHint": "baseball jersey",
         "option": "M"
@@ -1574,7 +1574,7 @@
     "feature3": "Ideal para días de descanso o uso casual",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/5092 - Effortless Sets NEGRO.png",
+        "src": "/assets/images/marcas/youngla/hombre/5092 - Effortless Sets NEGRO.webp",
         "alt": "Effortless Sets",
         "dataAiHint": "men set",
         "option": "M"
@@ -1607,7 +1607,7 @@
     "feature3": "Costuras planas para evitar irritación",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/437 Digital Compression Tees Roja.png",
+        "src": "/assets/images/marcas/youngla/hombre/437 Digital Compression Tees Roja.webp",
         "alt": "Digital Compression Tees",
         "dataAiHint": "compression shirt",
         "option": "S"
@@ -1648,13 +1648,13 @@
     "feature3": "Mantiene los músculos calientes y listos",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.png",
+        "src": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.webp",
         "alt": "Combat Compression Blue",
         "dataAiHint": "compression wear blue",
         "option": "S"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees NEGRA.png",
+        "src": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees NEGRA.webp",
         "alt": "Combat Compression Black",
         "dataAiHint": "compression wear black",
         "option": "S"
@@ -1668,7 +1668,7 @@
       {
         "name": "Azul",
         "hex": "#0000FF",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -1690,7 +1690,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees NEGRA.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees NEGRA.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -1728,7 +1728,7 @@
     "feature3": "Ayuda a prevenir lesiones musculares",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/425 - IRON COMPRESSION TEES VERDE.png",
+        "src": "/assets/images/marcas/youngla/hombre/425 - IRON COMPRESSION TEES VERDE.webp",
         "alt": "Iron Compression",
         "dataAiHint": "compression shirt",
         "option": "S"
@@ -1767,7 +1767,7 @@
     "feature3": "Perfecto para llaves o para decorar tu maleta",
     "images": [
       {
-        "src": "/assets/images/Accesorios/933 YoungLA Keychains negro.png",
+        "src": "/assets/images/Accesorios/933 YoungLA Keychains negro.webp",
         "alt": "YoungLA Keychains",
         "dataAiHint": "keychain"
       }
@@ -1797,7 +1797,7 @@
     "feature3": "Paquete de 3 pares para mayor conveniencia",
     "images": [
       {
-        "src": "/assets/images/Accesorios/Crew Socks 3pk blancos talla s.png",
+        "src": "/assets/images/Accesorios/Crew Socks 3pk blancos talla s.webp",
         "alt": "Crew Socks 3pk",
         "dataAiHint": "fitness socks",
         "option": "S"
@@ -1832,7 +1832,7 @@
     "feature3": "Ideal para entrenamiento y uso diario",
     "images": [
       {
-        "src": "/assets/images/Accesorios/Crewsbng.png",
+        "src": "/assets/images/Accesorios/Crewsbng.webp",
         "alt": "Crew Socks 3pk",
         "dataAiHint": "fitness socks"
       }
@@ -1864,7 +1864,7 @@
     "feature3": "Bolsillos con cremallera para seguridad",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.webp",
         "alt": "Ease Woven Joggers",
         "dataAiHint": "men joggers",
         "option": "S"
@@ -1897,7 +1897,7 @@
     "feature3": "Ideal para capas o para usar sola",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Element Long Sleeve T-Shirt negra y rojo.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Element Long Sleeve T-Shirt negra y rojo.webp",
         "alt": "Element Long Sleeve T-Shirt",
         "dataAiHint": "men shirt",
         "option": "S"
@@ -1930,7 +1930,7 @@
     "feature3": "Capucha ajustable con cordón",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.webp",
         "alt": "Legacy Hoodie",
         "dataAiHint": "men hoodie",
         "option": "S"
@@ -1963,7 +1963,7 @@
     "feature3": "Ajuste regular para uso diario",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Built in the UK T-Shirt azul.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Built in the UK T-Shirt azul.webp",
         "alt": "Built in the UK T-Shirt",
         "dataAiHint": "men shirt",
         "option": "S"
@@ -1996,7 +1996,7 @@
     "feature3": "Perfecta para el gimnasio y la calle",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Sets N Reps T-Shirt verde.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Sets N Reps T-Shirt verde.webp",
         "alt": "Sets N Reps T-Shirt",
         "dataAiHint": "men shirt",
         "option": "S"
@@ -2029,7 +2029,7 @@
     "feature3": "Cintura y tobillos elásticos",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.webp",
         "alt": "Rest Day Essentials Cargo Joggers",
         "dataAiHint": "men joggers",
         "option": "M"
@@ -2062,7 +2062,7 @@
     "feature3": "Bolsillos laterales abiertos",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Crest7.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Crest7.webp",
         "alt": "CREST 7\" SHORTS",
         "dataAiHint": "men shorts",
         "option": "S"
@@ -2095,7 +2095,7 @@
     "feature3": "Cintura elástica con cordón",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.webp",
         "alt": "Lifting Club Apparel Graphic Shorts",
         "dataAiHint": "men shorts",
         "option": "XL"
@@ -2128,7 +2128,7 @@
     "feature3": "100% algodón para suavidad",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/Strength Dept Graphic T-Shirt blanca.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Strength Dept Graphic T-Shirt blanca.webp",
         "alt": "Strength Dept Graphic T-Shirt",
         "dataAiHint": "men shirt",
         "option": "M"
@@ -2161,7 +2161,7 @@
     "feature3": "Perfecta para un look retro en el gimnasio",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/British Lifting Goods Graphic T-Shirt azul.png",
+        "src": "/assets/images/marcas/gymshark/hombre/British Lifting Goods Graphic T-Shirt azul.webp",
         "alt": "British Lifting Goods Graphic T-Shirt",
         "dataAiHint": "men shirt",
         "option": "S"
@@ -2200,7 +2200,7 @@
     "feature3": "Diseño acanalado para un ajuste seguro",
     "images": [
       {
-        "src": "/assets/images/Accesorios/Sets and Reps 3pk Crew.png",
+        "src": "/assets/images/Accesorios/Sets and Reps 3pk Crew.webp",
         "alt": "Sets and Reps 3pk Crew Socks",
         "dataAiHint": "fitness socks"
       }
@@ -2230,7 +2230,7 @@
     "feature3": "Costuras reforzadas para mayor durabilidad",
     "images": [
       {
-        "src": "/assets/images/Accesorios/Silicone Lifting Straps negro.png",
+        "src": "/assets/images/Accesorios/Silicone Lifting Straps negro.webp",
         "alt": "Lifting Straps",
         "dataAiHint": "lifting straps"
       }
@@ -2260,7 +2260,7 @@
     "feature3": "Ajuste seguro y cómodo",
     "images": [
       {
-        "src": "/assets/images/Accesorios/Silicone Lifting Straps morado.png",
+        "src": "/assets/images/Accesorios/Silicone Lifting Straps morado.webp",
         "alt": "Lifting Straps",
         "dataAiHint": "lifting straps"
       }
@@ -2290,7 +2290,7 @@
     "feature3": "Libre de BPA y a prueba de fugas",
     "images": [
       {
-        "src": "/assets/images/Accesorios/14OZ SHAKER BOTTLE.png",
+        "src": "/assets/images/Accesorios/14OZ SHAKER BOTTLE.webp",
         "alt": "Shaker Bottle",
         "dataAiHint": "shaker bottle",
         "option": "Único"
@@ -2321,7 +2321,7 @@
     "feature3": "Tapa a rosca a prueba de derrames",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/TU MARIDO MOISES SHAKER CUP .png",
+        "src": "/assets/images/marcas/dragonpharma/TU MARIDO MOISES SHAKER CUP .webp",
         "alt": "Dragon Pharma Shaker",
         "dataAiHint": "shaker bottle"
       }
@@ -2353,13 +2353,13 @@
     "feature3": "Material de secado rápido",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
+        "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.webp",
         "alt": "Superman Compression Tee",
         "dataAiHint": "superman shirt",
         "color": "Roja"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/supermancharcol.png",
+        "src": "/assets/images/marcas/youngla/hombre/supermancharcol.webp",
         "alt": "Superman Compression Tee Charcoal",
         "dataAiHint": "superman shirt",
         "color": "Charcoal"
@@ -2373,7 +2373,7 @@
       {
         "name": "Roja",
         "hex": "#ff0000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -2395,7 +2395,7 @@
       {
         "name": "Charcoal",
         "hex": "#36454F",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/supermancharcol.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/supermancharcol.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -2425,7 +2425,7 @@
     "feature3": "Tejido flexible para un rango completo de movimiento",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.png",
+        "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
         "alt": "Warrior Compression Hoodie",
         "dataAiHint": "men hoodie",
         "option": "S"
@@ -2462,7 +2462,7 @@
     "feature3": "Algodón 'heavyweight' para un look premium",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball broly.jpeg",
+        "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball broly.webp",
         "alt": "Gods & Heroes Tees New Color",
         "dataAiHint": "graphic tee"
       }
@@ -2494,7 +2494,7 @@
     "feature3": "Impulso de energía para cualquier momento del día",
     "images": [
       {
-        "src": "/assets/images/marcas/monster/monster.png",
+        "src": "/assets/images/marcas/monster/monster.webp",
         "alt": "Monster Ultra Black",
         "dataAiHint": "energy drink"
       }
@@ -2526,13 +2526,13 @@
     "feature3": "Dos deliciosos sabores para elegir",
     "images": [
       {
-        "src": "/assets/images/marcas/bumenergy/bumlemon.png",
+        "src": "/assets/images/marcas/bumenergy/bumlemon.webp",
         "alt": "Bum Energy Mora y Limonada",
         "dataAiHint": "energy drink",
         "option": "Blueberry Lemon"
       },
       {
-        "src": "/assets/images/marcas/bumenergy/bumcherry.png",
+        "src": "/assets/images/marcas/bumenergy/bumcherry.webp",
         "alt": "Bum Energy Helado de Cereza",
         "dataAiHint": "energy drink",
         "option": "Cherry Frost"
@@ -2569,7 +2569,7 @@
     "feature3": "Edición especial con sabor único",
     "images": [
       {
-        "src": "/assets/images/marcas/raw/precarlosb.png",
+        "src": "/assets/images/marcas/raw/precarlosb.webp",
         "alt": "Pre-Workout Thavage Carlos Belcast",
         "dataAiHint": "pre-workout supplement"
       }
@@ -2601,7 +2601,7 @@
     "feature3": "Fórmula de alta estimulación",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/VENOM INFERNO BRAZO DE 50 LIMÓN.png",
+        "src": "/assets/images/marcas/dragonpharma/VENOM INFERNO BRAZO DE 50 LIMÓN.webp",
         "alt": "Venom Inferno - Brazo de 50 Limon",
         "dataAiHint": "pre-workout supplement"
       }
@@ -2633,7 +2633,7 @@
     "feature3": "Mejora el enfoque y la resistencia",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/Venom Mangonada.png",
+        "src": "/assets/images/marcas/dragonpharma/Venom Mangonada.webp",
         "alt": "Venom Mangonada",
         "dataAiHint": "pre-workout supplement"
       }
@@ -2665,7 +2665,7 @@
     "feature3": "Bajo en carbohidratos y grasas",
     "images": [
       {
-        "src": "/assets/images/marcas/suplementos/isodc.png",
+        "src": "/assets/images/marcas/suplementos/isodc.webp",
         "alt": "Iso 100 - Dynamatize - Chocolate",
         "dataAiHint": "protein powder"
       }
@@ -2697,7 +2697,7 @@
     "feature3": "5.5g de BCAAs por servicio",
     "images": [
       {
-        "src": "/assets/images/marcas/suplementos/isodcp.png",
+        "src": "/assets/images/marcas/suplementos/isodcp.webp",
         "alt": "Iso 100 - Dynamatize - Cocoa Pebbles",
         "dataAiHint": "protein powder"
       }
@@ -2729,7 +2729,7 @@
     "feature3": "Marca de confianza en suplementación",
     "images": [
       {
-        "src": "/assets/images/marcas/suplementos/creatinamuscletech.png",
+        "src": "/assets/images/marcas/suplementos/creatinamuscletech.webp",
         "alt": "Creatina Muscletech",
         "dataAiHint": "creatine powder"
       }
@@ -2761,7 +2761,7 @@
     "feature3": "Fórmula no adictiva con ingredientes naturales",
     "images": [
       {
-        "src": "/assets/images/marcas/raw/rawsleep.png",
+        "src": "/assets/images/marcas/raw/rawsleep.webp",
         "alt": "Raw Sleep",
         "dataAiHint": "sleep supplement"
       }
@@ -2793,7 +2793,7 @@
     "feature3": "Sabor refrescante a frambuesa y limón",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.png",
+        "src": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
         "alt": "Aminoácidos Dr. Feaar - Dragon Pharma",
         "dataAiHint": "amino acids"
       }
@@ -2825,7 +2825,7 @@
     "feature3": "Fortalece el sistema inmunológico",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/GLUTAMINE 30 SERVS.png",
+        "src": "/assets/images/marcas/dragonpharma/GLUTAMINE 30 SERVS.webp",
         "alt": "Glutamina - Dragon Pharma",
         "dataAiHint": "glutamine powder"
       }
@@ -2857,7 +2857,7 @@
     "feature3": "Apoya la salud digestiva y el sistema inmune",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/greensr.png",
+        "src": "/assets/images/marcas/dragonpharma/greensr.webp",
         "alt": "Greens and Reds - Dragon Pharma",
         "dataAiHint": "superfood powder"
       }
@@ -2889,7 +2889,7 @@
     "feature3": "Capucha amplia y bolsillo canguro",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/Metal WLVS ”Pierce”Hoodie.png",
+        "src": "/assets/images/marcas/darcsport/Metal WLVS ”Pierce”Hoodie.webp",
         "alt": "Metal WLVS Pierce Hoodie",
         "dataAiHint": "men hoodie"
       }
@@ -2921,7 +2921,7 @@
     "feature3": "Cintura alta con excelente soporte",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/gainswashed.png",
+        "src": "/assets/images/marcas/gymshark/mujer/gainswashed.webp",
         "alt": "Gains Seamless Washed Shorts",
         "dataAiHint": "woman shorts"
       }
@@ -2953,7 +2953,7 @@
     "feature3": "Diseño elegante con espalda cruzada",
     "images": [
       {
-        "src": "/assets/images/marcas/dfyne/impactbra.png",
+        "src": "/assets/images/marcas/dfyne/impactbra.webp",
         "alt": "Impact Bra Black",
         "dataAiHint": "sports bra black"
       }
@@ -2966,7 +2966,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/dfyne/impactbra.png",
+        "imageSrc": "/assets/images/marcas/dfyne/impactbra.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -2996,7 +2996,7 @@
     "feature3": "Costuras planas para mayor comodidad",
     "images": [
       {
-        "src": "/assets/images/marcas/dfyne/impactshort.png",
+        "src": "/assets/images/marcas/dfyne/impactshort.webp",
         "alt": "Impact Short Black",
         "dataAiHint": "woman shorts black"
       }
@@ -3009,7 +3009,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/dfyne/impactshort.png",
+        "imageSrc": "/assets/images/marcas/dfyne/impactshort.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3039,7 +3039,7 @@
     "feature3": "Sabor gourmet a helado napolitano",
     "images": [
       {
-        "src": "/assets/images/marcas/raw/proteinanapolitano.png",
+        "src": "/assets/images/marcas/raw/proteinanapolitano.webp",
         "alt": "Proteina Itholate sabor Napolitano",
         "dataAiHint": "protein powder"
       }
@@ -3071,13 +3071,13 @@
     "feature3": "Tejido resistente y transpirable",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/warrioxred.png",
+        "src": "/assets/images/marcas/youngla/hombre/warrioxred.webp",
         "alt": "Warrior X Negra/Roja",
         "dataAiHint": "compression shirt",
         "color": "Negra/Roja"
       },
       {
-        "src": "/assets/images/marcas/youngla/hombre/warrioxblueb.png",
+        "src": "/assets/images/marcas/youngla/hombre/warrioxblueb.webp",
         "alt": "Warrior X Negra/Azul",
         "dataAiHint": "compression shirt",
         "color": "Negra/Azul"
@@ -3091,7 +3091,7 @@
       {
         "name": "Negra/Roja",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warrioxred.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warrioxred.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3113,7 +3113,7 @@
       {
         "name": "Negra/Azul",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/warrioxblueb.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/warrioxblueb.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3151,7 +3151,7 @@
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/inosuke.png",
+        "src": "/assets/images/marcas/darcsport/inosuke.webp",
         "alt": "Inosuke Series Premium Tee in Black",
         "dataAiHint": "anime shirt"
       }
@@ -3191,7 +3191,7 @@
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/tanjiro.png",
+        "src": "/assets/images/marcas/darcsport/tanjiro.webp",
         "alt": "Tanjiro Series Premium Tee in Black",
         "dataAiHint": "anime shirt"
       }
@@ -3231,7 +3231,7 @@
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/nezuko.png",
+        "src": "/assets/images/marcas/darcsport/nezuko.webp",
         "alt": "Nezuko Series Premium Tee in Black",
         "dataAiHint": "anime shirt"
       }
@@ -3271,7 +3271,7 @@
     "feature3": "Corte premium para un ajuste perfecto",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/zenitsu.png",
+        "src": "/assets/images/marcas/darcsport/zenitsu.webp",
         "alt": "Zenitsu Series Premium Tee in Black",
         "dataAiHint": "anime shirt"
       }
@@ -3311,12 +3311,12 @@
     "feature3": "Tejido de algodón de primera calidad",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/onlyus1.jpg",
+        "src": "/assets/images/marcas/darcsport/onlyus1.webp",
         "alt": "OnlyUs Forever Premium Oversized Tee",
         "dataAiHint": "men shirt"
       },
       {
-        "src": "/assets/images/marcas/darcsport/onlyus.jpg",
+        "src": "/assets/images/marcas/darcsport/onlyus.webp",
         "alt": "OnlyUs Forever Premium Oversized Tee Back",
         "dataAiHint": "men shirt back"
       }
@@ -3346,7 +3346,7 @@
     "feature3": "Propiedades de absorción de sudor para mantenerte seco.",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxgrisml.jpg",
+        "src": "/assets/images/marcas/gymshark/hombre/onyxgrisml.webp",
         "alt": "Onyx 5.0 long sleeve gris",
         "dataAiHint": "men long sleeve"
       }
@@ -3359,7 +3359,7 @@
       {
         "name": "Gris",
         "hex": "#808080",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgrisml.jpg",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgrisml.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3387,7 +3387,7 @@
     "feature3": "Corte atlético para un ajuste perfecto.",
     "images": [
       {
-        "src": "/assets/images/marcas/darcsport/uzuidarc.png",
+        "src": "/assets/images/marcas/darcsport/uzuidarc.webp",
         "alt": "BREATH OF WOLVES LONDON UZUI",
         "dataAiHint": "men shirt"
       }
@@ -3400,7 +3400,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/darcsport/uzuidarc.png",
+        "imageSrc": "/assets/images/marcas/darcsport/uzuidarc.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3428,7 +3428,7 @@
     "feature3": "Gráfico audaz del 'Conditioning Club'.",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/clubgymshark.png",
+        "src": "/assets/images/marcas/gymshark/hombre/clubgymshark.webp",
         "alt": "Conditioning Club Oversized T-Shirt",
         "dataAiHint": "men shirt"
       }
@@ -3441,7 +3441,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/clubgymshark.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/clubgymshark.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3469,7 +3469,7 @@
     "feature3": "Bolsillos prácticos para tus pertenencias.",
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/pantsdark.png",
+        "src": "/assets/images/marcas/youngla/hombre/pantsdark.webp",
         "alt": "2079-Dark Wave Joggers",
         "dataAiHint": "men joggers"
       }
@@ -3482,7 +3482,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/pantsdark.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/pantsdark.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3510,7 +3510,7 @@
     "feature3": "Ajuste relajado para uso diario.",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/ccrew.png",
+        "src": "/assets/images/marcas/gymshark/hombre/ccrew.webp",
         "alt": "Collegiate Crew",
         "dataAiHint": "men shirt"
       }
@@ -3523,7 +3523,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/ccrew.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/ccrew.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3551,7 +3551,7 @@
     "feature3": "Cierre de velcro para un ajuste seguro.",
     "images": [
       {
-        "src": "/assets/images/Accesorios/ironbull.png",
+        "src": "/assets/images/Accesorios/ironbull.webp",
         "alt": "Rodilleras - Knee Wraps",
         "dataAiHint": "knee wraps"
       }

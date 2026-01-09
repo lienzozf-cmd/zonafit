@@ -38,7 +38,7 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
                 <div className="gun-barrel"></div>
                 <div className="gun-flash"></div>
                 <Image
-                    src="/assets/images/logos/logo.png"
+                    src="/assets/images/logos/logo.webp"
                     alt="Zona Fit Logo"
                     width={160}
                     height={160}
