@@ -1,6 +1,5 @@
-
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
@@ -15,56 +14,49 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
-  const { products, addItem, getProductOption, items } = useCartStore((state) => ({
-    products: state.products,
+  const { addItem, getProductOption } = useCartStore((state) => ({
     addItem: state.addItem,
     getProductOption: state.getProductOption,
-    items: state.items
   }));
-
-  const product = products.find((p) => p.id === initialProduct.id) || initialProduct;
-
-  const [selectedOption, setSelectedOption] = useState<ProductOption | null>(null);
-  const [currentImage, setCurrentImage] = useState(product.images[0].src);
-  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(product.colors && product.colors.length > 0 ? product.colors[0] : null);
-  const { toast } = useToast();
   
+  // The initial product from server props is sufficient.
+  const product = initialProduct;
+
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
+    product.colors && product.colors.length > 0 ? product.colors[0] : null
+  );
+
+  // Memoize the initial option calculation
+  const initialOption = useMemo(() => {
+    const options = selectedColor?.options.values || product.options?.values || [];
+    const firstAvailableOption = options.find(o => o.stock > 0);
+    if (options.length === 1 && options[0].value === 'Único') {
+      return options[0];
+    }
+    return firstAvailableOption || null;
+  }, [product, selectedColor]);
+
+  const [selectedOption, setSelectedOption] = useState<ProductOption | null>(initialOption);
+  const [currentImage, setCurrentImage] = useState(selectedColor?.imageSrc || product.images[0].src);
   const [availabilityMessage, setAvailabilityMessage] = useState('');
-  const [isClient, setIsClient] = useState(false);
+  
+  const { toast } = useToast();
 
   useEffect(() => {
-    setIsClient(true);
-    // Set initial option on mount
+    // When selectedColor changes, reset selectedOption
     const options = selectedColor?.options.values || product.options?.values || [];
-    const firstAvailableOption = options.find(o => getAvailableStock(o) > 0);
-
+    const firstAvailableOption = options.find(o => o.stock > 0);
     if (options.length === 1 && options[0].value === 'Único') {
         setSelectedOption(options[0]);
-    } else if (firstAvailableOption) {
-        setSelectedOption(firstAvailableOption);
-    } else if (options.length > 0) {
-        setSelectedOption(null); // Explicitly set to null if no stock
+    } else {
+        setSelectedOption(firstAvailableOption || null);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product.id, selectedColor]);
-  
-  const getAvailableStock = (option: ProductOption | null) => {
-    if (!product || !option) return 0;
-    
-    const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
-    return currentOption?.stock ?? 0;
-  };
-  
-  useEffect(() => {
-    updateAvailabilityMessage();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption, selectedColor, items, product]);
+  }, [selectedColor, product.options.values]);
 
-  
-  const updateAvailabilityMessage = () => {
+  useEffect(() => {
+    const stock = selectedOption ? selectedOption.stock : 0;
     if (selectedOption) {
-      const availableStock = getAvailableStock(selectedOption);
-      setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
+      setAvailabilityMessage(stock > 0 ? `Disponible: ${stock} unidades` : 'Agotado');
     } else {
       const totalStock = (selectedColor?.options.values || product.options?.values || []).reduce((sum, o) => sum + o.stock, 0);
       if (totalStock > 0) {
@@ -74,67 +66,50 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         setAvailabilityMessage('Agotado');
       }
     }
-  };
+  }, [selectedOption, selectedColor, product]);
+
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
-    e.stopPropagation(); // Prevent link navigation
+    e.stopPropagation();
     e.preventDefault();
-    const newOption = selectedOption?.value === option.value ? null : option;
-    setSelectedOption(newOption);
-    
-    const imageForOption = product.images.find(img => img.option === newOption?.value && (selectedColor ? img.color === selectedColor.name : true));
-    if (imageForOption) {
-        setCurrentImage(imageForOption.src);
-    }
+    setSelectedOption(option);
   };
 
   const handleColorHover = (color: ProductColor) => {
-    const isColorSoldOut = color.options.values.every(v => v.stock === 0);
-    if (isColorSoldOut) return;
-  
-    const imageForColor = product.images.find(img => img.color === color.name);
-    setCurrentImage(imageForColor ? imageForColor.src : color.imageSrc);
-    setSelectedColor(color);
+    if (color.name !== selectedColor?.name) {
+      const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+      if (isColorSoldOut) return;
+      
+      setCurrentImage(color.imageSrc);
+      setSelectedColor(color);
+    }
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent link navigation
+    e.stopPropagation();
     e.preventDefault();
     
     if (product.colors && product.colors.length > 0 && !selectedColor) {
-        toast({
-            title: 'Error',
-            description: `Por favor, selecciona un color.`,
-            variant: 'destructive',
-        });
+        toast({ title: 'Error', description: `Por favor, selecciona un color.`, variant: 'destructive' });
         return;
     }
     
     if (!selectedOption) {
-      const optionType = (selectedColor ? selectedColor.options.type : product.options.type) || 'opción';
-      toast({
-        title: 'Error',
-        description: `Por favor, selecciona una ${optionType}.`,
-        variant: 'destructive',
-      });
+      const optionType = (selectedColor?.options.type || product.options.type) || 'opción';
+      toast({ title: 'Error', description: `Por favor, selecciona una ${optionType}.`, variant: 'destructive' });
       return;
     }
     
-    const availableStock = getAvailableStock(selectedOption);
+    const availableStock = getProductOption(product.id, selectedOption.value, selectedColor?.name)?.stock ?? 0;
+    
     if (availableStock <= 0) {
-      toast({
-        title: 'Error',
-        description: `No hay stock disponible para esta selección.`,
-        variant: 'destructive',
-      });
+      toast({ title: 'Error', description: `No hay stock disponible para esta selección.`, variant: 'destructive' });
       return;
     }
     
-    const priceString = product.price || '0';
-    const priceAsNumber = parseFloat(priceString.replace('Q.', ''));
+    const priceAsNumber = parseFloat((product.price || '0').replace('Q.', ''));
     const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption.value}` : `${product.id}-default-${selectedOption.value}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
-
 
     addItem({
       id: cartItemId,
@@ -146,16 +121,17 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
       color: selectedColor?.name,
       quantity: 1
     });
-    
   };
   
-  const isAvailable = product.options?.values.some(v => v.stock > 0) || 
-  (product.colors && product.colors.some(c => c.options.values.some(v => v.stock > 0)));
-
+  const isProductAvailable = useMemo(() => 
+    product.options?.values.some(v => v.stock > 0) || 
+    (product.colors && product.colors.some(c => c.options.values.some(v => v.stock > 0))),
+    [product]
+  );
 
   const showOptions = !((selectedColor?.options.values.length === 1 && selectedColor?.options.values[0].value === 'Único') || (product.options.values.length === 1 && product.options.values[0].value === 'Único'));
   const optionsToShow = selectedColor?.options.values || product.options.values;
-  const isAddToCartDisabled = !selectedOption || (isClient && getAvailableStock(selectedOption) <= 0);
+  const isAddToCartDisabled = !selectedOption || (selectedOption?.stock ?? 0) <= 0;
 
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
 
@@ -163,14 +139,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     <div 
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
-        onMouseLeave={() => {
-            if (product.colors && product.colors.length > 0 && selectedColor) {
-                const imageForColor = product.images.find(img => img.color === selectedColor.name);
-                setCurrentImage(imageForColor ? imageForColor.src : selectedColor.imageSrc);
-            } else {
-                setCurrentImage(product.images[0].src);
-            }
-        }}
+        onMouseLeave={() => setCurrentImage(selectedColor?.imageSrc || product.images[0].src)}
     >
         <Link href={productUrl} className="product-image-link w-full">
             <div className="product-carousel">
@@ -178,6 +147,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                   src={currentImage}
                   alt={product.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-contain"
                 />
             </div>
@@ -190,7 +160,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                 <p className="product-price">{product.price}</p>
             </div>
             <div className="flex justify-center my-2">
-                 <div className={`product-availability ${isAvailable ? 'available' : 'unavailable'}`}>{isAvailable ? 'Disponible' : 'Agotado'}</div>
+                 <div className={`product-availability ${isProductAvailable ? 'available' : 'unavailable'}`}>{isProductAvailable ? 'Disponible' : 'Agotado'}</div>
             </div>
 
             {product.colors && product.colors.length > 1 && (
@@ -203,6 +173,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                                     className="color-swatch"
                                     style={{ 
                                         backgroundColor: color.hex,
+                                        border: selectedColor?.name === color.name ? '2px solid var(--accent-color)' : '2px solid white',
                                         cursor: isColorSoldOut ? 'not-allowed' : 'pointer',
                                     }}
                                     onMouseEnter={() => handleColorHover(color)}
@@ -215,11 +186,10 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             )}
 
             <div className="product-info mt-auto">
-                {showOptions && isClient && (
+                {showOptions && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
-                      const stock = getAvailableStock(option);
-                      const isOptionDisabled = stock <= 0;
+                      const isOptionDisabled = option.stock <= 0;
                       const isSelected = selectedOption?.value === option.value;
                       return (
                         <button
@@ -236,7 +206,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                     </div>
                 )}
                 <p className="availability-message">
-                    {isClient ? availabilityMessage : ''}
+                    {availabilityMessage}
                 </p>
                 <button 
                     className="add-to-cart-button" 

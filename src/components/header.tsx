@@ -1,24 +1,23 @@
 
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { navLinks } from '@/lib/data';
+import { navLinks, products } from '@/lib/data';
 import type { Product } from '@/lib/data';
-import { Search, ShoppingCart, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, Menu } from 'lucide-react';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 
 const Header = () => {
-  const { setIsCartOpen, itemCount, products } = useCartStore((state) => ({ 
+  const { setIsCartOpen, itemCount } = useCartStore((state) => ({ 
     setIsCartOpen: state.setIsCartOpen, 
     itemCount: state.itemCount,
-    products: state.products,
   }));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -51,6 +50,11 @@ const Header = () => {
   };
 
   const renderNavLinks = (isMobile = false) => {
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        setIsMobileMenuOpen(false);
+        router.push(href);
+    }
     if (isMobile) {
       return (
         <Accordion type="multiple" className="w-full">
@@ -58,7 +62,7 @@ const Header = () => {
             link.sublinks ? (
               <AccordionItem value={link.title} key={link.title} className="border-gray-700">
                 <AccordionTrigger className="text-white hover:no-underline">
-                  {link.title}
+                  <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)}>{link.title}</a>
                 </AccordionTrigger>
                 <AccordionContent>
                   <ul className="pl-4">
@@ -68,13 +72,13 @@ const Header = () => {
                            <Accordion type="multiple" className="w-full">
                              <AccordionItem value={sublink.title} className="border-gray-700">
                                <AccordionTrigger className="text-white hover:no-underline">
-                                 {sublink.title}
+                                <a href={sublink.href} onClick={(e) => handleLinkClick(e, sublink.href)}>{sublink.title}</a>
                                </AccordionTrigger>
                                <AccordionContent>
                                 <ul className="pl-4">
                                   {sublink.sublinks.map((item) => (
                                     <li key={item.title} className="py-2">
-                                      <a href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="text-gray-300 hover:text-white">{item.title}</a>
+                                      <a href={item.href} onClick={(e) => handleLinkClick(e, item.href)} className="text-gray-300 hover:text-white">{item.title}</a>
                                     </li>
                                   ))}
                                 </ul>
@@ -82,7 +86,7 @@ const Header = () => {
                              </AccordionItem>
                            </Accordion>
                         ) : (
-                          <a href={sublink.href} onClick={() => setIsMobileMenuOpen(false)} className="text-gray-300 hover:text-white">{sublink.title}</a>
+                          <a href={sublink.href} onClick={(e) => handleLinkClick(e, sublink.href)} className="text-gray-300 hover:text-white">{sublink.title}</a>
                         )}
                       </li>
                     ))}
@@ -90,7 +94,7 @@ const Header = () => {
                 </AccordionContent>
               </AccordionItem>
             ) : (
-              <a key={link.title} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="block py-4 text-white border-b border-gray-700">{link.title}</a>
+              <a key={link.title} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="block py-4 text-white border-b border-gray-700">{link.title}</a>
             )
           )}
         </Accordion>
@@ -102,21 +106,21 @@ const Header = () => {
         <ul>
           {navLinks.map((link) => (
             <li key={link.title}>
-              <a href={link.href}>
+              <Link href={link.href}>
                 {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
-              </a>
+              </Link>
               {link.sublinks && (
                 <ul className="dropdown-menu">
                   {link.sublinks.map((sublink) => (
                     <li key={sublink.title}>
-                      <a href={sublink.href}>
+                      <Link href={sublink.href}>
                         {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
-                      </a>
+                      </Link>
                       {sublink.sublinks && (
                         <ul className="sub-submenu">
                           {sublink.sublinks.map((item) => (
                             <li key={item.title}>
-                              <a href={item.href}>{item.title}</a>
+                              <Link href={item.href}>{item.title}</Link>
                             </li>
                           ))}
                         </ul>
@@ -174,17 +178,13 @@ const Header = () => {
 
         <div className="header-icons">
           <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-            <DialogTrigger asChild>
+            <button onClick={() => setIsSearchOpen(true)} aria-label="Open search">
               <Search
                 className="search-icon"
                 color="hsl(var(--accent))"
               />
-            </DialogTrigger>
+            </button>
             <DialogContent className="search-dialog-content">
-                <DialogTitle className='sr-only'>Buscador de Productos</DialogTitle>
-                <DialogDescription className='sr-only'>
-                    Busca productos por nombre o marca en el catálogo de la tienda.
-                </DialogDescription>
                 <div className="search-dialog-header">
                     <Search className="search-icon" />
                     <input
