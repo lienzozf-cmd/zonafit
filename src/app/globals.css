@@ -814,6 +814,20 @@ footer {
   transform: scale(1.1);
 }
 
+.lienzo-blanco-link {
+  animation: lienzo-color-cycle 6s linear infinite;
+  font-weight: bold;
+}
+
+@keyframes lienzo-color-cycle {
+  0%   { color: #E50000; } /* Accent Color */
+  25%  { color: #FFD700; } /* Gold */
+  50%  { color: #FFFFFF; } /* White */
+  75%  { color: #C0C0C0; } /* Silver */
+  100% { color: #E50000; } /* Accent Color */
+}
+
+
 /* Estilos para la pantalla de introducción estilo James Bond 007 */
 .intro-screen {
     position: fixed;
