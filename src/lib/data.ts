@@ -1,4 +1,4 @@
-import productsData from './products.json';
+
 
 export const navLinks = [
   {
@@ -146,5 +146,3 @@ export type Product = {
   benefits?: string;
   servings_info?: string;
 };
-
-export const products: Product[] = productsData as unknown as Product[];
