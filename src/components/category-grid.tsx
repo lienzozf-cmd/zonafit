@@ -12,7 +12,7 @@ const CategoryGrid = () => {
     {
       name: 'Mujer',
       count: 'Ver',
-      image: '/assets/images/marcas/gymshark/mujer/anabelrojo2.jpg',
+      image: '/assets/images/marcas/gymshark/mujer/anabelrojo2.webp',
       dataAiHint: 'woman fitness',
       className: 'mujer',
       href: '/mujeres',
@@ -20,7 +20,7 @@ const CategoryGrid = () => {
     {
       name: 'Hombre',
       count: 'Ver',
-      image: '/assets/images/marcas/youngla/hombre/jerdaniv.jpg',
+      image: '/assets/images/marcas/youngla/hombre/jerdaniv.webp',
       dataAiHint: 'man fitness',
       className: 'hombre',
       href: '/hombres',
@@ -28,7 +28,7 @@ const CategoryGrid = () => {
     {
       name: 'Accesorios',
       count: 'Ver',
-      image: '/assets/images/marcas/youngla/hombre/maletagym.png',
+      image: '/assets/images/marcas/youngla/hombre/maletagym.webp',
       dataAiHint: 'gym accessories',
       className: 'accesorios',
       href: '/accesorios',
@@ -36,7 +36,7 @@ const CategoryGrid = () => {
     {
       name: 'Suplementos',
       count: 'Ver',
-      image: '/assets/images/marcas/raw/prewcb.jpg',
+      image: '/assets/images/marcas/raw/prewcb.webp',
       dataAiHint: 'supplements',
       className: 'suplementos',
       href: '/suplementos',
@@ -44,7 +44,7 @@ const CategoryGrid = () => {
     {
       name: 'Joyería',
       count: 'Ver',
-      image: '/assets/images/marcas/rgmnt/tridente.png',
+      image: '/assets/images/marcas/rgmnt/tridente.webp',
       dataAiHint: 'jewelry',
       className: 'joyeria',
       href: '/joyeria',

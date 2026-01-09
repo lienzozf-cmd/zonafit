@@ -4,16 +4,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const brands = [
-  { src: '/assets/images/logos/vanquish.jpeg?v=2', alt: 'Vanquish', href: '/marcas/vanquish', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/darc.png?v=3', alt: 'Darc Sport', href: '/marcas/darc-sport', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/dragonp.png?v=2', alt: 'Dragon Pharma', href: '/marcas/dragon-pharma', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/gymshark.png?v=9', alt: 'Gymshark', href: '/marcas/gymshark', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/youngla.png?v=3', alt: 'YoungLA', href: '/marcas/youngla', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/raw.png?v=2', alt: 'Raw', href: '/marcas/raw', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/bumenergy.png?v=7', alt: 'Bum Energy', href: '/marcas/bum-energy', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/rgmnt.png?v=2', alt: 'RGMNT', href: '/marcas/rgmnt', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/civilr.png?v=7', alt: 'Civil Regime', href: '/marcas/civil-regime', dataAiHint: 'logo fitness' },
-  { src: '/assets/images/logos/dfyne.png', alt: 'Dfyne', href: '/marcas/dfyne', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/vanquish.webp', alt: 'Vanquish', href: '/marcas/vanquish', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/darc.webp', alt: 'Darc Sport', href: '/marcas/darc-sport', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/dragonp.webp', alt: 'Dragon Pharma', href: '/marcas/dragon-pharma', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/gymshark.webp', alt: 'Gymshark', href: '/marcas/gymshark', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/youngla.webp', alt: 'YoungLA', href: '/marcas/youngla', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/raw.webp', alt: 'Raw', href: '/marcas/raw', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/bumenergy.webp', alt: 'Bum Energy', href: '/marcas/bum-energy', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/rgmnt.webp', alt: 'RGMNT', href: '/marcas/rgmnt', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/civilr.webp', alt: 'Civil Regime', href: '/marcas/civil-regime', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/logos/dfyne.webp', alt: 'Dfyne', href: '/marcas/dfyne', dataAiHint: 'logo fitness' },
 ];
 
 const BrandsSection = () => {
@@ -42,4 +42,3 @@ const BrandsSection = () => {
 };
 
 export default BrandsSection;
-
