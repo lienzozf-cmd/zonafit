@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import type { Product } from '@/lib/data';
 
-const productsFilePath = path.join(process.cwd(), 'src', 'lib', 'products.json');
+const productsFilePath = path.join(process.cwd(), 'src/lib', 'products.json');
 
 async function getProducts(): Promise<Product[]> {
   try {
