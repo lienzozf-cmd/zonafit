@@ -9,7 +9,18 @@ const Footer = () => {
         <div className="footer-section about">
           <h3>Acerca de Nosotros</h3>
           <p>Copyright © Zona Fit Gt</p>
-          <p>Esta página fue diseñada por © "Lienzo Blanco".</p>
+          <p>
+            Esta página fue diseñada por ©{" "}
+            <a
+              href="https://studio--studio-3231199046-9aa7e.us-central1.hosted.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lienzo-blanco-link"
+            >
+              "Lienzo Blanco"
+            </a>
+            .
+          </p>
         </div>
         <div className="footer-section contact">
           <h3>Horarios</h3>
