@@ -46,7 +46,10 @@ export const useCartStore = create<AppState>()(
       setProducts: (products) => set({ products }),
       fetchProducts: async () => {
         try {
-          const response = await fetch('/api/products');
+          const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+            ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+            : 'http://localhost:9000';
+          const response = await fetch(`${baseUrl}/api/products`);
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
