@@ -6,7 +6,7 @@ import IntroWrapper from '@/components/intro-wrapper';
 
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
-  description: 'Tu tienda integral de ropa, suplementos y accesorios de fitness.',
+  description: 'Tu tienda de ropa deportiva, suplementos y accesorios para gym en Guatemala. Mejora tu rendimiento con los mejores productos de fitness.',
   icons: {
     icon: '/assets/images/favicon.ico',
   },
