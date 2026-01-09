@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import IntroAnimation from './intro-animation';
 import { useCartStore } from '@/stores/cart-store';
 import { getFirebaseApp } from '@/lib/firebase';
-import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 export default function IntroWrapper({
@@ -61,13 +60,8 @@ export default function IntroWrapper({
   }
 
   return (
-    <motion.div
-      key={pathname}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5, ease: 'easeInOut' }}
-    >
+    <div key={pathname} className="page-fade-in">
       {children}
-    </motion.div>
+    </div>
   );
 }
