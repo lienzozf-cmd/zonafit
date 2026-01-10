@@ -35,9 +35,10 @@ export async function POST(request: Request) {
     }
     
     // --- Prepare Email Details ---
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://zona-fit-gt1.web.app';
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
+        // Ensure we have a clean path, removing any leading slash
         const imageUrl = item.image.startsWith('/') ? item.image.substring(1) : item.image;
         return {
             ...item,
