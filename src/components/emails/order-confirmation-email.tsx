@@ -69,8 +69,8 @@ export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailP
         <Container style={container}>
           {/* Header con Logo o Título */}
           <Section style={headerSection}>
-             <Heading style={heading}>Confirmación de Pedido</Heading>
-             <Text style={orderIdText}>#{orderId}</Text>
+             <Heading style={heading}>ZONA FIT GT</Heading>
+             <Text style={orderIdText}>Orden #{orderId}</Text>
           </Section>
           
           <Text style={paragraph}>Hola {shippingInfo.firstName}, gracias por tu compra.</Text>
@@ -213,7 +213,7 @@ const container = {
 };
 
 const headerSection = {
-    backgroundColor: '#000000', // Cabecera negra para contraste
+    backgroundColor: '#E50000', // Cabecera roja
     padding: '30px 20px',
     textAlign: 'center' as const,
 };
@@ -223,10 +223,12 @@ const heading = {
   fontSize: '24px',
   fontWeight: 'bold' as const,
   margin: '0',
+  textTransform: 'uppercase' as const,
+  letterSpacing: '2px',
 };
 
 const orderIdText = {
-    color: '#cccccc',
+    color: '#ffffff',
     fontSize: '14px',
     marginTop: '5px',
     marginBottom: '0',
@@ -339,5 +341,3 @@ const reminderText = {
   color: '#E50000',
   textAlign: 'center' as const,
 };
-
-    
