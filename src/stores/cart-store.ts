@@ -46,7 +46,6 @@ export const useCartStore = create<AppState>()(
       setProducts: (products) => set({ products }),
       fetchProducts: async () => {
         try {
-          // Use a relative path, which works for both client-side and server-side fetching within the same origin.
           const response = await fetch('/api/products');
           if (!response.ok) {
             throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -123,12 +122,13 @@ export const useCartStore = create<AppState>()(
         set({ items: [], itemCount: 0, total: 0 })
       },
       processOrder: () => {
-        get().fetchProducts();
         set({
           items: [],
           itemCount: 0,
           total: 0,
         });
+        // Fetch products again to get the updated stock
+        get().fetchProducts();
       },
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);

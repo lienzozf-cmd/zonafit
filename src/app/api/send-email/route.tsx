@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server';
 import { render } from '@react-email/components';
 import nodemailer from 'nodemailer';
@@ -25,17 +26,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: 'Missing order data or email.' }, { status: 400 });
     }
 
-    // --- Order ID Generation (FIX) ---
+    // --- Order ID Generation ---
     const orderId = await getNextOrderId();
 
-    // --- Inventory Update (FIX) ---
-    // COMENTADO TEMPORALMENTE: Esto causa el error 500 si usa archivos JSON locales.
-    // Para activarlo, necesitas migrar updateStock a una base de datos (Firebase/Postgres).
-    /*
+    // --- Inventory Update ---
     for (const item of orderItems) {
       await updateStock(item.productId, item.option, item.quantity, item.color);
     }
-    */
     
     // --- Prepare Email Details ---
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
@@ -59,7 +56,7 @@ export async function POST(request: Request) {
       orderShipping,
       orderCommission,
       orderTotal,
-      orderId, // Usamos el nuevo ID generado
+      orderId,
     };
 
     const emailHtml = await render(<OrderConfirmationEmail orderDetails={emailData} />);
@@ -99,5 +96,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-    
