@@ -35,13 +35,13 @@ export async function POST(request: Request) {
     }
     
     // --- Prepare Email Details ---
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL || `http://${request.headers.get('host')}`;
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
-        const imageUrl = item.image.startsWith('/') ? item.image : `/${item.image}`;
+        const imageUrl = item.image.startsWith('/') ? item.image.substring(1) : item.image;
         return {
             ...item,
-            image: `${baseURL}${imageUrl}`,
+            image: `${baseURL}/${imageUrl}`,
             subtotal: (item.price * item.quantity).toFixed(2),
         };
     });
