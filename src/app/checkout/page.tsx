@@ -130,7 +130,7 @@ export default function CheckoutPage() {
         let errorMsg = 'Algo salió mal al procesar el pedido.';
         try {
           const result = await response.json();
-          errorMsg = result.message || `Unexpected token '<', "${result.error}"... is not valid JSON`;
+          errorMsg = result.message || `Error inesperado del servidor.`;
            if (result.errors) {
             Object.keys(result.errors).forEach((key) => {
               const field = key as keyof CheckoutFormValues;
@@ -446,3 +446,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+    
