@@ -73,8 +73,7 @@ export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailP
              <Text style={orderIdText}>Orden #{orderId}</Text>
           </Section>
           
-          <Text style={paragraph}>Hola {shippingInfo.firstName}, gracias por tu compra.</Text>
-          <Text style={paragraph}>Hemos recibido tu pedido correctamente. A continuación los detalles:</Text>
+          <Text style={paragraph}>Tienes un nuevo pedido. A continuación los detalles:</Text>
           
           <Hr style={hr} />
 
@@ -173,12 +172,6 @@ export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailP
               </Row>
           </Section>
 
-          {/* Recordatorio / Footer */}
-          <Section style={reminderSection}>
-            <Text style={reminderText}>
-              <span style={bold}>Importante:</span> Un asesor te contactará pronto para confirmar el envío.
-            </Text>
-          </Section>
 
           <Section style={{ textAlign: 'center', marginTop: '20px' }}>
             <Text style={{ fontSize: '12px', color: '#999' }}>
