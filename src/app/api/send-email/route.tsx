@@ -35,9 +35,7 @@ export async function POST(request: Request) {
     }
     
     // --- Prepare Email Details ---
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const host = process.env.NEXT_PUBLIC_BASE_URL || request.headers.get('x-forwarded-host') || request.headers.get('host');
-    const baseURL = `${protocol}://${host}`;
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL || `http://${request.headers.get('host')}`;
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
         const imageUrl = item.image.startsWith('/') ? item.image : `/${item.image}`;
