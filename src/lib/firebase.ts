@@ -7,7 +7,7 @@ import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAS-UxI74ectIsaBNppYtqZ56NPD0vVumw",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "zona-fit-gt1-81360479-f044e.firebaseapp.com",
   projectId: "zona-fit-gt1-81360479-f044e",
   storageBucket: "zona-fit-gt1-81360479-f044e.appspot.com",
