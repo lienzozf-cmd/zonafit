@@ -2,10 +2,8 @@ import { NextResponse } from 'next/server';
 import { render } from '@react-email/components';
 import nodemailer from 'nodemailer';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
-// import { getNextOrderId, updateStock } from '@/lib/inventory-manager'; // COMENTADO: Causa error en producción
+import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import type { CartItem } from '@/lib/types';
-// import path from 'path'; // COMENTADO: No necesario
-// import fs from 'fs/promises'; // COMENTADO: Causa error en producción
 
 export async function POST(request: Request) {
   try {
@@ -28,8 +26,7 @@ export async function POST(request: Request) {
     }
 
     // --- Order ID Generation (FIX) ---
-    // Usamos timestamp + random para evitar leer archivos en el servidor
-    const orderId = `ORD-${Date.now().toString().slice(-6)}-${Math.floor(Math.random() * 1000)}`;
+    const orderId = await getNextOrderId();
 
     // --- Inventory Update (FIX) ---
     // COMENTADO TEMPORALMENTE: Esto causa el error 500 si usa archivos JSON locales.
@@ -42,7 +39,7 @@ export async function POST(request: Request) {
     
     // --- Prepare Email Details ---
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const host = request.headers.get('x-forwarded-host') || request.headers.get('host');
+    const host = process.env.NEXT_PUBLIC_BASE_URL || request.headers.get('x-forwarded-host') || request.headers.get('host');
     const baseURL = `${protocol}://${host}`;
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
