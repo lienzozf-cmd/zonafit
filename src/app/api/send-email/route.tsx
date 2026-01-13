@@ -1,4 +1,3 @@
-
 import { NextResponse } from 'next/server';
 import { render } from '@react-email/components';
 import nodemailer from 'nodemailer';
@@ -9,8 +8,7 @@ import type { CartItem } from '@/lib/types';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log("Received order body:", JSON.stringify(body, null, 2));
-
+    
     const { 
         shippingInfo, 
         orderItems,
@@ -34,18 +32,34 @@ export async function POST(request: Request) {
       await updateStock(item.productId, item.option, item.quantity, item.color);
     }
     
-    // --- Prepare Email Details ---
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://zona-fit-gt1.web.app';
+    // --- PREPARAR URLS DE IMAGENES (CORRECCIÓN AQUÍ) ---
+    
+    // 1. Define tu dominio real de producción aquí como fallback.
+    // NO uses localhost aquí. Usa tu dominio de Firebase/Vercel.
+    const productionDomain = 'https://zona-fit-gt1.web.app'; 
+    
+    // Intenta leer la variable de entorno, si no existe, usa el dominio fijo.
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL || productionDomain;
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
-        // Ensure we have a clean path, removing any leading slash
-        const imageUrl = item.image.startsWith('/') ? item.image.substring(1) : item.image;
+        // Quitamos la barra inicial si existe para evitar dobles barras (ej: //img.png)
+        const cleanPath = item.image.startsWith('/') ? item.image.substring(1) : item.image;
+        
+        // Codificamos la ruta por si tiene espacios o caracteres especiales
+        // Ej: "foto producto.png" se convierte en "foto%20producto.png"
+        const encodedPath = cleanPath.split('/').map(segment => encodeURIComponent(segment)).join('/');
+
+        const absoluteUrl = `${baseURL}/${encodedPath}`;
+
         return {
             ...item,
-            image: `${baseURL}/${imageUrl}`,
+            image: absoluteUrl,
             subtotal: (item.price * item.quantity).toFixed(2),
         };
     });
+
+    // --- DEBUG: MIRA ESTO EN TU TERMINAL ---
+    console.log("URL de imagen generada (ejemplo):", itemsWithAbsoluteImageUrls[0]?.image);
 
     const emailData = {
       shippingInfo,
@@ -80,7 +94,6 @@ export async function POST(request: Request) {
     await transporter.sendMail(mailOptions);
     console.log(`Confirmation email sent for order #${orderId}`);
     
-    // --- Success Response ---
     return NextResponse.json({ 
       success: true,
       message: 'Order received and email sent successfully',
