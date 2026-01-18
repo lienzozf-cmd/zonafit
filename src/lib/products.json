@@ -457,7 +457,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 18
+          "stock": 23
         }
       ]
     }
@@ -489,7 +489,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 3
+          "stock": 4
         }
       ]
     }
@@ -839,7 +839,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 0
+          "stock": 1
         }
       ]
     }
@@ -2450,7 +2450,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 4
             }
           ]
         }
@@ -2875,7 +2875,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 6
+              "stock": 8
             }
           ]
         }
@@ -3677,7 +3677,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 5
+              "stock": 6
             }
           ]
         }
@@ -3691,7 +3691,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 5
             }
           ]
         }
@@ -3705,7 +3705,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 4
             }
           ]
         }
@@ -3719,7 +3719,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 4
             }
           ]
         }
@@ -3776,7 +3776,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 9
+              "stock": 12
             }
           ]
         }
