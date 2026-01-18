@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -7,9 +6,7 @@ import IntroWrapper from '@/components/intro-wrapper';
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
   description: 'Tu tienda de ropa deportiva, suplementos y accesorios para gym en Guatemala. Mejora tu rendimiento con los mejores productos de fitness.',
-  icons: {
-    icon: '/favicon.ico',
-  },
+  // ¡Aquí ya no va nada de icons! Next.js lo hace solo.
 };
 
 export default function RootLayout({
