@@ -434,7 +434,7 @@
     "id": 8,
     "name": "Creatina Monohidratada Dragon Pharma 60 serv",
     "price": "Q.345.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.",
     "gender": "unisex",
     "category": "suplemento",
@@ -457,7 +457,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 0
+          "stock": 5
         }
       ]
     }
@@ -466,7 +466,7 @@
     "id": 9,
     "name": "Creatina Monohidratada Dragon Pharma 200 serv",
     "price": "Q.595.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio en formato grande.",
     "gender": "unisex",
     "category": "suplemento",
@@ -489,7 +489,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 0
+          "stock": 1
         }
       ]
     }
@@ -2811,7 +2811,7 @@
     "id": 2657,
     "name": "Glutamina - Dragon Pharma",
     "price": "Q.345.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Glutamina pura para apoyar la recuperación muscular y la salud intestinal.",
     "gender": "unisex",
     "category": "suplemento",
@@ -2834,7 +2834,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 0
+          "stock": 1
         }
       ]
     }
@@ -3565,5 +3565,94 @@
       ]
     },
     "colors": []
+  },
+  {
+    "id": 2677,
+    "name": "ISOPHORM® - PREMIUM WHEY PROTEIN ISOLATE - 2Lb",
+    "price": "Q.550.00",
+    "availability": "Disponible",
+    "description": "Proteína de suero de leche aislada de alta calidad para una recuperación muscular superior y un crecimiento magro.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "proteina",
+    "brand": "Dragon Pharma",
+    "benefits": "Recuperación muscular rápida, 25g de proteína por servicio, bajo en carbohidratos.",
+    "servings_info": "Aprox. 28 servicios (2Lb).",
+    "feature1": "25g de proteína aislada de suero hidrolizada por porción.",
+    "feature2": "Absorción ultra rápida para una recuperación óptima.",
+    "feature3": "Bajo en carbohidratos, azúcar y grasas.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "alt": "ISOPHORM Protein",
+        "dataAiHint": "protein powder"
+      }
+    ],
+    "options": {
+      "type": "sabor",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Cookies & Cream",
+        "hex": "#D2B48C",
+        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Blueberry Ice Cream",
+        "hex": "#ADD8E6",
+        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2678,
+    "name": "WHEYPHORM® - PREMIUM WHEY PROTEIN MATRIX - 2Lb",
+    "price": "Q.535.00",
+    "availability": "Disponible",
+    "description": "Una matriz de proteína de suero de leche premium que combina concentrado y aislado para una liberación sostenida de aminoácidos.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "proteina",
+    "brand": "Dragon Pharma",
+    "benefits": "Apoya el crecimiento muscular, liberación sostenida, excelente sabor.",
+    "servings_info": "Aprox. 27 servicios (2Lb).",
+    "feature1": "Mezcla de proteína de suero concentrada y aislada.",
+    "feature2": "Liberación sostenida de aminoácidos para recuperación prolongada.",
+    "feature3": "Sabor delicioso y textura cremosa.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "alt": "WHEYPHORM Protein",
+        "dataAiHint": "protein powder"
+      }
+    ],
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "White Chocolate Vanilla Ice Cream",
+          "stock": 1
+        }
+      ]
+    }
   }
 ]
