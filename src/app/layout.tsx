@@ -6,6 +6,9 @@ import IntroWrapper from '@/components/intro-wrapper';
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
   description: 'Gymshark, Youngla, suplementos y accesorios para gym en Guatemala.',
+  icons: {
+    icon: '/icono.svg',
+  },
 };
 
 export default function RootLayout({
