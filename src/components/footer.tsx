@@ -12,7 +12,7 @@ const Footer = () => {
           <p>
             Esta página fue diseñada por ©{" "}
             <a
-              href="https://studio--studio-3231199046-9aa7e.us-central1.hosted.app"
+              href="https://lienzoblanco.online"
               target="_blank"
               rel="noopener noreferrer"
               className="lienzo-blanco-link"
