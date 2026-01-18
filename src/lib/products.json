@@ -432,7 +432,7 @@
   },
   {
     "id": 8,
-    "name": "Creatina Monohidratada Dragon Pharma 60 serv",
+    "name": "CREATINE MONOHYDRATE ESSENTIALS 60 Servings",
     "price": "Q.345.00",
     "availability": "Disponible",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.",
@@ -457,14 +457,14 @@
       "values": [
         {
           "value": "Único",
-          "stock": 5
+          "stock": 9
         }
       ]
     }
   },
   {
     "id": 9,
-    "name": "Creatina Monohidratada Dragon Pharma 200 serv",
+    "name": "CREATINE MONOHYDRATE ESSENTIALS 200 Servings",
     "price": "Q.595.00",
     "availability": "Disponible",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio en formato grande.",
@@ -489,7 +489,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 2
         }
       ]
     }
@@ -2777,7 +2777,7 @@
   },
   {
     "id": 2656,
-    "name": "DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemon",
+    "name": "DR. FEAAR® - Complete Essential Amino Acid",
     "price": "Q.350.00",
     "availability": "Disponible",
     "description": "Fórmula avanzada de aminoácidos esenciales para la recuperación y el rendimiento.",
@@ -2789,7 +2789,7 @@
     "servings_info": "30 servicios.",
     "feature1": "Contiene los 9 aminoácidos esenciales",
     "feature2": "Promueve la recuperación muscular",
-    "feature3": "Sabor refrescante a frambuesa y limón",
+    "feature3": "Sabores refrescantes",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
@@ -2799,17 +2799,42 @@
     ],
     "options": {
       "type": "sabor",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 1
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Raspberry Lemon",
+        "hex": "#FFC0CB",
+        "imageSrc": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
         }
-      ]
-    }
+      },
+      {
+        "name": "Grape",
+        "hex": "#800080",
+        "imageSrc": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "id": 2657,
-    "name": "Glutamina - Dragon Pharma",
+    "name": "GLUTAMINE FERMENTED",
     "price": "Q.345.00",
     "availability": "Disponible",
     "description": "Glutamina pura para apoyar la recuperación muscular y la salud intestinal.",
@@ -3568,7 +3593,7 @@
   },
   {
     "id": 2677,
-    "name": "ISOPHORM® - PREMIUM WHEY PROTEIN ISOLATE - 2Lb",
+    "name": "ISOPHORM - PREMIUM WHEY PROTEIN ISOLATE - 2Lb",
     "price": "Q.550.00",
     "availability": "Disponible",
     "description": "Proteína de suero de leche aislada de alta calidad para una recuperación muscular superior y un crecimiento magro.",
@@ -3602,7 +3627,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3610,6 +3635,34 @@
       {
         "name": "Blueberry Ice Cream",
         "hex": "#ADD8E6",
+        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
+            }
+          ]
+        }
+      },
+      {
+        "name": "Hot Chocolate",
+        "hex": "#D2691E",
+        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Vanilla Soft Serve",
+        "hex": "#F3E5AB",
         "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
         "options": {
           "type": "sabor",
@@ -3625,7 +3678,7 @@
   },
   {
     "id": 2678,
-    "name": "WHEYPHORM® - PREMIUM WHEY PROTEIN MATRIX - 2Lb",
+    "name": "WHEYPHORM - PREMIUM WHEY PROTEIN MATRIX - 2Lb",
     "price": "Q.535.00",
     "availability": "Disponible",
     "description": "Una matriz de proteína de suero de leche premium que combina concentrado y aislado para una liberación sostenida de aminoácidos.",
@@ -3647,9 +3700,66 @@
     ],
     "options": {
       "type": "sabor",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "White Chocolate Vanilla Ice Cream",
+        "hex": "#F5F5DC",
+        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Double Chocolate Brownie",
+        "hex": "#3f2a14",
+        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2679,
+    "name": "Omega 3 - 60ct",
+    "price": "Q.250.00",
+    "availability": "Disponible",
+    "description": "Ácidos grasos Omega-3 de alta calidad para apoyar la salud cardiovascular, cerebral y articular.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "aminoacidos",
+    "brand": "Dragon Pharma",
+    "benefits": "Apoya la salud del corazón, mejora la función cerebral y reduce la inflamación.",
+    "servings_info": "60 cápsulas.",
+    "feature1": "Alta concentración de EPA y DHA.",
+    "feature2": "Promueve la salud cardiovascular y cerebral.",
+    "feature3": "Ayuda a reducir la inflamación articular.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/dragonpharma/omega.webp",
+        "alt": "Omega 3 - 60 capsulas",
+        "dataAiHint": "omega 3 supplement"
+      }
+    ],
+    "options": {
+      "type": "presentación",
       "values": [
         {
-          "value": "White Chocolate Vanilla Ice Cream",
+          "value": "Único",
           "stock": 1
         }
       ]
