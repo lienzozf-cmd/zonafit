@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Tu tienda de ropa deportiva, suplementos y accesorios para gym en Guatemala. Mejora tu rendimiento con los mejores productos de fitness.',
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    apple: '/apple-touch-icon.png',
   },
 };
 
