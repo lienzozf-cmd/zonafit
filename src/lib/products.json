@@ -457,7 +457,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 9
+          "stock": 13
         }
       ]
     }
@@ -489,7 +489,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 2
+          "stock": 3
         }
       ]
     }
@@ -2825,7 +2825,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 4
             }
           ]
         }
@@ -3627,7 +3627,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 4
             }
           ]
         }
@@ -3641,7 +3641,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 3
             }
           ]
         }
@@ -3655,7 +3655,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3669,7 +3669,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3712,7 +3712,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3726,7 +3726,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 6
             }
           ]
         }
@@ -3760,9 +3760,331 @@
       "values": [
         {
           "value": "Único",
+          "stock": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 2680,
+    "name": "Power Hoodie",
+    "price": "Q.550.00",
+    "availability": "Disponible",
+    "description": "Sudadera con capucha Power de Gymshark, diseñada para ofrecer calidez y estilo.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "sudadera",
+    "brand": "Gymshark",
+    "fabric_type": "80% Algodón, 20% Poliéster",
+    "is_compression": false,
+    "feature1": "Interior de felpa suave para mayor comodidad.",
+    "feature2": "Capucha ajustable y bolsillo canguro.",
+    "feature3": "Logo de Gymshark en el pecho.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Power Hoodie",
+        "dataAiHint": "men hoodie"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black/Asphalt Grey",
+        "hex": "#36454F",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2681,
+    "name": "Wrist Straps",
+    "price": "Q.295.00",
+    "availability": "Disponible",
+    "description": "Correas de muñeca Gymshark para un soporte adicional durante tus levantamientos más pesados.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "subcategory": "equipo",
+    "brand": "Gymshark",
+    "feature1": "Material duradero y de alta resistencia.",
+    "feature2": "Acolchado para mayor comodidad en la muñeca.",
+    "feature3": "Cierre de velcro ajustable para un ajuste seguro.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Wrist Straps",
+        "dataAiHint": "wrist straps"
+      }
+    ],
+    "options": {
+      "type": "color",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Carmine Red/Black",
+        "hex": "#FF0033",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "tamaño",
+          "values": [
+            {
+              "value": "OS",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2682,
+    "name": "2012 Strength Hoodie",
+    "price": "Q.450.00",
+    "availability": "Disponible",
+    "description": "Sudadera Strength Hoodie, un clásico de 2012 de Gymshark, rediseñada para el atleta moderno.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "sudadera",
+    "brand": "Gymshark",
+    "fabric_type": "80% Algodón, 20% Poliéster",
+    "is_compression": false,
+    "feature1": "Diseño retro con la calidad actual.",
+    "feature2": "Interior de felpa para máxima comodidad.",
+    "feature3": "Logo clásico de Gymshark.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "2012 Strength Hoodie",
+        "dataAiHint": "men hoodie"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
           "stock": 1
         }
       ]
     }
+  },
+  {
+    "id": 2683,
+    "name": "The Anchor Pendant Set - RG1010S",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Set de colgante de ancla de RGMNT. Un símbolo de fuerza y estabilidad en plata.",
+    "gender": "unisex",
+    "category": "joyeria",
+    "subcategory": "rgmnt",
+    "brand": "RGMNT",
+    "feature1": "Diseño de ancla detallado.",
+    "feature2": "Hecho con materiales de alta calidad.",
+    "feature3": "Incluye cadena a juego.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "The Anchor Pendant Set",
+        "dataAiHint": "pendant silver"
+      }
+    ],
+    "options": {
+      "type": "material",
+      "values": [
+        {
+          "value": "Silver",
+          "stock": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 2684,
+    "name": "The Da Vinci Pendant Set - RG1011S",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Set de colgante inspirado en Da Vinci de RGMNT. Una pieza de arte y estilo en plata.",
+    "gender": "unisex",
+    "category": "joyeria",
+    "subcategory": "rgmnt",
+    "brand": "RGMNT",
+    "feature1": "Inspirado en el arte de Leonardo da Vinci.",
+    "feature2": "Acabado en plata de alta calidad.",
+    "feature3": "Un accesorio que denota cultura y fuerza.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "The Da Vinci Pendant Set Silver",
+        "dataAiHint": "pendant silver"
+      }
+    ],
+    "options": {
+      "type": "material",
+      "values": [
+        {
+          "value": "Silver",
+          "stock": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 2685,
+    "name": "The Da Vinci Pendant Set - RG1011G",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Set de colgante inspirado en Da Vinci de RGMNT. Una pieza de arte y estilo en oro.",
+    "gender": "unisex",
+    "category": "joyeria",
+    "subcategory": "rgmnt",
+    "brand": "RGMNT",
+    "feature1": "Inspirado en el arte de Leonardo da Vinci.",
+    "feature2": "Acabado en oro para un look premium.",
+    "feature3": "Un accesorio que denota cultura y fuerza.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "The Da Vinci Pendant Set Gold",
+        "dataAiHint": "pendant gold"
+      }
+    ],
+    "options": {
+      "type": "material",
+      "values": [
+        {
+          "value": "Gold",
+          "stock": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 2686,
+    "name": "The North Star Pendant Set - RG1016G",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Set de colgante de la Estrella del Norte de RGMNT. Un símbolo de guía y propósito en oro.",
+    "gender": "unisex",
+    "category": "joyeria",
+    "subcategory": "rgmnt",
+    "brand": "RGMNT",
+    "feature1": "Diseño de la Estrella del Norte.",
+    "feature2": "Acabado en oro brillante.",
+    "feature3": "Un recordatorio de tus metas y dirección.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "The North Star Pendant Set Gold",
+        "dataAiHint": "pendant gold"
+      }
+    ],
+    "options": {
+      "type": "material",
+      "values": [
+        {
+          "value": "Gold",
+          "stock": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 2687,
+    "name": "W552 Elevate Jacket",
+    "price": "Q.500.00",
+    "availability": "Disponible",
+    "description": "Chamarra Elevate de YoungLA para mujer. Combina estilo y funcionalidad para tus entrenamientos o para el día a día.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "chamarra",
+    "brand": "Youngla",
+    "fabric_type": "75% Nylon, 25% Spandex",
+    "is_compression": false,
+    "feature1": "Tejido suave y elástico.",
+    "feature2": "Corte ajustado que realza la figura.",
+    "feature3": "Cremallera completa y bolsillos laterales.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "W552 Elevate Jacket",
+        "dataAiHint": "woman jacket"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Brown",
+        "hex": "#A52A2A",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2688,
+    "name": "W268 Elevate Leggings",
+    "price": "Q.500.00",
+    "availability": "Disponible",
+    "description": "Leggings Elevate de YoungLA para mujer. Diseñados para ofrecer una comodidad y un ajuste superiores.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "legging",
+    "brand": "Youngla",
+    "fabric_type": "75% Nylon, 25% Spandex",
+    "is_compression": true,
+    "feature1": "Cintura alta sin costura frontal.",
+    "feature2": "Tejido a prueba de sentadillas.",
+    "feature3": "Sensación suave como la mantequilla.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "W268 Elevate Leggings",
+        "dataAiHint": "woman leggings"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Brown",
+        "hex": "#A52A2A",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
