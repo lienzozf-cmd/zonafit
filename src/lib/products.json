@@ -2,8 +2,8 @@
   {
     "id": 1,
     "name": "Superhero Compression Tees",
-    "price": "Q.435.00",
-    "availability": "Agotado",
+    "price": "Q.450.00",
+    "availability": "Disponible",
     "description": "Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.",
     "gender": "hombre",
     "category": "ropa",
@@ -46,7 +46,7 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "L",
@@ -457,7 +457,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 13
+          "stock": 18
         }
       ]
     }
@@ -1754,7 +1754,7 @@
   {
     "id": 2620,
     "name": "YoungLA Keychains",
-    "price": "Q.130.00",
+    "price": "Q.125.00",
     "availability": "Disponible",
     "description": "Llavero oficial de YoungLA para llevar contigo.",
     "gender": "unisex",
@@ -1767,19 +1767,49 @@
     "images": [
       {
         "src": "/assets/images/Accesorios/933 YoungLA Keychains negro.webp",
-        "alt": "YoungLA Keychains",
+        "alt": "YoungLA Keychains Black",
         "dataAiHint": "keychain"
+      },
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "YoungLA Keychains Red",
+        "dataAiHint": "keychain red"
       }
     ],
     "options": {
       "type": "color",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 2
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/Accesorios/933 YoungLA Keychains negro.webp",
+        "options": {
+          "type": "color",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
+            }
+          ]
         }
-      ]
-    }
+      },
+      {
+        "name": "Red",
+        "hex": "#FF0000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "color",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "id": 2626,
@@ -2338,8 +2368,8 @@
   {
     "id": 2643,
     "name": "Superman Compression Tees",
-    "price": "Q.515.00",
-    "availability": "Agotado",
+    "price": "Q.525.00",
+    "availability": "Disponible",
     "description": "Playera de compresión con el icónico logo de Superman para un rendimiento heroico.",
     "gender": "hombre",
     "category": "ropa",
@@ -2362,6 +2392,12 @@
         "alt": "Superman Compression Tee Charcoal",
         "dataAiHint": "superman shirt",
         "color": "Charcoal"
+      },
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Superman Compression Tee Black",
+        "dataAiHint": "superman shirt black",
+        "color": "Black"
       }
     ],
     "options": {
@@ -2401,6 +2437,20 @@
             {
               "value": "M",
               "stock": 0
+            }
+          ]
+        }
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 2
             }
           ]
         }
@@ -2825,7 +2875,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 6
             }
           ]
         }
@@ -3627,7 +3677,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 5
             }
           ]
         }
@@ -3641,7 +3691,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 4
             }
           ]
         }
@@ -3655,7 +3705,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 3
             }
           ]
         }
@@ -3669,7 +3719,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 3
             }
           ]
         }
@@ -3726,7 +3776,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 6
+              "stock": 9
             }
           ]
         }
@@ -4080,6 +4130,221 @@
           "values": [
             {
               "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2689,
+    "name": "Anarchy Cropped Tanks",
+    "price": "Q.425.00",
+    "availability": "Disponible",
+    "description": "Tanque corto de la colección Anarchy, perfecto para un look audaz y cómodo en el gimnasio.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "tank",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "feature1": "Diseño 'cropped' para máxima ventilación.",
+    "feature2": "Gráfico 'Anarchy' distintivo.",
+    "feature3": "Algodón suave para comodidad durante todo el día.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Anarchy Cropped Tanks",
+        "dataAiHint": "men tank top"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Grey Wash",
+        "hex": "#808080",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2690,
+    "name": "Tren Twins Badass Cut Offs",
+    "price": "Q.435.00",
+    "availability": "Disponible",
+    "description": "Playera sin mangas de la colaboración con los Tren Twins, diseñada para un look 'badass' y un rendimiento sin concesiones.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "feature1": "Colaboración exclusiva con los Tren Twins.",
+    "feature2": "Corte 'cut-off' para libertad de movimiento.",
+    "feature3": "Acabado 'wash' para un estilo desgastado.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Tren Twins Badass Cut Offs",
+        "dataAiHint": "men tank top"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black Wash",
+        "hex": "#36454F",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2691,
+    "name": "Cyclone Jersey",
+    "price": "Q.460.00",
+    "availability": "Disponible",
+    "description": "Jersey de entrenamiento Cyclone, diseñado para una ventilación y rendimiento superiores.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Polyester",
+    "is_compression": false,
+    "feature1": "Tejido de malla transpirable para mantenerse fresco.",
+    "feature2": "Diseño atlético para un look moderno.",
+    "feature3": "Ligero y cómodo para cualquier actividad.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Cyclone Jersey",
+        "dataAiHint": "men jersey"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2692,
+    "name": "Vital Flare Leggings (Short)",
+    "price": "Q.525.00",
+    "availability": "Disponible",
+    "description": "Leggings acampanados de la colección Vital, que combinan estilo retro con la comodidad y el rendimiento modernos.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "legging",
+    "brand": "YoungLA",
+    "fabric_type": "75% Nylon, 25% Spandex",
+    "is_compression": true,
+    "feature1": "Diseño acampanado (flare) para un estilo único.",
+    "feature2": "Tejido suave y elástico para máxima comodidad.",
+    "feature3": "Cintura alta para un ajuste favorecedor.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Vital Flare Leggings",
+        "dataAiHint": "woman leggings"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Ebony Black",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2693,
+    "name": "Superman Sweats",
+    "price": "Q.675.00",
+    "availability": "Disponible",
+    "description": "Pants de chándal de la colaboración con Superman, para un confort y estilo de superhéroe.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "fabric_type": "80% Cotton, 20% Polyester",
+    "is_compression": false,
+    "feature1": "Colaboración oficial con DC Comics.",
+    "feature2": "Tejido de felpa suave y cálido.",
+    "feature3": "Logo de Superman bordado.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Superman Sweats",
+        "dataAiHint": "men sweatpants"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Heather Grey",
+        "hex": "#B2BEB5",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
               "stock": 1
             }
           ]
