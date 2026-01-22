@@ -4394,5 +4394,45 @@
         }
       }
     ]
+  },
+  {
+    "id": 2695,
+    "name": "Piping Wide Leg Pant",
+    "price": "Q.575.00",
+    "availability": "Disponible",
+    "description": "Pantalones de pierna ancha con ribetes, combinan estilo y comodidad para un look relajado y moderno.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "Gymshark",
+    "fabric_type": "80% Algodón, 20% Poliéster",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Piping Wide Leg Pant",
+        "dataAiHint": "woman pants"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Brown",
+        "hex": "#A52A2A",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "XL",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
