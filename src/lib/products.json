@@ -457,7 +457,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 10
+          "stock": 15
         }
       ]
     }
@@ -2450,7 +2450,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 4
+              "stock": 6
             }
           ]
         }
@@ -2875,7 +2875,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 6
             }
           ]
         }
@@ -3677,7 +3677,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 5
             }
           ]
         }
@@ -3691,7 +3691,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 4
             }
           ]
         }
@@ -3776,7 +3776,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 6
             }
           ]
         }
@@ -4434,5 +4434,78 @@
         }
       }
     ]
+  },
+  {
+    "id": 2696,
+    "name": "Vital Sculpt Seamless Flared Legging",
+    "price": "Q.650.00",
+    "availability": "Disponible",
+    "description": "Leggings acampanados de la colección Vital Sculpt, que combinan estilo retro con la comodidad y el rendimiento modernos.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "legging",
+    "brand": "Gymshark",
+    "fabric_type": "89% Nylon, 11% Elastane",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Vital Sculpt Seamless Flared Legging",
+        "dataAiHint": "woman leggings"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "XL",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2697,
+    "name": "4152 - Yu-Gi-Oh!® Jersey - Blue Eyes",
+    "price": "Q.485.00",
+    "availability": "Disponible",
+    "description": "Jersey de edición especial de la colaboración con Yu-Gi-Oh!®, con el icónico Dragón Blanco de Ojos Azules.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Polyester",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "Yu-Gi-Oh!® Jersey - Blue Eyes",
+        "dataAiHint": "anime jersey"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        },
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    }
   }
 ]
