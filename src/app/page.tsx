@@ -24,15 +24,9 @@ export default function Home() {
         </div>
       </main>
       <h2
-        style={{
-          color: 'white',
-          textAlign: 'center',
-          fontSize: '2em',
-          marginTop: '2rem',
-          marginBottom: '1rem',
-        }}
+        className="nuevo-ingreso-heading text-center text-3xl font-bold mt-8 mb-4"
       >
-        NUESTROS PRODUCTOS MÁS SOLICITADOS
+        NUEVO INGRESO
       </h2>
       <div>
         <FeaturedProducts />

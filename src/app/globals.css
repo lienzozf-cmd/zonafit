@@ -827,6 +827,20 @@ footer {
   100% { color: #E50000; } /* Accent Color */
 }
 
+.nuevo-ingreso-heading {
+  animation: nuevo-ingreso-color-cycle 10s linear infinite;
+}
+
+@keyframes nuevo-ingreso-color-cycle {
+  0%   { color: #E50000; }
+  15%  { color: #FFD700; }
+  30%  { color: #39FF14; }
+  45%  { color: #00FFFF; }
+  60%  { color: #FF00FF; }
+  75%  { color: #FFFFFF; }
+  90%  { color: #C0C0C0; }
+  100% { color: #E50000; }
+}
 
 /* Estilos para la pantalla de introducción estilo James Bond 007 */
 .intro-screen {
