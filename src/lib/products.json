@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Superhero Compression Tees",
+    "name": "465 - Superhero Compression Tees",
     "price": "Q.450.00",
     "availability": "Disponible",
     "description": "Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.",
@@ -457,7 +457,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 23
+          "stock": 10
         }
       ]
     }
@@ -489,7 +489,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 4
+          "stock": 1
         }
       ]
     }
@@ -1046,7 +1046,7 @@
     "id": 2544,
     "name": "Elevate Cycling Shorts",
     "price": "Q.296.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Shorts de ciclismo de la línea Elevate para un rendimiento superior.",
     "gender": "mujer",
     "category": "ropa",
@@ -1175,7 +1175,7 @@
     "id": 2605,
     "name": "Vanquish Unconquerable Shorts",
     "price": "Q.345.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Shorts de alto rendimiento para entrenamientos intensos.",
     "gender": "hombre",
     "category": "ropa",
@@ -1560,7 +1560,7 @@
     "id": 2616,
     "name": "Effortless Sets",
     "price": "Q.370.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Conjunto \"Effortless\" para un look cómodo y coordinado.",
     "gender": "hombre",
     "category": "ropa",
@@ -1753,7 +1753,7 @@
   },
   {
     "id": 2620,
-    "name": "YoungLA Keychains",
+    "name": "933 - YoungLA Keychains",
     "price": "Q.125.00",
     "availability": "Disponible",
     "description": "Llavero oficial de YoungLA para llevar contigo.",
@@ -1913,7 +1913,7 @@
     "id": 2629,
     "name": "Element Long Sleeve T-Shirt",
     "price": "Q.340.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Playera de manga larga, ligera y cómoda.",
     "gender": "hombre",
     "category": "ropa",
@@ -2278,7 +2278,7 @@
     "id": 2640,
     "name": "Redeveloped Silicone Lifting Straps",
     "price": "Q.295.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Straps de levantamiento con agarre de silicona para mayor seguridad.",
     "gender": "unisex",
     "category": "accesorio",
@@ -2339,7 +2339,7 @@
     "id": 2642,
     "name": "TU MARIDO MOISES SHAKER CUP",
     "price": "Q.170.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Shaker exclusivo \"tu marido moises\" de Dragon Pharma.",
     "gender": "unisex",
     "category": "accesorio",
@@ -2367,7 +2367,7 @@
   },
   {
     "id": 2643,
-    "name": "Superman Compression Tees",
+    "name": "4117 - Superman Compression Tees",
     "price": "Q.525.00",
     "availability": "Disponible",
     "description": "Playera de compresión con el icónico logo de Superman para un rendimiento heroico.",
@@ -2875,7 +2875,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 8
+              "stock": 4
             }
           ]
         }
@@ -3123,7 +3123,7 @@
       "values": [
         {
           "value": "Napolitano",
-          "stock": 3
+          "stock": 2
         }
       ]
     }
@@ -3532,7 +3532,7 @@
     "id": 2674,
     "name": "2079-Dark Wave Joggers",
     "price": "Q.580.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Joggers de YoungLA con un diseño moderno y un ajuste cómodo, ideales para el día a día.",
     "gender": "hombre",
     "category": "ropa",
@@ -3573,7 +3573,7 @@
     "id": 2675,
     "name": "Collegiate Crew",
     "price": "Q.545.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Una playera de estilo universitario de Gymshark que combina comodidad y un look clásico.",
     "gender": "hombre",
     "category": "ropa",
@@ -3677,7 +3677,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 6
+              "stock": 4
             }
           ]
         }
@@ -3691,7 +3691,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 5
+              "stock": 3
             }
           ]
         }
@@ -3705,7 +3705,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 1
             }
           ]
         }
@@ -3719,7 +3719,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 1
             }
           ]
         }
@@ -3762,7 +3762,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3776,7 +3776,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 12
+              "stock": 3
             }
           ]
         }
@@ -3810,7 +3810,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -4139,7 +4139,7 @@
   },
   {
     "id": 2689,
-    "name": "Anarchy Cropped Tanks",
+    "name": "3022 - Anarchy Cropped Tanks",
     "price": "Q.425.00",
     "availability": "Disponible",
     "description": "Tanque corto de la colección Anarchy, perfecto para un look audaz y cómodo en el gimnasio.",
@@ -4225,7 +4225,7 @@
   },
   {
     "id": 2691,
-    "name": "Cyclone Jersey",
+    "name": "4073 - Cyclone Jersey",
     "price": "Q.460.00",
     "availability": "Disponible",
     "description": "Jersey de entrenamiento Cyclone, diseñado para una ventilación y rendimiento superiores.",
@@ -4268,7 +4268,7 @@
   },
   {
     "id": 2692,
-    "name": "Vital Flare Leggings (Short)",
+    "name": "W288 - Vital Flare Leggings (Short)",
     "price": "Q.525.00",
     "availability": "Disponible",
     "description": "Leggings acampanados de la colección Vital, que combinan estilo retro con la comodidad y el rendimiento modernos.",
@@ -4311,7 +4311,7 @@
   },
   {
     "id": 2693,
-    "name": "Superman Sweats",
+    "name": "2032 - Superman Sweats",
     "price": "Q.675.00",
     "availability": "Disponible",
     "description": "Pants de chándal de la colaboración con Superman, para un confort y estilo de superhéroe.",
@@ -4345,6 +4345,49 @@
           "values": [
             {
               "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2694,
+    "name": "3012 - Drop Shoulder Knit Cut-Off",
+    "price": "Q.495.00",
+    "availability": "Disponible",
+    "description": "Una playera sin mangas con hombros caídos y tejido de punto, ideal para un estilo relajado y moderno.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "feature1": "Diseño de hombro caído (drop shoulder).",
+    "feature2": "Tejido de punto suave y transpirable.",
+    "feature3": "Corte 'cut-off' para máxima libertad.",
+    "images": [
+      {
+        "src": "/assets/images/placeholder.png",
+        "alt": "3012 - Drop Shoulder Knit Cut-Off Black",
+        "dataAiHint": "men shirt black"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/placeholder.png",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
               "stock": 1
             }
           ]
