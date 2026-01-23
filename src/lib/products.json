@@ -458,7 +458,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 15
+          "stock": 5
         }
       ]
     }
@@ -2451,7 +2451,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 6
+              "stock": 2
             }
           ]
         }
@@ -2876,7 +2876,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 6
+              "stock": 2
             }
           ]
         }
@@ -3693,7 +3693,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 5
+              "stock": 3
             }
           ]
         }
@@ -3707,7 +3707,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 4
+              "stock": 2
             }
           ]
         }
@@ -3797,7 +3797,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 6
+              "stock": 3
             }
           ]
         }
@@ -4387,7 +4387,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/3012dropshoulder.webp",
         "alt": "3012 - Drop Shoulder Knit Cut-Off Black",
         "dataAiHint": "men shirt black"
       }
@@ -4400,7 +4400,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3012dropshoulder.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4427,7 +4427,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/gymshark/mujer/pipingwide.webp",
         "alt": "Piping Wide Leg Pant",
         "dataAiHint": "woman pants"
       }
@@ -4440,7 +4440,7 @@
       {
         "name": "Brown",
         "hex": "#A52A2A",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/pipingwide.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4467,7 +4467,7 @@
     "is_compression": true,
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/gymshark/mujer/vitalsculpt.webp",
         "alt": "Vital Sculpt Seamless Flared Legging",
         "dataAiHint": "woman leggings"
       }
@@ -4480,7 +4480,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/vitalsculpt.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4507,7 +4507,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/blueeyes.webp",
         "alt": "Yu-Gi-Oh!® Jersey - Blue Eyes",
         "dataAiHint": "anime jersey"
       }
