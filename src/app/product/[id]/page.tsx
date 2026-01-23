@@ -280,11 +280,10 @@ const ProductDetailPage = () => {
                       return (
                         <Button 
                             key={color.name} 
-                            variant={isSelected ? 'default' : 'outline'}
+                            variant={isSelected ? 'destructive' : 'outline'}
                             onClick={() => !isColorSoldOut && handleColorClick(color)} 
                             disabled={isColorSoldOut} 
                             className={`relative ${isColorSoldOut ? 'bg-black text-gray-500' : ''}`}
-                            style={(isSelected && !isColorSoldOut) ? { backgroundColor: color.hex, color: '#fff', borderColor: color.hex } : {}}
                         >
                             {color.name}
                             {isColorSoldOut && <span className="sold-out-x">X</span>}
