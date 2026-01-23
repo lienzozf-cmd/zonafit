@@ -1,3 +1,4 @@
+
 [
   {
     "id": 1,
@@ -1771,7 +1772,7 @@
         "dataAiHint": "keychain"
       },
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/Accesorios/933 YoungLA Keychains red.webp",
         "alt": "YoungLA Keychains Red",
         "dataAiHint": "keychain red"
       }
@@ -2330,7 +2331,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -2394,7 +2395,7 @@
         "color": "Charcoal"
       },
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/4117 - Superman Compression Tees black.webp",
         "alt": "Superman Compression Tee Black",
         "dataAiHint": "superman shirt black",
         "color": "Black"
@@ -2444,7 +2445,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - Superman Compression Tees black.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -2869,7 +2870,7 @@
       {
         "name": "Grape",
         "hex": "#800080",
-        "imageSrc": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/drfeaaruva.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3658,8 +3659,23 @@
     "feature3": "Bajo en carbohidratos, azúcar y grasas.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
-        "alt": "ISOPHORM Protein",
+        "src": "/assets/images/marcas/dragonpharma/isocookies.webp",
+        "alt": "ISOPHORM Protein Cookies & Cream",
+        "dataAiHint": "protein powder"
+      },
+      {
+        "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
+        "alt": "ISOPHORM Protein Blueberry Ice Cream",
+        "dataAiHint": "protein powder"
+      },
+      {
+        "src": "/assets/images/marcas/dragonpharma/isohotcho.webp",
+        "alt": "ISOPHORM Protein Hot Chocolate",
+        "dataAiHint": "protein powder"
+      },
+      {
+        "src": "/assets/images/marcas/dragonpharma/isovainilla.webp",
+        "alt": "ISOPHORM Protein Vanilla Soft Serve",
         "dataAiHint": "protein powder"
       }
     ],
@@ -3671,7 +3687,7 @@
       {
         "name": "Cookies & Cream",
         "hex": "#D2B48C",
-        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/isocookies.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3685,7 +3701,7 @@
       {
         "name": "Blueberry Ice Cream",
         "hex": "#ADD8E6",
-        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/isoblueb.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3699,7 +3715,7 @@
       {
         "name": "Hot Chocolate",
         "hex": "#D2691E",
-        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/isohotcho.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3713,7 +3729,7 @@
       {
         "name": "Vanilla Soft Serve",
         "hex": "#F3E5AB",
-        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/isovainilla.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3756,7 +3772,7 @@
       {
         "name": "White Chocolate Vanilla Ice Cream",
         "hex": "#F5F5DC",
-        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/wheyphormwhitechv.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3770,7 +3786,7 @@
       {
         "name": "Double Chocolate Brownie",
         "hex": "#3f2a14",
-        "imageSrc": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
+        "imageSrc": "/assets/images/marcas/dragonpharma/wheyphormbrownie.webp",
         "options": {
           "type": "sabor",
           "values": [
@@ -3800,7 +3816,7 @@
     "feature3": "Ayuda a reducir la inflamación articular.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/omega.webp",
+        "src": "/assets/images/marcas/dragonpharma/omega3df.webp",
         "alt": "Omega 3 - 60 capsulas",
         "dataAiHint": "omega 3 supplement"
       }
@@ -3832,7 +3848,7 @@
     "feature3": "Logo de Gymshark en el pecho.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/gymshark/hombre/Power Hoodie.webp",
         "alt": "Power Hoodie",
         "dataAiHint": "men hoodie"
       }
@@ -3845,7 +3861,7 @@
       {
         "name": "Black/Asphalt Grey",
         "hex": "#36454F",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/Power Hoodie.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3873,7 +3889,7 @@
     "feature3": "Cierre de velcro ajustable para un ajuste seguro.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/Accesorios/Wrist Straps.webp",
         "alt": "Wrist Straps",
         "dataAiHint": "wrist straps"
       }
@@ -3886,7 +3902,7 @@
       {
         "name": "Carmine Red/Black",
         "hex": "#FF0033",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/Accesorios/Wrist Straps.webp",
         "options": {
           "type": "tamaño",
           "values": [
@@ -3916,7 +3932,7 @@
     "feature3": "Logo clásico de Gymshark.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/gymshark/hombre/2012 Strength Hoodie.webp",
         "alt": "2012 Strength Hoodie",
         "dataAiHint": "men hoodie"
       }
@@ -3946,7 +3962,7 @@
     "feature3": "Incluye cadena a juego.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/rgmnt/The Anchor Pendant Set - RG1010S silver.webp",
         "alt": "The Anchor Pendant Set",
         "dataAiHint": "pendant silver"
       }
@@ -3976,7 +3992,7 @@
     "feature3": "Un accesorio que denota cultura y fuerza.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/rgmnt/The Da Vinci Pendant Set - RG1011S silver.webp",
         "alt": "The Da Vinci Pendant Set Silver",
         "dataAiHint": "pendant silver"
       }
@@ -4006,7 +4022,7 @@
     "feature3": "Un accesorio que denota cultura y fuerza.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/rgmnt/The Da Vinci Pendant Set - RG1011G gold.webp",
         "alt": "The Da Vinci Pendant Set Gold",
         "dataAiHint": "pendant gold"
       }
@@ -4036,7 +4052,7 @@
     "feature3": "Un recordatorio de tus metas y dirección.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/rgmnt/The North Star Pendant Set - RG1016G gold.webp",
         "alt": "The North Star Pendant Set Gold",
         "dataAiHint": "pendant gold"
       }
@@ -4068,7 +4084,7 @@
     "feature3": "Cremallera completa y bolsillos laterales.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/mujer/W552 Elevate Jacket.webp",
         "alt": "W552 Elevate Jacket",
         "dataAiHint": "woman jacket"
       }
@@ -4081,7 +4097,7 @@
       {
         "name": "Brown",
         "hex": "#A52A2A",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/mujer/W552 Elevate Jacket.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4111,7 +4127,7 @@
     "feature3": "Sensación suave como la mantequilla.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/mujer/W268 Elevate Leggings.webp",
         "alt": "W268 Elevate Leggings",
         "dataAiHint": "woman leggings"
       }
@@ -4124,7 +4140,7 @@
       {
         "name": "Brown",
         "hex": "#A52A2A",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/mujer/W268 Elevate Leggings.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4154,7 +4170,7 @@
     "feature3": "Algodón suave para comodidad durante todo el día.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/3022 - Anarchy Cropped Tanks.webp",
         "alt": "Anarchy Cropped Tanks",
         "dataAiHint": "men tank top"
       }
@@ -4167,7 +4183,7 @@
       {
         "name": "Grey Wash",
         "hex": "#808080",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3022 - Anarchy Cropped Tanks.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4182,7 +4198,7 @@
   },
   {
     "id": 2690,
-    "name": "Tren Twins Badass Cut Offs",
+    "name": "3044 - Tren Twins Badass Cut Offs",
     "price": "Q.435.00",
     "availability": "Disponible",
     "description": "Playera sin mangas de la colaboración con los Tren Twins, diseñada para un look 'badass' y un rendimiento sin concesiones.",
@@ -4197,7 +4213,7 @@
     "feature3": "Acabado 'wash' para un estilo desgastado.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/3044 - Tren Twins Badass Cut Offs.webp",
         "alt": "Tren Twins Badass Cut Offs",
         "dataAiHint": "men tank top"
       }
@@ -4210,7 +4226,7 @@
       {
         "name": "Black Wash",
         "hex": "#36454F",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3044 - Tren Twins Badass Cut Offs.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4240,7 +4256,7 @@
     "feature3": "Ligero y cómodo para cualquier actividad.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/4073 - Cyclone Jersey black.webp",
         "alt": "Cyclone Jersey",
         "dataAiHint": "men jersey"
       }
@@ -4253,7 +4269,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4073 - Cyclone Jersey black.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4283,7 +4299,7 @@
     "feature3": "Cintura alta para un ajuste favorecedor.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/mujer/W288 - Vital Flare Leggings black.webp",
         "alt": "Vital Flare Leggings",
         "dataAiHint": "woman leggings"
       }
@@ -4296,7 +4312,7 @@
       {
         "name": "Ebony Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/mujer/W288 - Vital Flare Leggings black.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4326,7 +4342,7 @@
     "feature3": "Logo de Superman bordado.",
     "images": [
       {
-        "src": "/assets/images/placeholder.png",
+        "src": "/assets/images/marcas/youngla/hombre/2032 - Superman Sweats gris.webp",
         "alt": "Superman Sweats",
         "dataAiHint": "men sweatpants"
       }
@@ -4339,7 +4355,7 @@
       {
         "name": "Heather Grey",
         "hex": "#B2BEB5",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2032 - Superman Sweats gris.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4364,9 +4380,6 @@
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Diseño de hombro caído (drop shoulder).",
-    "feature2": "Tejido de punto suave y transpirable.",
-    "feature3": "Corte 'cut-off' para máxima libertad.",
     "images": [
       {
         "src": "/assets/images/placeholder.png",
