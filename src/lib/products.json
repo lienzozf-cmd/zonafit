@@ -1799,7 +1799,7 @@
       {
         "name": "Red",
         "hex": "#FF0000",
-        "imageSrc": "/assets/images/placeholder.png",
+        "imageSrc": "/assets/images/Accesorios/933 YoungLA Keychains red.webp",
         "options": {
           "type": "color",
           "values": [
@@ -3660,22 +3660,22 @@
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/isocookies.webp",
-        "alt": "ISOPHORM Protein Cookies & Cream",
+        "alt": "ISOPHORM - Cookies & Cream",
         "dataAiHint": "protein powder"
       },
       {
         "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
-        "alt": "ISOPHORM Protein Blueberry Ice Cream",
+        "alt": "ISOPHORM - Blueberry Ice Cream",
         "dataAiHint": "protein powder"
       },
       {
         "src": "/assets/images/marcas/dragonpharma/isohotcho.webp",
-        "alt": "ISOPHORM Protein Hot Chocolate",
+        "alt": "ISOPHORM - Hot Chocolate",
         "dataAiHint": "protein powder"
       },
       {
         "src": "/assets/images/marcas/dragonpharma/isovainilla.webp",
-        "alt": "ISOPHORM Protein Vanilla Soft Serve",
+        "alt": "ISOPHORM - Vanilla Soft Serve",
         "dataAiHint": "protein powder"
       }
     ],
@@ -3759,8 +3759,13 @@
     "feature3": "Sabor delicioso y textura cremosa.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
-        "alt": "WHEYPHORM Protein",
+        "src": "/assets/images/marcas/dragonpharma/wheyphormwhitechv.webp",
+        "alt": "WHEYPHORM - White Chocolate Vanilla Ice Cream",
+        "dataAiHint": "protein powder"
+      },
+      {
+        "src": "/assets/images/marcas/dragonpharma/wheyphormbrownie.webp",
+        "alt": "WHEYPHORM - Double Chocolate Brownie",
         "dataAiHint": "protein powder"
       }
     ],
