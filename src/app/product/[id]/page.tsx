@@ -272,7 +272,7 @@ const ProductDetailPage = () => {
             <div className="mt-auto space-y-4">
               {product.colors && product.colors.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-medium mb-2">Color</h3>
+                  <h3 className="text-lg font-medium mb-2">{product.category === 'suplemento' ? 'Sabor' : 'Color'}</h3>
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map(color => {
                       const isColorSoldOut = color.options.values.every(v => v.stock === 0);
