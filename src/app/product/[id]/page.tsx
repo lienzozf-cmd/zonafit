@@ -83,7 +83,14 @@ const ProductDetailPage = () => {
   const handleColorClick = (color: ProductColor) => {
     setSelectedColor(color);
     setCurrentImage(color.imageSrc);
-    setSelectedOption(null); 
+    
+    const options = color.options.values;
+    // For products like supplements, if there's only one option ('Único'), select it automatically.
+    if (options.length === 1 && options[0].value === 'Único') {
+      setSelectedOption(options[0]);
+    } else {
+      setSelectedOption(null); // For other products, require the user to select a size/option.
+    }
   };
 
   const handleOptionClick = (option: ProductOption) => {
