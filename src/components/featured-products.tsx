@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
   }));
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
-  const featuredProductIds = [1, 2697, 2667, 2664, 2687, 2643, 2686, 8];
+  const featuredProductIds = [1, 2697, 2667, 2664, 2668, 2643, 2686, 8];
 
   useEffect(() => {
     if (products && products.length > 0) {

@@ -39,7 +39,7 @@ export default function ProductGridPage({
   };
   
   const displayedProducts = useMemo(() => {
-    let filtered = initialProducts;
+    let filtered = initialProducts.filter(p => p.visible !== false);
 
     if (!hideBrandFilter && selectedBrand !== 'all') {
       filtered = filtered.filter(p => p.brand === selectedBrand);
