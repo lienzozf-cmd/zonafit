@@ -2450,8 +2450,16 @@
           "type": "talla",
           "values": [
             {
+              "value": "S",
+              "stock": 0
+            },
+            {
               "value": "M",
               "stock": 2
+            },
+            {
+              "value": "L",
+              "stock": 0
             }
           ]
         }
@@ -4113,7 +4121,8 @@
           ]
         }
       }
-    ]
+    ],
+    "visible": false
   },
   {
     "id": 2688,
@@ -4156,7 +4165,8 @@
           ]
         }
       }
-    ]
+    ],
+    "visible": false
   },
   {
     "id": 2689,

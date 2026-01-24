@@ -37,7 +37,7 @@ const ProductDetailPage = () => {
     setIsClient(true);
     if (products.length > 0) {
       const foundProduct = products.find((p) => p.id === Number(id));
-      if (foundProduct) {
+      if (foundProduct && foundProduct.visible !== false) {
         setProduct(foundProduct);
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0 ? foundProduct.colors[0] : null;
         setSelectedColor(initialColor);

@@ -32,7 +32,7 @@ const Header = () => {
       setSearchResults([]);
       return;
     }
-    const results = products.filter(p => p.name.toLowerCase().includes(term.toLowerCase()));
+    const results = products.filter(p => p.visible !== false && p.name.toLowerCase().includes(term.toLowerCase()));
     setSearchResults(results);
   };
   
