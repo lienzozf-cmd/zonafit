@@ -151,23 +151,6 @@ export const useCartStore = create<AppState>()(
         total: state.total,
         sessionId: state.sessionId,
       }),
-      onRehydrateStorage: (state) => {
-        return (restoredState, error) => {
-          if (error) {
-            console.log('An error happened during hydration', error)
-          } else {
-            // CORRECCIÓN: Usamos restoredState en lugar de get()
-            if (restoredState) {
-                if (!restoredState.sessionId) {
-                    const newId = Math.random().toString(36).substring(2, 11);
-                    restoredState.setSessionId(newId);
-                }
-                // Fetch fresh product data on rehydration
-                restoredState.fetchProducts();
-            }
-          }
-        }
-      }
     }
   )
 );
