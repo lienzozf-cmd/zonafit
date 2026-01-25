@@ -17,7 +17,7 @@ const brandColorMap: { [key: string]: string } = {
     'Gymshark': 'text-cyan-400',
     'YoungLA': 'text-red-500',
     'Dragon Pharma': 'text-pink-500',
-    'Darc Sport': 'text-gray-400',
+    'Darc Sport': 'text-gray-200 animate-pulse',
     'RGMNT': 'text-yellow-400',
     'Civil Regime': 'text-pink-500',
     'RAW': 'text-green-500',
