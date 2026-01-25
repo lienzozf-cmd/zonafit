@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { render } from '@react-email/components';
+import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
@@ -72,7 +72,7 @@ export async function POST(request: Request) {
       orderId,
     };
 
-    const emailHtml = await render(<OrderConfirmationEmail orderDetails={emailData} />);
+    const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
     // --- Nodemailer Setup ---
     const transporter = nodemailer.createTransport({
