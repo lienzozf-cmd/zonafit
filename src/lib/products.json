@@ -2854,6 +2854,11 @@
         "src": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
         "alt": "Aminoácidos Dr. Feaar - Dragon Pharma",
         "dataAiHint": "amino acids"
+      },
+      {
+        "src": "/assets/images/marcas/dragonpharma/drfeaaruva.webp",
+        "alt": "Aminoácidos Dr. Feaar - Uva",
+        "dataAiHint": "amino acids grape"
       }
     ],
     "options": {
@@ -3132,7 +3137,7 @@
       "values": [
         {
           "value": "Napolitano",
-          "stock": 2
+          "stock": 3
         }
       ]
     }
@@ -4209,7 +4214,8 @@
           ]
         }
       }
-    ]
+    ],
+    "visible": false
   },
   {
     "id": 2690,
@@ -4252,7 +4258,8 @@
           ]
         }
       }
-    ]
+    ],
+    "visible": false
   },
   {
     "id": 2691,
@@ -4295,7 +4302,8 @@
           ]
         }
       }
-    ]
+    ],
+    "visible": false
   },
   {
     "id": 2692,
@@ -4332,13 +4340,14 @@
           "type": "talla",
           "values": [
             {
-              "value": "M",
+              "value": "XL",
               "stock": 1
             }
           ]
         }
       }
-    ]
+    ],
+    "visible": false
   },
   {
     "id": 2693,
