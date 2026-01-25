@@ -81,8 +81,7 @@ export async function updateStock(productId: number, optionValue: string, quanti
         console.log(`Stock updated for Product ID: ${productId}`);
 
     } catch (error) {
-        console.error('Error updating stock in inventory-manager:', error);
-        // Re-throwing the error is important so the calling function knows something went wrong.
-        throw new Error('Failed to update stock file.');
+        console.error('CRITICAL: Failed to update stock file. Inventory will be incorrect. Error:', error);
+        // Do not re-throw error to allow the order process to continue.
     }
 }
