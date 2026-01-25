@@ -14,20 +14,20 @@ interface ProductCardProps {
 }
 
 const brandColorMap: { [key: string]: string } = {
-    'Gymshark': 'text-cyan-400',
-    'YoungLA': 'text-red-500',
-    'Dragon Pharma': 'text-pink-500',
+    'Gymshark': 'text-cyan-400 animate-pulse',
+    'YoungLA': 'text-red-500 animate-pulse',
+    'Dragon Pharma': 'text-pink-500 animate-pulse',
     'Darc Sport': 'text-gray-200 animate-pulse',
-    'RGMNT': 'text-yellow-400',
-    'Civil Regime': 'text-pink-500',
-    'RAW': 'text-green-500',
-    'Vanquish': 'text-sky-400',
-    'DFYNE': 'text-purple-400',
-    'Monster': 'text-lime-500',
-    'Bum Energy': 'text-amber-400',
-    'Dymatize': 'text-blue-500',
-    'Muscletech': 'text-orange-500',
-    'Ironbull': 'text-neutral-400',
+    'RGMNT': 'text-yellow-400 animate-pulse',
+    'Civil Regime': 'text-pink-500 animate-pulse',
+    'RAW': 'text-green-500 animate-pulse',
+    'Vanquish': 'text-sky-400 animate-pulse',
+    'DFYNE': 'text-purple-400 animate-pulse',
+    'Monster': 'text-lime-500 animate-pulse',
+    'Bum Energy': 'text-amber-400 animate-pulse',
+    'Dymatize': 'text-blue-500 animate-pulse',
+    'Muscletech': 'text-orange-500 animate-pulse',
+    'Ironbull': 'text-neutral-400 animate-pulse',
 };
 
 
