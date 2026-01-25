@@ -15,7 +15,7 @@ interface ProductCardProps {
 
 const brandColorMap: { [key: string]: string } = {
     'Gymshark': 'text-cyan-400 animate-pulse',
-    'YoungLA': 'text-red-500 animate-pulse',
+    'YoungLA': 'text-accent animate-pulse',
     'Dragon Pharma': 'text-pink-500 animate-pulse',
     'Darc Sport': 'text-gray-200 animate-pulse',
     'RGMNT': 'text-yellow-400 animate-pulse',
