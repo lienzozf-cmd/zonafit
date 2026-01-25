@@ -297,58 +297,6 @@
     ]
   },
   {
-    "id": 4,
-    "name": "Power T-Shirt Black and Red",
-    "price": "Q.450.00",
-    "availability": "Agotado",
-    "description": "Potencia y estilo se unen en esta T-Shirt. Con un ajuste atlético y un diseño audaz en negro y rojo, es la prenda perfecta tanto para dentro como para fuera del gimnasio.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Gymshark",
-    "fabric_type": "95% Algodón, 5% Elastano",
-    "is_compression": false,
-    "feature1": "Ajuste atlético que realza la figura",
-    "feature2": "Tejido suave y elástico para mayor comodidad",
-    "feature3": "Diseño llamativo en dos tonos",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.webp",
-        "alt": "Black and red t-shirt",
-        "dataAiHint": "black red shirt",
-        "option": "S"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Black/Red",
-        "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/GYMSPOWERNR.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "S",
-              "stock": 0
-            },
-            {
-              "value": "M",
-              "stock": 0
-            },
-            {
-              "value": "L",
-              "stock": 0
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "id": 5,
     "name": "Vital Seamless Crop Top Green",
     "price": "Q.450.00",
@@ -1043,39 +991,7 @@
       ]
     }
   },
-  {
-    "id": 2544,
-    "name": "Elevate Cycling Shorts",
-    "price": "Q.296.00",
-    "availability": "Agotado",
-    "description": "Shorts de ciclismo de la línea Elevate para un rendimiento superior.",
-    "gender": "mujer",
-    "category": "ropa",
-    "subcategory": "short",
-    "brand": "Gymshark",
-    "fabric_type": "78% Polyester, 22% Elastane",
-    "is_compression": true,
-    "feature1": "Tejido de alto rendimiento 'Elevate'",
-    "feature2": "Cintura alta para un ajuste seguro",
-    "feature3": "Resistente y duradero para cualquier actividad",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/mujer/Elevate Cycling Shorts negro.webp",
-        "alt": "Elevate Cycling Shorts",
-        "dataAiHint": "woman shorts",
-        "option": "Negro"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
-    }
-  },
+
   {
     "id": 2602,
     "name": "Premium Tee SAMURAI bushido",
@@ -1172,39 +1088,7 @@
       ]
     }
   },
-  {
-    "id": 2605,
-    "name": "Vanquish Unconquerable Shorts",
-    "price": "Q.345.00",
-    "availability": "Agotado",
-    "description": "Shorts de alto rendimiento para entrenamientos intensos.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "short",
-    "brand": "Vanquish",
-    "fabric_type": "90% Polyester, 10% Spandex",
-    "is_compression": false,
-    "feature1": "Tejido ligero y transpirable",
-    "feature2": "Bolsillos con cremallera para seguridad",
-    "feature3": "Corte atlético para libertad de movimiento",
-    "images": [
-      {
-        "src": "/assets/images/marcas/vanquish/Vanquishunconquerableshortsnegro.webp",
-        "alt": "Vanquish Unconquerable Shorts",
-        "dataAiHint": "men shorts",
-        "option": "M"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "M",
-          "stock": 0
-        }
-      ]
-    }
-  },
+  
   {
     "id": 2608,
     "name": "4071 - Gods & Heroes Tees",
@@ -1557,80 +1441,8 @@
       ]
     }
   },
-  {
-    "id": 2616,
-    "name": "Effortless Sets",
-    "price": "Q.370.00",
-    "availability": "Agotado",
-    "description": "Conjunto \"Effortless\" para un look cómodo y coordinado.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "sudadera",
-    "brand": "YoungLA",
-    "fabric_type": "95% Cotton, 5% Elastane",
-    "is_compression": false,
-    "feature1": "Conjunto coordinado de sudadera y pantalón",
-    "feature2": "Tejido suave y elástico",
-    "feature3": "Ideal para días de descanso o uso casual",
-    "images": [
-      {
-        "src": "/assets/images/marcas/youngla/hombre/5092 - Effortless Sets NEGRO.webp",
-        "alt": "Effortless Sets",
-        "dataAiHint": "men set",
-        "option": "M"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "M",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2617,
-    "name": "Digital Compression Tees",
-    "price": "Q.325.00",
-    "availability": "Agotado",
-    "description": "Playera de compresión con un diseño digital moderno.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "88% Polyester, 12% Spandex",
-    "is_compression": true,
-    "feature1": "Ajuste de compresión para soporte",
-    "feature2": "Gráfico digital único",
-    "feature3": "Costuras planas para evitar irritación",
-    "images": [
-      {
-        "src": "/assets/images/marcas/youngla/hombre/437 Digital Compression Tees Roja.webp",
-        "alt": "Digital Compression Tees",
-        "dataAiHint": "compression shirt",
-        "option": "S"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        },
-        {
-          "value": "M",
-          "stock": 0
-        },
-        {
-          "value": "L",
-          "stock": 0
-        }
-      ]
-    }
-  },
+  
+ 
   {
     "id": 2618,
     "name": "Combat Compression",
@@ -1910,72 +1722,7 @@
       ]
     }
   },
-  {
-    "id": 2629,
-    "name": "Element Long Sleeve T-Shirt",
-    "price": "Q.340.00",
-    "availability": "Agotado",
-    "description": "Playera de manga larga, ligera y cómoda.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Gymshark",
-    "fabric_type": "88% Poliéster, 12% Elastano",
-    "is_compression": false,
-    "feature1": "Tejido que absorbe el sudor",
-    "feature2": "Ligera y transpirable",
-    "feature3": "Ideal para capas o para usar sola",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/Element Long Sleeve T-Shirt negra y rojo.webp",
-        "alt": "Element Long Sleeve T-Shirt",
-        "dataAiHint": "men shirt",
-        "option": "S"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2630,
-    "name": "Legacy Hoodie",
-    "price": "Q.280.00",
-    "availability": "Agotado",
-    "description": "Sudadera con capucha, un clásico de Gymshark.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "sudadera",
-    "brand": "Gymshark",
-    "fabric_type": "80% Algodón, 20% Poliéster",
-    "is_compression": false,
-    "feature1": "Logo 'Legacy' bordado",
-    "feature2": "Interior de felpa suave",
-    "feature3": "Capucha ajustable con cordón",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/Legacy Hoodie negra.webp",
-        "alt": "Legacy Hoodie",
-        "dataAiHint": "men hoodie",
-        "option": "S"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
-    }
-  },
+  
   {
     "id": 2631,
     "name": "Built in the UK T-Shirt",
@@ -2141,80 +1888,7 @@
       ]
     }
   },
-  {
-    "id": 2636,
-    "name": "Strength Dept Graphic T-Shirt",
-    "price": "Q.255.00",
-    "availability": "Agotado",
-    "description": "Playera del departamento de fuerza.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Gymshark",
-    "fabric_type": "100% Algodón",
-    "is_compression": false,
-    "feature1": "Gráfico 'Strength Dept.' en la espalda",
-    "feature2": "Ajuste regular cómodo",
-    "feature3": "100% algodón para suavidad",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/Strength Dept Graphic T-Shirt blanca.webp",
-        "alt": "Strength Dept Graphic T-Shirt",
-        "dataAiHint": "men shirt",
-        "option": "M"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "M",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2637,
-    "name": "British Lifting Goods Graphic T-Shirt",
-    "price": "Q.285.00",
-    "availability": "Agotado",
-    "description": "Playera con gráfico de \"British Lifting Goods\".",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Gymshark",
-    "fabric_type": "100% Algodón",
-    "is_compression": false,
-    "feature1": "Diseño 'vintage' inspirado en el levantamiento británico",
-    "feature2": "Algodón 'heavyweight' de alta calidad",
-    "feature3": "Perfecta para un look retro en el gimnasio",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/British Lifting Goods Graphic T-Shirt azul.webp",
-        "alt": "British Lifting Goods Graphic T-Shirt",
-        "dataAiHint": "men shirt",
-        "option": "S"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        },
-        {
-          "value": "M",
-          "stock": 0
-        },
-        {
-          "value": "L",
-          "stock": 0
-        }
-      ]
-    }
-  },
+  
   {
     "id": 2638,
     "name": "Sets and Reps 3pk Crew Socks",
@@ -3583,47 +3257,7 @@
       }
     ]
   },
-  {
-    "id": 2675,
-    "name": "Collegiate Crew",
-    "price": "Q.545.00",
-    "availability": "Agotado",
-    "description": "Una playera de estilo universitario de Gymshark que combina comodidad y un look clásico.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Gymshark",
-    "feature1": "Estilo clásico universitario.",
-    "feature2": "Tejido de felpa para mayor calidez.",
-    "feature3": "Ajuste relajado para uso diario.",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/ccrew.webp",
-        "alt": "Collegiate Crew",
-        "dataAiHint": "men shirt"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Negro",
-        "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/ccrew.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 0
-            }
-          ]
-        }
-      }
-    ]
-  },
+  
   {
     "id": 2676,
     "name": "Rodilleras - Knee Wraps",
