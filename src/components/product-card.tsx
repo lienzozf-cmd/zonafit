@@ -13,6 +13,24 @@ interface ProductCardProps {
   index: number;
 }
 
+const brandColorMap: { [key: string]: string } = {
+    'Gymshark': 'text-cyan-400',
+    'YoungLA': 'text-red-500',
+    'Dragon Pharma': 'text-red-800',
+    'Darc Sport': 'text-gray-400',
+    'RGMNT': 'text-yellow-400',
+    'Civil Regime': 'text-pink-500',
+    'RAW': 'text-green-500',
+    'Vanquish': 'text-sky-400',
+    'DFYNE': 'text-purple-400',
+    'Monster': 'text-lime-500',
+    'Bum Energy': 'text-amber-400',
+    'Dymatize': 'text-blue-500',
+    'Muscletech': 'text-orange-500',
+    'Ironbull': 'text-neutral-400',
+};
+
+
 const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
   const { addItem, getProductOption } = useCartStore((state) => ({
     addItem: state.addItem,
@@ -54,11 +72,18 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   }, [selectedColor, product.options.values]);
 
   useEffect(() => {
-    const stock = selectedOption ? selectedOption.stock : 0;
+    if (!product) return;
+  
+    const stock = selectedOption ? getProductOption(product.id, selectedOption.value, selectedColor?.name)?.stock ?? 0 : 0;
+  
     if (selectedOption) {
       setAvailabilityMessage(stock > 0 ? `Disponible: ${stock} unidades` : 'Agotado');
     } else {
-      const totalStock = (selectedColor?.options.values || product.options?.values || []).reduce((sum, o) => sum + o.stock, 0);
+      const totalStock = (selectedColor?.options.values || product.options?.values || []).reduce((sum, o) => {
+        const optionStock = getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0;
+        return sum + optionStock;
+      }, 0);
+  
       if (totalStock > 0) {
         const optionType = selectedColor?.options.type || product.options?.type || 'opción';
         setAvailabilityMessage(`Selecciona un ${optionType}`);
@@ -66,7 +91,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         setAvailabilityMessage('Agotado');
       }
     }
-  }, [selectedOption, selectedColor, product]);
+  }, [selectedOption, selectedColor, product, getProductOption]);
 
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
@@ -131,7 +156,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
 
   const showOptions = !((selectedColor?.options.values.length === 1 && selectedColor?.options.values[0].value === 'Único') || (product.options.values.length === 1 && product.options.values[0].value === 'Único'));
   const optionsToShow = selectedColor?.options.values || product.options.values;
-  const isAddToCartDisabled = !selectedOption || (selectedOption?.stock ?? 0) <= 0;
+  const isAddToCartDisabled = !selectedOption || (getProductOption(product.id, selectedOption.value, selectedColor?.name)?.stock ?? 0) <= 0;
 
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
 
@@ -153,6 +178,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             </div>
         </Link>
         <div className='flex flex-col flex-grow mt-4'>
+            <p className={`font-semibold text-sm mb-1 uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
             <Link href={productUrl}>
                 <h3 className="product-name">{product.name}</h3>
             </Link>
@@ -189,7 +215,8 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                 {showOptions && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
-                      const isOptionDisabled = option.stock <= 0;
+                      const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;
+                      const isOptionDisabled = stock <= 0;
                       const isSelected = selectedOption?.value === option.value;
                       return (
                         <button
