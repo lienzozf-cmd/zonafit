@@ -20,8 +20,10 @@ export async function getNextOrderId(): Promise<string> {
             currentCounter = parsedCounter;
         }
     } catch (error) {
-        console.log('Counter file not found or unreadable, starting from 0.');
-        currentCounter = 0;
+        console.warn('Counter file not found or unreadable, will use a random number instead. Error:', error);
+        // If we can't read/write the file (e.g., in a read-only serverless environment),
+        // generate a random-ish ID to allow the order to proceed. 'E' for 'Error'.
+        return `E-${Math.floor(Date.now() / 1000) % 100000}`;
     }
 
     const nextCounter = currentCounter + 1;
@@ -29,7 +31,7 @@ export async function getNextOrderId(): Promise<string> {
     try {
         await fs.writeFile(counterFilePath, nextCounter.toString(), 'utf-8');
     } catch (writeError) {
-        console.error("Could not write to counter file, which will cause issues on restart.", writeError);
+        console.warn("Could not write to counter file. This is expected in some serverless environments.", writeError);
     }
 
     return nextCounter.toString().padStart(6, '0');
@@ -38,7 +40,7 @@ export async function getNextOrderId(): Promise<string> {
 
 /**
  * Updates the stock in the products.json file.
- * This function is called after a successful order.
+ * This function is now wrapped in a try/catch to prevent crashes in read-only environments.
  * @param productId The ID of the product.
  * @param optionValue The selected option (e.g., size, flavor).
  * @param quantity The quantity purchased.
@@ -51,7 +53,8 @@ export async function updateStock(productId: number, optionValue: string, quanti
 
         const productIndex = products.findIndex((p: any) => p.id === productId);
         if (productIndex === -1) {
-            throw new Error(`Product with ID ${productId} not found.`);
+            console.error(`Product with ID ${productId} not found for stock update.`);
+            return; // Don't throw, just exit gracefully.
         }
 
         const product = products[productIndex];
@@ -81,7 +84,7 @@ export async function updateStock(productId: number, optionValue: string, quanti
         console.log(`Stock updated for Product ID: ${productId}`);
 
     } catch (error) {
-        console.error('CRITICAL: Failed to update stock file. Inventory will be incorrect. Error:', error);
+        console.warn('CRITICAL: Failed to read or write stock file. Inventory will be incorrect. This is expected in most serverless environments. Error:', error);
         // Do not re-throw error to allow the order process to continue.
     }
 }
