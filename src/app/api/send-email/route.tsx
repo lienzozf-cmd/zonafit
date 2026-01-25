@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { render } from 'react-email';
+import { render } from '@react-email/components';
 import nodemailer from 'nodemailer';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
