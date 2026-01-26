@@ -62,8 +62,11 @@ export async function POST(request: Request) {
     try {
         const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
+        // Using explicit SMTP configuration for more reliability in production
         const transporter = nodemailer.createTransport({
-          service: 'gmail',
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true, // use SSL
           auth: {
             user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD,
