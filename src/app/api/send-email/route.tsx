@@ -9,10 +9,15 @@ async function sendTelegramNotification(message: string) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
+  console.log('Attempting to send Telegram notification...');
   if (!token || !chatId) {
-    console.warn('Telegram token or chat ID is missing. Skipping notification.');
+    console.error('CRITICAL: Telegram environment variables not found. Skipping notification.');
+    console.log(`- Is TELEGRAM_BOT_TOKEN set? ${!!token}`);
+    console.log(`- Is TELEGRAM_CHAT_ID set? ${!!chatId}`);
     return;
   }
+  
+  console.log('Telegram credentials loaded successfully. Sending message...');
 
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
@@ -31,12 +36,12 @@ async function sendTelegramNotification(message: string) {
 
     const result = await response.json();
     if (!result.ok) {
-      console.error('Failed to send Telegram notification:', result.description);
+      console.error('Telegram API returned an error:', result.description);
     } else {
       console.log('Telegram notification sent successfully.');
     }
   } catch (error) {
-    console.error('Error sending Telegram notification:', error);
+    console.error('Failed to send Telegram notification (network error):', error);
   }
 }
 
