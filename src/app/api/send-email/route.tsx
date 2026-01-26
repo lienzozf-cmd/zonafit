@@ -72,7 +72,7 @@ export async function POST(request: Request) {
 
         const mailOptions = {
           from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
-          to: 'rabanalesf22@gmail.com, rabafam2118@gmail.com',
+          to: ['rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
           subject: `¡Nuevo Pedido! Orden #${orderId}`,
           html: emailHtml,
         };
