@@ -5,7 +5,7 @@ import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-e
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import type { CartItem } from '@/lib/types';
 
-async function sendTelegramNotification(message: string) {
+async function sendTelegramNotification(message: string, photoUrl?: string) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -19,7 +19,21 @@ async function sendTelegramNotification(message: string) {
   
   console.log('Telegram credentials loaded successfully. Sending message...');
 
-  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+  const method = photoUrl ? 'sendPhoto' : 'sendMessage';
+  const url = `https://api.telegram.org/bot${token}/${method}`;
+  
+  const body = photoUrl
+    ? {
+        chat_id: chatId,
+        photo: photoUrl,
+        caption: message,
+        parse_mode: 'Markdown',
+      }
+    : {
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'Markdown',
+      };
 
   try {
     const response = await fetch(url, {
@@ -27,11 +41,7 @@ async function sendTelegramNotification(message: string) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-        parse_mode: 'Markdown',
-      }),
+      body: JSON.stringify(body),
     });
 
     const result = await response.json();
@@ -119,8 +129,10 @@ ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name
 *Método de Pago:* ${shippingInfo.paymentMethod === 'cod' ? 'Contra Entrega' : 'Previo Depósito'}
     `.trim();
 
+    const firstItemImageUrl = itemsWithAbsoluteImageUrls.length > 0 ? itemsWithAbsoluteImageUrls[0].image : undefined;
+
     // --- Send Telegram Notification (Fire and forget) ---
-    sendTelegramNotification(telegramMessage);
+    sendTelegramNotification(telegramMessage, firstItemImageUrl);
 
 
     // --- Email Sending (with robust error handling) ---
