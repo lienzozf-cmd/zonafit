@@ -63,9 +63,7 @@ export async function POST(request: Request) {
         const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
         const transporter = nodemailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true, // use SSL
+          service: 'gmail',
           auth: {
             user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD,
@@ -87,7 +85,7 @@ export async function POST(request: Request) {
         console.error('--- CRITICAL: EMAIL SENDING FAILED ---');
         console.error('The order was processed, but the confirmation email could not be sent.');
         console.error('Please check your SMTP credentials and permissions in your hosting environment variables.');
-        console.error('Error details:', emailError.message);
+        console.error('Error details:', emailError);
     }
     
     return NextResponse.json({ 
