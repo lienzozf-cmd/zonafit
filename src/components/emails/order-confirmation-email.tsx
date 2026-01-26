@@ -64,7 +64,7 @@ export const OrderConfirmationEmail = ({ orderDetails }: OrderConfirmationEmailP
   return (
     <Html>
       <Head />
-      <Preview>¡Nuevo Pedido en ZONA FIT GT! #{orderId}</Preview>
+      <Preview>ZONA FIT GT: Confirmación de tu pedido #{orderId}</Preview>
       <Body style={main}>
         <Container style={container}>
           {/* Header con Logo o Título */}
