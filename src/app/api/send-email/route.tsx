@@ -62,11 +62,9 @@ export async function POST(request: Request) {
     try {
         const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
-        // Using explicit SMTP configuration for more reliability in production
+        // Using the robust 'gmail' service configuration for nodemailer
         const transporter = nodemailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true, // use SSL
+          service: 'gmail',
           auth: {
             user: 'rabanalesf22@gmail.com',
             pass: 'fqzm xcmz cnwf cjtn',
@@ -75,8 +73,7 @@ export async function POST(request: Request) {
 
         const mailOptions = {
           from: `"ZONA FIT GT" <rabanalesf22@gmail.com>`,
-          to: shippingInfo.email,
-          bcc: ['rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
+          to: [shippingInfo.email, 'rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
           subject: `Confirmación de tu pedido ZONA FIT GT #${orderId}`,
           html: emailHtml,
         };
