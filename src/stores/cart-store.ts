@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
-import { type Product, type ProductOption } from '@/lib/data';
+import { products as productsData, type Product, type ProductOption } from '@/lib/data';
 
 interface AppState {
   items: CartItem[];
@@ -15,7 +15,7 @@ interface AppState {
   sessionId: string;
   setSessionId: (id: string) => void;
   setProducts: (products: Product[]) => void;
-  fetchProducts: () => Promise<void>;
+  fetchProducts: () => void;
   setIsCartOpen: (isOpen: boolean) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
@@ -43,18 +43,8 @@ export const useCartStore = create<AppState>()(
       sessionId: '', 
       setSessionId: (id: string) => set({ sessionId: id }),
       setProducts: (products) => set({ products }),
-      fetchProducts: async () => {
-        try {
-          const response = await fetch('/api/products');
-          if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.statusText}`);
-          }
-          const products = await response.json();
-          set({ products });
-        } catch (error) {
-          console.error("Failed to fetch products:", error);
-          set({ products: [] });
-        }
+      fetchProducts: () => {
+        set({ products: productsData });
       },
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       addItem: (item) => {
