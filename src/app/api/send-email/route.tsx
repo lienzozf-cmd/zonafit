@@ -5,6 +5,41 @@ import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-e
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import type { CartItem } from '@/lib/types';
 
+async function sendTelegramNotification(message: string) {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!token || !chatId) {
+    console.warn('Telegram token or chat ID is missing. Skipping notification.');
+    return;
+  }
+
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'Markdown',
+      }),
+    });
+
+    const result = await response.json();
+    if (!result.ok) {
+      console.error('Failed to send Telegram notification:', result.description);
+    } else {
+      console.log('Telegram notification sent successfully.');
+    }
+  } catch (error) {
+    console.error('Error sending Telegram notification:', error);
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -57,6 +92,31 @@ export async function POST(request: Request) {
       orderTotal,
       orderId,
     };
+    
+    // --- Create Telegram message ---
+    const telegramMessage = `
+*Nuevo Pedido ZONA FIT GT* 🔥
+---------------------------
+*ID de Orden:* #${orderId}
+*Cliente:* ${shippingInfo.firstName} ${shippingInfo.lastName}
+*Teléfono:* ${shippingInfo.phone}
+*Email:* ${shippingInfo.email}
+*Dirección:* ${shippingInfo.address}, ${shippingInfo.municipality}, ${shippingInfo.department}
+---------------------------
+*Resumen:*
+${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name} (${item.option})`).join('\n')}
+---------------------------
+*Subtotal:* Q${orderSubtotal.toFixed(2)}
+*Envío:* Q${orderShipping.toFixed(2)}
+*Comisión Contra Entrega:* Q${orderCommission.toFixed(2)}
+*TOTAL:* *Q${orderTotal.toFixed(2)}*
+---------------------------
+*Método de Pago:* ${shippingInfo.paymentMethod === 'cod' ? 'Contra Entrega' : 'Previo Depósito'}
+    `.trim();
+
+    // --- Send Telegram Notification (Fire and forget) ---
+    sendTelegramNotification(telegramMessage);
+
 
     // --- Email Sending (with robust error handling) ---
     try {
