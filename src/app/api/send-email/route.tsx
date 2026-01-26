@@ -68,13 +68,13 @@ export async function POST(request: Request) {
           port: 465,
           secure: true, // use SSL
           auth: {
-            user: process.env.SMTP_EMAIL,
-            pass: process.env.SMTP_PASSWORD,
+            user: 'rabanalesf22@gmail.com',
+            pass: 'fqzm xcmz cnwf cjtn',
           },
         });
 
         const mailOptions = {
-          from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
+          from: `"ZONA FIT GT" <rabanalesf22@gmail.com>`,
           to: shippingInfo.email,
           bcc: ['rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
           subject: `Confirmación de tu pedido ZONA FIT GT #${orderId}`,

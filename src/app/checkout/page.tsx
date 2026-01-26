@@ -24,6 +24,7 @@ import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import type { Product } from '@/lib/data';
+import { useRouter } from 'next/navigation';
 
 const checkoutSchema = z.object({
   firstName: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres.'),
@@ -45,6 +46,7 @@ export default function CheckoutPage() {
     products: state.products,
   }));
   const { toast } = useToast();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -148,7 +150,6 @@ export default function CheckoutPage() {
       const result = await response.json();
       
       triggerConfetti();
-      processOrder(); // This will clear the cart and fetch updated products
       
       setIsSubmitSuccessful(true);
       setOrderId(result.orderId);
@@ -166,6 +167,11 @@ export default function CheckoutPage() {
   }
 
   if (isSubmitSuccessful && orderId) {
+    const handleContinueShopping = () => {
+        processOrder();
+        router.push('/marcas');
+    };
+
     return (
       <>
         <Header />
@@ -181,8 +187,8 @@ export default function CheckoutPage() {
               <p className="text-4xl font-bold tracking-widest text-white mt-2">{orderId}</p>
               <p className="text-xs text-gray-500 mt-4">¡Tómale una captura de pantalla como referencia!</p>
             </div>
-            <Button asChild variant="secondary" className="mt-8 bg-cyan-500 hover:bg-cyan-600 text-white">
-              <Link href="/marcas">Seguir Comprando</Link>
+            <Button onClick={handleContinueShopping} variant="secondary" className="mt-8 bg-cyan-500 hover:bg-cyan-600 text-white">
+              Seguir Comprando
             </Button>
           </div>
         </main>
