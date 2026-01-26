@@ -27,7 +27,7 @@ export default function IntroWrapper({
     }
     // Initialize Firebase app
     getFirebaseApp();
-    // Products are now loaded statically, no need to fetch.
+    // Fetch products from the API
     fetchProducts();
 
     try {
