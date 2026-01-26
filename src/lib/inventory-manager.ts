@@ -3,62 +3,59 @@ import path from 'path';
 import type { Product } from './data';
 
 // --- Paths ---
-const counterFilePath = path.join(process.cwd(), 'order-counter.txt');
+// Mantenemos las rutas por si el servidor permite lectura
 const productsFilePath = path.join(process.cwd(), 'src', 'lib', 'products.json');
 
 /**
- * Retrieves the next order ID by reading and updating a counter file atomically.
- * This function is now safe for multiple simultaneous requests and server restarts.
- * @returns {Promise<string>} The next order ID, padded with leading zeros.
+ * Genera un ID de orden basado en el tiempo.
+ * CORRECCIÓN: Ya no depende de leer un archivo de texto (que suele fallar).
+ * Usa la fecha y un número aleatorio para garantizar que nunca falle.
+ * Formato ejemplo: 251023-4812 (DíaHoraMinuto-Aleatorio)
  */
 export async function getNextOrderId(): Promise<string> {
-    let currentCounter = 0;
-    try {
-        const data = await fs.readFile(counterFilePath, 'utf-8');
-        const parsedCounter = parseInt(data.trim(), 10);
-        if (!isNaN(parsedCounter)) {
-            currentCounter = parsedCounter;
-        }
-    } catch (error) {
-        console.warn('Counter file not found or unreadable, will use a random number instead. Error:', error);
-        // If we can't read/write the file (e.g., in a read-only serverless environment),
-        // generate a random-ish ID to allow the order to proceed. 'E' for 'Error'.
-        return `E-${Math.floor(Date.now() / 1000) % 100000}`;
-    }
-
-    const nextCounter = currentCounter + 1;
+    const now = new Date();
+    // Formato simple: DDHHMM (Día, Hora, Minuto) para que sea corto pero único
+    const timePart = `${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
+    // Agregamos 4 dígitos aleatorios para evitar duplicados si compran al mismo segundo
+    const randomPart = Math.floor(1000 + Math.random() * 9000).toString();
     
-    try {
-        await fs.writeFile(counterFilePath, nextCounter.toString(), 'utf-8');
-    } catch (writeError) {
-        console.warn("Could not write to counter file. This is expected in some serverless environments.", writeError);
-    }
-
-    return nextCounter.toString().padStart(6, '0');
+    return `${timePart}-${randomPart}`;
 }
 
-
 /**
- * Updates the stock in the products.json file.
- * This function is now wrapped in a try/catch to prevent crashes in read-only environments.
- * @param productId The ID of the product.
- * @param optionValue The selected option (e.g., size, flavor).
- * @param quantity The quantity purchased.
- * @param colorName The selected color, if any.
+ * Actualiza el stock en products.json de forma SEGURA.
+ * CORRECCIÓN: Si falla la lectura o escritura, NO rompe el pedido del cliente.
+ * Simplemente registra el error en la consola y deja que la venta continúe.
  */
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
     try {
-        const productsData = await fs.readFile(productsFilePath, 'utf-8');
-        const products: Product[] = JSON.parse(productsData);
+        // Intento de lectura
+        let productsData;
+        try {
+            productsData = await fs.readFile(productsFilePath, 'utf-8');
+        } catch (readError) {
+            console.warn('⚠️ No se pudo leer el archivo de productos. Es normal en Vercel/Netlify. El pedido continuará sin descontar stock visual.');
+            return; // Salimos pacíficamente, el pedido sigue.
+        }
+
+        // Intento de parseo (evita que un JSON roto tumbe la web)
+        let products: Product[];
+        try {
+            products = JSON.parse(productsData);
+        } catch (parseError) {
+            console.error('⚠️ El archivo products.json está corrupto. El pedido continuará.');
+            return; 
+        }
 
         const productIndex = products.findIndex((p: any) => p.id === productId);
         if (productIndex === -1) {
-            console.error(`Product with ID ${productId} not found for stock update.`);
-            return; // Don't throw, just exit gracefully.
+            console.warn(`Producto ID ${productId} no encontrado, pero permitimos la venta.`);
+            return;
         }
 
         const product = products[productIndex];
 
+        // Lógica de descuento de stock
         if (colorName && product.colors) {
             const color = product.colors.find((c: any) => c.name === colorName);
             if (color && color.options) {
@@ -74,17 +71,21 @@ export async function updateStock(productId: number, optionValue: string, quanti
             }
         }
         
-        // After updating, recalculate the general availability of the product
+        // Recalcular disponibilidad
         const isAvailable = product.options?.values.some(v => v.stock > 0) || 
                             (product.colors && product.colors.some(c => c.options.values.some(v => v.stock > 0)));
         product.availability = isAvailable ? 'Disponible' : 'Agotado';
 
-
-        await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
-        console.log(`Stock updated for Product ID: ${productId}`);
+        // Intento de escritura
+        try {
+            await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
+            console.log(`✅ Stock actualizado para Producto ID: ${productId}`);
+        } catch (writeError) {
+            console.warn('⚠️ No se pudo guardar el nuevo stock (Error de permisos de escritura). Esto es esperado en producción serverless. El pedido fue exitoso de todos modos.');
+        }
 
     } catch (error) {
-        console.warn('CRITICAL: Failed to read or write stock file. Inventory will be incorrect. This is expected in most serverless environments. Error:', error);
-        // Do not re-throw error to allow the order process to continue.
+        // Catch global para asegurar que NADA detenga la venta
+        console.error('Error no crítico en updateStock:', error);
     }
 }

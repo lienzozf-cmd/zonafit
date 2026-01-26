@@ -32,23 +32,12 @@ export async function POST(request: Request) {
       await updateStock(item.productId, item.option, item.quantity, item.color);
     }
     
-    // --- PREPARAR URLS DE IMAGENES (CORRECCIÓN AQUÍ) ---
-    
-    // 1. Define tu dominio real de producción aquí como fallback.
-    // NO uses localhost aquí. Usa tu dominio de Firebase/Vercel.
     const productionDomain = 'https://zona-fit-gt1.web.app'; 
-    
-    // Intenta leer la variable de entorno, si no existe, usa el dominio fijo.
     const baseURL = process.env.NEXT_PUBLIC_BASE_URL || productionDomain;
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
-        // Quitamos la barra inicial si existe para evitar dobles barras (ej: //img.png)
         const cleanPath = item.image.startsWith('/') ? item.image.substring(1) : item.image;
-        
-        // Codificamos la ruta por si tiene espacios o caracteres especiales
-        // Ej: "foto producto.png" se convierte en "foto%20producto.png"
         const encodedPath = cleanPath.split('/').map(segment => encodeURIComponent(segment)).join('/');
-
         const absoluteUrl = `${baseURL}/${encodedPath}`;
 
         return {
@@ -57,9 +46,6 @@ export async function POST(request: Request) {
             subtotal: (item.price * item.quantity).toFixed(2),
         };
     });
-
-    // --- DEBUG: MIRA ESTO EN TU TERMINAL ---
-    console.log("URL de imagen generada (ejemplo):", itemsWithAbsoluteImageUrls[0]?.image);
 
     const emailData = {
       shippingInfo,
@@ -72,36 +58,43 @@ export async function POST(request: Request) {
       orderId,
     };
 
-    const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
+    // --- Email Sending (with robust error handling) ---
+    try {
+        const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
-    // --- Nodemailer Setup ---
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.SMTP_EMAIL,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.SMTP_EMAIL,
+            pass: process.env.SMTP_PASSWORD,
+          },
+        });
 
-    const mailOptions = {
-      from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
-      to: 'rabanalesf22@gmail.com, rabafam2118@gmail.com',
-      subject: `¡Nuevo Pedido! Orden #${orderId}`,
-      html: emailHtml,
-    };
+        const mailOptions = {
+          from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
+          to: 'rabanalesf22@gmail.com, rabafam2118@gmail.com',
+          subject: `¡Nuevo Pedido! Orden #${orderId}`,
+          html: emailHtml,
+        };
 
-    // --- Send Email ---
-    await transporter.sendMail(mailOptions);
-    console.log(`Confirmation email sent for order #${orderId}`);
+        await transporter.sendMail(mailOptions);
+        console.log(`Confirmation email sent for order #${orderId}`);
+    } catch (emailError: any) {
+        // Log the error but do not block the order completion
+        console.error('--- CRITICAL: EMAIL SENDING FAILED ---');
+        console.error('The order was processed, but the confirmation email could not be sent.');
+        console.error('Please check your SMTP credentials and permissions in your hosting environment variables.');
+        console.error('Error details:', emailError.message);
+    }
     
     return NextResponse.json({ 
       success: true,
-      message: 'Order received and email sent successfully',
+      message: 'Order received successfully',
       orderId: orderId 
     }, { status: 200 });
 
   } catch (error: any) {
-    console.error('Error in send-email API:', error);
+    console.error('Fatal error in send-email API:', error);
     return NextResponse.json(
       { message: 'Internal Server Error', error: error.message || 'Unknown error' },
       { status: 500 }
