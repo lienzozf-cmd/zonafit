@@ -63,7 +63,9 @@ export async function POST(request: Request) {
         const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
         const transporter = nodemailer.createTransport({
-          service: 'gmail',
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true, // use SSL
           auth: {
             user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD,
@@ -72,13 +74,14 @@ export async function POST(request: Request) {
 
         const mailOptions = {
           from: `"ZONA FIT GT" <${process.env.SMTP_EMAIL}>`,
-          to: ['rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
-          subject: `¡Nuevo Pedido! Orden #${orderId}`,
+          to: shippingInfo.email,
+          bcc: ['rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
+          subject: `Confirmación de tu pedido ZONA FIT GT #${orderId}`,
           html: emailHtml,
         };
 
         await transporter.sendMail(mailOptions);
-        console.log(`Confirmation email sent for order #${orderId}`);
+        console.log(`Confirmation email sent for order #${orderId} to ${shippingInfo.email}`);
     } catch (emailError: any) {
         // Log the error but do not block the order completion
         console.error('--- CRITICAL: EMAIL SENDING FAILED ---');
