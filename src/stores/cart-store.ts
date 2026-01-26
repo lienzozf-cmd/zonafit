@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
-import { products as productsData, type Product, type ProductOption } from '@/lib/data';
+import { type Product, type ProductOption } from '@/lib/data';
 
 interface AppState {
   items: CartItem[];
@@ -14,8 +14,7 @@ interface AppState {
   products: Product[];
   sessionId: string;
   setSessionId: (id: string) => void;
-  setProducts: (products: Product[]) => void;
-  fetchProducts: () => void;
+  fetchProducts: () => Promise<void>;
   setIsCartOpen: (isOpen: boolean) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
@@ -42,11 +41,23 @@ export const useCartStore = create<AppState>()(
       products: [],
       sessionId: '', 
       setSessionId: (id: string) => set({ sessionId: id }),
-      setProducts: (products) => set({ products }),
-      fetchProducts: () => {
-        set({ products: productsData });
+      
+      fetchProducts: async () => {
+        try {
+            const response = await fetch('/api/products');
+            if (!response.ok) {
+                throw new Error('Failed to fetch products');
+            }
+            const products = await response.json();
+            set({ products });
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            set({ products: [] });
+        }
       },
+
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
+      
       addItem: (item) => {
         set(produce((state: AppState) => {
             const existingItem = state.items.find((i) => i.id === item.id);
@@ -71,6 +82,7 @@ export const useCartStore = create<AppState>()(
             state.total = total;
         }));
       },
+      
       removeItem: (id: string) => {
         set((state) => {
           const newItems = state.items.filter((i) => i.id !== id);
@@ -78,6 +90,7 @@ export const useCartStore = create<AppState>()(
           return { items: newItems, itemCount, total };
         });
       },
+
       incrementQuantity: (id) => {
         set(produce((state: AppState) => {
             const item = state.items.find((i) => i.id === id);
@@ -98,6 +111,7 @@ export const useCartStore = create<AppState>()(
             state.total = total;
         }));
       },
+
       decrementQuantity: (id) => {
           set((state) => {
              const newItems = state.items.map((i) =>
@@ -107,9 +121,11 @@ export const useCartStore = create<AppState>()(
             return { items: newItems, itemCount, total };
           });
       },
+
       clearCart: () => {
         set({ items: [], itemCount: 0, total: 0 })
       },
+
       processOrder: () => {
         set({
           items: [],
@@ -119,6 +135,7 @@ export const useCartStore = create<AppState>()(
         // Fetch products again to get the updated stock
         get().fetchProducts();
       },
+      
       getProductOption: (productId, optionValue, colorName) => {
         const product = get().products.find(p => p.id === productId);
         if (!product) return undefined;
@@ -132,7 +149,7 @@ export const useCartStore = create<AppState>()(
       },
     }),
     {
-      name: 'cart-storage-v4',
+      name: 'cart-storage-v5', // New version to prevent conflicts
       storage: createJSONStorage(() => localStorage), 
       partialize: (state) => ({ 
         items: state.items,

@@ -32,27 +32,29 @@ const brandColorMap: { [key: string]: string } = {
 
 
 const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
-  const { addItem, getProductOption } = useCartStore((state) => ({
+  const { products, addItem, getProductOption } = useCartStore((state) => ({
+    products: state.products,
     addItem: state.addItem,
     getProductOption: state.getProductOption,
   }));
   
-  // The initial product from server props is sufficient.
-  const product = initialProduct;
+  const product = useMemo(() => 
+    products.find(p => p.id === initialProduct.id) || initialProduct,
+    [products, initialProduct]
+  );
 
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
     product.colors && product.colors.length > 0 ? product.colors[0] : null
   );
 
-  // Memoize the initial option calculation
   const initialOption = useMemo(() => {
     const options = selectedColor?.options.values || product.options?.values || [];
-    const firstAvailableOption = options.find(o => o.stock > 0);
+    const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
     if (options.length === 1 && options[0].value === 'Único') {
       return options[0];
     }
     return firstAvailableOption || null;
-  }, [product, selectedColor]);
+  }, [product, selectedColor, getProductOption]);
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(initialOption);
   const [currentImage, setCurrentImage] = useState(selectedColor?.imageSrc || product.images[0].src);
@@ -61,15 +63,20 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   const { toast } = useToast();
 
   useEffect(() => {
+    setSelectedColor(product.colors && product.colors.length > 0 ? product.colors[0] : null);
+  }, [product]);
+
+  useEffect(() => {
     // When selectedColor changes, reset selectedOption
     const options = selectedColor?.options.values || product.options?.values || [];
-    const firstAvailableOption = options.find(o => o.stock > 0);
+    const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
     if (options.length === 1 && options[0].value === 'Único') {
         setSelectedOption(options[0]);
     } else {
         setSelectedOption(firstAvailableOption || null);
     }
-  }, [selectedColor, product.options.values]);
+    setCurrentImage(selectedColor?.imageSrc || product.images[0].src);
+  }, [selectedColor, product, getProductOption]);
 
   useEffect(() => {
     if (!product) return;
@@ -148,11 +155,15 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     });
   };
   
-  const isProductAvailable = useMemo(() => 
-    product.options?.values.some(v => v.stock > 0) || 
-    (product.colors && product.colors.some(c => c.options.values.some(v => v.stock > 0))),
-    [product]
-  );
+  const isProductAvailable = useMemo(() => {
+    const checkStock = (p: Product) => {
+      if (p.colors && p.colors.length > 0) {
+        return p.colors.some(c => c.options.values.some(v => (getProductOption(p.id, v.value, c.name)?.stock ?? 0) > 0));
+      }
+      return p.options.values.some(v => (getProductOption(p.id, v.value)?.stock ?? 0) > 0);
+    }
+    return checkStock(product);
+  }, [product, getProductOption]);
 
   const showOptions = !((selectedColor?.options.values.length === 1 && selectedColor?.options.values[0].value === 'Único') || (product.options.values.length === 1 && product.options.values[0].value === 'Único'));
   const optionsToShow = selectedColor?.options.values || product.options.values;
@@ -192,7 +203,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             {product.colors && product.colors.length > 1 && (
                 <div className="color-swatches">
                     {product.colors.map((color) => {
-                        const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+                        const isColorSoldOut = color.options.values.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
                         return (
                             <div key={color.name} className="relative">
                                 <div
