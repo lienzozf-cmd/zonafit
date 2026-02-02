@@ -600,7 +600,7 @@
     "name": "Legacy Logo Tight Shorts",
     "price": "Q.240.00",
     "availability": "Disponible",
-    "description": "Shorts ajustados con el logo Legacy para un look clásico y atlético.",
+    "description": "Shorts activos con el logo Legacy para un look clásico y atlético.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
@@ -2147,7 +2147,7 @@
     "is_compression": true,
     "feature1": "Diseño híbrido de sudadera y compresión",
     "feature2": "Capucha para mayor concentración",
-    "feature3": "Tejido flexible para un rango completo de movimiento",
+    "feature3": "Tejido flexible for a full range of motion",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
@@ -3841,7 +3841,7 @@
         }
       }
     ],
-    "visible": false
+    "visible": true
   },
   {
     "id": 2690,
@@ -3885,7 +3885,7 @@
         }
       }
     ],
-    "visible": false
+    "visible": true
   },
   {
     "id": 2691,
@@ -3929,7 +3929,7 @@
         }
       }
     ],
-    "visible": false
+    "visible": true
   },
   {
     "id": 2692,
@@ -3973,7 +3973,7 @@
         }
       }
     ],
-    "visible": false
+    "visible": true
   },
   {
     "id": 2693,
