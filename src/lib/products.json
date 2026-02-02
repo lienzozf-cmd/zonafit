@@ -4162,7 +4162,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "L",
@@ -4170,5 +4170,91 @@
         }
       ]
     }
+  },
+  {
+    "id": 2698,
+    "name": "Campus Mesh Shorts",
+    "price": "Q.475.00",
+    "availability": "Disponible",
+    "description": "Shorts de malla Campus de Gymshark, diseñados para ofrecer transpirabilidad y un estilo universitario clásico.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "Gymshark",
+    "fabric_type": "100% Poliéster",
+    "is_compression": false,
+    "feature1": "Tejido de malla ligero para máxima ventilación.",
+    "feature2": "Cintura elástica con cordón ajustable.",
+    "feature3": "Estilo 'retro' deportivo perfecto para entrenar.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/campusshorts.webp",
+        "alt": "Campus Mesh Shorts Gris",
+        "dataAiHint": "mesh shorts"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Gris",
+        "hex": "#808080",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/campusshorts.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2699,
+    "name": "Varsity Jersey",
+    "price": "Q.615.00",
+    "availability": "Disponible",
+    "description": "Jersey estilo Varsity de Gymshark, una prenda icónica que combina comodidad y un look atlético de alto nivel.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Gymshark",
+    "fabric_type": "100% Poliéster",
+    "is_compression": false,
+    "feature1": "Tejido de jersey transpirable y duradero.",
+    "feature2": "Detalles inspirados en el estilo universitario.",
+    "feature3": "Corte atlético para un ajuste cómodo.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/varsityjersey.webp",
+        "alt": "Varsity Jersey Gris",
+        "dataAiHint": "varsity jersey"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Gris",
+        "hex": "#808080",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/varsityjersey.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
