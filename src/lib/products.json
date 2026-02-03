@@ -1,3 +1,4 @@
+
 [
   {
     "id": 1,
@@ -4256,5 +4257,52 @@
         }
       }
     ]
+  },
+  {
+    "id": 2700,
+    "name": "Everyday Mini Gym Bag",
+    "price": "Q.465.00",
+    "availability": "Disponible",
+    "description": "La maleta de gimnasio perfecta para llevar lo esencial. Compacta, funcional y en un elegante color lila.",
+    "gender": "mujer",
+    "category": "accesorio",
+    "subcategory": "maleta",
+    "brand": "Gymshark",
+    "feature1": "Tamaño compacto ideal para el día a día.",
+    "feature2": "Correa ajustable y compartimento principal seguro.",
+    "feature3": "Material resistente y duradero.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2700/600/800",
+        "alt": "Everyday Mini Gym Bag Lila",
+        "dataAiHint": "purple gym bag"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Lila",
+        "hex": "#C8A2C8",
+        "imageSrc": "https://picsum.photos/seed/2700/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
   }
 ]

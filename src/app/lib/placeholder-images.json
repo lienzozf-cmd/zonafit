@@ -1,0 +1,10 @@
+
+{
+  "products": {
+    "everyday-mini-gym-bag": {
+      "src": "https://picsum.photos/seed/2700/600/800",
+      "alt": "Everyday Mini Gym Bag Lila",
+      "dataAiHint": "purple bag"
+    }
+  }
+}
