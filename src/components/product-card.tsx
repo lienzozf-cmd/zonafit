@@ -183,6 +183,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                   src={currentImage}
                   alt={product.name}
                   fill
+                  unoptimized
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-contain"
                 />
