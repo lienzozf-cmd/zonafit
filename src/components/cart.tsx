@@ -1,4 +1,3 @@
-
 'use client';
 import Image from 'next/image';
 import confetti from 'canvas-confetti';
@@ -110,6 +109,7 @@ const Cart = () => {
                             alt={item.name}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             fill
+                            unoptimized
                             className="absolute object-cover"
                             loading="lazy"
                           />

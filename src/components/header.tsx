@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -201,7 +200,7 @@ const Header = () => {
                 {searchResults.length > 0 ? (
                     searchResults.map(result => (
                     <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                        <Image src={result.images[0].src} alt={result.name} width={50} height={50} data-ai-hint={result.images[0].dataAiHint} />
+                        <Image src={result.images[0].src} alt={result.name} width={50} height={50} unoptimized data-ai-hint={result.images[0].dataAiHint} />
                         <div className="search-result-info">
                         <div className="search-result-name">{result.name}</div>
                         <div className="search-result-price">{result.price}</div>

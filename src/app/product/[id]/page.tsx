@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -188,6 +187,7 @@ const ProductDetailPage = () => {
                 src={currentImage}
                 alt={product.name}
                 fill
+                unoptimized
                 className="object-contain"
               />
             </div>
@@ -202,6 +202,7 @@ const ProductDetailPage = () => {
                     src={image.src}
                     alt={`${product.name} - thumbnail ${index + 1}`}
                     fill
+                    unoptimized
                     className="object-cover"
                   />
                 </div>
