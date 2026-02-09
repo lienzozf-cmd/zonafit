@@ -46,7 +46,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 3
             },
             {
               "value": "L",
@@ -297,9 +297,9 @@
   },
   {
     "id": 5,
-    "name": "Vital Seamless Crop Top Green",
+    "name": "Vital Seamless Crop Top",
     "price": "Q.450.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.",
     "gender": "mujer",
     "category": "ropa",
@@ -314,8 +314,7 @@
       {
         "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
         "alt": "Green crop top",
-        "dataAiHint": "green crop top",
-        "option": "S"
+        "dataAiHint": "green crop top"
       }
     ],
     "options": {
@@ -333,14 +332,20 @@
             {
               "value": "S",
               "stock": 0
-            },
+            }
+          ]
+        }
+      },
+      {
+        "name": "Strong Grey Marl",
+        "hex": "#555555",
+        "imageSrc": "https://picsum.photos/seed/2710/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
             {
               "value": "M",
-              "stock": 0
-            },
-            {
-              "value": "L",
-              "stock": 0
+              "stock": 1
             }
           ]
         }
@@ -1247,7 +1252,7 @@
     "name": "UFC™ Cut-Off hoodies",
     "price": "Q.495.00",
     "availability": "Disponible",
-    "description": "Sudadera sin mangas con licencia oficial de UFC™.",
+    "description": "Sudadera con licencia oficial de UFC™.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
@@ -2736,8 +2741,8 @@
   },
   {
     "id": 2662,
-    "name": "Impact Short",
-    "price": "Q.540.00",
+    "name": "Impact Shorts | 4.5\"",
+    "price": "Q.560.00",
     "availability": "Disponible",
     "description": "Shorts de alto impacto diseñados para moverse contigo, ofreciendo comodidad y estilo.",
     "gender": "mujer",
@@ -2771,6 +2776,20 @@
             {
               "value": "S",
               "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Azul Marino",
+        "hex": "#000080",
+        "imageSrc": "https://picsum.photos/seed/2662/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 2
             }
           ]
         }
@@ -4025,7 +4044,7 @@
   {
     "id": 2694,
     "name": "3012 - Drop Shoulder Knit Cut-Off",
-    "price": "Q.495.00",
+    "price": "Q.500.00",
     "availability": "Disponible",
     "description": "Una playera sin mangas con hombros caídos y tejido de punto, ideal para un estilo relajado y moderno.",
     "gender": "hombre",
@@ -4055,6 +4074,24 @@
           "values": [
             {
               "value": "M",
+              "stock": 1
+            },
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "imageSrc": "https://picsum.photos/seed/2694w/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
               "stock": 1
             }
           ]
@@ -4223,7 +4260,7 @@
     "name": "Varsity Jersey",
     "price": "Q.615.00",
     "availability": "Disponible",
-    "description": "Jersey estilo Varsity de Gymshark, una prenda icónica que combina comodidad y un look atlético de alto nivel.",
+    "description": "Jersey estilo Varsity de Gymshark, una prenda icónica que conmbina comodidad y un look atlético de alto nivel.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -4264,10 +4301,10 @@
   {
     "id": 2700,
     "name": "Everyday Mini Gym Bag",
-    "price": "Q.465.00",
+    "price": "Q.435.00",
     "availability": "Disponible",
-    "description": "La maleta de gimnasio perfecta para llevar lo esencial. Compacta, funcional y en un elegante color lila.",
-    "gender": "mujer",
+    "description": "La maleta de gimnasio perfecta para llevar lo esencial. Compacta, funcional y duradera.",
+    "gender": "unisex",
     "category": "accesorio",
     "subcategory": "maleta",
     "brand": "Gymshark",
@@ -4277,18 +4314,13 @@
     "images": [
       {
         "src": "https://picsum.photos/seed/2700/600/800",
-        "alt": "Everyday Mini Gym Bag Lila",
-        "dataAiHint": "purple gym bag"
+        "alt": "Everyday Mini Gym Bag",
+        "dataAiHint": "gym bag"
       }
     ],
     "options": {
       "type": "talla",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 1
-        }
-      ]
+      "values": []
     },
     "colors": [
       {
@@ -4301,6 +4333,34 @@
             {
               "value": "Único",
               "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Fresh Lilac",
+        "hex": "#E6E6FA",
+        "imageSrc": "https://picsum.photos/seed/2700fl/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Build Pink",
+        "hex": "#FFC0CB",
+        "imageSrc": "https://picsum.photos/seed/2700bp/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
             }
           ]
         }
@@ -4534,6 +4594,476 @@
           "values": [
             {
               "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2706,
+    "name": "4041 - Warrior Compression Tees",
+    "price": "Q.480.00",
+    "availability": "Disponible",
+    "description": "Playera de compresión Warrior, diseñada para ofrecer un soporte muscular excepcional y durabilidad.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "90% Nylon, 10% Elastane",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2706/600/800",
+        "alt": "Warrior Compression Navy",
+        "dataAiHint": "navy compression"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Navy",
+        "hex": "#000080",
+        "imageSrc": "https://picsum.photos/seed/2706/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            },
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2707,
+    "name": "3004 - Superman Cut-offs",
+    "price": "Q.485.00",
+    "availability": "Disponible",
+    "description": "Playera sin mangas de edición especial inspirada en Superman, con el diseño artístico 'The Painting'.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2707/600/800",
+        "alt": "Superman Cut-offs The Painting",
+        "dataAiHint": "superman tank"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "The Painting",
+        "hex": "#4682B4",
+        "imageSrc": "https://picsum.photos/seed/2707/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2708,
+    "name": "4064 - Superman Huge Tees",
+    "price": "Q.515.00",
+    "availability": "Disponible",
+    "description": "Playera de gran tamaño con el logo del legado de Superman, para un look imponente.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2708/600/800",
+        "alt": "Superman Huge Tees Legacy",
+        "dataAiHint": "superman tee"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Legacy",
+        "hex": "#FFD700",
+        "imageSrc": "https://picsum.photos/seed/2708/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2709,
+    "name": "Retro Shorts",
+    "price": "Q.420.00",
+    "availability": "Disponible",
+    "description": "Shorts de estilo retro de Gymshark, perfectos para un look clásico de gimnasio.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "Gymshark",
+    "fabric_type": "80% Cotton, 20% Polyester",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2709/600/800",
+        "alt": "Retro Shorts",
+        "dataAiHint": "retro shorts"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Heavy Blue",
+        "hex": "#00008B",
+        "imageSrc": "https://picsum.photos/seed/2709b/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/2709k/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2711,
+    "name": "Gymshark X Analis Seamless Leggings",
+    "price": "Q.645.00",
+    "availability": "Disponible",
+    "description": "Leggings sin costuras de la colaboración exclusiva con Analis, diseñados para realzar y rendir.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "legging",
+    "brand": "Gymshark",
+    "fabric_type": "89% Nylon, 11% Elastane",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2711/600/800",
+        "alt": "Gymshark X Analis Seamless Leggings",
+        "dataAiHint": "gymshark leggings"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black/Silver Grey",
+        "hex": "#2F4F4F",
+        "imageSrc": "https://picsum.photos/seed/2711/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2712,
+    "name": "Power Cut Off Tank",
+    "price": "Q.405.00",
+    "availability": "Disponible",
+    "description": "Camiseta sin mangas Power Cut Off de Gymshark, diseñada para entrenamientos intensos de fuerza.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "tank",
+    "brand": "Gymshark",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2712/600/800",
+        "alt": "Power Cut Off Tank",
+        "dataAiHint": "gymshark tank"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black/Asphalt Grey",
+        "hex": "#36454F",
+        "imageSrc": "https://picsum.photos/seed/2712/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2713,
+    "name": "Legacy Drop Arm Tank",
+    "price": "Q.445.00",
+    "availability": "Disponible",
+    "description": "El tanque clásico Legacy con sisas profundas para una ventilación óptima y un look de la vieja escuela.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "tank",
+    "brand": "Gymshark",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2713/600/800",
+        "alt": "Legacy Drop Arm Tank",
+        "dataAiHint": "legacy tank"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/2713/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2714,
+    "name": "Weight Plate Zip Coin Pouch",
+    "price": "Q.230.00",
+    "availability": "Disponible",
+    "description": "Monedero con cremallera en forma de disco de pesas, el accesorio más original para tus llaves.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "subcategory": "equipo",
+    "brand": "Gymshark",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2714/600/800",
+        "alt": "Weight Plate Zip Coin Pouch",
+        "dataAiHint": "pink pouch"
+      }
+    ],
+    "options": {
+      "type": "color",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 2
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Build Pink",
+        "hex": "#FFC0CB",
+        "imageSrc": "https://picsum.photos/seed/2714/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2715,
+    "name": "Defy Shorts | 4.5\"",
+    "price": "Q.600.00",
+    "availability": "Disponible",
+    "description": "Shorts de alto rendimiento de la línea Defy, con un largo de 4.5 pulgadas para libertad de movimiento.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "DFYNE",
+    "fabric_type": "78% Nylon, 22% Elastane",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2715/600/800",
+        "alt": "Defy Shorts Rojo",
+        "dataAiHint": "red shorts"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Rojo",
+        "hex": "#FF0000",
+        "imageSrc": "https://picsum.photos/seed/2715/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2716,
+    "name": "Itachi Forever \"Premium\" Oversized Tee",
+    "price": "Q.550.00",
+    "availability": "Disponible",
+    "description": "Playera premium de gran tamaño con el diseño legendario de Itachi Uchiha.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2716/600/800",
+        "alt": "Itachi Forever Premium Oversized Tee",
+        "dataAiHint": "itachi shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/2716/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2717,
+    "name": "Everyday Mini Holdall",
+    "price": "Q.435.00",
+    "availability": "Disponible",
+    "description": "Maleta pequeña y versátil para el día a día, con múltiples compartimentos.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "subcategory": "maleta",
+    "brand": "Gymshark",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2717/600/800",
+        "alt": "Everyday Mini Holdall Fresh Lilac",
+        "dataAiHint": "lilac bag"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Fresh Lilac",
+        "hex": "#E6E6FA",
+        "imageSrc": "https://picsum.photos/seed/2717/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "OS",
               "stock": 1
             }
           ]

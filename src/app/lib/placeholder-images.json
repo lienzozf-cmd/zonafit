@@ -29,6 +29,61 @@
       "src": "https://picsum.photos/seed/2705/600/800",
       "alt": "5079 - Sudadera Legado Superman",
       "dataAiHint": "superman hoodie"
+    },
+    "warrior-4041": {
+      "src": "https://picsum.photos/seed/2706/600/800",
+      "alt": "4041 - Warrior Compression Tees Navy",
+      "dataAiHint": "navy compression"
+    },
+    "superman-3004": {
+      "src": "https://picsum.photos/seed/2707/600/800",
+      "alt": "3004 - Superman Cut-offs",
+      "dataAiHint": "superman tank"
+    },
+    "superman-4064": {
+      "src": "https://picsum.photos/seed/2708/600/800",
+      "alt": "4064 - Superman Huge Tees",
+      "dataAiHint": "superman tee"
+    },
+    "retro-shorts": {
+      "src": "https://picsum.photos/seed/2709/600/800",
+      "alt": "Retro Shorts",
+      "dataAiHint": "retro shorts"
+    },
+    "analis-leggings": {
+      "src": "https://picsum.photos/seed/2711/600/800",
+      "alt": "Gymshark X Analis Seamless Leggings",
+      "dataAiHint": "gymshark leggings"
+    },
+    "power-cutoff": {
+      "src": "https://picsum.photos/seed/2712/600/800",
+      "alt": "Power Cut Off Tank",
+      "dataAiHint": "gymshark tank"
+    },
+    "legacy-drop-arm": {
+      "src": "https://picsum.photos/seed/2713/600/800",
+      "alt": "Legacy Drop Arm Tank",
+      "dataAiHint": "legacy tank"
+    },
+    "coin-pouch": {
+      "src": "https://picsum.photos/seed/2714/600/800",
+      "alt": "Weight Plate Zip Coin Pouch",
+      "dataAiHint": "pink pouch"
+    },
+    "defy-shorts": {
+      "src": "https://picsum.photos/seed/2715/600/800",
+      "alt": "Defy Shorts",
+      "dataAiHint": "red shorts"
+    },
+    "itachi-tee": {
+      "src": "https://picsum.photos/seed/2716/600/800",
+      "alt": "Itachi Forever Premium Oversized Tee",
+      "dataAiHint": "itachi shirt"
+    },
+    "mini-holdall": {
+      "src": "https://picsum.photos/seed/2717/600/800",
+      "alt": "Everyday Mini Holdall",
+      "dataAiHint": "lilac bag"
     }
   }
 }
