@@ -1,4 +1,3 @@
-
 [
   {
     "id": 1,
@@ -47,7 +46,7 @@
             },
             {
               "value": "M",
-              "stock": 1
+              "stock": 2
             },
             {
               "value": "L",
@@ -2105,7 +2104,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 0
+              "stock": 1
             }
           ]
         }
@@ -2123,7 +2122,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 6
             },
             {
               "value": "L",
@@ -3721,7 +3720,7 @@
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "chamarra",
-    "brand": "Youngla",
+    "brand": "YoungLA",
     "fabric_type": "75% Nylon, 25% Spandex",
     "is_compression": false,
     "feature1": "Tejido suave y elástico.",
@@ -3748,13 +3747,13 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
       }
     ],
-    "visible": false
+    "visible": true
   },
   {
     "id": 2688,
@@ -3765,7 +3764,7 @@
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "legging",
-    "brand": "Youngla",
+    "brand": "YoungLA",
     "fabric_type": "75% Nylon, 25% Spandex",
     "is_compression": true,
     "feature1": "Cintura alta sin costura frontal.",
@@ -3792,13 +3791,13 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
       }
     ],
-    "visible": false
+    "visible": true
   },
   {
     "id": 2689,
@@ -3836,7 +3835,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3880,7 +3879,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3924,7 +3923,7 @@
           "values": [
             {
               "value": "L",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -3967,6 +3966,10 @@
           "type": "talla",
           "values": [
             {
+              "value": "M",
+              "stock": 1
+            },
+            {
               "value": "XL",
               "stock": 1
             }
@@ -3978,7 +3981,7 @@
   },
   {
     "id": 2693,
-    "name": "2032 - Superman Sweats",
+    "name": "2032 - Superman Suda",
     "price": "Q.675.00",
     "availability": "Disponible",
     "description": "Pants de chándal de la colaboración con Superman, para un confort y estilo de superhéroe.",
@@ -4012,7 +4015,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -4297,6 +4300,240 @@
           "values": [
             {
               "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2701,
+    "name": "W211 Dreamers Joggers",
+    "price": "Q.545.00",
+    "availability": "Disponible",
+    "description": "Joggers de la colección Dreamers para mujer, diseñados para ofrecer una comodidad excepcional con un estilo moderno.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "fabric_type": "80% Cotton, 20% Polyester",
+    "is_compression": false,
+    "feature1": "Tejido de alta densidad para mayor calidez.",
+    "feature2": "Corte relajado ideal para el día a día.",
+    "feature3": "Detalles premium de la línea Dreamers.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2701/600/800",
+        "alt": "Dreamers Joggers Black",
+        "dataAiHint": "black joggers"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/2701/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2702,
+    "name": "3009 - Flex Stringers",
+    "price": "Q.389.64",
+    "availability": "Disponible",
+    "description": "Stringer de la línea Flex de YoungLA, maximiza la visibilidad de tus hombros y espalda durante el entrenamiento.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "tank",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "feature1": "Corte atlético profundo para libertad de movimiento.",
+    "feature2": "Material de algodón ultra suave.",
+    "feature3": "Ideal para culturismo y fitness.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2702/600/800",
+        "alt": "Flex Stringers Black",
+        "dataAiHint": "men stringer"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/2702/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2703,
+    "name": "4254 - Batman Shadow Tees",
+    "price": "Q.545.00",
+    "availability": "Disponible",
+    "description": "Playera de la colección Shadow inspirada en Batman, con el exclusivo diseño Joker F para un look oscuro y potente.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "feature1": "Colaboración oficial con DC Comics.",
+    "feature2": "Gráfico exclusivo 'Joker F'.",
+    "feature3": "Ajuste moderno y tejido duradero.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2703/600/800",
+        "alt": "Batman Shadow Tees Joker F",
+        "dataAiHint": "batman shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Joker F",
+        "hex": "#4B0082",
+        "imageSrc": "https://picsum.photos/seed/2703/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2704,
+    "name": "1011 - Dark Wave Shorts",
+    "price": "Q.485.00",
+    "availability": "Disponible",
+    "description": "Shorts de la colección Dark Wave, con un acabado de lavado especial para un estilo único y desenfadado.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "YoungLA",
+    "fabric_type": "100% Cotton",
+    "is_compression": false,
+    "feature1": "Acabado 'wash' vintage.",
+    "feature2": "Cintura ajustable y ajuste cómodo.",
+    "feature3": "Perfecto para el gimnasio o para salir.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2704/600/800",
+        "alt": "Dark Wave Shorts Black Wash",
+        "dataAiHint": "men shorts"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black Wash",
+        "hex": "#36454F",
+        "imageSrc": "https://picsum.photos/seed/2704/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2705,
+    "name": "5079 - Sudadera con capucha del legado de Superman",
+    "price": "Q.655.00",
+    "availability": "Disponible",
+    "description": "Sudadera premium del legado de Superman, calidez y estilo heróico en una prenda de alta calidad.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "sudadera",
+    "brand": "YoungLA",
+    "fabric_type": "80% Cotton, 20% Polyester",
+    "is_compression": false,
+    "feature1": "Colaboración oficial con DC Comics.",
+    "feature2": "Bordados de alta densidad.",
+    "feature3": "Máximo confort térmico.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2705/600/800",
+        "alt": "Superman Legacy Hoodie",
+        "dataAiHint": "superman hoodie"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Gris Jaspeado",
+        "hex": "#B2BEB5",
+        "imageSrc": "https://picsum.photos/seed/2705/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Lavado Negro",
+        "hex": "#1A1A1A",
+        "imageSrc": "https://picsum.photos/seed/2705/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
               "stock": 1
             }
           ]
