@@ -1,9 +1,10 @@
+
 import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 import type { Product } from '@/lib/data';
 
-const productsFilePath = path.join(process.cwd(), 'src/lib', 'products.json');
+const productsFilePath = path.join(process.cwd(), 'src', 'lib', 'products.json');
 
 async function getProducts(): Promise<Product[]> {
   try {
@@ -26,8 +27,12 @@ async function saveProducts(products: Product[]): Promise<void> {
 }
 
 export async function GET() {
-  const products = await getProducts();
-  return NextResponse.json(products);
+  try {
+    const products = await getProducts();
+    return NextResponse.json(products);
+  } catch (e) {
+    return NextResponse.json([], { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {
