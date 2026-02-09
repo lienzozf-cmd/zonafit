@@ -1864,7 +1864,7 @@
     "is_compression": false,
     "feature1": "Gráfico exclusivo 'Lifting Club'",
     "feature2": "Material de algodón transpirable",
-    "feature3": "Cintura elástica con cordón",
+    "feature3": "Cintura elástica con cordón ajustable",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.webp",
@@ -4189,7 +4189,7 @@
     "feature3": "Estilo 'retro' deportivo perfecto para entrenar.",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/hombre/campusshorts.webp",
+        "src": "/assets/images/marcas/gymshark/hombre/campusmeshshorts.webp",
         "alt": "Campus Mesh Shorts Gris",
         "dataAiHint": "mesh shorts"
       }
@@ -4202,7 +4202,7 @@
       {
         "name": "Gris",
         "hex": "#808080",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/campusshorts.webp",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/campusmeshshorts.webp",
         "options": {
           "type": "talla",
           "values": [

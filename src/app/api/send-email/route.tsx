@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server';
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
@@ -12,13 +13,9 @@ async function sendTelegramNotification(message: string) {
   console.log('Attempting to send Telegram notification...');
   if (!token || !chatId) {
     console.error('CRITICAL: Telegram environment variables not found. Skipping notification.');
-    console.log(`- Is TELEGRAM_BOT_TOKEN set? ${!!token}`);
-    console.log(`- Is TELEGRAM_CHAT_ID set? ${!!chatId}`);
     return;
   }
   
-  console.log('Telegram credentials loaded successfully. Sending message...');
-
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   
   const body = {
@@ -78,13 +75,17 @@ export async function POST(request: Request) {
     const baseURL = process.env.NEXT_PUBLIC_BASE_URL || productionDomain;
 
     const itemsWithAbsoluteImageUrls = orderItems.map((item: CartItem) => {
-        const cleanPath = item.image.startsWith('/') ? item.image.substring(1) : item.image;
-        const encodedPath = cleanPath.split('/').map(segment => encodeURIComponent(segment)).join('/');
-        const absoluteUrl = `${baseURL}/${encodedPath}`;
+        let imageUrl = item.image || 'https://picsum.photos/seed/placeholder/200/200';
+        
+        if (!imageUrl.startsWith('http')) {
+            const cleanPath = imageUrl.startsWith('/') ? imageUrl.substring(1) : imageUrl;
+            const encodedPath = cleanPath.split('/').map(segment => encodeURIComponent(segment)).join('/');
+            imageUrl = `${baseURL}/${encodedPath}`;
+        }
 
         return {
             ...item,
-            image: absoluteUrl,
+            image: imageUrl,
             subtotal: (item.price * item.quantity).toFixed(2),
         };
     });
@@ -121,15 +122,13 @@ ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name
 *Método de Pago:* ${shippingInfo.paymentMethod === 'cod' ? 'Contra Entrega' : 'Previo Depósito'}
     `.trim();
 
-    // --- Send Telegram Notification (Fire and forget) ---
+    // --- Send Telegram Notification ---
     sendTelegramNotification(telegramMessage);
 
-
-    // --- Email Sending (with robust error handling) ---
+    // --- Email Sending ---
     try {
         const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
-        // Using the robust 'gmail' service configuration for nodemailer
         const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
@@ -146,13 +145,8 @@ ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name
         };
 
         await transporter.sendMail(mailOptions);
-        console.log(`Confirmation email sent for order #${orderId} to ${shippingInfo.email}`);
     } catch (emailError: any) {
-        // Log the error but do not block the order completion
-        console.error('--- CRITICAL: EMAIL SENDING FAILED ---');
-        console.error('The order was processed, but the confirmation email could not be sent.');
-        console.error('Please check your SMTP credentials and permissions in your hosting environment variables.');
-        console.error('Error details:', emailError);
+        console.error('--- CRITICAL: EMAIL SENDING FAILED ---', emailError);
     }
     
     return NextResponse.json({ 
