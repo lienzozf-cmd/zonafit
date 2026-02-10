@@ -312,9 +312,9 @@
     "feature3": "Corte 'crop' que realza la figura",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
-        "alt": "Green crop top",
-        "dataAiHint": "green crop top"
+        "src": "/assets/images/marcas/gymshark/mujer/anabelrojo2.webp",
+        "alt": "Strong Grey Marl crop top",
+        "dataAiHint": "grey crop top"
       }
     ],
     "options": {
@@ -339,7 +339,7 @@
       {
         "name": "Strong Grey Marl",
         "hex": "#555555",
-        "imageSrc": "https://picsum.photos/seed/2710/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelrojo2.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -378,7 +378,7 @@
       "values": [
         {
           "value": "Gold",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -410,7 +410,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 5
+          "stock": 3
         }
       ]
     }
@@ -485,7 +485,7 @@
     "name": "Minimal Rope Chain - Gold 14K SS \"22\"",
     "price": "Q.295.00",
     "availability": "Disponible",
-    "description": "Cadena de cuerda minimalista en oro de 14K. Un toque de elegancia para cualquier ocasión.",
+    "description": "Cadena de cuerda minimalista en oro de 14K. Un toque de elegancia para cualquier occasion.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
@@ -701,7 +701,7 @@
   {
     "id": 2524,
     "name": "Crop Top Flex",
-    "price": "Q.336.00",
+    "price": "Q.335.00",
     "availability": "Disponible",
     "description": "Crop top de la línea Flex para un ajuste perfecto y cómodo.",
     "gender": "mujer",
@@ -800,7 +800,7 @@
   {
     "id": 2535,
     "name": "Adapt Fleck Sports Bra",
-    "price": "Q.446.00",
+    "price": "Q.445.00",
     "availability": "Disponible",
     "description": "Bra deportivo de la línea Adapt Fleck para un ajuste y soporte perfectos.",
     "gender": "mujer",
@@ -866,7 +866,7 @@
   {
     "id": 2539,
     "name": "Mesh Sports Bra",
-    "price": "Q.266.00",
+    "price": "Q.265.00",
     "availability": "Disponible",
     "description": "Bra deportivo con detalles de malla para mayor transpirabilidad.",
     "gender": "mujer",
@@ -899,7 +899,7 @@
   {
     "id": 2541,
     "name": "Ruched Sports Bra",
-    "price": "Q.291.00",
+    "price": "Q.290.00",
     "availability": "Disponible",
     "description": "Bra deportivo con diseño fruncido para un estilo único.",
     "gender": "mujer",
@@ -1369,7 +1369,7 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "L",
@@ -1627,7 +1627,7 @@
   {
     "id": 2626,
     "name": "Crew Socks 3pk (Blancos)",
-    "price": "Q.236.00",
+    "price": "Q.235.00",
     "availability": "Disponible",
     "description": "Paquete de 3 calcetines blancos, un básico indispensable.",
     "gender": "unisex",
@@ -1824,7 +1824,7 @@
   {
     "id": 2634,
     "name": "Crest 7\" Shorts",
-    "price": "Q.296.00",
+    "price": "Q.295.00",
     "availability": "Disponible",
     "description": "Shorts de 7 pulgadas de la línea Crest.",
     "gender": "hombre",
@@ -1890,7 +1890,7 @@
   {
     "id": 2638,
     "name": "Sets and Reps 3pk Crew Socks",
-    "price": "Q.251.00",
+    "price": "Q.250.00",
     "availability": "Disponible",
     "description": "Calcetines para tus sets y reps, en un conveniente paquete de 3.",
     "gender": "unisex",
@@ -2127,7 +2127,7 @@
             },
             {
               "value": "M",
-              "stock": 6
+              "stock": 3
             },
             {
               "value": "L",
@@ -2380,7 +2380,7 @@
   },
   {
     "id": 2652,
-    "name": "Iso 100 - Dynamatize - Chocolate 3LB",
+    "name": "Iso 100 - Dymatize - Chocolate 3LB",
     "price": "Q.665.00",
     "availability": "Disponible",
     "description": "Proteína aislada de alta calidad sabor chocolate.",
@@ -2405,14 +2405,14 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
   },
   {
     "id": 2653,
-    "name": "Iso 100 - Dynamatize - Cocoa Pebbles 3LB",
+    "name": "Iso 100 - Dymatize- Cocoa Pebbles 3LB",
     "price": "Q.685.00",
     "availability": "Disponible",
     "description": "Proteína aislada con el delicioso y único sabor de Cocoa Pebbles.",
@@ -3272,7 +3272,7 @@
   {
     "id": 2676,
     "name": "Rodilleras - Knee Wraps",
-    "price": "Q.370.00",
+    "price": "Q.375.00",
     "availability": "Disponible",
     "description": "Rodilleras de Ironbull para proporcionar el máximo soporte y protección durante tus levantamientos pesados.",
     "gender": "unisex",
@@ -3441,7 +3441,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -4547,7 +4547,7 @@
   {
     "id": 2705,
     "name": "5079 - Sudadera con capucha del legado de Superman",
-    "price": "Q.655.00",
+    "price": "Q.675.00",
     "availability": "Disponible",
     "description": "Sudadera premium del legado de Superman, calidez y estilo heróico en una prenda de alta calidad.",
     "gender": "hombre",
@@ -4574,20 +4574,6 @@
       {
         "name": "Gris Jaspeado",
         "hex": "#B2BEB5",
-        "imageSrc": "https://picsum.photos/seed/2705/600/800",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "Lavado Negro",
-        "hex": "#1A1A1A",
         "imageSrc": "https://picsum.photos/seed/2705/600/800",
         "options": {
           "type": "talla",
