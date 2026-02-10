@@ -4,7 +4,7 @@
     "name": "465 - Superhero Compression Tees",
     "price": "Q.450.00",
     "availability": "Disponible",
-    "description": "Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualable, te ayudará a superar tus límites.",
+    "description": "Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualables, te ayudará a superar tus límites.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -5050,6 +5050,88 @@
           "values": [
             {
               "value": "OS",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 5094,
+    "name": "5094 - Sudadera con capucha del legado de Superman",
+    "price": "Q.755.00",
+    "availability": "Disponible",
+    "description": "Sudadera premium del legado de Superman en color Lavado Negro. Estilo y comodidad de nivel superhéroe.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "sudadera",
+    "brand": "YoungLA",
+    "fabric_type": "80% Cotton, 20% Polyester",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/5094/600/800",
+        "alt": "Sudadera Superman Lavado Negro",
+        "dataAiHint": "black hoodie"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Lavado Negro",
+        "hex": "#1a1a1a",
+        "imageSrc": "https://picsum.photos/seed/5094/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 8062,
+    "name": "8062 - Warrior Compression hoodie",
+    "price": "Q.515.00",
+    "availability": "Disponible",
+    "description": "Sudadera de compresión Warrior para un soporte muscular óptimo y un look agresivo.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "sudadera",
+    "brand": "YoungLA",
+    "fabric_type": "90% Nylon, 10% Elastane",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/8062/600/800",
+        "alt": "Warrior Compression hoodie Light grey",
+        "dataAiHint": "grey compression"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Light grey",
+        "hex": "#D3D3D3",
+        "imageSrc": "https://picsum.photos/seed/8062/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
               "stock": 1
             }
           ]
