@@ -84,6 +84,16 @@
       "src": "https://picsum.photos/seed/2717/600/800",
       "alt": "Everyday Mini Holdall",
       "dataAiHint": "lilac bag"
+    },
+    "superman-5094": {
+      "src": "https://picsum.photos/seed/5094/600/800",
+      "alt": "Sudadera Superman Lavado Negro",
+      "dataAiHint": "black hoodie"
+    },
+    "warrior-8062": {
+      "src": "https://picsum.photos/seed/8062/600/800",
+      "alt": "Warrior Compression hoodie Light grey",
+      "dataAiHint": "grey compression"
     }
   }
 }
