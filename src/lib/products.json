@@ -1,3 +1,4 @@
+
 [
   {
     "id": 1,
@@ -2151,6 +2152,20 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 0
+            }
+          ]
+        }
+      },
       {
         "name": "Gris",
         "hex": "#808080",
