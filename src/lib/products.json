@@ -154,11 +154,11 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "L",
-              "stock": 0
+              "stock": 1
             }
           ]
         }
@@ -312,7 +312,7 @@
     "feature3": "Corte 'crop' que realza la figura",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/anabelrojo2.webp",
+        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
         "alt": "Strong Grey Marl crop top",
         "dataAiHint": "grey crop top"
       }
@@ -332,20 +332,6 @@
             {
               "value": "S",
               "stock": 0
-            }
-          ]
-        }
-      },
-      {
-        "name": "Strong Grey Marl",
-        "hex": "#555555",
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelrojo2.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
             }
           ]
         }
@@ -1252,7 +1238,7 @@
     "name": "UFC™ Cut-Off hoodies",
     "price": "Q.495.00",
     "availability": "Disponible",
-    "description": "Sudadera con licencia oficial de UFC™.",
+    "description": "Sudadera con capucha con licencia oficial de UFC™.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
@@ -2141,8 +2127,8 @@
   {
     "id": 2644,
     "name": "Warrior X Compression Hoodies",
-    "price": "Q.480.00",
-    "availability": "Agotado",
+    "price": "Q.515.00",
+    "availability": "Disponible",
     "description": "Sudadera con capucha de compresión para un look de guerrero y un rendimiento superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -2157,23 +2143,29 @@
       {
         "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
         "alt": "Warrior Compression Hoodie",
-        "dataAiHint": "men hoodie",
-        "option": "S"
+        "dataAiHint": "men hoodie"
       }
     ],
     "options": {
       "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        },
-        {
-          "value": "M",
-          "stock": 0
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Gris",
+        "hex": "#808080",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
         }
-      ]
-    }
+      }
+    ]
   },
   {
     "id": 2645,
@@ -2774,7 +2766,7 @@
           "type": "talla",
           "values": [
             {
-              "value": "S",
+              "value": "M",
               "stock": 1
             }
           ]
@@ -2789,7 +2781,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3821,7 +3813,7 @@
   {
     "id": 2689,
     "name": "3022 - Anarchy Cropped Tanks",
-    "price": "Q.425.00",
+    "price": "Q.455.00",
     "availability": "Disponible",
     "description": "Tanque corto de la colección Anarchy, perfecto para un look audaz y cómodo en el gimnasio.",
     "gender": "hombre",
@@ -3990,7 +3982,7 @@
             },
             {
               "value": "XL",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -4000,7 +3992,7 @@
   },
   {
     "id": 2693,
-    "name": "2032 - Superman Suda",
+    "name": "2032 - Superman Sweats",
     "price": "Q.675.00",
     "availability": "Disponible",
     "description": "Pants de chándal de la colaboración con Superman, para un confort y estilo de superhéroe.",
@@ -4074,7 +4066,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "L",
@@ -4086,7 +4078,7 @@
       {
         "name": "White",
         "hex": "#FFFFFF",
-        "imageSrc": "https://picsum.photos/seed/2694w/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3012 - Drop Shoulder Knit Cut-Off.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4429,7 +4421,7 @@
     "feature3": "Ideal para culturismo y fitness.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/2702/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/3009 - Flex Stringers.webp",
         "alt": "Flex Stringers Black",
         "dataAiHint": "men stringer"
       }
@@ -4442,7 +4434,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/2702/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3009 - Flex Stringers.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4473,7 +4465,7 @@
     "feature3": "Ajuste moderno y tejido duradero.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/2703/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees.webp",
         "alt": "Batman Shadow Tees Joker F",
         "dataAiHint": "batman shirt"
       }
@@ -4486,7 +4478,7 @@
       {
         "name": "Joker F",
         "hex": "#4B0082",
-        "imageSrc": "https://picsum.photos/seed/2703/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4517,7 +4509,7 @@
     "feature3": "Perfecto para el gimnasio o para salir.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/2704/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/1011 - Dark Wave Shorts.webp",
         "alt": "Dark Wave Shorts Black Wash",
         "dataAiHint": "men shorts"
       }
@@ -4530,7 +4522,7 @@
       {
         "name": "Black Wash",
         "hex": "#36454F",
-        "imageSrc": "https://picsum.photos/seed/2704/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/1011 - Dark Wave Shorts.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4561,7 +4553,7 @@
     "feature3": "Máximo confort térmico.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/2705/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies.webp",
         "alt": "Superman Legacy Hoodie",
         "dataAiHint": "superman hoodie"
       }
@@ -4574,7 +4566,7 @@
       {
         "name": "Gris Jaspeado",
         "hex": "#B2BEB5",
-        "imageSrc": "https://picsum.photos/seed/2705/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4647,7 +4639,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2707/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/3004 - Superman Cut-offs.webp",
         "alt": "Superman Cut-offs The Painting",
         "dataAiHint": "superman tank"
       }
@@ -4660,7 +4652,7 @@
       {
         "name": "The Painting",
         "hex": "#4682B4",
-        "imageSrc": "https://picsum.photos/seed/2707/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3004 - Superman Cut-offs.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4688,7 +4680,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2708/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/4064 - Superman Huge Tees.webp",
         "alt": "Superman Huge Tees Legacy",
         "dataAiHint": "superman tee"
       }
@@ -4701,7 +4693,7 @@
       {
         "name": "Legacy",
         "hex": "#FFD700",
-        "imageSrc": "https://picsum.photos/seed/2708/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4064 - Superman Huge Tees.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5072,7 +5064,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/5094/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/5094 - Superman Shield Hoodies.webp",
         "alt": "Sudadera Superman Lavado Negro",
         "dataAiHint": "black hoodie"
       }
@@ -5085,48 +5077,7 @@
       {
         "name": "Lavado Negro",
         "hex": "#1a1a1a",
-        "imageSrc": "https://picsum.photos/seed/5094/600/800",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            }
-          ]
-        }
-      }
-    ],
-    "visible": true
-  },
-  {
-    "id": 8062,
-    "name": "8062 - Warrior Compression hoodie",
-    "price": "Q.515.00",
-    "availability": "Disponible",
-    "description": "Sudadera de compresión Warrior para un soporte muscular óptimo y un look agresivo.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "sudadera",
-    "brand": "YoungLA",
-    "fabric_type": "90% Nylon, 10% Elastane",
-    "is_compression": true,
-    "images": [
-      {
-        "src": "https://picsum.photos/seed/8062/600/800",
-        "alt": "Warrior Compression hoodie Light grey",
-        "dataAiHint": "grey compression"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Light grey",
-        "hex": "#D3D3D3",
-        "imageSrc": "https://picsum.photos/seed/8062/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5094 - Superman Shield Hoodies.webp",
         "options": {
           "type": "talla",
           "values": [
