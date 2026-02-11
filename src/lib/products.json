@@ -2145,6 +2145,11 @@
         "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
         "alt": "Warrior Compression Hoodie",
         "dataAiHint": "men hoodie"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/8062 - Warrior Compression hoodie gris.webp",
+        "alt": "Warrior Compression Hoodie Gris",
+        "dataAiHint": "men hoodie grey"
       }
     ],
     "options": {
@@ -2169,7 +2174,7 @@
       {
         "name": "Gris",
         "hex": "#808080",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/8062 - Warrior Compression hoodie gris.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4587,51 +4592,6 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
-            }
-          ]
-        }
-      }
-    ],
-    "visible": true
-  },
-  {
-    "id": 2706,
-    "name": "4041 - Warrior Compression Tees",
-    "price": "Q.480.00",
-    "availability": "Disponible",
-    "description": "Playera de compresión Warrior, diseñada para ofrecer un soporte muscular excepcional y durabilidad.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "90% Nylon, 10% Elastane",
-    "is_compression": true,
-    "images": [
-      {
-        "src": "https://picsum.photos/seed/2706/600/800",
-        "alt": "Warrior Compression Navy",
-        "dataAiHint": "navy compression"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Navy",
-        "hex": "#000080",
-        "imageSrc": "https://picsum.photos/seed/2706/600/800",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            },
-            {
-              "value": "L",
               "stock": 1
             }
           ]
