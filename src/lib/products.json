@@ -46,7 +46,7 @@
             },
             {
               "value": "M",
-              "stock": 3
+              "stock": 1
             },
             {
               "value": "L",
@@ -1537,7 +1537,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
@@ -1670,7 +1670,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -2769,25 +2769,25 @@
     "feature3": "Tejido flexible.",
     "images": [
       {
-        "src": "/assets/images/marcas/dfyne/impactshort.webp",
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro.webp",
         "alt": "Impact Short Black 1",
         "dataAiHint": "black shorts",
         "color": "Negro"
       },
       {
-        "src": "https://picsum.photos/seed/2662-black-2/600/800",
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro2.webp",
         "alt": "Impact Short Black 2",
         "dataAiHint": "black shorts",
         "color": "Negro"
       },
       {
-        "src": "https://picsum.photos/seed/2662-blue-1/600/800",
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
         "alt": "Impact Short Blue 1",
         "dataAiHint": "blue shorts",
         "color": "Azul Marino"
       },
       {
-        "src": "https://picsum.photos/seed/2662-blue-2/600/800",
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul2.webp",
         "alt": "Impact Short Blue 2",
         "dataAiHint": "blue shorts",
         "color": "Azul Marino"
@@ -2801,7 +2801,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/dfyne/impactshort.webp",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -2815,7 +2815,7 @@
       {
         "name": "Azul Marino",
         "hex": "#000080",
-        "imageSrc": "https://picsum.photos/seed/2662-blue-1/600/800",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3473,7 +3473,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3487,7 +3487,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 3
+              "stock": 2
             }
           ]
         }
@@ -3602,7 +3602,7 @@
           "type": "tamaño",
           "values": [
             {
-              "value": "OS",
+              "value": "UNICO",
               "stock": 1
             }
           ]
@@ -3798,7 +3798,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3842,7 +3842,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3886,7 +3886,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3930,7 +3930,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -3974,7 +3974,7 @@
           "values": [
             {
               "value": "L",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -4066,7 +4066,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -4104,10 +4104,6 @@
         "options": {
           "type": "talla",
           "values": [
-            {
-              "value": "M",
-              "stock": 0
-            },
             {
               "value": "L",
               "stock": 1
@@ -4344,23 +4340,24 @@
     "feature2": "Correa ajustable y compartimento principal seguro.",
     "feature3": "Material resistente y duradero.",
     "images": [
-      {
-        "src": "/assets/images/Accesorios/minibag.webp",
-        "alt": "Everyday Mini Gym Bag Lila",
-        "dataAiHint": "gym bag",
-        "color": "Lila"
-      },
+
       {
         "src": "/assets/images/marcas/gymshark/mujer/Everyday Mini Gym Bag pink.webp",
         "alt": "Everyday Mini Gym Bag Pink",
         "dataAiHint": "pink bag",
-        "color": "Build Pink"
+        "color": "Rosa"
       },
       {
         "src": "https://picsum.photos/seed/2700pink2/600/800",
         "alt": "Everyday Mini Gym Bag Pink Detail",
         "dataAiHint": "pink bag",
-        "color": "Build Pink"
+        "color": "Rosa"
+      },
+      {
+        "src": "/assets/images/Accesorios/minibag.webp",
+        "alt": "Everyday Mini Gym Bag Lila",
+        "dataAiHint": "gym bag",
+        "color": "Lila"
       }
     ],
     "options": {
@@ -4368,6 +4365,20 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Rosa",
+        "hex": "#FFC0CB",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/Everyday Mini Gym Bag pink.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
+            }
+          ]
+        }
+      },
       {
         "name": "Lila",
         "hex": "#C8A2C8",
@@ -4378,20 +4389,6 @@
             {
               "value": "Único",
               "stock": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "Build Pink",
-        "hex": "#FFC0CB",
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/Everyday Mini Gym Bag pink.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "Único",
-              "stock": 2
             }
           ]
         }
@@ -4446,7 +4443,7 @@
   {
     "id": 2702,
     "name": "3009 - Flex Stringers",
-    "price": "Q.389.64",
+    "price": "Q.390.00",
     "availability": "Disponible",
     "description": "Stringer Flex YoungLA.",
     "gender": "hombre",
@@ -4800,7 +4797,7 @@
   {
     "id": 2712,
     "name": "Power Cut Off Tank",
-    "price": "Q.405.00",
+    "price": "Q.410.00",
     "availability": "Disponible",
     "description": "Corte Power Gymshark.",
     "gender": "hombre",
@@ -4937,13 +4934,13 @@
     "is_compression": true,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2715/600/800",
+        "src": "/assets/images/marcas/dfyne/Defy Shorts 4.5 rojo.webp",
         "alt": "Defy Shorts Rojo 1",
         "dataAiHint": "red shorts",
         "color": "Rojo"
       },
       {
-        "src": "https://picsum.photos/seed/2715-2/600/800",
+        "src": "/assets/images/marcas/dfyne/Defy Shorts 4.5 rojo.webp2",
         "alt": "Defy Shorts Rojo 2",
         "dataAiHint": "red shorts",
         "color": "Rojo"
@@ -4957,48 +4954,7 @@
       {
         "name": "Rojo",
         "hex": "#FF0000",
-        "imageSrc": "https://picsum.photos/seed/2715/600/800",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            }
-          ]
-        }
-      }
-    ],
-    "visible": true
-  },
-  {
-    "id": 2716,
-    "name": "Itachi Forever \"Premium\" Oversized Tee",
-    "price": "Q.550.00",
-    "availability": "Disponible",
-    "description": "Playera Itachi Darc Sport.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Darc Sport",
-    "fabric_type": "100% Algodón",
-    "is_compression": false,
-    "images": [
-      {
-        "src": "https://picsum.photos/seed/2716/600/800",
-        "alt": "Itachi Forever Premium Oversized Tee",
-        "dataAiHint": "itachi shirt"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Black",
-        "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/2716/600/800",
+        "imageSrc": "/assets/images/marcas/dfyne/Defy Shorts 4.5 rojo.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5084,45 +5040,6 @@
         "name": "Strong Grey Marl",
         "hex": "#545454",
         "imageSrc": "/assets/images/marcas/gymshark/mujer/Vital Crop Top.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            }
-          ]
-        }
-      }
-    ],
-    "visible": true
-  },
-  {
-    "id": 2718,
-    "name": "Vital Crop Top",
-    "price": "Q.450.00",
-    "availability": "Disponible",
-    "description": "Top corto de la línea Vital de Gymshark.",
-    "gender": "mujer",
-    "category": "ropa",
-    "subcategory": "top",
-    "brand": "Gymshark",
-    "images": [
-      {
-        "src": "https://picsum.photos/seed/2718/600/800",
-        "alt": "Vital Crop Top Strong Grey Marl",
-        "dataAiHint": "grey crop top"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Strong Grey Marl",
-        "hex": "#545454",
-        "imageSrc": "https://picsum.photos/seed/2718/600/800",
         "options": {
           "type": "talla",
           "values": [

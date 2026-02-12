@@ -11,7 +11,9 @@ const FeaturedProducts = () => {
   }));
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
-  const featuredProductIds = [1, 2697, 2667, 2664, 2668, 2643, 2686, 8];
+  // Se reemplaza ID 2668 (Nezuko) por 2700 (Mini Gym Bag)
+  // Se reemplaza ID 2643 (Superman 4117) por 2711 (Analis Leggings)
+  const featuredProductIds = [1, 2697, 2667, 2664, 2700, 2711, 2686, 8];
 
   useEffect(() => {
     if (products && products.length > 0) {
