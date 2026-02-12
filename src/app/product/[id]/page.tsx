@@ -1,11 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { Check, Shield, ArrowLeft, Pill, Server, X } from 'lucide-react';
+import { Check, Shield, ArrowLeft, Pill, Server } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { useCartStore } from '@/stores/cart-store';
@@ -40,7 +40,7 @@ const ProductDetailPage = () => {
         setProduct(foundProduct);
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0 ? foundProduct.colors[0] : null;
         setSelectedColor(initialColor);
-        setCurrentImage(initialColor ? initialColor.imageSrc : foundProduct.images[0].src);
+        setCurrentImage(initialColor ? initialColor.imageSrc : (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : 'https://picsum.photos/seed/placeholder/600/800'));
 
         const options = initialColor?.options.values || foundProduct.options?.values || [];
         if (options.length === 1 && options[0].value === 'Único') {
@@ -78,17 +78,22 @@ const ProductDetailPage = () => {
     }
   }
 
+  const filteredImages = useMemo(() => {
+    if (!product) return [];
+    if (!selectedColor) return product.images || [];
+    const imagesForColor = (product.images || []).filter(img => !img.color || img.color === selectedColor.name);
+    return imagesForColor.length > 0 ? imagesForColor : (product.images || []);
+  }, [product, selectedColor]);
 
   const handleColorClick = (color: ProductColor) => {
     setSelectedColor(color);
     setCurrentImage(color.imageSrc);
     
     const options = color.options.values;
-    // For products like supplements, if there's only one option ('Único'), select it automatically.
     if (options.length === 1 && options[0].value === 'Único') {
       setSelectedOption(options[0]);
     } else {
-      setSelectedOption(null); // For other products, require the user to select a size/option.
+      setSelectedOption(null);
     }
   };
 
@@ -109,8 +114,9 @@ const ProductDetailPage = () => {
       return;
     }
   
-    if (product.options && (!selectedOption || (product.options.values.length > 1 && selectedOption.value === 'Único'))) {
-      const optionType = (selectedColor ? selectedColor.options.type : product.options.type) || 'opción';
+    const currentOptionsValues = selectedColor?.options.values || product.options?.values || [];
+    if (currentOptionsValues.length > 0 && (!selectedOption || (currentOptionsValues.length > 1 && selectedOption.value === 'Único'))) {
+      const optionType = (selectedColor ? selectedColor.options.type : product.options?.type) || 'opción';
       toast({
         title: 'Error',
         description: `Por favor, selecciona una ${optionType}.`,
@@ -119,7 +125,7 @@ const ProductDetailPage = () => {
       return;
     }
 
-    if (!selectedOption) {
+    if (!selectedOption && currentOptionsValues.length > 0) {
         toast({
             title: 'Error',
             description: `Por favor, selecciona una opción.`,
@@ -129,7 +135,7 @@ const ProductDetailPage = () => {
     }
   
     const availableStock = getAvailableStock(selectedOption);
-    if (availableStock <= 0) {
+    if (availableStock <= 0 && currentOptionsValues.length > 0) {
       toast({
         title: 'Error',
         description: `No hay stock disponible para esta selección.`,
@@ -140,9 +146,9 @@ const ProductDetailPage = () => {
   
     const priceString = product.price || '0';
     const priceAsNumber = parseFloat(priceString.replace('Q.', ''));
-    const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${selectedOption!.value}` : `${product.id}-default-${selectedOption!.value}`;
+    const optionValue = selectedOption?.value || 'Único';
+    const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${optionValue}` : `${product.id}-default-${optionValue}`;
     const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
-  
   
     addItem({
       id: cartItemId,
@@ -150,11 +156,10 @@ const ProductDetailPage = () => {
       name: cartItemName,
       price: priceAsNumber,
       image: currentImage,
-      option: selectedOption!.value,
+      option: optionValue,
       color: selectedColor?.name,
       quantity: 1,
     });
-  
   };
 
   if (!isClient || !product) {
@@ -168,7 +173,7 @@ const ProductDetailPage = () => {
   }
 
   const currentOptions = selectedColor ? selectedColor.options : product.options;
-  const isAddToCartDisabled = !selectedOption || getAvailableStock(selectedOption) <= 0;
+  const isAddToCartDisabled = (currentOptions?.values?.length ?? 0) > 0 && (!selectedOption || getAvailableStock(selectedOption) <= 0);
 
   return (
     <>
@@ -180,11 +185,10 @@ const ProductDetailPage = () => {
             Regresar
         </Button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
-          {/* Image Gallery */}
           <div>
             <div className="relative aspect-square w-full overflow-hidden rounded-lg border-2 border-[hsl(var(--accent))]">
               <Image
-                src={currentImage}
+                src={currentImage || 'https://picsum.photos/seed/placeholder/600/800'}
                 alt={product.name}
                 fill
                 unoptimized
@@ -192,7 +196,7 @@ const ProductDetailPage = () => {
               />
             </div>
             <div className="flex gap-2 mt-4 overflow-x-auto">
-              {product.images.map((image, index) => (
+              {filteredImages.map((image, index) => (
                 <div
                   key={index}
                   className={`relative w-20 h-20 flex-shrink-0 cursor-pointer rounded-md overflow-hidden border-2 ${currentImage === image.src ? 'border-accent' : 'border-gray-700'}`}
@@ -210,7 +214,6 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          {/* Product Info */}
           <div className="flex flex-col">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.name}</h1>
             {selectedColor && <p className="text-xl text-gray-400 mb-2">{selectedColor.name}</p>}
@@ -218,11 +221,10 @@ const ProductDetailPage = () => {
               <p className="text-3xl text-accent font-semibold" style={{color: 'hsl(var(--accent))'}}>{product.price}</p>
             </div>
 
-            <div className="prose prose-invert max-w-none mb-6">
+            <div className="prose prose-invert max-none mb-6">
               <p>{product.description}</p>
             </div>
 
-            {/* Product Features */}
             {(product.feature1 || product.feature2 || product.feature3) && (
                 <div className="mb-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700/50">
                     <h3 className="text-lg font-bold mb-3 text-gray-200">Características Adicionales</h3>
@@ -276,7 +278,6 @@ const ProductDetailPage = () => {
             )}
 
 
-            {/* Options */}
             <div className="mt-auto space-y-4">
               {product.colors && product.colors.length > 0 && (
                 <div>
@@ -302,7 +303,7 @@ const ProductDetailPage = () => {
                 </div>
               )}
               
-              {currentOptions && !(currentOptions.values.length === 1 && currentOptions.values[0].value === 'Único') && (
+              {currentOptions && currentOptions.values && !(currentOptions.values.length === 1 && currentOptions.values[0].value === 'Único') && (
                 <div>
                   <h3 className="text-lg font-medium mb-2">
                     {currentOptions.type.charAt(0).toUpperCase() + currentOptions.type.slice(1)}

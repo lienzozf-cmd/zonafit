@@ -1,4 +1,3 @@
-
 [
   {
     "id": 1,
@@ -2144,12 +2143,14 @@
       {
         "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
         "alt": "Warrior Compression Hoodie",
-        "dataAiHint": "men hoodie"
+        "dataAiHint": "men hoodie",
+        "color": "Negro"
       },
       {
         "src": "/assets/images/marcas/youngla/hombre/8062 - Warrior Compression hoodie gris.webp",
         "alt": "Warrior Compression Hoodie Gris",
-        "dataAiHint": "men hoodie grey"
+        "dataAiHint": "men hoodie grey",
+        "color": "Gris"
       }
     ],
     "options": {
@@ -4326,13 +4327,21 @@
     "images": [
       {
         "src": "/assets/images/Accesorios/minibag.webp",
-        "alt": "Everyday Mini Gym Bag",
-        "dataAiHint": "gym bag"
+        "alt": "Everyday Mini Gym Bag Lila",
+        "dataAiHint": "gym bag",
+        "color": "Lila"
       },
       {
         "src": "/assets/images/marcas/gymshark/mujer/Everyday Mini Gym Bag pink.webp",
         "alt": "Everyday Mini Gym Bag Pink",
-        "dataAiHint": "pink bag"
+        "dataAiHint": "pink bag",
+        "color": "Build Pink"
+      },
+      {
+        "src": "https://picsum.photos/seed/2700pink2/600/800",
+        "alt": "Everyday Mini Gym Bag Pink Detail",
+        "dataAiHint": "pink bag",
+        "color": "Build Pink"
       }
     ],
     "options": {
