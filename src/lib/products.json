@@ -84,7 +84,7 @@
     "name": "Warrior Compression Tees",
     "price": "Q.450.00",
     "availability": "Disponible",
-    "description": "Desata al guerrero que llevas dentro. Esta playera de compresión ofrece un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.",
+    "description": "Desata al guerrero que llevas dentro. Esta playera de compresión offers un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -2770,8 +2770,27 @@
     "images": [
       {
         "src": "/assets/images/marcas/dfyne/impactshort.webp",
-        "alt": "Impact Short Black",
-        "dataAiHint": "woman shorts black"
+        "alt": "Impact Short Black 1",
+        "dataAiHint": "black shorts",
+        "color": "Negro"
+      },
+      {
+        "src": "https://picsum.photos/seed/2662-black-2/600/800",
+        "alt": "Impact Short Black 2",
+        "dataAiHint": "black shorts",
+        "color": "Negro"
+      },
+      {
+        "src": "https://picsum.photos/seed/2662-blue-1/600/800",
+        "alt": "Impact Short Blue 1",
+        "dataAiHint": "blue shorts",
+        "color": "Azul Marino"
+      },
+      {
+        "src": "https://picsum.photos/seed/2662-blue-2/600/800",
+        "alt": "Impact Short Blue 2",
+        "dataAiHint": "blue shorts",
+        "color": "Azul Marino"
       }
     ],
     "options": {
@@ -2796,7 +2815,7 @@
       {
         "name": "Azul Marino",
         "hex": "#000080",
-        "imageSrc": "https://picsum.photos/seed/2662/600/800",
+        "imageSrc": "https://picsum.photos/seed/2662-blue-1/600/800",
         "options": {
           "type": "talla",
           "values": [
@@ -4692,11 +4711,11 @@
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
-    "fabric_type": "80% Cotton, 20% Polyester",
+    "fabric_type": "80% Algodón, 20% Poliéster",
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2709/600/800",
+        "src": "/assets/images/marcas/gymshark/hombre/Retro Shorts blue.webp",
         "alt": "Retro Shorts",
         "dataAiHint": "retro shorts"
       }
@@ -4709,7 +4728,7 @@
       {
         "name": "Heavy Blue",
         "hex": "#00008B",
-        "imageSrc": "https://picsum.photos/seed/2709b/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/Retro Shorts blue.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4723,7 +4742,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/2709k/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/Retro Shorts black.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4751,7 +4770,7 @@
     "is_compression": true,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2711/600/800",
+        "src": "/assets/images/marcas/gymshark/mujer/Gymshark X Analis Seamless Leggings.webp",
         "alt": "Gymshark X Analis Seamless Leggings",
         "dataAiHint": "gymshark leggings"
       }
@@ -4764,7 +4783,7 @@
       {
         "name": "Black/Silver Grey",
         "hex": "#2F4F4F",
-        "imageSrc": "https://picsum.photos/seed/2711/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/Gymshark X Analis Seamless Leggings.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4792,7 +4811,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2712/600/800",
+        "src": "/assets/images/marcas/gymshark/hombre/Power Cut Off Tank.webp",
         "alt": "Power Cut Off Tank",
         "dataAiHint": "gymshark tank"
       }
@@ -4805,7 +4824,7 @@
       {
         "name": "Black/Asphalt Grey",
         "hex": "#36454F",
-        "imageSrc": "https://picsum.photos/seed/2712/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/Power Cut Off Tank.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4833,7 +4852,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2713/600/800",
+        "src": "/assets/images/marcas/gymshark/hombre/Legacy Drop Arm Tank.webp",
         "alt": "Legacy Drop Arm Tank",
         "dataAiHint": "legacy tank"
       }
@@ -4846,7 +4865,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/2713/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/Legacy Drop Arm Tank.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4872,7 +4891,7 @@
     "brand": "Gymshark",
     "images": [
       {
-        "src": "https://picsum.photos/seed/2714/600/800",
+        "src": "/assets/images/marcas/gymshark/mujer/Weight Plate Zip Coin Pouch.webp",
         "alt": "Weight Plate Zip Coin Pouch",
         "dataAiHint": "pink pouch"
       }
@@ -4890,7 +4909,7 @@
       {
         "name": "Build Pink",
         "hex": "#FFC0CB",
-        "imageSrc": "https://picsum.photos/seed/2714/600/800",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/Weight Plate Zip Coin Pouch.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -4919,8 +4938,15 @@
     "images": [
       {
         "src": "https://picsum.photos/seed/2715/600/800",
-        "alt": "Defy Shorts Rojo",
-        "dataAiHint": "red shorts"
+        "alt": "Defy Shorts Rojo 1",
+        "dataAiHint": "red shorts",
+        "color": "Rojo"
+      },
+      {
+        "src": "https://picsum.photos/seed/2715-2/600/800",
+        "alt": "Defy Shorts Rojo 2",
+        "dataAiHint": "red shorts",
+        "color": "Rojo"
       }
     ],
     "options": {
@@ -5044,7 +5070,7 @@
     "feature3": "Corte 'crop' que realza la figura",
     "images": [
       {
-        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
+        "src": "/assets/images/marcas/gymshark/mujer/Vital Crop Top.webp",
         "alt": "Vital Crop Top Strong Grey Marl",
         "dataAiHint": "grey crop top"
       }
@@ -5057,7 +5083,46 @@
       {
         "name": "Strong Grey Marl",
         "hex": "#545454",
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/Vital Crop Top.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2718,
+    "name": "Vital Crop Top",
+    "price": "Q.450.00",
+    "availability": "Disponible",
+    "description": "Top corto de la línea Vital de Gymshark.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "top",
+    "brand": "Gymshark",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2718/600/800",
+        "alt": "Vital Crop Top Strong Grey Marl",
+        "dataAiHint": "grey crop top"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Strong Grey Marl",
+        "hex": "#545454",
+        "imageSrc": "https://picsum.photos/seed/2718/600/800",
         "options": {
           "type": "talla",
           "values": [
