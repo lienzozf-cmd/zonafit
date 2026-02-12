@@ -4012,7 +4012,7 @@
   },
   {
     "id": 2693,
-    "name": "2032 - Superman Sweats",
+    "name": "2032 - Superman pants",
     "price": "Q.675.00",
     "availability": "Disponible",
     "description": "Pants de chándal Superman.",
@@ -5005,6 +5005,50 @@
         "name": "Lavado Negro",
         "hex": "#1a1a1a",
         "imageSrc": "/assets/images/marcas/youngla/hombre/5094 - Superman Shield Hoodies.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": 2717,
+    "name": "Vital Crop Top",
+    "price": "Q.450.00",
+    "availability": "Disponible",
+    "description": "El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "top",
+    "brand": "Gymshark",
+    "fabric_type": "96% Nylon, 4% Elastane",
+    "is_compression": true,
+    "feature1": "Diseño sin costuras para máxima comodidad",
+    "feature2": "Tecnología de absorción de sudor",
+    "feature3": "Corte 'crop' que realza la figura",
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
+        "alt": "Vital Crop Top Strong Grey Marl",
+        "dataAiHint": "grey crop top"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Strong Grey Marl",
+        "hex": "#545454",
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
         "options": {
           "type": "talla",
           "values": [
