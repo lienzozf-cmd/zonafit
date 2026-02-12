@@ -80,6 +80,26 @@
       "alt": "Defy Shorts",
       "dataAiHint": "red shorts"
     },
+    "defy-shorts-2": {
+      "src": "https://picsum.photos/seed/2715-2/600/800",
+      "alt": "Defy Shorts Detail",
+      "dataAiHint": "red shorts"
+    },
+    "impact-shorts-black-2": {
+      "src": "https://picsum.photos/seed/2662-black-2/600/800",
+      "alt": "Impact Shorts Black Detail",
+      "dataAiHint": "black shorts"
+    },
+    "impact-shorts-blue-1": {
+      "src": "https://picsum.photos/seed/2662-blue-1/600/800",
+      "alt": "Impact Shorts Blue",
+      "dataAiHint": "blue shorts"
+    },
+    "impact-shorts-blue-2": {
+      "src": "https://picsum.photos/seed/2662-blue-2/600/800",
+      "alt": "Impact Shorts Blue Detail",
+      "dataAiHint": "blue shorts"
+    },
     "itachi-tee": {
       "src": "https://picsum.photos/seed/2716/600/800",
       "alt": "Itachi Forever Premium Oversized Tee",
