@@ -10,6 +10,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { useCartStore } from '@/stores/cart-store';
 
+const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
 
 const ProductDetailPage = () => {
   const params = useParams<{ id: string }>();
@@ -40,9 +41,11 @@ const ProductDetailPage = () => {
         setProduct(foundProduct);
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0 ? foundProduct.colors[0] : null;
         setSelectedColor(initialColor);
-        setCurrentImage(initialColor ? initialColor.imageSrc : (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : 'https://picsum.photos/seed/placeholder/600/800'));
+        
+        const initialImg = initialColor ? initialColor.imageSrc : (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : PLACEHOLDER_IMAGE);
+        setCurrentImage(initialImg);
 
-        const options = initialColor?.options.values || foundProduct.options?.values || [];
+        const options = initialColor?.options?.values || foundProduct.options?.values || [];
         if (options.length === 1 && options[0].value === 'Único') {
           setSelectedOption(options[0]);
         } else {
@@ -73,7 +76,7 @@ const ProductDetailPage = () => {
       const availableStock = getAvailableStock(selectedOption);
       setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
     } else {
-      const optionType = selectedColor?.options.type || product.options?.type || 'opción';
+      const optionType = selectedColor?.options?.type || product.options?.type || 'opción';
       setAvailabilityMessage(`Selecciona un ${optionType}`);
     }
   }
@@ -89,7 +92,7 @@ const ProductDetailPage = () => {
     setSelectedColor(color);
     setCurrentImage(color.imageSrc);
     
-    const options = color.options.values;
+    const options = color.options?.values || [];
     if (options.length === 1 && options[0].value === 'Único') {
       setSelectedOption(options[0]);
     } else {
@@ -114,9 +117,9 @@ const ProductDetailPage = () => {
       return;
     }
   
-    const currentOptionsValues = selectedColor?.options.values || product.options?.values || [];
+    const currentOptionsValues = selectedColor?.options?.values || product.options?.values || [];
     if (currentOptionsValues.length > 0 && (!selectedOption || (currentOptionsValues.length > 1 && selectedOption.value === 'Único'))) {
-      const optionType = (selectedColor ? selectedColor.options.type : product.options?.type) || 'opción';
+      const optionType = (selectedColor ? selectedColor.options?.type : product.options?.type) || 'opción';
       toast({
         title: 'Error',
         description: `Por favor, selecciona una ${optionType}.`,
@@ -188,7 +191,7 @@ const ProductDetailPage = () => {
           <div>
             <div className="relative aspect-square w-full overflow-hidden rounded-lg border-2 border-[hsl(var(--accent))]">
               <Image
-                src={currentImage || 'https://picsum.photos/seed/placeholder/600/800'}
+                src={currentImage || PLACEHOLDER_IMAGE}
                 alt={product.name}
                 fill
                 unoptimized
@@ -284,7 +287,8 @@ const ProductDetailPage = () => {
                   <h3 className="text-lg font-medium mb-2">{product.category === 'suplemento' ? 'Sabor' : 'Color'}</h3>
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map(color => {
-                      const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+                      const colorOptions = color.options?.values || [];
+                      const isColorSoldOut = colorOptions.every(v => v.stock === 0);
                       const isSelected = selectedColor?.name === color.name;
                       return (
                         <Button 
