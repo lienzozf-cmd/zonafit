@@ -30,6 +30,7 @@ const brandColorMap: { [key: string]: string } = {
     'Ironbull': 'text-neutral-400 animate-pulse',
 };
 
+const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
 
 const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
   const { products, addItem, getProductOption } = useCartStore((state) => ({
@@ -48,7 +49,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   );
 
   const initialOption = useMemo(() => {
-    const options = selectedColor?.options.values || product.options?.values || [];
+    const options = selectedColor?.options?.values || product.options?.values || [];
     const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
     if (options.length === 1 && options[0].value === 'Único') {
       return options[0];
@@ -57,7 +58,14 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   }, [product, selectedColor, getProductOption]);
 
   const [selectedOption, setSelectedOption] = useState<ProductOption | null>(initialOption);
-  const [currentImage, setCurrentImage] = useState(selectedColor?.imageSrc || product.images[0].src);
+  
+  const getInitialImage = () => {
+    if (selectedColor?.imageSrc) return selectedColor.imageSrc;
+    if (product.images && product.images.length > 0) return product.images[0].src;
+    return PLACEHOLDER_IMAGE;
+  };
+
+  const [currentImage, setCurrentImage] = useState(getInitialImage());
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   
   const { toast } = useToast();
@@ -67,15 +75,21 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   }, [product]);
 
   useEffect(() => {
-    // When selectedColor changes, reset selectedOption
-    const options = selectedColor?.options.values || product.options?.values || [];
+    const options = selectedColor?.options?.values || product.options?.values || [];
     const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
     if (options.length === 1 && options[0].value === 'Único') {
         setSelectedOption(options[0]);
     } else {
         setSelectedOption(firstAvailableOption || null);
     }
-    setCurrentImage(selectedColor?.imageSrc || product.images[0].src);
+    
+    if (selectedColor?.imageSrc) {
+      setCurrentImage(selectedColor.imageSrc);
+    } else if (product.images && product.images.length > 0) {
+      setCurrentImage(product.images[0].src);
+    } else {
+      setCurrentImage(PLACEHOLDER_IMAGE);
+    }
   }, [selectedColor, product, getProductOption]);
 
   useEffect(() => {
@@ -86,20 +100,20 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     if (selectedOption) {
       setAvailabilityMessage(stock > 0 ? `Disponible: ${stock} unidades` : 'Agotado');
     } else {
-      const totalStock = (selectedColor?.options.values || product.options?.values || []).reduce((sum, o) => {
+      const options = selectedColor?.options?.values || product.options?.values || [];
+      const totalStock = options.reduce((sum, o) => {
         const optionStock = getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0;
         return sum + optionStock;
       }, 0);
   
       if (totalStock > 0) {
-        const optionType = selectedColor?.options.type || product.options?.type || 'opción';
+        const optionType = selectedColor?.options?.type || product.options?.type || 'opción';
         setAvailabilityMessage(`Selecciona un ${optionType}`);
       } else {
         setAvailabilityMessage('Agotado');
       }
     }
   }, [selectedOption, selectedColor, product, getProductOption]);
-
 
   const handleOptionClick = (e: React.MouseEvent, option: ProductOption) => {
     e.stopPropagation();
@@ -109,7 +123,8 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
 
   const handleColorHover = (color: ProductColor) => {
     if (color.name !== selectedColor?.name) {
-      const isColorSoldOut = color.options.values.every(v => v.stock === 0);
+      const colorOptions = color.options?.values || [];
+      const isColorSoldOut = colorOptions.every(v => v.stock === 0);
       if (isColorSoldOut) return;
       
       setCurrentImage(color.imageSrc);
@@ -127,7 +142,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     }
     
     if (!selectedOption) {
-      const optionType = (selectedColor?.options.type || product.options.type) || 'opción';
+      const optionType = (selectedColor?.options?.type || product.options?.type) || 'opción';
       toast({ title: 'Error', description: `Por favor, selecciona una ${optionType}.`, variant: 'destructive' });
       return;
     }
@@ -158,15 +173,18 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   const isProductAvailable = useMemo(() => {
     const checkStock = (p: Product) => {
       if (p.colors && p.colors.length > 0) {
-        return p.colors.some(c => c.options.values.some(v => (getProductOption(p.id, v.value, c.name)?.stock ?? 0) > 0));
+        return p.colors.some(c => (c.options?.values || []).some(v => (getProductOption(p.id, v.value, c.name)?.stock ?? 0) > 0));
       }
-      return p.options.values.some(v => (getProductOption(p.id, v.value)?.stock ?? 0) > 0);
+      return (p.options?.values || []).some(v => (getProductOption(p.id, v.value)?.stock ?? 0) > 0);
     }
     return checkStock(product);
   }, [product, getProductOption]);
 
-  const showOptions = !((selectedColor?.options.values.length === 1 && selectedColor?.options.values[0].value === 'Único') || (product.options.values.length === 1 && product.options.values[0].value === 'Único'));
-  const optionsToShow = selectedColor?.options.values || product.options.values;
+  const productOptionsValues = product.options?.values || [];
+  const selectedColorOptionsValues = selectedColor?.options?.values || [];
+
+  const showOptions = !((selectedColorOptionsValues.length === 1 && selectedColorOptionsValues[0].value === 'Único') || (productOptionsValues.length === 1 && productOptionsValues[0].value === 'Único'));
+  const optionsToShow = selectedColor ? (selectedColor.options?.values || []) : (product.options?.values || []);
   const isAddToCartDisabled = !selectedOption || (getProductOption(product.id, selectedOption.value, selectedColor?.name)?.stock ?? 0) <= 0;
 
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
@@ -175,7 +193,15 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     <div 
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
-        onMouseLeave={() => setCurrentImage(selectedColor?.imageSrc || product.images[0].src)}
+        onMouseLeave={() => {
+          if (selectedColor?.imageSrc) {
+            setCurrentImage(selectedColor.imageSrc);
+          } else if (product.images && product.images.length > 0) {
+            setCurrentImage(product.images[0].src);
+          } else {
+            setCurrentImage(PLACEHOLDER_IMAGE);
+          }
+        }}
     >
         <Link href={productUrl} className="product-image-link w-full">
             <div className="product-carousel">
@@ -204,7 +230,8 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             {product.colors && product.colors.length > 1 && (
                 <div className="color-swatches">
                     {product.colors.map((color) => {
-                        const isColorSoldOut = color.options.values.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
+                        const colorOptions = color.options?.values || [];
+                        const isColorSoldOut = colorOptions.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
                         return (
                             <div key={color.name} className="relative">
                                 <div
@@ -224,7 +251,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             )}
 
             <div className="product-info mt-auto">
-                {showOptions && (
+                {showOptions && optionsToShow.length > 0 && (
                     <div className="size-options">
                     {optionsToShow.map((option) => {
                       const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;

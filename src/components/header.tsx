@@ -13,6 +13,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 
+const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/200/200';
+
 const Header = () => {
   const { products, setIsCartOpen, itemCount } = useCartStore((state) => ({ 
     products: state.products,
@@ -114,7 +116,7 @@ const Header = () => {
                   {link.sublinks.map((sublink) => (
                     <li key={sublink.title}>
                       <Link href={sublink.href}>
-                        {sublink.title} {sublink.sublinks && <span className="dropdown-arrow">►</span>}
+                        {sublink.title} {link.sublinks && <span className="dropdown-arrow">►</span>}
                       </Link>
                       {sublink.sublinks && (
                         <ul className="sub-submenu">
@@ -198,15 +200,18 @@ const Header = () => {
                 </div>
                 <div className="search-results-container">
                 {searchResults.length > 0 ? (
-                    searchResults.map(result => (
-                    <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
-                        <Image src={result.images[0].src} alt={result.name} width={50} height={50} unoptimized data-ai-hint={result.images[0].dataAiHint} />
-                        <div className="search-result-info">
-                        <div className="search-result-name">{result.name}</div>
-                        <div className="search-result-price">{result.price}</div>
+                    searchResults.map(result => {
+                      const resultImg = result.images && result.images.length > 0 ? result.images[0].src : PLACEHOLDER_IMAGE;
+                      return (
+                        <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
+                            <Image src={resultImg} alt={result.name} width={50} height={50} unoptimized />
+                            <div className="search-result-info">
+                            <div className="search-result-name">{result.name}</div>
+                            <div className="search-result-price">{result.price}</div>
+                            </div>
                         </div>
-                    </div>
-                    ))
+                      );
+                    })
                 ) : (
                     searchTerm && <div className="no-results">No se encontraron resultados.</div>
                 )}
