@@ -5,7 +5,6 @@ import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { useCartStore } from '@/stores/cart-store';
-import { X } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -124,7 +123,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   const handleColorHover = (color: ProductColor) => {
     if (color.name !== selectedColor?.name) {
       const colorOptions = color.options?.values || [];
-      const isColorSoldOut = colorOptions.every(v => v.stock === 0);
+      const isColorSoldOut = colorOptions.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
       if (isColorSoldOut) return;
       
       setCurrentImage(color.imageSrc);
@@ -206,10 +205,11 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         <Link href={productUrl} className="product-image-link w-full">
             <div className="product-carousel">
                 <Image
-                  src={currentImage}
+                  src={currentImage || PLACEHOLDER_IMAGE}
                   alt={product.name}
                   fill
                   unoptimized
+                  onError={() => setCurrentImage(PLACEHOLDER_IMAGE)}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-contain"
                 />

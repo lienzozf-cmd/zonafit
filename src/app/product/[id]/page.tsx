@@ -195,6 +195,7 @@ const ProductDetailPage = () => {
                 alt={product.name}
                 fill
                 unoptimized
+                onError={() => setCurrentImage(PLACEHOLDER_IMAGE)}
                 className="object-contain"
               />
             </div>
@@ -210,6 +211,9 @@ const ProductDetailPage = () => {
                     alt={`${product.name} - thumbnail ${index + 1}`}
                     fill
                     unoptimized
+                    onError={(e) => {
+                      (e.target as any).src = PLACEHOLDER_IMAGE;
+                    }}
                     className="object-cover"
                   />
                 </div>
@@ -288,7 +292,7 @@ const ProductDetailPage = () => {
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map(color => {
                       const colorOptions = color.options?.values || [];
-                      const isColorSoldOut = colorOptions.every(v => v.stock === 0);
+                      const isColorSoldOut = colorOptions.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
                       const isSelected = selectedColor?.name === color.name;
                       return (
                         <Button 
