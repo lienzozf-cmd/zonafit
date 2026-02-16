@@ -15,7 +15,7 @@ const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
 const ProductDetailPage = () => {
   const params = useParams<{ id: string }>();
   const router = useRouter();
-  const { id } = params!;
+  const { id } = params || { id: '' };
   
   const { products, getProductOption, addItem, items } = useCartStore((state) => ({
     products: state.products,
@@ -83,9 +83,25 @@ const ProductDetailPage = () => {
 
   const filteredImages = useMemo(() => {
     if (!product) return [];
-    if (!selectedColor) return product.images || [];
-    const imagesForColor = (product.images || []).filter(img => !img.color || img.color === selectedColor.name);
-    return imagesForColor.length > 0 ? imagesForColor : (product.images || []);
+    const allImages = product.images || [];
+    
+    if (!selectedColor) return allImages;
+
+    // 1. Imágenes que pertenecen al color seleccionado (incluyendo detalles)
+    const currentColorImages = allImages.filter(img => img.color === selectedColor.name);
+    
+    // 2. Imágenes genéricas (sin color asignado)
+    const genericImages = allImages.filter(img => !img.color);
+    
+    // 3. La primera imagen representativa de cada uno de los OTROS colores
+    const otherColors = (product.colors || []).filter(c => c.name !== selectedColor.name);
+    const otherRepresentativeImages = otherColors.map(c => 
+      allImages.find(img => img.color === c.name)
+    ).filter((img): img is NonNullable<typeof img> => !!img);
+
+    // Combinar y eliminar duplicados por URL de imagen
+    const combined = [...currentColorImages, ...genericImages, ...otherRepresentativeImages];
+    return combined.filter((v, i, a) => a.findIndex(t => t.src === v.src) === i);
   }, [product, selectedColor]);
 
   const handleColorClick = (color: ProductColor) => {
@@ -97,6 +113,18 @@ const ProductDetailPage = () => {
       setSelectedOption(options[0]);
     } else {
       setSelectedOption(null);
+    }
+  };
+
+  const handleThumbnailClick = (image: { src: string; color?: string }) => {
+    setCurrentImage(image.src);
+    
+    // Si la imagen pertenece a un color distinto al seleccionado, cambiamos el color
+    if (image.color && image.color !== selectedColor?.name && product?.colors) {
+      const newColor = product.colors.find(c => c.name === image.color);
+      if (newColor) {
+        handleColorClick(newColor);
+      }
     }
   };
 
@@ -204,7 +232,7 @@ const ProductDetailPage = () => {
                 <div
                   key={index}
                   className={`relative w-20 h-20 flex-shrink-0 cursor-pointer rounded-md overflow-hidden border-2 ${currentImage === image.src ? 'border-accent' : 'border-gray-700'}`}
-                  onClick={() => setCurrentImage(image.src)}
+                  onClick={() => handleThumbnailClick(image)}
                 >
                   <Image
                     src={image.src}
