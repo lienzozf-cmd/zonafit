@@ -4590,7 +4590,14 @@
       {
         "src": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies.webp",
         "alt": "Superman Legacy Hoodie",
-        "dataAiHint": "superman hoodie"
+        "dataAiHint": "superman hoodie",
+        "color": "Gris Jaspeado"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies Black.webp",
+        "alt": "Superman Legacy Hoodie Black",
+        "dataAiHint": "superman hoodie black",
+        "color": "Negro"
       }
     ],
     "options": {
@@ -4602,6 +4609,20 @@
         "name": "Gris Jaspeado",
         "hex": "#B2BEB5",
         "imageSrc": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies Black.webp",
         "options": {
           "type": "talla",
           "values": [
