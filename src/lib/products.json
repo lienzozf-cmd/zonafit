@@ -1355,7 +1355,7 @@
             },
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "L",
@@ -1420,7 +1420,7 @@
         },
         {
           "value": "M",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "L",
@@ -1928,7 +1928,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -2855,7 +2855,7 @@
       "values": [
         {
           "value": "Napolitano",
-          "stock": 3
+          "stock": 2
         }
       ]
     }
