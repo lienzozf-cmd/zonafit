@@ -76,14 +76,24 @@ export default function CheckoutPage() {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const totalAfterDiscount = subtotal; // No more discount
+  const totalAfterDiscount = subtotal; 
   const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
 
   useEffect(() => {
-    // This is necessary to ensure re-rendering occurs when the payment method changes.
-  }, [paymentMethod]);
+    // Tracking conversion when order is successful
+    if (isSubmitSuccessful && orderId) {
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-17970036779/UNe2CN3ZnP0bEKuA5PhC',
+          'value': orderTotal,
+          'currency': 'GTQ',
+          'transaction_id': orderId
+        });
+      }
+    }
+  }, [isSubmitSuccessful, orderId, orderTotal]);
 
 
   const triggerConfetti = () => {
@@ -114,7 +124,7 @@ export default function CheckoutPage() {
       shippingInfo: data,
       orderItems: items,
       orderSubtotal: subtotal,
-      orderDiscount: 0, // No discount
+      orderDiscount: 0, 
       orderShipping: shippingCost,
       orderCommission: codCommission,
       orderTotal: orderTotal,
@@ -140,7 +150,6 @@ export default function CheckoutPage() {
             });
           }
         } catch (e) {
-            // This means the response was not JSON, likely an HTML error page
              errorMsg = 'Error inesperado del servidor. Por favor, intenta de nuevo.';
         }
         throw new Error(errorMsg);
