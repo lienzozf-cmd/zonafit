@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import IntroWrapper from '@/components/intro-wrapper';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
@@ -19,6 +20,20 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17970036779"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17970036779');
+          `}
+        </Script>
         <IntroWrapper>{children}</IntroWrapper>
         <Toaster />
       </body>
