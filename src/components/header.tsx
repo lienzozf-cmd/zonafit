@@ -200,10 +200,10 @@ const Header = () => {
                 </div>
                 <div className="search-results-container">
                 {searchResults.length > 0 ? (
-                    searchResults.map(result => {
+                    searchResults.map((result, index) => {
                       const resultImg = result.images && result.images.length > 0 ? result.images[0].src : PLACEHOLDER_IMAGE;
                       return (
-                        <div key={result.id} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
+                        <div key={`${result.id}-${index}`} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
                             <Image src={resultImg} alt={result.name} width={50} height={50} unoptimized />
                             <div className="search-result-info">
                             <div className="search-result-name">{result.name}</div>

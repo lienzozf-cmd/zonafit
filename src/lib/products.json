@@ -81,7 +81,7 @@
   },
   {
     "id": 2,
-    "name": "Warrior Compression Tees",
+    "name": "4041 - Warrior Compression Tees",
     "price": "Q.450.00",
     "availability": "Disponible",
     "description": "Desata al guerrero que llevas dentro. Esta playera de compresión offers un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.",
@@ -1105,11 +1105,11 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "M",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "L",
@@ -1235,7 +1235,7 @@
   },
   {
     "id": 2612,
-    "name": "UFC™ Cut-Off hoodies",
+    "name": "5003 UFC™ Cut-Off hoodies",
     "price": "Q.495.00",
     "availability": "Disponible",
     "description": "Sudadera con capucha con licencia oficial de UFC™.",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": 2618,
-    "name": "Combat Compression",
+    "name": "477- Combat Compression",
     "price": "Q.315.00",
     "availability": "Disponible",
     "description": "Ropa de compresión para combate, diseñada para el máximo rendimiento.",
@@ -1511,7 +1511,7 @@
   },
   {
     "id": 2619,
-    "name": "Iron Compression",
+    "name": "425 - Iron Compression",
     "price": "Q.375.00",
     "availability": "Disponible",
     "description": "Compresión de hierro para un soporte inquebrantable.",
@@ -1537,7 +1537,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "M",
@@ -2113,7 +2113,7 @@
             },
             {
               "value": "M",
-              "stock": 3
+              "stock": 2
             },
             {
               "value": "L",
@@ -2126,7 +2126,7 @@
   },
   {
     "id": 2644,
-    "name": "Warrior X Compression Hoodies",
+    "name": "8062- Warrior X Compression Hoodies",
     "price": "Q.515.00",
     "availability": "Disponible",
     "description": "Sudadera con capucha de compresión para un look de guerrero y un rendimiento superior.",
@@ -2215,7 +2215,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -2775,19 +2775,19 @@
         "color": "Negro"
       },
       {
-        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro2.webp",
+        "src": "https://picsum.photos/seed/2662-black-2/600/800",
         "alt": "Impact Short Black 2",
         "dataAiHint": "black shorts",
         "color": "Negro"
       },
       {
-        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
+        "src": "https://picsum.photos/seed/2662-blue-1/600/800",
         "alt": "Impact Short Blue 1",
         "dataAiHint": "blue shorts",
         "color": "Azul Marino"
       },
       {
-        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul2.webp",
+        "src": "https://picsum.photos/seed/2662-blue-2/600/800",
         "alt": "Impact Short Blue 2",
         "dataAiHint": "blue shorts",
         "color": "Azul Marino"
@@ -2815,12 +2815,56 @@
       {
         "name": "Azul Marino",
         "hex": "#000080",
-        "imageSrc": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
+        "imageSrc": "https://picsum.photos/seed/2662-blue-1/600/800",
         "options": {
           "type": "talla",
           "values": [
             {
               "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2663,
+    "name": "Impact Shorts",
+    "price": "Q.540.00",
+    "availability": "Disponible",
+    "description": "Shorts de alto impacto diseñados para moverse contigo.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "DFYNE",
+    "fabric_type": "78% Nylon, 22% Elastane",
+    "is_compression": true,
+    "feature1": "Cintura alta sin costuras frontales.",
+    "feature2": "Largo de 4.5 pulgadas.",
+    "feature3": "Tejido flexible.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/dfyne/impactshort.webp",
+        "alt": "Impact Short Black 1",
+        "dataAiHint": "black shorts",
+        "color": "Negro"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "/assets/images/marcas/dfyne/impactshort.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
               "stock": 1
             }
           ]
@@ -3364,7 +3408,7 @@
         "dataAiHint": "protein powder"
       },
       {
-        "src": "/assets/images/marcas/dragonpharma/isovainilla.webp",
+        "src": "/assets/images/marcas/dragonpharma/isohotcho.webp",
         "alt": "ISOPHORM - Vanilla Soft Serve",
         "dataAiHint": "protein powder"
       }
@@ -4105,7 +4149,7 @@
           "type": "talla",
           "values": [
             {
-              "value": "L",
+              "value": "M",
               "stock": 1
             }
           ]
@@ -4235,7 +4279,7 @@
         },
         {
           "value": "L",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
