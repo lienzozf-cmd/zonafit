@@ -3393,13 +3393,13 @@
     "feature3": "Alta calidad.",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/isocookies.webp",
-        "alt": "ISOPHORM - Cookies & Cream",
+        "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
+        "alt": "ISOPHORM - Blueberry Ice Cream",
         "dataAiHint": "protein powder"
       },
       {
-        "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
-        "alt": "ISOPHORM - Blueberry Ice Cream",
+        "src": "/assets/images/marcas/dragonpharma/isocookies.webp",
+        "alt": "ISOPHORM - Cookies & Cream",
         "dataAiHint": "protein powder"
       },
       {
@@ -3419,20 +3419,6 @@
     },
     "colors": [
       {
-        "name": "Cookies & Cream",
-        "hex": "#D2B48C",
-        "imageSrc": "/assets/images/marcas/dragonpharma/isocookies.webp",
-        "options": {
-          "type": "sabor",
-          "values": [
-            {
-              "value": "Único",
-              "stock": 3
-            }
-          ]
-        }
-      },
-      {
         "name": "Blueberry Ice Cream",
         "hex": "#ADD8E6",
         "imageSrc": "/assets/images/marcas/dragonpharma/isoblueb.webp",
@@ -3442,6 +3428,20 @@
             {
               "value": "Único",
               "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Cookies & Cream",
+        "hex": "#D2B48C",
+        "imageSrc": "/assets/images/marcas/dragonpharma/isocookies.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 3
             }
           ]
         }
