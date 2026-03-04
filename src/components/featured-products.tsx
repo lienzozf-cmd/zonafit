@@ -11,8 +11,8 @@ const FeaturedProducts = () => {
   }));
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
-  // Se reemplaza ID 2697 (Blue Eyes) por 2687 (Elevate Jacket)
-  const featuredProductIds = [1, 2687, 2667, 2664, 2700, 2711, 2686, 8];
+  // Se reemplaza ID 2664 (Raw Carlos Belcast) por 2677 (Isophorm)
+  const featuredProductIds = [1, 2687, 2667, 2677, 2700, 2711, 2686, 8];
 
   useEffect(() => {
     if (products && products.length > 0) {
