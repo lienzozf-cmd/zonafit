@@ -371,7 +371,7 @@
   },
   {
     "id": 8,
-    "name": "CREATINE MONOHYDRATE ESSENTIALS 60 Servings",
+    "name": "CREATINE MONOHYDRATE ESSENTIALS 60 SERV",
     "price": "Q.345.00",
     "availability": "Disponible",
     "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.",
@@ -396,7 +396,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 3
+          "stock": 2
         }
       ]
     }
@@ -1589,7 +1589,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -1670,7 +1670,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 2
         }
       ]
     }
@@ -2630,7 +2630,7 @@
     "feature3": "Apoya la salud digestiva y el sistema inmune",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/greensr.webp",
+        "src": "/assets/images/marcas/dragonpharma/greensandreds.webp",
         "alt": "Greens and Reds - Dragon Pharma",
         "dataAiHint": "superfood powder"
       }
@@ -2899,7 +2899,7 @@
       "values": [
         {
           "value": "Napolitano",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -3441,7 +3441,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
