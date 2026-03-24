@@ -396,7 +396,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -428,7 +428,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -712,7 +712,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1736,7 +1736,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1898,7 +1898,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -2109,11 +2109,11 @@
           "values": [
             {
               "value": "S",
-              "stock": 0
+              "stock": 2
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 0
             },
             {
               "value": "L",
@@ -2216,38 +2216,6 @@
         {
           "value": "S",
           "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2647,
-    "name": "Monster Ultra Black",
-    "price": "Q.33.00",
-    "availability": "Disponible",
-    "description": "Bebida energética Monster Ultra Black sin azúcar.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "pre-entreno",
-    "brand": "Monster",
-    "benefits": "Energía sin azúcar, cero calorías, sabor intenso a cereza negra.",
-    "servings_info": "1 lata.",
-    "feature1": "Cero azúcar y cero calorías",
-    "feature2": "Sabor refrescante a cereza negra",
-    "feature3": "Impulso de energía para cualquier momento del día",
-    "images": [
-      {
-        "src": "/assets/images/marcas/monster/monster.webp",
-        "alt": "Monster Ultra Black",
-        "dataAiHint": "energy drink"
-      }
-    ],
-    "options": {
-      "type": "sabor",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 8
         }
       ]
     }
@@ -2450,7 +2418,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 2
+          "stock": 0
         }
       ]
     }
@@ -2745,7 +2713,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -2775,22 +2743,10 @@
         "color": "Negro"
       },
       {
-        "src": "https://picsum.photos/seed/2662-black-2/600/800",
-        "alt": "Impact Short Black 2",
-        "dataAiHint": "black shorts",
-        "color": "Negro"
-      },
-      {
-        "src": "https://picsum.photos/seed/2662-blue-1/600/800",
-        "alt": "Impact Short Blue 1",
+        "src": "https://picsum.photos/seed/dfyneblue/600/800",
+        "alt": "Impact Short Blue",
         "dataAiHint": "blue shorts",
-        "color": "Azul Marino"
-      },
-      {
-        "src": "https://picsum.photos/seed/2662-blue-2/600/800",
-        "alt": "Impact Short Blue 2",
-        "dataAiHint": "blue shorts",
-        "color": "Azul Marino"
+        "color": "Azul"
       }
     ],
     "options": {
@@ -2806,16 +2762,16 @@
           "type": "talla",
           "values": [
             {
-              "value": "M",
+              "value": "S",
               "stock": 1
             }
           ]
         }
       },
       {
-        "name": "Azul Marino",
-        "hex": "#000080",
-        "imageSrc": "https://picsum.photos/seed/2662-blue-1/600/800",
+        "name": "Azul",
+        "hex": "#0000FF",
+        "imageSrc": "https://picsum.photos/seed/dfyneblue/600/800",
         "options": {
           "type": "talla",
           "values": [
@@ -2865,7 +2821,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -3531,7 +3487,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -4391,12 +4347,6 @@
         "color": "Rosa"
       },
       {
-        "src": "https://picsum.photos/seed/2700pink2/600/800",
-        "alt": "Everyday Mini Gym Bag Pink Detail",
-        "dataAiHint": "pink bag",
-        "color": "Rosa"
-      },
-      {
         "src": "/assets/images/Accesorios/minibag.webp",
         "alt": "Everyday Mini Gym Bag Lila",
         "dataAiHint": "gym bag",
@@ -4431,7 +4381,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
@@ -4962,7 +4912,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 2
+          "stock": 1
         }
       ]
     },
@@ -5000,14 +4950,8 @@
       {
         "src": "/assets/images/marcas/dfyne/Defy Shorts 4.5 rojo.webp",
         "alt": "Defy Shorts Rojo 1",
-        "dataAiHint": "red shorts",
-        "color": "Rojo"
-      },
-      {
-        "src": "https://picsum.photos/seed/2715-2/600/800",
-        "alt": "Defy Shorts Rojo 2",
-        "dataAiHint": "red shorts",
-        "color": "Rojo"
+        "dataAiHint": "Lava shorts",
+        "color": "Lava"
       }
     ],
     "options": {
@@ -5016,7 +4960,7 @@
     },
     "colors": [
       {
-        "name": "Rojo",
+        "name": "Lava",
         "hex": "#FF0000",
         "imageSrc": "/assets/images/marcas/dfyne/Defy Shorts 4.5 rojo.webp",
         "options": {
@@ -5116,5 +5060,402 @@
       }
     ],
     "visible": true
+  },
+  {
+    "id": 2718,
+    "name": "2091 Retro cuffed joggers",
+    "price": "Q.585.00",
+    "availability": "Disponible",
+    "description": "Joggers de estilo retro con puños ajustados para un look clásico y cómodo.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "fabric_type": "Mezcla de Algodón Premium",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/2091retro/600/800",
+        "alt": "Retro cuffed joggers",
+        "dataAiHint": "men joggers"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/2091retro/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2719,
+    "name": "2047 - Scuba Cargo Sweats",
+    "price": "Q.575.00",
+    "availability": "Disponible",
+    "description": "Pantalones tipo cargo con tejido Scuba para una textura única y mayor durabilidad.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "fabric_type": "Tejido Scuba",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/scubacargo/600/800",
+        "alt": "Scuba Cargo Sweats",
+        "dataAiHint": "cargo pants"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Charcoal Heather",
+        "hex": "#36454F",
+        "imageSrc": "https://picsum.photos/seed/scubacargo/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2720,
+    "name": "8004 - Batman Compression Longsleeves",
+    "price": "Q.650.00",
+    "availability": "Disponible",
+    "description": "Camiseta de compresión de manga larga con diseño oficial de Batman.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "88% Polyester, 12% Spandex",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/batmanlong/600/800",
+        "alt": "Batman Compression Longsleeve",
+        "dataAiHint": "batman shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/batmanlong/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 3
+            },
+            {
+              "value": "S",
+              "stock": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2721,
+    "name": "CREATINA 80 SERVS",
+    "price": "Q.415.00",
+    "availability": "Disponible",
+    "description": "Creatina monohidratada de Muscletech para potenciar tu fuerza y recuperación.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "brand": "Muscletech",
+    "benefits": "Fuerza y recuperación.",
+    "servings_info": "80 servicios.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/creatina80/600/800",
+        "alt": "Creatina 80 Servs",
+        "dataAiHint": "creatine"
+      }
+    ],
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Original",
+          "stock": 4
+        }
+      ]
+    }
+  },
+  {
+    "id": 2722,
+    "name": "PURE PROTEIN (Unidad)",
+    "price": "Q.25.00",
+    "availability": "Disponible",
+    "description": "Barra de proteína deliciosa y nutritiva para llevar a cualquier parte.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "comida",
+    "brand": "PureProtein",
+    "benefits": "Snack alto en proteína.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/pureprotein/600/800",
+        "alt": "Pure Protein Bar",
+        "dataAiHint": "protein bar"
+      }
+    ],
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Chewy Chocolate",
+          "stock": 24
+        }
+      ]
+    }
+  },
+  {
+    "id": 2723,
+    "name": "PURE PROTEIN (Caja)",
+    "price": "Q.100.00",
+    "availability": "Disponible",
+    "description": "Caja de barras de proteína Pure Protein.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "comida",
+    "brand": "PureProtein",
+    "benefits": "Snack alto en proteína.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/pureproteinbox/600/800",
+        "alt": "Pure Protein Box",
+        "dataAiHint": "protein bar box"
+      }
+    ],
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Chewy Chocolate",
+          "stock": 6
+        }
+      ]
+    }
+  },
+  {
+    "id": 2724,
+    "name": "Itachi Forever \"Premium\" Oversized Tee",
+    "price": "Q.595.00",
+    "availability": "Disponible",
+    "description": "Playera premium oversized con diseño de Itachi Uchiha.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón Premium",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/itachiforever/600/800",
+        "alt": "Itachi Forever Tee",
+        "dataAiHint": "anime shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/itachiforever/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2725,
+    "name": "4213 - Gold's Iron Legacy Icon Tees",
+    "price": "Q.515.00",
+    "availability": "Disponible",
+    "description": "Playera de la colección Gold's Iron Legacy.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/goldsicon/600/800",
+        "alt": "Gold's Legacy Icon Tee",
+        "dataAiHint": "men shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "imageSrc": "https://picsum.photos/seed/goldsicon/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2726,
+    "name": "4286 - Gold's Iron Legacy Compression Tees",
+    "price": "Q.535.00",
+    "availability": "Disponible",
+    "description": "Playera de compresión de la colección Gold's Iron Legacy.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "88% Polyester, 12% Spandex",
+    "is_compression": true,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/goldscomp/600/800",
+        "alt": "Gold's Legacy Compression Tee",
+        "dataAiHint": "compression shirt"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Navy",
+        "hex": "#000080",
+        "imageSrc": "https://picsum.photos/seed/goldscomp/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2727,
+    "name": "5097 - Gold's Iron Legacy Shadow Cut-Offs",
+    "price": "Q.525.00",
+    "availability": "Disponible",
+    "description": "Cut-off de la colección Gold's Iron Legacy Shadow.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "fabric_type": "100% Algodón",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/goldscutoff/600/800",
+        "alt": "Gold's Legacy Cut-Off",
+        "dataAiHint": "men tank"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black Wash",
+        "hex": "#36454F",
+        "imageSrc": "https://picsum.photos/seed/goldscutoff/600/800",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2728,
+    "name": "MY COOKIE DEALER",
+    "price": "Q.50.00",
+    "availability": "Agotado",
+    "description": "Galletas premium de My Cookie Dealer.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "comida",
+    "brand": "Dealer",
+    "benefits": "Snack premium.",
+    "images": [
+      {
+        "src": "https://picsum.photos/seed/cookiedealer/600/800",
+        "alt": "My Cookie Dealer",
+        "dataAiHint": "cookies"
+      }
+    ],
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Milk and Cookies",
+          "stock": 0
+        }
+      ]
+    }
   }
 ]
