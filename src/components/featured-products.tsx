@@ -11,8 +11,16 @@ const FeaturedProducts = () => {
   }));
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
-  // Se reemplaza ID 2664 (Raw Carlos Belcast) por 2677 (Isophorm)
-  const featuredProductIds = [1, 2687, 2667, 2677, 2700, 2711, 2686, 8];
+  // Mapeo solicitado:
+  // 2726 - Gold's Iron Legacy Compression (reemplaza a 1)
+  // 2662 - Impact Shorts 4.5 Azul (reemplaza a 2687)
+  // 2724 - Itachi Forever (reemplaza a 2667)
+  // 2677 - Isophorm (se mantiene)
+  // 2720 - Batman Compression (reemplaza a 2700)
+  // 2711 - Gymshark X Analis (se mantiene)
+  // 2686 - The North Star (se mantiene)
+  // 8 - Creatina (se mantiene)
+  const featuredProductIds = [2726, 2662, 2724, 2677, 2720, 2711, 2686, 8];
 
   useEffect(() => {
     if (products && products.length > 0) {

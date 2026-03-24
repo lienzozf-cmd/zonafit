@@ -2424,38 +2424,6 @@
     }
   },
   {
-    "id": 2654,
-    "name": "Creatina Platinum",
-    "price": "Q.365.00",
-    "availability": "Agotado",
-    "description": "Creatina de alta calidad para mejorar la fuerza y el rendimiento.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "creatina",
-    "brand": "Muscletech",
-    "benefits": "Aumento de fuerza, volumen muscular y recuperación rápida.",
-    "servings_info": "80 servicios.",
-    "feature1": "100% creatina monohidratada micronizada",
-    "feature2": "Aumenta la fuerza y el rendimiento",
-    "feature3": "Marca de confianza en suplementación",
-    "images": [
-      {
-        "src": "/assets/images/marcas/suplementos/creatinamuscletech.webp",
-        "alt": "Creatina Muscletech",
-        "dataAiHint": "creatine powder"
-      }
-    ],
-    "options": {
-      "type": "presentación",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
     "id": 2655,
     "name": "Raw Sleep",
     "price": "Q.385.00",
@@ -2737,16 +2705,16 @@
     "feature3": "Tejido flexible.",
     "images": [
       {
-        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro.webp",
-        "alt": "Impact Short Black 1",
-        "dataAiHint": "black shorts",
-        "color": "Negro"
-      },
-      {
-        "src": "https://picsum.photos/seed/dfyneblue/600/800",
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
         "alt": "Impact Short Blue",
         "dataAiHint": "blue shorts",
         "color": "Azul"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro.webp",
+        "alt": "Impact Short Black",
+        "dataAiHint": "black shorts",
+        "color": "Negro"
       }
     ],
     "options": {
@@ -2754,6 +2722,20 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Azul",
+        "hex": "#0000FF",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      },
       {
         "name": "Negro",
         "hex": "#000000",
@@ -2763,20 +2745,6 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "Azul",
-        "hex": "#0000FF",
-        "imageSrc": "https://picsum.photos/seed/dfyneblue/600/800",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
               "stock": 1
             }
           ]
@@ -3364,7 +3332,7 @@
         "dataAiHint": "protein powder"
       },
       {
-        "src": "/assets/images/marcas/dragonpharma/isohotcho.webp",
+        "src": "/assets/images/marcas/dragonpharma/isovainilla.webp",
         "alt": "ISOPHORM - Vanilla Soft Serve",
         "dataAiHint": "protein powder"
       }
@@ -4729,6 +4697,11 @@
         "src": "/assets/images/marcas/gymshark/hombre/Retro Shorts blue.webp",
         "alt": "Retro Shorts",
         "dataAiHint": "retro shorts"
+      },
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/Retro Shorts black.webp",
+        "alt": "Retro Shorts Black",
+        "dataAiHint": "retro shorts black"
       }
     ],
     "options": {
@@ -4912,7 +4885,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -4926,7 +4899,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -5053,7 +5026,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -5075,7 +5048,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/2091retro/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/2091 Retro cuffed joggers.webp",
         "alt": "Retro cuffed joggers",
         "dataAiHint": "men joggers"
       }
@@ -5088,7 +5061,7 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/2091retro/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2091 Retro cuffed joggers.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5115,7 +5088,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/scubacargo/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/2047charcoal.webp",
         "alt": "Scuba Cargo Sweats",
         "dataAiHint": "cargo pants"
       }
@@ -5128,7 +5101,7 @@
       {
         "name": "Charcoal Heather",
         "hex": "#36454F",
-        "imageSrc": "https://picsum.photos/seed/scubacargo/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2047charcoal.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5155,7 +5128,7 @@
     "is_compression": true,
     "images": [
       {
-        "src": "https://picsum.photos/seed/batmanlong/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/batmanblackmangalarga.webp",
         "alt": "Batman Compression Longsleeve",
         "dataAiHint": "batman shirt"
       }
@@ -5168,7 +5141,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/batmanlong/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/batmanblackmangalarga.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5199,7 +5172,7 @@
     "servings_info": "80 servicios.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/creatina80/600/800",
+        "src": "/assets/images/marcas/suplementos/creatinamuscletech.webp",
         "alt": "Creatina 80 Servs",
         "dataAiHint": "creatine"
       }
@@ -5227,7 +5200,7 @@
     "benefits": "Snack alto en proteína.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/pureprotein/600/800",
+        "src": "/assets/images/marcas/suplementos/pureprotein.webp",
         "alt": "Pure Protein Bar",
         "dataAiHint": "protein bar"
       }
@@ -5255,7 +5228,7 @@
     "benefits": "Snack alto en proteína.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/pureproteinbox/600/800",
+        "src": "/assets/images/marcas/suplementos/pureprotein.webp",
         "alt": "Pure Protein Box",
         "dataAiHint": "protein bar box"
       }
@@ -5284,7 +5257,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/itachiforever/600/800",
+        "src": "/assets/images/marcas/darcsport/itachidarcsport.webp",
         "alt": "Itachi Forever Tee",
         "dataAiHint": "anime shirt"
       }
@@ -5297,7 +5270,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/itachiforever/600/800",
+        "imageSrc": "/assets/images/marcas/darcsport/itachidarcsport.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5324,7 +5297,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/goldsicon/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/4213 - Gold's Iron Legacy Icon Tees.webp",
         "alt": "Gold's Legacy Icon Tee",
         "dataAiHint": "men shirt"
       }
@@ -5337,7 +5310,7 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "https://picsum.photos/seed/goldsicon/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4213 - Gold's Iron Legacy Icon Tees.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5364,7 +5337,7 @@
     "is_compression": true,
     "images": [
       {
-        "src": "https://picsum.photos/seed/goldscomp/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/4286 - Gold's Iron Legacy Compression Tees.webp",
         "alt": "Gold's Legacy Compression Tee",
         "dataAiHint": "compression shirt"
       }
@@ -5377,7 +5350,7 @@
       {
         "name": "Navy",
         "hex": "#000080",
-        "imageSrc": "https://picsum.photos/seed/goldscomp/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4286 - Gold's Iron Legacy Compression Tees.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5404,7 +5377,7 @@
     "is_compression": false,
     "images": [
       {
-        "src": "https://picsum.photos/seed/goldscutoff/600/800",
+        "src": "/assets/images/marcas/youngla/hombre/5097 - Gold's Iron Legacy Shadow Cut-Offs.webp",
         "alt": "Gold's Legacy Cut-Off",
         "dataAiHint": "men tank"
       }
@@ -5417,7 +5390,7 @@
       {
         "name": "Black Wash",
         "hex": "#36454F",
-        "imageSrc": "https://picsum.photos/seed/goldscutoff/600/800",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5097 - Gold's Iron Legacy Shadow Cut-Offs.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -5443,7 +5416,7 @@
     "benefits": "Snack premium.",
     "images": [
       {
-        "src": "https://picsum.photos/seed/cookiedealer/600/800",
+        "src": "/assets/images/marcas/suplementos/mycookiedelear.png",
         "alt": "My Cookie Dealer",
         "dataAiHint": "cookies"
       }
@@ -5453,7 +5426,7 @@
       "values": [
         {
           "value": "Milk and Cookies",
-          "stock": 0
+          "stock": 5
         }
       ]
     }
