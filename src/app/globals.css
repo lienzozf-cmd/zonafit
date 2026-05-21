@@ -37,7 +37,10 @@
 
 /* Estilos generales */
 html {
-  scroll-behavior: smooth; /* Desplazamiento suave */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -47,6 +50,10 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   margin: 0;
+  padding-top: 131px; /* Height of fixed header (desktop) */
+  /* GPU compositing for smoother rendering */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,16 +80,17 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 40;
+  z-index: 100;
   background-color: black;
   box-sizing: border-box;
   gap: 40px;
   border-bottom: 3px solid var(--accent-color);
-  box-shadow: inset 0 -5px 10px -5px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 20px rgba(229, 0, 0, 0.15);
+  will-change: transform;
 }
 
 .site-branding {
@@ -108,7 +116,8 @@ a:hover {
   height: 32px;
   cursor: pointer;
   color: white;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.15s ease;
+  will-change: transform;
 }
 
 .search-icon:hover,
@@ -304,8 +313,6 @@ a:hover {
 
 
 .hero-banner {
-  width: 100%;
-  height: 100vh;
   position: relative;
   overflow: hidden;
 }
@@ -336,8 +343,9 @@ a:hover {
   border: none;
   padding: 2px;
   position: relative;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.15s ease;
   overflow: hidden;
+  will-change: transform;
 }
 .blob-button:hover {
   transform: scale(1.05);
@@ -350,8 +358,9 @@ a:hover {
   width: 200%;
   height: 200%;
   background: conic-gradient(#E50000, #000, #E50000);
-  animation: spinning 2.5s linear infinite;
+  animation: spinning 1.8s linear infinite;
   transform: translate(-50%, -50%);
+  will-change: transform;
 }
 .blob-button::after {
   content: "";
@@ -412,9 +421,10 @@ main > .container {
   margin: 0 10px;
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.35s ease, transform 0.35s ease;
   border: 3px solid var(--accent-color);
   object-fit: cover;
+  will-change: transform, opacity;
 }
 
 .circular-images-container.is-visible img {
@@ -423,8 +433,16 @@ main > .container {
 }
 
 .circular-images-container img:hover {
-  transition: transform 75ms ease-out !important;
+  transition: transform 100ms ease !important;
   transform: scale(1.1);
+}
+
+@media (max-width: 640px) {
+  .circular-images-container img {
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+  }
 }
 
 .product-grid {
@@ -449,13 +467,15 @@ main > .container {
   flex-direction: column;
   padding: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   min-height: 450px;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .product-item:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 5px 15px rgba(229, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.03) translateZ(0);
+  box-shadow: 0 5px 20px rgba(229, 0, 0, 0.25);
 }
 
 .product-item .product-carousel {
@@ -520,11 +540,12 @@ main > .container {
   background-color: black;
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
-  transition: transform 0.2s ease;
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 5px;
   position: relative;
+  will-change: transform;
 }
 
 .size-options button:disabled {
@@ -556,16 +577,17 @@ main > .container {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.15s ease, transform 0.15s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
   width: 100%;
   margin-top: 5px;
+  will-change: transform;
 }
 
 .add-to-cart-button:hover:not(:disabled) {
     background-color: #A50000;
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .add-to-cart-button:disabled {
@@ -588,7 +610,8 @@ main > .container {
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid white;
-  transition: transform 0.2s ease;
+  transition: transform 0.12s ease;
+  will-change: transform;
 }
 
 .color-swatch:hover {
@@ -683,11 +706,13 @@ main > .container {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .grid-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(0);
 }
 
 .overlay-text {
@@ -711,49 +736,76 @@ main > .container {
   font-size: 0.9em;
 }
 
-.social-media {
-  padding: 40px 20px;
-  background-color: transparent;
-  color: #fff;
-  text-align: center;
-}
-
-.social-media h2 {
-  font-size: 2.5em;
-  margin-bottom: 15px;
-}
-
-@keyframes color-cycle {
-  0% { color: #E50000; } /* Accent Color */
-  25% { color: #FFD700; } /* Gold */
-  50% { color: #FFFFFF; } /* White */
-  75% { color: #C0C0C0; } /* Silver */
-  100% { color: #E50000; } /* Accent Color */
-}
-
-.social-media-heading-animated {
-  animation: color-cycle 5s linear infinite;
-}
-
-.social-icons {
+/* Social Sidebar - Fixed lateral */
+.social-sidebar {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
   display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 6px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0 12px 12px 0;
+  border: 1px solid rgba(229, 0, 0, 0.3);
+  border-left: none;
+  box-shadow: 2px 0 15px rgba(229, 0, 0, 0.15);
+  transition: opacity 0.2s ease;
+}
+
+.social-sidebar-icon {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  will-change: transform;
 }
 
-.social-icons img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.social-icons img:hover {
+.social-sidebar-icon:hover {
   transform: scale(1.2);
+  background-color: rgba(229, 0, 0, 0.2);
 }
+
+.social-sidebar-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Hide on very small screens to avoid overlap */
+@media (max-width: 480px) {
+  .social-sidebar {
+    padding: 6px 4px;
+    gap: 2px;
+  }
+  .social-sidebar-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .social-sidebar-icon img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 
 footer {
-  background-color: #000000;
+  background:
+    linear-gradient(27deg, #0a0a0a 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #0a0a0a 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #111 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #111 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #0d0d0d 10px, transparent 10px),
+    linear-gradient(#111 25%, #0a0a0a 25%, #0a0a0a 50%, transparent 50%, transparent 75%, #151515 75%, #151515);
+  background-color: #080808;
+  background-size: 12px 12px;
   color: #fff;
   border-top: 3px solid var(--accent-color);
 }
@@ -828,7 +880,7 @@ footer {
 }
 
 .nuevo-ingreso-heading {
-  animation: nuevo-ingreso-color-cycle 10s linear infinite;
+  animation: nuevo-ingreso-color-cycle 6s linear infinite;
 }
 
 @keyframes nuevo-ingreso-color-cycle {
@@ -848,8 +900,11 @@ footer {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Adjust this value as needed, e.g., 50vh for half viewport height */
-    background-color: #000;
+    height: 100vh;
+    background-color: #050505;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/images/diamond-bg.png');
+    background-size: 100px;
+    background-repeat: repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -858,96 +913,94 @@ footer {
     overflow: hidden;
 }
 
-.intro-logo-container { 
+.gym-plate-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
 }
 
-.intro-logo {
-    width: 200px;
-    height: auto;
-    opacity: 0;
-    transform: scale(0.5);
-    animation: logoReveal 2s ease-in-out forwards;
-}
-
-@keyframes logoReveal {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.gun-barrel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.gym-plate {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #fff;
-    box-sizing: border-box;
-    animation: gunBarrelSpin 2s ease-out;
-    opacity: 0;
-    box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.9);
+    clip-path: circle(50%); /* Crucial to remove any square background */
+    animation: gymPlateSpin 3s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+    filter: drop-shadow(0 0 40px rgba(229, 0, 0, 0.25));
+    transform: translateZ(0);
+    will-change: transform, opacity;
 }
 
-@keyframes gunBarrelSpin {
+.intro-text-container {
+    text-align: center;
+    opacity: 0;
+    animation: fadeInText 1.5s ease-out 1.2s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.intro-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.intro-title .zona { color: white; }
+.intro-title .fit { color: #E50000; }
+
+.intro-subtitle {
+    font-size: 0.8rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-top: 0.5rem;
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gymPlateSpin {
     0% {
-        transform: scale(5);
-        opacity: 1;
+        transform: rotate(-180deg) scale(0.5) translateZ(0);
+        opacity: 0;
     }
-    50% {
-        transform: scale(2);
+    40% {
+        transform: rotate(360deg) scale(1.1) translateZ(0);
         opacity: 1;
     }
     100% {
-        transform: scale(1);
-        opacity: 0;
+        transform: rotate(1080deg) scale(1) translateZ(0);
+        opacity: 1;
     }
 }
 
-.gun-flash {
+/* Floating dots style like Flor de Seul */
+.floating-dot {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background-color: #fff;
+    width: 8px;
+    height: 8px;
+    background-color: #E50000;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    animation: gunFlash 0.5s ease-out 1s forwards;
+    filter: blur(2px) shadow(0 0 10px #E50000);
+    opacity: 0.4;
+    animation: float 6s infinite ease-in-out;
 }
 
-@keyframes gunFlash {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
-    10% {
-        width: 300px;
-        height: 300px;
-        opacity: 1;
-    }
-    100% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
 }
 
 
@@ -1006,23 +1059,7 @@ footer {
 }
 
 .page-fade-in {
-  animation: page-fade-in 1.5s ease-in-out;
-}
-
-.cart-item-quantity-control button {
-  background-color: #eee;
-  border: none;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 16px;
-  line-height: 1;
-}
-
-.cart-item-quantity-control span {
-  padding: 0 10px;
-  font-weight: bold;
+  animation: page-fade-in 0.6s ease;
 }
 
 /* Responsive navigation styles */
@@ -1074,6 +1111,10 @@ footer {
 
 
 @media (max-width: 1024px) {
+  body {
+    padding-top: 88px; /* Smaller header on mobile */
+  }
+
   .site-header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -1145,7 +1186,8 @@ footer {
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.15s ease;
+    will-change: background-color;
   }
   
   .dot.is-selected {
@@ -1189,15 +1231,16 @@ footer {
 
 .promo-banner-content {
   display: flex;
-  animation: marquee 30s linear infinite;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
 }
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0);
   }
 }
 

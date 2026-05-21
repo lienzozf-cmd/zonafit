@@ -150,7 +150,16 @@ export const useCartStore = create<AppState>()(
     }),
     {
       name: 'cart-storage-v5', // New version to prevent conflicts
-      storage: createJSONStorage(() => localStorage), 
+      storage: createJSONStorage(() => {
+        if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+          return window.localStorage;
+        }
+        return {
+          getItem: () => null,
+          setItem: () => {},
+          removeItem: () => {},
+        };
+      }), 
       partialize: (state) => ({ 
         items: state.items,
         isCartOpen: state.isCartOpen,

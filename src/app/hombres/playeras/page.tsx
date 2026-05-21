@@ -4,7 +4,7 @@ import { products } from '@/lib/data';
 export default function PlayerasPage() {
   const filteredProducts = products.filter(
     (product) =>
-      product.gender === 'hombre' && product.subcategory === 'playera'
+      product.gender === 'hombre' && (product.subcategory === 'playera' || product.subcategory === 'tank')
   );
 
   return (
