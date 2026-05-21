@@ -21,7 +21,7 @@ import { es } from 'date-fns/locale';
 
 import { useCartStore } from '@/stores/cart-store';
 import type { Product, ProductOption } from '@/lib/data';
-import { getOrders, type OrderData } from '@/lib/orders-db';
+import type { OrderData } from '@/lib/orders-db';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -78,8 +78,17 @@ export default function AdminPage() {
   const loadOrders = async () => {
     setIsLoadingOrders(true);
     try {
-      const fetchedOrders = await getOrders();
-      setOrders(fetchedOrders);
+      const response = await fetch('/api/orders');
+      if (response.ok) {
+        const fetchedOrders = await response.json();
+        const mappedOrders = fetchedOrders.map((o: any) => ({
+          ...o,
+          createdAt: o.createdAt ? new Date(o.createdAt) : new Date()
+        }));
+        setOrders(mappedOrders);
+      } else {
+        console.error('Error fetching orders from API:', response.statusText);
+      }
     } catch (error) {
       console.error('Error loading orders:', error);
     } finally {

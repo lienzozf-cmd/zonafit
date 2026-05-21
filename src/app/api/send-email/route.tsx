@@ -102,12 +102,12 @@ export async function POST(request: Request) {
       orderId,
     };
 
-    // --- Persist Order to Firestore ---
+    // --- Persist Order to Supabase ---
     try {
       await saveOrder(emailData);
-      console.log('Order persisted to Firestore successfully.');
+      console.log('Order persisted to Supabase successfully.');
     } catch (saveError) {
-      console.error('CRITICAL: Failed to save order to Firestore:', saveError);
+      console.error('CRITICAL: Failed to save order to Supabase:', saveError);
       // We continue since email and telegram are still important
     }
     

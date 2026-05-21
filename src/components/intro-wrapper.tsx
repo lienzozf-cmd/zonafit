@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import PageTransition from './page-transition';
 import SocialSection from './social-section';
 import BackgroundMusic from './background-music';
+import { useRealtimeStock } from '@/hooks/use-realtime-stock';
 
 export default function IntroWrapper({
   children,
@@ -23,6 +24,9 @@ export default function IntroWrapper({
     fetchProducts: state.fetchProducts,
   }));
   const pathname = usePathname();
+
+  // Activa la suscripción en tiempo real a los cambios de stock en Supabase
+  useRealtimeStock();
 
   useEffect(() => {
     setIsClient(true);

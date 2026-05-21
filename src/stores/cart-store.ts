@@ -23,6 +23,7 @@ interface AppState {
   clearCart: () => void;
   processOrder: () => void;
   getProductOption: (productId: number, optionValue: string, colorName?: string) => ProductOption | undefined;
+  updateVariantStock: (productId: number, optionValue: string, stock: number, colorName?: string) => void;
 }
 
 const calculateTotals = (items: CartItem[]) => {
@@ -146,6 +147,50 @@ export const useCartStore = create<AppState>()(
         }
 
         return product.options.values.find(o => o.value === optionValue);
+      },
+
+      updateVariantStock: (productId, optionValue, stock, colorName) => {
+        set(produce((state: AppState) => {
+          const product = state.products.find(p => p.id === productId);
+          if (!product) return;
+
+          let updated = false;
+          if (colorName && product.colors) {
+            const color = product.colors.find(c => c.name === colorName);
+            if (color && color.options && color.options.values) {
+              const option = color.options.values.find(o => o.value === optionValue);
+              if (option) {
+                option.stock = stock;
+                updated = true;
+              }
+            }
+          } else if (product.options && product.options.values) {
+            const option = product.options.values.find(o => o.value === optionValue);
+            if (option) {
+              option.stock = stock;
+              updated = true;
+            }
+          }
+
+          if (updated) {
+            // Recalculate availability based on total stock
+            let totalStock = 0;
+            if (product.colors && product.colors.length > 0) {
+              product.colors.forEach(col => {
+                if (col.options && col.options.values) {
+                  col.options.values.forEach(o => {
+                    totalStock += o.stock;
+                  });
+                }
+              });
+            } else if (product.options && product.options.values) {
+              product.options.values.forEach(o => {
+                totalStock += o.stock;
+              });
+            }
+            product.availability = totalStock > 0 ? 'Disponible' : 'Agotado';
+          }
+        }));
       },
     }),
     {
