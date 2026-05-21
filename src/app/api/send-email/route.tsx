@@ -139,17 +139,24 @@ ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name
     try {
         const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
 
+        const emailUser = process.env.SMTP_EMAIL || process.env.EMAIL_SERVER_USER || 'rabanalesf22@gmail.com';
+        const emailPass = process.env.SMTP_PASSWORD || process.env.EMAIL_SERVER_PASSWORD;
+
+        if (!emailPass) {
+          console.error('CRITICAL: SMTP_PASSWORD or EMAIL_SERVER_PASSWORD not found in environment variables. Email sending might fail.');
+        }
+
         const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user: 'rabanalesf22@gmail.com',
-            pass: 'fqzm xcmz cnwf cjtn',
+            user: emailUser,
+            pass: emailPass,
           },
         });
 
         const mailOptions = {
-          from: `"ZONA FIT GT" <rabanalesf22@gmail.com>`,
-          to: [shippingInfo.email, 'rabanalesf22@gmail.com', 'rabafam2118@gmail.com'],
+          from: `"ZONA FIT GT" <${emailUser}>`,
+          to: [shippingInfo.email, emailUser, 'rabafam2118@gmail.com'],
           subject: `Confirmación de tu pedido ZONA FIT GT #${orderId}`,
           html: emailHtml,
         };
