@@ -36,8 +36,6 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-// Hash SHA-256 de "REDACTED"
-const ADMIN_PASSWORD_HASH = '9dfdc3ac308890874f19fd521c8ae9ef7e69ba5768705625c8770f0bf5e57a67';
 
 const categories = [
     { name: 'Ropa de Hombre', color: [255, 10, 10], filter: (p: Product) => p.gender === 'hombre' && p.category === 'ropa' },
@@ -94,22 +92,35 @@ export default function AdminPage() {
     }
   };
 
-  const hashPassword = async (password: string) => {
-    const msgUint8 = new TextEncoder().encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  };
-
   const onSubmit = async (data: LoginFormValues) => {
-    const inputHash = await hashPassword(data.password);
-    if (data.username === 'zonafitero' && inputHash === ADMIN_PASSWORD_HASH) {
-      setIsAuthenticated(true);
-      toast({ title: '¡Acceso Concedido!', description: 'Has iniciado sesión en el portal seguro.' });
-    } else {
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: data.username,
+          password: data.password,
+        }),
+      });
+
+      if (response.ok) {
+        setIsAuthenticated(true);
+        toast({ title: '¡Acceso Concedido!', description: 'Has iniciado sesión en el portal seguro.' });
+      } else {
+        const errData = await response.json();
+        toast({
+          title: 'Error de Seguridad',
+          description: errData.error || 'Credenciales inválidas. Intento registrado.',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      console.error('Error at admin login:', error);
       toast({
-        title: 'Error de Seguridad',
-        description: 'Credenciales inválidas. Intento registrado.',
+        title: 'Error de Red',
+        description: 'No se pudo conectar con el servidor de seguridad.',
         variant: 'destructive',
       });
     }
