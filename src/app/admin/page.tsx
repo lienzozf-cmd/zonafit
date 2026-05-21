@@ -38,8 +38,8 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-// Hash SHA-256 de "Zonafit22?"
-const ADMIN_PASSWORD_HASH = '244a929f92562f8dca2d5a4629a56d105e27dee1273e698e1dca8922bdec15a0';
+// Hash SHA-256 de "REDACTED"
+const ADMIN_PASSWORD_HASH = '9dfdc3ac308890874f19fd521c8ae9ef7e69ba5768705625c8770f0bf5e57a67';
 
 const categories = [
     { name: 'Ropa de Hombre', color: [255, 10, 10], filter: (p: Product) => p.gender === 'hombre' && p.category === 'ropa' },
@@ -105,7 +105,7 @@ export default function AdminPage() {
 
   const onSubmit = async (data: LoginFormValues) => {
     const inputHash = await hashPassword(data.password);
-    if (data.username === 'admin' && inputHash === ADMIN_PASSWORD_HASH) {
+    if (data.username === 'zonafitero' && inputHash === ADMIN_PASSWORD_HASH) {
       try {
         // Autenticar preventivamente con Firebase para evitar errores de permisos en Firestore
         const auth = getFirebaseAuth();
