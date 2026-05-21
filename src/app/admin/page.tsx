@@ -38,15 +38,9 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 
 const categories = [
-    { name: 'Ropa de Hombre', color: [255, 10, 10], filter: (p: Product) => p.gender === 'hombre' && p.category === 'ropa' },
-    { name: 'Ropa de Mujer', color: [255, 50, 50], filter: (p: Product) => p.gender === 'mujer' && p.category === 'ropa' },
-    { name: 'Joyería', color: [255, 215, 0], filter: (p: Product) => p.category === 'joyeria' },
-    { name: 'Proteínas', color: [138, 43, 226], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'proteina' },
-    { name: 'Creatinas', color: [0, 191, 255], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'creatina' },
-    { name: 'Pre-Entrenos', color: [255, 69, 0], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'pre-entreno' },
-    { name: 'Aminoácidos', color: [50, 205, 50], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'aminoacidos' },
-    { name: 'L-Carnitina', color: [255, 20, 147], filter: (p: Product) => p.category === 'suplemento' && p.subcategory === 'l-carnitina' },
-    { name: 'Accesorios', color: [100, 149, 237], filter: (p: Product) => p.category === 'accesorio' },
+    { name: 'Ropa', color: [220, 38, 38], filter: (p: Product) => p.category === 'ropa' },
+    { name: 'Suplementos', color: [138, 43, 226], filter: (p: Product) => p.category === 'suplemento' },
+    { name: 'Accesorios', color: [100, 149, 237], filter: (p: Product) => p.category === 'accesorio' || p.category === 'joyeria' },
 ];
 
 export default function AdminPage() {
