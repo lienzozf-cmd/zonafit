@@ -1,49 +1,100 @@
-
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { supabaseServer } from '@/lib/supabase';
 import type { Product } from '@/lib/data';
-
-const productsFilePath = path.join(process.cwd(), 'src', 'lib', 'products.json');
-
-async function getProducts(): Promise<Product[]> {
-  try {
-    const data = await fs.readFile(productsFilePath, 'utf-8');
-    return JSON.parse(data) as Product[];
-  } catch (error) {
-    console.error('Error reading products file:', error);
-    return [];
-  }
-}
-
-async function saveProducts(products: Product[]): Promise<void> {
-  try {
-    const data = JSON.stringify(products, null, 2);
-    await fs.writeFile(productsFilePath, data, 'utf-8');
-  } catch (error) {
-    console.error('Error writing products file:', error);
-    throw new Error('Could not save products.');
-  }
-}
 
 export async function GET() {
   try {
-    const products = await getProducts();
+    // 1. Fetch all products
+    const { data: dbProducts, error: productsError } = await supabaseServer
+      .from('products')
+      .select('*')
+      .eq('visible', true)
+      .order('id', { ascending: true });
+      
+    if (productsError) throw productsError;
+    
+    // 2. Fetch all variants (to merge stock info)
+    const { data: dbVariants, error: variantsError } = await supabaseServer
+      .from('product_variants')
+      .select('*');
+      
+    if (variantsError) throw variantsError;
+    
+    // Create a lookup map for variant stock
+    const stockMap = new Map<string, number>();
+    (dbVariants || []).forEach(v => {
+      const color = v.color_name || '';
+      const key = `${v.product_id}:${color}:${v.option_value}`;
+      stockMap.set(key, v.stock);
+    });
+    
+    // 3. Merge stock and compute availability
+    const products: Product[] = (dbProducts || []).map((p: any) => {
+      const product = {
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        originalPrice: p.original_price,
+        availability: p.availability,
+        description: p.description,
+        gender: p.gender,
+        category: p.category,
+        subcategory: p.subcategory,
+        brand: p.brand,
+        fabric_type: p.fabric_type,
+        is_compression: p.is_compression,
+        images: p.images,
+        options: p.options,
+        colors: p.colors,
+        feature1: p.feature1,
+        feature2: p.feature2,
+        feature3: p.feature3,
+        feature4: p.feature4,
+        benefits: p.benefits,
+        servings_info: p.servings_info,
+        visible: p.visible,
+      } as Product;
+      
+      let totalStock = 0;
+      
+      // Update options values with stock from variants table
+      if (product.options && product.options.values) {
+        product.options.values = product.options.values.map(opt => {
+          const key = `${product.id}::${opt.value}`; // color_name is empty
+          const stock = stockMap.get(key) ?? 0;
+          totalStock += stock;
+          return {
+            ...opt,
+            stock
+          };
+        });
+      }
+      
+      // Update colors options values with stock from variants table
+      if (product.colors && product.colors.length > 0) {
+        product.colors = product.colors.map(col => {
+          if (col.options && col.options.values) {
+            col.options.values = col.options.values.map(opt => {
+              const key = `${product.id}:${col.name}:${opt.value}`;
+              const stock = stockMap.get(key) ?? 0;
+              totalStock += stock;
+              return {
+                ...opt,
+                stock
+              };
+            });
+          }
+          return col;
+        });
+      }
+      
+      product.availability = totalStock > 0 ? 'Disponible' : 'Agotado';
+      return product;
+    });
+    
     return NextResponse.json(products);
-  } catch (e) {
-    return NextResponse.json([], { status: 500 });
-  }
-}
-
-export async function POST(req: Request) {
-  try {
-    const updatedProducts: Product[] = await req.json();
-    if (!Array.isArray(updatedProducts)) {
-        return NextResponse.json({ message: 'Invalid data format' }, { status: 400 });
-    }
-    await saveProducts(updatedProducts);
-    return NextResponse.json(updatedProducts);
   } catch (error: any) {
-    return NextResponse.json({ message: 'Error saving products', error: error.message }, { status: 500 });
+    console.error('Error fetching products from Supabase API:', error);
+    return NextResponse.json([], { status: 500 });
   }
 }
