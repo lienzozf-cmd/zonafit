@@ -63,13 +63,15 @@ export default function IntroWrapper({
     return null;
   }
 
+  const isAdminPage = pathname?.startsWith('/admin');
+
   return (
     <>
       {!introFinished ? (
         <IntroAnimation onIntroFinish={handleIntroFinish} />
       ) : (
         <PageTransition>
-          <SocialSection />
+          {!isAdminPage && <SocialSection />}
           {children}
         </PageTransition>
       )}
