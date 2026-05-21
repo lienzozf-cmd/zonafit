@@ -3,7 +3,6 @@ import BrandsSection from '@/components/brands-section';
 import CategoryGrid from '@/components/category-grid';
 import FeaturedProducts from '@/components/featured-products';
 import HeroSection from '@/components/hero-section';
-import SocialSection from '@/components/social-section';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import InfoSection from '@/components/info-section';
@@ -19,21 +18,12 @@ export default function Home() {
           <BrandsSection />
         </div>
         <br />
-        <div>
-          <CategoryGrid />
-        </div>
       </main>
-      <h2
-        className="nuevo-ingreso-heading text-center text-3xl font-bold mt-8 mb-4"
-      >
-        NUEVO INGRESO
-      </h2>
+      <FeaturedProducts />
       <div>
-        <FeaturedProducts />
+        <CategoryGrid />
       </div>
-      <div>
-        <SocialSection />
-      </div>
+
       <div>
         <InfoSection />
       </div>

@@ -39,6 +39,7 @@ export type Product = {
   feature1?: string;
   feature2?: string;
   feature3?: string;
+  feature4?: string;
   benefits?: string;
   servings_info?: string;
   visible?: boolean;
@@ -56,12 +57,15 @@ export const navLinks = [
       {
         title: 'Playeras',
         href: '/hombres/playeras',
-        sublinks: [{ title: 'Tanks', href: '/hombres/playeras/tanks' }],
+        sublinks: [
+          { title: 'Tanks', href: '/hombres/playeras/tanks' },
+          { title: 'Compresión', href: '/hombres/playeras/compresion' },
+          { title: 'Oversize', href: '/hombres/playeras/oversize' },
+        ],
       },
       { title: 'Shorts', href: '/hombres/shorts' },
-      { title: 'Pantalones', href: '/hombres/pantalones' },
+      { title: 'Pants', href: '/hombres/pantalones' },
       { title: 'Sudaderas', href: '/hombres/sudaderas' },
-      { title: 'Chamarras', href: '/hombres/chamarras' },
       { title: 'Ver Todo', href: '/hombres' },
     ],
   },

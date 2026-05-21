@@ -4,16 +4,16 @@
     "name": "465 - Superhero Compression Tees",
     "price": "Q.450.00",
     "availability": "Disponible",
-    "description": "Conviértete en un héroe del gimnasio con esta playera de compresión. Diseñada para un rendimiento máximo y un estilo inigualables, te ayudará a superar tus límites.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
-    "feature1": "Ajuste de compresión para soporte muscular",
-    "feature2": "Tejido transpirable de secado rápido",
-    "feature3": "Diseño exclusivo de edición limitada",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/superheroeroja.webp",
@@ -77,23 +77,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2,
     "name": "4041 - Warrior Compression Tees",
-    "price": "Q.450.00",
+    "price": "Q.505.00",
     "availability": "Disponible",
-    "description": "Desata al guerrero que llevas dentro. Esta playera de compresión offers un soporte muscular superior y una transpirabilidad excepcional para los entrenamientos más intensos.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "90% Nylon, 10% Elastane",
     "is_compression": true,
-    "feature1": "Compresión graduada para mejorar la circulación",
-    "feature2": "Material ultra-ligero y elástico",
-    "feature3": "Diseño ergonómico para libertad de movimiento",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/warriorgris.webp",
@@ -176,7 +177,7 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 1
             },
             {
               "value": "L",
@@ -185,23 +186,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 3,
     "name": "ONYX 5.0 SEAMLESS-T SHIRT",
     "price": "Q.675.00",
     "availability": "Disponible",
-    "description": "Experimenta la tecnología sin costuras con la Onyx 5.0. Diseñada para un máximo confort y un rendimiento sin restricciones, esta camiseta es perfecta para cualquier tipo de entrenamiento.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Gymshark",
     "fabric_type": "64% Nylon, 28% Polyester, 8% Elastane",
-    "is_compression": false,
-    "feature1": "Tecnología sin costuras para evitar roces",
-    "feature2": "Ventilación estratégica en zonas clave",
-    "feature3": "Tejido flexible que se adapta a tus movimientos",
+    "is_compression": true,
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/onyxnegra.webp",
@@ -293,64 +295,22 @@
           ]
         }
       }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Vital Seamless Crop Top",
-    "price": "Q.450.00",
-    "availability": "Disponible",
-    "description": "El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.",
-    "gender": "mujer",
-    "category": "ropa",
-    "subcategory": "top",
-    "brand": "Gymshark",
-    "fabric_type": "96% Nylon, 4% Elastane",
-    "is_compression": true,
-    "feature1": "Diseño sin costuras para máxima comodidad",
-    "feature2": "Tecnología de absorción de sudor",
-    "feature3": "Corte 'crop' que realza la figura",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
-        "alt": "Strong Grey Marl crop top",
-        "dataAiHint": "grey crop top"
-      }
     ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Green",
-        "hex": "#008000",
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/anabelgyms.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "S",
-              "stock": 0
-            }
-          ]
-        }
-      }
-    ]
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 6,
     "name": "Trident Pendant - Gold 14K SS \"22.5\"",
     "price": "Q.475.00",
     "availability": "Disponible",
-    "description": "Eleva tu estilo con este colgante exclusivo de RGMNT. Hecho con materiales de primera calidad para un look audaz y duradero.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con baño de oro de 14K. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Diseño exclusivo de Tridente",
-    "feature2": "Chapado en oro de 14K para durabilidad",
-    "feature3": "Perfecto para un look audaz y distintivo",
+    "feature1": "Baño de Oro de 14K",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/tridente.webp",
@@ -367,23 +327,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 8,
     "name": "CREATINE MONOHYDRATE ESSENTIALS 60 SERV",
     "price": "Q.345.00",
-    "availability": "Disponible",
-    "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio.",
+    "availability": "Agotado",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "creatina",
     "brand": "Dragon Pharma",
     "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
     "servings_info": "60 servicios.",
-    "feature1": "Aumenta la fuerza y la potencia muscular.",
-    "feature2": "Mejora el rendimiento en entrenamientos de alta intensidad.",
-    "feature3": "Fórmula micronizada para una rápida absorción.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
@@ -396,26 +357,27 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 9,
     "name": "CREATINE MONOHYDRATE ESSENTIALS 200 Servings",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Aumenta tu fuerza, potencia y rendimiento con creatina monohidratada micronizada de alta calidad. Un suplemento esencial para cualquier atleta serio en formato grande.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "creatina",
     "brand": "Dragon Pharma",
     "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
     "servings_info": "200 servicios.",
-    "feature1": "Formato económico de 200 servicios.",
-    "feature2": "Acelera la recuperación entre series.",
-    "feature3": "Creatina monohidratada 100% pura.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
@@ -431,23 +393,57 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
+  },
+  {
+    "id": 1801,
+    "name": "CREATINE MONOHYDRATE ESSENTIALS 60 SERV",
+    "price": "Q.345.00",
+    "availability": "Agotado",
+    "description": "Creatina monohidratada de grado farmacéutico para maximizar tu rendimiento y recuperación. 60 servicios de alta pureza.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "brand": "Dragon Pharma",
+    "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
+    "servings_info": "60 servicios.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
+    "images": [
+      {
+        "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
+        "alt": "Creatine 60 servings",
+        "dataAiHint": "creatine powder"
+      }
+    ],
+    "options": {
+      "type": "servicios",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 0
+        }
+      ]
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 1800,
     "name": "Proteína whey Dragon Pharma",
     "price": "Q.500.00",
     "availability": "Agotado",
-    "description": "Proteína de suero de leche de alta calidad, perfecta para la recuperación post-entrenamiento.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dragon Pharma",
     "benefits": "Apoya el crecimiento muscular, rápida absorción.",
     "servings_info": "30 servicios por envase.",
-    "feature1": "Promueve el crecimiento muscular magro.",
-    "feature2": "Rápida absorción para una recuperación eficiente.",
-    "feature3": "Delicioso sabor a pastel de cumpleaños.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
@@ -464,21 +460,22 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2301,
     "name": "Minimal Rope Chain - Gold 14K SS \"22\"",
     "price": "Q.295.00",
     "availability": "Disponible",
-    "description": "Cadena de cuerda minimalista en oro de 14K. Un toque de elegancia para cualquier occasion.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con baño de oro de 14K. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Diseño de cuerda clásico y elegante",
-    "feature2": "Resistente al sudor y al agua",
-    "feature3": "Cierre seguro y fácil de usar",
+    "feature1": "Baño de Oro de 14K",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain gold.webp",
@@ -494,21 +491,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2302,
     "name": "Minimal Rope Bracelet Gold -14K Gold SS \"8\"",
     "price": "Q.255.00",
     "availability": "Agotado",
-    "description": "Pulsera de cuerda minimalista en oro de 14K. Estilo y sofisticación en tu muñeca.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con baño de oro de 14K. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Complemento perfecto para la cadena de cuerda",
-    "feature2": "Materiales hipoalergénicos de alta calidad",
-    "feature3": "Ajuste cómodo y seguro para el día a día",
+    "feature1": "Baño de Oro de 14K",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet gold.webp",
@@ -524,21 +522,22 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2303,
     "name": "Minimal Rope Chain - SS Silver \"20\"",
     "price": "Q.285.00",
     "availability": "Disponible",
-    "description": "Cadena de cuerda minimalista en plata de ley. Un accesorio versátil y moderno.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con acabado pulido. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Plata de ley 925 para un brillo duradero",
-    "feature2": "Diseño versátil para cualquier ocasión",
-    "feature3": "Ligera y cómoda para uso diario",
+    "feature1": "Acero Inoxidable 316L",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Chain silver.webp",
@@ -554,21 +553,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2304,
     "name": "Minimal Rope Bracelet - SS Silver \"8\"",
     "price": "Q.235.00",
     "availability": "Disponible",
-    "description": "Pulsera de cuerda minimalista en plata de ley. El complemento perfecto para tu look diario.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con acabado pulido. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Hecha con plata de ley 925 de alta pureza",
-    "feature2": "Estilo minimalista y moderno",
-    "feature3": "Ideal para combinar con otras pulseras",
+    "feature1": "Acero Inoxidable 316L",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/Minimal Rope Bracelet silver.webp",
@@ -584,23 +584,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2519,
     "name": "Legacy Logo Tight Shorts",
     "price": "Q.240.00",
     "availability": "Disponible",
-    "description": "Shorts activos con el logo Legacy para un look clásico y atlético.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
-    "feature1": "Ajuste ceñido que realza la figura",
-    "feature2": "Tejido elástico para máxima movilidad",
-    "feature3": "Logotipo clásico de Legacy",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Legacy Logo Tight Shorts NEGRO.webp",
@@ -617,23 +618,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2520,
     "name": "Legacy Bra",
     "price": "Q.245.00",
     "availability": "Disponible",
-    "description": "Bra deportivo Legacy para un soporte y estilo inigualables.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "bras-deportivo",
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
-    "feature1": "Soporte medio para entrenamientos versátiles",
-    "feature2": "Diseño clásico con espalda cruzada",
-    "feature3": "Almohadillas removibles para un ajuste personalizable",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/legacy bra negro.webp",
@@ -650,23 +652,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2523,
     "name": "Flex Shorts",
     "price": "Q.345.00",
     "availability": "Disponible",
-    "description": "Shorts Flex para máxima flexibilidad y comodidad.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
-    "feature1": "Cintura alta para mayor cobertura y soporte",
-    "feature2": "Tejido sin costuras para una sensación suave",
-    "feature3": "Detalles de contorno que realzan la figura",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts gris.webp",
@@ -682,89 +685,24 @@
           "stock": 1
         }
       ]
-    }
-  },
-  {
-    "id": 2524,
-    "name": "Crop Top Flex",
-    "price": "Q.335.00",
-    "availability": "Disponible",
-    "description": "Crop top de la línea Flex para un ajuste perfecto y cómodo.",
-    "gender": "mujer",
-    "category": "ropa",
-    "subcategory": "top",
-    "brand": "Gymshark",
-    "fabric_type": "87% Nylon, 13% Spandex",
-    "is_compression": true,
-    "feature1": "Diseño crop top moderno y funcional",
-    "feature2": "Manga larga con agujeros para los pulgares",
-    "feature3": "Tejido flexible y transpirable",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/mujer/Crop Top Flex negro.webp",
-        "alt": "Crop Top Flex",
-        "dataAiHint": "woman top",
-        "option": "Negro"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2525,
-    "name": "Power Oversized Long Sleeve Top",
-    "price": "Q.280.00",
-    "availability": "Agotado",
-    "description": "Top de manga larga oversized para un look potente y relajado.",
-    "gender": "mujer",
-    "category": "ropa",
-    "subcategory": "top",
-    "brand": "Gymshark",
-    "fabric_type": "100% Cotton",
-    "is_compression": false,
-    "feature1": "Ajuste 'oversized' para máxima comodidad",
-    "feature2": "Material de algodón suave y transpirable",
-    "feature3": "Ideal para usar sobre tu bra deportivo",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/mujer/Power Oversized Long Sleeve Top negro.webp",
-        "alt": "Power Oversized Long Sleeve Top",
-        "dataAiHint": "woman top",
-        "option": "Negro"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2527,
     "name": "Strength Graphic Joggers",
     "price": "Q.345.00",
     "availability": "Disponible",
-    "description": "Joggers con gráfico del departamento de fuerza para un look completo.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "pantalon",
     "brand": "Gymshark",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Ajuste cómodo y relajado",
-    "feature2": "Cintura ajustable con cordón",
-    "feature3": "Gráfico audaz para un estilo único",
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Strength  Graphic Joggers.webp",
@@ -781,23 +719,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2535,
     "name": "Adapt Fleck Sports Bra",
     "price": "Q.445.00",
     "availability": "Disponible",
-    "description": "Bra deportivo de la línea Adapt Fleck para un ajuste y soporte perfectos.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "bras-deportivo",
     "brand": "Gymshark",
     "fabric_type": "79% Nylon, 15% Polyester, 6% Elastane",
     "is_compression": true,
-    "feature1": "Tejido sin costuras con patrón 'fleck'",
-    "feature2": "Soporte medio con copas removibles",
-    "feature3": "Cintura elástica para un ajuste seguro",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Sports Bra morado.webp",
@@ -814,23 +753,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2536,
     "name": "Adapt Fleck Seamless Shorts",
     "price": "Q.400.00",
     "availability": "Disponible",
-    "description": "Shorts sin costuras de la línea Adapt Fleck para un confort inigualable.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "79% Nylon, 15% Polyester, 6% Elastane",
     "is_compression": true,
-    "feature1": "Cintura alta que no se enrolla",
-    "feature2": "Tecnología de absorción de sudor",
-    "feature3": "Patrón 'fleck' único en su clase",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Adapt Fleck Seamless Shorts morado.webp",
@@ -847,23 +787,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2539,
     "name": "Mesh Sports Bra",
     "price": "Q.265.00",
     "availability": "Disponible",
-    "description": "Bra deportivo con detalles de malla para mayor transpirabilidad.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "bras-deportivo",
     "brand": "Gymshark",
     "fabric_type": "88% Polyester, 12% Elastane",
     "is_compression": true,
-    "feature1": "Paneles de malla para ventilación",
-    "feature2": "Soporte ligero para actividades de bajo impacto",
-    "feature3": "Diseño elegante y minimalista",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Mesh Sports Bra negro.webp",
@@ -880,23 +821,24 @@
           "stock": 2
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2541,
     "name": "Ruched Sports Bra",
     "price": "Q.290.00",
     "availability": "Disponible",
-    "description": "Bra deportivo con diseño fruncido para un estilo único.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "bras-deportivo",
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
-    "feature1": "Detalle fruncido en el frente",
-    "feature2": "Soporte medio y copas removibles",
-    "feature3": "Tejido suave y cómodo",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Ruched Sports Bra negro.webp",
@@ -913,23 +855,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2542,
     "name": "Strap Feature Sports Bra",
     "price": "Q.285.00",
     "availability": "Disponible",
-    "description": "Bra deportivo con tirantes decorativos para un look moderno.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "bras-deportivo",
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
-    "feature1": "Diseño de tirantes único en la espalda",
-    "feature2": "Soporte ligero y ajuste cómodo",
-    "feature3": "Perfecto para yoga, pilates o uso diario",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Strap Feature Sports Bra negro.webp",
@@ -946,23 +889,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2543,
     "name": "Flex Shorts",
     "price": "Q.270.00",
     "availability": "Disponible",
-    "description": "Shorts Flex para máxima flexibilidad y comodidad.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "87% Nylon, 13% Spandex",
     "is_compression": true,
-    "feature1": "Tejido elástico que se mueve contigo",
-    "feature2": "Ajuste que realza la figura",
-    "feature3": "Diseño versátil para gimnasio o calle",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/Flex Shorts negro.webp",
@@ -979,23 +923,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2602,
     "name": "Premium Tee SAMURAI bushido",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera premium de Darc Sport con diseño de Samurai Bushido.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico exclusivo 'Samurai Bushido'",
-    "feature2": "Algodón premium para máxima suavidad",
-    "feature3": "Corte 'oversized' para un estilo urbano",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Premium Tee  samurai bushido.webp",
@@ -1011,23 +956,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2603,
     "name": "Premium Oversized Gogeta",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera premium de Darc Sport con diseño clásico de Dragon Ball.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Colaboración oficial Darc Sport x Dragon Ball",
-    "feature2": "Gráfico de alta calidad de Gogeta",
-    "feature3": "Ajuste 'oversized' para comodidad y estilo",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball gogeta.webp",
@@ -1043,23 +989,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2604,
     "name": "Through Fire And Storm \"Premium\" Oversized Tee in Wolf Gray",
     "price": "Q.435.00",
     "availability": "Disponible",
-    "description": "Playera básica de Darc Sport, ideal para cualquier entrenamiento.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico 'Through Fire and Storm'",
-    "feature2": "Ajuste 'oversized' para un look relajado",
-    "feature3": "Algodón suave y duradero",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Through Fire And Storm Premium Oversized Tee in Wolf Gray .webp",
@@ -1075,23 +1022,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2608,
     "name": "4071 - Gods & Heroes Tees",
     "price": "Q.435.00",
     "availability": "Disponible",
-    "description": "Playera de la colección Dioses y Héroes.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Gráfico inspirado en mitología",
-    "feature2": "Algodón de alta densidad",
-    "feature3": "Estilo 'vintage' con lavado especial",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/Godsh.webp",
@@ -1116,23 +1064,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2609,
     "name": "Hella Pocket Sweats",
     "price": "Q.600.00",
     "availability": "Agotado",
-    "description": "Pantalones de chándal con múltiples bolsillos, funcionales y con estilo.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "pantalon",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Múltiples bolsillos cargo funcionales",
-    "feature2": "Tejido de felpa francesa para máxima comodidad",
-    "feature3": "Ajuste relajado para uso diario",
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/2005 - Hella Pocket Sweats morado.webp",
@@ -1149,23 +1098,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2610,
     "name": "The Boys Graphic Tees",
     "price": "Q.450.00",
     "availability": "Agotado",
-    "description": "Playera con gráfico de la serie \"The Boys\".",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Colaboración oficial con la serie 'The Boys'",
-    "feature2": "Gráfico de alta calidad y durabilidad",
-    "feature3": "Ajuste perfecto para fans de la serie",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4095 - The Boys® Graphic Tees.webp",
@@ -1190,23 +1140,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2611,
     "name": "The Boys® Cut-Offs",
     "price": "Q.450.00",
     "availability": "Agotado",
-    "description": "Playera sin mangas con gráfico oficial de la serie \"The Boys®\".",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Corte 'cut-off' para máxima ventilación",
-    "feature2": "Gráfico oficial de 'The Boys®'",
-    "feature3": "Perfecta para entrenamientos intensos",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3005 - The Boys® Cut-Offs.webp",
@@ -1231,23 +1182,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2612,
     "name": "5003 UFC™ Cut-Off hoodies",
     "price": "Q.495.00",
     "availability": "Disponible",
-    "description": "Sudadera con capucha con licencia oficial de UFC™.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
     "brand": "YoungLA",
     "fabric_type": "80% Cotton, 20% Polyester",
     "is_compression": false,
-    "feature1": "Colaboración oficial con UFC™",
-    "feature2": "Diseño 'cut-off' con capucha",
-    "feature3": "Ideal para un look urbano y deportivo",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/5003 - UFC™ Cut-Off hoodies ROJO.webp",
@@ -1265,23 +1217,24 @@
         }
       ]
     },
-    "colors": []
+    "colors": [],
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2613,
     "name": "UFC™ Jersey",
     "price": "Q.445.00",
     "availability": "Agotado",
-    "description": "Jersey con licencia oficial de UFC™.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "100% Polyester",
     "is_compression": false,
-    "feature1": "Tejido de jersey transpirable",
-    "feature2": "Logotipos oficiales de UFC™",
-    "feature3": "Corte atlético para un rendimiento óptimo",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4207 - UFC™ Jersey GRIS.webp",
@@ -1306,23 +1259,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2614,
     "name": "Revenge Tees",
     "price": "Q.395.00",
     "availability": "Agotado",
-    "description": "Playera de la colección \"Revenge\".",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Gráfico 'Revenge' de alto impacto",
-    "feature2": "Algodón 'heavyweight' para mayor durabilidad",
-    "feature3": "Estilo urbano y moderno",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.webp",
@@ -1386,23 +1340,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2615,
     "name": "GRAND SLAM BASEBALL JERSEYS",
     "price": "Q.495.00",
     "availability": "Disponible",
-    "description": "Jersey de béisbol de la colección \"Grand Slam\".",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "100% Polyester",
     "is_compression": false,
-    "feature1": "Diseño clásico de jersey de béisbol",
-    "feature2": "Tejido ligero y transpirable",
-    "feature3": "Perfecto para un look casual y deportivo",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3002 GRAND SLAM BASEBALL JERSEYS NEGRO.webp",
@@ -1427,23 +1382,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2618,
     "name": "477- Combat Compression",
     "price": "Q.315.00",
     "availability": "Disponible",
-    "description": "Ropa de compresión para combate, diseñada para el máximo rendimiento.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
-    "feature1": "Diseñada para artes marciales y 'grappling'",
-    "feature2": "Material ultra resistente a la abrasión",
-    "feature3": "Mantiene los músculos calientes y listos",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/478 - Combat Compression Tees AZUL.webp",
@@ -1507,23 +1463,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2619,
     "name": "425 - Iron Compression",
     "price": "Q.375.00",
     "availability": "Disponible",
-    "description": "Compresión de hierro para un soporte inquebrantable.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "90% Polyester, 10% Spandex",
     "is_compression": true,
-    "feature1": "Máximo nivel de compresión",
-    "feature2": "Ideal para levantamiento de pesas",
-    "feature3": "Ayuda a prevenir lesiones musculares",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/425 - IRON COMPRESSION TEES VERDE.webp",
@@ -1548,7 +1505,8 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2620,
@@ -1680,16 +1638,16 @@
     "name": "Ease Woven Joggers",
     "price": "Q.375.00",
     "availability": "Disponible",
-    "description": "Joggers tejidos para una comodidad excepcional.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "pantalon",
     "brand": "Gymshark",
     "fabric_type": "100% Poliéster",
     "is_compression": false,
-    "feature1": "Tejido 'woven' ligero y resistente",
-    "feature2": "Corte 'tapered' moderno",
-    "feature3": "Bolsillos con cremallera para seguridad",
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.webp",
@@ -1706,56 +1664,24 @@
           "stock": 1
         }
       ]
-    }
-  },
-  {
-    "id": 2631,
-    "name": "Built in the UK T-Shirt",
-    "price": "Q.240.00",
-    "availability": "Disponible",
-    "description": "Playera conmemorativa \"Built in the UK\".",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "Gymshark",
-    "fabric_type": "100% Algodón",
-    "is_compression": false,
-    "feature1": "Gráfico conmemorativo del Reino Unido",
-    "feature2": "Algodón suave y cómodo",
-    "feature3": "Ajuste regular para uso diario",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/Built in the UK T-Shirt azul.webp",
-        "alt": "Built in the UK T-Shirt",
-        "dataAiHint": "men shirt",
-        "option": "S"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "S",
-          "stock": 0
-        }
-      ]
-    }
+    },
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2632,
     "name": "Sets N Reps T-Shirt",
     "price": "Q.380.00",
     "availability": "Disponible",
-    "description": "Playera ideal para tus entrenamientos de series y repeticiones.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico motivacional 'Sets N Reps'",
-    "feature2": "Corte 'oversized' para un look moderno",
-    "feature3": "Perfecta para el gimnasio y la calle",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Sets N Reps T-Shirt verde.webp",
@@ -1772,56 +1698,24 @@
           "stock": 1
         }
       ]
-    }
-  },
-  {
-    "id": 2633,
-    "name": "Rest Day Essentials Cargo Joggers",
-    "price": "Q.411.00",
-    "availability": "Agotado",
-    "description": "Joggers cargo, esenciales para tus días de descanso.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "pantalon",
-    "brand": "Gymshark",
-    "fabric_type": "100% Algodón",
-    "is_compression": false,
-    "feature1": "Bolsillos cargo para mayor utilidad",
-    "feature2": "Tejido de algodón cómodo",
-    "feature3": "Cintura y tobillos elásticos",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/Rest Day Essentials Cargo Joggers negro.webp",
-        "alt": "Rest Day Essentials Cargo Joggers",
-        "dataAiHint": "men joggers",
-        "option": "M"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "value": "M",
-          "stock": 0
-        }
-      ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2634,
     "name": "Crest 7\" Shorts",
     "price": "Q.295.00",
     "availability": "Disponible",
-    "description": "Shorts de 7 pulgadas de la línea Crest.",
+    "description": "Shorts deportivos ligeros y resistentes con tecnología de secado rápido. Diseñados para ofrecer total libertad de movimiento y comodidad absoluta en tus sesiones más intensas.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "80% Algodón, 20% Poliéster",
     "is_compression": false,
-    "feature1": "Largo de 7 pulgadas para cobertura ideal",
-    "feature2": "Tejido suave de mezcla de algodón",
-    "feature3": "Bolsillos laterales abiertos",
+    "feature1": "Cintura Elástica de Ajuste Seguro",
+    "feature2": "Tejido de Microfibra Ultra Ligera",
+    "feature3": "Bolsillos Laterales Reforzados",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Crest7.webp",
@@ -1838,23 +1732,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Aperturas Laterales para Movilidad"
   },
   {
     "id": 2635,
     "name": "Lifting Club Apparel Graphic Shorts",
     "price": "Q.245.00",
     "availability": "Disponible",
-    "description": "Shorts con gráfico del \"Lifting Club Apparel\".",
+    "description": "Shorts deportivos ligeros y resistentes con tecnología de secado rápido. Diseñados para ofrecer total libertad de movimiento y comodidad absoluta en tus sesiones más intensas.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico exclusivo 'Lifting Club'",
-    "feature2": "Material de algodón transpirable",
-    "feature3": "Cintura elástica con cordón ajustable",
+    "feature1": "Cintura Elástica de Ajuste Seguro",
+    "feature2": "Tejido de Microfibra Ultra Ligera",
+    "feature3": "Bolsillos Laterales Reforzados",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Liftingclubapparelgraphicshortsnegro.webp",
@@ -1871,7 +1766,8 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Aperturas Laterales para Movilidad"
   },
   {
     "id": 2638,
@@ -1899,97 +1795,6 @@
         {
           "value": "S",
           "stock": 1
-        }
-      ]
-    }
-  },
-  {
-    "id": 2639,
-    "name": "SILICONE GRIP LIFTING STRAPS",
-    "price": "Q.275.00",
-    "availability": "Disponible",
-    "description": "Straps de levantamiento con agarre de silicona para mayor seguridad.",
-    "gender": "unisex",
-    "category": "accesorio",
-    "subcategory": "equipo",
-    "brand": "Gymshark",
-    "feature1": "Agarre de silicona para máxima adherencia",
-    "feature2": "Acolchado de neopreno para comodidad en la muñeca",
-    "feature3": "Costuras reforzadas para mayor durabilidad",
-    "images": [
-      {
-        "src": "/assets/images/Accesorios/Silicone Lifting Straps negro.webp",
-        "alt": "Lifting Straps",
-        "dataAiHint": "lifting straps"
-      }
-    ],
-    "options": {
-      "type": "color",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2640,
-    "name": "Redeveloped Silicone Lifting Straps",
-    "price": "Q.295.00",
-    "availability": "Agotado",
-    "description": "Straps de levantamiento con agarre de silicona para mayor seguridad.",
-    "gender": "unisex",
-    "category": "accesorio",
-    "subcategory": "equipo",
-    "brand": "Gymshark",
-    "feature1": "Diseño mejorado para un agarre superior",
-    "feature2": "Material duradero y resistente",
-    "feature3": "Ajuste seguro y cómodo",
-    "images": [
-      {
-        "src": "/assets/images/Accesorios/Silicone Lifting Straps morado.webp",
-        "alt": "Lifting Straps",
-        "dataAiHint": "lifting straps"
-      }
-    ],
-    "options": {
-      "type": "color",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 2641,
-    "name": "14OZ SHAKER BOTTLE",
-    "price": "Q.226.00",
-    "availability": "Disponible",
-    "description": "Shaker de 14oz para mezclar tus suplementos.",
-    "gender": "unisex",
-    "category": "accesorio",
-    "subcategory": "shaker",
-    "brand": "Gymshark",
-    "feature1": "Capacidad de 14oz (400ml)",
-    "feature2": "Bola mezcladora para batidos sin grumos",
-    "feature3": "Libre de BPA y a prueba de fugas",
-    "images": [
-      {
-        "src": "/assets/images/Accesorios/14OZ SHAKER BOTTLE.webp",
-        "alt": "Shaker Bottle",
-        "dataAiHint": "shaker bottle",
-        "option": "Único"
-      }
-    ],
-    "options": {
-      "type": "color",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 0
         }
       ]
     }
@@ -2029,16 +1834,16 @@
     "name": "4117 - Superman Compression Tees",
     "price": "Q.525.00",
     "availability": "Disponible",
-    "description": "Playera de compresión con el icónico logo de Superman para un rendimiento heroico.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "88% Polyester, 12% Spandex",
     "is_compression": true,
-    "feature1": "Colaboración oficial con DC Comics",
-    "feature2": "Ajuste de compresión para un look de superhéroe",
-    "feature3": "Material de secado rápido",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.webp",
@@ -2077,7 +1882,7 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 2
             },
             {
               "value": "L",
@@ -2122,23 +1927,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2644,
     "name": "8062- Warrior X Compression Hoodies",
     "price": "Q.515.00",
     "availability": "Disponible",
-    "description": "Sudadera con capucha de compresión para un look de guerrero y un rendimiento superior.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
     "brand": "YoungLA",
     "fabric_type": "90% Nylon, 10% Elastane",
     "is_compression": true,
-    "feature1": "Diseño híbrido de sudadera y compresión",
-    "feature2": "Capucha para mayor concentración",
-    "feature3": "Tejido flexible for a full range of motion",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/Warrior Compression Hoodies.webp",
@@ -2186,23 +1992,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2645,
     "name": "Premium Oversized Broly",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera de la colección Dioses y Héroes, ahora en un nuevo color.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Colaboración oficial Darc Sport x Dragon Ball",
-    "feature2": "Gráfico de Broly de alta definición",
-    "feature3": "Algodón 'heavyweight' para un look premium",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Premium Tee dragon ball broly.webp",
@@ -2218,23 +2025,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2648,
     "name": "Bum Energy",
     "price": "Q.33.00",
     "availability": "Disponible",
-    "description": "Bebida energética Bum Energy para un impulso extra.",
+    "description": "Bum Energy es una bebida energética premium diseñada para proporcionar energía limpia y sostenida sin el temido bajón. Con una fórmula minimalista que destaca 112 mg de cafeína natural y 250 mg de Cognizin® Citicolina, es la opción perfecta para mejorar el enfoque mental y la concentración.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Bum Energy",
     "benefits": "Aumento de energía y enfoque, sin colorantes artificiales.",
     "servings_info": "1 lata.",
-    "feature1": "Formulada para energía limpia y sostenida",
-    "feature2": "Sin colorantes artificiales",
-    "feature3": "Dos deliciosos sabores para elegir",
+    "feature1": "112 mg de Cafeína Natural",
+    "feature2": "250 mg de Cognizin® Citicolina",
+    "feature3": "Zero Azúcar y Bajas Calorías",
     "images": [
       {
         "src": "/assets/images/marcas/bumenergy/bumlemon.webp",
@@ -2247,6 +2055,42 @@
         "alt": "Bum Energy Helado de Cereza",
         "dataAiHint": "energy drink",
         "option": "Cherry Frost"
+      },
+      {
+        "src": "/assets/images/marcas/bumenergy/bum energy drink champion mentality.png",
+        "alt": "Bum Energy - Champion Mentality",
+        "dataAiHint": "energy drink",
+        "option": "Champion Mentality"
+      },
+      {
+        "src": "/assets/images/marcas/bumenergy/bum energy drink pink lemonade.png",
+        "alt": "Bum Energy - Pink Lemonade",
+        "dataAiHint": "energy drink",
+        "option": "Pink Lemonade"
+      },
+      {
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink root beer.png",
+        "alt": "Bum Energy - Root Beer",
+        "dataAiHint": "energy drink",
+        "option": "Root Beer"
+      },
+      {
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink  dr bum.png",
+        "alt": "Bum Energy - Dr Bum",
+        "dataAiHint": "energy drink",
+        "option": "Dr Bum"
+      },
+      {
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink  cola.png",
+        "alt": "Bum Energy - Cola",
+        "dataAiHint": "energy drink",
+        "option": "Cola"
+      },
+      {
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink  grape.png",
+        "alt": "Bum Energy - Grape",
+        "dataAiHint": "energy drink",
+        "option": "Grape"
       }
     ],
     "options": {
@@ -2254,30 +2098,55 @@
       "values": [
         {
           "value": "Blueberry Lemon",
-          "stock": 6
+          "stock": 1
+        },
+        {
+          "value": "Pink Lemonade",
+          "stock": 10
         },
         {
           "value": "Cherry Frost",
-          "stock": 7
+          "stock": 0
+        },
+        {
+          "value": "Champion Mentality",
+          "stock": 11
+        },
+        {
+          "value": "Root Beer",
+          "stock": 3
+        },
+        {
+          "value": "Dr Bum",
+          "stock": 1
+        },
+        {
+          "value": "Cola",
+          "stock": 1
+        },
+        {
+          "value": "Grape",
+          "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2649,
     "name": "BUM Essential Pre-workout",
     "price": "Q.400.00",
     "availability": "Disponible",
-    "description": "Pre-entreno Thavage edición Carlos Belcast para un rendimiento superior.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "RAW",
     "benefits": "Energía explosiva, enfoque mental y bombeos musculares intensos.",
     "servings_info": "40 servicios.",
-    "feature1": "Fórmula potente para entrenamientos intensos",
-    "feature2": "Mejora la conexión mente-músculo",
-    "feature3": "Edición especial con sabor único",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/raw/precarlosb.webp",
@@ -2293,23 +2162,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2650,
     "name": "VENOM INFERNO BRAZO DE 50 LIMÓN",
     "price": "Q.485.00",
     "availability": "Disponible",
-    "description": "Pre-entreno Venom Inferno para una intensidad máxima en tus entrenamientos.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Dragon Pharma",
     "benefits": "Extrema energía, vascularización mejorada y máxima potencia.",
     "servings_info": "30 servicios.",
-    "feature1": "Máxima energía y potencia",
-    "feature2": "Aumenta la vascularización y el 'pump'",
-    "feature3": "Fórmula de alta estimulación",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/VENOM INFERNO BRAZO DE 50 LIMÓN.webp",
@@ -2325,23 +2195,24 @@
           "stock": 2
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2651,
     "name": "Venom Mangonada",
     "price": "Q.530.00",
     "availability": "Disponible",
-    "description": "Pre-entreno Venom con delicioso sabor a mangonada.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "pre-entreno",
     "brand": "Dragon Pharma",
     "benefits": "Energía intensa, sabor tropical refrescante y enfoque mejorado.",
     "servings_info": "30 servicios.",
-    "feature1": "Sabor exótico y refrescante",
-    "feature2": "Potente mezcla de estimulantes",
-    "feature3": "Mejora el enfoque y la resistencia",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/Venom Mangonada.webp",
@@ -2357,23 +2228,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2652,
     "name": "Iso 100 - Dymatize - Chocolate 3LB",
     "price": "Q.665.00",
     "availability": "Disponible",
-    "description": "Proteína aislada de alta calidad sabor chocolate.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dymatize",
     "benefits": "Recuperación muscular rápida, 25g de proteína por servicio, bajo en carbohidratos.",
     "servings_info": "43 servicios.",
-    "feature1": "25g de proteína hidrolizada y aislada",
-    "feature2": "Absorción ultra rápida para post-entreno",
-    "feature3": "Bajo en carbohidratos y grasas",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/suplementos/isodc.webp",
@@ -2389,23 +2261,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2653,
     "name": "Iso 100 - Dymatize- Cocoa Pebbles 3LB",
     "price": "Q.685.00",
     "availability": "Disponible",
-    "description": "Proteína aislada con el delicioso y único sabor de Cocoa Pebbles.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dymatize",
     "benefits": "Recuperación muscular rápida, sabor increíble, 5.5g de BCAAs.",
     "servings_info": "42 servicios.",
-    "feature1": "Sabor oficial de cereal Cocoa Pebbles",
-    "feature2": "Ideal para batidos y recetas",
-    "feature3": "5.5g de BCAAs por servicio",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/suplementos/isodcp.webp",
@@ -2421,23 +2294,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2655,
     "name": "Raw Sleep",
     "price": "Q.385.00",
     "availability": "Disponible",
-    "description": "Fórmula para mejorar la calidad del sueño y la recuperación nocturna.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "RAW",
     "benefits": "Promueve un sueño reparador, optimiza la recuperación y no es adictivo.",
     "servings_info": "30 servicios.",
-    "feature1": "Mejora la calidad y duración del sueño",
-    "feature2": "Optimiza la recuperación muscular nocturna",
-    "feature3": "Fórmula no adictiva con ingredientes naturales",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/raw/rawsleep.webp",
@@ -2453,23 +2327,24 @@
           "stock": 2
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2656,
     "name": "DR. FEAAR® - Complete Essential Amino Acid",
     "price": "Q.350.00",
     "availability": "Disponible",
-    "description": "Fórmula avanzada de aminoácidos esenciales para la recuperación y el rendimiento.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "Dragon Pharma",
     "benefits": "Mejora la síntesis de proteínas, acelera la recuperación muscular y tiene un gran sabor.",
     "servings_info": "30 servicios.",
-    "feature1": "Contiene los 9 aminoácidos esenciales",
-    "feature2": "Promueve la recuperación muscular",
-    "feature3": "Sabores refrescantes",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/DR. FEAAR® - Complete Essential Amino Acid Raspberry Lemonade.webp",
@@ -2515,23 +2390,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2657,
     "name": "GLUTAMINE FERMENTED",
     "price": "Q.345.00",
     "availability": "Disponible",
-    "description": "Glutamina pura para apoyar la recuperación muscular y la salud intestinal.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "Dragon Pharma",
     "benefits": "Reduce el dolor muscular, apoya el sistema inmunológico y mejora la salud digestiva.",
     "servings_info": "60 servicios.",
-    "feature1": "Reduce el dolor muscular post-entrenamiento",
-    "feature2": "Apoya la salud del sistema digestivo",
-    "feature3": "Fortalece el sistema inmunológico",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/GLUTAMINE 30 SERVS.webp",
@@ -2547,23 +2423,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2658,
     "name": "GREENS & REDS",
     "price": "Q.485.00",
     "availability": "Disponible",
-    "description": "Superalimentos en polvo para una dosis diaria de vitaminas, minerales y antioxidantes.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dragon Pharma",
     "benefits": "Apoyo inmunológico, bienestar general y salud digestiva.",
     "servings_info": "30 servicios.",
-    "feature1": "Mezcla completa de frutas y verduras",
-    "feature2": "Potente dosis de antioxidantes",
-    "feature3": "Apoya la salud digestiva y el sistema inmune",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/greensandreds.webp",
@@ -2579,23 +2456,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2659,
     "name": "Metal WLVS \"Pierce\" Hoodie in Black",
     "price": "Q.625.00",
     "availability": "Disponible",
-    "description": "Sudadera con capucha de la colección Metal WLVS.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
     "brand": "Darc Sport",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Gráfico 'Metal WLVS' de edición limitada",
-    "feature2": "Algodón de alta calidad para mayor comodidad",
-    "feature3": "Capucha amplia y bolsillo canguro",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/Metal WLVS ”Pierce”Hoodie.webp",
@@ -2611,23 +2489,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2660,
     "name": "Gains Seamless Washed Shorts",
     "price": "Q.575.00",
     "availability": "Disponible",
-    "description": "Shorts de entrenamiento Gains Seamless para mujer.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "89% Nylon, 11% Elastane",
     "is_compression": true,
-    "feature1": "Tejido sin costuras para máxima comodidad.",
-    "feature2": "Efecto de lavado vintage.",
-    "feature3": "Cintura alta para mayor soporte.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/mujer/gainswashed.webp",
@@ -2643,23 +2522,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2661,
     "name": "Impact Bra",
     "price": "Q.460.00",
     "availability": "Disponible",
-    "description": "Bra deportivo de alto impacto para un soporte superior.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "bras-deportivo",
     "brand": "DFYNE",
     "fabric_type": "78% Nylon, 22% Elastane",
     "is_compression": true,
-    "feature1": "Diseñado para deportes de alto impacto.",
-    "feature2": "Material transpirable.",
-    "feature3": "Ajuste seguro.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/dfyne/impactbra.webp",
@@ -2686,23 +2566,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2662,
     "name": "Impact Shorts | 4.5\"",
     "price": "Q.560.00",
     "availability": "Disponible",
-    "description": "Shorts de alto impacto diseñados para moverse contigo.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "DFYNE",
     "fabric_type": "78% Nylon, 22% Elastane",
     "is_compression": true,
-    "feature1": "Cintura alta sin costuras frontales.",
-    "feature2": "Largo de 4.5 pulgadas.",
-    "feature3": "Tejido flexible.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
@@ -2750,23 +2631,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2663,
     "name": "Impact Shorts",
     "price": "Q.540.00",
     "availability": "Disponible",
-    "description": "Shorts de alto impacto diseñados para moverse contigo.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
     "brand": "DFYNE",
     "fabric_type": "78% Nylon, 22% Elastane",
     "is_compression": true,
-    "feature1": "Cintura alta sin costuras frontales.",
-    "feature2": "Largo de 4.5 pulgadas.",
-    "feature3": "Tejido flexible.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/dfyne/impactshort.webp",
@@ -2794,23 +2676,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2664,
     "name": "Proteina Itholate Carlos Belcast",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Proteína aislada de alta calidad, edición Carlos Belcast.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "RAW",
     "benefits": "Aislado de proteína pura para una rápida absorción.",
     "servings_info": "25 servicios.",
-    "feature1": "25g de proteína por servicio.",
-    "feature2": "Fácil digestión.",
-    "feature3": "Sabor Napolitano.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/raw/proteinanapolitano.webp",
@@ -2826,23 +2709,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2665,
     "name": "Warrior X Compression Tees",
     "price": "Q.485.00",
     "availability": "Agotado",
-    "description": "Playera de compresión Warrior X para un rendimiento máximo.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "90% Nylon, 10% Elastane",
     "is_compression": true,
-    "feature1": "Tejido de compresión superior.",
-    "feature2": "Altamente transpirable.",
-    "feature3": "Costuras reforzadas.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/warrioxred.webp",
@@ -2906,23 +2790,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2666,
     "name": "Inosuke Series Premium Tee in Black",
     "price": "Q.595.00",
     "availability": "Agotado",
-    "description": "Playera premium de Darc Sport con diseño de Inosuke.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico de alta calidad.",
-    "feature2": "Material premium.",
-    "feature3": "Edición limitada.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/inosuke.webp",
@@ -2946,23 +2831,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2667,
     "name": "Tanjiro Series Premium Tee in Black",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera premium de Darc Sport con diseño de Tanjiro.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico icónico de Tanjiro.",
-    "feature2": "Ajuste cómodo.",
-    "feature3": "Diseño exclusivo.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/tanjiro.webp",
@@ -2986,23 +2872,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2668,
     "name": "Nezuko Series Premium Tee in Black",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera premium de Darc Sport con diseño de Nezuko.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Diseño oficial.",
-    "feature2": "Suavidad excepcional.",
-    "feature3": "Estilo único.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/nezuko.webp",
@@ -3026,23 +2913,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2669,
     "name": "Zenitsu Series Premium Tee in Black",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera premium de Darc Sport con diseño de Zenitsu.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Gráfico vibrante.",
-    "feature2": "Altamente duradero.",
-    "feature3": "Corte moderno.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/zenitsu.webp",
@@ -3066,23 +2954,24 @@
           "stock": 0
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2670,
     "name": "OnlyUs Forever Premium Oversized",
     "price": "Q.540.00",
     "availability": "Disponible",
-    "description": "Playera oversized de Darc Sport.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
     "fabric_type": "100% Algodón",
     "is_compression": false,
-    "feature1": "Estilo oversized.",
-    "feature2": "Material de alta calidad.",
-    "feature3": "Logo OnlyUs.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/onlyus1.webp",
@@ -3103,21 +2992,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2671,
     "name": "Onyx 5.0 long sleeve",
     "price": "Q.750.00",
     "availability": "Agotado",
-    "description": "Camiseta de manga larga Onyx 5.0 de Gymshark.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Gymshark",
-    "feature1": "Sin costuras.",
-    "feature2": "Transpirable.",
-    "feature3": "Ideal para clima frío.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/onyxgrisml.webp",
@@ -3144,21 +3034,23 @@
           ]
         }
       }
-    ]
+    ],
+    "is_compression": true,
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2672,
     "name": "BREATH OF WOLVES LONDON UZUI",
     "price": "Q.670.00",
     "availability": "Disponible",
-    "description": "Playera de edición especial Breath of Wolves.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Darc Sport",
-    "feature1": "Gráfico exclusivo.",
-    "feature2": "Corte atlético.",
-    "feature3": "Colección London.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/darcsport/uzuidarc.webp",
@@ -3185,21 +3077,22 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2673,
     "name": "Conditioning Club Oversized T-Shirt",
     "price": "Q.415.00",
     "availability": "Disponible",
-    "description": "Playera oversized de Gymshark.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Gymshark",
-    "feature1": "Estilo holgado.",
-    "feature2": "Logo del club.",
-    "feature3": "Algodón pesado.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/clubgymshark.webp",
@@ -3226,21 +3119,22 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2674,
     "name": "2079-Dark Wave Joggers",
     "price": "Q.580.00",
     "availability": "Agotado",
-    "description": "Joggers de la colección Dark Wave.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "jogger",
+    "subcategory": "pantalon",
     "brand": "YoungLA",
-    "feature1": "Ajuste moderno.",
-    "feature2": "Material elástico.",
-    "feature3": "Estilo Dark Wave.",
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/pantsdark.webp",
@@ -3267,7 +3161,8 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2676,
@@ -3305,16 +3200,16 @@
     "name": "ISOPHORM - PREMIUM WHEY PROTEIN ISOLATE - 2Lb",
     "price": "Q.550.00",
     "availability": "Disponible",
-    "description": "Aislado de proteína de suero de leche de Dragon Pharma.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dragon Pharma",
     "benefits": "Crecimiento muscular.",
     "servings_info": "28 servicios.",
-    "feature1": "Proteína aislada pura.",
-    "feature2": "Sabores variados.",
-    "feature3": "Alta calidad.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
@@ -3398,23 +3293,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2678,
     "name": "WHEYPHORM - PREMIUM WHEY PROTEIN MATRIX - 2Lb",
     "price": "Q.535.00",
     "availability": "Disponible",
-    "description": "Matriz de proteína de suero de leche de Dragon Pharma.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "proteina",
     "brand": "Dragon Pharma",
     "benefits": "Recuperación prolongada.",
     "servings_info": "27 servicios.",
-    "feature1": "Mezcla de suero.",
-    "feature2": "Liberación sostenida.",
-    "feature3": "Sabor brownie.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/wheyphormwhitechv.webp",
@@ -3460,23 +3356,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2679,
     "name": "Omega 3 - 60ct",
     "price": "Q.250.00",
     "availability": "Disponible",
-    "description": "Suplemento de Omega 3.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "aminoacidos",
     "brand": "Dragon Pharma",
     "benefits": "Salud del corazón.",
     "servings_info": "60 capsulas.",
-    "feature1": "EPA/DHA.",
-    "feature2": "Antiinflamatorio.",
-    "feature3": "Bienestar general.",
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
         "src": "/assets/images/marcas/dragonpharma/omega3df.webp",
@@ -3492,23 +3389,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2680,
     "name": "Power Hoodie",
     "price": "Q.550.00",
     "availability": "Disponible",
-    "description": "Sudadera Power de Gymshark.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
     "brand": "Gymshark",
     "fabric_type": "80% Algodón, 20% Poliéster",
     "is_compression": false,
-    "feature1": "Suavidad.",
-    "feature2": "Capucha.",
-    "feature3": "Estilo.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/Power Hoodie.webp",
@@ -3530,12 +3428,13 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2681,
@@ -3583,16 +3482,16 @@
     "name": "2012 Strength Hoodie",
     "price": "Q.450.00",
     "availability": "Disponible",
-    "description": "Sudadera clásica de Gymshark.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
     "brand": "Gymshark",
     "fabric_type": "80% Algodón, 20% Poliéster",
     "is_compression": false,
-    "feature1": "Diseño clásico.",
-    "feature2": "Comodidad.",
-    "feature3": "Historia.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/2012 Strength Hoodie.webp",
@@ -3608,21 +3507,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2683,
     "name": "The Anchor Pendant Set - RG1010S",
     "price": "Q.300.00",
     "availability": "Disponible",
-    "description": "Colgante Anchor de RGMNT.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con acabado pulido. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Diseño Anchor.",
-    "feature2": "Plata.",
-    "feature3": "Set completo.",
+    "feature1": "Acero Inoxidable 316L",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/The Anchor Pendant Set - RG1010S silver.webp",
@@ -3638,21 +3538,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2684,
     "name": "The Da Vinci Pendant Set - RG1011S",
     "price": "Q.300.00",
     "availability": "Disponible",
-    "description": "Colgante Da Vinci en plata.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con acabado pulido. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Arte.",
-    "feature2": "Plata.",
-    "feature3": "Estilo.",
+    "feature1": "Acero Inoxidable 316L",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/The Da Vinci Pendant Set - RG1011S silver.webp",
@@ -3668,21 +3569,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2685,
     "name": "The Da Vinci Pendant Set - RG1011G",
     "price": "Q.300.00",
     "availability": "Disponible",
-    "description": "Colgante Da Vinci en oro.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con baño de oro de 14K. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Arte.",
-    "feature2": "Oro.",
-    "feature3": "Premium.",
+    "feature1": "Baño de Oro de 14K",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/The Da Vinci Pendant Set - RG1011G gold.webp",
@@ -3698,21 +3600,22 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2686,
     "name": "The North Star Pendant Set - RG1016G",
     "price": "Q.300.00",
     "availability": "Disponible",
-    "description": "Colgante North Star en oro.",
+    "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con baño de oro de 14K. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
     "subcategory": "rgmnt",
     "brand": "RGMNT",
-    "feature1": "Guía.",
-    "feature2": "Oro.",
-    "feature3": "Brillo.",
+    "feature1": "Baño de Oro de 14K",
+    "feature2": "Resistencia Total al Agua y Sudor",
+    "feature3": "Material Hipoalergénico",
     "images": [
       {
         "src": "/assets/images/marcas/rgmnt/The North Star Pendant Set - RG1016G gold.webp",
@@ -3728,23 +3631,24 @@
           "stock": 1
         }
       ]
-    }
+    },
+    "feature4": "Acabado Pulido de Alta Durabilidad"
   },
   {
     "id": 2687,
     "name": "W552 Elevate Jacket",
     "price": "Q.500.00",
     "availability": "Disponible",
-    "description": "Chamarra Elevate de YoungLA para mujer.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "chamarra",
     "brand": "YoungLA",
     "fabric_type": "75% Nylon, 25% Spandex",
     "is_compression": false,
-    "feature1": "Estilo.",
-    "feature2": "Movimiento.",
-    "feature3": "Calidad.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/mujer/W552 Elevate Jacket.webp",
@@ -3772,23 +3676,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2688,
     "name": "W268 Elevate Leggings",
     "price": "Q.500.00",
     "availability": "Disponible",
-    "description": "Leggings Elevate de YoungLA.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "legging",
     "brand": "YoungLA",
     "fabric_type": "75% Nylon, 25% Spandex",
     "is_compression": true,
-    "feature1": "Soporte.",
-    "feature2": "Ajuste.",
-    "feature3": "Suavidad.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/mujer/W268 Elevate Leggings.webp",
@@ -3816,23 +3721,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2689,
     "name": "3022 - Anarchy Cropped Tanks",
     "price": "Q.455.00",
     "availability": "Disponible",
-    "description": "Tanque corto Anarchy.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Estilo rudo.",
-    "feature2": "Fresco.",
-    "feature3": "Algodón.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3022 - Anarchy Cropped Tanks.webp",
@@ -3860,23 +3766,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2690,
     "name": "3044 - Tren Twins Badass Cut Offs",
     "price": "Q.435.00",
     "availability": "Disponible",
-    "description": "Corte Badass de Tren Twins.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Tren Twins.",
-    "feature2": "Corte profundo.",
-    "feature3": "Actitud.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3044 - Tren Twins Badass Cut Offs.webp",
@@ -3904,23 +3811,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2691,
     "name": "4073 - Cyclone Jersey",
     "price": "Q.460.00",
     "availability": "Disponible",
-    "description": "Jersey Cyclone.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
     "fabric_type": "100% Polyester",
     "is_compression": false,
-    "feature1": "Viento.",
-    "feature2": "Jersey.",
-    "feature3": "Rapidez.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/4073 - Cyclone Jersey black.webp",
@@ -3948,23 +3856,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2692,
     "name": "W288 - Vital Flare Leggings (Short)",
     "price": "Q.525.00",
     "availability": "Disponible",
-    "description": "Leggings acampanados Vital.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "legging",
     "brand": "YoungLA",
     "fabric_type": "75% Nylon, 25% Spandex",
     "is_compression": true,
-    "feature1": "Campana.",
-    "feature2": "Estilo.",
-    "feature3": "Vital.",
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/mujer/W288 - Vital Flare Leggings black.webp",
@@ -3996,23 +3905,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2693,
     "name": "2032 - Superman pants",
     "price": "Q.675.00",
     "availability": "Disponible",
-    "description": "Pants de chándal Superman.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "pantalon",
     "brand": "YoungLA",
     "fabric_type": "80% Cotton, 20% Polyester",
     "is_compression": false,
-    "feature1": "Superpoder.",
-    "feature2": "Comodidad.",
-    "feature3": "Escudo.",
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/2032 - Superman Sweats gris.webp",
@@ -4039,17 +3949,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2694,
     "name": "3012 - Drop Shoulder Knit Cut-Off",
     "price": "Q.500.00",
     "availability": "Disponible",
-    "description": "Corte de hombro caído.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
@@ -4093,14 +4004,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2695,
     "name": "Piping Wide Leg Pant",
     "price": "Q.575.00",
     "availability": "Disponible",
-    "description": "Pantalones anchos Piping.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "pantalon",
@@ -4133,14 +4048,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2696,
     "name": "Vital Sculpt Seamless Flared Legging",
     "price": "Q.650.00",
     "availability": "Disponible",
-    "description": "Leggings Vital Sculpt.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "legging",
@@ -4173,14 +4092,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2697,
     "name": "4152 - Yu-Gi-Oh!® Jersey - Blue Eyes",
-    "price": "Q.485.00",
+    "price": "Q.520.00",
     "availability": "Disponible",
-    "description": "Jersey Yu-Gi-Oh! Blue Eyes.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -4199,30 +4122,35 @@
       "values": [
         {
           "value": "M",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "L",
           "stock": 0
         }
       ]
-    }
+    },
+    "is_oversized": true,
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2698,
     "name": "Campus Mesh Shorts",
     "price": "Q.475.00",
     "availability": "Disponible",
-    "description": "Shorts de malla Campus.",
+    "description": "Shorts deportivos ligeros y resistentes con tecnología de secado rápido. Diseñados para ofrecer total libertad de movimiento y comodidad absoluta en tus sesiones más intensas.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "short",
     "brand": "Gymshark",
     "fabric_type": "100% Poliéster",
     "is_compression": false,
-    "feature1": "Transpirable.",
-    "feature2": "Estilo universitario.",
-    "feature3": "Cómodo.",
+    "feature1": "Cintura Elástica de Ajuste Seguro",
+    "feature2": "Tejido de Microfibra Ultra Ligera",
+    "feature3": "Bolsillos Laterales Reforzados",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/campusmeshshorts.webp",
@@ -4249,23 +4177,24 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Aperturas Laterales para Movilidad"
   },
   {
     "id": 2699,
     "name": "Varsity Jersey",
     "price": "Q.615.00",
     "availability": "Disponible",
-    "description": "Jersey Varsity Gymshark.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "Gymshark",
     "fabric_type": "100% Poliéster",
     "is_compression": false,
-    "feature1": "Prestigio.",
-    "feature2": "Jersey.",
-    "feature3": "Diseño.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/gymshark/hombre/varsityjersey.webp",
@@ -4292,7 +4221,8 @@
           ]
         }
       }
-    ]
+    ],
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2700,
@@ -4362,16 +4292,16 @@
     "name": "W211 Dreamers Joggers",
     "price": "Q.545.00",
     "availability": "Disponible",
-    "description": "Joggers Dreamers.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "pantalon",
     "brand": "YoungLA",
     "fabric_type": "80% Cotton, 20% Polyester",
     "is_compression": false,
-    "feature1": "Sueño.",
-    "feature2": "Relajación.",
-    "feature3": "Calidez.",
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/mujer/W211 Dreamers Joggers.webp",
@@ -4399,23 +4329,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2702,
     "name": "3009 - Flex Stringers",
     "price": "Q.390.00",
     "availability": "Disponible",
-    "description": "Stringer Flex YoungLA.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Músculos.",
-    "feature2": "Flexión.",
-    "feature3": "Algodón.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/3009 - Flex Stringers.webp",
@@ -4443,67 +4374,24 @@
         }
       }
     ],
-    "visible": true
-  },
-  {
-    "id": 2703,
-    "name": "4254 - Batman Shadow Tees",
-    "price": "Q.545.00",
-    "availability": "Disponible",
-    "description": "Playera Batman Shadow.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "100% Cotton",
-    "is_compression": false,
-    "feature1": "Batman.",
-    "feature2": "Shadow.",
-    "feature3": "Joker F.",
-    "images": [
-      {
-        "src": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees.webp",
-        "alt": "Batman Shadow Tees Joker F",
-        "dataAiHint": "batman shirt"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Joker F",
-        "hex": "#4B0082",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            }
-          ]
-        }
-      }
-    ],
-    "visible": true
+    "visible": true,
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2704,
     "name": "1011 - Dark Wave Shorts",
     "price": "Q.485.00",
     "availability": "Disponible",
-    "description": "Shorts Dark Wave.",
+    "description": "Shorts deportivos ligeros y resistentes con tecnología de secado rápido. Diseñados para ofrecer total libertad de movimiento y comodidad absoluta en tus sesiones más intensas.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "short",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
-    "feature1": "Ondas.",
-    "feature2": "Dark Wave.",
-    "feature3": "Algodón.",
+    "feature1": "Cintura Elástica de Ajuste Seguro",
+    "feature2": "Tejido de Microfibra Ultra Ligera",
+    "feature3": "Bolsillos Laterales Reforzados",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/1011 - Dark Wave Shorts.webp",
@@ -4531,23 +4419,24 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Aperturas Laterales para Movilidad"
   },
   {
     "id": 2705,
     "name": "5079 - Sudadera con capucha del legado de Superman",
     "price": "Q.675.00",
     "availability": "Disponible",
-    "description": "Sudadera Superman Legacy.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
     "brand": "YoungLA",
     "fabric_type": "80% Cotton, 20% Polyester",
     "is_compression": false,
-    "feature1": "Legado.",
-    "feature2": "Escudo.",
-    "feature3": "Gris Jaspeado.",
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
     "images": [
       {
         "src": "/assets/images/marcas/youngla/hombre/5079 - Superman Legacy Hoodies.webp",
@@ -4596,17 +4485,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2707,
     "name": "3004 - Superman Cut-offs",
     "price": "Q.485.00",
     "availability": "Disponible",
-    "description": "Corte Superman The Painting.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Cotton",
     "is_compression": false,
@@ -4637,14 +4527,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2708,
     "name": "4064 - Superman Huge Tees",
     "price": "Q.515.00",
     "availability": "Disponible",
-    "description": "Huge Tee Superman Legacy.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -4678,14 +4572,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2709,
     "name": "Retro Shorts",
     "price": "Q.420.00",
     "availability": "Disponible",
-    "description": "Shorts Retro Gymshark.",
+    "description": "Shorts deportivos ligeros y resistentes con tecnología de secado rápido. Diseñados para ofrecer total libertad de movimiento y comodidad absoluta en tus sesiones más intensas.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "short",
@@ -4738,14 +4636,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Cintura Elástica de Ajuste Seguro",
+    "feature2": "Tejido de Microfibra Ultra Ligera",
+    "feature3": "Bolsillos Laterales Reforzados",
+    "feature4": "Aperturas Laterales para Movilidad"
   },
   {
     "id": 2711,
     "name": "Gymshark X Analis Seamless Leggings",
     "price": "Q.645.00",
     "availability": "Disponible",
-    "description": "Leggings Analis Gymshark.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "legging",
@@ -4779,14 +4681,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2712,
     "name": "Power Cut Off Tank",
     "price": "Q.410.00",
     "availability": "Disponible",
-    "description": "Corte Power Gymshark.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "tank",
@@ -4820,14 +4726,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2713,
     "name": "Legacy Drop Arm Tank",
     "price": "Q.445.00",
     "availability": "Disponible",
-    "description": "Tanque Legacy Gymshark.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "tank",
@@ -4861,7 +4771,11 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2714,
@@ -4912,7 +4826,7 @@
     "name": "Defy Shorts | 4.5\"",
     "price": "Q.600.00",
     "availability": "Disponible",
-    "description": "Shorts Defy DFYNE.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
     "subcategory": "short",
@@ -4947,14 +4861,18 @@
         }
       }
     ],
-    "visible": true
+    "visible": true,
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 5094,
     "name": "5094 - Sudadera con capucha del legado de Superman",
     "price": "Q.755.00",
     "availability": "Disponible",
-    "description": "Sudadera premium del legado de Superman en color Lavado Negro. Estilo y comodidad de nivel superhéroe.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "sudadera",
@@ -4988,58 +4906,18 @@
         }
       }
     ],
-    "visible": true
-  },
-  {
-    "id": 2717,
-    "name": "Vital Crop Top",
-    "price": "Q.450.00",
-    "availability": "Disponible",
-    "description": "El crop top que lo tiene todo: tecnología sin costuras para una comodidad máxima, tejido que absorbe el sudor y un diseño que realza tu figura.",
-    "gender": "mujer",
-    "category": "ropa",
-    "subcategory": "top",
-    "brand": "Gymshark",
-    "fabric_type": "96% Nylon, 4% Elastane",
-    "is_compression": true,
-    "feature1": "Diseño sin costuras para máxima comodidad",
-    "feature2": "Tecnología de absorción de sudor",
-    "feature3": "Corte 'crop' que realza la figura",
-    "images": [
-      {
-        "src": "/assets/images/marcas/gymshark/mujer/Vital Crop Top.webp",
-        "alt": "Vital Crop Top Strong Grey Marl",
-        "dataAiHint": "grey crop top"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Strong Grey Marl",
-        "hex": "#545454",
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/Vital Crop Top.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 0
-            }
-          ]
-        }
-      }
-    ],
-    "visible": true
+    "visible": true,
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2718,
     "name": "2091 Retro cuffed joggers",
     "price": "Q.585.00",
     "availability": "Disponible",
-    "description": "Joggers de estilo retro con puños ajustados para un look clásico y cómodo.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "pantalon",
@@ -5048,9 +4926,10 @@
     "is_compression": false,
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/2091 Retro cuffed joggers.webp",
-        "alt": "Retro cuffed joggers",
-        "dataAiHint": "men joggers"
+        "src": "/assets/images/marcas/youngla/hombre/2091 - Joggers retro con dobladillo.webp",
+        "alt": "2091 Retro cuffed joggers",
+        "dataAiHint": "joggers",
+        "color": "Black"
       }
     ],
     "options": {
@@ -5061,25 +4940,29 @@
       {
         "name": "Negro",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/2091 Retro cuffed joggers.webp",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2091 - Joggers retro con dobladillo.webp",
         "options": {
           "type": "talla",
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 2
             }
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2719,
     "name": "2047 - Scuba Cargo Sweats",
     "price": "Q.575.00",
     "availability": "Disponible",
-    "description": "Pantalones tipo cargo con tejido Scuba para una textura única y mayor durabilidad.",
+    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "pantalon",
@@ -5112,14 +4995,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Corte Cónico de Estética Moderna",
+    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
+    "feature3": "Puños Acanalados de Alta Resistencia",
+    "feature4": "Cordones Ajustables con Puntas Metálicas"
   },
   {
     "id": 2720,
     "name": "8004 - Batman Compression Longsleeves",
     "price": "Q.650.00",
     "availability": "Disponible",
-    "description": "Camiseta de compresión de manga larga con diseño oficial de Batman.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -5128,7 +5015,7 @@
     "is_compression": true,
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/batmanblackmangalarga.webp",
+        "src": "/assets/images/marcas/youngla/hombre/brayanlop.jpg",
         "alt": "Batman Compression Longsleeve",
         "dataAiHint": "batman shirt"
       }
@@ -5141,13 +5028,13 @@
       {
         "name": "Black",
         "hex": "#000000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/batmanblackmangalarga.webp",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/brayanlop.jpg",
         "options": {
           "type": "talla",
           "values": [
             {
               "value": "M",
-              "stock": 3
+              "stock": 2
             },
             {
               "value": "S",
@@ -5156,14 +5043,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2721,
     "name": "CREATINA 80 SERVS",
     "price": "Q.415.00",
     "availability": "Disponible",
-    "description": "Creatina monohidratada de Muscletech para potenciar tu fuerza y recuperación.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "creatina",
@@ -5185,14 +5076,18 @@
           "stock": 4
         }
       ]
-    }
+    },
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2722,
     "name": "PURE PROTEIN (Unidad)",
     "price": "Q.25.00",
     "availability": "Disponible",
-    "description": "Barra de proteína deliciosa y nutritiva para llevar a cualquier parte.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "comida",
@@ -5213,14 +5108,18 @@
           "stock": 24
         }
       ]
-    }
+    },
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2723,
     "name": "PURE PROTEIN (Caja)",
-    "price": "Q.100.00",
+    "price": "Q.300.00",
     "availability": "Disponible",
-    "description": "Caja de barras de proteína Pure Protein.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "comida",
@@ -5238,17 +5137,21 @@
       "values": [
         {
           "value": "Chewy Chocolate",
-          "stock": 6
+          "stock": 1
         }
       ]
-    }
+    },
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
   {
     "id": 2724,
     "name": "Itachi Forever \"Premium\" Oversized Tee",
     "price": "Q.595.00",
     "availability": "Disponible",
-    "description": "Playera premium oversized con diseño de Itachi Uchiha.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -5281,14 +5184,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2725,
     "name": "4213 - Gold's Iron Legacy Icon Tees",
     "price": "Q.515.00",
     "availability": "Disponible",
-    "description": "Playera de la colección Gold's Iron Legacy.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -5321,14 +5228,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2726,
     "name": "4286 - Gold's Iron Legacy Compression Tees",
     "price": "Q.535.00",
     "availability": "Disponible",
-    "description": "Playera de compresión de la colección Gold's Iron Legacy.",
+    "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
     "subcategory": "playera",
@@ -5361,17 +5272,21 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Compresión Graduada de Alto Soporte",
+    "feature2": "Tejido Tecnológico de Secado Rápido",
+    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
+    "feature4": "Propiedades Antimicrobianas Permanentes"
   },
   {
     "id": 2727,
     "name": "5097 - Gold's Iron Legacy Shadow Cut-Offs",
     "price": "Q.525.00",
     "availability": "Disponible",
-    "description": "Cut-off de la colección Gold's Iron Legacy Shadow.",
+    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "fabric_type": "100% Algodón",
     "is_compression": false,
@@ -5401,14 +5316,18 @@
           ]
         }
       }
-    ]
+    ],
+    "feature1": "Tejido Transpirable de Alto Rendimiento",
+    "feature2": "Ajuste Atlético que Realza la Figura",
+    "feature3": "Material Resistente a la Deformación",
+    "feature4": "Tecnología de Gestión de Humedad"
   },
   {
     "id": 2728,
     "name": "MY COOKIE DEALER",
     "price": "Q.50.00",
     "availability": "Agotado",
-    "description": "Galletas premium de My Cookie Dealer.",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "comida",
@@ -5429,6 +5348,1710 @@
           "stock": 5
         }
       ]
-    }
+    },
+    "feature1": "Pureza Micronizada de Grado Superior",
+    "feature2": "Máxima Absorción Intracelular",
+    "feature3": "Libre de Azúcares y Rellenos",
+    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
+  },
+  {
+    "id": 3002,
+    "name": "233 - The Immortal Joggers",
+    "price": "Q.585.00",
+    "availability": "Disponible",
+    "description": "Los joggers 233 The Immortal están diseñados con una mezcla de algodón ultra premium y poliéster para ofrecer la máxima comodidad y durabilidad. Su ajuste relajado en los muslos con puños elásticos ajustados en los tobillos resalta la silueta física sin comprometer la movilidad.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/233 - The Immortal Joggers.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/233 - The Immortal Joggers.webp",
+        "alt": "233 - The Immortal Joggers",
+        "dataAiHint": "joggers",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Tejido French Terry de Peso Medio",
+    "feature2": "Cintura Elástica con Cordón Ajustable",
+    "feature3": "Bolsillos Laterales con Cierre de Cremallera",
+    "feature4": "Ajuste Moderno que Realza el Físico"
+  },
+  {
+    "id": 3003,
+    "name": "Wrath Of Sukuna \"Side By Side\" 199X Oversized Tee",
+    "price": "Q.665.00",
+    "availability": "Disponible",
+    "description": "Edición especial inspirada en Jujutsu Kaisen. Esta playera oversized cuenta con un diseño vintage lavado 'heavyweight' de Sukuna en la espalda y el frente. Fabricada al 100% de algodón grueso, ofrece un tacto robusto pero sumamente suave.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Civil Regime",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Butter",
+        "hex": "#F5F5DC",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/civil regime/Wrath Of Sukuna \"Side By Side\" 199X Oversized Tee.avif"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/civil regime/Wrath Of Sukuna \"Side By Side\" 199X Oversized Tee.avif",
+        "alt": "Wrath Of Sukuna \"Side By Side\" 199X Oversized Tee",
+        "dataAiHint": "oversized tee",
+        "color": "Butter"
+      },
+      {
+        "src": "/assets/images/marcas/civil regime/Wrath Of Sukuna \"Side By Side\" 199X Oversized Tee 2.avif",
+        "alt": "Wrath Of Sukuna \"Side By Side\" 199X Oversized Tee 2",
+        "dataAiHint": "oversized tee",
+        "color": "Butter"
+      }
+    ],
+    "feature1": "Gráfico Estampado de Alta Definición",
+    "feature2": "Corte 199X Oversized con Hombros Caídos",
+    "feature3": "Tejido de Algodón Heavyweight de 240g",
+    "feature4": "Cuello de Canalé Grueso Anti-Deformación"
+  },
+  {
+    "id": 3004,
+    "name": "Wrath Of Gojo \"Side By Side\" 199X Oversized Tee",
+    "price": "Q.665.00",
+    "availability": "Disponible",
+    "description": "Siente el poder ilimitado con esta camiseta oversized dedicada a Satoru Gojo. Presenta un lavado vintage premium y un arte espectacular en la espalda que combina estilo urbano y cultura anime en una prenda de colección.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Civil Regime",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/civil regime/Wrath Of Gojo \"Side By Side\" 199X Oversized Tee.jpg"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/civil regime/Wrath Of Gojo \"Side By Side\" 199X Oversized Tee.jpg",
+        "alt": "Wrath Of Gojo \"Side By Side\" 199X Oversized Tee",
+        "dataAiHint": "oversized tee",
+        "color": "Black"
+      },
+      {
+        "src": "/assets/images/marcas/civil regime/Wrath Of Gojo \"Side By Side\" 199X Oversized Tee 2.jpg",
+        "alt": "Wrath Of Gojo \"Side By Side\" 199X Oversized Tee 2",
+        "dataAiHint": "oversized tee",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Diseño Gráfico Exclusivo de Gojo",
+    "feature2": "Ajuste Vintage 199X Relajado",
+    "feature3": "Tejido de Algodón Premium Duradero",
+    "feature4": "Resistente a Lavados sin Perder Textura"
+  },
+  {
+    "id": 3005,
+    "name": "Silicone Lifting Straps (Black/Carmine Red)",
+    "price": "Q.315.00",
+    "availability": "Disponible",
+    "description": "Maximiza tu fuerza de tracción en peso muerto, remos y jalones. Estos straps de levantamiento cuentan con inserciones de silicona antideslizante a lo largo de la cinta para asegurar un agarre inquebrantable a la barra.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "brand": "Gymshark",
+    "options": {
+      "type": "color",
+      "values": [
+        {
+          "value": "Black/Carmine Red",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/Accesorios/Silicone Lifting Straps black carmin red.webp",
+        "alt": "Silicone Lifting Straps (Black/Carmine Red)",
+        "dataAiHint": "lifting straps"
+      }
+    ],
+    "feature1": "Cinta de Algodón de Grado Militar",
+    "feature2": "Líneas de Silicona para Agarre Antideslizante",
+    "feature3": "Acolchado de Neopreno para Proteger la Muñeca",
+    "feature4": "Longitud Ideal para Múltiples Vueltas"
+  },
+  {
+    "id": 3006,
+    "name": "Silicone Lifting Straps (Black)",
+    "price": "Q.315.00",
+    "availability": "Disponible",
+    "description": "Maximiza tu fuerza de tracción en peso muerto, remos y jalones. Estos straps de levantamiento cuentan con inserciones de silicona antideslizante a lo largo de la cinta para asegurar un agarre inquebrantable a la barra.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "brand": "Gymshark",
+    "options": {
+      "type": "color",
+      "values": [
+        {
+          "value": "Black",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/Accesorios/Silicone Lifting Straps black.webp",
+        "alt": "Silicone Lifting Straps (Black)",
+        "dataAiHint": "lifting straps"
+      }
+    ],
+    "feature1": "Cinta de Algodón de Grado Militar",
+    "feature2": "Líneas de Silicona para Agarre Antideslizante",
+    "feature3": "Acolchado de Neopreno para Proteger la Muñeca",
+    "feature4": "Longitud Ideal para Múltiples Vueltas"
+  },
+  {
+    "id": 3007,
+    "name": "Silicone Lifting Straps (Build Pink)",
+    "price": "Q.315.00",
+    "availability": "Disponible",
+    "description": "Maximiza tu fuerza de tracción en peso muerto, remos y jalones. Estos straps de levantamiento cuentan con inserciones de silicona antideslizante a lo largo de la cinta para asegurar un agarre inquebrantable a la barra.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "brand": "Gymshark",
+    "options": {
+      "type": "color",
+      "values": [
+        {
+          "value": "Build Pink",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/Accesorios/Silicone Lifting Straps build pink.webp",
+        "alt": "Silicone Lifting Straps (Build Pink)",
+        "dataAiHint": "lifting straps"
+      }
+    ],
+    "feature1": "Cinta de Algodón de Grado Militar",
+    "feature2": "Líneas de Silicona para Agarre Antideslizante",
+    "feature3": "Acolchado de Neopreno para Proteger la Muñeca",
+    "feature4": "Longitud Ideal para Múltiples Vueltas"
+  },
+  {
+    "id": 3008,
+    "name": "Wrist Straps",
+    "price": "Q.315.00",
+    "availability": "Disponible",
+    "description": "Muñequeras de soporte premium diseñadas para estabilizar tus muñecas durante levantamientos pesados de empuje. Fabricadas con un tejido elástico resistente y cierre de velcro de alta adherencia.",
+    "gender": "unisex",
+    "category": "accesorio",
+    "brand": "Gymshark",
+    "options": {
+      "type": "color",
+      "values": [
+        {
+          "value": "Black",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/Accesorios/Wrist Straps black.webp",
+        "alt": "Wrist Straps",
+        "dataAiHint": "wrist straps"
+      }
+    ],
+    "feature1": "Elástico de Alta Resistencia para Soporte",
+    "feature2": "Lazo para Dedo Pulgar de Fácil Colocación",
+    "feature3": "Cierre de Velcro Ajustable de Grado Industrial",
+    "feature4": "Previene Lesiones en Press de Banca y Hombro"
+  },
+  {
+    "id": 3009,
+    "name": "The Split-Heart Pendant - Gold RG1044",
+    "price": "Q.560.00",
+    "availability": "Disponible",
+    "description": "Una pieza de joyería icónica de RGMNT. Este dije de corazón dividido cuenta con un acabado chapado en oro de alta calidad, ideal para complementar cualquier atuendo casual o deportivo con un toque elegante.",
+    "gender": "unisex",
+    "category": "joyeria",
+    "brand": "RGMNT",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "OS",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/marcas/rgmnt/The Split-Heart Pendant - Gold RG1044 gold 2.webp",
+        "alt": "The Split-Heart Pendant - Gold RG1044",
+        "dataAiHint": "pendant"
+      },
+      {
+        "src": "/assets/images/marcas/rgmnt/The Split-Heart Pendant - Gold RG1044 gold.webp",
+        "alt": "The Split-Heart Pendant - Gold RG1044 2",
+        "dataAiHint": "pendant"
+      }
+    ],
+    "feature1": "Acabado Premium Chapado en Oro de 18K",
+    "feature2": "Diseño Detallado 'Split-Heart'",
+    "feature3": "Cadena Robusta con Cierre Seguro",
+    "feature4": "Hipoalergénico y Resistente al Desgaste"
+  },
+  {
+    "id": 3010,
+    "name": "Creatine Monohydrate (30 Serv)",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Creatina Monohidratada pura de la marca RAW. Ayuda a aumentar la producción de energía celular (ATP), permitiendo incrementar la fuerza, la potencia muscular y el volumen celular durante tus entrenamientos de alta intensidad.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "brand": "RAW",
+    "options": {
+      "type": "servicios",
+      "values": [
+        {
+          "value": "30 Serv",
+          "stock": 3
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/marcas/raw/Creatine Monohydrate (30 Serv).webp",
+        "alt": "Creatine Monohydrate (30 Serv)",
+        "dataAiHint": "creatine"
+      }
+    ],
+    "feature1": "100% Creatina Monohidratada Micronizada",
+    "feature2": "Mejora el Rendimiento y la Fuerza Explosiva",
+    "feature3": "Favorece la Hidratación y Volumen Celular",
+    "feature4": "Sin Sabor, Ideal para Mezclar con Shakes"
+  },
+  {
+    "id": 3017,
+    "name": "Christopher's Juicy Pumps",
+    "price": "Q.505.00",
+    "availability": "Disponible",
+    "description": "Formulado para proporcionar un bombeo muscular masivo y un enfoque mental agudo. Contiene ingredientes clave para la producción de óxido nítrico, mejorando el flujo sanguíneo y el transporte de nutrientes a los músculos activos.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "pre-entreno",
+    "brand": "RAW",
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/marcas/raw/Christopher's Juicy Pumps.webp",
+        "alt": "Christopher's Juicy Pumps",
+        "dataAiHint": "preworkout"
+      }
+    ],
+    "feature1": "Fórmula Avanzada de Bombeo y Óxido Nítrico",
+    "feature2": "Enfoque Mental Limpio sin Estimulantes Extremos",
+    "feature3": "Sabores Deliciosos y Altamente Soluble",
+    "feature4": "Optimiza la Vascularización Durante el Entreno"
+  },
+  {
+    "id": 3018,
+    "name": "Creatine Value Pack (30 Serv)",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Creatina Monohidratada pura de la marca RAW en un formato de paquete de valor. Ayuda a aumentar la producción de energía celular (ATP), permitiendo incrementar la fuerza, la potencia muscular y el volumen celular.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "brand": "RAW",
+    "options": {
+      "type": "servicios",
+      "values": [
+        {
+          "value": "30 Serv",
+          "stock": 3
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/marcas/raw/Creatine Monohydrate (30 Serv).webp",
+        "alt": "Creatine Value Pack (30 Serv)",
+        "dataAiHint": "creatine value pack"
+      }
+    ],
+    "feature1": "Formato Ahorro Value Pack",
+    "feature2": "100% Creatina Monohidratada Micronizada",
+    "feature3": "Favorece el Crecimiento y Recuperación Muscular",
+    "feature4": "Mejora la Potencia en Entrenamientos Explosivos"
+  },
+  {
+    "id": 3019,
+    "name": "Creatine box (30 Serv)",
+    "price": "Q.300.00",
+    "availability": "Disponible",
+    "description": "Caja de creatina monohidratada premium RAW de 30 servicios individuales. El formato perfecto y práctico para llevar tus tomas de creatina a donde quieras sin complicaciones.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "brand": "RAW",
+    "options": {
+      "type": "servicios",
+      "values": [
+        {
+          "value": "30 Serv",
+          "stock": 2
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/marcas/raw/Creatine box (30 Serv).webp",
+        "alt": "Creatine box (30 Serv)",
+        "dataAiHint": "creatine box"
+      }
+    ],
+    "feature1": "Servicios Individuales Listos para Usar",
+    "feature2": "Pureza Garantizada RAW Nutrition",
+    "feature3": "Fácil de Transportar y Mezclar",
+    "feature4": "Incrementa el Rendimiento de Alta Intensidad"
+  },
+  {
+    "id": 3020,
+    "name": "Evogen EVP AQ - Liquid Glycerol",
+    "price": "Q.460.00",
+    "availability": "Disponible",
+    "description": "Suplemento de glicerol líquido premium formulado por Hany Rambod. EVP AQ está diseñado para hiperhidratar las células musculares, dando como resultado bombeos increíblemente densos y una resistencia superior en el entrenamiento.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "brand": "Evogen",
+    "options": {
+      "type": "sabor",
+      "values": [
+        {
+          "value": "Watermelon",
+          "stock": 2
+        },
+        {
+          "value": "Grape",
+          "stock": 1
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Evogen EVP AQ - Liquid Glycerol watermelon.webp",
+        "alt": "Evogen EVP AQ - Watermelon",
+        "dataAiHint": "glycerol",
+        "option": "Watermelon"
+      },
+      {
+        "src": "/assets/images/marcas/suplementos/Evogen EVP AQ - Liquid Glycerol watermelon 2.webp",
+        "alt": "Evogen EVP AQ - Watermelon 2",
+        "dataAiHint": "glycerol",
+        "option": "Watermelon"
+      },
+      {
+        "src": "/assets/images/marcas/suplementos/Evogen EVP AQ - Liquid Glycerol grape.webp",
+        "alt": "Evogen EVP AQ - Grape",
+        "dataAiHint": "glycerol",
+        "option": "Grape"
+      },
+      {
+        "src": "/assets/images/marcas/suplementos/Evogen EVP AQ - Liquid Glycerol grape 2.webp",
+        "alt": "Evogen EVP AQ - Grape 2",
+        "dataAiHint": "glycerol",
+        "option": "Grape"
+      }
+    ],
+    "feature1": "Glicerol Líquido de Rápida Absorción",
+    "feature2": "Promueve una Hiperhidratación Muscular Extrema",
+    "feature3": "Maximiza el Volumen Celular y la Resistencia",
+    "feature4": "Fácil Dosificación y Sabor Refrescante"
+  },
+  {
+    "id": 3022,
+    "name": "3033 - Yu-Gi-Oh! Cut-Offs",
+    "price": "Q.505.00",
+    "availability": "Disponible",
+    "description": "Camiseta sin mangas de la colaboración oficial de YoungLA con Yu-Gi-Oh!. Con un corte 'cut-off' que expone los hombros y la espalda de manera estética, luciendo un espectacular estampado del Mago Oscuro.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Dark Magician",
+        "hex": "#4B0082",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3033 - Yu-Gi-Oh! Cut-Offs dark magician.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/3033 - Yu-Gi-Oh! Cut-Offs dark magician.webp",
+        "alt": "3033 - Yu-Gi-Oh! Cut-Offs",
+        "dataAiHint": "cut-off tank",
+        "color": "Dark Magician"
+      }
+    ],
+    "feature1": "Colaboración Oficial Yu-Gi-Oh! x YoungLA",
+    "feature2": "Corte Cut-Off que Resalta Espalda y Hombros",
+    "feature3": "Tejido Ribbed Suave y Elástico",
+    "feature4": "Estampado Gráfico Retro Resistente al Lavado"
+  },
+  {
+    "id": 3024,
+    "name": "6066 - Batman Drifter Pants",
+    "price": "Q.700.00",
+    "availability": "Disponible",
+    "description": "Pantalones deportivos estilo Drifter inspirados en la estética oscura de Batman. Ofrecen un corte holgado, bolsillos cargo multifuncionales y un acabado lavado gris oscuro lavado a la piedra muy urbano.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black Wash",
+        "hex": "#36454F",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/6066 - Batman Drifter Pants black wash.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/6066 - Batman Drifter Pants black wash.webp",
+        "alt": "6066 - Batman Drifter Pants",
+        "dataAiHint": "pants",
+        "color": "Black Wash"
+      }
+    ],
+    "feature1": "Estilo Urbano con Lavado a la Piedra",
+    "feature2": "Logotipo Tonal de Batman Bordado",
+    "feature3": "Cintura Elástica y Tobillos Ajustables",
+    "feature4": "Bolsillos Cargo Espaciosos con Cierre"
+  },
+  {
+    "id": 3026,
+    "name": "4191 - AOT x YLA Classic Tees",
+    "price": "Q.505.00",
+    "availability": "Disponible",
+    "description": "Playera clásica de ajuste athletic de la colaboración oficial de YoungLA x Attack on Titan. Presenta un gráfico vintage minimalista del Capitán Levi en el pecho, combinando comodidad y estilo legendario.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Hero Levi",
+        "hex": "#A9A9A9",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4191 - AOT x YLA Classic Tees hero levi.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4191 - AOT x YLA Classic Tees hero levi.webp",
+        "alt": "4191 - AOT x YLA Classic Tees",
+        "dataAiHint": "t-shirt",
+        "color": "Hero Levi"
+      }
+    ],
+    "feature1": "Colaboración Oficial Attack on Titan x YoungLA",
+    "feature2": "Tejido Algodón-Poliéster Suave de Peso Medio",
+    "feature3": "Corte Atlético que se Ajusta al Pecho y Brazos",
+    "feature4": "Gráficos Serigrafiados de Larga Duración"
+  },
+  {
+    "id": 3027,
+    "name": "4186 - AOT x YLA Cropped Tees",
+    "price": "Q.505.00",
+    "availability": "Disponible",
+    "description": "Camiseta cropped para un estilo streetwear audaz e inspirado en Attack on Titan. Diseñada con un corte recortado moderno, ideal para lucir con leggings o pantalones de tiro alto.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Defense of Trost",
+        "hex": "#8B4513",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4186 - AOT x YLA Cropped Tees defense of trost.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4186 - AOT x YLA Cropped Tees defense of trost.webp",
+        "alt": "4186 - AOT x YLA Cropped Tees",
+        "dataAiHint": "cropped tee",
+        "color": "Defense of Trost"
+      }
+    ],
+    "feature1": "Corte Cropped de Estilo Urbano Moderno",
+    "feature2": "Gráfico Trasero Inspirado en Attack on Titan",
+    "feature3": "Tejido Transpirable y Ligero",
+    "feature4": "Cuello Redondo Clásico y Ajuste Cómodo"
+  },
+  {
+    "id": 3028,
+    "name": "2128 - AOT x YLA Baggy Joggers",
+    "price": "Q.675.00",
+    "availability": "Disponible",
+    "description": "Los joggers holgados definitivos para entrenar o descansar. De la colaboración de Attack on Titan, estos pantalones ofrecen un estilo oversize relajado con la icónica insignia de las alas de la libertad.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "The Hunters",
+        "hex": "#556B2F",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2128 - AOT x YLA Baggy Joggers the hunters.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/2128 - AOT x YLA Baggy Joggers the hunters.webp",
+        "alt": "2128 - AOT x YLA Baggy Joggers",
+        "dataAiHint": "joggers",
+        "color": "The Hunters"
+      }
+    ],
+    "feature1": "Diseño Holgado con Estética Streetwear",
+    "feature2": "Bordado de las Alas de la Libertad",
+    "feature3": "Tejido de Algodón Premium con Interior Cepillado",
+    "feature4": "Cordones Ajustables de Alta Resistencia"
+  },
+  {
+    "id": 3029,
+    "name": "4255 - Batman Midnight Tees",
+    "price": "Q.570.00",
+    "availability": "Disponible",
+    "description": "Camiseta de la colaboración especial de Batman. Diseñada con un corte clásico, con gráficos minimalistas del caballero de la noche en el pecho y espalda, perfecta para tus entrenamientos o uso diario.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Batman Car P",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4255 - Batman Midnight Tees batman car p.webp"
+      },
+      {
+        "name": "Batman P",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4255 - Batman Midnight Tees batman p.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4255 - Batman Midnight Tees batman car p.webp",
+        "alt": "Batman Midnight Tees - Batman Car P",
+        "dataAiHint": "t-shirt",
+        "color": "Batman Car P"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4255 - Batman Midnight Tees batman p.webp",
+        "alt": "Batman Midnight Tees - Batman P",
+        "dataAiHint": "t-shirt",
+        "color": "Batman P"
+      }
+    ],
+    "feature1": "Gráficos Oficiales de la Colaboración de Batman",
+    "feature2": "Tejido de Algodón Peinado de Alta Calidad",
+    "feature3": "Ajuste Recto Clásico Muy Cómodo",
+    "feature4": "Costuras Reforzadas para Mayor Durabilidad"
+  },
+  {
+    "id": 3031,
+    "name": "3052 - Apex Compression Cut-Offs",
+    "price": "Q.490.00",
+    "availability": "Disponible",
+    "description": "Camiseta de compresión sin mangas que actúa como una segunda piel. Diseñada para mantener los músculos calientes, reducir la fatiga muscular y maximizar el rango de movimiento durante el entrenamiento.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "is_compression": true,
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 2
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 2
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3052 - Apex Compression Cut-Offs black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/3052 - Apex Compression Cut-Offs black.webp",
+        "alt": "3052 - Apex Compression Cut-Offs",
+        "dataAiHint": "compression cut-off",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Tejido de Compresión Elástico en 4 Direcciones",
+    "feature2": "Tecnología de Secado Rápido y Transpirable",
+    "feature3": "Costuras Flatlock para Evitar Rozaduras",
+    "feature4": "Diseño sin Mangas para Mayor Libertad"
+  },
+  {
+    "id": 3032,
+    "name": "4294 - Apex Compression Tees",
+    "price": "Q.520.00",
+    "availability": "Disponible",
+    "description": "Camiseta técnica de compresión diseñada para atletas exigentes. Ofrece un soporte muscular superior, regulación de temperatura y un ajuste ceñido que define el físico.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "is_compression": true,
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 2
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 2
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4294 - Apex Compression Tees black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4294 - Apex Compression Tees black.webp",
+        "alt": "4294 - Apex Compression Tees",
+        "dataAiHint": "compression tee",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Ajuste de Compresión Ultra Ajustado",
+    "feature2": "Paneles Transpirables en Zonas de Alta Sudoración",
+    "feature3": "Tejido que Absorbe la Humedad del Cuerpo",
+    "feature4": "Ideal para Entrenamientos de Fuerza y Cardio"
+  },
+  {
+    "id": 3033,
+    "name": "4254 - Batman Shadow Tees",
+    "price": "Q.565.00",
+    "availability": "Disponible",
+    "description": "Destaca en el gimnasio con la camiseta Shadow de Batman. Presenta una silueta atlética, gráficos temáticos de Batman/Joker y una textura de tela premium sumamente cómoda al tacto.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Joker F",
+        "hex": "#800080",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees joker f.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees joker f.webp",
+        "alt": "Batman Shadow Tees - Joker F",
+        "dataAiHint": "t-shirt",
+        "color": "Joker F"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4254 - Batman Shadow Tees.webp",
+        "alt": "Batman Shadow Tees",
+        "dataAiHint": "t-shirt"
+      }
+    ],
+    "feature1": "Gráficos Temáticos Exclusivos de Batman/Joker",
+    "feature2": "Corte Atlético Semi-Ajustado",
+    "feature3": "Tejido Duradero que Mantiene la Forma",
+    "feature4": "Perfecta para Uso Casual y Deportivo"
+  },
+  {
+    "id": 3034,
+    "name": "2131 - Batman Armored Sweats",
+    "price": "Q.740.00",
+    "availability": "Disponible",
+    "description": "Pantalones deportivos Armored diseñados en colaboración con Batman. Con paneles reforzados en las rodillas, bolsillos ocultos y detalles estéticos que hacen alusión a la armadura del murciélago.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Grey Wash",
+        "hex": "#808080",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2131 - Batman Armored Sweats gray wash.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2131 - Batman Armored Sweats black wash.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/2131 - Batman Armored Sweats gray wash.webp",
+        "alt": "Batman Armored Sweats - Grey Wash",
+        "dataAiHint": "joggers",
+        "color": "Grey Wash"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/2131 - Batman Armored Sweats black wash.webp",
+        "alt": "Batman Armored Sweats - Black",
+        "dataAiHint": "joggers",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Paneles Reforzados en las Rodillas",
+    "feature2": "Detalles de Costura Inspirados en Armaduras",
+    "feature3": "Tejido Heavyweight French Terry Cálido",
+    "feature4": "Bolsillos Laterales con Cierres Invisibles"
+  },
+  {
+    "id": 3035,
+    "name": "8045 - Polo Club Oversized Longsleeves",
+    "price": "Q.520.00",
+    "availability": "Disponible",
+    "description": "Camiseta de manga larga estilo polo de YoungLA. Diseñada con un corte oversized de tendencia urbana, con cuello estructurado y tejido texturizado premium para un look deportivo pero sofisticado.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "All Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/8045 - Polo Club Oversized Longsleeves all black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/8045 - Polo Club Oversized Longsleeves all black.webp",
+        "alt": "8045 - Polo Club Oversized Longsleeves",
+        "dataAiHint": "longsleeve",
+        "color": "All Black"
+      }
+    ],
+    "feature1": "Corte Oversized y Hombros Caídos",
+    "feature2": "Cuello de Polo con Tapeta de Botones",
+    "feature3": "Tejido Texturizado de Algodón Premium",
+    "feature4": "Puños Elásticos de Canalé Ajustados"
+  },
+  {
+    "id": 3036,
+    "name": "8048 - Monaco Wool Quarter-Zip Sweaters",
+    "price": "Q.585.00",
+    "availability": "Disponible",
+    "description": "Suéter clásico de lana con cierre de un cuarto. Ofrece un equilibrio perfecto entre calidez y sofisticación, siendo ideal tanto para el pre-entrenamiento como para un look casual de noche.",
+    "gender": "hombre",
+    "category": "ropa",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/8048 - Monaco Wool Quarter-Zip Sweaters black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/8048 - Monaco Wool Quarter-Zip Sweaters black.webp",
+        "alt": "8048 - Monaco Wool Quarter-Zip Sweaters",
+        "dataAiHint": "sweater",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Tejido Mezcla de Lana Suave y Cálida",
+    "feature2": "Cierre Frontal de 1/4 de Cremallera YKK",
+    "feature3": "Cuello Alto Estructurado",
+    "feature4": "Ajuste Slim Moderno y Cómodo"
+  },
+  {
+    "id": 3037,
+    "name": "Adapt Animal X Whitney Shorts",
+    "price": "Q.500.00",
+    "availability": "Disponible",
+    "description": "Diseñados en colaboración con Whitney Simmons. Estos shorts de Gymshark cuentan con un tejido jacquard sin costuras con un patrón de estampado animal sutil, combinando estilo y funcionalidad.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "Gymshark",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Sorbet Yellow / Dayglow Peach",
+        "hex": "#FFD700",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/Adapt Animal X Whitney Shorts sorbet yellow.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/mujer/Adapt Animal X Whitney Shorts sorbet yellow.webp",
+        "alt": "Adapt Animal X Whitney Shorts",
+        "dataAiHint": "shorts",
+        "color": "Sorbet Yellow / Dayglow Peach"
+      },
+      {
+        "src": "/assets/images/marcas/gymshark/mujer/Adapt Animal X Whitney Shorts sorbet yellow 2.webp",
+        "alt": "Adapt Animal X Whitney Shorts 2",
+        "dataAiHint": "shorts",
+        "color": "Sorbet Yellow / Dayglow Peach"
+      }
+    ],
+    "feature1": "Tejido Seamless de Jacquard Suave",
+    "feature2": "Patrón de Estampado Animal Sutil",
+    "feature3": "Cintura Alta Compresiva y Moldeadora",
+    "feature4": "Largo de Pierna Óptimo para Entrenamiento"
+  },
+  {
+    "id": 3038,
+    "name": "Adapt Animal X Whitney Sports Bra",
+    "price": "Q.500.00",
+    "availability": "Disponible",
+    "description": "Bra deportivo de soporte medio con diseño cruzado en la espalda. Su tejido sin costuras y transpirable ofrece una comodidad excepcional para actividades de gimnasio.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "bras-deportivo",
+    "brand": "Gymshark",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Sorbet Yellow / Dayglow Peach",
+        "hex": "#FFD700",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/Adapt Animal X Whitney Sports Bra sorbet yellow.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/mujer/Adapt Animal X Whitney Sports Bra sorbet yellow.webp",
+        "alt": "Adapt Animal X Whitney Sports Bra",
+        "dataAiHint": "sports bra",
+        "color": "Sorbet Yellow / Dayglow Peach"
+      }
+    ],
+    "feature1": "Soporte Medio con Copas Removibles",
+    "feature2": "Detalle de Espalda Cruzada Tirantes Finos",
+    "feature3": "Tejido Seamless Absorbente de Sudor",
+    "feature4": "Banda Inferior Ancha de Alta Sujeción"
+  },
+  {
+    "id": 3039,
+    "name": "Varsity 2.0 Oversized Straight Leg Joggers",
+    "price": "Q.590.00",
+    "availability": "Disponible",
+    "description": "Joggers holgados de pierna recta de la marca AYBL. Confeccionados en un tejido French Terry cepillado ultra suave, ideales para un look relajado de descanso o pre-entreno.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "AYBL",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Navy",
+        "hex": "#000080",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy 2.png"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy 2.png",
+        "alt": "Varsity 2.0 Oversized Straight Leg Joggers",
+        "dataAiHint": "joggers",
+        "color": "Navy"
+      },
+      {
+        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy.png",
+        "alt": "Varsity 2.0 Oversized Straight Leg Joggers 2",
+        "dataAiHint": "joggers",
+        "color": "Navy"
+      }
+    ],
+    "feature1": "Corte Oversized de Pierna Recta",
+    "feature2": "Tejido de Algodón Cepillado Extra Suave",
+    "feature3": "Cintura de Canalé con Cordón Ajustable",
+    "feature4": "Bolsillos Laterales Prácticos"
+  },
+  {
+    "id": 3040,
+    "name": "Varsity 2.0 Oversized Hoodie",
+    "price": "Q.590.00",
+    "availability": "Disponible",
+    "description": "Sudadera oversized clásica de AYBL. Su capucha con forro doble y hombros caídos te brindan la máxima comodidad en los días fríos o durante tus calentamientos.",
+    "gender": "mujer",
+    "category": "ropa",
+    "brand": "AYBL",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Navy",
+        "hex": "#000080",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Hoodie navy.png"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Hoodie navy.png",
+        "alt": "Varsity 2.0 Oversized Hoodie",
+        "dataAiHint": "hoodie",
+        "color": "Navy"
+      }
+    ],
+    "feature1": "Capucha con Ajuste de Cordón Cruzado",
+    "feature2": "Corte Oversized Muy Cómodo",
+    "feature3": "Bolsillo Canguro Frontal Amplio",
+    "feature4": "Puños y Dobladillo de Canalé Ancho"
+  },
+  {
+    "id": 3041,
+    "name": "Comfort Oversized Zip-Up Hoodie",
+    "price": "Q.515.00",
+    "availability": "Disponible",
+    "description": "Sudadera con cierre completo de la línea Comfort de Women's Best. Ofrece un diseño amplio, capucha espaciosa y un tejido cepillado que se siente extremadamente suave sobre la piel.",
+    "gender": "mujer",
+    "category": "ropa",
+    "brand": "Women's Best",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Silver Grey Marl",
+        "hex": "#C0C0C0",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/Women's Best/Comfort Oversized Zip-Up Hoodie silver gray.avif"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/Women's Best/Comfort Oversized Zip-Up Hoodie silver gray.avif",
+        "alt": "Comfort Oversized Zip-Up Hoodie",
+        "dataAiHint": "hoodie",
+        "color": "Silver Grey Marl"
+      }
+    ],
+    "feature1": "Cierre de Cremallera Completa Frontal",
+    "feature2": "Capucha con Forro Suave y Ajustable",
+    "feature3": "Corte Oversized Casual y Deportivo",
+    "feature4": "Logo Bordado de Women's Best"
+  },
+  {
+    "id": 3042,
+    "name": "Comfort Oversized Health Club Graphic Hoodie",
+    "price": "Q.475.00",
+    "availability": "Disponible",
+    "description": "Agrega estilo a tu vestuario deportivo con esta sudadera de Women's Best. Presenta un gráfico retro estilo club de salud en la parte trasera, combinando moda vintage y comodidad premium.",
+    "gender": "mujer",
+    "category": "ropa",
+    "brand": "Women's Best",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Mocha",
+        "hex": "#A52A2A",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/Women's Best/Comfort Oversized Health Club Graphic Hoodie moca 2.jpg"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/Women's Best/Comfort Oversized Health Club Graphic Hoodie moca 2.jpg",
+        "alt": "Comfort Oversized Health Club Graphic Hoodie",
+        "dataAiHint": "hoodie",
+        "color": "Mocha"
+      },
+      {
+        "src": "/assets/images/marcas/Women's Best/Comfort Oversized Health Club Graphic Hoodie moca.webp",
+        "alt": "Comfort Oversized Health Club Graphic Hoodie 2",
+        "dataAiHint": "hoodie",
+        "color": "Mocha"
+      }
+    ],
+    "feature1": "Gráfico Trasero Retro Estilo Health Club",
+    "feature2": "Tejido Heavyweight de Tacto Premium",
+    "feature3": "Corte Oversized Moderno",
+    "feature4": "Bolsillo Frontal Estilo Canguro"
+  },
+  {
+    "id": 3043,
+    "name": "Comfort Joggers",
+    "price": "Q.450.00",
+    "availability": "Disponible",
+    "description": "Pantalones deportivos ultracómodos de Women's Best. Diseñados con un ajuste relajado que se estrecha en los tobillos, ideales para entrenamientos ligeros o descanso.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "Women's Best",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Mocha",
+        "hex": "#A52A2A",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/Women's Best/Comfort Joggers moca.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/Women's Best/Comfort Joggers moca.webp",
+        "alt": "Comfort Joggers",
+        "dataAiHint": "joggers",
+        "color": "Mocha"
+      }
+    ],
+    "feature1": "Ajuste Relajado con Tobillos Elásticos",
+    "feature2": "Tejido de Mezcla de Algodón Suave",
+    "feature3": "Cintura Ajustable con Cordón",
+    "feature4": "Bolsillos Laterales Funcionales"
+  },
+  {
+    "id": 3044,
+    "name": "4193 - Camisetas de compresión clásicas",
+    "price": "Q.485.00",
+    "availability": "Disponible",
+    "description": "Camiseta de compresión clásica de YoungLA diseñada para mejorar el flujo sanguíneo y optimizar el rendimiento muscular. El tejido técnico se ajusta firmemente para una máxima sujeción.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "is_compression": true,
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4193 - Camisetas de compresión clásicas black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4193 - Camisetas de compresión clásicas black.webp",
+        "alt": "4193 - Camisetas de compresión clásicas",
+        "dataAiHint": "compression tee",
+        "color": "Negro"
+      }
+    ],
+    "feature1": "Mejora la Circulación y Soporte Muscular",
+    "feature2": "Tejido Técnico Muy Elástico y Duradero",
+    "feature3": "Costuras Planas Antirrozaduras",
+    "feature4": "Ideal para Sesiones de Fuerza Intensas"
+  },
+  {
+    "id": 3045,
+    "name": "2057 - Pantalones deportivos Fight Week",
+    "price": "Q.625.00",
+    "availability": "Disponible",
+    "description": "Diseñados para atletas de combate, estos pantalones deportivos de la línea Fight Week de YoungLA combinan elasticidad y calidez. Perfectos para tus entrenamientos al aire libre o en el gimnasio.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Negro/Azul marino",
+        "hex": "#000080",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2057 - Pantalones deportivos Fight Week black navy.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/2057 - Pantalones deportivos Fight Week black navy.webp",
+        "alt": "2057 - Pantalones deportivos Fight Week",
+        "dataAiHint": "pants",
+        "color": "Negro/Azul marino"
+      }
+    ],
+    "feature1": "Corte Atlético Elástico para Movilidad",
+    "feature2": "Bolsillos con Cremalleras de Alta Seguridad",
+    "feature3": "Detalle de Logotipo UFC/YLA Estampado",
+    "feature4": "Cintura Ajustable Elástica"
+  },
+  {
+    "id": 3046,
+    "name": "5205 - Chándal Fight Week",
+    "price": "Q.625.00",
+    "availability": "Disponible",
+    "description": "Chándal oficial de entrenamiento Fight Week de YoungLA. Fabricado con un tejido técnico de secado rápido que expulsa la humedad, ideal para calentamientos previos a la acción.",
+    "gender": "hombre",
+    "category": "ropa",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Negro/Blanco",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5205 - Chándal Fight Week black white.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/5205 - Chándal Fight Week black white.webp",
+        "alt": "5205 - Chándal Fight Week",
+        "dataAiHint": "tracksuit",
+        "color": "Negro/Blanco"
+      }
+    ],
+    "feature1": "Conjunto Técnico de Alto Rendimiento",
+    "feature2": "Tejido Transpirable de Secado Rápido",
+    "feature3": "Cremallera Completa y Cuello Alto",
+    "feature4": "Diseño Atlético Premium"
+  },
+  {
+    "id": 3047,
+    "name": "1018 - Core Training Shorts",
+    "price": "Q.475.00",
+    "availability": "Disponible",
+    "description": "Shorts de entrenamiento esenciales de YoungLA. Diseñados con una longitud óptima sobre la rodilla, ranuras laterales para mayor movilidad y una tela elástica muy ligera.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "L",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/1018 - Core Training Shorts black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/1018 - Core Training Shorts black.webp",
+        "alt": "1018 - Core Training Shorts",
+        "dataAiHint": "shorts",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Ranuras Laterales para Movilidad Plena",
+    "feature2": "Tejido Ultra Ligero y Transpirable",
+    "feature3": "Banda de Cintura Elástica Plana",
+    "feature4": "Bolsillos con Cremalleras Invisibles"
+  },
+  {
+    "id": 3048,
+    "name": "3075 - The Ultimate Wife Lovers",
+    "price": "Q.330.00",
+    "availability": "Disponible",
+    "description": "La playera de tirantes acanalada definitiva de YoungLA. Confeccionada con una mezcla de algodón elástico acanalado, abraza el cuerpo resaltando los hombros y la espalda.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": [
+        {
+          "value": "M",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/3075 - The Ultimate Wife Lovers black.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/3075 - The Ultimate Wife Lovers black.webp",
+        "alt": "3075 - The Ultimate Wife Lovers",
+        "dataAiHint": "wife lover",
+        "color": "Black"
+      }
+    ],
+    "feature1": "Tejido Acanalado 2x2 Ultra Ajustado",
+    "feature2": "Corte de Tirantes Clásico Redondo",
+    "feature3": "Resalta Espalda, Hombros y Pecho",
+    "feature4": "Algodón Suave y Transpirable"
   }
 ]

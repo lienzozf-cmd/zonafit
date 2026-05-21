@@ -1,8 +1,10 @@
+import '@/lib/ssr-polyfills';
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import IntroWrapper from '@/components/intro-wrapper';
 import Script from 'next/script';
+import BackgroundMusic from '@/components/background-music';
 
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
@@ -35,6 +37,7 @@ export default function RootLayout({
           `}
         </Script>
         <IntroWrapper>{children}</IntroWrapper>
+        <BackgroundMusic />
         <Toaster />
       </body>
     </html>

@@ -60,7 +60,12 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   
   const getInitialImage = () => {
     if (selectedColor?.imageSrc) return selectedColor.imageSrc;
-    if (product.images && product.images.length > 0) return product.images[0].src;
+    if (product.images && product.images.length > 0) {
+      if (product.id === 3037) {
+        return product.images[1]?.src || product.images[0].src;
+      }
+      return product.images[0].src;
+    }
     return PLACEHOLDER_IMAGE;
   };
 
@@ -76,13 +81,19 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   useEffect(() => {
     const options = selectedColor?.options?.values || product.options?.values || [];
     const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
+    let currentOpt = null;
     if (options.length === 1 && options[0].value === 'Único') {
+        currentOpt = options[0];
         setSelectedOption(options[0]);
     } else {
+        currentOpt = firstAvailableOption || null;
         setSelectedOption(firstAvailableOption || null);
     }
     
-    if (selectedColor?.imageSrc) {
+    const optionImg = currentOpt ? product.images?.find(img => img.option === currentOpt.value) : null;
+    if (optionImg) {
+      setCurrentImage(optionImg.src);
+    } else if (selectedColor?.imageSrc) {
       setCurrentImage(selectedColor.imageSrc);
     } else if (product.images && product.images.length > 0) {
       setCurrentImage(product.images[0].src);
@@ -118,6 +129,12 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     e.stopPropagation();
     e.preventDefault();
     setSelectedOption(option);
+
+    // Si la opción tiene una imagen asociada, cambiar a esa imagen
+    const matchingImage = product.images?.find(img => img.option === option.value);
+    if (matchingImage) {
+      setCurrentImage(matchingImage.src);
+    }
   };
 
   const handleColorHover = (color: ProductColor) => {
@@ -193,7 +210,12 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
-          if (selectedColor?.imageSrc) {
+          // Si hay una opción seleccionada con imagen, usarla
+          const selectedOptionImage = selectedOption ? product.images?.find(img => img.option === selectedOption.value) : null;
+          
+          if (selectedOptionImage) {
+            setCurrentImage(selectedOptionImage.src);
+          } else if (selectedColor?.imageSrc) {
             setCurrentImage(selectedColor.imageSrc);
           } else if (product.images && product.images.length > 0) {
             setCurrentImage(product.images[0].src);
@@ -253,7 +275,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             <div className="product-info mt-auto">
                 {showOptions && optionsToShow.length > 0 && (
                     <div className="size-options">
-                    {optionsToShow.map((option) => {
+                    {optionsToShow.slice(0, 2).map((option) => {
                       const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;
                       const isOptionDisabled = stock <= 0;
                       const isSelected = selectedOption?.value === option.value;
@@ -269,6 +291,24 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                         </button>
                       )
                     })}
+                    {optionsToShow.length > 2 && (
+                      <button
+                        className="more-options-indicator cursor-default"
+                        disabled
+                        style={{ 
+                          pointerEvents: 'none',
+                          backgroundColor: '#000000',
+                          border: '1px solid #ff0000',
+                          color: '#ff0000',
+                          fontWeight: 'bold',
+                          minWidth: '40px',
+                          opacity: 1,
+                          borderRadius: '4px'
+                        }}
+                      >
+                        +
+                      </button>
+                    )}
                     </div>
                 )}
                 <p className="availability-message">

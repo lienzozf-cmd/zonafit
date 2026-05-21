@@ -6,6 +6,10 @@ import { useCartStore } from '@/stores/cart-store';
 import { getFirebaseApp } from '@/lib/firebase';
 import { usePathname } from 'next/navigation';
 
+import PageTransition from './page-transition';
+import SocialSection from './social-section';
+import BackgroundMusic from './background-music';
+
 export default function IntroWrapper({
   children,
 }: {
@@ -55,13 +59,16 @@ export default function IntroWrapper({
     return null;
   }
 
-  if (!introFinished) {
-    return <IntroAnimation onIntroFinish={handleIntroFinish} />;
-  }
-
   return (
-    <div key={pathname} className="page-fade-in">
-      {children}
-    </div>
+    <>
+      {!introFinished ? (
+        <IntroAnimation onIntroFinish={handleIntroFinish} />
+      ) : (
+        <PageTransition>
+          <SocialSection />
+          {children}
+        </PageTransition>
+      )}
+    </>
   );
 }

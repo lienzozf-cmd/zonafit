@@ -4,6 +4,7 @@ import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
+import { saveOrder } from '@/lib/orders-db';
 import type { CartItem } from '@/lib/types';
 
 async function sendTelegramNotification(message: string) {
@@ -100,6 +101,15 @@ export async function POST(request: Request) {
       orderTotal,
       orderId,
     };
+
+    // --- Persist Order to Firestore ---
+    try {
+      await saveOrder(emailData);
+      console.log('Order persisted to Firestore successfully.');
+    } catch (saveError) {
+      console.error('CRITICAL: Failed to save order to Firestore:', saveError);
+      // We continue since email and telegram are still important
+    }
     
     // --- Create Telegram message ---
     const telegramMessage = `
