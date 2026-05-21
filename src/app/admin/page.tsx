@@ -1,7 +1,5 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
-import { getFirebaseAuth } from '@/lib/firebase';
-import { signInAnonymously } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -106,21 +104,8 @@ export default function AdminPage() {
   const onSubmit = async (data: LoginFormValues) => {
     const inputHash = await hashPassword(data.password);
     if (data.username === 'zonafitero' && inputHash === ADMIN_PASSWORD_HASH) {
-      try {
-        // Autenticar preventivamente con Firebase para evitar errores de permisos en Firestore
-        const auth = getFirebaseAuth();
-        await signInAnonymously(auth);
-        
-        setIsAuthenticated(true);
-        toast({ title: '¡Acceso Concedido!', description: 'Has iniciado sesión en el portal seguro.' });
-      } catch (authError) {
-        console.error('Firebase Auth Error:', authError);
-        toast({ 
-          title: 'Error de Autenticación', 
-          description: 'No se pudo conectar con el servicio de seguridad.',
-          variant: 'destructive' 
-        });
-      }
+      setIsAuthenticated(true);
+      toast({ title: '¡Acceso Concedido!', description: 'Has iniciado sesión en el portal seguro.' });
     } else {
       toast({
         title: 'Error de Seguridad',
