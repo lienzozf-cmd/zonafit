@@ -38,7 +38,7 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-// Hash SHA-256 de "[REDACTED_PASSWORD]"
+// Hash SHA-256 de "REDACTED"
 const ADMIN_PASSWORD_HASH = '[REDACTED_HASH]';
 
 const categories = [
@@ -105,7 +105,7 @@ export default function AdminPage() {
 
   const onSubmit = async (data: LoginFormValues) => {
     const inputHash = await hashPassword(data.password);
-    if (data.username === 'admin' && inputHash === ADMIN_PASSWORD_HASH) {
+    if (data.username === 'zonafitero' && inputHash === ADMIN_PASSWORD_HASH) {
       try {
         // Autenticar preventivamente con Firebase para evitar errores de permisos en Firestore
         const auth = getFirebaseAuth();
