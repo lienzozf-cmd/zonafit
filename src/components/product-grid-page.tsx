@@ -20,9 +20,7 @@ export default function ProductGridPage({
   title,
   hideBrandFilter = false,
 }: ProductGridPageProps) {
-  const { sessionId } = useCartStore((state) => ({
-    sessionId: state.sessionId,
-  }));
+  const sessionId = useCartStore((state) => state.sessionId);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 

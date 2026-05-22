@@ -5,10 +5,8 @@ import type { Product } from '@/lib/data';
 import { useCartStore } from '@/stores/cart-store';
 
 const FeaturedProducts = () => {
-  const { products, sessionId } = useCartStore((state) => ({
-    products: state.products,
-    sessionId: state.sessionId,
-  }));
+  const products = useCartStore((state) => state.products);
+  const sessionId = useCartStore((state) => state.sessionId);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   // Mapeo solicitado (actualizado):

@@ -42,12 +42,10 @@ const ProductDetailPage = () => {
   const router = useRouter();
   const { id } = params || { id: '' };
   
-  const { products, getProductOption, addItem, items } = useCartStore((state) => ({
-    products: state.products,
-    getProductOption: state.getProductOption,
-    addItem: state.addItem,
-    items: state.items,
-  }));
+  const products = useCartStore((state) => state.products);
+  const getProductOption = useCartStore((state) => state.getProductOption);
+  const addItem = useCartStore((state) => state.addItem);
+  const items = useCartStore((state) => state.items);
 
   const { toast } = useToast();
 
