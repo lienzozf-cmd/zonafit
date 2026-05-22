@@ -28,7 +28,7 @@ const CategoryGrid = () => {
     {
       name: 'Accesorios',
       count: 'Ver',
-      image: '/assets/images/accesorios/maletaroja.webp',
+      image: '/assets/images/Accesorios/maletaroja.webp',
       dataAiHint: 'gym accessories',
       className: 'accesorios',
       href: '/accesorios',
