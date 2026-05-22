@@ -154,4 +154,8 @@ export const navLinks = [
       { title: 'Ver Todo', href: '/marcas' },
     ],
   },
+  {
+    title: 'ANIME',
+    href: '/anime',
+  },
 ];
