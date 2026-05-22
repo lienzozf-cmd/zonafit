@@ -5,7 +5,8 @@ const animeKeywords = [
   'inosuke', 'tanjiro', 'nezuko', 'zenitsu', 'uzui', 
   'yu-gi-oh', 'itachi', 'gojo', 'sukuna', 'anime',
   'jujutsu kaisen', 'demon slayer', 'mago oscuro',
-  'dark magician', 'blue eyes'
+  'dark magician', 'blue eyes', 'gogeta', 'broly',
+  'aot', 'attack on titan', 'shingeki', 'levi'
 ];
 
 function isAnimeProduct(product: Product): boolean {
