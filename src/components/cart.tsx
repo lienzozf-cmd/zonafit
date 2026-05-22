@@ -15,17 +15,15 @@ import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
 
 const Cart = () => {
-  const { 
-    items, 
-    total, 
-    itemCount, 
-    isCartOpen, 
-    setIsCartOpen, 
-    removeItem, 
-    incrementQuantity, 
-    decrementQuantity,
-    getProductOption
-  } = useCartStore((state) => state);
+  const items = useCartStore((state) => state.items);
+  const total = useCartStore((state) => state.total);
+  const itemCount = useCartStore((state) => state.itemCount);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
+  const removeItem = useCartStore((state) => state.removeItem);
+  const incrementQuantity = useCartStore((state) => state.incrementQuantity);
+  const decrementQuantity = useCartStore((state) => state.decrementQuantity);
+  const getProductOption = useCartStore((state) => state.getProductOption);
   const router = useRouter();
 
   const triggerConfetti = () => {

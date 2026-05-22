@@ -16,11 +16,9 @@ import { useCartStore } from '@/stores/cart-store';
 const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/200/200';
 
 const Header = () => {
-  const { products, setIsCartOpen, itemCount } = useCartStore((state) => ({ 
-    products: state.products,
-    setIsCartOpen: state.setIsCartOpen, 
-    itemCount: state.itemCount,
-  }));
+  const products = useCartStore((state) => state.products);
+  const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
+  const itemCount = useCartStore((state) => state.itemCount);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');

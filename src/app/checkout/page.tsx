@@ -39,11 +39,9 @@ const checkoutSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const { items, processOrder, products } = useCartStore((state) => ({
-    items: state.items,
-    processOrder: state.processOrder,
-    products: state.products,
-  }));
+  const items = useCartStore((state) => state.items);
+  const processOrder = useCartStore((state) => state.processOrder);
+  const products = useCartStore((state) => state.products);
   const { toast } = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);

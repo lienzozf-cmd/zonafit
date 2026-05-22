@@ -44,9 +44,7 @@ const categories = [
 ];
 
 export default function AdminPage() {
-  const { products } = useCartStore((state) => ({
-    products: state.products,
-  }));
+  const products = useCartStore((state) => state.products);
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showPassword, setShowPassword] = useState(false);

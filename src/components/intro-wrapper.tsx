@@ -18,11 +18,9 @@ export default function IntroWrapper({
 }) {
   const [introFinished, setIntroFinished] = useState(true);
   const [isClient, setIsClient] = useState(false);
-  const { setSessionId, sessionId, fetchProducts } = useCartStore((state) => ({
-    setSessionId: state.setSessionId,
-    sessionId: state.sessionId,
-    fetchProducts: state.fetchProducts,
-  }));
+  const setSessionId = useCartStore((state) => state.setSessionId);
+  const sessionId = useCartStore((state) => state.sessionId);
+  const fetchProducts = useCartStore((state) => state.fetchProducts);
   const pathname = usePathname();
 
   // Activa la suscripción en tiempo real a los cambios de stock en Supabase

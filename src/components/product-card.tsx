@@ -32,11 +32,9 @@ const brandColorMap: { [key: string]: string } = {
 const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
 
 const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
-  const { products, addItem, getProductOption } = useCartStore((state) => ({
-    products: state.products,
-    addItem: state.addItem,
-    getProductOption: state.getProductOption,
-  }));
+  const products = useCartStore((state) => state.products);
+  const addItem = useCartStore((state) => state.addItem);
+  const getProductOption = useCartStore((state) => state.getProductOption);
   
   const product = useMemo(() => 
     products.find(p => p.id === initialProduct.id) || initialProduct,
