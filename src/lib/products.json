@@ -396,39 +396,7 @@
     },
     "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
-  {
-    "id": 1801,
-    "name": "CREATINE MONOHYDRATE ESSENTIALS 60 SERV",
-    "price": "Q.345.00",
-    "availability": "Agotado",
-    "description": "Creatina monohidratada de grado farmacéutico para maximizar tu rendimiento y recuperación. 60 servicios de alta pureza.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "creatina",
-    "brand": "Dragon Pharma",
-    "benefits": "Aumento de fuerza, mejora del rendimiento, mayor volumen muscular.",
-    "servings_info": "60 servicios.",
-    "feature1": "Pureza Micronizada de Grado Superior",
-    "feature2": "Máxima Absorción Intracelular",
-    "feature3": "Libre de Azúcares y Rellenos",
-    "images": [
-      {
-        "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
-        "alt": "Creatine 60 servings",
-        "dataAiHint": "creatine powder"
-      }
-    ],
-    "options": {
-      "type": "servicios",
-      "values": [
-        {
-          "value": "Único",
-          "stock": 0
-        }
-      ]
-    },
-    "feature4": "Sabor y Mezclabilidad de Nivel Pro"
-  },
+
   {
     "id": 1800,
     "name": "Proteína whey Dragon Pharma",
@@ -3363,7 +3331,7 @@
     "id": 2679,
     "name": "Omega 3 - 60ct",
     "price": "Q.250.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -3386,7 +3354,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -5728,37 +5696,6 @@
     "feature4": "Optimiza la Vascularización Durante el Entreno"
   },
   {
-    "id": 3018,
-    "name": "Creatine Value Pack (30 Serv)",
-    "price": "Q.300.00",
-    "availability": "Disponible",
-    "description": "Creatina Monohidratada pura de la marca RAW en un formato de paquete de valor. Ayuda a aumentar la producción de energía celular (ATP), permitiendo incrementar la fuerza, la potencia muscular y el volumen celular.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "creatina",
-    "brand": "RAW",
-    "options": {
-      "type": "servicios",
-      "values": [
-        {
-          "value": "30 Serv",
-          "stock": 3
-        }
-      ]
-    },
-    "images": [
-      {
-        "src": "/assets/images/marcas/raw/Creatine Monohydrate (30 Serv).webp",
-        "alt": "Creatine Value Pack (30 Serv)",
-        "dataAiHint": "creatine value pack"
-      }
-    ],
-    "feature1": "Formato Ahorro Value Pack",
-    "feature2": "100% Creatina Monohidratada Micronizada",
-    "feature3": "Favorece el Crecimiento y Recuperación Muscular",
-    "feature4": "Mejora la Potencia en Entrenamientos Explosivos"
-  },
-  {
     "id": 3019,
     "name": "Creatine box (30 Serv)",
     "price": "Q.300.00",
@@ -5773,7 +5710,7 @@
       "values": [
         {
           "value": "30 Serv",
-          "stock": 2
+          "stock": 3
         }
       ]
     },
