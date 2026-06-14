@@ -37,6 +37,23 @@ const brandStyles: { [key: string]: string } = {
     'Civil Regime': 'bg-pink-600 text-white',
 };
 
+const brandButtonStyles: { [key: string]: string } = {
+    'YoungLA': 'bg-red-600 hover:bg-red-500 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_25px_rgba(220,38,38,0.6)]',
+    'Gymshark': 'bg-cyan-400 hover:bg-cyan-300 text-black border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)]',
+    'Dragon Pharma': 'bg-pink-500 hover:bg-pink-400 text-white border-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_25px_rgba(236,72,153,0.6)]',
+    'Darc Sport': 'bg-zinc-700 hover:bg-zinc-600 text-white border-zinc-700 shadow-[0_0_15px_rgba(63,63,70,0.4)] hover:shadow-[0_0_25px_rgba(63,63,70,0.6)]',
+    'RGMNT': 'bg-yellow-500 hover:bg-yellow-400 text-black border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.4)] hover:shadow-[0_0_25px_rgba(234,179,8,0.6)]',
+    'RAW': 'bg-green-600 hover:bg-green-500 text-white border-green-600 shadow-[0_0_15px_rgba(22,163,74,0.4)] hover:shadow-[0_0_25px_rgba(22,163,74,0.6)]',
+    'Vanquish': 'bg-sky-500 hover:bg-sky-400 text-white border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.4)] hover:shadow-[0_0_25px_rgba(14,165,233,0.6)]',
+    'DFYNE': 'bg-purple-600 hover:bg-purple-500 text-white border-purple-600 shadow-[0_0_15px_rgba(147,51,234,0.4)] hover:shadow-[0_0_25px_rgba(147,51,234,0.6)]',
+    'Monster': 'bg-lime-500 hover:bg-lime-400 text-black border-lime-500 shadow-[0_0_15px_rgba(132,204,22,0.4)] hover:shadow-[0_0_25px_rgba(132,204,22,0.6)]',
+    'Bum Energy': 'bg-amber-400 hover:bg-amber-300 text-black border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.4)] hover:shadow-[0_0_25px_rgba(251,191,36,0.6)]',
+    'Dymatize': 'bg-blue-600 hover:bg-blue-500 text-white border-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)]',
+    'Muscletech': 'bg-orange-600 hover:bg-orange-500 text-white border-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.4)] hover:shadow-[0_0_25px_rgba(234,88,12,0.6)]',
+    'Ironbull': 'bg-zinc-500 hover:bg-zinc-400 text-white border-zinc-500 shadow-[0_0_15px_rgba(115,115,115,0.4)] hover:shadow-[0_0_25px_rgba(115,115,115,0.6)]',
+    'Civil Regime': 'bg-pink-600 hover:bg-pink-500 text-white border-pink-600 shadow-[0_0_15px_rgba(219,39,119,0.4)] hover:shadow-[0_0_25px_rgba(219,39,119,0.6)]',
+};
+
 const ProductDetailPage = () => {
   const params = useParams<{ id: string }>();
   const router = useRouter();
@@ -64,6 +81,9 @@ const ProductDetailPage = () => {
       const foundProduct = products.find((p) => p.id === Number(id));
       if (foundProduct && foundProduct.visible !== false) {
         setProduct(foundProduct);
+        // Trigger play-music event with product's gender to play correct track on entry
+        window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender } }));
+        
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0 ? foundProduct.colors[0] : null;
         setSelectedColor(initialColor);
         
@@ -446,6 +466,18 @@ const ProductDetailPage = () => {
                         <span>{availabilityMessage}</span>
                     </div>
                     
+                    {product.category === 'ropa' && (
+                      <Button
+                        type="button"
+                        onClick={() => router.push('/#size-finder-section')}
+                        className={`w-full font-black py-5 text-sm rounded-xl transition-all active:scale-95 uppercase tracking-wider border flex items-center justify-center gap-2 mb-3 animate-pulse ${
+                          brandButtonStyles[product.brand] || 'bg-red-600 hover:bg-red-500 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)]'
+                        }`}
+                      >
+                        📐 ¿Cuál es mi Talla? Encontrarla aquí
+                      </Button>
+                    )}
+
                     <Button
                         className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-6 text-lg rounded-xl transition-all shadow-[0_10px_20px_rgba(220,38,38,0.2)] active:scale-95 group overflow-hidden relative"
                         onClick={handleAddToCart}

@@ -12,7 +12,7 @@ const CategoryGrid = () => {
     {
       name: 'Mujer',
       count: 'Ver',
-      image: '/assets/images/marcas/gymshark/mujer/anabel.jpg',
+      image: '/assets/images/marcas/gymshark/mujer/anabellucinda.jpg',
       dataAiHint: 'woman fitness',
       className: 'mujer',
       href: '/mujeres',
@@ -20,10 +20,11 @@ const CategoryGrid = () => {
     {
       name: 'Hombre',
       count: 'Ver',
-      image: '/assets/images/marcas/youngla/hombre/brayanlop.jpg',
+      image: '/assets/images/marcas/gymshark/hombre/davidlaidonyx.jpg',
       dataAiHint: 'man fitness',
       className: 'hombre',
       href: '/hombres',
+      imageClassName: 'object-cover',
     },
     {
       name: 'Accesorios',
@@ -82,7 +83,7 @@ const CategoryGrid = () => {
           {categoryData.slice(0, 2).map(category => (
             <div key={category.name} className={`grid-item ${category.className}`}>
               <Link href={category.href} className="w-full h-full block">
-                <Image src={category.image} alt={category.name} width={600} height={600} data-ai-hint={category.dataAiHint} className="object-cover w-full h-full" />
+                <Image src={category.image} alt={category.name} width={600} height={600} data-ai-hint={category.dataAiHint} className={`${category.imageClassName || 'object-cover'} w-full h-full`} />
                 <div className="overlay-text">
                   <h3>{category.name}</h3>
                   <p>{category.count} productos</p>
@@ -95,7 +96,7 @@ const CategoryGrid = () => {
           {categoryData.slice(2).map(category => (
             <div key={category.name} className={`grid-item ${category.className}`}>
               <Link href={category.href} className="w-full h-full block">
-                <Image src={category.image} alt={category.name} width={400} height={400} data-ai-hint={category.dataAiHint} className="object-cover w-full h-full" />
+                <Image src={category.image} alt={category.name} width={400} height={400} data-ai-hint={category.dataAiHint} className={`${category.imageClassName || 'object-cover'} w-full h-full`} />
                 <div className="overlay-text">
                   <h3>{category.name}</h3>
                   <p>{category.count} productos</p>

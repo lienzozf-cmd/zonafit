@@ -1,8 +1,4 @@
-
 import { NextResponse } from 'next/server';
-import { render } from '@react-email/render';
-import nodemailer from 'nodemailer';
-import { OrderConfirmationEmail } from '@/components/emails/order-confirmation-email';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import { saveOrder } from '@/lib/orders-db';
 import type { CartItem } from '@/lib/types';
@@ -135,36 +131,8 @@ ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name
     // --- Send Telegram Notification ---
     sendTelegramNotification(telegramMessage);
 
-    // --- Email Sending ---
-    try {
-        const emailHtml = render(<OrderConfirmationEmail orderDetails={emailData} />);
-
-        const emailUser = process.env.SMTP_EMAIL || process.env.EMAIL_SERVER_USER || 'rabanalesf22@gmail.com';
-        const emailPass = process.env.SMTP_PASSWORD || process.env.EMAIL_SERVER_PASSWORD;
-
-        if (!emailPass) {
-          console.error('CRITICAL: SMTP_PASSWORD or EMAIL_SERVER_PASSWORD not found in environment variables. Email sending might fail.');
-        }
-
-        const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: emailUser,
-            pass: emailPass,
-          },
-        });
-
-        const mailOptions = {
-          from: `"ZONA FIT GT" <${emailUser}>`,
-          to: [shippingInfo.email, emailUser, 'rabafam2118@gmail.com'],
-          subject: `Confirmación de tu pedido ZONA FIT GT #${orderId}`,
-          html: emailHtml,
-        };
-
-        await transporter.sendMail(mailOptions);
-    } catch (emailError: any) {
-        console.error('--- CRITICAL: EMAIL SENDING FAILED ---', emailError);
-    }
+    // --- Email Sending (Disabled) ---
+    console.log('Email sending is disabled. Skipping confirmation email.');
     
     return NextResponse.json({ 
       success: true,

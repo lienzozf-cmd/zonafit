@@ -17,6 +17,7 @@ const banners = [
   { src: '/assets/images/banners/banner3.webp', alt: 'Banner 3' },
   { src: '/assets/images/banners/banner4.webp', alt: 'Banner 4' },
   { src: '/assets/images/banners/banner5.jpg', alt: 'Banner 5' },
+  { src: '/assets/images/banners/banner6.png', alt: 'Banner 6' },
 ];
 
 const HeroSection = () => {
@@ -68,7 +69,7 @@ const HeroSection = () => {
                   alt={banner.alt}
                   fill
                   priority={index === 0}
-                  className="object-contain md:object-cover"
+                  className="object-contain"
                   data-ai-hint="fitness store"
                   quality={100}
                 />

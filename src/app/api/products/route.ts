@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { supabaseServer } from '@/lib/supabase';
 import type { Product } from '@/lib/data';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     // 1. Fetch all products
