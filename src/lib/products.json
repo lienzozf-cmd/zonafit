@@ -193,7 +193,7 @@
     "id": 3,
     "name": "ONYX 5.0 SEAMLESS-T SHIRT",
     "price": "Q.675.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -302,7 +302,7 @@
     "id": 6,
     "name": "Trident Pendant - Gold 14K SS \"22.5\"",
     "price": "Q.475.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Accesorio exclusivo forjado en acero inoxidable quirúrgico con baño de oro de 14K. Resistente al agua y al sudor, perfecto para entrenar con elegancia.",
     "gender": "unisex",
     "category": "joyeria",
@@ -367,7 +367,7 @@
     "id": 9,
     "name": "CREATINE MONOHYDRATE ESSENTIALS 200 Servings",
     "price": "Q.595.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -396,7 +396,6 @@
     },
     "feature4": "Sabor y Mezclabilidad de Nivel Pro"
   },
-
   {
     "id": 1800,
     "name": "Proteína whey Dragon Pharma",
@@ -660,7 +659,7 @@
     "id": 2527,
     "name": "Strength Graphic Joggers",
     "price": "Q.345.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "mujer",
     "category": "ropa",
@@ -684,7 +683,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -1315,7 +1314,7 @@
     "id": 2615,
     "name": "GRAND SLAM BASEBALL JERSEYS",
     "price": "Q.495.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -1596,7 +1595,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 2
+          "stock": 1
         }
       ]
     }
@@ -1605,7 +1604,7 @@
     "id": 2628,
     "name": "Ease Woven Joggers",
     "price": "Q.375.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
@@ -1629,7 +1628,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -1741,7 +1740,7 @@
     "id": 2638,
     "name": "Sets and Reps 3pk Crew Socks",
     "price": "Q.250.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Calcetines para tus sets y reps, en un conveniente paquete de 3.",
     "gender": "unisex",
     "category": "accesorio",
@@ -1762,7 +1761,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     }
@@ -1882,7 +1881,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "M",
@@ -1967,7 +1966,7 @@
     "id": 2645,
     "name": "Premium Oversized Broly",
     "price": "Q.595.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -2070,7 +2069,7 @@
         },
         {
           "value": "Pink Lemonade",
-          "stock": 10
+          "stock": 5
         },
         {
           "value": "Cherry Frost",
@@ -2078,19 +2077,19 @@
         },
         {
           "value": "Champion Mentality",
-          "stock": 11
+          "stock": 6
         },
         {
           "value": "Root Beer",
-          "stock": 3
+          "stock": 1
         },
         {
           "value": "Dr Bum",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "Cola",
-          "stock": 1
+          "stock": 0
         },
         {
           "value": "Grape",
@@ -2160,7 +2159,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 2
+          "stock": 1
         }
       ]
     },
@@ -2203,7 +2202,7 @@
     "id": 2652,
     "name": "Iso 100 - Dymatize - Chocolate 3LB",
     "price": "Q.665.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -2236,7 +2235,7 @@
     "id": 2653,
     "name": "Iso 100 - Dymatize- Cocoa Pebbles 3LB",
     "price": "Q.685.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -2339,7 +2338,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -2353,7 +2352,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -2365,7 +2364,7 @@
     "id": 2657,
     "name": "GLUTAMINE FERMENTED",
     "price": "Q.345.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -2388,7 +2387,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -2431,7 +2430,7 @@
     "id": 2659,
     "name": "Metal WLVS \"Pierce\" Hoodie in Black",
     "price": "Q.625.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -2454,7 +2453,7 @@
       "values": [
         {
           "value": "S",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -2497,7 +2496,7 @@
     "id": 2661,
     "name": "Impact Bra",
     "price": "Q.460.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
@@ -2594,7 +2593,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -2606,7 +2605,7 @@
     "id": 2663,
     "name": "Impact Shorts",
     "price": "Q.540.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
     "category": "ropa",
@@ -2674,7 +2673,7 @@
       "values": [
         {
           "value": "Napolitano",
-          "stock": 2
+          "stock": 1
         }
       ]
     },
@@ -3256,7 +3255,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -3319,7 +3318,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -3364,7 +3363,7 @@
     "id": 2680,
     "name": "Power Hoodie",
     "price": "Q.550.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -3408,7 +3407,7 @@
     "id": 2681,
     "name": "Wrist Straps",
     "price": "Q.295.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Vendas para muñeca Gymshark.",
     "gender": "unisex",
     "category": "accesorio",
@@ -3438,7 +3437,7 @@
           "values": [
             {
               "value": "UNICO",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -4233,7 +4232,7 @@
           "values": [
             {
               "value": "Único",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -4259,7 +4258,7 @@
     "id": 2701,
     "name": "W211 Dreamers Joggers",
     "price": "Q.545.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "mujer",
     "category": "ropa",
@@ -4291,7 +4290,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -4704,7 +4703,7 @@
     "id": 2713,
     "name": "Legacy Drop Arm Tank",
     "price": "Q.445.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -4733,7 +4732,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -5041,7 +5040,7 @@
       "values": [
         {
           "value": "Original",
-          "stock": 4
+          "stock": 3
         }
       ]
     },
@@ -5073,7 +5072,7 @@
       "values": [
         {
           "value": "Chewy Chocolate",
-          "stock": 24
+          "stock": 12
         }
       ]
     },
@@ -5105,7 +5104,7 @@
       "values": [
         {
           "value": "Chewy Chocolate",
-          "stock": 1
+          "stock": 2
         }
       ]
     },
@@ -5294,7 +5293,7 @@
     "id": 2728,
     "name": "MY COOKIE DEALER",
     "price": "Q.50.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -5648,7 +5647,7 @@
       "values": [
         {
           "value": "30 Serv",
-          "stock": 3
+          "stock": 6
         }
       ]
     },
@@ -5668,7 +5667,7 @@
     "id": 3017,
     "name": "Christopher's Juicy Pumps",
     "price": "Q.505.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Formulado para proporcionar un bombeo muscular masivo y un enfoque mental agudo. Contiene ingredientes clave para la producción de óxido nítrico, mejorando el flujo sanguíneo y el transporte de nutrientes a los músculos activos.",
     "gender": "unisex",
     "category": "suplemento",
@@ -5679,7 +5678,7 @@
       "values": [
         {
           "value": "Único",
-          "stock": 1
+          "stock": 0
         }
       ]
     },
@@ -5710,7 +5709,7 @@
       "values": [
         {
           "value": "30 Serv",
-          "stock": 3
+          "stock": 2
         }
       ]
     },
@@ -5740,7 +5739,7 @@
       "values": [
         {
           "value": "Watermelon",
-          "stock": 2
+          "stock": 1
         },
         {
           "value": "Grape",
@@ -6003,7 +6002,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         },
@@ -6265,7 +6264,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         },
@@ -6534,18 +6533,18 @@
             }
           ]
         },
-        "imageSrc": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy 2.png"
+        "imageSrc": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy.png"
       }
     ],
     "images": [
       {
-        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy 2.png",
+        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy.png",
         "alt": "Varsity 2.0 Oversized Straight Leg Joggers",
         "dataAiHint": "joggers",
         "color": "Navy"
       },
       {
-        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy.png",
+        "src": "/assets/images/marcas/AYBL/Varsity 2.0 Oversized Straight Leg Joggers navy 2.png",
         "alt": "Varsity 2.0 Oversized Straight Leg Joggers 2",
         "dataAiHint": "joggers",
         "color": "Navy"
@@ -6875,7 +6874,7 @@
           "values": [
             {
               "value": "L",
-              "stock": 1
+              "stock": 0
             }
           ]
         },
