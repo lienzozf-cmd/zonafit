@@ -6,6 +6,7 @@ import HeroSection from '@/components/hero-section';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import InfoSection from '@/components/info-section';
+import SizeFinder from '@/components/size-finder';
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
       <FeaturedProducts />
       <div>
         <CategoryGrid />
+      </div>
+
+      <div>
+        <SizeFinder />
       </div>
 
       <div>

@@ -222,7 +222,11 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
           }
         }}
     >
-        <Link href={productUrl} className="product-image-link w-full">
+        <Link 
+            href={productUrl} 
+            className="product-image-link w-full"
+            onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender } }))}
+        >
             <div className="product-carousel">
                 <Image
                   src={currentImage || PLACEHOLDER_IMAGE}
@@ -237,7 +241,10 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         </Link>
         <div className='flex flex-col flex-grow mt-4'>
             <p className={`font-semibold text-sm mb-1 uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
-            <Link href={productUrl}>
+            <Link 
+                href={productUrl}
+                onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender } }))}
+            >
                 <h3 className="product-name">{product.name}</h3>
             </Link>
             <div className="flex justify-center items-center gap-2">

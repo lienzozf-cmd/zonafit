@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  serverExternalPackages: ['@react-email/components', 'nodemailer'],
-};
+const nextConfig = {};
 
 export default nextConfig;

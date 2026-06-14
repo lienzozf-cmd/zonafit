@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import IntroAnimation from './intro-animation';
 import { useCartStore } from '@/stores/cart-store';
-import { getFirebaseApp } from '@/lib/firebase';
 import { usePathname } from 'next/navigation';
 
 import PageTransition from './page-transition';
@@ -31,8 +30,6 @@ export default function IntroWrapper({
     if (!sessionId) {
       setSessionId(Math.random().toString(36).substring(2, 11));
     }
-    // Initialize Firebase app
-    getFirebaseApp();
     // Fetch products from the API
     fetchProducts();
 

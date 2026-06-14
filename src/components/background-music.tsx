@@ -38,12 +38,35 @@ const BackgroundMusic = () => {
       window.removeEventListener('pointerdown', unlockAudio);
     };
 
+    const handlePlayEvent = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      const gender = customEvent.detail?.gender;
+      
+      const targetSrc = gender === 'mujer' 
+        ? '/DAVID LAID - Outside GYM MOTIVATION.mp3' 
+        : '/background-music.mp3';
+
+      audio.muted = false;
+      
+      const currentRelativeSrc = audio.getAttribute('src');
+      if (currentRelativeSrc !== targetSrc) {
+        audio.src = targetSrc;
+        audio.load();
+        audio.play().catch(() => {});
+      } else if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+    };
+
+    window.addEventListener('play-music', handlePlayEvent);
+
     window.addEventListener('mousemove', unlockAudio, { once: true });
     window.addEventListener('touchstart', unlockAudio, { once: true });
     window.addEventListener('pointerdown', unlockAudio, { once: true });
 
     return () => {
       clearTimeout(uiTimer);
+      window.removeEventListener('play-music', handlePlayEvent as EventListener);
       window.removeEventListener('mousemove', unlockAudio);
       window.removeEventListener('touchstart', unlockAudio);
       window.removeEventListener('pointerdown', unlockAudio);
@@ -74,9 +97,9 @@ const BackgroundMusic = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.35)' }}
+            whileHover={{ scale: 1.1, backgroundColor: '#ffd700' }}
             whileTap={{ scale: 0.95 }}
-            className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-black shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+            className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 border border-yellow-300 text-black shadow-[0_0_15px_rgba(234,179,8,0.6)] cursor-pointer"
             title={isPlaying ? 'Silenciar música' : 'Activar música'}
           >
             <AnimatePresence mode="wait">

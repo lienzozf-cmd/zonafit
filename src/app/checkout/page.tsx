@@ -450,6 +450,28 @@ export default function CheckoutPage() {
                     </div>
                   )}
               </div>
+              
+              {/* Invisible admin checkout bypass */}
+              <div className="flex justify-center mt-6">
+                <button
+                  type="button"
+                  onClick={async () => {
+                    form.setValue('firstName', 'admin');
+                    form.setValue('lastName', 'admin');
+                    form.setValue('email', 'admin@admin.com');
+                    form.setValue('phone', '88888888');
+                    form.setValue('address', 'admin admin');
+                    form.setValue('department', 'admin');
+                    form.setValue('municipality', 'admin');
+                    form.setValue('paymentMethod', 'deposit');
+                    
+                    const values = form.getValues();
+                    await onSubmit(values);
+                  }}
+                  className="w-5 h-5 rounded-full opacity-0 cursor-default focus:outline-none"
+                  aria-hidden="true"
+                />
+              </div>
             </div>
 
           </div>
