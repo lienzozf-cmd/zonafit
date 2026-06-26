@@ -249,6 +249,9 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             </Link>
             <div className="flex justify-center items-center gap-2">
                 <p className="product-price">{product.price}</p>
+                {product.originalPrice && (
+                    <p className="text-sm text-zinc-500 line-through font-bold">{product.originalPrice}</p>
+                )}
             </div>
             <div className="flex justify-center my-2">
                  <div className={`product-availability ${isProductAvailable ? 'available' : 'unavailable'}`}>{isProductAvailable ? 'Disponible' : 'Agotado'}</div>
