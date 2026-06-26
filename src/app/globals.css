@@ -50,7 +50,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   margin: 0;
-  padding-top: 131px; /* Height of fixed header (desktop) */
+  padding-top: 161px; /* Height of fixed header (desktop) + 30px banner */
   /* GPU compositing for smoother rendering */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -1112,7 +1112,7 @@ footer {
 
 @media (max-width: 1024px) {
   body {
-    padding-top: 88px; /* Smaller header on mobile */
+    padding-top: 118px; /* Smaller header on mobile + 30px banner */
   }
 
   .site-header {
@@ -1272,5 +1272,44 @@ footer {
   100% {
     transform: translateY(100vh);
     opacity: 0;
+  }
+}
+
+/* Promo Banner Style */
+.promo-banner-fixed {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background: linear-gradient(90deg, #E50000 0%, #B30000 100%);
+  color: white;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  height: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 123px; /* Just below desktop header */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  animation: pulse-subtle 3s infinite ease-in-out;
+  pointer-events: auto;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 1024px) {
+  .promo-banner-fixed {
+    top: 83px; /* Just below mobile header */
+    font-size: 0.7rem;
+    letter-spacing: 1px;
   }
 }
