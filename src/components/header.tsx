@@ -228,7 +228,7 @@ const Header = () => {
         </div>
       </header>
       <div className="promo-banner-fixed">
-        ⚡ 5% DE DESCUENTO EN TODAS LAS CAMISETAS (TANKS) ⚡
+        ⚡ 10% DE DESCUENTO EN TODA LA TIENDA ⚡
       </div>
       <Cart />
     </>
