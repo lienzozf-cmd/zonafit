@@ -73,6 +73,7 @@ const ProductDetailPage = () => {
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   const [isClient, setIsClient] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [shouldPulseSizes, setShouldPulseSizes] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -208,9 +209,11 @@ const ProductDetailPage = () => {
     const currentOptionsValues = selectedColor?.options?.values || product.options?.values || [];
     if (currentOptionsValues.length > 0 && (!selectedOption || (currentOptionsValues.length > 1 && selectedOption.value === 'Único'))) {
       const optionType = (selectedColor ? selectedColor.options?.type : product.options?.type) || 'opción';
+      setShouldPulseSizes(true);
+      setTimeout(() => setShouldPulseSizes(false), 1500);
       toast({
         title: 'Error',
-        description: `Por favor, selecciona una ${optionType}.`,
+        description: `Por favor, toca el botón de tu ${optionType}.`,
         variant: 'destructive',
       });
       return;
@@ -264,7 +267,9 @@ const ProductDetailPage = () => {
   }
 
   const currentOptions = selectedColor ? selectedColor.options : product.options;
-  const isAddToCartDisabled = (currentOptions?.values?.length ?? 0) > 0 && (!selectedOption || getAvailableStock(selectedOption) <= 0);
+  // Disable button ONLY if size/option is selected AND is out of stock. If not selected, keep button enabled so user can tap it to get prompted.
+  const isAddToCartDisabled = (currentOptions?.values?.length ?? 0) > 0 && selectedOption && getAvailableStock(selectedOption) <= 0;
+  const isPendingOption = (currentOptions?.values?.length ?? 0) > 0 && !selectedOption;
 
   return (
     <>
@@ -426,9 +431,17 @@ const ProductDetailPage = () => {
                                             key={color.name} 
                                             onClick={() => !isColorSoldOut && handleColorClick(color)} 
                                             disabled={isColorSoldOut} 
-                                            className={`w-full px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${isSelected ? 'bg-red-600 border-red-600 text-white shadow-lg' : isColorSoldOut ? 'opacity-20 cursor-not-allowed' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'}`}
+                                            className={`relative w-full px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${isSelected ? 'bg-red-600 border-red-600 text-white shadow-lg' : isColorSoldOut ? 'opacity-40 cursor-not-allowed border-zinc-900 bg-zinc-950/50 text-zinc-600' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'}`}
                                         >
                                             {color.name}
+                                            {isColorSoldOut && (
+                                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                    <svg className="w-full h-full absolute inset-0 text-red-600/80" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                                        <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                        <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                    </svg>
+                                                </div>
+                                            )}
                                         </button>
                                     )
                                 })}
@@ -437,7 +450,7 @@ const ProductDetailPage = () => {
                     )}
                     
                     {currentOptions && currentOptions.values && !(currentOptions.values.length === 1 && currentOptions.values[0].value === 'Único') && (
-                        <div className="space-y-3">
+                        <div className={`space-y-3 p-2 rounded-xl transition-all duration-300 ${shouldPulseSizes ? 'bg-amber-500/10 ring-2 ring-amber-500/80 scale-[1.02] shadow-[0_0_20px_rgba(245,158,11,0.2)]' : ''}`}>
                             <h3 className="text-[15px] font-black text-zinc-500 uppercase tracking-widest">
                                 {currentOptions.type}
                             </h3>
@@ -450,9 +463,17 @@ const ProductDetailPage = () => {
                                             key={option.value}
                                             onClick={() => handleOptionClick(option)}
                                             disabled={stock === 0}
-                                            className={`px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${isSelected ? 'bg-red-600 border-red-600 text-white shadow-lg' : stock === 0 ? 'opacity-20 cursor-not-allowed' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'}`}
+                                            className={`relative px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${isSelected ? 'bg-red-600 border-red-600 text-white shadow-lg' : stock === 0 ? 'opacity-40 cursor-not-allowed border-zinc-900 bg-zinc-950/50 text-zinc-600' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'}`}
                                         >
                                             {option.value}
+                                            {stock === 0 && (
+                                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                    <svg className="w-full h-full absolute inset-0 text-red-600/80" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                                        <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                        <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                    </svg>
+                                                </div>
+                                            )}
                                         </button>
                                     )
                                 })}
@@ -462,8 +483,41 @@ const ProductDetailPage = () => {
                 </div>
 
                 <div className="pt-2 space-y-3">
-                    <div className="flex items-center justify-between text-[13px] font-black text-zinc-600 uppercase tracking-widest px-1">
-                        <span>{availabilityMessage}</span>
+                    <div className="flex items-center justify-between text-[14px] font-black uppercase tracking-widest px-1 py-1">
+                        {currentOptions && currentOptions.values && !(currentOptions.values.length === 1 && currentOptions.values[0].value === 'Único') ? (
+                            selectedOption ? (
+                                getAvailableStock(selectedOption) > 0 ? (
+                                    <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
+                                        <span className="relative flex h-2.5 w-2.5">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                        </span>
+                                        <span>DISPONIBLE ({getAvailableStock(selectedOption)} UNIDADES)</span>
+                                    </div>
+                                ) : (
+                                    <div className="flex items-center gap-2 text-red-500 font-black drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+                                        <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                        <span>AGOTADO</span>
+                                    </div>
+                                )
+                            ) : (
+                                <div className="flex items-center gap-2 text-amber-500 font-black animate-pulse">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                                    </span>
+                                    <span>TOCA UN BOTÓN DE TALLA PARA VER DISPONIBILIDAD</span>
+                                </div>
+                            )
+                        ) : (
+                            <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                </span>
+                                <span>DISPONIBLE</span>
+                            </div>
+                        )}
                     </div>
                     
                     {product.category === 'ropa' && (
@@ -479,12 +533,22 @@ const ProductDetailPage = () => {
                     )}
 
                     <Button
-                        className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-6 text-lg rounded-xl transition-all shadow-[0_10px_20px_rgba(220,38,38,0.2)] active:scale-95 group overflow-hidden relative"
+                        className={`w-full font-black py-6 text-lg rounded-xl transition-all active:scale-95 group overflow-hidden relative ${
+                          isPendingOption 
+                            ? 'bg-amber-600 hover:bg-amber-500 text-white border border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.4)] animate-pulse'
+                            : 'bg-red-600 hover:bg-red-700 text-white shadow-[0_10px_20px_rgba(220,38,38,0.2)]'
+                        }`}
                         onClick={handleAddToCart}
                         disabled={isAddToCartDisabled}
                     >
-                        <span className="relative z-10 uppercase tracking-tighter">
-                            {isAddToCartDisabled && selectedOption ? 'AGOTADO' : 'AÑADIR AL CARRITO'}
+                        <span className="relative z-10 uppercase tracking-tighter flex items-center justify-center gap-2">
+                            {isPendingOption ? (
+                                <>
+                                    <span>👉 TOCA EL BOTÓN DE TU {currentOptions?.type === 'Talla' ? 'TALLA' : currentOptions?.type === 'Sabor' ? 'SABOR' : 'OPCIÓN'}</span>
+                                </>
+                            ) : (
+                                isAddToCartDisabled ? 'AGOTADO' : 'AÑADIR AL CARRITO'
+                            )}
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
                     </Button>

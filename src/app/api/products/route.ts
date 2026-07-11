@@ -92,12 +92,12 @@ export async function GET() {
       
       product.availability = totalStock > 0 ? 'Disponible' : 'Agotado';
       
-      // Apply 5% discount to all in-stock tank top products ("thanks")
-      if (product.subcategory === 'tank' && product.availability === 'Disponible') {
+      // Apply 10% discount to all available products in the store
+      if (product.availability === 'Disponible') {
         const cleanPriceStr = product.price.replace('Q.', '').replace(/,/g, '').trim();
         const originalNumeric = parseFloat(cleanPriceStr);
         if (!isNaN(originalNumeric)) {
-          const discountedNumeric = Math.round(originalNumeric * 0.95 * 100) / 100;
+          const discountedNumeric = Math.round(originalNumeric * 0.90 * 100) / 100;
           product.price = `Q.${discountedNumeric.toFixed(2)}`;
           product.originalPrice = `Q.${originalNumeric.toFixed(2)}`;
         }
