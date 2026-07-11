@@ -268,7 +268,7 @@ const ProductDetailPage = () => {
 
   const currentOptions = selectedColor ? selectedColor.options : product.options;
   // Disable button ONLY if size/option is selected AND is out of stock. If not selected, keep button enabled so user can tap it to get prompted.
-  const isAddToCartDisabled = (currentOptions?.values?.length ?? 0) > 0 && selectedOption && getAvailableStock(selectedOption) <= 0;
+  const isAddToCartDisabled = !!((currentOptions?.values?.length ?? 0) > 0 && selectedOption && getAvailableStock(selectedOption) <= 0);
   const isPendingOption = (currentOptions?.values?.length ?? 0) > 0 && !selectedOption;
 
   return (
