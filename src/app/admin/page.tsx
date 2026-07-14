@@ -302,7 +302,7 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black text-white relative overflow-hidden">
+      <div className="flex min-h-dvh items-center justify-center bg-black text-white relative overflow-y-auto py-12 px-4">
         {/* Neon background effect */}
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-red-900/20 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-red-900/20 blur-[120px] rounded-full"></div>
