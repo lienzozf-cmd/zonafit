@@ -517,12 +517,12 @@ export default function AdminPage() {
                 <Table>
                   <TableHeader className="bg-zinc-900/50">
                     <TableRow className="border-zinc-800 hover:bg-transparent">
-                      <TableHead className="text-zinc-500 font-bold">Orden #</TableHead>
-                      <TableHead className="text-zinc-500 font-bold">Cliente</TableHead>
-                      <TableHead className="text-zinc-500 font-bold">Dirección</TableHead>
-                      <TableHead className="text-zinc-500 font-bold">Resumen de Productos</TableHead>
-                      <TableHead className="text-zinc-500 font-bold">Método de Pago</TableHead>
-                      <TableHead className="text-zinc-500 font-bold text-right">Total</TableHead>
+                      <TableHead className="text-zinc-500 font-bold whitespace-nowrap">Orden #</TableHead>
+                      <TableHead className="text-zinc-500 font-bold whitespace-nowrap">Cliente</TableHead>
+                      <TableHead className="text-zinc-500 font-bold whitespace-nowrap">Dirección</TableHead>
+                      <TableHead className="text-zinc-500 font-bold whitespace-nowrap">Resumen de Productos</TableHead>
+                      <TableHead className="text-zinc-500 font-bold whitespace-nowrap">Método de Pago</TableHead>
+                      <TableHead className="text-zinc-500 font-bold text-right whitespace-nowrap">Total</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -537,15 +537,15 @@ export default function AdminPage() {
                     ) : (
                       orders.map((order, idx) => (
                         <TableRow key={idx} className="border-zinc-900 hover:bg-zinc-900/20 transition-colors">
-                          <TableCell className="font-bold">#{order.orderId}</TableCell>
-                          <TableCell>
+                          <TableCell className="font-bold whitespace-nowrap">#{order.orderId}</TableCell>
+                          <TableCell className="whitespace-nowrap">
                              <div className="flex flex-col">
                                 <span className="font-medium text-white">{order.shippingInfo.firstName} {order.shippingInfo.lastName}</span>
                                 <span className="text-xs text-zinc-500">{order.shippingInfo.phone}</span>
                              </div>
                           </TableCell>
-                          <TableCell>
-                             <div className="flex flex-col min-w-[150px] max-w-[250px] whitespace-normal break-words">
+                          <TableCell className="whitespace-nowrap">
+                             <div className="flex flex-col">
                                 <span className="text-xs text-zinc-300 font-medium leading-relaxed">
                                   {order.shippingInfo.address || 'N/A'}
                                 </span>
@@ -554,17 +554,17 @@ export default function AdminPage() {
                                 </span>
                              </div>
                           </TableCell>
-                          <TableCell>
-                             <div className="min-w-[180px] max-w-[280px] whitespace-normal break-words text-zinc-400 text-xs leading-relaxed">
+                          <TableCell className="whitespace-nowrap">
+                             <div className="text-zinc-400 text-xs leading-relaxed">
                                 {order.orderItems.map(i => `${i.quantity}x ${i.name}`).join(', ')}
                              </div>
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="whitespace-nowrap">
                              <Badge className={order.shippingInfo.paymentMethod === 'cod' ? "bg-orange-500/10 text-orange-500 border-none" : "bg-cyan-500/10 text-cyan-500 border-none"}>
                                 {order.shippingInfo.paymentMethod === 'cod' ? 'Contra Entrega' : 'Depósito'}
                              </Badge>
                           </TableCell>
-                          <TableCell className="text-right font-black text-white">Q{order.orderTotal?.toFixed(2)}</TableCell>
+                          <TableCell className="text-right font-black text-white whitespace-nowrap">Q{order.orderTotal?.toFixed(2)}</TableCell>
                         </TableRow>
                       ))
                     )}
