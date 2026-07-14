@@ -545,17 +545,17 @@ export default function AdminPage() {
                              </div>
                           </TableCell>
                           <TableCell>
-                             <div className="flex flex-col max-w-[220px]">
-                                <span className="text-xs text-zinc-300 font-medium truncate" title={order.shippingInfo.address || ''}>
+                             <div className="flex flex-col min-w-[150px] max-w-[250px] whitespace-normal break-words">
+                                <span className="text-xs text-zinc-300 font-medium leading-relaxed">
                                   {order.shippingInfo.address || 'N/A'}
                                 </span>
-                                <span className="text-[10px] text-zinc-500 font-semibold uppercase">
+                                <span className="text-[10px] text-zinc-500 font-bold uppercase mt-1">
                                   {order.shippingInfo.municipality || 'N/A'}, {order.shippingInfo.department || 'N/A'}
                                 </span>
                              </div>
                           </TableCell>
                           <TableCell>
-                             <div className="max-w-[300px] truncate text-zinc-400 text-xs">
+                             <div className="min-w-[180px] max-w-[280px] whitespace-normal break-words text-zinc-400 text-xs leading-relaxed">
                                 {order.orderItems.map(i => `${i.quantity}x ${i.name}`).join(', ')}
                              </div>
                           </TableCell>
