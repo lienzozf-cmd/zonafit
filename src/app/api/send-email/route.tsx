@@ -129,7 +129,7 @@ ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name
     `.trim();
 
     // --- Send Telegram Notification ---
-    sendTelegramNotification(telegramMessage);
+    await sendTelegramNotification(telegramMessage);
 
     // --- Email Sending (Disabled) ---
     console.log('Email sending is disabled. Skipping confirmation email.');

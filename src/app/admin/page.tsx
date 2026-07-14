@@ -519,6 +519,7 @@ export default function AdminPage() {
                     <TableRow className="border-zinc-800 hover:bg-transparent">
                       <TableHead className="text-zinc-500 font-bold">Orden #</TableHead>
                       <TableHead className="text-zinc-500 font-bold">Cliente</TableHead>
+                      <TableHead className="text-zinc-500 font-bold">Dirección</TableHead>
                       <TableHead className="text-zinc-500 font-bold">Resumen de Productos</TableHead>
                       <TableHead className="text-zinc-500 font-bold">Método de Pago</TableHead>
                       <TableHead className="text-zinc-500 font-bold text-right">Total</TableHead>
@@ -527,11 +528,11 @@ export default function AdminPage() {
                   <TableBody>
                     {isLoadingOrders ? (
                       <TableRow>
-                         <TableCell colSpan={5} className="text-center py-20 text-zinc-500">Cargando ventas de Firestore...</TableCell>
+                         <TableCell colSpan={6} className="text-center py-20 text-zinc-500">Cargando ventas de Firestore...</TableCell>
                       </TableRow>
                     ) : orders.length === 0 ? (
                       <TableRow>
-                         <TableCell colSpan={5} className="text-center py-20 text-zinc-500">No se han registrado ventas todavía.</TableCell>
+                         <TableCell colSpan={6} className="text-center py-20 text-zinc-500">No se han registrado ventas todavía.</TableCell>
                       </TableRow>
                     ) : (
                       orders.map((order, idx) => (
@@ -541,6 +542,16 @@ export default function AdminPage() {
                              <div className="flex flex-col">
                                 <span className="font-medium text-white">{order.shippingInfo.firstName} {order.shippingInfo.lastName}</span>
                                 <span className="text-xs text-zinc-500">{order.shippingInfo.phone}</span>
+                             </div>
+                          </TableCell>
+                          <TableCell>
+                             <div className="flex flex-col max-w-[220px]">
+                                <span className="text-xs text-zinc-300 font-medium truncate" title={order.shippingInfo.address || ''}>
+                                  {order.shippingInfo.address || 'N/A'}
+                                </span>
+                                <span className="text-[10px] text-zinc-500 font-semibold uppercase">
+                                  {order.shippingInfo.municipality || 'N/A'}, {order.shippingInfo.department || 'N/A'}
+                                </span>
                              </div>
                           </TableCell>
                           <TableCell>
