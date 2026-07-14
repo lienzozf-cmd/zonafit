@@ -14,10 +14,18 @@ export interface OrderData {
 
 export async function saveOrder(orderData: OrderData) {
   try {
+    const { firstName, lastName, phone, address, municipality, department } = orderData.shippingInfo || {};
+    const fullName = firstName && lastName ? `${firstName} ${lastName}` : (firstName || lastName || '');
+
     // 1. Insert order
     const { error: orderError } = await supabaseServer.from('orders').insert({
       order_id: orderData.orderId,
       shipping_info: orderData.shippingInfo,
+      client_name: fullName,
+      phone: phone || null,
+      address: address || null,
+      municipality: municipality || null,
+      department: department || null,
       order_subtotal: orderData.orderSubtotal,
       order_discount: orderData.orderDiscount,
       order_shipping: orderData.orderShipping,
