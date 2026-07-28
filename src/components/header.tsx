@@ -227,9 +227,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <div className="promo-banner-fixed">
-        ⚡ 10% DE DESCUENTO EN TODA LA TIENDA ⚡
-      </div>
       <Cart />
     </>
   );
