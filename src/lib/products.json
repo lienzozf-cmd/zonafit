@@ -5065,7 +5065,14 @@
       {
         "src": "/assets/images/marcas/youngla/hombre/brayanlop.jpg",
         "alt": "Batman Compression Longsleeve",
-        "dataAiHint": "batman shirt"
+        "dataAiHint": "batman shirt",
+        "color": "Black"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/8004 - Batman Compression Longsleeves off white.webp",
+        "alt": "Batman Compression Longsleeve Off White",
+        "dataAiHint": "batman shirt off white",
+        "color": "Off White"
       }
     ],
     "options": {
@@ -5087,6 +5094,20 @@
             {
               "value": "S",
               "stock": 0
+            }
+          ]
+        }
+      },
+      {
+        "name": "Off White",
+        "hex": "#F5F5F0",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/8004 - Batman Compression Longsleeves off white.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
             }
           ]
         }
@@ -7240,6 +7261,24 @@
           ]
         },
         "imageSrc": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees off white.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 2
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees black.webp"
       }
     ],
     "images": [
@@ -7248,6 +7287,12 @@
         "alt": "4259 - Batman Compression Tees - Off White",
         "dataAiHint": "compression tee",
         "color": "Off White"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees black.webp",
+        "alt": "4259 - Batman Compression Tees - Black",
+        "dataAiHint": "compression tee",
+        "color": "Black"
       }
     ],
     "feature1": "Compresión Graduada de Alto Soporte",
@@ -7342,5 +7387,95 @@
     "feature2": "Ajuste Cómodo con Cremallera Completa",
     "feature3": "Tejido Suave de Alta Calidad",
     "feature4": "Detalles Bordados Premium"
+  },
+  {
+    "id": 3055,
+    "name": "2099 - Batman Stealth Sweats",
+    "price": "Q.740.00",
+    "availability": "Disponible",
+    "description": "Pantalones deportivos Stealth diseñados en colaboración con Batman. Con paneles tácticos, bolsillos ocultos y el emblema del murciélago de forma sutil.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "pantalon",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black Wash",
+        "hex": "#2B2B2B",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2099 - Batman Stealth Sweats black wash.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/2099 - Batman Stealth Sweats black wash.webp",
+        "alt": "2099 - Batman Stealth Sweats - Black Wash",
+        "dataAiHint": "joggers",
+        "color": "Black Wash"
+      }
+    ],
+    "feature1": "Corte Stealth de Estética Táctica",
+    "feature2": "Tejido French Terry de Alto Rendimiento",
+    "feature3": "Bolsillos Con Cierre Invisible",
+    "feature4": "Logotipo de Batman Bordado a Tono"
+  },
+  {
+    "id": 3056,
+    "name": "5173 - Batman Stealth Hoodies",
+    "price": "Q.755.00",
+    "availability": "Disponible",
+    "description": "Sudadera con capucha Stealth diseñada en colaboración con Batman. Un diseño oscuro, cómodo y con materiales altamente resistentes.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "sudadera",
+    "brand": "YoungLA",
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Black Wash",
+        "hex": "#2B2B2B",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            },
+            {
+              "value": "L",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5173 - Batman Stealth Hoodies black wash.webp"
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/youngla/hombre/5173 - Batman Stealth Hoodies black wash.webp",
+        "alt": "5173 - Batman Stealth Hoodies - Black Wash",
+        "dataAiHint": "hoodie",
+        "color": "Black Wash"
+      }
+    ],
+    "feature1": "Capucha Estructurada Regulable",
+    "feature2": "Tejido de Algodón Premium Heavyweight",
+    "feature3": "Emblema Stealth de Batman en el Pecho",
+    "feature4": "Bolsillo Canguro Frontal Amplio"
   }
 ]
