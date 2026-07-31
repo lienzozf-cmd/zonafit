@@ -85,7 +85,9 @@ const ProductDetailPage = () => {
         // Trigger play-music event with product's gender to play correct track on entry
         window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender } }));
         
-        const initialColor = foundProduct.colors && foundProduct.colors.length > 0 ? foundProduct.colors[0] : null;
+        const initialColor = foundProduct.colors && foundProduct.colors.length > 0
+          ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => v.stock > 0)) || foundProduct.colors[0])
+          : null;
         setSelectedColor(initialColor);
         
         const initialImg = initialColor ? initialColor.imageSrc : (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : PLACEHOLDER_IMAGE);
@@ -307,11 +309,11 @@ const ProductDetailPage = () => {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-none w-screen h-screen p-0 border-none bg-black/95 shadow-none flex items-center justify-center z-[100]">
+              <DialogContent className="max-w-none w-screen h-screen p-0 border-none bg-black/95 shadow-none flex items-center justify-center z-[200]">
                 <DialogTitle className="sr-only">{product.name}</DialogTitle>
                 <DialogDescription className="sr-only">Imagen ampliada de {product.name}</DialogDescription>
                 
-                <DialogClose className="fixed top-6 right-6 sm:top-10 sm:right-10 p-4 bg-red-600 hover:bg-red-700 rounded-full text-white transition-all shadow-[0_0_30px_rgba(229,0,0,0.6)] z-[110] scale-125 active:scale-95 border-2 border-white/30 flex items-center justify-center">
+                <DialogClose className="fixed top-6 right-6 sm:top-10 sm:right-10 p-4 bg-red-600 hover:bg-red-700 rounded-full text-white transition-all shadow-[0_0_30px_rgba(229,0,0,0.6)] z-[210] scale-125 active:scale-95 border-2 border-white/30 flex items-center justify-center">
                     <X className="w-8 h-8 stroke-[4px]" />
                 </DialogClose>
 
@@ -431,7 +433,17 @@ const ProductDetailPage = () => {
                                             key={color.name} 
                                             onClick={() => !isColorSoldOut && handleColorClick(color)} 
                                             disabled={isColorSoldOut} 
-                                            className={`relative w-full px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${isSelected ? 'bg-red-600 border-red-600 text-white shadow-lg' : isColorSoldOut ? 'opacity-40 cursor-not-allowed border-zinc-900 bg-zinc-950/50 text-zinc-600' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'}`}
+                                            className={`relative w-full px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${
+                                                isColorSoldOut 
+                                                    ? (isSelected 
+                                                        ? 'border-red-600/80 bg-zinc-950/50 text-zinc-300 opacity-80 cursor-not-allowed'
+                                                        : 'border-zinc-900 bg-zinc-950/50 text-zinc-600 opacity-40 cursor-not-allowed'
+                                                      )
+                                                    : (isSelected 
+                                                        ? 'bg-red-600 border-red-600 text-white shadow-lg'
+                                                        : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                                                      )
+                                            }`}
                                         >
                                             {color.name}
                                             {isColorSoldOut && (
@@ -463,7 +475,17 @@ const ProductDetailPage = () => {
                                             key={option.value}
                                             onClick={() => handleOptionClick(option)}
                                             disabled={stock === 0}
-                                            className={`relative px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${isSelected ? 'bg-red-600 border-red-600 text-white shadow-lg' : stock === 0 ? 'opacity-40 cursor-not-allowed border-zinc-900 bg-zinc-950/50 text-zinc-600' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'}`}
+                                            className={`relative px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${
+                                                stock === 0
+                                                    ? (isSelected
+                                                        ? 'border-red-600/80 bg-zinc-950/50 text-zinc-300 opacity-80 cursor-not-allowed'
+                                                        : 'border-zinc-900 bg-zinc-950/50 text-zinc-600 opacity-40 cursor-not-allowed'
+                                                      )
+                                                    : (isSelected
+                                                        ? 'bg-red-600 border-red-600 text-white shadow-lg'
+                                                        : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                                                      )
+                                            }`}
                                         >
                                             {option.value}
                                             {stock === 0 && (
