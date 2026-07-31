@@ -192,6 +192,7 @@
   {
     "id": 3,
     "name": "ONYX 5.0 SEAMLESS-T SHIRT",
+    "visible": false,
     "price": "Q.725.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
@@ -1799,6 +1800,7 @@
   {
     "id": 2643,
     "name": "4117 - Superman Compression Tees",
+    "visible": false,
     "price": "Q.545.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
@@ -3005,6 +3007,7 @@
   {
     "id": 2671,
     "name": "Onyx 5.0 long sleeve",
+    "visible": false,
     "price": "Q.775.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
@@ -5052,6 +5055,7 @@
   {
     "id": 2720,
     "name": "8004 - Batman Compression Longsleeves",
+    "visible": false,
     "price": "Q.650.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
@@ -6346,6 +6350,7 @@
   {
     "id": 3034,
     "name": "2131 - Batman Armored Sweats",
+    "visible": false,
     "price": "Q.740.00",
     "availability": "Disponible",
     "description": "Pantalones deportivos Armored diseñados en colaboración con Batman. Con paneles reforzados en las rodillas, bolsillos ocultos y detalles estéticos que hacen alusión a la armadura del murciélago.",
@@ -7099,6 +7104,7 @@
   {
     "id": 3049,
     "name": "4339 - Forme Compression Tees",
+    "visible": false,
     "price": "Q.520.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
@@ -7148,6 +7154,7 @@
   {
     "id": 3050,
     "name": "2158 - Batman Legends Joggers",
+    "visible": false,
     "price": "Q.740.00",
     "availability": "Disponible",
     "description": "Pantalones deportivos Legends de YoungLA diseñados en colaboración con Batman. Máximo confort y estilo duradero para entrenar o uso casual.",
@@ -7191,6 +7198,7 @@
   {
     "id": 3051,
     "name": "2016 - Revenge Joggers",
+    "visible": false,
     "price": "Q.625.00",
     "availability": "Disponible",
     "description": "Pantalones deportivos Revenge Joggers de YoungLA. Diseñados para ofrecer la máxima comodidad y durabilidad en tus entrenamientos.",
@@ -7234,6 +7242,7 @@
   {
     "id": 3052,
     "name": "4259 - Batman Compression Tees",
+    "visible": false,
     "price": "Q.615.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica de Batman. Diseñada para mejorar el rendimiento muscular y la recuperación, con un ajuste de compresión superior.",
@@ -7303,6 +7312,7 @@
   {
     "id": 3053,
     "name": "4065 - Warrior X Compression Tees",
+    "visible": false,
     "price": "Q.500.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión Warrior X de YoungLA. Ajuste ceñido de alto rendimiento para entrenamientos intensos.",
@@ -7348,6 +7358,7 @@
   {
     "id": 3054,
     "name": "5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups",
+    "visible": false,
     "price": "Q.700.00",
     "availability": "Disponible",
     "description": "Chaqueta de cremallera Demon Slayer en colaboración con YoungLA. Diseño premium y máxima comodidad.",
@@ -7391,6 +7402,7 @@
   {
     "id": 3055,
     "name": "2099 - Batman Stealth Sweats",
+    "visible": false,
     "price": "Q.740.00",
     "availability": "Disponible",
     "description": "Pantalones deportivos Stealth diseñados en colaboración con Batman. Con paneles tácticos, bolsillos ocultos y el emblema del murciélago de forma sutil.",
@@ -7434,6 +7446,7 @@
   {
     "id": 3056,
     "name": "5173 - Batman Stealth Hoodies",
+    "visible": false,
     "price": "Q.755.00",
     "availability": "Disponible",
     "description": "Sudadera con capucha Stealth diseñada en colaboración con Batman. Un diseño oscuro, cómodo y con materiales altamente resistentes.",
