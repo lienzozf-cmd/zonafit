@@ -5219,7 +5219,7 @@
     "id": 2724,
     "name": "Itachi Forever \"Premium\" Oversized Tee",
     "price": "Q.595.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -5248,7 +5248,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -6257,7 +6257,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 2
+          "stock": 1
         }
       ]
     },
@@ -6270,7 +6270,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         },
