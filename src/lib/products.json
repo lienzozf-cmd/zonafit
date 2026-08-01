@@ -7249,20 +7249,6 @@
     },
     "colors": [
       {
-        "name": "Off White",
-        "hex": "#F5F5F0",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 1
-            }
-          ]
-        },
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees off white.webp"
-      },
-      {
         "name": "Black",
         "hex": "#000000",
         "options": {
@@ -7279,20 +7265,34 @@
           ]
         },
         "imageSrc": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees black.webp"
+      },
+      {
+        "name": "Off White",
+        "hex": "#F5F5F0",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees off white.webp"
       }
     ],
     "images": [
-      {
-        "src": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees off white.webp",
-        "alt": "4259 - Batman Compression Tees - Off White",
-        "dataAiHint": "compression tee",
-        "color": "Off White"
-      },
       {
         "src": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees black.webp",
         "alt": "4259 - Batman Compression Tees - Black",
         "dataAiHint": "compression tee",
         "color": "Black"
+      },
+      {
+        "src": "/assets/images/marcas/youngla/hombre/4259 - Batman Compression Tees off white.webp",
+        "alt": "4259 - Batman Compression Tees - Off White",
+        "dataAiHint": "compression tee",
+        "color": "Off White"
       }
     ],
     "feature1": "Compresión Graduada de Alto Soporte",
