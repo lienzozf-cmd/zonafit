@@ -2721,9 +2721,9 @@
   },
   {
     "id": 2665,
-    "name": "Warrior X Compression Tees",
+    "name": "4065 - Warrior X Compression Tees",
     "price": "Q.485.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -2788,7 +2788,7 @@
             },
             {
               "value": "M",
-              "stock": 0
+              "stock": 2
             },
             {
               "value": "L",
@@ -7300,51 +7300,7 @@
     "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "feature4": "Propiedades Antimicrobianas Permanentes"
   },
-  {
-    "id": 3053,
-    "name": "4065 - Warrior X Compression Tees",
-    "price": "Q.500.00",
-    "availability": "Disponible",
-    "description": "Camiseta de compresión Warrior X de YoungLA. Ajuste ceñido de alto rendimiento para entrenamientos intensos.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "88% Polyester, 12% Spandex",
-    "is_compression": true,
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "name": "Black Blue",
-        "hex": "#0a192f",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 2
-            }
-          ]
-        },
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4065 - Warrior X Compression Tees black blue.webp"
-      }
-    ],
-    "images": [
-      {
-        "src": "/assets/images/marcas/youngla/hombre/4065 - Warrior X Compression Tees black blue.webp",
-        "alt": "4065 - Warrior X Compression Tees - Black Blue",
-        "dataAiHint": "compression tee",
-        "color": "Black Blue"
-      }
-    ],
-    "feature1": "Compresión Graduada de Alto Soporte",
-    "feature2": "Tejido Tecnológico de Secado Rápido",
-    "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
-    "feature4": "Propiedades Antimicrobianas Permanentes"
-  },
+
   {
     "id": 3054,
     "name": "5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups",
