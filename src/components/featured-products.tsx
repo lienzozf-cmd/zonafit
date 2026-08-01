@@ -10,19 +10,19 @@ const FeaturedProducts = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   // Mapeo solicitado (actualizado):
-  // 2720 - Batman Compression (reemplaza a 2700) - AHORA EN PRIMERA POSICIÓN
-  // 2662 - Impact Shorts 4.5 Azul (reemplaza a 2687)
-  // 2724 - Itachi Forever (reemplaza a 2667)
-  // 2677 - Isophorm (se mantiene)
-  // 3004 - Gojo (reemplaza a 2726 Gold's Iron Legacy)
-  // 3026 - AOT x YLA Classic Tees hero levi (reemplaza a 2711 Gymshark X Analis)
-  // 3009 - The Split-Heart Pendant (reemplaza a 2686 The North Star)
-  // 3020 - Glycerol (reemplaza a 8 Creatina)
-  // 2693 - Isophorm (se mantiene)
-  // 3037 - Adapt Animal X Whitney Shorts (reemplaza a 2520 Legacy Bra)
-  // 3034 - Batman Armored Sweats
-  // 3003 - Sukuna
-  const featuredProductIds = [2720, 3034, 2724, 2677, 3003, 3004, 3026, 3009, 3020, 2693, 3037, 2662];
+  // 1. ONYX 5.0 SEAMLESS-T SHIRT (3)
+  // 2. Onyx 5.0 long sleeve (2671)
+  // 3. 4259 - Batman Compression Tees (3052)
+  // 4. 8004 - Batman Compression Longsleeves (2720)
+  // 5. 4117 - Superman Compression Tees color black red (2643)
+  // 6. ISOPHORM - PREMIUM WHEY PROTEIN ISOLATE - 2Lb cookies and cream (2677)
+  // 7. Wrath Of Sukuna "Side By Side" 199X Oversized Tee (3003)
+  // 8. 4191 - AOT x YLA Classic Tees (3026)
+  // 9. The Split-Heart Pendant - Gold RG1044 (3009)
+  // 10. CREATINA 80 SERVS muscletech (2721)
+  // 11. Impact Shorts | 4.5" (2662)
+  // 12. 5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups nezuko (3054)
+  const featuredProductIds = [3, 2671, 3052, 2720, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3054];
 
   useEffect(() => {
     if (products && products.length > 0) {

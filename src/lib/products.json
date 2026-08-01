@@ -1813,6 +1813,12 @@
     "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
+        "src": "/assets/images/marcas/youngla/hombre/4117 - Superman Compression Tees black red.webp",
+        "alt": "Superman Compression Tee Black Red",
+        "dataAiHint": "superman shirt black red",
+        "color": "Black Red"
+      },
+      {
         "src": "/assets/images/marcas/youngla/hombre/4117 - SUPERMAN COMPRESSION TEES.webp",
         "alt": "Superman Compression Tee",
         "dataAiHint": "superman shirt",
@@ -1835,12 +1841,6 @@
         "alt": "Superman Compression Tee Blue",
         "dataAiHint": "superman shirt blue",
         "color": "Blue"
-      },
-      {
-        "src": "/assets/images/marcas/youngla/hombre/4117 - Superman Compression Tees black red.webp",
-        "alt": "Superman Compression Tee Black Red",
-        "dataAiHint": "superman shirt black red",
-        "color": "Black Red"
       }
     ],
     "options": {
@@ -1848,6 +1848,20 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Black Red",
+        "hex": "#8B0000",
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - Superman Compression Tees black red.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 5
+            }
+          ]
+        }
+      },
       {
         "name": "Roja",
         "hex": "#ff0000",
@@ -1916,20 +1930,6 @@
             {
               "value": "M",
               "stock": 3
-            }
-          ]
-        }
-      },
-      {
-        "name": "Black Red",
-        "hex": "#8B0000",
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4117 - Superman Compression Tees black red.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 5
             }
           ]
         }
@@ -3260,13 +3260,13 @@
     "feature3": "Libre de Azúcares y Rellenos",
     "images": [
       {
-        "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
-        "alt": "ISOPHORM - Blueberry Ice Cream",
+        "src": "/assets/images/marcas/dragonpharma/isocookies.webp",
+        "alt": "ISOPHORM - Cookies & Cream",
         "dataAiHint": "protein powder"
       },
       {
-        "src": "/assets/images/marcas/dragonpharma/isocookies.webp",
-        "alt": "ISOPHORM - Cookies & Cream",
+        "src": "/assets/images/marcas/dragonpharma/isoblueb.webp",
+        "alt": "ISOPHORM - Blueberry Ice Cream",
         "dataAiHint": "protein powder"
       },
       {
@@ -3286,20 +3286,6 @@
     },
     "colors": [
       {
-        "name": "Blueberry Ice Cream",
-        "hex": "#ADD8E6",
-        "imageSrc": "/assets/images/marcas/dragonpharma/isoblueb.webp",
-        "options": {
-          "type": "sabor",
-          "values": [
-            {
-              "value": "Único",
-              "stock": 0
-            }
-          ]
-        }
-      },
-      {
         "name": "Cookies & Cream",
         "hex": "#D2B48C",
         "imageSrc": "/assets/images/marcas/dragonpharma/isocookies.webp",
@@ -3309,6 +3295,20 @@
             {
               "value": "Único",
               "stock": 3
+            }
+          ]
+        }
+      },
+      {
+        "name": "Blueberry Ice Cream",
+        "hex": "#ADD8E6",
+        "imageSrc": "/assets/images/marcas/dragonpharma/isoblueb.webp",
+        "options": {
+          "type": "sabor",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 0
             }
           ]
         }
@@ -7328,12 +7328,12 @@
             }
           ]
         },
-        "imageSrc": "/assets/images/marcas/youngla/mujer/5195 - Demon Slayer - Zip-ups nezuko.webp"
+        "imageSrc": "/assets/images/marcas/youngla/hombre/5195 - Demon Slayer zip ups nezuko.webp"
       }
     ],
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/mujer/5195 - Demon Slayer - Zip-ups nezuko.webp",
+        "src": "/assets/images/marcas/youngla/hombre/5195 - Demon Slayer zip ups nezuko.webp",
         "alt": "5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups Nezuko",
         "dataAiHint": "zip-up hoodie",
         "color": "Nezuko"
