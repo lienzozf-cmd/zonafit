@@ -19,7 +19,7 @@ const BackgroundMusic = () => {
 
     if (pathname.startsWith('/mujeres')) {
       targetSrc = '/Justin Bieber - Beauty And A Beat ft. Nicki Minaj (Official Audio).mp3';
-    } else if (pathname === '/product/2664' || pathname === '/product/2665') {
+    } else if (pathname === '/product/3' || pathname === '/product/2671') {
       targetSrc = '/DAVID LAID - Outside GYM MOTIVATION.mp3';
     } else if (pathname.startsWith('/product/')) {
       // Do nothing, let the custom event handle product page loads
@@ -72,7 +72,7 @@ const BackgroundMusic = () => {
       
       let targetSrc = '/Numb (Instrumental) - Linkin Park.mp3';
 
-      if (productId === 2664 || productId === 2665) {
+      if (productId === 3 || productId === 2671) {
         targetSrc = '/DAVID LAID - Outside GYM MOTIVATION.mp3';
       } else if (gender === 'mujer') {
         targetSrc = '/Justin Bieber - Beauty And A Beat ft. Nicki Minaj (Official Audio).mp3';
