@@ -59,11 +59,11 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
                     <br/>
                     <br/>
                     <p className="intro-subtitle">LA ZONA MAS FIT DE GUATEMALA</p>
+                    
+                    <div className="loading-bar">
+                        <div className="loading-progress" style={{ animationDuration: '3s' }}></div>
+                    </div>
                 </div>
-            </div>
-            
-            <div className="loading-bar">
-                <div className="loading-progress" style={{ animationDuration: '3s' }}></div>
             </div>
         </div>
     );
