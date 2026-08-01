@@ -3023,13 +3023,13 @@
         "color": "Gris"
       },
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxrojaml.webp",
+        "src": "/assets/images/marcas/gymshark/hombre/onyx v5 long red.webp",
         "alt": "Onyx 5.0 long sleeve Red",
         "dataAiHint": "men long sleeve red",
         "color": "Red"
       },
       {
-        "src": "/assets/images/marcas/gymshark/hombre/onyxcelesteml.webp",
+        "src": "/assets/images/marcas/gymshark/hombre/onyx v5 long blue.webp",
         "alt": "Onyx 5.0 long sleeve Celeste",
         "dataAiHint": "men long sleeve celeste",
         "color": "Celeste"
@@ -3057,7 +3057,7 @@
       {
         "name": "Red",
         "hex": "#FF0033",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxrojaml.webp",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyx v5 long red.webp",
         "options": {
           "type": "talla",
           "values": [
@@ -3071,7 +3071,7 @@
       {
         "name": "Celeste",
         "hex": "#87CEEB",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxcelesteml.webp",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyx v5 long blue.webp",
         "options": {
           "type": "talla",
           "values": [
