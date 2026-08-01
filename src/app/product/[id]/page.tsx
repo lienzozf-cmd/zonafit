@@ -83,7 +83,7 @@ const ProductDetailPage = () => {
       if (foundProduct && foundProduct.visible !== false) {
         setProduct(foundProduct);
         // Trigger play-music event with product's gender to play correct track on entry
-        window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender } }));
+        window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender, productId: foundProduct.id } }));
         
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0
           ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => v.stock > 0)) || foundProduct.colors[0])

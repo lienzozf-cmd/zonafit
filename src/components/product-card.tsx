@@ -225,7 +225,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         <Link 
             href={productUrl} 
             className="product-image-link w-full"
-            onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender } }))}
+            onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender, productId: product.id } }))}
         >
             <div className="product-carousel">
                 <Image
@@ -243,7 +243,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             <p className={`font-semibold text-sm mb-1 uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
             <Link 
                 href={productUrl}
-                onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender } }))}
+                onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender, productId: product.id } }))}
             >
                 <h3 className="product-name">{product.name}</h3>
             </Link>
