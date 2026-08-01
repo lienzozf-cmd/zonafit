@@ -2722,7 +2722,7 @@
   {
     "id": 2665,
     "name": "4065 - Warrior X Compression Tees",
-    "price": "Q.485.00",
+    "price": "Q.500.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
@@ -7215,12 +7215,12 @@
             }
           ]
         },
-        "imageSrc": "/assets/images/marcas/youngla/hombre/2016 - Revenge Joggers purple wash.webp"
+        "imageSrc": "/assets/images/marcas/youngla/hombre/2016 - Revenge Joggers purple.webp"
       }
     ],
     "images": [
       {
-        "src": "/assets/images/marcas/youngla/hombre/2016 - Revenge Joggers purple wash.webp",
+        "src": "/assets/images/marcas/youngla/hombre/2016 - Revenge Joggers purple.webp",
         "alt": "2016 - Revenge Joggers - Purple Wash",
         "dataAiHint": "joggers",
         "color": "Purple Wash"
