@@ -1,6 +1,7 @@
 
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import ResetCookieButton from '@/components/reset-cookie-button';
 
 export default function PoliticasDePrivacidadPage() {
   return (
@@ -63,8 +64,14 @@ export default function PoliticasDePrivacidadPage() {
             <p>
               Utilizamos medidas de seguridad administrativas, técnicas y físicas para ayudar a proteger tu información personal. Si bien hemos tomado medidas razonables para proteger la información personal que nos proporcionas, ten en cuenta que a pesar de nuestros esfuerzos, ninguna medida de seguridad es perfecta o impenetrable, y no se puede garantizar ningún método de transmisión de datos contra cualquier intercepción u otro tipo de uso indebido.
             </p>
+
+            <h2 className="text-2xl font-semibold text-white mt-8">6. Configuración y Consentimiento</h2>
+            <p>
+              Puedes revisar, cambiar o restablecer tu configuración de consentimiento de cookies en cualquier momento utilizando el siguiente control:
+            </p>
+            <ResetCookieButton />
             
-            <h2 className="text-2xl font-semibold text-white mt-8">6. Contacto</h2>
+            <h2 className="text-2xl font-semibold text-white mt-8">7. Contacto</h2>
             <p>
               Si tienes preguntas o comentarios sobre esta Política de Privacidad, por favor contáctanos a través de nuestras redes sociales.
             </p>
