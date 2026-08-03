@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getNextOrderId, updateStock } from '@/lib/inventory-manager';
 import { saveOrder } from '@/lib/orders-db';
 import type { CartItem } from '@/lib/types';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
 async function sendTelegramNotification(message: string) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -43,6 +44,16 @@ async function sendTelegramNotification(message: string) {
 
 export async function POST(request: Request) {
   try {
+    // Apply Rate Limiting: max 5 checkouts per 5 minutes per IP
+    const ip = await getClientIp();
+    const limiter = rateLimit(ip, 5, 5 * 60 * 1000);
+    if (!limiter.success) {
+      return NextResponse.json(
+        { message: 'Demasiadas solicitudes de compra desde su dirección. Por favor espere unos minutos e intente de nuevo.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     
     const { 

@@ -33,12 +33,26 @@ export default function TerminosYCondicionesPage() {
             </p>
 
             <h2 className="text-2xl font-semibold text-white mt-8" id="devoluciones">5. Política de Cambios y Devoluciones</h2>
-            <p className="font-bold text-accent">
-              Todas las ventas realizadas a través de nuestro Sitio son finales. No se aceptan cambios ni devoluciones de ningún tipo.
-            </p>
             <p>
-              Te recomendamos encarecidamente que revises cuidadosamente los detalles de tu pedido, incluyendo tallas, colores y especificaciones del producto, antes de confirmar la compra. Una vez que el pedido ha sido procesado, no podremos realizar ninguna modificación. Agradecemos tu comprensión.
+              Queremos que estés completamente satisfecho con tu compra. Por ello, regulamos nuestra política de cambios y devoluciones bajo las siguientes condiciones:
             </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <strong>Defectos de Fábrica:</strong> Si recibes un producto con un defecto de fabricación o dañado durante el transporte, tienes un plazo de <strong>7 días calendario</strong> desde la recepción del producto para reportarlo. Realizaremos el cambio sin costo adicional de envío o la devolución total de tu dinero.
+              </li>
+              <li>
+                <strong>Condiciones del Producto:</strong> Para ser elegible para cualquier cambio o devolución, el artículo debe estar sin usar, en las mismas condiciones en que lo recibiste, con todas sus etiquetas originales adheridas y en su empaque original.
+              </li>
+              <li>
+                <strong>Productos Excluidos:</strong> Por razones de higiene y salud, no se aceptan cambios ni devoluciones de ropa interior, calcetines ni suplementos alimenticios cuyos sellos de seguridad hayan sido abiertos o dañados.
+              </li>
+              <li>
+                <strong>Proceso de Solicitud:</strong> Para iniciar un reclamo, debes contactarnos a través de nuestras redes sociales o canales de soporte indicando tu número de orden (#ID), descripción del inconveniente y fotografías de respaldo del producto.
+              </li>
+              <li>
+                <strong>Costos de Logística:</strong> En cambios por gusto del cliente (por ejemplo, error en la selección de talla o color por parte del cliente), el costo de la mensajería del retorno y del nuevo envío correrá por cuenta del comprador.
+              </li>
+            </ul>
 
             <h2 className="text-2xl font-semibold text-white mt-8">6. Propiedad Intelectual</h2>
             <p>

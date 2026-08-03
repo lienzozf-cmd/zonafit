@@ -1,8 +1,20 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
+import { createSession } from '@/lib/auth-server';
 
 export async function POST(request: Request) {
   try {
+    // Apply Rate Limiting: max 5 login attempts per 15 minutes
+    const ip = await getClientIp();
+    const limiter = rateLimit(ip, 5, 15 * 60 * 1000);
+    if (!limiter.success) {
+      return NextResponse.json(
+        { error: 'Demasiados intentos de inicio de sesión. Por favor, intente de nuevo en 15 minutos.' },
+        { status: 429 }
+      );
+    }
+
     const { username, password } = await request.json();
 
     const expectedUsername = process.env.ADMIN_USERNAME || 'zonafitero';
@@ -16,6 +28,8 @@ export async function POST(request: Request) {
     const computedHash = crypto.createHash('sha256').update(password).digest('hex');
 
     if (username === expectedUsername && computedHash === expectedHash) {
+      // Create session and set cookie
+      await createSession(username);
       return NextResponse.json({ success: true });
     } else {
       return NextResponse.json({ error: 'Usuario o contraseña incorrectos' }, { status: 401 });
