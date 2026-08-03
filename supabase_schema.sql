@@ -81,14 +81,16 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- 7. RPC function to decrement stock atomically
+-- 7. RPC function to decrement stock atomically (Security Definer allows running with owner privileges)
 CREATE OR REPLACE FUNCTION decrement_stock(
   p_product_id integer,
   p_option_value text,
   p_quantity integer,
   p_color_name text DEFAULT NULL
 )
-RETURNS boolean AS $$
+RETURNS boolean
+SECURITY DEFINER
+AS $$
 DECLARE
   v_updated integer;
 BEGIN
@@ -115,3 +117,19 @@ BEGIN
   RETURN v_updated > 0;
 END;
 $$ LANGUAGE plpgsql;
+
+-- 8. Enable Row Level Security (RLS) on all tables
+ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.product_variants ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.order_items ENABLE ROW LEVEL SECURITY;
+
+-- 9. Create policies for public access (read-only for products and variants)
+CREATE POLICY "Allow public read access on products"
+  ON public.products FOR SELECT
+  USING (true);
+
+CREATE POLICY "Allow public read access on product_variants"
+  ON public.product_variants FOR SELECT
+  USING (true);
+

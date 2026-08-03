@@ -2,6 +2,8 @@
 #
 # To allow all robots to crawl your site, use the following:
 User-agent: *
+Disallow: /admin
+Disallow: /api/orders
 Allow: /
 
 Sitemap: https://zonafitgt.com/sitemap.xml

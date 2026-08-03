@@ -56,6 +56,23 @@ export default function AdminPage() {
     resolver: zodResolver(loginSchema),
     defaultValues: { username: '', password: '' },
   });
+  useEffect(() => {
+    // Check if session is already active in the backend cookie
+    const checkSession = async () => {
+      try {
+        const res = await fetch('/api/admin/check-session');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated) {
+            setIsAuthenticated(true);
+          }
+        }
+      } catch (error) {
+        console.error('Error checking admin session:', error);
+      }
+    };
+    checkSession();
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -109,16 +126,20 @@ export default function AdminPage() {
         });
       }
     } catch (error) {
-      console.error('Error at admin login:', error);
       toast({
-        title: 'Error de Red',
+        title: 'Error de Conexión',
         description: 'No se pudo conectar con el servidor de seguridad.',
         variant: 'destructive',
       });
     }
   };
   
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+    } catch (error) {
+      console.error('Error during backend logout:', error);
+    }
     setIsAuthenticated(false);
     toast({ title: 'Sesión Finalizada', description: 'Has salido del portal correctamente.' });
   };

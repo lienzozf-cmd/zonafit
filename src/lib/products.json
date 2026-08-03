@@ -3017,16 +3017,16 @@
     "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
+        "src": "/assets/images/marcas/gymshark/hombre/onyx v5 long red.webp",
+        "alt": "Onyx 5.0 long sleeve Roja",
+        "dataAiHint": "men long sleeve red",
+        "color": "Roja"
+      },
+      {
         "src": "/assets/images/marcas/gymshark/hombre/onyxgrisml.webp",
         "alt": "Onyx 5.0 long sleeve gris",
         "dataAiHint": "men long sleeve",
         "color": "Gris"
-      },
-      {
-        "src": "/assets/images/marcas/gymshark/hombre/onyx v5 long red.webp",
-        "alt": "Onyx 5.0 long sleeve Red",
-        "dataAiHint": "men long sleeve red",
-        "color": "Red"
       },
       {
         "src": "/assets/images/marcas/gymshark/hombre/onyx v5 long blue.webp",
@@ -3041,6 +3041,24 @@
     },
     "colors": [
       {
+        "name": "Roja",
+        "hex": "#FF0033",
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyx v5 long red.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
         "name": "Gris",
         "hex": "#808080",
         "imageSrc": "/assets/images/marcas/gymshark/hombre/onyxgrisml.webp",
@@ -3050,20 +3068,6 @@
             {
               "value": "S",
               "stock": 0
-            }
-          ]
-        }
-      },
-      {
-        "name": "Red",
-        "hex": "#FF0033",
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/onyx v5 long red.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "M",
-              "stock": 2
             }
           ]
         }

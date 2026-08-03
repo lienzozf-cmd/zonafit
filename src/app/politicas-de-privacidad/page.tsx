@@ -19,30 +19,31 @@ export default function PoliticasDePrivacidadPage() {
 
             <h2 className="text-2xl font-semibold text-white mt-8">2. Recopilación de tu Información</h2>
             <p>
-              Podemos recopilar información sobre ti de varias maneras. La información que podemos recopilar en el Sitio incluye:
+              Recopilamos información únicamente necesaria para procesar tus compras y mejorar tu experiencia de navegación. La información recopilada incluye:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong>Datos Personales:</strong> Información de identificación personal, como tu nombre, dirección de envío, dirección de correo electrónico y número de teléfono, que nos proporcionas voluntariamente cuando realizas un pedido o te registras en el sitio.
+                <strong>Datos Personales y de Contacto:</strong> Información que nos proporcionas directamente durante el proceso de compra (checkout) como tu nombre, apellido, dirección de correo electrónico, número de teléfono y dirección completa de entrega (incluyendo municipio y departamento).
               </li>
               <li>
-                <strong>Datos del Pedido:</strong> Información sobre los productos que compras, los detalles del pedido y la información de envío para procesar y entregar tu compra.
+                <strong>Datos de la Transacción:</strong> Detalles de los productos adquiridos, método de pago seleccionado, desglose de costos de envío y comisiones correspondientes.
               </li>
               <li>
-                <strong>Datos de Derivados:</strong> Información que nuestros servidores recopilan automáticamente cuando accedes al Sitio, como tu dirección IP, tu tipo de navegador, tu sistema operativo, tus tiempos de acceso y las páginas que has visto directamente antes y después de acceder al Sitio.
+                <strong>Datos de Navegación y Rastreo (Cookies):</strong> Información recopilada automáticamente para análisis estadístico y de marketing (Google Ads y Microsoft Clarity) como tu dirección IP, tipo de navegador, sistema operativo, páginas visitadas y comportamiento de interacción en nuestro sitio. Esta recopilación requiere tu consentimiento previo a través de nuestro aviso de cookies.
               </li>
             </ul>
 
-            <h2 className="text-2xl font-semibold text-white mt-8">3. Uso de tu Información</h2>
+            <h2 className="text-2xl font-semibold text-white mt-8">3. Tratamiento y Uso de tu Información</h2>
             <p>
-              Tener información precisa sobre ti nos permite ofrecerte una experiencia fluida, eficiente y personalizada. Específicamente, podemos usar la información recopilada sobre ti a través del Sitio para:
+              Tus datos son tratados bajo principios de licitud y confidencialidad. Específicamente, utilizamos tus datos para:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Procesar y gestionar tus compras, pedidos y pagos.</li>
-              <li>Enviarte un correo electrónico de confirmación de pedido.</li>
-              <li>Contactarte para coordinar la logística y el costo del envío.</li>
-              <li>Mejorar la eficiencia y el funcionamiento del Sitio.</li>
-              <li>Prevenir transacciones fraudulentas y monitorear contra el robo.</li>
+              <li>Procesar, preparar y facturar tus pedidos.</li>
+              <li>Coordinar de forma precisa la entrega física de tus productos y los costos de envío.</li>
+              <li>Enviar notificaciones operativas (como confirmaciones de pedido) por correo electrónico.</li>
+              <li>Recibir notificaciones inmediatas a nuestro canal interno de servicio al cliente (Telegram) para acelerar el procesamiento.</li>
+              <li>Garantizar la seguridad de la tienda, detectando y previniendo fraudes o ataques malintencionados.</li>
+              <li>Optimizar el rendimiento y diseño de la tienda a través de estadísticas de comportamiento, únicamente si has aceptado nuestras cookies de análisis.</li>
             </ul>
 
             <h2 className="text-2xl font-semibold text-white mt-8">4. Divulgación de tu Información</h2>
