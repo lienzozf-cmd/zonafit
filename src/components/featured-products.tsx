@@ -21,8 +21,8 @@ const FeaturedProducts = () => {
   // 9. The Split-Heart Pendant - Gold RG1044 (3009)
   // 10. CREATINA 80 SERVS muscletech (2721)
   // 11. Impact Shorts | 4.5" (2662)
-  // 12. 5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups nezuko (3054)
-  const featuredProductIds = [3, 2671, 3052, 2720, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3054];
+  // 12. Impact Short Sleeve Top (3057)
+  const featuredProductIds = [3, 2671, 3052, 2720, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3057];
 
   useEffect(() => {
     if (products && products.length > 0) {

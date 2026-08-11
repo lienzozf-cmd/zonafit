@@ -2593,18 +2593,6 @@
     "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "images": [
       {
-        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
-        "alt": "Impact Short Blue",
-        "dataAiHint": "blue shorts",
-        "color": "Azul"
-      },
-      {
-        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro.webp",
-        "alt": "Impact Short Black",
-        "dataAiHint": "black shorts",
-        "color": "Negro"
-      },
-      {
         "src": "/assets/images/marcas/dfyne/Impact shorts 4,5 winter berry.webp",
         "alt": "Impact Shorts Winter Berry",
         "dataAiHint": "berry shorts",
@@ -2615,6 +2603,18 @@
         "alt": "Impact Shorts Winter Berry Side View",
         "dataAiHint": "berry shorts",
         "color": "Winter Berry"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 azul.webp",
+        "alt": "Impact Short Blue",
+        "dataAiHint": "blue shorts",
+        "color": "Azul"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact Shorts 4.5 negro.webp",
+        "alt": "Impact Short Black",
+        "dataAiHint": "black shorts",
+        "color": "Negro"
       },
       {
         "src": "/assets/images/marcas/dfyne/Impact shorts 4,5 electric blue.webp",
@@ -2634,6 +2634,20 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Winter Berry",
+        "hex": "#592741",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact shorts 4,5 winter berry.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      },
       {
         "name": "Azul",
         "hex": "#0000FF",
@@ -2658,20 +2672,6 @@
             {
               "value": "S",
               "stock": 0
-            }
-          ]
-        }
-      },
-      {
-        "name": "Winter Berry",
-        "hex": "#592741",
-        "imageSrc": "/assets/images/marcas/dfyne/Impact shorts 4,5 winter berry.webp",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "value": "S",
-              "stock": 1
             }
           ]
         }
