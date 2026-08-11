@@ -455,7 +455,11 @@ export default function CheckoutPage() {
               <div className="flex justify-center mt-6">
                 <button
                   type="button"
-                  onClick={async () => {
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (isLoading) return;
+
                     form.setValue('firstName', 'admin');
                     form.setValue('lastName', 'admin');
                     form.setValue('email', 'admin@admin.com');
@@ -465,8 +469,7 @@ export default function CheckoutPage() {
                     form.setValue('municipality', 'admin');
                     form.setValue('paymentMethod', 'deposit');
                     
-                    const values = form.getValues();
-                    await onSubmit(values);
+                    await form.handleSubmit(onSubmit)();
                   }}
                   className="w-5 h-5 rounded-full opacity-0 cursor-default focus:outline-none"
                   aria-hidden="true"

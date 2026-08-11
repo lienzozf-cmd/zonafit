@@ -63,6 +63,7 @@ const ProductDetailPage = () => {
   const getProductOption = useCartStore((state) => state.getProductOption);
   const addItem = useCartStore((state) => state.addItem);
   const items = useCartStore((state) => state.items);
+  const fetchProducts = useCartStore((state) => state.fetchProducts);
 
   const { toast } = useToast();
 
@@ -74,10 +75,17 @@ const ProductDetailPage = () => {
   const [isClient, setIsClient] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [shouldPulseSizes, setShouldPulseSizes] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
     window.scrollTo(0, 0); // Ensure page starts at the top
+    fetchProducts().finally(() => {
+      setHasFetched(true);
+    });
+  }, [fetchProducts]);
+
+  useEffect(() => {
     if (products.length > 0) {
       const foundProduct = products.find((p) => p.id === Number(id));
       if (foundProduct && foundProduct.visible !== false) {
@@ -86,7 +94,7 @@ const ProductDetailPage = () => {
         window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender, productId: foundProduct.id } }));
         
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0
-          ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => v.stock > 0)) || foundProduct.colors[0])
+          ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => (getProductOption(foundProduct.id, v.value, c.name)?.stock ?? 0) > 0)) || foundProduct.colors[0])
           : null;
         setSelectedColor(initialColor);
         
@@ -99,11 +107,13 @@ const ProductDetailPage = () => {
         } else {
           setSelectedOption(null);
         }
-      } else {
+      } else if (hasFetched) {
         router.push('/');
       }
+    } else if (hasFetched) {
+      router.push('/');
     }
-  }, [id, products, router]);
+  }, [id, products, router, hasFetched, getProductOption]);
 
   const getAvailableStock = (option: ProductOption | null) => {
     if (!product || !option) return 0;

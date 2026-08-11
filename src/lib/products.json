@@ -2579,7 +2579,7 @@
   {
     "id": 2662,
     "name": "Impact Shorts | 4.5\"",
-    "price": "Q.560.00",
+    "price": "Q.575.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "mujer",
@@ -2603,6 +2603,30 @@
         "alt": "Impact Short Black",
         "dataAiHint": "black shorts",
         "color": "Negro"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact shorts 4,5 winter berry.webp",
+        "alt": "Impact Shorts Winter Berry",
+        "dataAiHint": "berry shorts",
+        "color": "Winter Berry"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact shorts 4,5 winter berry 2.webp",
+        "alt": "Impact Shorts Winter Berry Side View",
+        "dataAiHint": "berry shorts",
+        "color": "Winter Berry"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact shorts 4,5 electric blue.webp",
+        "alt": "Impact Shorts Electric Blue",
+        "dataAiHint": "blue shorts",
+        "color": "Electric Blue"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact shorts 4,5 electric blue 2.webp",
+        "alt": "Impact Shorts Electric Blue Side View",
+        "dataAiHint": "blue shorts",
+        "color": "Electric Blue"
       }
     ],
     "options": {
@@ -2634,6 +2658,34 @@
             {
               "value": "S",
               "stock": 0
+            }
+          ]
+        }
+      },
+      {
+        "name": "Winter Berry",
+        "hex": "#592741",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact shorts 4,5 winter berry.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Electric Blue",
+        "hex": "#0066FF",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact shorts 4,5 electric blue.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
             }
           ]
         }
@@ -7437,5 +7489,71 @@
     "feature2": "Tejido de Algodón Premium Heavyweight",
     "feature3": "Emblema Stealth de Batman en el Pecho",
     "feature4": "Bolsillo Canguro Frontal Amplio"
+  },
+  {
+    "id": 3057,
+    "name": "Impact Short Sleeve Top",
+    "price": "Q.565.00",
+    "availability": "Disponible",
+    "description": "Camiseta de manga corta de la línea Impact de DFYNE. Diseñada con un tejido seamless de alta transpirabilidad y ajuste cómodo para tus entrenamientos más exigentes.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "top",
+    "brand": "DFYNE",
+    "fabric_type": "78% Nylon, 22% Elastane",
+    "is_compression": true,
+    "feature1": "Ajuste Seamless de Alta Elasticidad",
+    "feature2": "Tejido Absorbente de Sudor de Secado Rápido",
+    "feature3": "Diseño Corto Moderno y Favorecedor",
+    "feature4": "Propiedades Antimicrobianas Permanentes",
+    "images": [
+      {
+        "src": "/assets/images/marcas/dfyne/Impact short Sleeve Top electric blue.webp",
+        "alt": "Impact Short Sleeve Top Electric Blue",
+        "dataAiHint": "blue crop top",
+        "color": "Electric Blue"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/Impact short Sleeve Top winter berry.webp",
+        "alt": "Impact Short Sleeve Top Winter Berry",
+        "dataAiHint": "berry crop top",
+        "color": "Winter Berry"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Electric Blue",
+        "hex": "#0066FF",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact short Sleeve Top electric blue.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Winter Berry",
+        "hex": "#592741",
+        "imageSrc": "/assets/images/marcas/dfyne/Impact short Sleeve Top winter berry.webp",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "visible": true
   }
 ]
