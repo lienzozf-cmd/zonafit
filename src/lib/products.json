@@ -4206,7 +4206,7 @@
     "id": 2697,
     "name": "4152 - Yu-Gi-Oh!® Jersey - Blue Eyes",
     "price": "Q.520.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
     "category": "ropa",
@@ -4226,7 +4226,7 @@
       "values": [
         {
           "value": "M",
-          "stock": 0
+          "stock": 1
         },
         {
           "value": "L",
