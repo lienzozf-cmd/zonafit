@@ -381,9 +381,7 @@ export default function AdminPage() {
             </Button>
           </form>
           
-          <div className="text-center pt-2">
-            <p className="text-[10px] text-zinc-700 uppercase tracking-widest">Encriptación SHA-256 Activa</p>
-          </div>
+
         </div>
       </div>
     );
