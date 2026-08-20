@@ -15,6 +15,7 @@ export async function POST(request: Request) {
       );
     }
 
+    const { username, password } = await request.json();
     const cleanUsername = (username || '').trim().toLowerCase();
     const cleanPassword = (password || '').trim();
 
