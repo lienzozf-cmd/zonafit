@@ -5,9 +5,9 @@ import { createSession } from '@/lib/auth-server';
 
 export async function POST(request: Request) {
   try {
-    // Apply Rate Limiting: max 5 login attempts per 15 minutes
+    // Apply Rate Limiting: max 20 login attempts per 15 minutes
     const ip = await getClientIp();
-    const limiter = rateLimit(ip, 5, 15 * 60 * 1000);
+    const limiter = rateLimit(ip, 20, 15 * 60 * 1000);
     if (!limiter.success) {
       return NextResponse.json(
         { error: 'Demasiados intentos de inicio de sesión. Por favor, intente de nuevo en 15 minutos.' },
