@@ -5,9 +5,9 @@ import { createSession } from '@/lib/auth-server';
 
 export async function POST(request: Request) {
   try {
-    // Apply Rate Limiting: max 5 login attempts per 15 minutes
+    // Apply Rate Limiting: max 20 login attempts per 15 minutes
     const ip = await getClientIp();
-    const limiter = rateLimit(ip, 5, 15 * 60 * 1000);
+    const limiter = rateLimit(ip, 20, 15 * 60 * 1000);
     if (!limiter.success) {
       return NextResponse.json(
         { error: 'Demasiados intentos de inicio de sesión. Por favor, intente de nuevo en 15 minutos.' },
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const { username, password } = await request.json();
 
     const expectedUsername = process.env.ADMIN_USERNAME || 'zonafitero';
-    const expectedHash = process.env.ADMIN_PASSWORD_HASH || '9dfdc3ac308890874f19fd521c8ae9ef7e69ba5768705625c8770f0bf5e57a67';
+    const expectedHash = process.env.ADMIN_PASSWORD_HASH || 'dc3de1eabf18e69a972e2c34de309168e7cffcd50f059d4f34109f918bf85015';
 
     if (!username || !password) {
       return NextResponse.json({ error: 'Faltan credenciales' }, { status: 400 });

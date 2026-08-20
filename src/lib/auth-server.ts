@@ -4,7 +4,7 @@ import crypto from 'crypto';
 const SESSION_COOKIE_NAME = 'admin_session';
 
 export async function createSession(username: string) {
-  const expectedHash = process.env.ADMIN_PASSWORD_HASH || '9dfdc3ac308890874f19fd521c8ae9ef7e69ba5768705625c8770f0bf5e57a67';
+  const expectedHash = process.env.ADMIN_PASSWORD_HASH || 'dc3de1eabf18e69a972e2c34de309168e7cffcd50f059d4f34109f918bf85015';
   
   const expires = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
   const payload = JSON.stringify({ username, expires });
@@ -26,7 +26,7 @@ export async function createSession(username: string) {
 }
 
 export async function verifySession(): Promise<boolean> {
-  const expectedHash = process.env.ADMIN_PASSWORD_HASH || '9dfdc3ac308890874f19fd521c8ae9ef7e69ba5768705625c8770f0bf5e57a67';
+  const expectedHash = process.env.ADMIN_PASSWORD_HASH || 'dc3de1eabf18e69a972e2c34de309168e7cffcd50f059d4f34109f918bf85015';
   const cookieStore = await cookies();
   const cookie = cookieStore.get(SESSION_COOKIE_NAME);
   
