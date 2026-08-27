@@ -20,6 +20,13 @@ const banners = [
   { src: '/assets/images/banners/banner6.png', alt: 'Banner 6' },
 ];
 
+const SupermanShield = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg viewBox="0 0 100 90" className={className} xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,4 96,24 80,84 50,96 20,84 4,24" fill="#FACC15" stroke="#DC2626" strokeWidth="7" strokeLinejoin="round" />
+    <path d="M 68 24 C 68 24 38 24 38 34 C 38 45 68 44 68 59 C 68 74 34 72 34 72 L 28 62 M 68 24 L 74 34" fill="none" stroke="#DC2626" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const HeroSection = () => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
@@ -47,22 +54,35 @@ const HeroSection = () => {
 
   return (
     <div className="w-full">
-      {/* Superman Discount Ribbon */}
-      <div className="w-full max-w-[94%] mx-auto mt-4 rounded-full overflow-hidden shadow-[0_0_20px_rgba(220,38,38,0.4)] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 p-[2px]">
-        <div className="bg-black/90 backdrop-blur-md rounded-full py-2.5 px-4 flex items-center justify-center gap-2 md:gap-3 text-white text-center">
-          <span className="bg-red-600 text-white font-extrabold text-[10px] md:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(220,38,38,0.8)]">
-            🔥 OFERTA
-          </span>
-          <span className="font-extrabold text-xs md:text-sm tracking-wide text-white uppercase">
-            10% de descuento prendas de Superman
-          </span>
-          <span className="bg-blue-600 text-white font-extrabold text-[10px] md:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(37,99,235,0.8)] hidden sm:inline-block">
-            SUPERMAN
-          </span>
+      {/* Superman Discount Ribbon Bar */}
+      <div className="relative w-full max-w-[94%] mx-auto mt-4 mb-1 z-20">
+        <div className="relative bg-gradient-to-r from-red-700 via-blue-700 to-red-700 border-y-2 border-yellow-400 py-3 px-4 shadow-[0_10px_25px_rgba(220,38,38,0.5)] flex items-center justify-center gap-3 text-white overflow-hidden rounded-lg">
+          {/* Left Superman Shield Icon */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <SupermanShield className="w-7 h-7 md:w-8 md:h-8 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" />
+            <span className="hidden lg:inline-block font-black text-xs uppercase tracking-widest text-yellow-300 bg-black/40 px-2 py-0.5 rounded border border-yellow-400/40">
+              MAN OF STEEL
+            </span>
+          </div>
+
+          {/* Ribbon Main Text */}
+          <div className="flex items-center gap-2 text-center">
+            <span className="font-extrabold text-sm md:text-base lg:text-lg tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              ⚡ 10% DE DESCUENTO EN PRENDAS DE SUPERMAN ⚡
+            </span>
+          </div>
+
+          {/* Right Superman Shield Icon */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <span className="hidden lg:inline-block font-black text-xs uppercase tracking-widest text-yellow-300 bg-black/40 px-2 py-0.5 rounded border border-yellow-400/40">
+              EDICIÓN ESPECIAL
+            </span>
+            <SupermanShield className="w-7 h-7 md:w-8 md:h-8 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" />
+          </div>
         </div>
       </div>
 
-      <section className="hero-banner max-w-[94%] mx-auto mt-3 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
+      <section className="hero-banner max-w-[94%] mx-auto mt-2 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
       <Carousel
         setApi={setApi}
         className="w-full h-full"
