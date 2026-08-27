@@ -54,35 +54,36 @@ const HeroSection = () => {
 
   return (
     <div className="w-full">
-      {/* Superman Discount Ribbon Bar */}
-      <div className="relative w-full max-w-[94%] mx-auto mt-4 mb-1 z-20">
-        <div className="relative bg-gradient-to-r from-red-700 via-blue-700 to-red-700 border-y-2 border-yellow-400 py-3 px-4 shadow-[0_10px_25px_rgba(220,38,38,0.5)] flex items-center justify-center gap-3 text-white overflow-hidden rounded-lg">
-          {/* Left Superman Shield Icon */}
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <SupermanShield className="w-7 h-7 md:w-8 md:h-8 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" />
-            <span className="hidden lg:inline-block font-black text-xs uppercase tracking-widest text-yellow-300 bg-black/40 px-2 py-0.5 rounded border border-yellow-400/40">
-              MAN OF STEEL
-            </span>
-          </div>
+      {/* Superman Discount Ribbon Bar - Full Width, Attached to Top Red Line, Slim & Shimmering */}
+      <div className="relative w-full z-20 overflow-hidden bg-gradient-to-r from-red-700 via-blue-600 to-red-700 border-b-2 border-yellow-400/80 py-1.5 md:py-2 px-3 md:px-6 shadow-[0_4px_20px_rgba(220,38,38,0.5)] flex items-center justify-center gap-2 md:gap-4 text-white">
+        {/* Animated Light Shimmer Beam Effect */}
+        <div className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none animate-ribbon-shimmer" />
 
-          {/* Ribbon Main Text */}
-          <div className="flex items-center gap-2 text-center">
-            <span className="font-extrabold text-sm md:text-base lg:text-lg tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              ⚡ 10% DE DESCUENTO EN PRENDAS DE SUPERMAN ⚡
-            </span>
-          </div>
+        {/* Left Superman Shield Icon */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
+          <SupermanShield className="w-5 h-5 md:w-6 md:h-6 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
+          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-yellow-300 bg-black/50 px-2 py-0.5 rounded border border-yellow-400/40">
+            MAN OF STEEL
+          </span>
+        </div>
 
-          {/* Right Superman Shield Icon */}
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <span className="hidden lg:inline-block font-black text-xs uppercase tracking-widest text-yellow-300 bg-black/40 px-2 py-0.5 rounded border border-yellow-400/40">
-              EDICIÓN ESPECIAL
-            </span>
-            <SupermanShield className="w-7 h-7 md:w-8 md:h-8 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" />
-          </div>
+        {/* Ribbon Main Text */}
+        <div className="flex items-center gap-1.5 text-center z-10">
+          <span className="font-extrabold text-xs md:text-sm lg:text-base tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+            ⚡ 10% DE DESCUENTO EN PRENDAS DE SUPERMAN ⚡
+          </span>
+        </div>
+
+        {/* Right Superman Shield Icon */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
+          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-yellow-300 bg-black/50 px-2 py-0.5 rounded border border-yellow-400/40">
+            EDICIÓN ESPECIAL
+          </span>
+          <SupermanShield className="w-5 h-5 md:w-6 md:h-6 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
         </div>
       </div>
 
-      <section className="hero-banner max-w-[94%] mx-auto mt-2 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
+      <section className="hero-banner max-w-[94%] mx-auto mt-4 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
       <Carousel
         setApi={setApi}
         className="w-full h-full"

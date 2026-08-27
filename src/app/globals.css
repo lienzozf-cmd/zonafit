@@ -336,6 +336,19 @@ a:hover {
   }
 }
 
+@keyframes ribbonShimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  50%, 100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.animate-ribbon-shimmer {
+  animation: ribbonShimmer 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 .blob-button {
   cursor: pointer;
   font-size: 1.4rem;
