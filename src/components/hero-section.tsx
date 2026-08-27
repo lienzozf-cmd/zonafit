@@ -46,7 +46,23 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="hero-banner max-w-[94%] mx-auto mt-4 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
+    <div className="w-full">
+      {/* Superman Discount Ribbon */}
+      <div className="w-full max-w-[94%] mx-auto mt-4 rounded-full overflow-hidden shadow-[0_0_20px_rgba(220,38,38,0.4)] bg-gradient-to-r from-red-600 via-blue-600 to-red-600 p-[2px]">
+        <div className="bg-black/90 backdrop-blur-md rounded-full py-2.5 px-4 flex items-center justify-center gap-2 md:gap-3 text-white text-center">
+          <span className="bg-red-600 text-white font-extrabold text-[10px] md:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(220,38,38,0.8)]">
+            🔥 OFERTA
+          </span>
+          <span className="font-extrabold text-xs md:text-sm tracking-wide text-white uppercase">
+            10% de descuento prendas de Superman
+          </span>
+          <span className="bg-blue-600 text-white font-extrabold text-[10px] md:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(37,99,235,0.8)] hidden sm:inline-block">
+            SUPERMAN
+          </span>
+        </div>
+      </div>
+
+      <section className="hero-banner max-w-[94%] mx-auto mt-3 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
       <Carousel
         setApi={setApi}
         className="w-full h-full"
@@ -101,6 +117,7 @@ const HeroSection = () => {
       {/* Fine red line at the bottom of the banner */}
       <div className="absolute bottom-0 left-0 w-full h-[3px] bg-red-600 shadow-[0_0_15px_rgba(220,38,38,0.5)] z-20" />
     </section>
+    </div>
   );
 };
 

@@ -1799,7 +1799,7 @@
   {
     "id": 2643,
     "name": "4117 - Superman Compression Tees",
-    "price": "Q.545.00",
+    "price": "Q.490.50",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
@@ -1935,7 +1935,8 @@
         }
       }
     ],
-    "feature4": "Propiedades Antimicrobianas Permanentes"
+    "feature4": "Propiedades Antimicrobianas Permanentes",
+    "originalPrice": "Q.545.00"
   },
   {
     "id": 2644,
@@ -4015,7 +4016,7 @@
   {
     "id": 2693,
     "name": "2032 - Superman pants",
-    "price": "Q.675.00",
+    "price": "Q.607.50",
     "availability": "Disponible",
     "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
@@ -4054,7 +4055,8 @@
         }
       }
     ],
-    "feature4": "Cordones Ajustables con Puntas Metálicas"
+    "feature4": "Cordones Ajustables con Puntas Metálicas",
+    "originalPrice": "Q.675.00"
   },
   {
     "id": 2694,
@@ -4529,7 +4531,7 @@
   {
     "id": 2705,
     "name": "5079 - Sudadera con capucha del legado de Superman",
-    "price": "Q.675.00",
+    "price": "Q.607.50",
     "availability": "Disponible",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -4590,12 +4592,13 @@
       }
     ],
     "visible": true,
-    "feature4": "Tecnología de Gestión de Humedad"
+    "feature4": "Tecnología de Gestión de Humedad",
+    "originalPrice": "Q.675.00"
   },
   {
     "id": 2707,
     "name": "3004 - Superman Cut-offs",
-    "price": "Q.485.00",
+    "price": "Q.436.50",
     "availability": "Disponible",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -4635,12 +4638,13 @@
     "feature1": "Tejido Transpirable de Alto Rendimiento",
     "feature2": "Ajuste Atlético que Realza la Figura",
     "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad"
+    "feature4": "Tecnología de Gestión de Humedad",
+    "originalPrice": "Q.485.00"
   },
   {
     "id": 2708,
     "name": "4064 - Superman Huge Tees",
-    "price": "Q.515.00",
+    "price": "Q.463.50",
     "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -4680,7 +4684,8 @@
     "feature1": "Tejido Transpirable de Alto Rendimiento",
     "feature2": "Ajuste Atlético que Realza la Figura",
     "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad"
+    "feature4": "Tecnología de Gestión de Humedad",
+    "originalPrice": "Q.515.00"
   },
   {
     "id": 2709,
@@ -4974,7 +4979,7 @@
   {
     "id": 5094,
     "name": "5094 - Sudadera con capucha del legado de Superman",
-    "price": "Q.755.00",
+    "price": "Q.679.50",
     "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -5014,7 +5019,8 @@
     "feature1": "Tejido Transpirable de Alto Rendimiento",
     "feature2": "Ajuste Atlético que Realza la Figura",
     "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad"
+    "feature4": "Tecnología de Gestión de Humedad",
+    "originalPrice": "Q.755.00"
   },
   {
     "id": 2718,
@@ -7356,7 +7362,6 @@
     "feature3": "Costuras Planas Ergonómicas Anti-Fricción",
     "feature4": "Propiedades Antimicrobianas Permanentes"
   },
-
   {
     "id": 3054,
     "name": "5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups",
