@@ -102,7 +102,7 @@ const ProductDetailPage = () => {
         setCurrentImage(initialImg);
 
         const options = initialColor?.options?.values || foundProduct.options?.values || [];
-        if (options.length === 1 && options[0].value === 'Único') {
+        if (options.length === 1) {
           setSelectedOption(options[0]);
         } else {
           setSelectedOption(null);
@@ -167,7 +167,7 @@ const ProductDetailPage = () => {
     setCurrentImage(color.imageSrc);
     
     const options = color.options?.values || [];
-    if (options.length === 1 && options[0].value === 'Único') {
+    if (options.length === 1) {
       setSelectedOption(options[0]);
     } else {
       setSelectedOption(null);
@@ -279,9 +279,17 @@ const ProductDetailPage = () => {
   }
 
   const currentOptions = selectedColor ? selectedColor.options : product.options;
-  // Disable button ONLY if size/option is selected AND is out of stock. If not selected, keep button enabled so user can tap it to get prompted.
-  const isAddToCartDisabled = !!((currentOptions?.values?.length ?? 0) > 0 && selectedOption && getAvailableStock(selectedOption) <= 0);
-  const isPendingOption = (currentOptions?.values?.length ?? 0) > 0 && !selectedOption;
+  const currentOptionValues = currentOptions?.values || [];
+  const hasMultipleOptions = currentOptionValues.length > 1 && !(currentOptionValues.length === 1 && currentOptionValues[0].value === 'Único');
+
+  const totalCurrentStock = currentOptionValues.reduce((sum, opt) => sum + getAvailableStock(opt), 0);
+  const activeStock = selectedOption ? getAvailableStock(selectedOption) : totalCurrentStock;
+
+  const isAddToCartDisabled = selectedOption 
+    ? activeStock <= 0 
+    : (currentOptionValues.length > 0 && activeStock <= 0);
+
+  const isPendingOption = hasMultipleOptions && !selectedOption;
 
   return (
     <>
@@ -516,39 +524,44 @@ const ProductDetailPage = () => {
 
                 <div className="pt-2 space-y-3">
                     <div className="flex items-center justify-between text-[14px] font-black uppercase tracking-widest px-1 py-1">
-                        {currentOptions && currentOptions.values && !(currentOptions.values.length === 1 && currentOptions.values[0].value === 'Único') ? (
-                            selectedOption ? (
-                                getAvailableStock(selectedOption) > 0 ? (
-                                    <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
-                                        <span className="relative flex h-2.5 w-2.5">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                                        </span>
-                                        <span>DISPONIBLE ({getAvailableStock(selectedOption)} UNIDADES)</span>
-                                    </div>
-                                ) : (
-                                    <div className="flex items-center gap-2 text-red-500 font-black drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
-                                        <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
-                                        <span>AGOTADO</span>
-                                    </div>
-                                )
-                            ) : (
-                                <div className="flex items-center gap-2 text-amber-500 font-black animate-pulse">
-                                    <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                        {selectedOption ? (
+                            getAvailableStock(selectedOption) > 0 ? (
+                                <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                                     </span>
-                                    <span>TOCA UN BOTÓN DE TALLA PARA VER DISPONIBILIDAD</span>
+                                    <span>DISPONIBLE ({getAvailableStock(selectedOption)} UNIDADES)</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center gap-2 text-red-500 font-black drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                    <span>AGOTADO</span>
                                 </div>
                             )
-                        ) : (
-                            <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
-                                <span className="relative flex h-2.5 w-2.5">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        ) : hasMultipleOptions ? (
+                            <div className="flex items-center gap-2 text-amber-500 font-black animate-pulse">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
                                 </span>
-                                <span>DISPONIBLE</span>
+                                <span>TOCA UN BOTÓN DE {currentOptions?.type ? currentOptions.type.toUpperCase() : 'OPCIÓN'} PARA VER DISPONIBILIDAD</span>
                             </div>
+                        ) : (
+                            activeStock > 0 ? (
+                                <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                    </span>
+                                    <span>DISPONIBLE ({activeStock} UNIDADES)</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center gap-2 text-red-500 font-black drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                    <span>AGOTADO</span>
+                                </div>
+                            )
                         )}
                     </div>
                     
