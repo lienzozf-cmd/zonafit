@@ -544,6 +544,7 @@ main > .container {
 
 .size-options {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   justify-content: center;
   margin-bottom: 10px;

@@ -283,7 +283,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             <div className="product-info mt-auto">
                 {showOptions && optionsToShow.length > 0 && (
                     <div className="size-options">
-                    {optionsToShow.slice(0, 2).map((option) => {
+                    {optionsToShow.map((option) => {
                       const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;
                       const isOptionDisabled = stock <= 0;
                       const isSelected = selectedOption?.value === option.value;
@@ -299,24 +299,6 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                         </button>
                       )
                     })}
-                    {optionsToShow.length > 2 && (
-                      <button
-                        className="more-options-indicator cursor-default"
-                        disabled
-                        style={{ 
-                          pointerEvents: 'none',
-                          backgroundColor: '#000000',
-                          border: '1px solid #ff0000',
-                          color: '#ff0000',
-                          fontWeight: 'bold',
-                          minWidth: '40px',
-                          opacity: 1,
-                          borderRadius: '4px'
-                        }}
-                      >
-                        +
-                      </button>
-                    )}
                     </div>
                 )}
                 <p className="availability-message">
