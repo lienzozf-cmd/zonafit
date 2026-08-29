@@ -1799,7 +1799,7 @@
   {
     "id": 2643,
     "name": "4117 - Superman Compression Tees",
-    "price": "Q.490.50",
+    "price": "Q.491.00",
     "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
@@ -4016,7 +4016,7 @@
   {
     "id": 2693,
     "name": "2032 - Superman pants",
-    "price": "Q.607.50",
+    "price": "Q.608.00",
     "availability": "Disponible",
     "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
@@ -4531,7 +4531,7 @@
   {
     "id": 2705,
     "name": "5079 - Sudadera con capucha del legado de Superman",
-    "price": "Q.607.50",
+    "price": "Q.608.00",
     "availability": "Disponible",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -4598,7 +4598,7 @@
   {
     "id": 2707,
     "name": "3004 - Superman Cut-offs",
-    "price": "Q.436.50",
+    "price": "Q.437.00",
     "availability": "Disponible",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -4628,7 +4628,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         }
@@ -4644,7 +4644,7 @@
   {
     "id": 2708,
     "name": "4064 - Superman Huge Tees",
-    "price": "Q.463.50",
+    "price": "Q.464.00",
     "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
@@ -4979,7 +4979,7 @@
   {
     "id": 5094,
     "name": "5094 - Sudadera con capucha del legado de Superman",
-    "price": "Q.679.50",
+    "price": "Q.680.00",
     "availability": "Agotado",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
     "gender": "hombre",
