@@ -1875,7 +1875,7 @@
             },
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "L",
@@ -7322,7 +7322,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             },
             {
               "value": "M",
@@ -7432,7 +7432,7 @@
           "values": [
             {
               "value": "S",
-              "stock": 1
+              "stock": 0
             }
           ]
         },
