@@ -1596,6 +1596,10 @@
         {
           "value": "S",
           "stock": 1
+        },
+        {
+          "value": "M",
+          "stock": 1
         }
       ]
     }
@@ -1857,7 +1861,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 5
+              "stock": 4
             }
           ]
         }
@@ -2841,7 +2845,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "L",
@@ -4091,7 +4095,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -5151,7 +5155,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "S",
@@ -5169,7 +5173,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -7326,7 +7330,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             }
           ]
         },
@@ -7340,7 +7344,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         },
