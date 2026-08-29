@@ -242,7 +242,7 @@
             },
             {
               "value": "M",
-              "stock": 2
+              "stock": 1
             },
             {
               "value": "L",
@@ -1260,7 +1260,12 @@
     ],
     "options": {
       "type": "talla",
-      "values": []
+      "values": [
+        {
+          "value": "S",
+          "stock": 1
+        }
+      ]
     },
     "colors": [
       {
