@@ -2667,7 +2667,7 @@
           "values": [
             {
               "value": "M",
-              "stock": 1
+              "stock": 0
             }
           ]
         }
@@ -5724,7 +5724,7 @@
       "values": [
         {
           "value": "Build Pink",
-          "stock": 1
+          "stock": 2
         }
       ]
     },
