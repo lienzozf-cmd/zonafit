@@ -105,28 +105,53 @@ const Header = () => {
       <nav className="site-navigation">
         <ul>
           {navLinks.map((link) => (
-            <li key={link.title}>
-              <Link href={link.href}>
-                {link.title} {link.sublinks && <span className="dropdown-arrow">▼</span>}
+            <li key={link.title} className="group/nav">
+              <Link href={link.href} className="nav-main-link">
+                <span>{link.title}</span>
+                {link.sublinks && link.sublinks.length > 0 && (
+                  <span className="dropdown-arrow text-[10px] ml-1.5 opacity-70 group-hover/nav:text-red-500 group-hover/nav:translate-y-0.5 transition-all">▼</span>
+                )}
               </Link>
               {link.sublinks && (
                 <ul className="dropdown-menu">
-                  {link.sublinks.map((sublink) => (
-                    <li key={sublink.title}>
-                      <Link href={sublink.href}>
-                        {sublink.title} {link.sublinks && <span className="dropdown-arrow">►</span>}
-                      </Link>
-                      {sublink.sublinks && (
-                        <ul className="sub-submenu">
-                          {sublink.sublinks.map((item) => (
-                            <li key={item.title}>
-                              <Link href={item.href}>{item.title}</Link>
+                  {link.sublinks.map((sublink) => {
+                    const hasChildren = sublink.sublinks && sublink.sublinks.length > 0;
+                    const isVerTodo = sublink.title.toLowerCase() === 'ver todo';
+                    return (
+                      <li key={sublink.title} className="group/sub">
+                        <Link
+                          href={sublink.href}
+                          className={`dropdown-link flex items-center justify-between gap-3 ${
+                            isVerTodo ? 'font-black text-red-500 hover:text-white border-t border-zinc-800/80 mt-1 pt-2' : ''
+                          }`}
+                        >
+                          <span className="flex items-center gap-1.5">
+                            {isVerTodo && <span className="text-red-500 font-black">★</span>}
+                            {sublink.title}
+                          </span>
+                          {hasChildren && (
+                            <span className="dropdown-arrow-sub text-[9px] text-zinc-500 group-hover/sub:text-red-400 group-hover/sub:translate-x-0.5 transition-all">
+                              ►
+                            </span>
+                          )}
+                        </Link>
+                        {hasChildren && (
+                          <ul className="sub-submenu">
+                            <li className="px-3 py-1.5 text-[10px] font-black text-red-500 uppercase tracking-widest border-b border-zinc-800/60 mb-1">
+                              {sublink.title}
                             </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
+                            {sublink.sublinks!.map((item) => (
+                              <li key={item.title}>
+                                <Link href={item.href} className="sub-dropdown-link">
+                                  {item.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </li>
