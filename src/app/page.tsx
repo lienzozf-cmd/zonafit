@@ -10,7 +10,7 @@ import SizeFinder from '@/components/size-finder';
 
 export default function Home() {
   return (
-    <div className="bg-black">
+    <div className="bg-transparent">
       <Header />
       <HeroSection />
       <main>

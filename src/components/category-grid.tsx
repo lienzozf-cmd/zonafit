@@ -287,7 +287,7 @@ const CategoryGrid = () => {
   const yOffset2 = useTransform(smoothProgress, [0, 1], [-20, 20]);
 
   return (
-    <section ref={containerRef} className="py-20 md:py-28 bg-black relative overflow-hidden text-white">
+    <section ref={containerRef} className="py-20 md:py-28 bg-transparent relative overflow-hidden text-white">
       {/* Dynamic Ambient Background Illumination to eliminate empty black void */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-red-600/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-red-600/15 rounded-full blur-[140px] pointer-events-none" />

@@ -368,7 +368,7 @@ const SizeFinder = () => {
   };
 
   return (
-    <section id="size-finder-section" className="py-16 relative overflow-hidden bg-black border-t border-zinc-900">
+    <section id="size-finder-section" className="py-16 relative overflow-hidden bg-transparent border-t border-zinc-900">
       {/* Red ambient background lights */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-950/15 rounded-full blur-[120px] pointer-events-none -z-10" />
       
