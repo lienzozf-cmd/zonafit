@@ -15,6 +15,79 @@ import { useCartStore } from '@/stores/cart-store';
 
 const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/200/200';
 
+const brandMenuColors: { [key: string]: { text: string; bgHover: string; glow: string; border: string; badgeBg: string } } = {
+  'YoungLA': {
+    text: '#EF4444',
+    bgHover: 'rgba(239, 68, 68, 0.18)',
+    glow: 'rgba(239, 68, 68, 0.6)',
+    border: 'rgba(239, 68, 68, 0.5)',
+    badgeBg: '#DC2626'
+  },
+  'Gymshark': {
+    text: '#38BDF8', // Celeste
+    bgHover: 'rgba(56, 189, 248, 0.18)',
+    glow: 'rgba(56, 189, 248, 0.6)',
+    border: 'rgba(56, 189, 248, 0.5)',
+    badgeBg: '#0284C7'
+  },
+  'Darc Sport': {
+    text: '#FB923C',
+    bgHover: 'rgba(251, 146, 60, 0.18)',
+    glow: 'rgba(251, 146, 60, 0.6)',
+    border: 'rgba(251, 146, 60, 0.5)',
+    badgeBg: '#EA580C'
+  },
+  'Vanquish': {
+    text: '#38BDF8',
+    bgHover: 'rgba(14, 165, 233, 0.18)',
+    glow: 'rgba(14, 165, 233, 0.6)',
+    border: 'rgba(14, 165, 233, 0.5)',
+    badgeBg: '#0EA5E9'
+  },
+  'Dfyne': {
+    text: '#C084FC',
+    bgHover: 'rgba(192, 132, 252, 0.18)',
+    glow: 'rgba(192, 132, 252, 0.6)',
+    border: 'rgba(192, 132, 252, 0.5)',
+    badgeBg: '#9333EA'
+  },
+  'Dragon Pharma': {
+    text: '#F43F5E',
+    bgHover: 'rgba(244, 63, 94, 0.18)',
+    glow: 'rgba(244, 63, 94, 0.6)',
+    border: 'rgba(244, 63, 94, 0.5)',
+    badgeBg: '#E11D48'
+  },
+  'RAW': {
+    text: '#4ADE80',
+    bgHover: 'rgba(74, 222, 128, 0.18)',
+    glow: 'rgba(74, 222, 128, 0.6)',
+    border: 'rgba(74, 222, 128, 0.5)',
+    badgeBg: '#16A34A'
+  },
+  'RGMNT': {
+    text: '#FBBF24',
+    bgHover: 'rgba(251, 191, 36, 0.18)',
+    glow: 'rgba(251, 191, 36, 0.6)',
+    border: 'rgba(251, 191, 36, 0.5)',
+    badgeBg: '#D97706'
+  },
+  'Bum Energy': {
+    text: '#FACC15',
+    bgHover: 'rgba(250, 204, 21, 0.18)',
+    glow: 'rgba(250, 204, 21, 0.6)',
+    border: 'rgba(250, 204, 21, 0.5)',
+    badgeBg: '#CA8A04'
+  },
+  'Civil Regime': {
+    text: '#F472B6', // Rosa fucsia / magenta
+    bgHover: 'rgba(244, 114, 182, 0.18)',
+    glow: 'rgba(244, 114, 182, 0.6)',
+    border: 'rgba(244, 114, 182, 0.5)',
+    badgeBg: '#DB2777'
+  }
+};
+
 const Header = () => {
   const products = useCartStore((state) => state.products);
   const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
@@ -104,58 +177,98 @@ const Header = () => {
     return (
       <nav className="site-navigation">
         <ul>
-          {navLinks.map((link) => (
-            <li key={link.title} className="group/nav">
-              <Link href={link.href} className="nav-main-link">
-                <span>{link.title}</span>
-                {link.sublinks && link.sublinks.length > 0 && (
-                  <span className="dropdown-arrow text-[10px] ml-1.5 opacity-70 group-hover/nav:text-red-500 group-hover/nav:translate-y-0.5 transition-all">▼</span>
-                )}
-              </Link>
-              {link.sublinks && (
-                <ul className="dropdown-menu">
-                  {link.sublinks.map((sublink) => {
-                    const hasChildren = sublink.sublinks && sublink.sublinks.length > 0;
-                    const isVerTodo = sublink.title.toLowerCase() === 'ver todo';
-                    return (
-                      <li key={sublink.title} className="group/sub">
-                        <Link
-                          href={sublink.href}
-                          className={`dropdown-link flex items-center justify-between gap-3 ${
-                            isVerTodo ? 'font-black text-red-500 hover:text-white border-t border-zinc-800/80 mt-1 pt-2' : ''
-                          }`}
-                        >
-                          <span className="flex items-center gap-1.5">
-                            {isVerTodo && <span className="text-red-500 font-black">★</span>}
-                            {sublink.title}
-                          </span>
-                          {hasChildren && (
-                            <span className="dropdown-arrow-sub text-[9px] text-zinc-500 group-hover/sub:text-red-400 group-hover/sub:translate-x-0.5 transition-all">
-                              ►
+          {navLinks.map((link) => {
+            const isMarcas = link.title.toUpperCase() === 'MARCAS';
+            return (
+              <li key={link.title} className="group/nav">
+                <Link href={link.href} className="nav-main-link">
+                  <span>{link.title}</span>
+                  {link.sublinks && link.sublinks.length > 0 && (
+                    <span className="dropdown-arrow text-[10px] ml-1.5 opacity-70 group-hover/nav:text-red-500 group-hover/nav:translate-y-0.5 transition-all">▼</span>
+                  )}
+                </Link>
+                {link.sublinks && (
+                  <ul className="dropdown-menu">
+                    {link.sublinks.map((sublink) => {
+                      const hasChildren = sublink.sublinks && sublink.sublinks.length > 0;
+                      const isVerTodo = sublink.title.toLowerCase() === 'ver todo';
+                      const brandCfg = isMarcas ? brandMenuColors[sublink.title] : null;
+
+                      return (
+                        <li key={sublink.title} className="group/sub">
+                          <Link
+                            href={sublink.href}
+                            className={`dropdown-link flex items-center justify-between gap-3 ${
+                              isVerTodo ? 'font-black text-red-500 hover:text-white border-t border-zinc-800/80 mt-1 pt-2' : ''
+                            }`}
+                            style={brandCfg ? {
+                              ['--brand-hover-color' as any]: brandCfg.text,
+                              ['--brand-hover-bg' as any]: brandCfg.bgHover,
+                            } : undefined}
+                          >
+                            <span className="flex items-center gap-2">
+                              {isVerTodo && <span className="text-red-500 font-black">★</span>}
+                              {brandCfg && (
+                                <span
+                                  className="w-2 h-2 rounded-full flex-shrink-0 transition-transform duration-200 group-hover/sub:scale-125"
+                                  style={{
+                                    backgroundColor: brandCfg.text,
+                                    boxShadow: `0 0 8px ${brandCfg.glow}`
+                                  }}
+                                />
+                              )}
+                              <span
+                                className="transition-colors duration-200"
+                                style={brandCfg ? {
+                                  color: '#F3F4F6'
+                                } : undefined}
+                              >
+                                {sublink.title}
+                              </span>
                             </span>
-                          )}
-                        </Link>
-                        {hasChildren && (
-                          <ul className="sub-submenu">
-                            <li className="px-3 py-1.5 text-[10px] font-black text-red-500 uppercase tracking-widest border-b border-zinc-800/60 mb-1">
-                              {sublink.title}
-                            </li>
-                            {sublink.sublinks!.map((item) => (
-                              <li key={item.title}>
-                                <Link href={item.href} className="sub-dropdown-link">
-                                  {item.title}
-                                </Link>
+
+                            {brandCfg && (
+                              <span
+                                className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded transition-all border"
+                                style={{
+                                  backgroundColor: brandCfg.bgHover,
+                                  color: brandCfg.text,
+                                  borderColor: brandCfg.border,
+                                  boxShadow: `0 0 10px ${brandCfg.glow}`
+                                }}
+                              >
+                                {sublink.title === 'Gymshark' ? 'GYMSHARK' : sublink.title.toUpperCase()}
+                              </span>
+                            )}
+
+                            {hasChildren && (
+                              <span className="dropdown-arrow-sub text-[9px] text-zinc-500 group-hover/sub:text-red-400 group-hover/sub:translate-x-0.5 transition-all">
+                                ►
+                              </span>
+                            )}
+                          </Link>
+                          {hasChildren && (
+                            <ul className="sub-submenu">
+                              <li className="px-3 py-1.5 text-[10px] font-black text-red-500 uppercase tracking-widest border-b border-zinc-800/60 mb-1">
+                                {sublink.title}
                               </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </li>
-          ))}
+                              {sublink.sublinks!.map((item) => (
+                                <li key={item.title}>
+                                  <Link href={item.href} className="sub-dropdown-link">
+                                    {item.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </nav>
     );

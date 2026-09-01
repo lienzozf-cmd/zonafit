@@ -237,6 +237,10 @@ a:hover {
 
 .site-navigation > ul > li {
   position: relative;
+  padding-top: 10px;
+  padding-bottom: 14px;
+  margin-top: -10px;
+  margin-bottom: -14px;
 }
 
 .site-navigation > ul > li > a {
@@ -266,17 +270,28 @@ a:hover {
   border-radius: 12px;
   list-style: none;
   padding: 8px;
-  margin: 6px 0 0 0;
-  min-width: 220px;
+  margin: 0;
+  min-width: 230px;
   z-index: 1001;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(229, 0, 0, 0.15);
-  animation: menuFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: menuFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Invisible hover bridge to eliminate any gap between nav item and dropdown */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: transparent;
 }
 
 @keyframes menuFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
   to {
     opacity: 1;
@@ -316,7 +331,7 @@ a:hover {
   position: absolute;
   left: 100%;
   top: -4px;
-  margin-left: 10px;
+  margin-left: 8px;
   background: rgba(18, 18, 22, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -329,6 +344,17 @@ a:hover {
   z-index: 1002;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 8px 0 25px rgba(0, 0, 0, 0.6);
   animation: subMenuSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Invisible hover bridge to eliminate gap between submenu 1 and submenu 2 */
+.sub-submenu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -14px;
+  width: 14px;
+  bottom: 0;
+  background: transparent;
 }
 
 @keyframes subMenuSlide {
