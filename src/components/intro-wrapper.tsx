@@ -33,24 +33,30 @@ export default function IntroWrapper({
     // Fetch products from the API
     fetchProducts();
 
+    // Intro should ONLY ever play on the root home page ('/') and only once
+    if (pathname !== '/') {
+      setIntroFinished(true);
+      return;
+    }
+
     try {
-      if (sessionStorage.getItem('introShown')) {
+      if (localStorage.getItem('introShown') || sessionStorage.getItem('introShown')) {
         setIntroFinished(true);
       } else {
         setIntroFinished(false);
       }
     } catch (error) {
-      // If sessionStorage is disabled, default to not showing the intro.
       setIntroFinished(true);
     }
-  }, [sessionId, setSessionId, fetchProducts]);
+  }, [sessionId, setSessionId, fetchProducts, pathname]);
 
   const handleIntroFinish = () => {
     setIntroFinished(true);
     try {
+      localStorage.setItem('introShown', 'true');
       sessionStorage.setItem('introShown', 'true');
     } catch (error) {
-      // Handle potential errors with sessionStorage
+      // Handle potential errors with storage
     }
   };
 
