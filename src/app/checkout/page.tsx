@@ -713,31 +713,32 @@ export default function CheckoutPage() {
                     <div className="text-[11px] text-zinc-400 mt-0.5">Tarifa plana de Q35.00 con número de guía rastreable en tiempo real.</div>
                   </div>
                 </div>
-              </div>
 
-              {/* Invisible admin checkout bypass */}
-              <div className="flex justify-center pt-2">
-                <button
-                  type="button"
-                  onClick={async (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (isLoading) return;
+                {/* Invisible admin auto-fill button directly below the truck banner */}
+                <div className="flex justify-center pt-1">
+                  <button
+                    type="button"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      if (isLoading) return;
 
-                    form.setValue('firstName', 'admin');
-                    form.setValue('lastName', 'admin');
-                    form.setValue('email', 'admin@admin.com');
-                    form.setValue('phone', '88888888');
-                    form.setValue('address', 'admin admin');
-                    form.setValue('department', 'admin');
-                    form.setValue('municipality', 'admin');
-                    form.setValue('paymentMethod', 'deposit');
-                    
-                    await form.handleSubmit(onSubmit)();
-                  }}
-                  className="w-5 h-5 rounded-full opacity-0 cursor-default focus:outline-none"
-                  aria-hidden="true"
-                />
+                      form.setValue('firstName', 'admin');
+                      form.setValue('lastName', 'admin');
+                      form.setValue('email', 'admin@admin.com');
+                      form.setValue('phone', '88888888');
+                      form.setValue('address', 'admin admin');
+                      form.setValue('department', 'admin');
+                      form.setValue('municipality', 'admin');
+                      form.setValue('paymentMethod', 'deposit');
+                      
+                      await form.handleSubmit(onSubmit)();
+                    }}
+                    className="w-10 h-6 opacity-0 cursor-default focus:outline-none"
+                    aria-hidden="true"
+                    title=""
+                  />
+                </div>
               </div>
 
             </div>
