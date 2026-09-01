@@ -5,7 +5,7 @@ import Image from 'next/image';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { Check, Shield, ArrowLeft, Pill, Server, ZoomIn, X } from 'lucide-react';
+import { Check, Shield, ArrowLeft, Pill, Server, ZoomIn, X, Activity, Layers, Zap, Wind, Sparkles, ShieldCheck, Droplets, Flame, Dumbbell } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { useCartStore } from '@/stores/cart-store';
@@ -314,11 +314,11 @@ const ProductDetailPage = () => {
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-          {/* Gallery Section - More compact */}
-          <div className="lg:col-span-6 space-y-4">
+          {/* Gallery Section - Perfectly Wrapped & Scaled */}
+          <div className="lg:col-span-6 flex flex-col items-center space-y-4">
             <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
               <DialogTrigger asChild>
-                <div className="relative aspect-square w-full max-h-[500px] mx-auto overflow-hidden rounded-xl bg-zinc-900/30 border border-zinc-800/50 shadow-xl group cursor-zoom-in">
+                <div className="relative aspect-[3/4] w-full max-w-[400px] sm:max-w-[440px] mx-auto overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl group cursor-zoom-in">
                   <Image
                     src={currentImage || PLACEHOLDER_IMAGE}
                     alt={product.name}
@@ -326,10 +326,10 @@ const ProductDetailPage = () => {
                     unoptimized
                     priority
                     onError={() => setCurrentImage(PLACEHOLDER_IMAGE)}
-                    className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+                    className="object-contain p-2 sm:p-3 transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity w-10 h-10" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                    <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity w-10 h-10 drop-shadow-lg" />
                   </div>
                 </div>
               </DialogTrigger>
@@ -354,22 +354,31 @@ const ProductDetailPage = () => {
               </DialogContent>
             </Dialog>
             
-            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar justify-center">
-              {filteredImages.map((image, index) => (
-                <button
-                  key={index}
-                  className={`relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${currentImage === image.src ? 'border-red-600 scale-105 shadow-[0_0_10px_rgba(229,0,0,0.3)]' : 'border-zinc-800 hover:border-zinc-600 opacity-50 hover:opacity-100'}`}
-                  onClick={() => handleThumbnailClick(image)}
-                >
-                  <Image
-                    src={image.src}
-                    alt={`${product.name} - ${index + 1}`}
-                    fill
-                    unoptimized
-                    className="object-cover"
-                  />
-                </button>
-              ))}
+            {/* Gallery Thumbnails with Immediate Hover Preview & Larger Size */}
+            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar justify-center max-w-full">
+              {filteredImages.map((image, index) => {
+                const isSelected = currentImage === image.src;
+                return (
+                  <button
+                    key={index}
+                    onMouseEnter={() => handleThumbnailClick(image)}
+                    onClick={() => handleThumbnailClick(image)}
+                    className={`relative w-16 h-20 sm:w-20 sm:h-24 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-all duration-300 transform ${
+                      isSelected
+                        ? 'border-red-600 scale-105 shadow-[0_0_15px_rgba(229,0,0,0.5)] ring-2 ring-red-500/40 opacity-100'
+                        : 'border-zinc-800 opacity-60 hover:opacity-100 hover:scale-105 hover:border-zinc-500'
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={`${product.name} - ${index + 1}`}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -401,33 +410,50 @@ const ProductDetailPage = () => {
               </div>
             </div>
 
-            {/* Characteristics Grid - Garment Specific */}
-            <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Characteristics Grid - Differentiated with Thematic Icons and Categories */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
                 {[
                     { 
+                        tag: "SOPORTE Y AJUSTE",
                         text: product.feature1 || "Corte Atlético Profesional", 
-                        icon: <Check className="h-3 w-3" /> 
+                        icon: <Activity className="h-4 w-4 text-cyan-400" />,
+                        iconBg: "bg-cyan-500/15 border-cyan-500/30 text-cyan-400",
+                        hoverBorder: "hover:border-cyan-500/50"
                     },
                     { 
+                        tag: "COMPOSICIÓN",
                         text: product.fabric_type ? `Tela: ${product.fabric_type}` : (product.category === 'suplemento' ? product.servings_info : "Mezcla de Fibras Premium"), 
-                        icon: <Check className="h-3 w-3" /> 
+                        icon: <Layers className="h-4 w-4 text-amber-400" />,
+                        iconBg: "bg-amber-500/15 border-amber-500/30 text-amber-400",
+                        hoverBorder: "hover:border-amber-500/50"
                     },
                     { 
+                        tag: "RENDIMIENTO",
                         text: product.category === 'ropa' ? (product.is_compression ? "Sistema de Compresión" : "Tejido Transpirable") : (product.benefits?.split(',')[0] || "Máxima Calidad"), 
-                        icon: <Check className="h-3 w-3" /> 
+                        icon: <Zap className="h-4 w-4 text-red-400" />,
+                        iconBg: "bg-red-500/15 border-red-500/30 text-red-400",
+                        hoverBorder: "hover:border-red-500/50"
                     },
                     { 
+                        tag: "TECNOLOGÍA",
                         text: product.feature2 || "Costuras de Alta Resistencia", 
-                        icon: <Check className="h-3 w-3" /> 
+                        icon: <Wind className="h-4 w-4 text-emerald-400" />,
+                        iconBg: "bg-emerald-500/15 border-emerald-500/30 text-emerald-400",
+                        hoverBorder: "hover:border-emerald-500/50"
                     }
                 ].map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 p-3 bg-zinc-900/40 rounded-lg border border-zinc-800/40 hover:border-red-600/30 transition-colors group">
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/10 flex items-center justify-center group-hover:bg-red-600 transition-colors">
-                            <Check className="h-3 w-3 text-red-500 group-hover:text-white" />
+                    <div key={i} className={`flex items-center gap-3 p-3.5 bg-zinc-900/60 rounded-xl border border-zinc-800 transition-all duration-300 ${feat.hoverBorder} group shadow-md`}>
+                        <div className={`flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center ${feat.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                            {feat.icon}
                         </div>
-                        <span className="text-[15px] font-bold text-zinc-300 group-hover:text-white leading-tight">
-                            {feat.text}
-                        </span>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">
+                                {feat.tag}
+                            </span>
+                            <span className="text-[14px] font-bold text-zinc-200 group-hover:text-white leading-tight">
+                                {feat.text}
+                            </span>
+                        </div>
                     </div>
                 ))}
             </div>
