@@ -132,7 +132,13 @@ const ProductDetailPage = () => {
     if (!product) return;
     if (selectedOption) {
       const availableStock = getAvailableStock(selectedOption);
-      setAvailabilityMessage(availableStock > 0 ? `Disponible: ${availableStock} unidades` : 'Agotado');
+      if (availableStock === 1) {
+        setAvailabilityMessage('🔥 ¡ÚLTIMAS EXISTENCIAS! (1 DISPONIBLE)');
+      } else if (availableStock > 1) {
+        setAvailabilityMessage(`Disponible: ${availableStock} unidades`);
+      } else {
+        setAvailabilityMessage('Agotado');
+      }
     } else {
       const optionType = selectedColor?.options?.type || product.options?.type || 'opción';
       setAvailabilityMessage(`Selecciona una ${optionType}`);
@@ -525,7 +531,15 @@ const ProductDetailPage = () => {
                 <div className="pt-2 space-y-3">
                     <div className="flex items-center justify-between text-[14px] font-black uppercase tracking-widest px-1 py-1">
                         {selectedOption ? (
-                            getAvailableStock(selectedOption) > 0 ? (
+                            getAvailableStock(selectedOption) === 1 ? (
+                                <div className="flex items-center gap-2 text-amber-400 font-black drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] animate-pulse">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                                    </span>
+                                    <span>🔥 ¡ÚLTIMAS EXISTENCIAS! (1 DISPONIBLE)</span>
+                                </div>
+                            ) : getAvailableStock(selectedOption) > 1 ? (
                                 <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
                                     <span className="relative flex h-2.5 w-2.5">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -548,7 +562,15 @@ const ProductDetailPage = () => {
                                 <span>TOCA UN BOTÓN DE {currentOptions?.type ? currentOptions.type.toUpperCase() : 'OPCIÓN'} PARA VER DISPONIBILIDAD</span>
                             </div>
                         ) : (
-                            activeStock > 0 ? (
+                            activeStock === 1 ? (
+                                <div className="flex items-center gap-2 text-amber-400 font-black drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] animate-pulse">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                                    </span>
+                                    <span>🔥 ¡ÚLTIMAS EXISTENCIAS! (1 DISPONIBLE)</span>
+                                </div>
+                            ) : activeStock > 1 ? (
                                 <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
                                     <span className="relative flex h-2.5 w-2.5">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

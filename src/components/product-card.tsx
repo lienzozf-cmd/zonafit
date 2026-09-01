@@ -106,7 +106,13 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     const stock = selectedOption ? getProductOption(product.id, selectedOption.value, selectedColor?.name)?.stock ?? 0 : 0;
   
     if (selectedOption) {
-      setAvailabilityMessage(stock > 0 ? `Disponible: ${stock} unidades` : 'Agotado');
+      if (stock === 1) {
+        setAvailabilityMessage('🔥 ¡Últimas existencias! (1 disponible)');
+      } else if (stock > 1) {
+        setAvailabilityMessage(`Disponible: ${stock} unidades`);
+      } else {
+        setAvailabilityMessage('Agotado');
+      }
     } else {
       const options = selectedColor?.options?.values || product.options?.values || [];
       const totalStock = options.reduce((sum, o) => {
