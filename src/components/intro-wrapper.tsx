@@ -33,22 +33,24 @@ export default function IntroWrapper({
     // Fetch products from the API
     fetchProducts();
 
-    // Intro should ONLY ever play on the root home page ('/') and only once
-    if (pathname !== '/') {
-      setIntroFinished(true);
-      return;
-    }
-
     try {
-      if (localStorage.getItem('introShown') || sessionStorage.getItem('introShown')) {
+      const alreadyShown =
+        localStorage.getItem('introShown') === 'true' ||
+        sessionStorage.getItem('introShown') === 'true';
+
+      if (alreadyShown || pathname !== '/') {
         setIntroFinished(true);
+        localStorage.setItem('introShown', 'true');
+        sessionStorage.setItem('introShown', 'true');
       } else {
         setIntroFinished(false);
       }
     } catch (error) {
       setIntroFinished(true);
     }
-  }, [sessionId, setSessionId, fetchProducts, pathname]);
+    // Run only once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleIntroFinish = () => {
     setIntroFinished(true);

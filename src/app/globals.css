@@ -62,20 +62,19 @@ body {
 }
 
 /* Global Dot Matrix Texture with Deep Crimson Ambient Glow */
-body::before {
-  content: '';
+.global-dot-matrix-bg {
   position: fixed;
   inset: 0;
+  pointer-events: none;
+  z-index: -10;
   background-color: #030305;
   background-image: 
-    radial-gradient(circle at 50% 35%, rgba(220, 38, 38, 0.09) 0%, rgba(160, 0, 0, 0.03) 50%, transparent 75%),
-    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.05) 0%, transparent 60%),
-    radial-gradient(circle at 20% 90%, rgba(180, 0, 0, 0.04) 0%, transparent 50%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+    radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.12) 0%, rgba(160, 0, 0, 0.04) 45%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.07) 0%, transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(180, 0, 0, 0.06) 0%, transparent 50%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px;
   background-position: 0 0, 0 0, 0 0, 0 0;
-  pointer-events: none;
-  z-index: -1;
   background-attachment: fixed;
 }
 
