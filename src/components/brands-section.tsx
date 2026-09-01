@@ -18,19 +18,19 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <div className="promo-banner bg-black py-8">
-      <div className="promo-banner-content">
+    <div className="promo-banner bg-black py-4 sm:py-6 md:py-8 border-y border-zinc-900/80 overflow-hidden">
+      <div className="promo-banner-content items-center">
         {[...brands, ...brands].map((brand, index) => (
-          <div key={index} className="mx-8 flex-shrink-0">
+          <div key={index} className="mx-2.5 sm:mx-4 md:mx-6 flex-shrink-0">
             <Link href={brand.href} passHref>
-              <div className="relative w-[150px] h-[150px]">
+              <div className="relative w-[75px] h-[75px] sm:w-[95px] sm:h-[95px] md:w-[125px] md:h-[125px] transition-transform duration-300 hover:scale-110">
                 <Image
                   src={brand.src}
                   alt={brand.alt}
-                  width={150}
-                  height={150}
+                  fill
+                  sizes="(max-width: 640px) 75px, (max-width: 768px) 95px, 125px"
                   data-ai-hint={brand.dataAiHint}
-                  className="rounded-full inline-block border-2 border-accent object-cover transition-transform duration-300 hover:scale-110"
+                  className="rounded-full inline-block border-2 border-red-600/60 hover:border-red-500 object-cover shadow-[0_0_15px_rgba(229,0,0,0.2)] hover:shadow-[0_0_20px_rgba(229,0,0,0.5)] transition-all bg-white"
                 />
               </div>
             </Link>
