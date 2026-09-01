@@ -2,6 +2,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
@@ -76,9 +78,19 @@ export default function ProductGridPage({
   return (
     <>
       <Header />
-      <main className="bg-transparent text-white">
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-center mb-8 text-white">
+      <main className="bg-transparent text-white min-h-[70vh]">
+        <div className="container mx-auto px-4 py-6 md:py-10 max-w-7xl">
+          <div className="mb-6 flex items-center justify-between">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-white text-xs sm:text-sm font-bold tracking-wide transition-all hover:scale-105 shadow-lg group"
+            >
+              <ArrowLeft className="w-4 h-4 text-red-500 group-hover:-translate-x-1 transition-transform" />
+              <span>Volver a la Tienda</span>
+            </Link>
+          </div>
+
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-center mb-8 text-white uppercase tracking-wider">
             {title}
           </h1>
           <FilterSortControls
