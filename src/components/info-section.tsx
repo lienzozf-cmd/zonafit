@@ -26,7 +26,7 @@ const infoData = [
 
 const InfoSection = () => {
   return (
-    <section className="bg-black py-16 md:py-20 text-white relative overflow-hidden">
+    <section className="bg-transparent py-16 md:py-20 text-white relative overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("/assets/images/diamond-bg.png")', backgroundSize: '100px' }} />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />

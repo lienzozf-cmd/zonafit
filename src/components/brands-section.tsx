@@ -18,7 +18,7 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <div className="promo-banner bg-black py-4 sm:py-6 md:py-8 border-y border-zinc-900/80 overflow-hidden">
+    <div className="promo-banner bg-transparent py-4 sm:py-6 md:py-8 border-y border-zinc-900/80 overflow-hidden">
       <div className="promo-banner-content items-center">
         {[...brands, ...brands].map((brand, index) => (
           <div key={index} className="mx-2.5 sm:mx-4 md:mx-6 flex-shrink-0">
