@@ -108,10 +108,10 @@ const SocialSection = () => {
                 viewBox="0 0 24 24"
                 className="w-5 h-5 transition-all duration-300"
                 style={{
-                  fill: isHovered ? link.color : '#D1D5DB',
+                  fill: link.color,
                   filter: isHovered
-                    ? `drop-shadow(0 0 6px ${link.glowColor})`
-                    : 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))'
+                    ? `drop-shadow(0 0 8px ${link.color}) drop-shadow(0 0 16px ${link.glowColor})`
+                    : `drop-shadow(0 1px 2px rgba(0,0,0,0.5))`
                 }}
               >
                 <path d={link.path} />
