@@ -6,6 +6,7 @@ import IntroWrapper from '@/components/intro-wrapper';
 import BackgroundMusic from '@/components/background-music';
 import AnalyticsTracker from '@/components/analytics-tracker';
 import CookieConsent from '@/components/cookie-consent';
+import MouseTrail from '@/components/mouse-trail';
 
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <AnalyticsTracker />
+        <MouseTrail />
         <IntroWrapper>{children}</IntroWrapper>
         <BackgroundMusic />
         <CookieConsent />
