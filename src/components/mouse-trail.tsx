@@ -6,12 +6,9 @@ interface Point {
   x: number;
   y: number;
   time: number;
-  vx: number;
-  vy: number;
-  size: number;
 }
 
-const LIFESPAN = 1000; // 1 second in milliseconds
+const LIFESPAN = 1000; // 1 second lifetime
 
 export default function MouseTrail() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -52,37 +49,27 @@ export default function MouseTrail() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (points.length > 1) {
-        // Draw fluid glowing trail ribbon
+        // Draw continuous solid glowing red line
         for (let i = 0; i < points.length - 1; i++) {
           const pt = points[i];
           const nextPt = points[i + 1];
 
           const age = (now - pt.time) / LIFESPAN; // 0 (new) to 1 (expired)
           const opacity = Math.max(0, 1 - age);
-          const currentSize = Math.max(1, pt.size * (1 - age * 0.7));
+          const currentWidth = Math.max(1.5, 4.5 * (1 - age * 0.7));
 
           ctx.beginPath();
           ctx.moveTo(pt.x, pt.y);
           ctx.lineTo(nextPt.x, nextPt.y);
 
-          // Vivid red glowing neon line
-          ctx.strokeStyle = `rgba(229, 0, 0, ${opacity * 0.85})`;
-          ctx.lineWidth = currentSize;
+          // Solid vivid red neon laser line
+          ctx.strokeStyle = `rgba(255, 0, 0, ${opacity * 0.95})`;
+          ctx.lineWidth = currentWidth;
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
-          ctx.shadowColor = 'rgba(255, 0, 40, 0.9)';
-          ctx.shadowBlur = 10 * opacity;
+          ctx.shadowColor = '#FF0000';
+          ctx.shadowBlur = 8 * opacity;
           ctx.stroke();
-
-          // Particle sparks along the path
-          if (i % 2 === 0) {
-            ctx.beginPath();
-            ctx.arc(pt.x + pt.vx * age * 15, pt.y + pt.vy * age * 15, currentSize * 0.7, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 60, 60, ${opacity * 0.9})`;
-            ctx.shadowColor = '#FF0033';
-            ctx.shadowBlur = 14 * opacity;
-            ctx.fill();
-          }
         }
       }
 
@@ -99,32 +86,20 @@ export default function MouseTrail() {
       const x = e.clientX;
       const y = e.clientY;
 
-      let vx = 0;
-      let vy = 0;
-
       if (lastPosRef.current) {
         const dx = x - lastPosRef.current.x;
         const dy = y - lastPosRef.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        // Calculate velocity for drift effect
-        if (dist > 0) {
-          vx = (Math.random() - 0.5) * 2;
-          vy = (Math.random() - 0.5) * 2;
-        }
-
-        // Interpolate extra intermediate points if mouse moved fast
-        if (dist > 15) {
-          const steps = Math.min(Math.floor(dist / 8), 6);
+        // Interpolate extra intermediate points if mouse moved fast for perfectly continuous smooth line
+        if (dist > 10) {
+          const steps = Math.min(Math.floor(dist / 6), 8);
           for (let step = 1; step < steps; step++) {
             const ratio = step / steps;
             pointsRef.current.push({
               x: lastPosRef.current.x + dx * ratio,
               y: lastPosRef.current.y + dy * ratio,
               time: now,
-              vx: (Math.random() - 0.5) * 1.5,
-              vy: (Math.random() - 0.5) * 1.5,
-              size: 4.5 + Math.random() * 2
             });
           }
         }
@@ -134,13 +109,11 @@ export default function MouseTrail() {
         x,
         y,
         time: now,
-        vx,
-        vy,
-        size: 5.5
       });
 
       lastPosRef.current = { x, y };
 
+      // Start animation loop if not running
       if (!animFrameIdRef.current) {
         animFrameIdRef.current = requestAnimationFrame(render);
       }
@@ -160,9 +133,9 @@ export default function MouseTrail() {
   return (
     <canvas
       ref={canvasRef}
-      aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-[9999] w-screen h-screen"
+      className="pointer-events-none fixed inset-0 z-[99999]"
       style={{ mixBlendMode: 'screen' }}
+      aria-hidden="true"
     />
   );
 }

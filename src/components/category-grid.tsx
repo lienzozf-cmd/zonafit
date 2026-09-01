@@ -346,40 +346,6 @@ const CategoryGrid = () => {
             />
           ))}
         </motion.div>
-
-        {/* Bottom Trust Feature Bar filling lateral whitespace */}
-        <div className="mt-16 md:mt-20 pt-10 border-t border-zinc-900 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
-            <div className="w-10 h-10 rounded-full bg-red-600/10 border border-red-600/30 flex items-center justify-center text-red-500">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-black text-white uppercase tracking-wider">Marcas 100% Originales</div>
-              <div className="text-[11px] text-zinc-400 font-medium">Gymshark, YoungLA, Raw, RGMNT</div>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
-            <div className="w-10 h-10 rounded-full bg-red-600/10 border border-red-600/30 flex items-center justify-center text-red-500">
-              <Zap className="w-5 h-5" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-black text-white uppercase tracking-wider">Envíos a Todo el País</div>
-              <div className="text-[11px] text-zinc-400 font-medium">Rápido, seguro y garantizado en GT</div>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
-            <div className="w-10 h-10 rounded-full bg-red-600/10 border border-red-600/30 flex items-center justify-center text-red-500">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-black text-white uppercase tracking-wider">Comunidad Zona Fit</div>
-              <div className="text-[11px] text-zinc-400 font-medium">Asesoría fitness personalizada</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );
