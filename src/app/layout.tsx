@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="relative min-h-screen">
-        <div className="global-dot-matrix-bg pointer-events-none fixed inset-0 z-0" aria-hidden="true" />
+        <div className="global-dot-matrix-bg pointer-events-none fixed inset-0 -z-10" aria-hidden="true" />
         <AnalyticsTracker />
         <MouseTrail />
         <div className="relative z-10">
