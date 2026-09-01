@@ -38,9 +38,8 @@ const FeaturedProducts = () => {
   }
 
   return (
-    <section className="py-16 relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden bg-transparent">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-[#050505] -z-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-50" />
       
         <div className="flex flex-col items-center mb-12 px-4">
