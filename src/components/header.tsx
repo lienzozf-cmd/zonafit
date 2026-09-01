@@ -201,45 +201,24 @@ const Header = () => {
                             className={`dropdown-link flex items-center justify-between gap-3 ${
                               isVerTodo ? 'font-black text-red-500 hover:text-white border-t border-zinc-800/80 mt-1 pt-2' : ''
                             }`}
-                            style={brandCfg ? {
-                              ['--brand-hover-color' as any]: brandCfg.text,
-                              ['--brand-hover-bg' as any]: brandCfg.bgHover,
-                            } : undefined}
                           >
-                            <span className="flex items-center gap-2">
+                            <span className="flex items-center gap-2.5">
                               {isVerTodo && <span className="text-red-500 font-black">★</span>}
                               {brandCfg && (
                                 <span
-                                  className="w-2 h-2 rounded-full flex-shrink-0 transition-transform duration-200 group-hover/sub:scale-125"
+                                  className="w-2.5 h-2.5 rounded-full flex-shrink-0 transition-all duration-300 group-hover/sub:scale-125"
                                   style={{
                                     backgroundColor: brandCfg.text,
-                                    boxShadow: `0 0 8px ${brandCfg.glow}`
+                                    boxShadow: `0 0 10px ${brandCfg.glow}`
                                   }}
                                 />
                               )}
                               <span
                                 className="transition-colors duration-200"
-                                style={brandCfg ? {
-                                  color: '#F3F4F6'
-                                } : undefined}
                               >
                                 {sublink.title}
                               </span>
                             </span>
-
-                            {brandCfg && (
-                              <span
-                                className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded transition-all border"
-                                style={{
-                                  backgroundColor: brandCfg.bgHover,
-                                  color: brandCfg.text,
-                                  borderColor: brandCfg.border,
-                                  boxShadow: `0 0 10px ${brandCfg.glow}`
-                                }}
-                              >
-                                {sublink.title === 'Gymshark' ? 'GYMSHARK' : sublink.title.toUpperCase()}
-                              </span>
-                            )}
 
                             {hasChildren && (
                               <span className="dropdown-arrow-sub text-[9px] text-zinc-500 group-hover/sub:text-red-400 group-hover/sub:translate-x-0.5 transition-all">
