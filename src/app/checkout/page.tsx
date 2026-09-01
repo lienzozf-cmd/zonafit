@@ -111,14 +111,47 @@ export default function CheckoutPage() {
     }
   }, [isSubmitSuccessful, orderId, orderTotal]);
 
-  const copyAccountNumber = () => {
-    navigator.clipboard.writeText('5600015308');
+  const copyAccountNumber = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const accountNumber = '5600015308';
+    
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(accountNumber).catch(() => {
+          fallbackCopyText(accountNumber);
+        });
+      } else {
+        fallbackCopyText(accountNumber);
+      }
+    } catch (err) {
+      fallbackCopyText(accountNumber);
+    }
+
     setCopiedAccount(true);
     toast({
       title: '¡Número de cuenta copiado!',
-      description: '5600015308 copiado al portapapeles.',
+      description: `${accountNumber} copiado al portapapeles.`,
     });
     setTimeout(() => setCopiedAccount(false), 3000);
+  };
+
+  const fallbackCopyText = (text: string) => {
+    if (typeof document === 'undefined') return;
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    textArea.style.pointerEvents = 'none';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      console.warn('Fallback copy error:', err);
+    }
+    document.body.removeChild(textArea);
   };
 
   const triggerConfetti = () => {
