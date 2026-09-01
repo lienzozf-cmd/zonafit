@@ -75,7 +75,7 @@ a:hover {
   color: var(--primary-color);
 }
 
-/* Floating Glassmorphism Pill Header */
+/* Floating Glassmorphism Pill Header with Red LED Neon Rim */
 .site-header {
   padding: 10px 24px;
   display: flex;
@@ -88,12 +88,12 @@ a:hover {
   width: 95%;
   max-width: 1380px;
   z-index: 100;
-  background: linear-gradient(135deg, rgba(18, 18, 24, 0.78) 0%, rgba(10, 10, 14, 0.88) 100%);
+  background: linear-gradient(135deg, rgba(14, 14, 18, 0.82) 0%, rgba(6, 6, 10, 0.92) 100%);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1.5px solid #FF0000;
   border-radius: 9999px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 0 25px rgba(229, 0, 0, 0.1);
+  box-shadow: 0 0 16px rgba(255, 0, 0, 0.55), 0 0 35px rgba(229, 0, 0, 0.25), 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 0 12px rgba(255, 0, 0, 0.2);
   box-sizing: border-box;
   gap: 20px;
   will-change: transform;
@@ -1246,11 +1246,11 @@ footer {
     gap: 10px;
     align-items: center;
     border-radius: 9999px;
-    background: linear-gradient(135deg, rgba(18, 18, 24, 0.88) 0%, rgba(10, 10, 14, 0.94) 100%);
+    background: linear-gradient(135deg, rgba(14, 14, 18, 0.88) 0%, rgba(6, 6, 10, 0.95) 100%);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1.5px solid #FF0000;
+    box-shadow: 0 0 14px rgba(255, 0, 0, 0.55), 0 0 25px rgba(229, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 8px rgba(255, 0, 0, 0.2);
     z-index: 100;
   }
 
