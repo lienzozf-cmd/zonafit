@@ -46,12 +46,11 @@ html {
 html, body {
   background-color: #030304 !important;
   background-image: 
-    radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.16) 0%, rgba(160, 0, 0, 0.05) 45%, transparent 70%),
-    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.10) 0%, transparent 55%),
-    radial-gradient(circle at 15% 85%, rgba(180, 0, 0, 0.08) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='1.4' fill='%23FFFFFF' fill-opacity='0.28'/%3E%3C/svg%3E") !important;
-  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px !important;
-  background-position: 0 0, 0 0, 0 0, 0 0 !important;
+    radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.18) 0%, rgba(160, 0, 0, 0.06) 45%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(180, 0, 0, 0.10) 0%, transparent 50%) !important;
+  background-size: 100% 100%, 100% 100%, 100% 100% !important;
+  background-position: 0 0, 0 0, 0 0 !important;
   background-attachment: fixed !important;
   min-height: 100%;
 }
@@ -69,7 +68,7 @@ body {
   position: relative;
 }
 
-/* Global Dot Matrix Texture Overlay with Deep Crimson Ambient Glow */
+/* Global Ambient Crimson Glow Background Overlay */
 .global-dot-matrix-bg {
   position: fixed;
   inset: 0;
@@ -77,12 +76,11 @@ body {
   z-index: 0;
   background-color: transparent;
   background-image: 
-    radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.16) 0%, rgba(160, 0, 0, 0.05) 45%, transparent 70%),
-    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.10) 0%, transparent 55%),
-    radial-gradient(circle at 15% 85%, rgba(180, 0, 0, 0.08) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='1.4' fill='%23FFFFFF' fill-opacity='0.28'/%3E%3C/svg%3E");
-  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
-  background-position: 0 0, 0 0, 0 0, 0 0;
+    radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.18) 0%, rgba(160, 0, 0, 0.06) 45%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(180, 0, 0, 0.10) 0%, transparent 50%);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
   background-attachment: fixed;
 }
 
