@@ -37,7 +37,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   const getProductOption = useCartStore((state) => state.getProductOption);
   
   const product = useMemo(() => 
-    products.find(p => p.id === initialProduct.id) || initialProduct,
+    products.find(p => String(p.id) === String(initialProduct.id)) || initialProduct,
     [products, initialProduct]
   );
 
@@ -191,6 +191,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   };
   
   const isProductAvailable = useMemo(() => {
+    if (product.availability === 'Agotado') return false;
     const checkStock = (p: Product) => {
       if (p.colors && p.colors.length > 0) {
         return p.colors.some(c => (c.options?.values || []).some(v => (getProductOption(p.id, v.value, c.name)?.stock ?? 0) > 0));

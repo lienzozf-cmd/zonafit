@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { navLinks } from '@/lib/data';
+import { navLinks, isProductAvailable } from '@/lib/data';
 import type { Product } from '@/lib/data';
 import { Search, ShoppingCart, Menu } from 'lucide-react';
 import Cart from './cart';
@@ -104,7 +104,15 @@ const Header = () => {
       setSearchResults([]);
       return;
     }
-    const results = products.filter(p => p.visible !== false && p.name.toLowerCase().includes(term.toLowerCase()));
+    const results = products
+      .filter(p => p.visible !== false && p.name.toLowerCase().includes(term.toLowerCase()))
+      .sort((a, b) => {
+        const aAvailable = isProductAvailable(a);
+        const bAvailable = isProductAvailable(b);
+        if (aAvailable && !bAvailable) return -1;
+        if (!aAvailable && bAvailable) return 1;
+        return 0;
+      });
     setSearchResults(results);
   };
   
