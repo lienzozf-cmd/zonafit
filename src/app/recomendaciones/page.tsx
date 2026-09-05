@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useMemo, Suspense } from 'react';
 import { useCartStore } from '@/stores/cart-store';
-import { products as localProducts, type Product } from '@/lib/data';
+import { products as localProducts, type Product, isProductAvailable } from '@/lib/data';
 import ProductGridPage from '@/components/product-grid-page';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
@@ -116,6 +116,16 @@ function RecomendacionesContent() {
     oversize: 'Playeras Oversize / Regular'
   };
 
+  const checkIsAvailable = (p: Product) => {
+    if (p.availability === 'Agotado') return false;
+    if (p.colors && p.colors.length > 0) {
+      return p.colors.some(c =>
+        (c.options?.values || []).some(v => (getProductOption(p.id, v.value, c.name)?.stock ?? 0) > 0)
+      );
+    }
+    return (p.options?.values || []).some(v => (getProductOption(p.id, v.value)?.stock ?? 0) > 0);
+  };
+
   // Grouped products
   const primaryProducts = useMemo(() => {
     return allProducts.filter((product) => {
@@ -123,8 +133,14 @@ function RecomendacionesContent() {
       const matches = matchesGarmentType(product, selectedType);
       if (!matches) return false;
       return hasSizeOption(product, sizes[selectedType]);
+    }).sort((a, b) => {
+      const aAvailable = checkIsAvailable(a);
+      const bAvailable = checkIsAvailable(b);
+      if (aAvailable && !bAvailable) return -1;
+      if (!aAvailable && bAvailable) return 1;
+      return 0;
     });
-  }, [allProducts, gender, selectedType, sizes]);
+  }, [allProducts, gender, selectedType, sizes, getProductOption]);
 
   const otherProducts = useMemo(() => {
     return allProducts.filter((product) => {
@@ -136,8 +152,14 @@ function RecomendacionesContent() {
       // Check if it has the recommended size for its primary matched type
       const primaryType = matchedTypes[0];
       return hasSizeOption(product, sizes[primaryType]);
+    }).sort((a, b) => {
+      const aAvailable = checkIsAvailable(a);
+      const bAvailable = checkIsAvailable(b);
+      if (aAvailable && !bAvailable) return -1;
+      if (!aAvailable && bAvailable) return 1;
+      return 0;
     });
-  }, [allProducts, gender, selectedType, sizes]);
+  }, [allProducts, gender, selectedType, sizes, getProductOption]);
 
   return (
     <>

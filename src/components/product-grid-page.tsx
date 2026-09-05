@@ -1,13 +1,13 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
-import { Product } from '@/lib/data';
+import { Product, isProductAvailable } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
@@ -23,57 +23,81 @@ export default function ProductGridPage({
   hideBrandFilter = false,
 }: ProductGridPageProps) {
   const sessionId = useCartStore((state) => state.sessionId);
+  const storeProducts = useCartStore((state) => state.products);
+  const getProductOption = useCartStore((state) => state.getProductOption);
+  const fetchProducts = useCartStore((state) => state.fetchProducts);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
 
-  const availableBrands = useMemo(() => {
-    const brands = initialProducts.map(p => p.brand);
-    return [...new Set(brands)];
-  }, [initialProducts]);
-
-  const isProductAvailable = (product: Product) => {
-    if (product.colors && product.colors.length > 0) {
-      return product.colors.some(color => color.options.values.some(option => option.stock > 0));
+  // Asegurar que los productos de la tienda se carguen si aún no están presentes
+  useEffect(() => {
+    if (!storeProducts || storeProducts.length === 0) {
+      fetchProducts();
     }
-    return product.options.values.some(option => option.stock > 0);
+  }, [storeProducts, fetchProducts]);
+
+  // Sincronizar productos iniciales con el stock dinámico y en tiempo real de la tienda
+  const mergedProducts = useMemo(() => {
+    if (!storeProducts || storeProducts.length === 0) return initialProducts;
+    return initialProducts.map(p => storeProducts.find(sp => String(sp.id) === String(p.id)) || p);
+  }, [initialProducts, storeProducts]);
+
+  const availableBrands = useMemo(() => {
+    const brands = mergedProducts.map(p => p.brand);
+    return [...new Set(brands)];
+  }, [mergedProducts]);
+
+  // Misma comprobación de stock que ejecuta ProductCard
+  const checkIsProductAvailable = (p: Product): boolean => {
+    const storeProduct = storeProducts.find(sp => String(sp.id) === String(p.id));
+    const prod = storeProduct || p;
+
+    if (prod.availability === 'Agotado') return false;
+
+    // Si los productos de la tienda están disponibles, consultar directamente getProductOption
+    if (storeProducts && storeProducts.length > 0) {
+      if (prod.colors && prod.colors.length > 0) {
+        return prod.colors.some(c =>
+          (c.options?.values || []).some(v => (getProductOption(prod.id, v.value, c.name)?.stock ?? 0) > 0)
+        );
+      }
+      return (prod.options?.values || []).some(v => (getProductOption(prod.id, v.value)?.stock ?? 0) > 0);
+    }
+
+    return isProductAvailable(prod);
   };
   
   const displayedProducts = useMemo(() => {
-    let filtered = initialProducts.filter(p => p.visible !== false);
+    let filtered = mergedProducts.filter(p => p.visible !== false);
 
     if (!hideBrandFilter && selectedBrand !== 'all') {
       filtered = filtered.filter(p => p.brand === selectedBrand);
     }
 
-    const sorted = [...filtered].sort((a, b) => {
-        const aAvailable = isProductAvailable(a);
-        const bAvailable = isProductAvailable(b);
-        if (aAvailable && !bAvailable) return -1;
-        if (!aAvailable && bAvailable) return 1;
-        return 0;
-    });
+    const getNumericPrice = (p: Product) => {
+      const parsed = parseFloat(p.price.replace(/[^0-9.]/g, ''));
+      return isNaN(parsed) ? 0 : parsed;
+    };
 
-    switch (sortOption) {
-      case 'price-asc':
-        return sorted.sort((a, b) => {
-            const aAvailable = isProductAvailable(a);
-            const bAvailable = isProductAvailable(b);
-            if (aAvailable && !bAvailable) return -1;
-            if (!aAvailable && bAvailable) return 1;
-            return parseFloat(a.price.replace(/Q|\s/g, '')) - parseFloat(b.price.replace(/Q|\s/g, ''));
-        });
-      case 'price-desc':
-        return sorted.sort((a, b) => {
-            const aAvailable = isProductAvailable(a);
-            const bAvailable = isProductAvailable(b);
-            if (aAvailable && !bAvailable) return -1;
-            if (!aAvailable && bAvailable) return 1;
-            return parseFloat(b.price.replace(/Q|\s/g, '')) - parseFloat(a.price.replace(/Q|\s/g, ''));
-        });
-      default:
-        return sorted;
-    }
-  }, [initialProducts, selectedBrand, sortOption, hideBrandFilter]);
+    return [...filtered].sort((a, b) => {
+      const aAvailable = checkIsProductAvailable(a);
+      const bAvailable = checkIsProductAvailable(b);
+
+      // Los productos disponibles van primero; los productos agotados van estrictamente hasta abajo
+      if (aAvailable && !bAvailable) return -1;
+      if (!aAvailable && bAvailable) return 1;
+
+      // Si ambos son disponibles o ambos son agotados, aplicar el ordenamiento secundario
+      if (sortOption === 'price-asc') {
+        return getNumericPrice(a) - getNumericPrice(b);
+      }
+      if (sortOption === 'price-desc') {
+        return getNumericPrice(b) - getNumericPrice(a);
+      }
+
+      return 0;
+    });
+  }, [mergedProducts, storeProducts, selectedBrand, sortOption, hideBrandFilter, getProductOption]);
 
   return (
     <>

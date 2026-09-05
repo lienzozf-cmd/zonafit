@@ -1,11 +1,12 @@
 'use client';
 import ProductCard from './product-card';
 import { useEffect, useState } from 'react';
-import type { Product } from '@/lib/data';
+import { type Product, isProductAvailable } from '@/lib/data';
 import { useCartStore } from '@/stores/cart-store';
 
 const FeaturedProducts = () => {
   const products = useCartStore((state) => state.products);
+  const getProductOption = useCartStore((state) => state.getProductOption);
   const sessionId = useCartStore((state) => state.sessionId);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
@@ -24,14 +25,35 @@ const FeaturedProducts = () => {
   // 12. Impact Short Sleeve Top (3057)
   const featuredProductIds = [3, 2671, 3052, 2720, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3057];
 
+  const checkIsAvailable = (p: Product) => {
+    if (p.availability === 'Agotado') return false;
+    if (p.colors && p.colors.length > 0) {
+      return p.colors.some(c =>
+        (c.options?.values || []).some(v => (getProductOption(p.id, v.value, c.name)?.stock ?? 0) > 0)
+      );
+    }
+    return (p.options?.values || []).some(v => (getProductOption(p.id, v.value)?.stock ?? 0) > 0);
+  };
+
   useEffect(() => {
     if (products && products.length > 0) {
       const filtered = products.filter(product =>
-        featuredProductIds.includes(product.id)
-      ).sort((a, b) => featuredProductIds.indexOf(a.id) - featuredProductIds.indexOf(b.id));
+        featuredProductIds.map(String).includes(String(product.id))
+      ).sort((a, b) => {
+        const aAvailable = checkIsAvailable(a);
+        const bAvailable = checkIsAvailable(b);
+
+        // Los disponibles van primero; los agotados van estrictamente al final
+        if (aAvailable && !bAvailable) return -1;
+        if (!aAvailable && bAvailable) return 1;
+
+        const aIndex = featuredProductIds.findIndex(id => String(id) === String(a.id));
+        const bIndex = featuredProductIds.findIndex(id => String(id) === String(b.id));
+        return aIndex - bIndex;
+      });
       setFeaturedProducts(filtered);
     }
-  }, [products]);
+  }, [products, getProductOption]);
 
   if (featuredProducts.length === 0) {
     return null; // Or a loading skeleton

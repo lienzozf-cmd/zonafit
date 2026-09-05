@@ -49,6 +49,35 @@ export type Product = {
 
 export const products: Product[] = productsData as Product[];
 
+export const isProductAvailable = (product: Product): boolean => {
+  if (product.availability === 'Agotado') return false;
+
+  let totalStock = 0;
+  let hasStockInfo = false;
+
+  if (product.colors && product.colors.length > 0) {
+    product.colors.forEach(col => {
+      if (col.options?.values) {
+        col.options.values.forEach(opt => {
+          hasStockInfo = true;
+          totalStock += (opt.stock ?? 0);
+        });
+      }
+    });
+  } else if (product.options?.values) {
+    product.options.values.forEach(opt => {
+      hasStockInfo = true;
+      totalStock += (opt.stock ?? 0);
+    });
+  }
+
+  if (hasStockInfo) {
+    return totalStock > 0;
+  }
+
+  return product.availability === 'Disponible';
+};
+
 export const navLinks = [
   {
     title: 'HOMBRES',

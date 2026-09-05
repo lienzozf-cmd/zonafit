@@ -138,7 +138,7 @@ export const useCartStore = create<AppState>()(
       },
       
       getProductOption: (productId, optionValue, colorName) => {
-        const product = get().products.find(p => p.id === productId);
+        const product = get().products.find(p => String(p.id) === String(productId));
         if (!product) return undefined;
 
         if (colorName && product.colors) {
@@ -151,7 +151,7 @@ export const useCartStore = create<AppState>()(
 
       updateVariantStock: (productId, optionValue, stock, colorName) => {
         set(produce((state: AppState) => {
-          const product = state.products.find(p => p.id === productId);
+          const product = state.products.find(p => String(p.id) === String(productId));
           if (!product) return;
 
           let updated = false;
