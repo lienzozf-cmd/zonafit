@@ -27,6 +27,7 @@ const brandColorMap: { [key: string]: string } = {
     'Dymatize': 'text-blue-500 animate-pulse',
     'Muscletech': 'text-orange-500 animate-pulse',
     'Ironbull': 'text-neutral-400 animate-pulse',
+    'Breathe Divinity': 'text-red-500 animate-pulse',
 };
 
 const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
@@ -41,40 +42,62 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     [products, initialProduct]
   );
 
-  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
-    product.colors && product.colors.length > 0 ? product.colors[0] : null
-  );
+  // Obtener el primer color disponible con stock > 0, o fallback al primero
+  const getFirstAvailableColor = (prod: Product): ProductColor | null => {
+    if (!prod.colors || prod.colors.length === 0) return null;
+    const availableColor = prod.colors.find(c =>
+      (c.options?.values || []).some(v => (getProductOption(prod.id, v.value, c.name)?.stock ?? 0) > 0)
+    );
+    return availableColor || prod.colors[0];
+  };
 
-  const initialOption = useMemo(() => {
-    const options = selectedColor?.options?.values || product.options?.values || [];
-    const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
+  // Obtener la primera opción disponible con stock > 0
+  const getFirstAvailableOption = (prod: Product, color: ProductColor | null): ProductOption | null => {
+    const options = color?.options?.values || prod.options?.values || [];
+    const availableOption = options.find(o => (getProductOption(prod.id, o.value, color?.name)?.stock ?? 0) > 0);
     if (options.length === 1 && options[0].value === 'Único') {
       return options[0];
     }
-    return firstAvailableOption || null;
-  }, [product, selectedColor, getProductOption]);
+    return availableOption || options[0] || null;
+  };
 
-  const [selectedOption, setSelectedOption] = useState<ProductOption | null>(initialOption);
-  
-  const getInitialImage = () => {
-    if (selectedColor?.imageSrc) return selectedColor.imageSrc;
-    if (product.images && product.images.length > 0) {
-      if (product.id === 3037) {
-        return product.images[1]?.src || product.images[0].src;
+  const getProductImage = (prod: Product, color: ProductColor | null, opt: ProductOption | null) => {
+    // 1. Si la opción tiene una imagen específica asociada
+    if (opt) {
+      const optionImg = prod.images?.find(img => img.option === opt.value);
+      if (optionImg?.src) return optionImg.src;
+    }
+    // 2. Si el color tiene imagen directa
+    if (color?.imageSrc) return color.imageSrc;
+    // 3. Si en images hay una imagen con la etiqueta de ese color
+    if (color) {
+      const colorImg = prod.images?.find(img => img.color === color.name);
+      if (colorImg?.src) return colorImg.src;
+    }
+    // 4. Imagen general del producto
+    if (prod.images && prod.images.length > 0) {
+      if (prod.id === 3037 && prod.images[1]) {
+        return prod.images[1].src;
       }
-      return product.images[0].src;
+      return prod.images[0].src;
     }
     return PLACEHOLDER_IMAGE;
   };
 
-  const [currentImage, setCurrentImage] = useState(getInitialImage());
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(() => getFirstAvailableColor(product));
+  const [selectedOption, setSelectedOption] = useState<ProductOption | null>(() => getFirstAvailableOption(product, selectedColor));
+  const [currentImage, setCurrentImage] = useState<string>(() => getProductImage(product, selectedColor, selectedOption));
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   
   const { toast } = useToast();
 
   useEffect(() => {
-    setSelectedColor(product.colors && product.colors.length > 0 ? product.colors[0] : null);
-  }, [product]);
+    const nextColor = getFirstAvailableColor(product);
+    setSelectedColor(nextColor);
+    const nextOption = getFirstAvailableOption(product, nextColor);
+    setSelectedOption(nextOption);
+    setCurrentImage(getProductImage(product, nextColor, nextOption));
+  }, [product, getProductOption]);
 
   useEffect(() => {
     const options = selectedColor?.options?.values || product.options?.values || [];
@@ -82,22 +105,11 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     let currentOpt = null;
     if (options.length === 1 && options[0].value === 'Único') {
         currentOpt = options[0];
-        setSelectedOption(options[0]);
     } else {
-        currentOpt = firstAvailableOption || null;
-        setSelectedOption(firstAvailableOption || null);
+        currentOpt = firstAvailableOption || options[0] || null;
     }
-    
-    const optionImg = currentOpt ? product.images?.find(img => img.option === currentOpt.value) : null;
-    if (optionImg) {
-      setCurrentImage(optionImg.src);
-    } else if (selectedColor?.imageSrc) {
-      setCurrentImage(selectedColor.imageSrc);
-    } else if (product.images && product.images.length > 0) {
-      setCurrentImage(product.images[0].src);
-    } else {
-      setCurrentImage(PLACEHOLDER_IMAGE);
-    }
+    setSelectedOption(currentOpt);
+    setCurrentImage(getProductImage(product, selectedColor, currentOpt));
   }, [selectedColor, product, getProductOption]);
 
   useEffect(() => {
@@ -147,8 +159,10 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
       const isColorSoldOut = colorOptions.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
       if (isColorSoldOut) return;
       
-      setCurrentImage(color.imageSrc);
       setSelectedColor(color);
+      const nextOpt = getFirstAvailableOption(product, color);
+      setSelectedOption(nextOpt);
+      setCurrentImage(getProductImage(product, color, nextOpt));
     }
   };
 
@@ -215,18 +229,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         className="product-item flex flex-col"
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
-          // Si hay una opción seleccionada con imagen, usarla
-          const selectedOptionImage = selectedOption ? product.images?.find(img => img.option === selectedOption.value) : null;
-          
-          if (selectedOptionImage) {
-            setCurrentImage(selectedOptionImage.src);
-          } else if (selectedColor?.imageSrc) {
-            setCurrentImage(selectedColor.imageSrc);
-          } else if (product.images && product.images.length > 0) {
-            setCurrentImage(product.images[0].src);
-          } else {
-            setCurrentImage(PLACEHOLDER_IMAGE);
-          }
+          setCurrentImage(getProductImage(product, selectedColor, selectedOption));
         }}
     >
         <Link 
@@ -236,7 +239,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         >
             <div className="product-carousel">
                 <Image
-                  src={currentImage || PLACEHOLDER_IMAGE}
+                  src={currentImage ? encodeURI(currentImage) : PLACEHOLDER_IMAGE}
                   alt={product.name}
                   fill
                   unoptimized
@@ -279,6 +282,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                                         cursor: isColorSoldOut ? 'not-allowed' : 'pointer',
                                     }}
                                     onMouseEnter={() => handleColorHover(color)}
+                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleColorHover(color); }}
                                 />
                                 {isColorSoldOut && <span className="sold-out-x-swatch">X</span>}
                             </div>

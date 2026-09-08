@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
   // 1. ONYX 5.0 SEAMLESS-T SHIRT (3)
   // 2. Onyx 5.0 long sleeve (2671)
   // 3. 4259 - Batman Compression Tees (3052)
-  // 4. 8004 - Batman Compression Longsleeves (2720)
+  // 4. T-Shirt Oversized Heavenly Red (5095) - Breathe Divinity
   // 5. 4117 - Superman Compression Tees color black red (2643)
   // 6. ISOPHORM - PREMIUM WHEY PROTEIN ISOLATE - 2Lb cookies and cream (2677)
   // 7. Wrath Of Sukuna "Side By Side" 199X Oversized Tee (3003)
@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
   // 10. CREATINA 80 SERVS muscletech (2721)
   // 11. Impact Shorts | 4.5" (2662)
   // 12. Impact Short Sleeve Top (3057)
-  const featuredProductIds = [3, 2671, 3052, 2720, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3057];
+  const featuredProductIds = [3, 2671, 3052, 5095, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3057];
 
   const checkIsAvailable = (p: Product) => {
     if (p.availability === 'Agotado') return false;
