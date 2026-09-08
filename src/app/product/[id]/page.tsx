@@ -35,6 +35,7 @@ const brandStyles: { [key: string]: string } = {
     'Muscletech': 'bg-orange-600 text-white',
     'Ironbull': 'bg-zinc-500 text-white',
     'Civil Regime': 'bg-pink-600 text-white',
+    'Breathe Divinity': 'bg-red-600 text-white',
 };
 
 const brandButtonStyles: { [key: string]: string } = {
@@ -52,6 +53,7 @@ const brandButtonStyles: { [key: string]: string } = {
     'Muscletech': 'bg-orange-600 hover:bg-orange-500 text-white border-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.4)] hover:shadow-[0_0_25px_rgba(234,88,12,0.6)]',
     'Ironbull': 'bg-zinc-500 hover:bg-zinc-400 text-white border-zinc-500 shadow-[0_0_15px_rgba(115,115,115,0.4)] hover:shadow-[0_0_25px_rgba(115,115,115,0.6)]',
     'Civil Regime': 'bg-pink-600 hover:bg-pink-500 text-white border-pink-600 shadow-[0_0_15px_rgba(219,39,119,0.4)] hover:shadow-[0_0_25px_rgba(219,39,119,0.6)]',
+    'Breathe Divinity': 'bg-red-600 hover:bg-red-500 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_25px_rgba(220,38,38,0.6)]',
 };
 
 const ProductDetailPage = () => {
@@ -97,16 +99,25 @@ const ProductDetailPage = () => {
           ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => (getProductOption(foundProduct.id, v.value, c.name)?.stock ?? 0) > 0)) || foundProduct.colors[0])
           : null;
         setSelectedColor(initialColor);
-        
-        const initialImg = initialColor ? initialColor.imageSrc : (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : PLACEHOLDER_IMAGE);
-        setCurrentImage(initialImg);
 
         const options = initialColor?.options?.values || foundProduct.options?.values || [];
-        if (options.length === 1) {
-          setSelectedOption(options[0]);
-        } else {
-          setSelectedOption(null);
+        const firstAvailableOption = options.find(v => (getProductOption(foundProduct.id, v.value, initialColor?.name)?.stock ?? 0) > 0);
+        const selectedOpt = options.length === 1 && options[0].value === 'Único' ? options[0] : (firstAvailableOption || options[0] || null);
+        setSelectedOption(selectedOpt);
+
+        let initialImg = PLACEHOLDER_IMAGE;
+        const optImg = selectedOpt ? foundProduct.images?.find(img => img.option === selectedOpt.value) : null;
+        if (optImg?.src) {
+          initialImg = optImg.src;
+        } else if (initialColor?.imageSrc) {
+          initialImg = initialColor.imageSrc;
+        } else if (initialColor) {
+          const colorImg = foundProduct.images?.find(img => img.color === initialColor.name);
+          initialImg = colorImg?.src || (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : PLACEHOLDER_IMAGE);
+        } else if (foundProduct.images && foundProduct.images.length > 0) {
+          initialImg = foundProduct.images[0].src;
         }
+        setCurrentImage(initialImg);
       } else if (hasFetched) {
         router.push('/');
       }
@@ -170,14 +181,21 @@ const ProductDetailPage = () => {
 
   const handleColorClick = (color: ProductColor) => {
     setSelectedColor(color);
-    setCurrentImage(color.imageSrc);
     
     const options = color.options?.values || [];
-    if (options.length === 1) {
-      setSelectedOption(options[0]);
-    } else {
-      setSelectedOption(null);
+    const firstAvailable = options.find(o => (getProductOption(product?.id || 0, o.value, color.name)?.stock ?? 0) > 0);
+    const selectedOpt = options.length === 1 && options[0].value === 'Único' ? options[0] : (firstAvailable || options[0] || null);
+    setSelectedOption(selectedOpt);
+
+    let nextImg = color.imageSrc;
+    const optImg = selectedOpt ? product?.images?.find(img => img.option === selectedOpt.value) : null;
+    if (optImg?.src) {
+      nextImg = optImg.src;
+    } else if (!nextImg) {
+      const colorImg = product?.images?.find(img => img.color === color.name);
+      if (colorImg?.src) nextImg = colorImg.src;
     }
+    setCurrentImage(nextImg || PLACEHOLDER_IMAGE);
   };
 
   const handleThumbnailClick = (image: { src: string; color?: string; option?: string }) => {
@@ -320,7 +338,7 @@ const ProductDetailPage = () => {
               <DialogTrigger asChild>
                 <div className="relative aspect-[3/4] w-full max-w-[400px] sm:max-w-[440px] mx-auto overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl group cursor-zoom-in">
                   <Image
-                    src={currentImage || PLACEHOLDER_IMAGE}
+                    src={currentImage ? encodeURI(currentImage) : PLACEHOLDER_IMAGE}
                     alt={product.name}
                     fill
                     unoptimized
@@ -343,7 +361,7 @@ const ProductDetailPage = () => {
 
                 <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-10">
                   <Image
-                    src={currentImage || PLACEHOLDER_IMAGE}
+                    src={currentImage ? encodeURI(currentImage) : PLACEHOLDER_IMAGE}
                     alt={product.name}
                     width={1600}
                     height={1600}
@@ -370,7 +388,7 @@ const ProductDetailPage = () => {
                     }`}
                   >
                     <Image
-                      src={image.src}
+                      src={image.src ? encodeURI(image.src) : PLACEHOLDER_IMAGE}
                       alt={`${product.name} - ${index + 1}`}
                       fill
                       unoptimized
