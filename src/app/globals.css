@@ -688,14 +688,16 @@ main > .container {
   will-change: transform;
 }
 
-.size-options button:disabled {
-    background-color: #333;
-    color: #666;
-    border-color: #444;
-    cursor: not-allowed;
+.size-options button:disabled,
+.size-options button:disabled.active {
+    background-color: #333 !important;
+    color: #666 !important;
+    border-color: #444 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
 }
 
-.size-options button.active,
+.size-options button.active:not(:disabled),
 .size-options button:hover:not(:disabled) {
   transform: scale(1.1);
   background-color: var(--accent-color);
