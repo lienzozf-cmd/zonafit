@@ -12,7 +12,7 @@ export default function SupermanCollectionPage() {
   return (
     <ProductGridPage
       products={filteredProducts}
-      title="⚡ Colección Superman - 10% de Descuento ⚡"
+      title="⚡ Colección Superman ⚡"
       hideBrandFilter={false}
     />
   );

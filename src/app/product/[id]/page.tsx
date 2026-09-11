@@ -102,7 +102,8 @@ const ProductDetailPage = () => {
 
         const options = initialColor?.options?.values || foundProduct.options?.values || [];
         const firstAvailableOption = options.find(v => (getProductOption(foundProduct.id, v.value, initialColor?.name)?.stock ?? 0) > 0);
-        const selectedOpt = options.length === 1 && options[0].value === 'Único' ? options[0] : (firstAvailableOption || options[0] || null);
+        const isUniqueAvailable = options.length === 1 && options[0].value === 'Único' && (getProductOption(foundProduct.id, options[0].value, initialColor?.name)?.stock ?? 0) > 0;
+        const selectedOpt = isUniqueAvailable ? options[0] : (firstAvailableOption || null);
         setSelectedOption(selectedOpt);
 
         let initialImg = PLACEHOLDER_IMAGE;
@@ -184,7 +185,8 @@ const ProductDetailPage = () => {
     
     const options = color.options?.values || [];
     const firstAvailable = options.find(o => (getProductOption(product?.id || 0, o.value, color.name)?.stock ?? 0) > 0);
-    const selectedOpt = options.length === 1 && options[0].value === 'Único' ? options[0] : (firstAvailable || options[0] || null);
+    const isUniqueAvailable = options.length === 1 && options[0].value === 'Único' && (getProductOption(product?.id || 0, options[0].value, color.name)?.stock ?? 0) > 0;
+    const selectedOpt = isUniqueAvailable ? options[0] : (firstAvailable || null);
     setSelectedOption(selectedOpt);
 
     let nextImg = color.imageSrc;
@@ -537,7 +539,7 @@ const ProductDetailPage = () => {
                             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                                 {currentOptions.values.map((option) => {
                                     const stock = getAvailableStock(option);
-                                    const isSelected = selectedOption?.value === option.value;
+                                    const isSelected = selectedOption?.value === option.value && stock > 0;
                                     return (
                                         <button
                                             key={option.value}
@@ -545,10 +547,7 @@ const ProductDetailPage = () => {
                                             disabled={stock === 0}
                                             className={`relative px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${
                                                 stock === 0
-                                                    ? (isSelected
-                                                        ? 'border-red-600/80 bg-zinc-950/50 text-zinc-300 opacity-80 cursor-not-allowed'
-                                                        : 'border-zinc-900 bg-zinc-950/50 text-zinc-600 opacity-40 cursor-not-allowed'
-                                                      )
+                                                    ? 'border-zinc-900 bg-zinc-950/50 text-zinc-600 opacity-40 cursor-not-allowed'
                                                     : (isSelected
                                                         ? 'bg-red-600 border-red-600 text-white shadow-lg'
                                                         : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'

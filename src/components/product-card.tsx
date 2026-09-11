@@ -56,9 +56,10 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     const options = color?.options?.values || prod.options?.values || [];
     const availableOption = options.find(o => (getProductOption(prod.id, o.value, color?.name)?.stock ?? 0) > 0);
     if (options.length === 1 && options[0].value === 'Único') {
-      return options[0];
+      const isUniqueAvailable = (getProductOption(prod.id, options[0].value, color?.name)?.stock ?? 0) > 0;
+      return isUniqueAvailable ? options[0] : null;
     }
-    return availableOption || options[0] || null;
+    return availableOption || null;
   };
 
   const getProductImage = (prod: Product, color: ProductColor | null, opt: ProductOption | null) => {
@@ -104,9 +105,10 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     const firstAvailableOption = options.find(o => (getProductOption(product.id, o.value, selectedColor?.name)?.stock ?? 0) > 0);
     let currentOpt = null;
     if (options.length === 1 && options[0].value === 'Único') {
-        currentOpt = options[0];
+        const isUniqueAvailable = (getProductOption(product.id, options[0].value, selectedColor?.name)?.stock ?? 0) > 0;
+        currentOpt = isUniqueAvailable ? options[0] : null;
     } else {
-        currentOpt = firstAvailableOption || options[0] || null;
+        currentOpt = firstAvailableOption || null;
     }
     setSelectedOption(currentOpt);
     setCurrentImage(getProductImage(product, selectedColor, currentOpt));
@@ -297,7 +299,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                     {optionsToShow.map((option) => {
                       const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;
                       const isOptionDisabled = stock <= 0;
-                      const isSelected = selectedOption?.value === option.value;
+                      const isSelected = selectedOption?.value === option.value && !isOptionDisabled;
                       return (
                         <button
                           key={option.value}
