@@ -281,14 +281,6 @@ const Header = () => {
 
   return (
     <>
-      <div className="patriotic-ribbon-bar" role="banner" aria-label="Promoción Mes Patrio">
-        <div className="patriotic-ribbon-content">
-          <span className="text-sm">🇬🇹</span>
-          <span>10% de descuento por el mes patrio</span>
-          <span className="text-sm">🇬🇹</span>
-        </div>
-      </div>
-
       <header className="site-header">
         {isMobile ? <MobileMenu /> : (
           <>
@@ -374,6 +366,16 @@ const Header = () => {
           </div>
         </div>
       </header>
+      
+      {/* Cinta conmemorativa de la Bandera de Guatemala en colores pastel debajo del menú */}
+      <div className="patriotic-ribbon-bar" role="banner" aria-label="Promoción Mes Patrio">
+        <div className="patriotic-ribbon-content">
+          <span className="text-xs sm:text-sm">🇬🇹</span>
+          <span>10% de descuento por el mes patrio</span>
+          <span className="text-xs sm:text-sm">🇬🇹</span>
+        </div>
+      </div>
+
       <Cart />
     </>
   );
