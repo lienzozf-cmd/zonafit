@@ -368,12 +368,36 @@ const Header = () => {
         </div>
       </header>
       
-      {/* Cinta conmemorativa de la Bandera de Guatemala en colores pastel debajo del menú */}
-      <div className="patriotic-ribbon-bar" role="banner" aria-label="Promoción Mes Patrio">
-        <div className="patriotic-ribbon-content">
-          <span className="text-xs sm:text-sm">🇬🇹</span>
-          <span>10% de descuento por el mes patrio</span>
-          <span className="text-xs sm:text-sm">🇬🇹</span>
+      {/* Cinta conmemorativa de la Bandera de Guatemala en colores pastel estilo Superman */}
+      <div
+        role="banner"
+        aria-label="10% de descuento por el mes patrio"
+        className="patriotic-ribbon-bar group"
+      >
+        {/* Animated Light Shimmer Beam Effect */}
+        <div className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none animate-ribbon-shimmer" />
+
+        {/* Left Badge */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
+          <span className="text-base md:text-xl filter drop-shadow-sm">🇬🇹</span>
+          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-[#08233c] bg-white/80 px-2.5 py-0.5 rounded-full border border-white shadow-sm">
+            MES PATRIO
+          </span>
+        </div>
+
+        {/* Ribbon Main Text */}
+        <div className="flex items-center gap-1.5 text-center z-10">
+          <span className="font-black text-xs md:text-sm lg:text-base tracking-wider uppercase text-[#08233c] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            ⚡ 10% DE DESCUENTO POR EL MES PATRIO ⚡
+          </span>
+        </div>
+
+        {/* Right Badge */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
+          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-[#08233c] bg-white/80 px-2.5 py-0.5 rounded-full border border-white shadow-sm">
+            GUATEMALA
+          </span>
+          <span className="text-base md:text-xl filter drop-shadow-sm">🇬🇹</span>
         </div>
       </div>
 

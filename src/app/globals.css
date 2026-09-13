@@ -54,7 +54,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   margin: 0;
-  padding-top: 125px; /* Floating pill header + pastel ribbon below (desktop) */
+  padding-top: 105px; /* Height of fixed floating header (desktop) */
   /* GPU compositing for smoother rendering */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -1254,7 +1254,7 @@ footer {
 }
 @media (max-width: 1024px) {
   body {
-    padding-top: 106px; /* Header + pastel ribbon on mobile */
+    padding-top: 96px; /* Header height on mobile */
   }
 
   .site-header {
@@ -1486,91 +1486,31 @@ footer {
 }
 
 /* ==========================================================================
-   CINTA CONMEMORATIVA BANDERA DE GUATEMALA - 10% DESCUENTO MES PATRIO (COLORES PASTEL)
+   CINTA CONMEMORATIVA BANDERA DE GUATEMALA - ESTILO SUPERMAN (COLORES PASTEL)
    ========================================================================== */
 
 .patriotic-ribbon-bar {
-  position: fixed;
-  top: 72px; /* Ubicada exactamente debajo del menú flotante */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 92%;
-  max-width: 530px;
-  height: 28px;
-  border-radius: 9999px;
-  z-index: 90;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 100%;
+  z-index: 20;
   overflow: hidden;
   /* Colores pastel de la Bandera de Guatemala: Celeste pastel suave - Blanco puro - Celeste pastel suave */
-  background: linear-gradient(90deg, #8bc4ea 0%, #aed7f4 25%, #ffffff 42%, #ffffff 58%, #aed7f4 75%, #8bc4ea 100%);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 16px rgba(168, 213, 242, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  user-select: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.patriotic-ribbon-content {
+  background: linear-gradient(90deg, #74b8e6 0%, #9bcbf1 22%, #ffffff 42%, #ffffff 58%, #9bcbf1 78%, #74b8e6 100%);
+  border-bottom: 2px solid rgba(116, 184, 230, 0.5);
+  box-shadow: 0 4px 20px rgba(116, 184, 230, 0.3);
+  padding: 6px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-family: var(--font_principal);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #0b2540;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
-  position: relative;
-  z-index: 2;
-  white-space: nowrap;
+  gap: 12px;
+  user-select: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .patriotic-ribbon-bar {
-    top: 74px;
-    height: 30px;
-    max-width: 560px;
+    padding: 8px 24px;
+    gap: 16px;
   }
-  .patriotic-ribbon-content {
-    font-size: 11.5px;
-    letter-spacing: 0.1em;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .patriotic-ribbon-bar {
-    top: 56px; /* Justo debajo del header móvil */
-    height: 25px;
-    width: 90%;
-    max-width: 390px;
-  }
-  .patriotic-ribbon-content {
-    font-size: 9.5px;
-    letter-spacing: 0.05em;
-    gap: 6px;
-  }
-}
-
-.patriotic-ribbon-bar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  animation: patriotic-shimmer 3.8s infinite linear;
-}
-
-@keyframes patriotic-shimmer {
-  0% { left: -100%; }
-  50%, 100% { left: 100%; }
 }
 
 /* Badge patriótico pastel para productos disponibles */
