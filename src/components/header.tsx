@@ -326,8 +326,9 @@ const Header = () => {
                     searchResults.map((result, index) => {
                       const resultImg = result.images && result.images.length > 0 ? result.images[0].src : PLACEHOLDER_IMAGE;
                       const isAvail = isProductAvailable(result);
-                      const basePriceNum = parseFloat((result.price || '0').replace(/[^0-9.]/g, ''));
-                      const discountedPrice = basePriceNum > 0 ? basePriceNum * 0.9 : 0;
+                      const cleanPriceStr = (result.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+                      const basePriceNum = parseFloat(cleanPriceStr) || 0;
+                      const discountedPrice = basePriceNum > 0 ? Math.round(basePriceNum * 0.9) : 0;
 
                       return (
                         <div key={`${result.id}-${index}`} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
@@ -337,7 +338,7 @@ const Header = () => {
                             <div className="search-result-price flex items-center gap-2">
                               {isAvail && basePriceNum > 0 ? (
                                 <>
-                                  <span className="text-red-500 font-bold">Q.{discountedPrice.toFixed(2)}</span>
+                                  <span className="text-red-500 font-bold">Q.{discountedPrice}.00</span>
                                   <span className="text-xs text-zinc-500 line-through">{result.price}</span>
                                   <span className="text-[10px] text-sky-400 font-bold">🇬🇹 -10%</span>
                                 </>

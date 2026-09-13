@@ -317,9 +317,10 @@ const ProductDetailPage = () => {
 
   const isPendingOption = hasMultipleOptions && !selectedOption;
 
-  const basePriceNum = parseFloat((product.price || '0').replace(/[^0-9.]/g, ''));
+  const cleanPriceStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+  const basePriceNum = parseFloat(cleanPriceStr) || 0;
   const isDiscountEligible = (totalCurrentStock > 0 || product.availability === 'Disponible') && product.availability !== 'Agotado' && basePriceNum > 0;
-  const discountedPrice = isDiscountEligible ? basePriceNum * 0.9 : basePriceNum;
+  const discountedPrice = isDiscountEligible ? Math.round(basePriceNum * 0.9) : basePriceNum;
 
   return (
     <>
@@ -426,7 +427,7 @@ const ProductDetailPage = () => {
                 {isDiscountEligible ? (
                   <>
                     <p className="text-3xl md:text-4xl font-black text-red-600 tracking-tighter">
-                      Q.{discountedPrice.toFixed(2)}
+                      Q.{discountedPrice}.00
                     </p>
                     <p className="text-lg text-zinc-500 line-through font-bold">
                       {product.price}

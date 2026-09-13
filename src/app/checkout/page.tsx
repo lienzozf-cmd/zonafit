@@ -92,9 +92,9 @@ export default function CheckoutPage() {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const discountAmount = subtotal * 0.10; // 10% Descuento Mes Patrio
-  const totalAfterDiscount = Math.max(0, subtotal - discountAmount); 
-  const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
+  const totalAfterDiscount = Math.max(0, Math.round(subtotal * 0.90)); 
+  const discountAmount = subtotal - totalAfterDiscount; // 10% Descuento Mes Patrio aproximado
+  const codCommission = paymentMethod === 'cod' ? Math.round(totalAfterDiscount * codCommissionPercentage) : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
 

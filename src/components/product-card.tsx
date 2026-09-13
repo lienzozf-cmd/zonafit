@@ -227,12 +227,13 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
 
   const basePriceNum = useMemo(() => {
-    const parsed = parseFloat((product.price || '0').replace(/[^0-9.]/g, ''));
+    const cleanStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+    const parsed = parseFloat(cleanStr);
     return isNaN(parsed) ? 0 : parsed;
   }, [product.price]);
 
   const discountedPrice = useMemo(() => {
-    return isProductAvailable && basePriceNum > 0 ? basePriceNum * 0.9 : basePriceNum;
+    return isProductAvailable && basePriceNum > 0 ? Math.round(basePriceNum * 0.9) : basePriceNum;
   }, [isProductAvailable, basePriceNum]);
 
   return (
@@ -273,9 +274,9 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             <div className="flex flex-col items-center justify-center my-1 gap-1">
               {isProductAvailable && basePriceNum > 0 ? (
                 <>
-                  <div className="flex justify-center items-center gap-2">
-                    <p className="product-price text-red-500 font-bold">Q.{discountedPrice.toFixed(2)}</p>
-                    <p className="text-xs text-zinc-500 line-through font-bold">{product.price}</p>
+                  <div className="flex justify-center items-baseline gap-2">
+                    <span className="text-red-500 font-black text-xl tracking-tight leading-none">Q.{discountedPrice}.00</span>
+                    <span className="text-xs text-zinc-500 line-through font-semibold leading-none">{product.price}</span>
                   </div>
                   <span className="patriotic-product-badge">
                     🇬🇹 10% OFF MES PATRIO
