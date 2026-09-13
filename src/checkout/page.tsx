@@ -44,7 +44,9 @@ export default function CheckoutPage() {
   const [orderId, setOrderId] = useState<string | null>(null);
 
   const shippingCost = 35;
-  const orderTotal = total + shippingCost;
+  const discountAmount = total * 0.10;
+  const totalAfterDiscount = Math.max(0, total - discountAmount);
+  const orderTotal = totalAfterDiscount + shippingCost;
   const isCartEmpty = items.length === 0;
 
   const form = useForm<CheckoutFormValues>({
@@ -289,6 +291,10 @@ export default function CheckoutPage() {
                   <div className="flex justify-between text-base">
                     <span>Subtotal</span>
                     <span>Q{total.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-base text-sky-400">
+                    <span>🇬🇹 Descuento Mes Patrio (10%)</span>
+                    <span className="font-bold">-Q{discountAmount.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-base">
                     <span>Envío</span>
