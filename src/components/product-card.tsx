@@ -226,6 +226,15 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
 
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
 
+  const basePriceNum = useMemo(() => {
+    const parsed = parseFloat((product.price || '0').replace(/[^0-9.]/g, ''));
+    return isNaN(parsed) ? 0 : parsed;
+  }, [product.price]);
+
+  const discountedPrice = useMemo(() => {
+    return isProductAvailable && basePriceNum > 0 ? basePriceNum * 0.9 : basePriceNum;
+  }, [isProductAvailable, basePriceNum]);
+
   return (
     <div 
         className="product-item flex flex-col"
@@ -259,12 +268,29 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             >
                 <h3 className="product-name">{product.name}</h3>
             </Link>
-            <div className="flex justify-center items-center gap-2">
-                <p className="product-price">{product.price}</p>
-                {product.originalPrice && (
-                    <p className="text-sm text-zinc-500 line-through font-bold">{product.originalPrice}</p>
-                )}
+
+            {/* Price display with 10% discount for available products */}
+            <div className="flex flex-col items-center justify-center my-1 gap-1">
+              {isProductAvailable && basePriceNum > 0 ? (
+                <>
+                  <div className="flex justify-center items-center gap-2">
+                    <p className="product-price text-red-500 font-bold">Q.{discountedPrice.toFixed(2)}</p>
+                    <p className="text-xs text-zinc-500 line-through font-bold">{product.price}</p>
+                  </div>
+                  <span className="patriotic-product-badge">
+                    🇬🇹 10% OFF MES PATRIO
+                  </span>
+                </>
+              ) : (
+                <div className="flex justify-center items-center gap-2">
+                  <p className="product-price text-zinc-400">{product.price}</p>
+                  {product.originalPrice && (
+                    <p className="text-sm text-zinc-600 line-through font-bold">{product.originalPrice}</p>
+                  )}
+                </div>
+              )}
             </div>
+
             <div className="flex justify-center my-2">
                  <div className={`product-availability ${isProductAvailable ? 'available' : 'unavailable'}`}>{isProductAvailable ? 'Disponible' : 'Agotado'}</div>
             </div>

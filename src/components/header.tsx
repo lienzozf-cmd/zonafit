@@ -281,6 +281,14 @@ const Header = () => {
 
   return (
     <>
+      <div className="patriotic-ribbon-bar" role="banner" aria-label="Promoción Mes Patrio">
+        <div className="patriotic-ribbon-content">
+          <span className="text-sm">🇬🇹</span>
+          <span>10% de descuento por el mes patrio</span>
+          <span className="text-sm">🇬🇹</span>
+        </div>
+      </div>
+
       <header className="site-header">
         {isMobile ? <MobileMenu /> : (
           <>
@@ -325,12 +333,26 @@ const Header = () => {
                 {searchResults.length > 0 ? (
                     searchResults.map((result, index) => {
                       const resultImg = result.images && result.images.length > 0 ? result.images[0].src : PLACEHOLDER_IMAGE;
+                      const isAvail = isProductAvailable(result);
+                      const basePriceNum = parseFloat((result.price || '0').replace(/[^0-9.]/g, ''));
+                      const discountedPrice = basePriceNum > 0 ? basePriceNum * 0.9 : 0;
+
                       return (
                         <div key={`${result.id}-${index}`} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
                             <Image src={resultImg} alt={result.name} width={50} height={50} unoptimized />
                             <div className="search-result-info">
                             <div className="search-result-name">{result.name}</div>
-                            <div className="search-result-price">{result.price}</div>
+                            <div className="search-result-price flex items-center gap-2">
+                              {isAvail && basePriceNum > 0 ? (
+                                <>
+                                  <span className="text-red-500 font-bold">Q.{discountedPrice.toFixed(2)}</span>
+                                  <span className="text-xs text-zinc-500 line-through">{result.price}</span>
+                                  <span className="text-[10px] text-sky-400 font-bold">🇬🇹 -10%</span>
+                                </>
+                              ) : (
+                                <span>{result.price}</span>
+                              )}
+                            </div>
                             </div>
                         </div>
                       );

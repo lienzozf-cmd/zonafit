@@ -92,7 +92,8 @@ export default function CheckoutPage() {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const totalAfterDiscount = subtotal; 
+  const discountAmount = subtotal * 0.10; // 10% Descuento Mes Patrio
+  const totalAfterDiscount = Math.max(0, subtotal - discountAmount); 
   const codCommission = paymentMethod === 'cod' ? totalAfterDiscount * codCommissionPercentage : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
@@ -182,7 +183,7 @@ export default function CheckoutPage() {
       shippingInfo: data,
       orderItems: items,
       orderSubtotal: subtotal,
-      orderDiscount: 0, 
+      orderDiscount: discountAmount, 
       orderShipping: shippingCost,
       orderCommission: codCommission,
       orderTotal: orderTotal,
@@ -621,6 +622,12 @@ export default function CheckoutPage() {
                   <div className="flex justify-between text-zinc-400">
                     <span>Subtotal</span>
                     <span className="font-bold text-white font-mono">Q{subtotal.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sky-400 bg-sky-500/10 p-2.5 rounded-xl border border-sky-500/25">
+                    <span className="flex items-center gap-1.5 font-bold text-xs sm:text-sm">
+                      <span className="text-base">🇬🇹</span> Descuento Mes Patrio (10%)
+                    </span>
+                    <span className="font-black font-mono text-sm sm:text-base text-sky-300">-Q{discountAmount.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span className="flex items-center gap-1.5">

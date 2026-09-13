@@ -176,20 +176,32 @@ const Cart = () => {
             </ScrollArea>
 
             <div className="p-6 bg-zinc-950 border-t border-zinc-900 space-y-4">
-              <div className="space-y-2">
-                <div className="flex justify-between text-zinc-400 text-sm">
-                  <span>Subtotal</span>
-                  <span>Q{total.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between items-end">
-                  <span className="text-lg font-bold text-white">Total</span>
-                  <div className="text-right">
-                    <span className="text-2xl font-black text-red-600 tracking-tight">
-                      Q{total.toFixed(2)}
-                    </span>
+              {(() => {
+                const discountAmount = total * 0.10;
+                const finalTotal = total - discountAmount;
+                return (
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-zinc-400 text-sm">
+                      <span>Subtotal</span>
+                      <span>Q{total.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs sm:text-sm text-sky-400 bg-sky-500/10 px-2.5 py-1.5 rounded-lg border border-sky-500/20">
+                      <span className="flex items-center gap-1.5 font-bold">
+                        <span>🇬🇹</span> Descuento Mes Patrio (10%)
+                      </span>
+                      <span className="font-bold font-mono">-Q{discountAmount.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-end pt-1">
+                      <span className="text-lg font-bold text-white">Total</span>
+                      <div className="text-right">
+                        <span className="text-2xl font-black text-red-600 tracking-tight">
+                          Q{finalTotal.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                );
+              })()}
               
               <Button 
                 className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-7 text-lg rounded-xl transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(220,38,38,0.2)] active:scale-95 group overflow-hidden relative"
