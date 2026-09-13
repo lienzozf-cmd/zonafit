@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import IntroWrapper from '@/components/intro-wrapper';
 import BackgroundMusic from '@/components/background-music';
 import AnalyticsTracker from '@/components/analytics-tracker';
+import MetaPixel from '@/components/meta-pixel';
 import CookieConsent from '@/components/cookie-consent';
 import MouseTrail from '@/components/mouse-trail';
 
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="es">
       <body className="relative min-h-screen">
         <div className="global-dot-matrix-bg pointer-events-none fixed inset-0 -z-10" aria-hidden="true" />
+        <MetaPixel />
         <AnalyticsTracker />
         <MouseTrail />
         <div className="relative z-10">

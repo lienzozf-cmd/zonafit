@@ -94,6 +94,18 @@ const ProductDetailPage = () => {
         setProduct(foundProduct);
         // Trigger play-music event with product's gender to play correct track on entry
         window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender, productId: foundProduct.id } }));
+
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          const cleanStr = (foundProduct.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+          const pPrice = parseFloat(cleanStr) || 0;
+          (window as any).fbq('track', 'ViewContent', {
+            content_name: foundProduct.name,
+            content_ids: [foundProduct.id.toString()],
+            content_type: 'product',
+            value: pPrice,
+            currency: 'GTQ',
+          });
+        }
         
         const initialColor = foundProduct.colors && foundProduct.colors.length > 0
           ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => (getProductOption(foundProduct.id, v.value, c.name)?.stock ?? 0) > 0)) || foundProduct.colors[0])
@@ -292,6 +304,16 @@ const ProductDetailPage = () => {
       color: selectedColor?.name,
       quantity: 1,
     });
+
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'AddToCart', {
+        content_name: cartItemName,
+        content_ids: [product.id.toString()],
+        content_type: 'product',
+        value: priceAsNumber,
+        currency: 'GTQ',
+      });
+    }
   };
 
   if (!isClient || !product) {
