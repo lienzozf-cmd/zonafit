@@ -109,8 +109,30 @@ export default function CheckoutPage() {
           'transaction_id': orderId
         });
       }
+
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Purchase', {
+          value: orderTotal,
+          currency: 'GTQ',
+          content_type: 'product',
+          content_ids: items.map((i) => i.productId.toString()),
+          num_items: items.reduce((sum, i) => sum + i.quantity, 0),
+        });
+      }
     }
-  }, [isSubmitSuccessful, orderId, orderTotal]);
+  }, [isSubmitSuccessful, orderId, orderTotal, items]);
+
+  useEffect(() => {
+    if (items.length > 0 && typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        value: orderTotal,
+        currency: 'GTQ',
+        content_type: 'product',
+        content_ids: items.map((i) => i.productId.toString()),
+        num_items: items.reduce((sum, i) => sum + i.quantity, 0),
+      });
+    }
+  }, []);
 
   const copyAccountNumber = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

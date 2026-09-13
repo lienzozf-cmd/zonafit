@@ -204,6 +204,16 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
       color: selectedColor?.name,
       quantity: 1
     });
+
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'AddToCart', {
+        content_name: cartItemName,
+        content_ids: [product.id.toString()],
+        content_type: 'product',
+        value: priceAsNumber,
+        currency: 'GTQ',
+      });
+    }
   };
   
   const isProductAvailable = useMemo(() => {
