@@ -44,8 +44,8 @@ export default function CheckoutPage() {
   const [orderId, setOrderId] = useState<string | null>(null);
 
   const shippingCost = 35;
-  const discountAmount = total * 0.10;
-  const totalAfterDiscount = Math.max(0, total - discountAmount);
+  const totalAfterDiscount = Math.max(0, Math.round(total * 0.90));
+  const discountAmount = total - totalAfterDiscount;
   const orderTotal = totalAfterDiscount + shippingCost;
   const isCartEmpty = items.length === 0;
 
