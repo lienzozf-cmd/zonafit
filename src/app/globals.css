@@ -54,7 +54,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   margin: 0;
-  padding-top: 135px; /* Height of fixed floating header + patriotic ribbon (desktop) */
+  padding-top: 125px; /* Floating pill header + pastel ribbon below (desktop) */
   /* GPU compositing for smoother rendering */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -104,7 +104,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  top: 44px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
@@ -1254,12 +1254,12 @@ footer {
 }
 @media (max-width: 1024px) {
   body {
-    padding-top: 126px; /* Header + patriotic ribbon height on mobile */
+    padding-top: 106px; /* Header + pastel ribbon on mobile */
   }
 
   .site-header {
     position: fixed;
-    top: 38px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     width: 94%;
@@ -1486,25 +1486,31 @@ footer {
 }
 
 /* ==========================================================================
-   CINTA CONMEMORATIVA BANDERA DE GUATEMALA - 10% DESCUENTO MES PATRIO
+   CINTA CONMEMORATIVA BANDERA DE GUATEMALA - 10% DESCUENTO MES PATRIO (COLORES PASTEL)
    ========================================================================== */
 
 .patriotic-ribbon-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 32px;
-  z-index: 120;
+  top: 72px; /* Ubicada exactamente debajo del menú flotante */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 530px;
+  height: 28px;
+  border-radius: 9999px;
+  z-index: 90;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Bandera de Guatemala: Azul Cielo (#3895D3) - Blanco (#FFFFFF) - Azul Cielo (#3895D3) */
-  background: linear-gradient(90deg, #2b84c0 0%, #469cd8 25%, #ffffff 38%, #ffffff 62%, #469cd8 75%, #2b84c0 100%);
-  box-shadow: 0 2px 14px rgba(43, 132, 192, 0.4), 0 1px 3px rgba(0, 0, 0, 0.4);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.8);
+  /* Colores pastel de la Bandera de Guatemala: Celeste pastel suave - Blanco puro - Celeste pastel suave */
+  background: linear-gradient(90deg, #8bc4ea 0%, #aed7f4 25%, #ffffff 42%, #ffffff 58%, #aed7f4 75%, #8bc4ea 100%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 16px rgba(168, 213, 242, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   user-select: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .patriotic-ribbon-content {
@@ -1513,12 +1519,12 @@ footer {
   justify-content: center;
   gap: 8px;
   font-family: var(--font_principal);
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 10.5px;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #061c33;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  color: #0b2540;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
   position: relative;
   z-index: 2;
   white-space: nowrap;
@@ -1526,12 +1532,28 @@ footer {
 
 @media (min-width: 640px) {
   .patriotic-ribbon-bar {
-    height: 34px;
+    top: 74px;
+    height: 30px;
+    max-width: 560px;
   }
   .patriotic-ribbon-content {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    gap: 12px;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .patriotic-ribbon-bar {
+    top: 56px; /* Justo debajo del header móvil */
+    height: 25px;
+    width: 90%;
+    max-width: 390px;
+  }
+  .patriotic-ribbon-content {
+    font-size: 9.5px;
+    letter-spacing: 0.05em;
+    gap: 6px;
   }
 }
 
@@ -1542,8 +1564,8 @@ footer {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
-  animation: patriotic-shimmer 3.5s infinite linear;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: patriotic-shimmer 3.8s infinite linear;
 }
 
 @keyframes patriotic-shimmer {
@@ -1551,32 +1573,32 @@ footer {
   50%, 100% { left: 100%; }
 }
 
-/* Badge patriótico de Guatemala para productos disponibles */
+/* Badge patriótico pastel para productos disponibles */
 .patriotic-product-badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2.5px 8px;
+  padding: 2.5px 8.5px;
   border-radius: 9999px;
   font-size: 9.5px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #3895D3 0%, #FFFFFF 50%, #3895D3 100%);
-  color: #061c33;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 0 12px rgba(56, 149, 211, 0.5);
+  background: linear-gradient(90deg, #9ecbf3 0%, #ffffff 50%, #9ecbf3 100%);
+  color: #0b2540;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(158, 203, 243, 0.4);
   animation: patriotic-badge-pulse 2.8s infinite ease-in-out;
 }
 
 @keyframes patriotic-badge-pulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 8px rgba(56, 149, 211, 0.35);
+    box-shadow: 0 0 8px rgba(158, 203, 243, 0.35);
   }
   50% {
     transform: scale(1.02);
-    box-shadow: 0 0 16px rgba(56, 149, 211, 0.7);
+    box-shadow: 0 0 15px rgba(158, 203, 243, 0.65);
   }
 }
 
