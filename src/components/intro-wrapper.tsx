@@ -70,14 +70,13 @@ export default function IntroWrapper({
 
   return (
     <>
-      {!introFinished ? (
+      {!introFinished && (
         <IntroAnimation onIntroFinish={handleIntroFinish} />
-      ) : (
-        <PageTransition>
-          {!isAdminPage && <SocialSection />}
-          {children}
-        </PageTransition>
       )}
+      <PageTransition>
+        {!isAdminPage && <SocialSection />}
+        {children}
+      </PageTransition>
     </>
   );
 }

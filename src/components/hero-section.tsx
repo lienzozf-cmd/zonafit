@@ -16,8 +16,8 @@ const banners = [
   { src: '/assets/images/banners/banner1.webp', alt: 'Banner 1' },
   { src: '/assets/images/banners/banner3.webp', alt: 'Banner 3' },
   { src: '/assets/images/banners/banner4.webp', alt: 'Banner 4' },
-  { src: '/assets/images/banners/banner5.jpg', alt: 'Banner 5' },
-  { src: '/assets/images/banners/banner6.png', alt: 'Banner 6' },
+  { src: '/assets/images/banners/banner5.webp', alt: 'Banner 5' },
+  { src: '/assets/images/banners/banner6.webp', alt: 'Banner 6' },
 ];
 
 
@@ -71,9 +71,11 @@ const HeroSection = () => {
                   alt={banner.alt}
                   fill
                   priority={index === 0}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  sizes="(max-width: 768px) 100vw, 94vw"
                   className="object-contain"
                   data-ai-hint="fitness store"
-                  quality={100}
+                  quality={85}
                 />
               </div>
             </CarouselItem>

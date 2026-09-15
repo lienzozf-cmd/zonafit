@@ -30,7 +30,7 @@ const brandColorMap: { [key: string]: string } = {
     'Breathe Divinity': 'text-red-500 animate-pulse',
 };
 
-const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
+const PLACEHOLDER_IMAGE = '/assets/images/logos/logo.webp';
 
 const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
   const products = useCartStore((state) => state.products);
@@ -261,12 +261,13 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         >
             <div className="product-carousel">
                 <Image
-                  src={currentImage ? encodeURI(currentImage) : PLACEHOLDER_IMAGE}
+                  src={currentImage || PLACEHOLDER_IMAGE}
                   alt={product.name}
                   fill
-                  unoptimized
+                  priority={index < 4}
+                  quality={80}
                   onError={() => setCurrentImage(PLACEHOLDER_IMAGE)}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-contain"
                 />
             </div>

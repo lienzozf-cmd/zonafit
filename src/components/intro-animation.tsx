@@ -40,12 +40,11 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
             
             <div className="gym-plate-container">
                 <Image
-                    src="/assets/images/gym-plate-custom.png"
+                    src="/assets/images/gym-plate-custom.webp"
                     alt="Zona Fit Plate"
                     width={400}
                     height={400}
                     className="gym-plate"
-                    unoptimized
                     priority
                 />
                 
