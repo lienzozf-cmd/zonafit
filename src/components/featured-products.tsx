@@ -1,29 +1,15 @@
 'use client';
 import ProductCard from './product-card';
 import { useEffect, useState } from 'react';
-import { type Product, isProductAvailable } from '@/lib/data';
+import { type Product, isProductAvailable, products as initialProducts } from '@/lib/data';
 import { useCartStore } from '@/stores/cart-store';
+
+const featuredProductIds = [3, 2671, 2655, 5095, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3057];
 
 const FeaturedProducts = () => {
   const products = useCartStore((state) => state.products);
   const getProductOption = useCartStore((state) => state.getProductOption);
   const sessionId = useCartStore((state) => state.sessionId);
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-
-  // Mapeo solicitado (actualizado):
-  // 1. ONYX 5.0 SEAMLESS-T SHIRT (3)
-  // 2. Onyx 5.0 long sleeve (2671)
-  // 3. Raw Sleep (2655)
-  // 4. T-Shirt Oversized Heavenly Red (5095) - Breathe Divinity
-  // 5. 4117 - Superman Compression Tees color black red (2643)
-  // 6. ISOPHORM - PREMIUM WHEY PROTEIN ISOLATE - 2Lb cookies and cream (2677)
-  // 7. Wrath Of Sukuna "Side By Side" 199X Oversized Tee (3003)
-  // 8. 4191 - AOT x YLA Classic Tees (3026)
-  // 9. The Split-Heart Pendant - Gold RG1044 (3009)
-  // 10. CREATINA 80 SERVS muscletech (2721)
-  // 11. Impact Shorts | 4.5" (2662)
-  // 12. Impact Short Sleeve Top (3057)
-  const featuredProductIds = [3, 2671, 2655, 5095, 2643, 2677, 3003, 3026, 3009, 2721, 2662, 3057];
 
   const checkIsAvailable = (p: Product) => {
     if (p.availability === 'Agotado') return false;
@@ -35,24 +21,30 @@ const FeaturedProducts = () => {
     return (p.options?.values || []).some(v => (getProductOption(p.id, v.value)?.stock ?? 0) > 0);
   };
 
+  const getSortedFeatured = (source: Product[]) => {
+    return source.filter(product =>
+      featuredProductIds.map(String).includes(String(product.id))
+    ).sort((a, b) => {
+      const aAvailable = checkIsAvailable(a);
+      const bAvailable = checkIsAvailable(b);
+
+      // Los disponibles van primero; los agotados van estrictamente al final
+      if (aAvailable && !bAvailable) return -1;
+      if (!aAvailable && bAvailable) return 1;
+
+      const aIndex = featuredProductIds.findIndex(id => String(id) === String(a.id));
+      const bIndex = featuredProductIds.findIndex(id => String(id) === String(b.id));
+      return aIndex - bIndex;
+    });
+  };
+
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>(() =>
+    getSortedFeatured(products && products.length > 0 ? products : initialProducts)
+  );
+
   useEffect(() => {
-    if (products && products.length > 0) {
-      const filtered = products.filter(product =>
-        featuredProductIds.map(String).includes(String(product.id))
-      ).sort((a, b) => {
-        const aAvailable = checkIsAvailable(a);
-        const bAvailable = checkIsAvailable(b);
-
-        // Los disponibles van primero; los agotados van estrictamente al final
-        if (aAvailable && !bAvailable) return -1;
-        if (!aAvailable && bAvailable) return 1;
-
-        const aIndex = featuredProductIds.findIndex(id => String(id) === String(a.id));
-        const bIndex = featuredProductIds.findIndex(id => String(id) === String(b.id));
-        return aIndex - bIndex;
-      });
-      setFeaturedProducts(filtered);
-    }
+    const source = (products && products.length > 0) ? products : initialProducts;
+    setFeaturedProducts(getSortedFeatured(source));
   }, [products, getProductOption]);
 
   if (featuredProducts.length === 0) {

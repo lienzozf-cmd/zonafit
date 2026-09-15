@@ -95,7 +95,11 @@ export async function GET() {
       return product;
     });
     
-    return NextResponse.json(products);
+    return NextResponse.json(products, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=300',
+      },
+    });
   } catch (error: any) {
     console.error('Error fetching products from Supabase API:', error);
     return NextResponse.json([], { status: 500 });

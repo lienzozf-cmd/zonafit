@@ -29,6 +29,7 @@ const BrandsSection = () => {
                   alt={brand.alt}
                   fill
                   sizes="(max-width: 640px) 75px, (max-width: 768px) 95px, 125px"
+                  quality={80}
                   data-ai-hint={brand.dataAiHint}
                   className="rounded-full inline-block border-2 border-red-600/60 hover:border-red-500 object-cover shadow-[0_0_15px_rgba(229,0,0,0.2)] hover:shadow-[0_0_20px_rgba(229,0,0,0.5)] transition-all bg-white"
                 />
