@@ -5849,7 +5849,7 @@
     "description": "Maximiza tu fuerza de tracción en peso muerto, remos y jalones. Estos straps de levantamiento cuentan con inserciones de silicona antideslizante a lo largo de la cinta para asegurar un agarre inquebrantable a la barra.",
     "gender": "unisex",
     "category": "accesorio",
-    "subcategory": null,
+    "subcategory": "equipo",
     "brand": "Gymshark",
     "is_compression": false,
     "images": [
@@ -5883,7 +5883,7 @@
     "description": "Maximiza tu fuerza de tracción en peso muerto, remos y jalones. Estos straps de levantamiento cuentan con inserciones de silicona antideslizante a lo largo de la cinta para asegurar un agarre inquebrantable a la barra.",
     "gender": "unisex",
     "category": "accesorio",
-    "subcategory": null,
+    "subcategory": "equipo",
     "brand": "Gymshark",
     "is_compression": false,
     "images": [
@@ -5917,7 +5917,7 @@
     "description": "Maximiza tu fuerza de tracción en peso muerto, remos y jalones. Estos straps de levantamiento cuentan con inserciones de silicona antideslizante a lo largo de la cinta para asegurar un agarre inquebrantable a la barra.",
     "gender": "unisex",
     "category": "accesorio",
-    "subcategory": null,
+    "subcategory": "equipo",
     "brand": "Gymshark",
     "is_compression": false,
     "images": [
@@ -5951,7 +5951,7 @@
     "description": "Muñequeras de soporte premium diseñadas para estabilizar tus muñecas durante levantamientos pesados de empuje. Fabricadas con un tejido elástico resistente y cierre de velcro de alta adherencia.",
     "gender": "unisex",
     "category": "accesorio",
-    "subcategory": null,
+    "subcategory": "equipo",
     "brand": "Gymshark",
     "is_compression": false,
     "images": [
@@ -5985,7 +5985,7 @@
     "description": "Una pieza de joyería icónica de RGMNT. Este dije de corazón dividido cuenta con un acabado chapado en oro de alta calidad, ideal para complementar cualquier atuendo casual o deportivo con un toque elegante.",
     "gender": "unisex",
     "category": "joyeria",
-    "subcategory": null,
+    "subcategory": "rgmnt",
     "brand": "RGMNT",
     "is_compression": false,
     "images": [
@@ -6126,7 +6126,7 @@
     "description": "Suplemento de glicerol líquido premium formulado por Hany Rambod. EVP AQ está diseñado para hiperhidratar las células musculares, dando como resultado bombeos increíblemente densos y una resistencia superior en el entrenamiento.",
     "gender": "unisex",
     "category": "suplemento",
-    "subcategory": null,
+    "subcategory": "pre-entreno",
     "brand": "Evogen",
     "is_compression": false,
     "images": [
@@ -6183,7 +6183,7 @@
     "description": "Camiseta sin mangas de la colaboración oficial de YoungLA con Yu-Gi-Oh!. Con un corte 'cut-off' que expone los hombros y la espalda de manera estética, luciendo un espectacular estampado del Mago Oscuro.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "is_compression": false,
     "images": [
@@ -6507,7 +6507,7 @@
     "description": "Camiseta de compresión sin mangas que actúa como una segunda piel. Diseñada para mantener los músculos calientes, reducir la fatiga muscular y maximizar el rango de movimiento durante el entrenamiento.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "is_compression": true,
     "images": [
@@ -6785,7 +6785,7 @@
     "description": "Suéter clásico de lana con cierre de un cuarto. Ofrece un equilibrio perfecto entre calidez y sofisticación, siendo ideal tanto para el pre-entrenamiento como para un look casual de noche.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": null,
+    "subcategory": "sudadera",
     "brand": "YoungLA",
     "is_compression": false,
     "images": [
@@ -6997,7 +6997,7 @@
     "description": "Sudadera oversized clásica de AYBL. Su capucha con forro doble y hombros caídos te brindan la máxima comodidad en los días fríos o durante tus calentamientos.",
     "gender": "mujer",
     "category": "ropa",
-    "subcategory": null,
+    "subcategory": "sudadera",
     "brand": "AYBL",
     "is_compression": false,
     "images": [
@@ -7047,7 +7047,7 @@
     "description": "Sudadera con cierre completo de la línea Comfort de Women's Best. Ofrece un diseño amplio, capucha espaciosa y un tejido cepillado que se siente extremadamente suave sobre la piel.",
     "gender": "mujer",
     "category": "ropa",
-    "subcategory": null,
+    "subcategory": "sudadera",
     "brand": "Women's Best",
     "is_compression": false,
     "images": [
@@ -7097,7 +7097,7 @@
     "description": "Agrega estilo a tu vestuario deportivo con esta sudadera de Women's Best. Presenta un gráfico retro estilo club de salud en la parte trasera, combinando moda vintage y comodidad premium.",
     "gender": "mujer",
     "category": "ropa",
-    "subcategory": null,
+    "subcategory": "sudadera",
     "brand": "Women's Best",
     "is_compression": false,
     "images": [
@@ -7303,7 +7303,7 @@
     "description": "Chándal oficial de entrenamiento Fight Week de YoungLA. Fabricado con un tejido técnico de secado rápido que expulsa la humedad, ideal para calentamientos previos a la acción.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": null,
+    "subcategory": "pantalon",
     "brand": "YoungLA",
     "is_compression": false,
     "images": [
@@ -7403,7 +7403,7 @@
     "description": "La playera de tirantes acanalada definitiva de YoungLA. Confeccionada con una mezcla de algodón elástico acanalado, abraza el cuerpo resaltando los hombros y la espalda.",
     "gender": "hombre",
     "category": "ropa",
-    "subcategory": "playera",
+    "subcategory": "tank",
     "brand": "YoungLA",
     "is_compression": false,
     "images": [
