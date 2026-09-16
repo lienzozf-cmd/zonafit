@@ -1,21 +1,14 @@
 import ProductGridPage from '@/components/product-grid-page';
 import { products } from '@/lib/data';
+import { filterProductsByCategory } from '@/lib/category-filters';
 
 export default function OversizePage() {
-  const filteredProducts = (products as any[]).filter(
-    (product) =>
-      product.gender === 'hombre' &&
-      product.subcategory === 'playera' &&
-      !product.is_compression &&
-      (
-        product.name.toLowerCase().includes('oversize') ||
-        product.is_oversized === true
-      )
-  );
+  const filteredProducts = filterProductsByCategory(products, 'hombres-oversize');
 
   return (
     <ProductGridPage
       products={filteredProducts}
+      categoryKey="hombres-oversize"
       title="Hombres - Playeras Oversize"
     />
   );

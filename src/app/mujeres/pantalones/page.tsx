@@ -2,14 +2,14 @@ import ProductGridPage from '@/components/product-grid-page';
 import { products } from '@/lib/data';
 import { filterProductsByCategory } from '@/lib/category-filters';
 
-export default function PreEntrenosPage() {
-  const filteredProducts = filterProductsByCategory(products, 'suplementos-pre-entrenos');
+export default function MujeresPantalonesPage() {
+  const filteredProducts = filterProductsByCategory(products, 'mujeres-pants');
 
   return (
     <ProductGridPage
       products={filteredProducts}
-      categoryKey="suplementos-pre-entrenos"
-      title="Suplementos - Pre Entrenos"
+      categoryKey="mujeres-pants"
+      title="Mujeres - Pants"
     />
   );
 }

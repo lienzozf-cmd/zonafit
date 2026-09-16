@@ -1,15 +1,14 @@
 import ProductGridPage from '@/components/product-grid-page';
 import { products } from '@/lib/data';
+import { filterProductsByCategory } from '@/lib/category-filters';
 
 export default function BrasDeportivosPage() {
-  const filteredProducts = products.filter(
-    (product) =>
-      product.gender === 'mujer' && product.subcategory === 'bras-deportivo'
-  );
+  const filteredProducts = filterProductsByCategory(products, 'mujeres-bras');
 
   return (
     <ProductGridPage
       products={filteredProducts}
+      categoryKey="mujeres-bras"
       title="Mujeres - Bras Deportivos"
     />
   );

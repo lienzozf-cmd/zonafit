@@ -11,16 +11,20 @@ import { Product, isProductAvailable } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
 import { useCartStore } from '@/stores/cart-store';
 
+import { filterProductsByCategory } from '@/lib/category-filters';
+
 interface ProductGridPageProps {
   products: Product[];
   title: string;
   hideBrandFilter?: boolean;
+  categoryKey?: string;
 }
 
 export default function ProductGridPage({
   products: initialProducts,
   title,
   hideBrandFilter = false,
+  categoryKey,
 }: ProductGridPageProps) {
   const sessionId = useCartStore((state) => state.sessionId);
   const storeProducts = useCartStore((state) => state.products);
@@ -38,9 +42,12 @@ export default function ProductGridPage({
 
   // Sincronizar productos iniciales con el stock dinámico y en tiempo real de la tienda
   const mergedProducts = useMemo(() => {
+    if (categoryKey && storeProducts && storeProducts.length > 0) {
+      return filterProductsByCategory(storeProducts, categoryKey);
+    }
     if (!storeProducts || storeProducts.length === 0) return initialProducts;
     return initialProducts.map(p => storeProducts.find(sp => String(sp.id) === String(p.id)) || p);
-  }, [initialProducts, storeProducts]);
+  }, [initialProducts, storeProducts, categoryKey]);
 
   const availableBrands = useMemo(() => {
     const brands = mergedProducts.map(p => p.brand);
