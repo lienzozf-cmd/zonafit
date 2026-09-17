@@ -1,5 +1,60 @@
 [
   {
+    "id": 5096,
+    "name": "Flex Long Sleeve Crop Top",
+    "price": "Q.335.00",
+    "original_price": null,
+    "availability": "Disponible",
+    "description": "Top corto de manga larga de la icónica línea Flex de Gymshark. Confeccionado con tejido seamless transpirable y de compresión media que realza la silueta y brinda soporte absoluto en cada entrenamiento.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "top",
+    "brand": "Gymshark",
+    "fabric_type": "Nylon y Elastano Seamless",
+    "is_compression": true,
+    "images": [
+      {
+        "alt": "Flex Long Sleeve Crop Top Negro",
+        "src": "/assets/images/marcas/gymshark/mujer/FlexCropTopBlack.webp",
+        "color": "Negro",
+        "dataAiHint": "black long sleeve crop top"
+      },
+      {
+        "alt": "Flex Long Sleeve Crop Top Negro - Espalda",
+        "src": "/assets/images/marcas/gymshark/mujer/FlexCropTopBlack2.webp",
+        "color": "Negro",
+        "dataAiHint": "black long sleeve crop top back view"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "hex": "#000000",
+        "name": "Negro",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "stock": 1,
+              "value": "S"
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/FlexCropTopBlack.webp"
+      }
+    ],
+    "feature1": "Ajuste Seamless Contorneado",
+    "feature2": "Tejido Transpirable de Secado Rápido",
+    "feature3": "Corte Crop Top con Mangas Largas",
+    "feature4": "Soporte y Libertad de Movimiento",
+    "benefits": null,
+    "servings_info": null,
+    "visible": true
+  },
+  {
     "id": 5095,
     "name": "T-Shirt Oversized Heavenly Red",
     "price": "Q.720.00",
