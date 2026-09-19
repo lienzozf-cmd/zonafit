@@ -56,13 +56,20 @@ async function syncOrderToGoogleSheets(data: {
         apellido: data.shippingInfo?.lastName || '',
         telefono: data.shippingInfo?.phone || '',
       },
-      items: data.orderItems.map((item: any) => ({
-        nombre: item.name,
-        talla: item.option || '',
-        color: item.color || '',
-        cantidad: item.quantity || 1,
-        precio: Number(item.price) || 0,
-      }))
+      items: data.orderItems.map((item: any) => {
+        let cleanName = (item.name || '').trim();
+        const color = (item.color || '').trim();
+        if (color && cleanName.toLowerCase().endsWith(` - ${color.toLowerCase()}`)) {
+          cleanName = cleanName.substring(0, cleanName.length - (` - ${color}`).length).trim();
+        }
+        return {
+          nombre: cleanName,
+          talla: item.option || '',
+          color: color,
+          cantidad: item.quantity || 1,
+          precio: Number(item.price) || 0,
+        };
+      })
     };
 
     console.log('Enviando orden a Google Sheets...');
