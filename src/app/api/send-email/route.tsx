@@ -42,6 +42,43 @@ async function sendTelegramNotification(message: string) {
   }
 }
 
+async function syncOrderToGoogleSheets(data: {
+  shippingInfo: any;
+  orderItems: any[];
+  orderTotal: number;
+}) {
+  const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbwi3VCDizAaSlL1GCO56K0Xpbdd1GzuWUyxMDE0kTmH7TrtgpXgdZvZpiXMa2Iy0-g/exec';
+
+  try {
+    const payload = {
+      cliente: {
+        nombre: data.shippingInfo?.firstName || '',
+        apellido: data.shippingInfo?.lastName || '',
+        telefono: data.shippingInfo?.phone || '',
+      },
+      items: data.orderItems.map((item: any) => ({
+        nombre: item.name,
+        talla: item.option || '',
+        color: item.color || '',
+        cantidad: item.quantity || 1,
+        precio: Number(item.price) || 0,
+      }))
+    };
+
+    console.log('Enviando orden a Google Sheets...');
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json().catch(() => null);
+    console.log('✅ Sincronización Google Sheets exitosa:', result);
+  } catch (error) {
+    console.error('Error no crítico al sincronizar con Google Sheets:', error);
+  }
+}
+
 export async function POST(request: Request) {
   try {
     // Apply Rate Limiting: max 5 checkouts per 5 minutes per IP
@@ -141,6 +178,13 @@ ${Number(orderDiscount) > 0 ? `*Descuento Mes Patrio (10%):* -Q${Number(orderDis
 
     // --- Send Telegram Notification ---
     await sendTelegramNotification(telegramMessage);
+
+    // --- Sync with Google Sheets (Deduct stock and record sale) ---
+    await syncOrderToGoogleSheets({
+      shippingInfo,
+      orderItems,
+      orderTotal,
+    });
 
     // --- Email Sending (Disabled) ---
     console.log('Email sending is disabled. Skipping confirmation email.');
