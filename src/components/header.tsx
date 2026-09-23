@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { navLinks, isProductAvailable } from '@/lib/data';
@@ -8,7 +8,7 @@ import { Search, ShoppingCart, Menu } from 'lucide-react';
 import Cart from './cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/stores/cart-store';
@@ -98,6 +98,16 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const isMobile = useIsMobile();
   const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isSearchOpen) {
+      const timer = setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 60);
+      return () => clearTimeout(timer);
+    }
+  }, [isSearchOpen]);
 
   const performSearch = (term: string) => {
     if (term.trim() === '') {
@@ -303,22 +313,44 @@ const Header = () => {
 
         <div className="header-icons">
           <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-            <button onClick={() => setIsSearchOpen(true)} aria-label="Open search">
-              <Search
-                className="search-icon"
-                color="hsl(var(--accent))"
-              />
-            </button>
-            <DialogContent className="search-dialog-content">
+            <DialogTrigger asChild>
+              <button 
+                type="button" 
+                className="p-1 flex items-center justify-center rounded-full hover:bg-white/10 active:scale-95 transition-all focus:outline-none" 
+                aria-label="Abrir búsqueda"
+                onClick={() => setIsSearchOpen(true)}
+              >
+                <Search
+                  className="search-icon"
+                  color="hsl(var(--accent))"
+                />
+              </button>
+            </DialogTrigger>
+            <DialogContent 
+              className="search-dialog-content"
+              onOpenAutoFocus={(e) => {
+                e.preventDefault();
+                searchInputRef.current?.focus();
+              }}
+            >
                 <DialogTitle className="sr-only">Búsqueda de productos</DialogTitle>
-                <div className="search-dialog-header">
-                    <Search className="search-icon" />
+                <div 
+                  className="search-dialog-header cursor-text"
+                  onClick={() => searchInputRef.current?.focus()}
+                >
+                    <Search className="search-icon flex-shrink-0 cursor-pointer" onClick={() => searchInputRef.current?.focus()} />
                     <input
+                        ref={searchInputRef}
                         type="text"
                         placeholder="Busca un producto o marca..."
                         className="search-dialog-input"
                         value={searchTerm}
                         onChange={handleSearchInputChange}
+                        autoFocus
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
                     />
                 </div>
                 <div className="search-results-container">
