@@ -176,7 +176,7 @@ export async function POST(request: Request) {
 ${itemsWithAbsoluteImageUrls.map((item: any) => `- ${item.quantity}x ${item.name} (${item.option})`).join('\n')}
 ---------------------------
 *Subtotal:* Q${orderSubtotal.toFixed(2)}
-${Number(orderDiscount) > 0 ? `*Descuento Mes Patrio (10%):* -Q${Number(orderDiscount).toFixed(2)}\n` : ''}*Envío:* Q${orderShipping.toFixed(2)}
+${Number(orderDiscount) > 0 ? `*Descuento:* -Q${Number(orderDiscount).toFixed(2)}\n` : ''}*Envío:* Q${orderShipping.toFixed(2)}
 *Comisión Contra Entrega:* Q${orderCommission.toFixed(2)}
 *TOTAL:* *Q${orderTotal.toFixed(2)}*
 ---------------------------

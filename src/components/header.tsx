@@ -325,27 +325,12 @@ const Header = () => {
                 {searchResults.length > 0 ? (
                     searchResults.map((result, index) => {
                       const resultImg = result.images && result.images.length > 0 ? result.images[0].src : PLACEHOLDER_IMAGE;
-                      const isAvail = isProductAvailable(result);
-                      const cleanPriceStr = (result.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
-                      const basePriceNum = parseFloat(cleanPriceStr) || 0;
-                      const discountedPrice = basePriceNum > 0 ? Math.round(basePriceNum * 0.9) : 0;
-
                       return (
                         <div key={`${result.id}-${index}`} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
                             <Image src={resultImg} alt={result.name} width={50} height={50} unoptimized />
                             <div className="search-result-info">
                             <div className="search-result-name">{result.name}</div>
-                            <div className="search-result-price flex items-center gap-2">
-                              {isAvail && basePriceNum > 0 ? (
-                                <>
-                                  <span className="text-red-500 font-bold">Q.{discountedPrice}.00</span>
-                                  <span className="text-xs text-zinc-500 line-through">{result.price}</span>
-                                  <span className="text-[10px] text-sky-400 font-bold">🇬🇹 -10%</span>
-                                </>
-                              ) : (
-                                <span>{result.price}</span>
-                              )}
-                            </div>
+                            <div className="search-result-price">{result.price}</div>
                             </div>
                         </div>
                       );
@@ -367,39 +352,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-      
-      {/* Cinta conmemorativa de la Bandera de Guatemala en colores pastel estilo Superman */}
-      <div
-        role="banner"
-        aria-label="10% de descuento por el mes patrio"
-        className="patriotic-ribbon-bar group"
-      >
-        {/* Animated Light Shimmer Beam Effect */}
-        <div className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none animate-ribbon-shimmer" />
-
-        {/* Left Badge */}
-        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
-          <span className="text-base md:text-xl filter drop-shadow-sm">🇬🇹</span>
-          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-[#08233c] bg-white/80 px-2.5 py-0.5 rounded-full border border-white shadow-sm">
-            MES PATRIO
-          </span>
-        </div>
-
-        {/* Ribbon Main Text */}
-        <div className="flex items-center gap-1.5 text-center z-10">
-          <span className="font-black text-xs md:text-sm lg:text-base tracking-wider uppercase text-[#08233c] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-            ⚡ 10% DE DESCUENTO POR EL MES PATRIO ⚡
-          </span>
-        </div>
-
-        {/* Right Badge */}
-        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
-          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-[#08233c] bg-white/80 px-2.5 py-0.5 rounded-full border border-white shadow-sm">
-            GUATEMALA
-          </span>
-          <span className="text-base md:text-xl filter drop-shadow-sm">🇬🇹</span>
-        </div>
-      </div>
 
       <Cart />
     </>
