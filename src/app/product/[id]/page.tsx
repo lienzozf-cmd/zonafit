@@ -339,11 +339,6 @@ const ProductDetailPage = () => {
 
   const isPendingOption = hasMultipleOptions && !selectedOption;
 
-  const cleanPriceStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
-  const basePriceNum = parseFloat(cleanPriceStr) || 0;
-  const isDiscountEligible = (totalCurrentStock > 0 || product.availability === 'Disponible') && product.availability !== 'Agotado' && basePriceNum > 0;
-  const discountedPrice = isDiscountEligible ? Math.round(basePriceNum * 0.9) : basePriceNum;
-
   return (
     <>
     <Header />
@@ -445,30 +440,14 @@ const ProductDetailPage = () => {
                 {product.name}
               </h1>
               
-              <div className="flex flex-wrap items-center gap-3">
-                {isDiscountEligible ? (
-                  <>
-                    <p className="text-3xl md:text-4xl font-black text-red-600 tracking-tighter">
-                      Q.{discountedPrice}.00
-                    </p>
-                    <p className="text-lg text-zinc-500 line-through font-bold">
-                      {product.price}
-                    </p>
-                    <span className="patriotic-product-badge text-xs px-3 py-1">
-                      🇬🇹 10% DTO. MES PATRIO
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-3xl md:text-4xl font-black text-zinc-400 tracking-tighter">
-                      {product.price}
-                    </p>
-                    {product.originalPrice && (
-                      <p className="text-lg text-zinc-700 line-through font-bold">
+              <div className="flex items-center gap-4">
+                <p className="text-3xl font-black text-red-600 tracking-tighter">
+                  {product.price}
+                </p>
+                {product.originalPrice && (
+                    <p className="text-lg text-zinc-700 line-through font-bold">
                         {product.originalPrice}
-                      </p>
-                    )}
-                  </>
+                    </p>
                 )}
               </div>
             </div>

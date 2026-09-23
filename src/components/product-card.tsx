@@ -236,16 +236,6 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
 
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
 
-  const basePriceNum = useMemo(() => {
-    const cleanStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
-    const parsed = parseFloat(cleanStr);
-    return isNaN(parsed) ? 0 : parsed;
-  }, [product.price]);
-
-  const discountedPrice = useMemo(() => {
-    return isProductAvailable && basePriceNum > 0 ? Math.round(basePriceNum * 0.9) : basePriceNum;
-  }, [isProductAvailable, basePriceNum]);
-
   return (
     <div 
         className="product-item flex flex-col"
@@ -275,32 +265,17 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         <div className='flex flex-col flex-grow mt-4'>
             <p className={`font-semibold text-sm mb-1 uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
             <Link 
-                href={productUrl}
+                href={productUrl} 
                 onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender, productId: product.id } }))}
             >
                 <h3 className="product-name">{product.name}</h3>
             </Link>
 
-            {/* Price display with 10% discount for available products */}
-            <div className="flex flex-col items-center justify-center my-1 gap-1">
-              {isProductAvailable && basePriceNum > 0 ? (
-                <>
-                  <div className="flex justify-center items-baseline gap-2">
-                    <span className="text-red-500 font-black text-xl tracking-tight leading-none">Q.{discountedPrice}.00</span>
-                    <span className="text-xs text-zinc-500 line-through font-semibold leading-none">{product.price}</span>
-                  </div>
-                  <span className="patriotic-product-badge">
-                    🇬🇹 10% OFF MES PATRIO
-                  </span>
-                </>
-              ) : (
-                <div className="flex justify-center items-center gap-2">
-                  <p className="product-price text-zinc-400">{product.price}</p>
-                  {product.originalPrice && (
-                    <p className="text-sm text-zinc-600 line-through font-bold">{product.originalPrice}</p>
-                  )}
-                </div>
-              )}
+            <div className="flex justify-center items-center gap-2 my-1">
+                <p className="product-price">{product.price}</p>
+                {product.originalPrice && (
+                    <p className="text-sm text-zinc-500 line-through font-bold">{product.originalPrice}</p>
+                )}
             </div>
 
             <div className="flex justify-center my-2">
