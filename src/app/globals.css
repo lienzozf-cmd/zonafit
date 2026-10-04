@@ -1492,3 +1492,75 @@ footer {
     padding: 2px 10px;
   }
 }
+
+/* ==========================================================================
+   CINTA CONMEMORATIVA 2° ANIVERSARIO - ROJO Y NEGRO (5% DESCUENTO)
+   ========================================================================== */
+
+.anniversary-ribbon-bar {
+  position: relative;
+  width: 100%;
+  z-index: 20;
+  overflow: hidden;
+  /* Degradado premium negro y rojo con resplandor carmesí central */
+  background: linear-gradient(90deg, #050505 0%, #170303 15%, #500707 35%, #880d0d 50%, #500707 65%, #170303 85%, #050505 100%);
+  border-top: 1px solid rgba(220, 38, 38, 0.4);
+  border-bottom: 2px solid rgba(239, 68, 68, 0.85);
+  box-shadow: 0 4px 25px rgba(220, 38, 38, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .anniversary-ribbon-bar {
+    padding: 9px 24px;
+    gap: 18px;
+  }
+}
+
+@keyframes anniversaryShimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  50%, 100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.animate-anniversary-shimmer {
+  animation: anniversaryShimmer 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Badge Aniversario para productos disponibles */
+.anniversary-product-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2.5px 9px;
+  border-radius: 9999px;
+  font-size: 9.5px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #09090b 0%, #7f1d1d 50%, #09090b 100%);
+  color: #ffffff;
+  border: 1px solid rgba(239, 68, 68, 0.7);
+  box-shadow: 0 0 12px rgba(220, 38, 38, 0.5);
+  animation: anniversary-badge-pulse 2.8s infinite ease-in-out;
+}
+
+@keyframes anniversary-badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.75);
+  }
+}
+

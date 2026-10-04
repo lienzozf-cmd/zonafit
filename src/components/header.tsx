@@ -357,12 +357,27 @@ const Header = () => {
                 {searchResults.length > 0 ? (
                     searchResults.map((result, index) => {
                       const resultImg = result.images && result.images.length > 0 ? result.images[0].src : PLACEHOLDER_IMAGE;
+                      const isAvail = isProductAvailable(result);
+                      const cleanPriceStr = (result.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+                      const basePriceNum = parseFloat(cleanPriceStr) || 0;
+                      const discountedPrice = basePriceNum > 0 ? basePriceNum * 0.95 : 0;
+
                       return (
                         <div key={`${result.id}-${index}`} className="search-result-item" onClick={() => handleSearchResultClick(result)}>
                             <Image src={resultImg} alt={result.name} width={50} height={50} unoptimized />
                             <div className="search-result-info">
                             <div className="search-result-name">{result.name}</div>
-                            <div className="search-result-price">{result.price}</div>
+                            <div className="search-result-price flex items-center gap-2">
+                              {isAvail && basePriceNum > 0 ? (
+                                <>
+                                  <span className="text-red-500 font-bold">Q.{discountedPrice.toFixed(2)}</span>
+                                  <span className="text-xs text-zinc-500 line-through">{result.price}</span>
+                                  <span className="text-[10px] text-red-400 font-bold bg-red-950/70 px-1.5 py-0.5 rounded border border-red-600/40">🔥 -5%</span>
+                                </>
+                              ) : (
+                                <span>{result.price}</span>
+                              )}
+                            </div>
                             </div>
                         </div>
                       );
@@ -384,6 +399,39 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+      {/* Cinta conmemorativa 2° Aniversario - 5% de Descuento (Rojo y Negro) */}
+      <div
+        role="banner"
+        aria-label="5% de descuento por el 2 aniversario"
+        className="anniversary-ribbon-bar group"
+      >
+        {/* Animated Light Shimmer Beam Effect */}
+        <div className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-red-500/25 to-transparent pointer-events-none animate-anniversary-shimmer" />
+
+        {/* Left Badge */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
+          <span className="text-sm md:text-base filter drop-shadow-sm">🔥</span>
+          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-red-400 bg-black/80 px-2.5 py-0.5 rounded-full border border-red-600/50 shadow-[0_0_10px_rgba(220,38,38,0.4)]">
+            2° ANIVERSARIO
+          </span>
+        </div>
+
+        {/* Ribbon Main Text */}
+        <div className="flex items-center gap-1.5 text-center z-10">
+          <span className="font-black text-xs md:text-sm lg:text-base tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+            ⚡ 5% DE DESCUENTO POR EL 2° ANIVERSARIO ⚡
+          </span>
+        </div>
+
+        {/* Right Badge */}
+        <div className="flex items-center gap-1.5 flex-shrink-0 z-10">
+          <span className="hidden sm:inline-block font-black text-[10px] md:text-xs uppercase tracking-widest text-red-400 bg-black/80 px-2.5 py-0.5 rounded-full border border-red-600/50 shadow-[0_0_10px_rgba(220,38,38,0.4)]">
+            ZONA FIT GT
+          </span>
+          <span className="text-sm md:text-base filter drop-shadow-sm">🔥</span>
+        </div>
+      </div>
 
       <Cart />
     </>
