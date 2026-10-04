@@ -360,7 +360,7 @@ const Header = () => {
                       const isAvail = isProductAvailable(result);
                       const cleanPriceStr = (result.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
                       const basePriceNum = parseFloat(cleanPriceStr) || 0;
-                      const discountedPrice = basePriceNum > 0 ? basePriceNum * 0.95 : 0;
+                      const discountedPrice = basePriceNum > 0 ? Math.round(basePriceNum * 0.95) : 0;
 
                       return (
                         <div key={`${result.id}-${index}`} className="search-result-item" onClick={() => handleSearchResultClick(result)}>

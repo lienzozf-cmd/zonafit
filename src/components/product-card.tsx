@@ -243,7 +243,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   }, [product.price]);
 
   const discountedPrice = useMemo(() => {
-    return isProductAvailable && basePriceNum > 0 ? basePriceNum * 0.95 : basePriceNum;
+    return isProductAvailable && basePriceNum > 0 ? Math.round(basePriceNum * 0.95) : basePriceNum;
   }, [isProductAvailable, basePriceNum]);
 
   return (
