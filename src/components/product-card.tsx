@@ -236,6 +236,16 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
 
   const productUrl = `/product/${product.id}?pos=${index}&sid=${sessionId}`;
 
+  const basePriceNum = useMemo(() => {
+    const cleanStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+    const parsed = parseFloat(cleanStr);
+    return isNaN(parsed) ? 0 : parsed;
+  }, [product.price]);
+
+  const discountedPrice = useMemo(() => {
+    return isProductAvailable && basePriceNum > 0 ? basePriceNum * 0.95 : basePriceNum;
+  }, [isProductAvailable, basePriceNum]);
+
   return (
     <div 
         className="product-item flex flex-col"
@@ -271,11 +281,30 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                 <h3 className="product-name">{product.name}</h3>
             </Link>
 
-            <div className="flex justify-center items-center gap-2 my-1">
-                <p className="product-price">{product.price}</p>
-                {product.originalPrice && (
-                    <p className="text-sm text-zinc-500 line-through font-bold">{product.originalPrice}</p>
-                )}
+            {/* Price display with 5% anniversary discount for available products */}
+            <div className="flex flex-col items-center justify-center my-1 gap-1">
+              {isProductAvailable && basePriceNum > 0 ? (
+                <>
+                  <div className="flex justify-center items-baseline gap-2">
+                    <span className="text-red-500 font-black text-xl tracking-tight leading-none">
+                      Q.{discountedPrice.toFixed(2)}
+                    </span>
+                    <span className="text-xs text-zinc-500 line-through font-semibold leading-none">
+                      {product.price}
+                    </span>
+                  </div>
+                  <span className="anniversary-product-badge">
+                    🔥 5% OFF 2° ANIVERSARIO
+                  </span>
+                </>
+              ) : (
+                <div className="flex justify-center items-center gap-2">
+                  <p className="product-price text-zinc-400">{product.price}</p>
+                  {product.originalPrice && (
+                    <p className="text-sm text-zinc-600 line-through font-bold">{product.originalPrice}</p>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="flex justify-center my-2">

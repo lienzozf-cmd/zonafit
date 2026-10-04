@@ -92,8 +92,10 @@ export default function CheckoutPage() {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const codCommission = paymentMethod === 'cod' ? Math.round(subtotal * codCommissionPercentage) : 0;
-  const orderTotal = subtotal + shippingCost + codCommission;
+  const discountAmount = subtotal * 0.05; // 5% Descuento 2° Aniversario
+  const totalAfterDiscount = Math.max(0, subtotal - discountAmount);
+  const codCommission = paymentMethod === 'cod' ? Math.round(totalAfterDiscount * codCommissionPercentage) : 0;
+  const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;
 
   useEffect(() => {
@@ -203,7 +205,7 @@ export default function CheckoutPage() {
       shippingInfo: data,
       orderItems: items,
       orderSubtotal: subtotal,
-      orderDiscount: 0, 
+      orderDiscount: discountAmount, 
       orderShipping: shippingCost,
       orderCommission: codCommission,
       orderTotal: orderTotal,
@@ -642,6 +644,12 @@ export default function CheckoutPage() {
                   <div className="flex justify-between text-zinc-400">
                     <span>Subtotal</span>
                     <span className="font-bold text-white font-mono">Q{subtotal.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-red-400 bg-red-950/40 p-2.5 rounded-xl border border-red-600/30">
+                    <span className="flex items-center gap-1.5 font-bold text-xs sm:text-sm">
+                      <span className="text-base">🔥</span> Descuento 2° Aniversario (5%)
+                    </span>
+                    <span className="font-black font-mono text-sm sm:text-base text-red-300">-Q{discountAmount.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span className="flex items-center gap-1.5">
