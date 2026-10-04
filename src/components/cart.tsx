@@ -177,8 +177,8 @@ const Cart = () => {
 
             <div className="p-6 bg-zinc-950 border-t border-zinc-900 space-y-4">
               {(() => {
-                const discountAmount = total * 0.05;
-                const finalTotal = Math.max(0, total - discountAmount);
+                const finalTotal = Math.max(0, Math.round(total * 0.95));
+                const discountAmount = Math.max(0, total - finalTotal);
                 return (
                   <div className="space-y-2">
                     <div className="flex justify-between text-zinc-400 text-sm">

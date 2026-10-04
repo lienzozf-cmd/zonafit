@@ -92,8 +92,8 @@ export default function CheckoutPage() {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const discountAmount = subtotal * 0.05; // 5% Descuento 2° Aniversario
-  const totalAfterDiscount = Math.max(0, subtotal - discountAmount);
+  const totalAfterDiscount = Math.max(0, Math.round(subtotal * 0.95));
+  const discountAmount = Math.max(0, subtotal - totalAfterDiscount); // 5% Descuento 2° Aniversario
   const codCommission = paymentMethod === 'cod' ? Math.round(totalAfterDiscount * codCommissionPercentage) : 0;
   const orderTotal = totalAfterDiscount + shippingCost + codCommission;
   const isCartEmpty = items.length === 0;

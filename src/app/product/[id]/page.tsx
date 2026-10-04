@@ -342,7 +342,7 @@ const ProductDetailPage = () => {
   const cleanPriceStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
   const basePriceNum = parseFloat(cleanPriceStr) || 0;
   const isDiscountEligible = (totalCurrentStock > 0 || product.availability === 'Disponible') && product.availability !== 'Agotado' && basePriceNum > 0;
-  const discountedPrice = isDiscountEligible ? basePriceNum * 0.95 : basePriceNum;
+  const discountedPrice = isDiscountEligible ? Math.round(basePriceNum * 0.95) : basePriceNum;
 
   return (
     <>
