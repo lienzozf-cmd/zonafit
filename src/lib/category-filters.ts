@@ -33,11 +33,13 @@ export const categoryFilters: Record<string, (p: Product) => boolean> = {
   'mujeres-chamarras': (p) => p.gender === 'mujer' && p.subcategory === 'chamarra',
   'mujeres-pants': (p) => p.gender === 'mujer' && (p.subcategory === 'pantalon' || p.subcategory === 'jogger'),
 
+  'accesorios': (p) => p.category === 'accesorio',
   'accesorios-equipo': (p) => p.category === 'accesorio' && (
     p.subcategory === 'equipo' ||
     p.name.toLowerCase().includes('strap') ||
     p.name.toLowerCase().includes('wrap')
   ),
+  'suplementos': (p) => p.category === 'suplemento',
   'suplementos-pre-entrenos': (p) => p.category === 'suplemento' && (
     p.subcategory === 'pre-entreno' ||
     p.name.toLowerCase().includes('pre-workout') ||
@@ -45,6 +47,7 @@ export const categoryFilters: Record<string, (p: Product) => boolean> = {
     p.name.toLowerCase().includes('glycerol') ||
     p.name.toLowerCase().includes('venom')
   ),
+  'joyeria': (p) => p.category === 'joyeria',
   'joyeria-rgmnt': (p) => p.category === 'joyeria' && (p.subcategory === 'rgmnt' || p.brand === 'RGMNT'),
 };
 
