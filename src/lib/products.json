@@ -1,5 +1,97 @@
 [
   {
+    "id": 5098,
+    "name": "Darc Sport Star Wars Anakin Skywalker",
+    "price": "Q.650.00",
+    "availability": "Disponible",
+    "description": "Playera oversized edición limitada Darc Sport x Star Wars protagonizada por Anakin Skywalker. Confeccionada en algodón pesado premium con acabado vintage wash y serigrafía artística del Lado Oscuro de alta durabilidad.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Darc Sport",
+    "fabric_type": "100% Algodón Pesado Vintage Wash",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "/assets/images/marcas/darcsport/Darc Sport Star Wars Anakin Skywalker.webp",
+        "alt": "Darc Sport Star Wars Anakin Skywalker",
+        "color": "Anakin",
+        "dataAiHint": "men graphic tee dark"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Anakin",
+        "hex": "#1a1a1a",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/darcsport/Darc Sport Star Wars Anakin Skywalker.webp"
+      }
+    ],
+    "feature1": "Edición Limitada Colaboración Star Wars",
+    "feature2": "Corte Oversized Drop Shoulder Prémium",
+    "feature3": "Algodón Pesado con Lavado Vintage",
+    "feature4": "Estampado Artístico Exclusivo Anakin Skywalker",
+    "visible": true
+  },
+  {
+    "id": 5097,
+    "name": "Training Shorts",
+    "price": "Q.440.00",
+    "availability": "Disponible",
+    "description": "Shorts de entrenamiento de alto rendimiento Gymshark. Diseñados con tejido transpirable de secado rápido, corte atlético cómodo y pretina elástica ajustable para máxima libertad de movimiento durante entrenamientos intensos.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "short",
+    "brand": "Gymshark",
+    "fabric_type": "Poliéster y Elastano Transpirable",
+    "is_compression": false,
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/TRAINING SHORTS GRIS.webp",
+        "alt": "Training Shorts Grey - Gymshark",
+        "color": "Grey",
+        "dataAiHint": "men training shorts grey"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Grey",
+        "hex": "#808080",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/TRAINING SHORTS GRIS.webp"
+      }
+    ],
+    "feature1": "Tejido Ligero y Transpirable",
+    "feature2": "Pretina Elástica con Cordón de Ajuste",
+    "feature3": "Bolsillos Laterales Funcionales",
+    "feature4": "Corte Atlético para Movilidad Óptima",
+    "visible": true
+  },
+  {
     "id": 5096,
     "name": "Flex Long Sleeve Crop Top",
     "price": "Q.335.00",
@@ -913,7 +1005,7 @@
       "type": "talla",
       "values": [
         {
-          "stock": 2,
+          "stock": 1,
           "value": "S"
         }
       ]
@@ -2109,7 +2201,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 1,
+              "stock": 2,
               "value": "M"
             }
           ]
@@ -3003,7 +3095,7 @@
     "id": 2665,
     "name": "4065 - Warrior X Compression Tees",
     "price": "Q.500.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -3063,7 +3155,7 @@
               "value": "S"
             },
             {
-              "stock": 1,
+              "stock": 0,
               "value": "M"
             },
             {
@@ -3297,7 +3389,7 @@
     "id": 2671,
     "name": "Onyx 5.0 long sleeve",
     "price": "Q.775.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -3340,7 +3432,7 @@
               "value": "S"
             },
             {
-              "stock": 1,
+              "stock": 0,
               "value": "M"
             }
           ]
@@ -3368,7 +3460,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 2,
+              "stock": 0,
               "value": "M"
             }
           ]
@@ -4288,7 +4380,7 @@
     "id": 2693,
     "name": "2032 - Superman pants",
     "price": "Q.675.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
     "gender": "hombre",
     "category": "ropa",
@@ -4315,7 +4407,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 1,
+              "stock": 0,
               "value": "S"
             }
           ]
@@ -5486,10 +5578,10 @@
   },
   {
     "id": 2723,
-    "name": "PURE PROTEIN (Caja)",
+    "name": "PURE PROTEIN (Caja de 4 Unidades)",
     "price": "Q.300.00",
-    "availability": "Disponible",
-    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
+    "availability": "Agotado",
+    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Caja de 4 unidades de barras de proteína con 20g de proteína por barra, libres de gluten y bajas en azúcar.",
     "gender": "unisex",
     "category": "suplemento",
     "subcategory": "comida",
@@ -5506,7 +5598,7 @@
       "type": "sabor",
       "values": [
         {
-          "stock": 3,
+          "stock": 0,
           "value": "Chewy Chocolate"
         }
       ]
@@ -5517,7 +5609,8 @@
     "feature3": "Libre de Azúcares y Rellenos",
     "feature4": "Sabor y Mezclabilidad de Nivel Pro",
     "benefits": "Snack alto en proteína.",
-    "visible": true
+    "visible": true,
+    "servings_info": "Caja de 4 unidades."
   },
   {
     "id": 2724,
@@ -6992,7 +7085,7 @@
     "id": 3039,
     "name": "Varsity 2.0 Oversized Straight Leg Joggers",
     "price": "Q.590.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Joggers holgados de pierna recta de la marca AYBL. Confeccionados en un tejido French Terry cepillado ultra suave, ideales para un look relajado de descanso o pre-entreno.",
     "gender": "mujer",
     "category": "ropa",
@@ -7017,7 +7110,7 @@
       "type": "talla",
       "values": [
         {
-          "stock": 1,
+          "stock": 0,
           "value": "M"
         }
       ]
@@ -7030,7 +7123,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 1,
+              "stock": 0,
               "value": "M"
             }
           ]

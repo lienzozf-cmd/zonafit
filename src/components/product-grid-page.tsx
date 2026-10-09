@@ -42,12 +42,34 @@ export default function ProductGridPage({
 
   // Sincronizar productos iniciales con el stock dinámico y en tiempo real de la tienda
   const mergedProducts = useMemo(() => {
-    if (categoryKey && storeProducts && storeProducts.length > 0) {
-      return filterProductsByCategory(storeProducts, categoryKey);
+    // 1. Si hay categoryKey especificada (ej. "hombres", "hombres-shorts", etc.)
+    if (categoryKey) {
+      if (storeProducts && storeProducts.length > 0) {
+        return filterProductsByCategory(storeProducts, categoryKey);
+      }
+      return filterProductsByCategory(initialProducts, categoryKey);
     }
-    if (!storeProducts || storeProducts.length === 0) return initialProducts;
-    return initialProducts.map(p => storeProducts.find(sp => String(sp.id) === String(p.id)) || p);
-  }, [initialProducts, storeProducts, categoryKey]);
+
+    // 2. Si es una página de marca individual (hideBrandFilter === true)
+    if (hideBrandFilter && initialProducts.length > 0) {
+      const targetBrand = initialProducts[0].brand;
+      if (storeProducts && storeProducts.length > 0) {
+        return storeProducts.filter(
+          (p) => p.brand?.trim().toLowerCase() === targetBrand?.trim().toLowerCase()
+        );
+      }
+      return initialProducts;
+    }
+
+    // 3. "Ver Todo" (todas las marcas / todos los productos nuevos y existentes)
+    if (storeProducts && storeProducts.length > 0) {
+      const storeMap = new Map(storeProducts.map((p) => [String(p.id), p]));
+      const extras = initialProducts.filter((p) => !storeMap.has(String(p.id)));
+      return [...storeProducts, ...extras];
+    }
+
+    return initialProducts;
+  }, [initialProducts, storeProducts, categoryKey, hideBrandFilter]);
 
   const availableBrands = useMemo(() => {
     const brands = mergedProducts.map(p => p.brand);
