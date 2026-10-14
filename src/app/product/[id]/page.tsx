@@ -341,8 +341,6 @@ const ProductDetailPage = () => {
 
   const cleanPriceStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
   const basePriceNum = parseFloat(cleanPriceStr) || 0;
-  const isDiscountEligible = (totalCurrentStock > 0 || product.availability === 'Disponible') && product.availability !== 'Agotado' && basePriceNum > 0;
-  const discountedPrice = isDiscountEligible ? Math.round(basePriceNum * 0.95) : basePriceNum;
 
   return (
     <>
@@ -446,29 +444,13 @@ const ProductDetailPage = () => {
               </h1>
               
               <div className="flex flex-wrap items-center gap-3">
-                {isDiscountEligible ? (
-                  <>
-                    <p className="text-3xl md:text-4xl font-black text-red-600 tracking-tighter">
-                      Q.{discountedPrice.toFixed(2)}
-                    </p>
-                    <p className="text-lg text-zinc-500 line-through font-bold">
-                      {product.price}
-                    </p>
-                    <span className="anniversary-product-badge text-xs px-3 py-1">
-                      🔥 5% DTO. 2° ANIVERSARIO
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-3xl md:text-4xl font-black text-zinc-400 tracking-tighter">
-                      {product.price}
-                    </p>
-                    {product.originalPrice && (
-                      <p className="text-lg text-zinc-700 line-through font-bold">
-                        {product.originalPrice}
-                      </p>
-                    )}
-                  </>
+                <p className="text-3xl md:text-4xl font-black text-white tracking-tighter">
+                  {product.price}
+                </p>
+                {product.originalPrice && (
+                  <p className="text-lg text-zinc-500 line-through font-bold">
+                    {product.originalPrice}
+                  </p>
                 )}
               </div>
             </div>
