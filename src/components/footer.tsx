@@ -4,7 +4,7 @@ import { Lock } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="relative z-30 bg-[#080808]">
       <div className="footer-content">
         <div className="footer-section about">
           <h3>Acerca de Nosotros</h3>
