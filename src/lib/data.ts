@@ -47,7 +47,12 @@ export type Product = {
 
 // --- DATOS Y EXPORTACIONES ---
 
-export const products: Product[] = productsData as Product[];
+import { SPIDERMAN_PRODUCTS } from './spiderman-products';
+
+export const products: Product[] = [
+  ...(productsData as Product[]),
+  ...SPIDERMAN_PRODUCTS,
+];
 
 export const isProductAvailable = (product: Product): boolean => {
   if (product.availability === 'Agotado') return false;

@@ -114,8 +114,16 @@ const Header = () => {
       setSearchResults([]);
       return;
     }
+    const cleanTerm = term.toLowerCase().trim();
     const results = products
-      .filter(p => p.visible !== false && p.name.toLowerCase().includes(term.toLowerCase()))
+      .filter(p => {
+        if (p.visible === false) return false;
+        const nameMatch = p.name?.toLowerCase().includes(cleanTerm);
+        const brandMatch = p.brand?.toLowerCase().includes(cleanTerm);
+        const subcategoryMatch = p.subcategory?.toLowerCase().includes(cleanTerm);
+        const descMatch = p.description?.toLowerCase().includes(cleanTerm);
+        return nameMatch || brandMatch || subcategoryMatch || descMatch;
+      })
       .sort((a, b) => {
         const aAvailable = isProductAvailable(a);
         const bAvailable = isProductAvailable(b);

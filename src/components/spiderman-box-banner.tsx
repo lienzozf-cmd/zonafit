@@ -362,26 +362,42 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
         <div className="absolute bottom-1/5 right-1/6 w-2 h-2 rounded-full bg-red-600 shadow-[0_0_16px_#dc2626] animate-pulse" />
       </div>
 
-      {/* Web Shooting Visual FX during opening */}
+      {/* Authentic Spider-Man Web Blast FX during opening */}
       <AnimatePresence>
         {showWebEffect && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.2 }}
-            animate={{ opacity: 1, scale: 1.2 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0.1, rotate: -20 }}
+            animate={{ opacity: 1, scale: [0.1, 1.3, 1.1], rotate: 0 }}
+            exit={{ opacity: 0, scale: 1.5, filter: 'blur(8px)' }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none"
           >
-            <div className="relative w-96 h-96">
-              <svg viewBox="0 0 200 200" className="w-full h-full">
+            <div className="relative w-80 h-80 sm:w-[480px] sm:h-[480px]">
+              <svg viewBox="0 0 400 400" className="w-full h-full filter drop-shadow-[0_0_12px_rgba(255,255,255,0.95)] drop-shadow-[0_0_28px_rgba(239,68,68,0.85)]">
+                {/* Radiating Silk Web Spokes */}
                 <motion.path
-                  d="M 100 100 L 20 20 M 100 100 L 180 20 M 100 100 L 190 180 M 100 100 L 10 170 M 100 100 L 100 0 M 100 100 L 200 100 M 100 100 L 0 100 M 100 100 L 100 200"
+                  d="M 200 200 L 395.0 200.0 M 200 200 L 368.9 297.5 M 200 200 L 297.5 368.9 M 200 200 L 200.0 395.0 M 200 200 L 102.5 368.9 M 200 200 L 31.1 297.5 M 200 200 L 5.0 200.0 M 200 200 L 31.1 102.5 M 200 200 L 102.5 31.1 M 200 200 L 200.0 5.0 M 200 200 L 297.5 31.1 M 200 200 L 368.9 102.5"
                   stroke="#ffffff"
-                  strokeWidth="3"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.25 }}
+                  transition={{ duration: 0.28, ease: "easeOut" }}
                 />
-                <circle cx="100" cy="100" r="18" fill="#ef4444" className="animate-ping" />
+                {/* Concentric Scalloped Web Spirals with natural silk curve */}
+                <motion.path
+                  d="M 235.0 200.0 Q 229.8 208.0 230.3 217.5 Q 221.8 221.8 217.5 230.3 Q 208.0 229.8 200.0 235.0 Q 192.0 229.8 182.5 230.3 Q 178.2 221.8 169.7 217.5 Q 170.2 208.0 165.0 200.0 Q 170.2 192.0 169.7 182.5 Q 178.2 178.2 182.5 169.7 Q 192.0 170.2 200.0 165.0 Q 208.0 170.2 217.5 169.7 Q 221.8 178.2 230.3 182.5 Q 229.8 192.0 235.0 200.0 M 272.0 200.0 Q 261.2 216.4 262.4 236.0 Q 244.8 244.8 236.0 262.4 Q 216.4 261.2 200.0 272.0 Q 183.6 261.2 164.0 262.4 Q 155.2 244.8 137.6 236.0 Q 138.8 216.4 128.0 200.0 Q 138.8 183.6 137.6 164.0 Q 155.2 155.2 164.0 137.6 Q 183.6 138.8 200.0 128.0 Q 216.4 138.8 236.0 137.6 Q 244.8 155.2 262.4 164.0 Q 261.2 183.6 272.0 200.0 M 315.0 200.0 Q 297.8 226.2 299.6 257.5 Q 271.6 271.6 257.5 299.6 Q 226.2 297.8 200.0 315.0 Q 173.8 297.8 142.5 299.6 Q 128.4 271.6 100.4 257.5 Q 102.2 226.2 85.0 200.0 Q 102.2 173.8 100.4 142.5 Q 128.4 128.4 142.5 100.4 Q 173.8 102.2 200.0 85.0 Q 226.2 102.2 257.5 100.4 Q 271.6 128.4 299.6 142.5 Q 297.8 173.8 315.0 200.0 M 355.0 200.0 Q 331.8 235.3 334.2 277.5 Q 296.4 296.4 277.5 334.2 Q 235.3 331.8 200.0 355.0 Q 164.7 331.8 122.5 334.2 Q 103.6 296.4 65.8 277.5 Q 68.2 235.3 45.0 200.0 Q 68.2 164.7 65.8 122.5 Q 103.6 103.6 122.5 65.8 Q 164.7 68.2 200.0 45.0 Q 235.3 68.2 277.5 65.8 Q 296.4 103.6 334.2 122.5 Q 331.8 164.7 355.0 200.0 M 392.0 200.0 Q 363.2 243.7 366.3 296.0 Q 319.5 319.5 296.0 366.3 Q 243.7 363.2 200.0 392.0 Q 156.3 363.2 104.0 366.3 Q 80.5 319.5 33.7 296.0 Q 36.8 243.7 8.0 200.0 Q 36.8 156.3 33.7 104.0 Q 80.5 80.5 104.0 33.7 Q 156.3 36.8 200.0 8.0 Q 243.7 36.8 296.0 33.7 Q 319.5 80.5 366.3 104.0 Q 363.2 156.3 392.0 200.0"
+                  fill="none"
+                  stroke="#ffffff"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ duration: 0.35, delay: 0.05, ease: "easeOut" }}
+                />
+                {/* Central Silk Web Hub Knot */}
+                <circle cx="200" cy="200" r="4.5" fill="#ffffff" className="drop-shadow-[0_0_8px_#ffffff]" />
               </svg>
             </div>
           </motion.div>
