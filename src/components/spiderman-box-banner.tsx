@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, Volume2, VolumeX, ShoppingBag, Check, Eye } from 'lucide-react';
 import { useCartStore } from '@/stores/cart-store';
@@ -93,6 +94,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
   const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
 
@@ -195,10 +197,22 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
     if (isOpen || isOpening) return;
     setIsOpening(true);
     setShowWebEffect(true);
-    onOpenChange?.(true);
 
     // Play web shooter THWIP sound
     playWebShooterSound();
+
+    // Redirección especial SOLO para vista de teléfono (pantallas menores a 768px)
+    const isMobileView = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (isMobileView) {
+      setTimeout(() => {
+        setIsOpening(false);
+        setShowWebEffect(false);
+        router.push('/coleccion/spiderman');
+      }, 400);
+      return;
+    }
+
+    onOpenChange?.(true);
 
     // Start Post Malone music
     if (audioRef.current && !isMuted) {
@@ -206,7 +220,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
       audioRef.current.play().catch(() => {});
     }
 
-    // After animation sequence, reveal the 4 shirts apartado
+    // After animation sequence, reveal the 4 shirts apartado (vista de escritorio)
     setTimeout(() => {
       setIsOpen(true);
       setIsOpening(false);
