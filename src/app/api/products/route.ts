@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabaseServer } from '@/lib/supabase';
 import type { Product } from '@/lib/data';
+import { SPIDERMAN_PRODUCTS } from '@/lib/spiderman-products';
 
 export const dynamic = 'force-dynamic';
 
@@ -94,14 +95,21 @@ export async function GET() {
       
       return product;
     });
+
+    // Merge spiderman collection products seamlessly
+    const existingIds = new Set(products.map(p => p.id));
+    const allProducts = [
+      ...products,
+      ...SPIDERMAN_PRODUCTS.filter(p => !existingIds.has(p.id))
+    ];
     
-    return NextResponse.json(products, {
+    return NextResponse.json(allProducts, {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       },
     });
   } catch (error: any) {
     console.error('Error fetching products from Supabase API:', error);
-    return NextResponse.json([], { status: 500 });
+    return NextResponse.json(SPIDERMAN_PRODUCTS, { status: 500 });
   }
 }
