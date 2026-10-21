@@ -10,8 +10,13 @@ import {
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
 import { Dumbbell } from 'lucide-react';
+import SpidermanBoxBanner from '@/components/spiderman-box-banner';
 
 const banners = [
+  {
+    isInteractive: true,
+    alt: 'Caja Spider-Man x Civil Regime'
+  },
   { src: '/assets/images/banners/banner2.webp', alt: 'Banner 2' },
   { src: '/assets/images/banners/banner1.webp', alt: 'Banner 1' },
   { src: '/assets/images/banners/banner3.webp', alt: 'Banner 3' },
@@ -47,6 +52,19 @@ const HeroSection = () => {
     [api]
   );
 
+  const handleBoxOpenChange = useCallback(
+    (isOpen: boolean) => {
+      if (!api) return;
+      const autoplay = api.plugins()?.autoplay;
+      if (isOpen) {
+        autoplay?.stop();
+      } else {
+        autoplay?.play();
+      }
+    },
+    [api]
+  );
+
   return (
     <section className="hero-banner max-w-[94%] mx-auto mt-4 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
       <Carousel
@@ -54,7 +72,8 @@ const HeroSection = () => {
         className="w-full h-full"
         plugins={[
           Autoplay({
-            delay: 5000,
+            delay: (scrollSnaps) =>
+              scrollSnaps.map((_, index) => (index === 0 ? 10000 : 5000)),
             stopOnInteraction: false,
           }),
         ]}
@@ -65,19 +84,23 @@ const HeroSection = () => {
         <CarouselContent>
           {banners.map((banner, index) => (
             <CarouselItem key={index}>
-              <div className="relative aspect-[16/9] md:h-[85vh] w-full">
-                <Image
-                  src={banner.src}
-                  alt={banner.alt}
-                  fill
-                  priority={index === 0}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  sizes="(max-width: 768px) 100vw, 94vw"
-                  className="object-contain"
-                  data-ai-hint="fitness store"
-                  quality={85}
-                />
-              </div>
+              {banner.isInteractive ? (
+                <SpidermanBoxBanner onOpenChange={handleBoxOpenChange} />
+              ) : (
+                <div className="relative aspect-[16/9] md:h-[85vh] w-full">
+                  <Image
+                    src={banner.src!}
+                    alt={banner.alt}
+                    fill
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    sizes="(max-width: 768px) 100vw, 94vw"
+                    className="object-contain"
+                    data-ai-hint="fitness store"
+                    quality={85}
+                  />
+                </div>
+              )}
             </CarouselItem>
           ))}
         </CarouselContent>
