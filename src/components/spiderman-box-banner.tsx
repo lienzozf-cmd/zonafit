@@ -275,8 +275,8 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
     >
       {/* Hidden preloaded assets for immediate instant opening */}
       <div className="hidden pointer-events-none" aria-hidden="true">
-        <Image src="/assets/images/spiderman/box-3d-door-left-v2.webp" alt="preload-left" width={10} height={10} priority />
-        <Image src="/assets/images/spiderman/box-3d-door-right-v2.webp" alt="preload-right" width={10} height={10} priority />
+        <Image src="/assets/images/spiderman/cajaspider-door-left.webp" alt="preload-left" width={10} height={10} priority />
+        <Image src="/assets/images/spiderman/cajaspider-door-right.webp" alt="preload-right" width={10} height={10} priority />
       </div>
 
       {/* Spider-Man Authentic White Spiderwebs in Banner Background */}
@@ -450,7 +450,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                   className="relative w-[140px] h-[140px] xs:w-[160px] xs:h-[160px] sm:w-[280px] sm:h-[280px] md:w-[430px] md:h-[430px] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(220,38,38,0.5)] group-hover:drop-shadow-[0_0_60px_rgba(239,68,68,0.85)] transition-all duration-300"
                 >
                   <Image
-                    src="/assets/images/spiderman/box-3d-v2.webp"
+                    src="/assets/images/spiderman/cajaspider.webp"
                     alt="Caja 3D Spider-Man x Civil Regime"
                     fill
                     priority
@@ -494,7 +494,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                     }}
                   >
                     <Image
-                      src="/assets/images/spiderman/box-3d-door-left-v2.webp"
+                      src="/assets/images/spiderman/cajaspider-door-left.webp"
                       alt="Caja 3D Spider-Man Izquierda"
                       fill
                       priority
@@ -514,7 +514,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                     }}
                   >
                     <Image
-                      src="/assets/images/spiderman/box-3d-door-right-v2.webp"
+                      src="/assets/images/spiderman/cajaspider-door-right.webp"
                       alt="Caja 3D Spider-Man Derecha"
                       fill
                       priority
