@@ -1,4 +1,12 @@
 import type { Product } from './types';
+import spidermanStock from './spiderman-stock.json';
+
+const stockMap: Record<number, number> = {
+  9001: (spidermanStock as any)['9001'] ?? 1,
+  9002: (spidermanStock as any)['9002'] ?? 0,
+  9003: (spidermanStock as any)['9003'] ?? 0,
+  9004: (spidermanStock as any)['9004'] ?? 1,
+};
 
 export const SPIDERMAN_PRODUCTS: Product[] = [
   {
@@ -6,7 +14,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     name: 'SPIDERMAN BEAST (CIVIL REGIME)',
     price: 'Q.665.00',
     originalPrice: 'Q.750.00',
-    availability: 'Disponible',
+    availability: stockMap[9001] > 0 ? 'Disponible' : 'Agotado',
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
@@ -22,7 +30,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     options: {
       type: 'Talla',
       values: [
-        { value: 'M', stock: 1 }
+        { value: 'M', stock: stockMap[9001] }
       ]
     },
     images: [
@@ -43,7 +51,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     name: 'SPIDER PUNK (CIVIL REGIME)',
     price: 'Q.665.00',
     originalPrice: 'Q.750.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
@@ -55,11 +63,11 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     feature1: 'Edición de Colección Marvel x Civil Regime',
     feature2: 'Corte Oversize Drop Shoulder con lavado vintage',
     feature3: 'Estampado gráfico frontal y dorsal de alta gama',
-    benefits: 'Pieza exclusiva y única (1 unidad en stock)',
+    benefits: 'Pieza exclusiva de colección (Agotado)',
     options: {
       type: 'Talla',
       values: [
-        { value: 'M', stock: 1 }
+        { value: 'M', stock: 0 }
       ]
     },
     images: [
@@ -80,7 +88,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     name: 'MILES MORALES (CIVIL REGIME)',
     price: 'Q.665.00',
     originalPrice: 'Q.750.00',
-    availability: 'Disponible',
+    availability: 'Agotado',
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
@@ -92,11 +100,11 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     feature1: 'Edición de Colección Marvel x Civil Regime',
     feature2: 'Corte Oversize Drop Shoulder con lavado vintage',
     feature3: 'Estampado gráfico Spider-Man Miles Morales',
-    benefits: 'Pieza exclusiva y única (1 unidad en stock)',
+    benefits: 'Pieza exclusiva de colección (Agotado)',
     options: {
       type: 'Talla',
       values: [
-        { value: 'M', stock: 1 }
+        { value: 'M', stock: 0 }
       ]
     },
     images: [
@@ -117,7 +125,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     name: 'SPIDERMAN PETER PARKER (CIVIL REGIME)',
     price: 'Q.665.00',
     originalPrice: 'Q.750.00',
-    availability: 'Disponible',
+    availability: stockMap[9004] > 0 ? 'Disponible' : 'Agotado',
     gender: 'hombre',
     category: 'ropa',
     subcategory: 'playera',
@@ -133,7 +141,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
     options: {
       type: 'Talla',
       values: [
-        { value: 'M', stock: 1 }
+        { value: 'M', stock: stockMap[9004] }
       ]
     },
     images: [

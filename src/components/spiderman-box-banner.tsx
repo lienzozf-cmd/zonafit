@@ -45,8 +45,8 @@ const SPIDERMAN_TEES: SpidermanTee[] = [
     priceNum: 665,
     image: '/assets/images/marcas/civil regime/spidermanpunk2.webp',
     image2: '/assets/images/marcas/civil regime/spidermanpunk.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
+    availability: 'AGOTADO',
+    stock: 0,
     option: 'M'
   },
   {
@@ -58,8 +58,8 @@ const SPIDERMAN_TEES: SpidermanTee[] = [
     priceNum: 665,
     image: '/assets/images/marcas/civil regime/spidermanmiles.webp',
     image2: '/assets/images/marcas/civil regime/spidermanmiles2.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
+    availability: 'AGOTADO',
+    stock: 0,
     option: 'M'
   },
   {
@@ -261,6 +261,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
   };
 
   const handleAddToCart = (tee: SpidermanTee) => {
+    if (tee.stock <= 0 || tee.availability.toUpperCase() === 'AGOTADO') return;
     addItem({
       id: `${tee.productId}-spiderman-${tee.option}`,
       productId: tee.productId,
@@ -701,38 +702,56 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                       {tee.price}
                     </p>
 
-                    {/* Availability Badge: green pill */}
+                    {/* Availability Badge: green pill or zinc sold out pill */}
                     <div className="my-1">
-                      <span className="bg-[#16a34a] text-white text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
-                        {tee.availability}
-                      </span>
+                      {tee.stock > 0 && tee.availability.toUpperCase() !== 'AGOTADO' ? (
+                        <span className="bg-[#16a34a] text-white text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
+                          DISPONIBLE
+                        </span>
+                      ) : (
+                        <span className="bg-zinc-800 border border-zinc-700 text-zinc-400 text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
+                          AGOTADO
+                        </span>
+                      )}
                     </div>
 
-                    {/* Available units subtitle (1 unidad) */}
+                    {/* Available units subtitle */}
                     <p className="text-zinc-400 text-[11px] sm:text-xs mt-2 mb-3">
-                      Disponible: {tee.stock} unidad
+                      {tee.stock > 0 && tee.availability.toUpperCase() !== 'AGOTADO'
+                        ? `Disponible: ${tee.stock} unidad`
+                        : 'Agotado (0 unidades)'}
                     </p>
                   </div>
 
-                  {/* Bottom Action: AGREGAR Button ONLY (No WhatsApp button) */}
+                  {/* Bottom Action: AGREGAR Button ONLY (Disabled if AGOTADO) */}
                   <div className="mt-auto pt-1 w-full">
-                    <button
-                      type="button"
-                      onClick={() => handleAddToCart(tee)}
-                      className="w-full py-2.5 rounded bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-200 shadow-[0_0_15px_rgba(229,9,20,0.5)] hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-1.5"
-                    >
-                      {addedItems[tee.id] ? (
-                        <>
-                          <Check className="w-4 h-4 text-white" />
-                          <span>¡AGREGADO!</span>
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingBag className="w-4 h-4 text-white" />
-                          <span>AGREGAR</span>
-                        </>
-                      )}
-                    </button>
+                    {tee.stock > 0 && tee.availability.toUpperCase() !== 'AGOTADO' ? (
+                      <button
+                        type="button"
+                        onClick={() => handleAddToCart(tee)}
+                        className="w-full py-2.5 rounded bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-200 shadow-[0_0_15px_rgba(229,9,20,0.5)] hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-1.5"
+                      >
+                        {addedItems[tee.id] ? (
+                          <>
+                            <Check className="w-4 h-4 text-white" />
+                            <span>¡AGREGADO!</span>
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingBag className="w-4 h-4 text-white" />
+                            <span>AGREGAR</span>
+                          </>
+                        )}
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="w-full py-2.5 rounded bg-zinc-800/90 text-zinc-500 font-black text-xs sm:text-sm tracking-widest uppercase cursor-not-allowed border border-zinc-700/50 flex items-center justify-center gap-1.5"
+                      >
+                        AGOTADO
+                      </button>
+                    )}
                   </div>
                 </motion.div>
               ))}
