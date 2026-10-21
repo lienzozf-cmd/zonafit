@@ -466,10 +466,11 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                   className="relative w-[140px] h-[140px] xs:w-[160px] xs:h-[160px] sm:w-[280px] sm:h-[280px] md:w-[430px] md:h-[430px] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(220,38,38,0.5)] group-hover:drop-shadow-[0_0_60px_rgba(239,68,68,0.85)] transition-all duration-300"
                 >
                   <Image
-                    src="/assets/images/spiderman/cajaspider.webp"
+                    src="/assets/images/spiderman/cajaspider-v3.webp"
                     alt="Caja 3D Spider-Man x Civil Regime"
                     fill
                     priority
+                    unoptimized
                     className="object-contain"
                   />
                   {/* Subtle Interactive Sheen Highlight */}
@@ -510,10 +511,11 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                     }}
                   >
                     <Image
-                      src="/assets/images/spiderman/cajaspider-door-left.webp"
+                      src="/assets/images/spiderman/cajaspider-door-left-v3.webp"
                       alt="Caja 3D Spider-Man Izquierda"
                       fill
                       priority
+                      unoptimized
                       className="object-contain"
                     />
                   </motion.div>
@@ -530,10 +532,11 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                     }}
                   >
                     <Image
-                      src="/assets/images/spiderman/cajaspider-door-right.webp"
+                      src="/assets/images/spiderman/cajaspider-door-right-v3.webp"
                       alt="Caja 3D Spider-Man Derecha"
                       fill
                       priority
+                      unoptimized
                       className="object-contain"
                     />
                   </motion.div>
