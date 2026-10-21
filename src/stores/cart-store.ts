@@ -64,7 +64,7 @@ export const useCartStore = create<AppState>()(
             const existingItem = state.items.find((i) => i.id === item.id);
             
             const productOption = get().getProductOption(item.productId, item.option, item.color);
-            const availableStock = productOption?.stock ?? 0;
+            const availableStock = productOption ? (productOption.stock ?? 0) : 1;
             const currentQuantityInCart = existingItem?.quantity ?? 0;
 
             if (currentQuantityInCart < availableStock) {
@@ -98,7 +98,7 @@ export const useCartStore = create<AppState>()(
             if (!item) return;
 
             const productOption = get().getProductOption(item.productId, item.option, item.color);
-            const availableStock = productOption?.stock ?? 0;
+            const availableStock = productOption ? (productOption.stock ?? 0) : 1;
             
             if (item.quantity < availableStock) {
               item.quantity += 1;
