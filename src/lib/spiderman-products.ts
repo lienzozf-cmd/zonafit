@@ -1,11 +1,10 @@
 import type { Product } from './types';
-import spidermanStock from './spiderman-stock.json';
 
 const stockMap: Record<number, number> = {
-  9001: (spidermanStock as any)['9001'] ?? 1,
-  9002: (spidermanStock as any)['9002'] ?? 0,
-  9003: (spidermanStock as any)['9003'] ?? 0,
-  9004: (spidermanStock as any)['9004'] ?? 1,
+  9001: 1,
+  9002: 0,
+  9003: 0,
+  9004: 1,
 };
 
 export const SPIDERMAN_PRODUCTS: Product[] = [
