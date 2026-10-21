@@ -52,8 +52,8 @@ const ITEMS: SpidermanItem[] = [
     priceNum: 665,
     imageFront: '/assets/images/marcas/civil regime/spidermanpunk2.webp',
     imageBack: '/assets/images/marcas/civil regime/spidermanpunk.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
+    availability: 'AGOTADO',
+    stock: 0,
     option: 'M',
     description: 'Edición limitada Spider Punk. Estilo rebelde y gráfico icónico en algodón pesado vintage wash de alta gama.'
   },
@@ -67,8 +67,8 @@ const ITEMS: SpidermanItem[] = [
     priceNum: 665,
     imageFront: '/assets/images/marcas/civil regime/spidermanmiles.webp',
     imageBack: '/assets/images/marcas/civil regime/spidermanmiles2.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
+    availability: 'AGOTADO',
+    stock: 0,
     option: 'M',
     description: 'Edición exclusiva Miles Morales x Civil Regime. Confección premium con textura suave, corte oversize y gráficos vibrantes.'
   },
@@ -143,6 +143,7 @@ export default function SpidermanColeccionPage() {
   };
 
   const handleAddToCart = (item: SpidermanItem) => {
+    if (item.stock <= 0 || item.availability.toUpperCase() === 'AGOTADO') return;
     const cartItem = {
       id: `${item.productId}-${item.option}`,
       productId: item.productId,
@@ -340,14 +341,20 @@ export default function SpidermanColeccionPage() {
 
                     {/* Badges: Disponibilidad + Talla */}
                     <div className="flex flex-wrap items-center gap-2 my-2">
-                      <span className="bg-[#16a34a] text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded tracking-wider">
-                        {item.availability}
-                      </span>
+                      {item.stock > 0 && item.availability.toUpperCase() !== 'AGOTADO' ? (
+                        <span className="bg-[#16a34a] text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded tracking-wider">
+                          DISPONIBLE
+                        </span>
+                      ) : (
+                        <span className="bg-zinc-800 border border-zinc-700 text-zinc-400 text-[10px] font-black uppercase px-2.5 py-0.5 rounded tracking-wider">
+                          AGOTADO
+                        </span>
+                      )}
                       <span className="bg-red-950/80 border border-red-600/60 text-red-300 text-[10px] font-bold uppercase px-2.5 py-0.5 rounded tracking-wider">
                         Talla {item.option}
                       </span>
                       <span className="text-zinc-400 text-[10px]">
-                        · {item.stock} unidad
+                        · {item.stock > 0 && item.availability.toUpperCase() !== 'AGOTADO' ? `${item.stock} unidad` : '0 unidades'}
                       </span>
                     </div>
 
@@ -359,23 +366,33 @@ export default function SpidermanColeccionPage() {
 
                   {/* Add to Cart Button */}
                   <div className="mt-4 pt-3 border-t border-zinc-900 flex flex-col gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleAddToCart(item)}
-                      className="w-full py-3 rounded-xl bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-200 shadow-[0_0_20px_rgba(229,9,20,0.5)] active:scale-95 flex items-center justify-center gap-2"
-                    >
-                      {isAdded ? (
-                        <>
-                          <Check className="w-4 h-4 text-white" />
-                          <span>¡AGREGADO AL CARRITO!</span>
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingBag className="w-4 h-4 text-white" />
-                          <span>AGREGAR AL CARRITO</span>
-                        </>
-                      )}
-                    </button>
+                    {item.stock > 0 && item.availability.toUpperCase() !== 'AGOTADO' ? (
+                      <button
+                        type="button"
+                        onClick={() => handleAddToCart(item)}
+                        className="w-full py-3 rounded-xl bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-200 shadow-[0_0_20px_rgba(229,9,20,0.5)] active:scale-95 flex items-center justify-center gap-2"
+                      >
+                        {isAdded ? (
+                          <>
+                            <Check className="w-4 h-4 text-white" />
+                            <span>¡AGREGADO AL CARRITO!</span>
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingBag className="w-4 h-4 text-white" />
+                            <span>AGREGAR AL CARRITO</span>
+                          </>
+                        )}
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="w-full py-3 rounded-xl bg-zinc-800/90 text-zinc-500 font-black text-xs sm:text-sm tracking-widest uppercase cursor-not-allowed border border-zinc-700/50 flex items-center justify-center gap-2"
+                      >
+                        AGOTADO
+                      </button>
+                    )}
 
                     <Link
                       href={`/product/${item.productId}`}
@@ -473,20 +490,32 @@ export default function SpidermanColeccionPage() {
                     {enlargedItem.item.price}
                   </span>
                   <span className="block text-[11px] text-zinc-400">
-                    Talla {enlargedItem.item.option} · {enlargedItem.item.stock} unidad disponible
+                    {enlargedItem.item.stock > 0 && enlargedItem.item.availability.toUpperCase() !== 'AGOTADO'
+                      ? `Talla ${enlargedItem.item.option} · ${enlargedItem.item.stock} unidad disponible`
+                      : `Talla ${enlargedItem.item.option} · Agotado`}
                   </span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    handleAddToCart(enlargedItem.item);
-                    setEnlargedItem(null);
-                  }}
-                  className="py-2.5 px-6 rounded-xl bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(229,9,20,0.5)] flex items-center gap-2"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>AGREGAR</span>
-                </button>
+                {enlargedItem.item.stock > 0 && enlargedItem.item.availability.toUpperCase() !== 'AGOTADO' ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleAddToCart(enlargedItem.item);
+                      setEnlargedItem(null);
+                    }}
+                    className="py-2.5 px-6 rounded-xl bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(229,9,20,0.5)] flex items-center gap-2"
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    <span>AGREGAR</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="py-2.5 px-6 rounded-xl bg-zinc-800/90 text-zinc-500 font-black text-xs sm:text-sm tracking-widest uppercase cursor-not-allowed border border-zinc-700/50 flex items-center gap-2"
+                  >
+                    AGOTADO
+                  </button>
+                )}
               </div>
             </motion.div>
           </motion.div>

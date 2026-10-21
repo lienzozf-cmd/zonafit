@@ -20,11 +20,32 @@ export async function getNextOrderId(): Promise<string> {
     }
 }
 
+import { promises as fs } from 'fs';
+import path from 'path';
+
 /**
- * Actualiza el stock en Supabase usando una función RPC atómica.
+ * Actualiza el stock en Supabase usando una función RPC atómica,
+ * o actualiza el inventario local para productos de colección exclusiva.
  */
 export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
     try {
+        // Manejo especial para la colección exclusiva de Spider-Man (IDs 9001-9004)
+        if (productId >= 9001 && productId <= 9004) {
+            try {
+                const stockFilePath = path.join(process.cwd(), 'src/lib/spiderman-stock.json');
+                const content = await fs.readFile(stockFilePath, 'utf-8');
+                const stockData = JSON.parse(content);
+                const currentStock = stockData[String(productId)] ?? 1;
+                const newStock = Math.max(0, currentStock - quantity);
+                stockData[String(productId)] = newStock;
+                await fs.writeFile(stockFilePath, JSON.stringify(stockData, null, 2), 'utf-8');
+                console.log(`✅ Stock decrementado para Spider-Man Producto ID: ${productId} a ${newStock}`);
+            } catch (fsErr) {
+                console.error('Error actualizando spiderman-stock.json:', fsErr);
+            }
+            return;
+        }
+
         const { data, error } = await supabaseServer.rpc('decrement_stock', {
             p_product_id: productId,
             p_option_value: optionValue,
