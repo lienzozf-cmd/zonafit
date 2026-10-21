@@ -8,6 +8,7 @@ import AnalyticsTracker from '@/components/analytics-tracker';
 import MetaPixel from '@/components/meta-pixel';
 import CookieConsent from '@/components/cookie-consent';
 import MouseTrail from '@/components/mouse-trail';
+import HalloweenLedBackground from '@/components/halloween-led-background';
 
 export const metadata: Metadata = {
   title: 'ZONA FIT GT',
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="es">
       <body className="relative min-h-screen">
         <div className="global-dot-matrix-bg pointer-events-none fixed inset-0 -z-10" aria-hidden="true" />
+        <HalloweenLedBackground />
         <MetaPixel />
         <AnalyticsTracker />
         <MouseTrail />
