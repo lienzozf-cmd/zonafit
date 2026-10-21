@@ -169,6 +169,23 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
       noiseSource.start(now);
       osc.start(now);
       click.start(now);
+
+      // Stop all generators completely to prevent any residual buzzing/humming
+      click.stop(now + 0.05);
+      noiseSource.stop(now + 0.22);
+      osc.stop(now + 0.22);
+
+      // Explicitly set gains to absolute 0
+      clickGain.gain.setValueAtTime(0, now + 0.05);
+      noiseGain.gain.setValueAtTime(0, now + 0.22);
+      oscGain.gain.setValueAtTime(0, now + 0.22);
+
+      // Fully close and clean up the AudioContext after playback finishes
+      setTimeout(() => {
+        try {
+          ctx.close().catch(() => {});
+        } catch {}
+      }, 260);
     } catch {
       // Audio autoplay gracefully handled
     }
@@ -372,47 +389,48 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
       </AnimatePresence>
 
       {/* BANNER LAYOUT: Matching the user's reference image without background people */}
+      {/* BANNER LAYOUT: Matching the user's reference image without background people */}
       {!isOpen && (
-        <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
+        <div className="relative z-10 w-full max-w-7xl px-3 sm:px-6 md:px-12 flex flex-row items-center justify-between gap-2 sm:gap-6 md:gap-12">
           
           {/* Left Column: Branding, Title & Description (No buttons as requested) */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="w-[52%] sm:w-1/2 flex flex-col items-start text-left pt-3 sm:pt-0 pl-1 sm:pl-2">
             {/* MARVEL Box Logo */}
-            <div className="mb-2">
-              <span className="bg-[#e50914] px-4 py-1 rounded text-white font-black text-sm md:text-base tracking-widest shadow-[0_0_15px_rgba(229,9,20,0.8)] inline-block">
+            <div className="mb-1 sm:mb-2">
+              <span className="bg-[#e50914] px-2 py-0.5 sm:px-4 sm:py-1 rounded text-white font-black text-[10px] sm:text-sm md:text-base tracking-widest shadow-[0_0_12px_rgba(229,9,20,0.8)] inline-block">
                 MARVEL
               </span>
             </div>
 
             {/* SPIDER-MAN Title Logo */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black italic tracking-tighter uppercase text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" style={{ fontFamily: 'Impact, sans-serif' }}>
+            <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-black italic tracking-tighter uppercase text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-none" style={{ fontFamily: 'Impact, sans-serif' }}>
               SPIDER-MAN
             </h1>
 
             {/* x CIVIL REGIME */}
-            <div className="flex items-center gap-2 text-xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-widest text-zinc-100 my-1">
-              <span className="text-red-500 font-bold lowercase text-lg md:text-2xl">x</span>
-              <span className="font-serif tracking-[0.18em]">CIVIL REGIME</span>
+            <div className="flex items-center gap-1 sm:gap-2 text-xs xs:text-sm sm:text-3xl md:text-4xl font-extrabold uppercase tracking-wide sm:tracking-widest text-zinc-100 my-0.5 sm:my-1">
+              <span className="text-red-500 font-bold lowercase text-xs sm:text-lg md:text-2xl">x</span>
+              <span className="font-serif tracking-[0.08em] sm:tracking-[0.18em]">CIVIL REGIME</span>
             </div>
 
             {/* Description Paragraph */}
-            <p className="text-xs sm:text-sm md:text-base text-zinc-300 font-medium tracking-wide max-w-lg mt-2 md:mt-4 leading-relaxed">
+            <p className="text-[9px] xs:text-[10px] sm:text-sm md:text-base text-zinc-300 font-medium tracking-normal sm:tracking-wide max-w-lg mt-0.5 sm:mt-2 md:mt-4 leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
               LA FUERZA Y EL ESTILO SE UNEN EN UNA EDICIÓN ÚNICA. DESCUBRE LA COLECCIÓN EXCLUSIVA INSPIRADA EN EL LANZARREDES.
             </p>
           </div>
 
           {/* Right Column: 3D Box in perspective floating with glowing neon frames (NO PEOPLE) */}
-          <div className="w-full md:w-1/2 flex items-center justify-center relative">
+          <div className="w-[48%] sm:w-1/2 flex items-center justify-center relative pr-1">
             
             {/* Glowing Neon Red Backing Frames (replicating the photo frames behind the box) */}
-            <div className="absolute w-[260px] h-[340px] sm:w-[320px] sm:h-[400px] md:w-[380px] md:h-[450px] rounded-3xl border-2 border-red-600/70 shadow-[0_0_35px_rgba(239,68,68,0.4)] rotate-[-8deg] pointer-events-none opacity-70" />
-            <div className="absolute w-[260px] h-[340px] sm:w-[320px] sm:h-[400px] md:w-[380px] md:h-[450px] rounded-3xl border-2 border-red-500/50 shadow-[0_0_25px_rgba(239,68,68,0.3)] rotate-[8deg] pointer-events-none opacity-60" />
+            <div className="absolute w-[130px] h-[155px] xs:w-[150px] xs:h-[180px] sm:w-[280px] sm:h-[340px] md:w-[380px] md:h-[450px] rounded-2xl md:rounded-3xl border border-red-600/70 sm:border-2 shadow-[0_0_20px_rgba(239,68,68,0.4)] rotate-[-8deg] pointer-events-none opacity-70" />
+            <div className="absolute w-[130px] h-[155px] xs:w-[150px] xs:h-[180px] sm:w-[280px] sm:h-[340px] md:w-[380px] md:h-[450px] rounded-2xl md:rounded-3xl border border-red-500/50 sm:border-2 shadow-[0_0_15px_rgba(239,68,68,0.3)] rotate-[8deg] pointer-events-none opacity-60" />
 
             {/* Interactive 3D Box Container */}
             <div
               onClick={handleOpenBox}
               style={{ perspective: '1400px' }}
-              className="relative cursor-pointer group py-2"
+              className="relative cursor-pointer group py-1 sm:py-2"
             >
               {!isOpening ? (
                 /* Idle & Hover State: Authentic 3D Rendered Box with Interactive Tilt */
@@ -420,7 +438,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                   animate={{
                     rotateX: tilt.x,
                     rotateY: tilt.y,
-                    y: [0, -8, 0],
+                    y: [0, -5, 0],
                     scale: [1, 1.02, 1],
                   }}
                   transition={{
@@ -429,7 +447,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                     rotateX: { type: 'spring', damping: 20, stiffness: 200 },
                     rotateY: { type: 'spring', damping: 20, stiffness: 200 }
                   }}
-                  className="relative w-[290px] h-[290px] sm:w-[360px] sm:h-[360px] md:w-[430px] md:h-[430px] filter drop-shadow-[0_20px_45px_rgba(0,0,0,0.95)] drop-shadow-[0_0_40px_rgba(220,38,38,0.5)] group-hover:drop-shadow-[0_0_60px_rgba(239,68,68,0.85)] transition-all duration-300"
+                  className="relative w-[140px] h-[140px] xs:w-[160px] xs:h-[160px] sm:w-[280px] sm:h-[280px] md:w-[430px] md:h-[430px] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(220,38,38,0.5)] group-hover:drop-shadow-[0_0_60px_rgba(239,68,68,0.85)] transition-all duration-300"
                 >
                   <Image
                     src="/assets/images/spiderman/box-3d-v2.webp"
@@ -445,9 +463,9 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
                 /* Opening Sequence: 3D Rendered Box Doors Split and Swing Open */
                 <motion.div
                   initial={{ scale: 1 }}
-                  animate={{ scale: 1.12 }}
+                  animate={{ scale: 1.1 }}
                   transition={{ duration: 1.1, ease: 'easeOut' }}
-                  className="relative w-[290px] h-[290px] sm:w-[360px] sm:h-[360px] md:w-[430px] md:h-[430px]"
+                  className="relative w-[140px] h-[140px] xs:w-[160px] xs:h-[160px] sm:w-[280px] sm:h-[280px] md:w-[430px] md:h-[430px]"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   {/* Inner Glowing Vault Interior revealed upon opening */}
@@ -507,9 +525,9 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
               )}
 
               {/* Floating "Toca para abrir" label */}
-              <div className="mt-3 md:mt-4 flex justify-center">
-                <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-red-950/80 border border-red-500/60 text-red-200 text-[11px] md:text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(239,68,68,0.4)] group-hover:scale-105 transition-transform">
-                  <Sparkles className="w-3.5 h-3.5 text-red-400 animate-spin" />
+              <div className="mt-1 sm:mt-3 md:mt-4 flex justify-center">
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 sm:px-4 sm:py-1.5 rounded-full bg-red-950/80 border border-red-500/60 text-red-200 text-[8px] xs:text-[9px] sm:text-[11px] md:text-xs font-black tracking-wider sm:tracking-widest uppercase shadow-[0_0_12px_rgba(239,68,68,0.4)] group-hover:scale-105 transition-transform">
+                  <Sparkles className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-red-400 animate-spin" />
                   TOCA LA CAJA 3D
                 </span>
               </div>
