@@ -41,6 +41,24 @@ export async function updateStock(productId: number, optionValue: string, quanti
 
         if (data === true) {
             console.log(`✅ Stock decrementado exitosamente en Supabase para Producto ID: ${productId}, Opción: ${optionValue}, Color: ${colorName || 'N/A'}`);
+            
+            // Verificar si el producto se quedó sin stock en todas sus variantes para marcarlo como 'Agotado'
+            try {
+                const { data: variants } = await supabaseServer
+                    .from('product_variants')
+                    .select('stock')
+                    .eq('product_id', productId);
+                const totalRemaining = (variants || []).reduce((acc: number, v: { stock: number }) => acc + (v.stock || 0), 0);
+                if (totalRemaining <= 0) {
+                    await supabaseServer
+                        .from('products')
+                        .update({ availability: 'Agotado' })
+                        .eq('id', productId);
+                    console.log(`🔒 Producto ID ${productId} se ha marcado como 'Agotado' en Supabase.`);
+                }
+            } catch (availErr) {
+                console.error(`Error actualizando availability para producto ${productId}:`, availErr);
+            }
         } else {
             console.warn(`⚠️ No se pudo decrementar stock (probablemente no hay suficiente stock o variante no encontrada) para Producto ID: ${productId}`);
         }
