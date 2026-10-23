@@ -523,9 +523,9 @@
   },
   {
     "id": 8,
-    "name": "CREATINE MONOHYDRATE ESSENTIALS 60 SERV",
-    "price": "Q.345.00",
-    "availability": "Agotado",
+    "name": "Creatine Monohydrate (60 Servings)",
+    "price": "Q.340.00",
+    "availability": "Disponible",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -534,8 +534,8 @@
     "is_compression": false,
     "images": [
       {
-        "alt": "Creatine container 60 servings",
-        "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
+        "alt": "Creatine Monohydrate 60 servings Dragon Pharma",
+        "src": "/assets/images/marcas/dragonpharma/Creatine Monohydrate DP 60servs.webp",
         "dataAiHint": "creatine powder"
       }
     ],
@@ -543,7 +543,7 @@
       "type": "servicios",
       "values": [
         {
-          "stock": 0,
+          "stock": 2,
           "value": "Único"
         }
       ]
@@ -559,9 +559,9 @@
   },
   {
     "id": 9,
-    "name": "CREATINE MONOHYDRATE ESSENTIALS 200 Servings",
-    "price": "Q.595.00",
-    "availability": "Agotado",
+    "name": "Creatine Monohydrate (200 Servings)",
+    "price": "Q.435.00",
+    "availability": "Disponible",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
     "category": "suplemento",
@@ -570,8 +570,8 @@
     "is_compression": false,
     "images": [
       {
-        "alt": "Creatine container 200 servings",
-        "src": "/assets/images/marcas/dragonpharma/creatinaDP.webp",
+        "alt": "Creatine Monohydrate 200 servings Dragon Pharma",
+        "src": "/assets/images/marcas/dragonpharma/Creatine Monohydrate DP 200servs.webp",
         "dataAiHint": "creatine powder"
       }
     ],
@@ -579,7 +579,7 @@
       "type": "servicios",
       "values": [
         {
-          "stock": 0,
+          "stock": 2,
           "value": "Único"
         }
       ]
@@ -1480,11 +1480,11 @@
   },
   {
     "id": 2614,
-    "name": "Revenge Tees",
-    "price": "Q.395.00",
-    "availability": "Agotado",
+    "name": "4156 - Revenge Tees",
+    "price": "Q.510.00",
+    "availability": "Disponible",
     "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
-    "gender": "hombre",
+    "gender": "unisex",
     "category": "ropa",
     "subcategory": "playera",
     "brand": "YoungLA",
@@ -1520,7 +1520,7 @@
               "value": "S"
             },
             {
-              "stock": 0,
+              "stock": 1,
               "value": "M"
             },
             {
@@ -2201,7 +2201,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 2,
+              "stock": 3,
               "value": "M"
             }
           ]
@@ -5439,7 +5439,7 @@
     "id": 2720,
     "name": "8004 - Batman Compression Longsleeves",
     "price": "Q.650.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Camiseta de compresión técnica diseñada para mejorar el rendimiento muscular y la recuperación. Su tejido ultra-elástico de 4 vías ofrece soporte estratégico y transpirabilidad superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -5491,7 +5491,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 0,
+              "stock": 1,
               "value": "M"
             }
           ]
@@ -7775,7 +7775,7 @@
               "value": "S"
             },
             {
-              "stock": 1,
+              "stock": 2,
               "value": "M"
             }
           ]
@@ -7789,7 +7789,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 0,
+              "stock": 1,
               "value": "M"
             }
           ]
@@ -7924,7 +7924,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 0,
+              "stock": 1,
               "value": "M"
             },
             {
