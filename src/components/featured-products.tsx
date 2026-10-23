@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { type Product, isProductAvailable, products as initialProducts } from '@/lib/data';
 import { useCartStore } from '@/stores/cart-store';
 
-const featuredProductIds = [3, 2671, 2655, 5095, 2643, 2677, 2667, 3026, 3009, 2715, 2662, 3057];
+const featuredProductIds = [3, 3052, 2614, 9102, 2655, 9103, 9107, 2677, 2648, 9109, 3009, 2715];
 
 const FeaturedProducts = () => {
   const products = useCartStore((state) => state.products);
