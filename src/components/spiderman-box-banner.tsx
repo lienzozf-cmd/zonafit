@@ -218,6 +218,8 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
     if (audioRef.current && !isMuted) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {});
+      // Pause John Carpenter background music
+      window.dispatchEvent(new CustomEvent('pause-background-music'));
     }
 
     // After animation sequence, reveal the 4 shirts apartado (vista de escritorio)
@@ -233,6 +235,9 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
     if (audioRef.current) {
       audioRef.current.pause();
     }
+    // Resume John Carpenter background music
+    window.dispatchEvent(new CustomEvent('resume-background-music'));
+
     setIsOpen(false);
     setIsOpening(false);
     onOpenChange?.(false);
@@ -243,6 +248,17 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
     const nextMuted = !isMuted;
     setIsMuted(nextMuted);
     audioRef.current.muted = nextMuted;
+
+    if (nextMuted) {
+      // Al silenciar a Post Malone, continuar con John Carpenter
+      window.dispatchEvent(new CustomEvent('resume-background-music'));
+    } else {
+      // Al reactivar el audio de Post Malone, detener John Carpenter
+      if (audioRef.current.paused) {
+        audioRef.current.play().catch(() => {});
+      }
+      window.dispatchEvent(new CustomEvent('pause-background-music'));
+    }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
