@@ -2359,8 +2359,8 @@
   {
     "id": 2648,
     "name": "Bum Energy",
-    "price": "Q.33.00",
-    "availability": "Agotado",
+    "price": "Q.35.00",
+    "availability": "Disponible",
     "description": "Bum Energy es una bebida energética premium diseñada para proporcionar energía limpia y sostenida sin el temido bajón. Con una fórmula minimalista que destaca 112 mg de cafeína natural y 250 mg de Cognizin® Citicolina, es la opción perfecta para mejorar el enfoque mental y la concentración.",
     "gender": "unisex",
     "category": "suplemento",
@@ -2368,6 +2368,12 @@
     "brand": "Bum Energy",
     "is_compression": false,
     "images": [
+      {
+        "alt": "BUM Energy Drink Gummy Shark",
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp",
+        "option": "Gummy Shark",
+        "dataAiHint": "energy drink gummy shark"
+      },
       {
         "alt": "Bum Energy Mora y Limonada",
         "src": "/assets/images/marcas/bumenergy/bumlemon.webp",
@@ -2420,6 +2426,10 @@
     "options": {
       "type": "sabor",
       "values": [
+        {
+          "stock": 36,
+          "value": "Gummy Shark"
+        },
         {
           "stock": 0,
           "value": "Blueberry Lemon"
@@ -8626,42 +8636,6 @@
     "feature3": "Matriz Nootrópica con Alpha-GPC y L-Teanina",
     "feature4": "Solo 25 Calorías y 1 g de Azúcar",
     "benefits": "Energía sostenida, agudeza mental y delicioso sabor a café latte.",
-    "servings_info": "1 lata (Pack)",
-    "visible": true
-  },
-  {
-    "id": 9110,
-    "name": "BUM Energy Drink",
-    "price": "Q.35.00",
-    "availability": "Disponible",
-    "description": "Bebida energética premium BUM Energy Drink de RAW Nutrition sabor Gummy Shark. Fórmula limpia formulada por Chris Bumstead con 112 mg de cafeína natural y 250 mg de Cognizin® Citicolina para un enfoque cerebral inigualable y cero bajón.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "pre-entreno",
-    "brand": "RAW",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "BUM Energy Drink Gummy Shark",
-        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp",
-        "dataAiHint": "bum energy drink gummy shark can"
-      }
-    ],
-    "options": {
-      "type": "presentación",
-      "values": [
-        {
-          "stock": 36,
-          "value": "Pack"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "112 mg de Cafeína Natural para Energía Limpia",
-    "feature2": "250 mg de Cognizin® Citicolina para Enfoque Mental",
-    "feature3": "Cero Azúcar y Bajas Calorías",
-    "feature4": "Delicioso Sabor Gummy Shark Refrescante",
-    "benefits": "Enfoque mental duradero y energía constante sin temblores ni bajones.",
     "servings_info": "1 lata (Pack)",
     "visible": true
   },
