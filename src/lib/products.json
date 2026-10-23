@@ -1492,6 +1492,12 @@
     "is_compression": false,
     "images": [
       {
+        "alt": "Revenge Tees Black Red Wash",
+        "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Spring '25 black red.webp",
+        "color": "Black Red Wash",
+        "dataAiHint": "graphic tee black red wash"
+      },
+      {
         "alt": "Revenge Tees Black",
         "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Negro.webp",
         "color": "Black",
@@ -1502,12 +1508,6 @@
         "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Spring '25 white.webp",
         "color": "White",
         "dataAiHint": "graphic tee white"
-      },
-      {
-        "alt": "Revenge Tees Black Red Wash",
-        "src": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Spring '25 black red.webp",
-        "color": "Black Red Wash",
-        "dataAiHint": "graphic tee black red wash"
       },
       {
         "alt": "Revenge Tees Green",
@@ -1521,6 +1521,20 @@
       "values": []
     },
     "colors": [
+      {
+        "hex": "#3F1D1D",
+        "name": "Black Red Wash",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "stock": 1,
+              "value": "M"
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Spring '25 black red.webp"
+      },
       {
         "hex": "#000000",
         "name": "Black",
@@ -1556,20 +1570,6 @@
           ]
         },
         "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Spring '25 white.webp"
-      },
-      {
-        "hex": "#3F1D1D",
-        "name": "Black Red Wash",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "stock": 1,
-              "value": "M"
-            }
-          ]
-        },
-        "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Spring '25 black red.webp"
       },
       {
         "hex": "#008000",
@@ -8591,6 +8591,114 @@
     "feature2": "Forro Polar Ultra Suave de Alta Calidad",
     "feature3": "Puños y Dobladillo de Canalé Elástico",
     "feature4": "Diseño Minimalista y Versátil Unisex",
+    "visible": true
+  },
+  {
+    "id": 9109,
+    "name": "YoungLATTe Latte",
+    "price": "Q.35.00",
+    "availability": "Disponible",
+    "description": "Bebida funcional de café frío y nootrópicos Young LAtte, creada en colaboración especial entre YoungLA y Gorilla Mind. Elaborada con extracto real de café cold brew, 140 mg de cafeína natural y matriz nootrópica (Alpha-GPC, L-Teanina) para máxima concentración mental y energía limpia sin bajones.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "pre-entreno",
+    "brand": "YoungLA",
+    "is_compression": false,
+    "images": [
+      {
+        "alt": "YoungLATTe Latte Colaboración YoungLA x Gorilla Mind",
+        "src": "/assets/images/marcas/suplementos/YoungLATTe Latte.webp",
+        "dataAiHint": "younglatte cold brew coffee can"
+      }
+    ],
+    "options": {
+      "type": "presentación",
+      "values": [
+        {
+          "stock": 24,
+          "value": "Pack"
+        }
+      ]
+    },
+    "colors": [],
+    "feature1": "Colaboración Oficial YoungLA x Gorilla Mind",
+    "feature2": "Extracto Real Cold Brew con 140 mg de Cafeína",
+    "feature3": "Matriz Nootrópica con Alpha-GPC y L-Teanina",
+    "feature4": "Solo 25 Calorías y 1 g de Azúcar",
+    "benefits": "Energía sostenida, agudeza mental y delicioso sabor a café latte.",
+    "servings_info": "1 lata (Pack)",
+    "visible": true
+  },
+  {
+    "id": 9110,
+    "name": "BUM Energy Drink",
+    "price": "Q.35.00",
+    "availability": "Disponible",
+    "description": "Bebida energética premium BUM Energy Drink de RAW Nutrition sabor Gummy Shark. Fórmula limpia formulada por Chris Bumstead con 112 mg de cafeína natural y 250 mg de Cognizin® Citicolina para un enfoque cerebral inigualable y cero bajón.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "pre-entreno",
+    "brand": "RAW",
+    "is_compression": false,
+    "images": [
+      {
+        "alt": "BUM Energy Drink Gummy Shark",
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp",
+        "dataAiHint": "bum energy drink gummy shark can"
+      }
+    ],
+    "options": {
+      "type": "presentación",
+      "values": [
+        {
+          "stock": 36,
+          "value": "Pack"
+        }
+      ]
+    },
+    "colors": [],
+    "feature1": "112 mg de Cafeína Natural para Energía Limpia",
+    "feature2": "250 mg de Cognizin® Citicolina para Enfoque Mental",
+    "feature3": "Cero Azúcar y Bajas Calorías",
+    "feature4": "Delicioso Sabor Gummy Shark Refrescante",
+    "benefits": "Enfoque mental duradero y energía constante sin temblores ni bajones.",
+    "servings_info": "1 lata (Pack)",
+    "visible": true
+  },
+  {
+    "id": 9111,
+    "name": "Creatine Monohydrate  Premium (30 Servings)",
+    "price": "Q.335.00",
+    "availability": "Disponible",
+    "description": "Creatina Monohidratada Micronizada Premium de RAW Nutrition (30 Servicios). Diseñada para incrementar la fuerza explosiva, acelerar la recuperación y optimizar la hipertrofia muscular con la máxima pureza.",
+    "gender": "unisex",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "brand": "RAW",
+    "is_compression": false,
+    "images": [
+      {
+        "alt": "Creatine Monohydrate Premium 30 Servings RAW",
+        "src": "/assets/images/marcas/raw/Creatine Monohydrate  Premium (30 Servings).webp",
+        "dataAiHint": "creatine monohydrate premium jar"
+      }
+    ],
+    "options": {
+      "type": "servicios",
+      "values": [
+        {
+          "stock": 1,
+          "value": "30 Servings"
+        }
+      ]
+    },
+    "colors": [],
+    "feature1": "100% Creatina Monohidratada Micronizada de Grado Farmacéutico",
+    "feature2": "Incrementa la Resíntesis de ATP y Fuerza Muscular",
+    "feature3": "Fórmula Sin Sabor (Unflavored) Ultra Soluble",
+    "feature4": "30 Servicios Completos por Envase",
+    "benefits": "Mayor potencia, resistencia muscular y volumen celular.",
+    "servings_info": "30 servicios.",
     "visible": true
   }
 ]
