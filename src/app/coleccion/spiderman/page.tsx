@@ -115,12 +115,16 @@ export default function SpidermanColeccionPage() {
 
     // Try auto-play
     audio.play()
-      .then(() => setIsPlaying(true))
+      .then(() => {
+        setIsPlaying(true);
+        window.dispatchEvent(new CustomEvent('pause-background-music'));
+      })
       .catch(() => setIsPlaying(false));
 
     return () => {
       audio.pause();
       audio.currentTime = 0;
+      window.dispatchEvent(new CustomEvent('resume-background-music'));
     };
   }, []);
 
@@ -130,11 +134,13 @@ export default function SpidermanColeccionPage() {
       audioRef.current.play().then(() => {
         setIsPlaying(true);
         setIsMuted(false);
+        window.dispatchEvent(new CustomEvent('pause-background-music'));
       }).catch(() => {});
     } else {
       audioRef.current.pause();
       setIsPlaying(false);
       setIsMuted(true);
+      window.dispatchEvent(new CustomEvent('resume-background-music'));
     }
   };
 

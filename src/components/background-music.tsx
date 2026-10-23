@@ -17,7 +17,10 @@ const BackgroundMusic = () => {
 
     let targetSrc = '/John Carpenter - HALLOWEEN Theme.mp3';
 
-    if (pathname.startsWith('/mujeres')) {
+    if (pathname.startsWith('/coleccion/spiderman') || pathname === '/spiderman') {
+      audio.pause();
+      return;
+    } else if (pathname.startsWith('/mujeres')) {
       targetSrc = '/Justin Bieber - Beauty And A Beat ft. Nicki Minaj (Official Audio).mp3';
     } else if (pathname === '/product/3' || pathname === '/product/2671') {
       targetSrc = '/DAVID LAID - Outside GYM MOTIVATION.mp3';
@@ -90,6 +93,26 @@ const BackgroundMusic = () => {
       }
     };
 
+    const handlePauseBgMusic = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.pause();
+    };
+
+    const handleResumeBgMusic = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      // Do not resume on spiderman route
+      if (window.location.pathname.startsWith('/coleccion/spiderman') || window.location.pathname === '/spiderman') {
+        return;
+      }
+      audio.muted = false;
+      audio.play().catch(() => {});
+    };
+
+    window.addEventListener('pause-background-music', handlePauseBgMusic);
+    window.addEventListener('resume-background-music', handleResumeBgMusic);
+
     window.addEventListener('play-music', handlePlayEvent);
 
     window.addEventListener('mousemove', unlockAudio, { once: true });
@@ -98,6 +121,8 @@ const BackgroundMusic = () => {
 
     return () => {
       clearTimeout(uiTimer);
+      window.removeEventListener('pause-background-music', handlePauseBgMusic);
+      window.removeEventListener('resume-background-music', handleResumeBgMusic);
       window.removeEventListener('play-music', handlePlayEvent as EventListener);
       window.removeEventListener('mousemove', unlockAudio);
       window.removeEventListener('touchstart', unlockAudio);
