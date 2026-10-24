@@ -104,6 +104,25 @@ export default function SpidermanColeccionPage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const addItem = useCartStore((state) => state.addItem);
   const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
+  const getProductOption = useCartStore((state) => state.getProductOption);
+
+  const getItemStock = (item: SpidermanItem) => {
+    const variant = getProductOption ? getProductOption(item.productId, item.option) : undefined;
+    return variant?.stock !== undefined ? variant.stock : item.stock;
+  };
+
+  const isItemAvailable = (item: SpidermanItem) => {
+    const currentStock = getItemStock(item);
+    return currentStock > 0 && item.availability.toUpperCase() !== 'AGOTADO';
+  };
+
+  const sortedItems = [...ITEMS].sort((a, b) => {
+    const aAvail = isItemAvailable(a);
+    const bAvail = isItemAvailable(b);
+    if (aAvail && !bAvail) return -1;
+    if (!aAvail && bAvail) return 1;
+    return 0;
+  });
 
   // Initialize Post Malone Sunflower track
   useEffect(() => {
@@ -149,7 +168,7 @@ export default function SpidermanColeccionPage() {
   };
 
   const handleAddToCart = (item: SpidermanItem) => {
-    if (item.stock <= 0 || item.availability.toUpperCase() === 'AGOTADO') return;
+    if (!isItemAvailable(item)) return;
     const cartItem = {
       id: `${item.productId}-${item.option}`,
       productId: item.productId,
@@ -249,10 +268,12 @@ export default function SpidermanColeccionPage() {
       {/* Main Products Grid - Full Width & Ergonomic for Mobile */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 lg:gap-8">
-          {ITEMS.map((item) => {
+          {sortedItems.map((item) => {
             const currentView = selectedViews[item.id] || 'front';
             const activeImage = currentView === 'front' ? item.imageFront : item.imageBack;
             const isAdded = !!addedItems[item.id];
+            const isAvailable = isItemAvailable(item);
+            const currentStock = getItemStock(item);
 
             return (
               <motion.article
@@ -347,7 +368,7 @@ export default function SpidermanColeccionPage() {
 
                     {/* Badges: Disponibilidad + Talla */}
                     <div className="flex flex-wrap items-center gap-2 my-2">
-                      {item.stock > 0 && item.availability.toUpperCase() !== 'AGOTADO' ? (
+                      {isAvailable ? (
                         <span className="bg-[#16a34a] text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded tracking-wider">
                           DISPONIBLE
                         </span>
@@ -360,7 +381,7 @@ export default function SpidermanColeccionPage() {
                         Talla {item.option}
                       </span>
                       <span className="text-zinc-400 text-[10px]">
-                        · {item.stock > 0 && item.availability.toUpperCase() !== 'AGOTADO' ? `${item.stock} unidad` : '0 unidades'}
+                        · {isAvailable ? `${currentStock} unidad` : '0 unidades'}
                       </span>
                     </div>
 
@@ -372,7 +393,7 @@ export default function SpidermanColeccionPage() {
 
                   {/* Add to Cart Button */}
                   <div className="mt-4 pt-3 border-t border-zinc-900 flex flex-col gap-2">
-                    {item.stock > 0 && item.availability.toUpperCase() !== 'AGOTADO' ? (
+                    {isAvailable ? (
                       <button
                         type="button"
                         onClick={() => handleAddToCart(item)}

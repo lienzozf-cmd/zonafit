@@ -25,9 +25,6 @@ const banners = [
   { src: '/assets/images/banners/banner2.webp', alt: 'Banner 2' },
   { src: '/assets/images/banners/banner1.webp', alt: 'Banner 1' },
   { src: '/assets/images/banners/banner3.webp', alt: 'Banner 3' },
-  { src: '/assets/images/banners/banner4.webp', alt: 'Banner 4' },
-  { src: '/assets/images/banners/banner5.webp', alt: 'Banner 5' },
-  { src: '/assets/images/banners/banner6.webp', alt: 'Banner 6' },
 ];
 
 
