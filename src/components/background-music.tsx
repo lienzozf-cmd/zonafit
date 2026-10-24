@@ -17,7 +17,12 @@ const BackgroundMusic = () => {
 
     let targetSrc = '/John Carpenter - HALLOWEEN Theme.mp3';
 
-    if (pathname.startsWith('/coleccion/spiderman') || pathname === '/spiderman') {
+    if (
+      pathname.startsWith('/coleccion/spiderman') || 
+      pathname === '/spiderman' ||
+      pathname.startsWith('/coleccion/demon-slayer') ||
+      pathname === '/demon-slayer'
+    ) {
       audio.pause();
       return;
     } else if (pathname.startsWith('/mujeres')) {
@@ -102,8 +107,13 @@ const BackgroundMusic = () => {
     const handleResumeBgMusic = () => {
       const audio = audioRef.current;
       if (!audio) return;
-      // Do not resume on spiderman route
-      if (window.location.pathname.startsWith('/coleccion/spiderman') || window.location.pathname === '/spiderman') {
+      // Do not resume on spiderman or demon-slayer route
+      if (
+        window.location.pathname.startsWith('/coleccion/spiderman') || 
+        window.location.pathname === '/spiderman' ||
+        window.location.pathname.startsWith('/coleccion/demon-slayer') || 
+        window.location.pathname === '/demon-slayer'
+      ) {
         return;
       }
       audio.muted = false;

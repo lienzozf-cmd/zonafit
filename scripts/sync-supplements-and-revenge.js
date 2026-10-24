@@ -83,7 +83,7 @@ async function run() {
       name: 'BUM Energy Drink',
       price: 'Q.35.00',
       availability: 'Disponible',
-      description: 'Bebida energética premium BUM Energy Drink de RAW Nutrition sabor Gummy Shark. Fórmula limpia formulada por Chris Bumstead con 112 mg de cafeína natural y 250 mg de Cognizin® Citicolina para un enfoque cerebral inigualable y cero bajón.',
+      description: 'Bebida energética premium BUM Energy Drink de RAW Nutrition sabor Gummy Thark. Fórmula limpia formulada por Chris Bumstead con 112 mg de cafeína natural y 250 mg de Cognizin® Citicolina para un enfoque cerebral inigualable y cero bajón.',
       gender: 'unisex',
       category: 'suplemento',
       subcategory: 'pre-entreno',
@@ -91,9 +91,9 @@ async function run() {
       is_compression: false,
       images: [
         {
-          alt: 'BUM Energy Drink Gummy Shark',
-          src: '/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp',
-          dataAiHint: 'bum energy drink gummy shark can'
+          alt: 'BUM Energy Drink Gummy Thark',
+          src: '/assets/images/marcas/bumenergy/BUM Energy Drink gummy Thark.webp',
+          dataAiHint: 'bum energy drink gummy Thark can'
         }
       ],
       options: {
@@ -109,7 +109,7 @@ async function run() {
       feature1: '112 mg de Cafeína Natural para Energía Limpia',
       feature2: '250 mg de Cognizin® Citicolina para Enfoque Mental',
       feature3: 'Cero Azúcar y Bajas Calorías',
-      feature4: 'Delicioso Sabor Gummy Shark Refrescante',
+      feature4: 'Delicioso Sabor Gummy Thark Refrescante',
       benefits: 'Enfoque mental duradero y energía constante sin temblores ni bajones.',
       servings_info: '1 lata (Pack)',
       visible: true
@@ -234,7 +234,7 @@ async function run() {
 
     // BUM Energy Drink (ID: 9110)
     { product_id: 9110, color_name: null, option_value: 'Pack', stock: 36 },
-    { product_id: 9110, color_name: null, option_value: 'Gummy Shark', stock: 36 },
+    { product_id: 9110, color_name: null, option_value: 'Gummy Thark', stock: 36 },
     { product_id: 9110, color_name: null, option_value: 'Gummy Thark', stock: 36 },
     { product_id: 9110, color_name: null, option_value: 'Único', stock: 36 },
 
