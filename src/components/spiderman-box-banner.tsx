@@ -97,6 +97,25 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
   const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
   const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
+  const getProductOption = useCartStore((state) => state.getProductOption);
+
+  const getTeeStock = useCallback((tee: SpidermanTee) => {
+    const variant = getProductOption ? getProductOption(tee.productId, tee.option) : undefined;
+    return variant?.stock !== undefined ? variant.stock : tee.stock;
+  }, [getProductOption]);
+
+  const isTeeAvailable = useCallback((tee: SpidermanTee) => {
+    const currentStock = getTeeStock(tee);
+    return currentStock > 0 && tee.availability.toUpperCase() !== 'AGOTADO';
+  }, [getTeeStock]);
+
+  const sortedTees = [...SPIDERMAN_TEES].sort((a, b) => {
+    const aAvail = isTeeAvailable(a);
+    const bAvail = isTeeAvailable(b);
+    if (aAvail && !bAvail) return -1;
+    if (!aAvail && bAvail) return 1;
+    return 0;
+  });
 
   // Initialize and handle Post Malone Sunflower Audio
   useEffect(() => {
@@ -277,7 +296,7 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
   };
 
   const handleAddToCart = (tee: SpidermanTee) => {
-    if (tee.stock <= 0 || tee.availability.toUpperCase() === 'AGOTADO') return;
+    if (!isTeeAvailable(tee)) return;
     addItem({
       id: `${tee.productId}-spiderman-${tee.option}`,
       productId: tee.productId,
@@ -658,119 +677,124 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
 
             {/* 4 PRODUCT CARDS WITH THE EXACT STYLE FROM USER'S PHOTO 2 */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-7xl mx-auto w-full flex-1 items-stretch">
-              {SPIDERMAN_TEES.map((tee, index) => (
-                <motion.div
-                  key={tee.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08, duration: 0.3 }}
-                  style={{
-                    backgroundColor: '#0d0d0d',
-                    backgroundImage: `linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000), linear-gradient(-45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000)`,
-                    backgroundSize: '20px 20px',
-                    borderColor: '#e50914',
-                  }}
-                  className="relative rounded-lg border-2 p-3 sm:p-4 flex flex-col justify-between text-center shadow-[0_0_15px_rgba(229,9,20,0.35)] hover:shadow-[0_0_25px_rgba(229,9,20,0.6)] transition-all duration-200 group"
-                  onMouseEnter={() => setHoveredCardId(tee.id)}
-                  onMouseLeave={() => setHoveredCardId(null)}
-                >
-                  {/* Product Image in Center with square/contain proportions and touch-to-enlarge */}
-                  <div
-                    onClick={() => setEnlargedTee({ tee, isBack: hoveredCardId === tee.id })}
-                    className="relative w-full aspect-square rounded-md overflow-hidden bg-black/40 mb-3 flex items-center justify-center p-2 cursor-zoom-in group/img"
-                    title="Toca para agrandar la imagen en alta resolución"
+              {sortedTees.map((tee, index) => {
+                const isAvailable = isTeeAvailable(tee);
+                const currentStock = getTeeStock(tee);
+
+                return (
+                  <motion.div
+                    key={tee.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.08, duration: 0.3 }}
+                    style={{
+                      backgroundColor: '#0d0d0d',
+                      backgroundImage: `linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000), linear-gradient(-45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000)`,
+                      backgroundSize: '20px 20px',
+                      borderColor: '#e50914',
+                    }}
+                    className="relative rounded-lg border-2 p-3 sm:p-4 flex flex-col justify-between text-center shadow-[0_0_15px_rgba(229,9,20,0.35)] hover:shadow-[0_0_25px_rgba(229,9,20,0.6)] transition-all duration-200 group"
+                    onMouseEnter={() => setHoveredCardId(tee.id)}
+                    onMouseLeave={() => setHoveredCardId(null)}
                   >
-                    <Image
-                      src={hoveredCardId === tee.id ? tee.image2 : tee.image}
-                      alt={tee.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      className="object-contain p-1 group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {/* Badge indicating size M */}
-                    <div className="absolute top-2 right-2 bg-black/80 border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow z-10">
-                      TALLA M
-                    </div>
+                    {/* Product Image in Center with square/contain proportions and touch-to-enlarge */}
+                    <div
+                      onClick={() => setEnlargedTee({ tee, isBack: hoveredCardId === tee.id })}
+                      className="relative w-full aspect-square rounded-md overflow-hidden bg-black/40 mb-3 flex items-center justify-center p-2 cursor-zoom-in group/img"
+                      title="Toca para agrandar la imagen en alta resolución"
+                    >
+                      <Image
+                        src={hoveredCardId === tee.id ? tee.image2 : tee.image}
+                        alt={tee.name}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-contain p-1 group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {/* Badge indicating size M */}
+                      <div className="absolute top-2 right-2 bg-black/80 border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow z-10">
+                        TALLA M
+                      </div>
 
-                    {/* Touch / Click to Enlarge hover overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
-                      <span className="px-2.5 py-1 rounded-full bg-red-600/90 text-white text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 shadow-lg transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
-                        <Eye className="w-3 h-3" />
-                        Toca para agrandar
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Product Info matching the exact card style in Photo 2 */}
-                  <div className="flex flex-col items-center flex-grow">
-                    {/* Brand in green */}
-                    <p className="text-emerald-500 font-bold uppercase tracking-wider text-xs mb-1">
-                      {tee.brand}
-                    </p>
-
-                    {/* Product Name in clean white uppercase */}
-                    <h4 className="text-white font-normal uppercase tracking-wide text-xs sm:text-sm line-clamp-2 min-h-[36px] flex items-center justify-center">
-                      {tee.name}
-                    </h4>
-
-                    {/* Price in vibrant red */}
-                    <p className="text-[#e50914] font-bold text-base sm:text-lg my-1.5 tracking-tight">
-                      {tee.price}
-                    </p>
-
-                    {/* Availability Badge: green pill or zinc sold out pill */}
-                    <div className="my-1">
-                      {tee.stock > 0 && tee.availability.toUpperCase() !== 'AGOTADO' ? (
-                        <span className="bg-[#16a34a] text-white text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
-                          DISPONIBLE
+                      {/* Touch / Click to Enlarge hover overlay */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
+                        <span className="px-2.5 py-1 rounded-full bg-red-600/90 text-white text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 shadow-lg transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                          <Eye className="w-3 h-3" />
+                          Toca para agrandar
                         </span>
+                      </div>
+                    </div>
+
+                    {/* Product Info matching the exact card style in Photo 2 */}
+                    <div className="flex flex-col items-center flex-grow">
+                      {/* Brand in green */}
+                      <p className="text-emerald-500 font-bold uppercase tracking-wider text-xs mb-1">
+                        {tee.brand}
+                      </p>
+
+                      {/* Product Name in clean white uppercase */}
+                      <h4 className="text-white font-normal uppercase tracking-wide text-xs sm:text-sm line-clamp-2 min-h-[36px] flex items-center justify-center">
+                        {tee.name}
+                      </h4>
+
+                      {/* Price in vibrant red */}
+                      <p className="text-[#e50914] font-bold text-base sm:text-lg my-1.5 tracking-tight">
+                        {tee.price}
+                      </p>
+
+                      {/* Availability Badge: green pill or zinc sold out pill */}
+                      <div className="my-1">
+                        {isAvailable ? (
+                          <span className="bg-[#16a34a] text-white text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
+                            DISPONIBLE
+                          </span>
+                        ) : (
+                          <span className="bg-zinc-800 border border-zinc-700 text-zinc-400 text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
+                            AGOTADO
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Available units subtitle */}
+                      <p className="text-zinc-400 text-[11px] sm:text-xs mt-2 mb-3">
+                        {isAvailable
+                          ? `Disponible: ${currentStock} unidad`
+                          : 'Agotado (0 unidades)'}
+                      </p>
+                    </div>
+
+                    {/* Bottom Action: AGREGAR Button ONLY (Disabled if AGOTADO) */}
+                    <div className="mt-auto pt-1 w-full">
+                      {isAvailable ? (
+                        <button
+                          type="button"
+                          onClick={() => handleAddToCart(tee)}
+                          className="w-full py-2.5 rounded bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-200 shadow-[0_0_15px_rgba(229,9,20,0.5)] hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-1.5"
+                        >
+                          {addedItems[tee.id] ? (
+                            <>
+                              <Check className="w-4 h-4 text-white" />
+                              <span>¡AGREGADO!</span>
+                            </>
+                          ) : (
+                            <>
+                              <ShoppingBag className="w-4 h-4 text-white" />
+                              <span>AGREGAR</span>
+                            </>
+                          )}
+                        </button>
                       ) : (
-                        <span className="bg-zinc-800 border border-zinc-700 text-zinc-400 text-[11px] font-bold uppercase px-3 py-1 rounded inline-block tracking-wider">
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full py-2.5 rounded bg-zinc-800/90 text-zinc-500 font-black text-xs sm:text-sm tracking-widest uppercase cursor-not-allowed border border-zinc-700/50 flex items-center justify-center gap-1.5"
+                        >
                           AGOTADO
-                        </span>
+                        </button>
                       )}
                     </div>
-
-                    {/* Available units subtitle */}
-                    <p className="text-zinc-400 text-[11px] sm:text-xs mt-2 mb-3">
-                      {tee.stock > 0 && tee.availability.toUpperCase() !== 'AGOTADO'
-                        ? `Disponible: ${tee.stock} unidad`
-                        : 'Agotado (0 unidades)'}
-                    </p>
-                  </div>
-
-                  {/* Bottom Action: AGREGAR Button ONLY (Disabled if AGOTADO) */}
-                  <div className="mt-auto pt-1 w-full">
-                    {tee.stock > 0 && tee.availability.toUpperCase() !== 'AGOTADO' ? (
-                      <button
-                        type="button"
-                        onClick={() => handleAddToCart(tee)}
-                        className="w-full py-2.5 rounded bg-[#e50914] hover:bg-[#c40811] text-white font-black text-xs sm:text-sm tracking-widest uppercase transition-all duration-200 shadow-[0_0_15px_rgba(229,9,20,0.5)] hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-1.5"
-                      >
-                        {addedItems[tee.id] ? (
-                          <>
-                            <Check className="w-4 h-4 text-white" />
-                            <span>¡AGREGADO!</span>
-                          </>
-                        ) : (
-                          <>
-                            <ShoppingBag className="w-4 h-4 text-white" />
-                            <span>AGREGAR</span>
-                          </>
-                        )}
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        disabled
-                        className="w-full py-2.5 rounded bg-zinc-800/90 text-zinc-500 font-black text-xs sm:text-sm tracking-widest uppercase cursor-not-allowed border border-zinc-700/50 flex items-center justify-center gap-1.5"
-                      >
-                        AGOTADO
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Bottom Bar: Back to Banner */}
