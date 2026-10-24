@@ -158,6 +158,17 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (sessionStorage.getItem('zonafit_intro_seen') === 'true' || (window.location.pathname !== '/' && window.location.pathname !== '')) {
+                  document.documentElement.classList.add('no-intro');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
