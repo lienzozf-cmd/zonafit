@@ -14,11 +14,27 @@ export default function IntroWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const [showIntro, setShowIntro] = useState(false);
+  const pathname = usePathname();
+
+  // Para evitar que se vea el fondo o cualquier elemento antes de la intro al cargar la web,
+  // la intro se inicia en true desde SSR en la ruta raíz '/', cubriendo la pantalla desde el milisegundo 0.
+  const [showIntro, setShowIntro] = useState(() => {
+    if (typeof window === 'undefined') {
+      return true;
+    }
+    try {
+      if (window.location.pathname !== '/' && window.location.pathname !== '') {
+        return false;
+      }
+      return sessionStorage.getItem('zonafit_intro_seen') !== 'true';
+    } catch {
+      return false;
+    }
+  });
+
   const setSessionId = useCartStore((state) => state.setSessionId);
   const sessionId = useCartStore((state) => state.sessionId);
   const fetchProducts = useCartStore((state) => state.fetchProducts);
-  const pathname = usePathname();
 
   // Activa la suscripción en tiempo real a los cambios de stock en Supabase
   useRealtimeStock();
@@ -35,21 +51,20 @@ export default function IntroWrapper({
       localStorage.removeItem('introShown');
     } catch (e) {}
 
-    // Mostrar intro en la página de inicio cuando es una nueva sesión
+    // Si ya se vio en esta sesión o no estamos en '/', no mostrar la intro
     try {
-      const alreadySeen = sessionStorage.getItem('zonafit_intro_seen');
-      if (!alreadySeen && pathname === '/') {
-        setShowIntro(true);
+      const alreadySeen = sessionStorage.getItem('zonafit_intro_seen') === 'true';
+      if (alreadySeen || pathname !== '/') {
+        setShowIntro(false);
       }
-    } catch (e) {
-      // Fallback si sessionStorage está restringido
-    }
+    } catch (e) {}
   }, [pathname, sessionId, setSessionId, fetchProducts]);
 
   const handleIntroFinish = () => {
     setShowIntro(false);
     try {
       sessionStorage.setItem('zonafit_intro_seen', 'true');
+      document.documentElement.classList.add('no-intro');
     } catch (e) {}
   };
 

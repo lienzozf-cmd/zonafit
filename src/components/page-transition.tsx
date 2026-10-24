@@ -1,5 +1,8 @@
+'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
 const swipeVariants = {
   initial: {
@@ -17,6 +20,14 @@ const swipeVariants = {
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const initialPath = useRef(pathname);
+  const [hasNavigated, setHasNavigated] = useState(false);
+
+  useEffect(() => {
+    if (pathname !== initialPath.current) {
+      setHasNavigated(true);
+    }
+  }, [pathname]);
 
   return (
     <div className="relative min-h-screen">
@@ -32,14 +43,16 @@ export default function PageTransition({ children }: { children: React.ReactNode
         </motion.div>
       </AnimatePresence>
 
-      <motion.div
-        key={`swipe-${pathname}`}
-        variants={swipeVariants}
-        initial="initial"
-        animate="animate"
-        className="fixed top-0 left-0 w-full h-full bg-[#E50000] z-[9999] pointer-events-none"
-        style={{ originX: 0 }}
-      />
+      {hasNavigated && (
+        <motion.div
+          key={`swipe-${pathname}`}
+          variants={swipeVariants}
+          initial="initial"
+          animate="animate"
+          className="fixed top-0 left-0 w-full h-full bg-[#E50000] z-[9000] pointer-events-none"
+          style={{ originX: 0 }}
+        />
+      )}
     </div>
   );
 }
