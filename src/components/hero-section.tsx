@@ -10,9 +10,14 @@ import {
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
 import { Dumbbell } from 'lucide-react';
+import DemonSlayerBanner from '@/components/demon-slayer-banner';
 import SpidermanBoxBanner from '@/components/spiderman-box-banner';
 
 const banners = [
+  {
+    isDemonSlayer: true,
+    alt: 'Demon Slayer: Kimetsu no Yaiba x Zona Fit'
+  },
   {
     isInteractive: true,
     alt: 'Caja Spider-Man x Civil Regime'
@@ -73,7 +78,7 @@ const HeroSection = () => {
         plugins={[
           Autoplay({
             delay: (scrollSnaps) =>
-              scrollSnaps.map((_, index) => (index === 0 ? 10000 : 5000)),
+              scrollSnaps.map((_, index) => (index === 0 || index === 1 ? 10000 : 5000)),
             stopOnInteraction: false,
           }),
         ]}
@@ -84,7 +89,9 @@ const HeroSection = () => {
         <CarouselContent>
           {banners.map((banner, index) => (
             <CarouselItem key={index}>
-              {banner.isInteractive ? (
+              {banner.isDemonSlayer ? (
+                <DemonSlayerBanner onOpenChange={handleBoxOpenChange} />
+              ) : banner.isInteractive ? (
                 <SpidermanBoxBanner onOpenChange={handleBoxOpenChange} />
               ) : (
                 <div className="relative aspect-[16/9] md:h-[85vh] w-full">
