@@ -1083,7 +1083,7 @@ footer {
     object-fit: cover;
     border-radius: 50%;
     clip-path: circle(50%);
-    animation: gymPlateSpin 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: gymPlateSpin 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     filter: drop-shadow(0 0 35px rgba(229, 0, 0, 0.35));
     transform: translateZ(0);
     will-change: transform, opacity;
@@ -1092,7 +1092,7 @@ footer {
 .intro-text-container {
     text-align: center;
     opacity: 0;
-    animation: fadeInText 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    animation: fadeInText 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1177,7 +1177,7 @@ footer {
     width: 0%;
     background-color: #E50000;
     box-shadow: 0 0 10px #E50000;
-    animation: loadingProgress 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: loadingProgress 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes loadingProgress {
@@ -1187,7 +1187,7 @@ footer {
 }
 
 .intro-screen.fade-out {
-    animation: fadeOut 0.35s ease-out forwards;
+    animation: fadeOut 0.4s ease-out forwards;
     pointer-events: none;
 }
 

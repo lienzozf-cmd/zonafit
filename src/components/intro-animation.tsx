@@ -23,15 +23,15 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
 
-        // Fast & punchy: fade out starts at 1.4s
+        // Duration: 2.0s full display before fading out
         const fadeTimer = setTimeout(() => {
             setIsFadingOut(true);
-        }, 1400);
+        }, 2000);
 
-        // Finishes cleanly at 1.75s
+        // Finishes cleanly after 0.4s fade out (2.4s total)
         const removeTimer = setTimeout(() => {
             finish();
-        }, 1750);
+        }, 2400);
 
         return () => {
             clearTimeout(fadeTimer);
@@ -84,7 +84,7 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
                     <p className="intro-subtitle">LA ZONA MAS FIT DE GUATEMALA</p>
                     
                     <div className="loading-bar">
-                        <div className="loading-progress" style={{ animationDuration: '1.4s' }}></div>
+                        <div className="loading-progress" style={{ animationDuration: '2s' }}></div>
                     </div>
                 </div>
             </div>
