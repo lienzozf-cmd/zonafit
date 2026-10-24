@@ -15,7 +15,7 @@ const BackgroundMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    let targetSrc = '/John Carpenter - HALLOWEEN Theme.mp3';
+    let targetSrc = '/Thriller (2003 Edit).mp3';
 
     if (
       pathname.startsWith('/coleccion/spiderman') || 
@@ -78,7 +78,7 @@ const BackgroundMusic = () => {
       const gender = customEvent.detail?.gender;
       const productId = customEvent.detail?.productId;
       
-      let targetSrc = '/John Carpenter - HALLOWEEN Theme.mp3';
+      let targetSrc = '/Thriller (2003 Edit).mp3';
 
       if (productId === 3 || productId === 2671) {
         targetSrc = '/DAVID LAID - Outside GYM MOTIVATION.mp3';
@@ -155,7 +155,7 @@ const BackgroundMusic = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-[100] pointer-events-none">
-      <audio ref={audioRef} src="/John Carpenter - HALLOWEEN Theme.mp3" loop playsInline />
+      <audio ref={audioRef} src="/Thriller (2003 Edit).mp3" loop playsInline />
 
       <AnimatePresence>
         {showUI && (
