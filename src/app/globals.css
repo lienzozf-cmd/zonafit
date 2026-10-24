@@ -1054,7 +1054,7 @@ footer {
     width: 100%;
     height: 100vh;
     background-color: #050505;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/images/diamond-bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/images/diamond-bg.webp');
     background-size: 100px;
     background-repeat: repeat;
     display: flex;
@@ -1063,28 +1063,28 @@ footer {
     align-items: center;
     z-index: 9999; 
     overflow: hidden;
+    user-select: none;
 }
 
 .gym-plate-container {
     position: relative;
-    width: 400px;
+    width: min(90vw, 400px);
     height: auto;
-    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .gym-plate {
-    width: 300px;
-    height: 300px;
+    width: clamp(180px, 45vw, 260px);
+    height: clamp(180px, 45vw, 260px);
     object-fit: cover;
     border-radius: 50%;
-    clip-path: circle(50%); /* Crucial to remove any square background */
-    animation: gymPlateSpin 3s cubic-bezier(0.2, 0, 0.2, 1) forwards;
-    filter: drop-shadow(0 0 40px rgba(229, 0, 0, 0.25));
+    clip-path: circle(50%);
+    animation: gymPlateSpin 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    filter: drop-shadow(0 0 35px rgba(229, 0, 0, 0.35));
     transform: translateZ(0);
     will-change: transform, opacity;
 }
@@ -1092,80 +1092,81 @@ footer {
 .intro-text-container {
     text-align: center;
     opacity: 0;
-    animation: fadeInText 1.5s ease-out 1.2s forwards;
+    animation: fadeInText 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .intro-title {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 8vw, 3.2rem);
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
     text-transform: uppercase;
     display: flex;
     gap: 0.5rem;
+    line-height: 1;
 }
 
 .intro-title .zona { color: white; }
-.intro-title .fit { color: #E50000; }
+.intro-title .fit { color: #E50000; text-shadow: 0 0 25px rgba(229, 0, 0, 0.6); }
 
 .intro-subtitle {
-    font-size: 0.8rem;
-    color: #555;
+    font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+    color: #888;
     text-transform: uppercase;
-    letter-spacing: 8px;
-    margin-top: 0.5rem;
+    letter-spacing: 6px;
+    margin-top: 0.25rem;
     white-space: nowrap;
 }
 
 @keyframes fadeInText {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes gymPlateSpin {
     0% {
-        transform: rotate(-180deg) scale(0.5) translateZ(0);
+        transform: rotate(-180deg) scale(0.6) translateZ(0);
         opacity: 0;
     }
     40% {
-        transform: rotate(360deg) scale(1.1) translateZ(0);
+        transform: rotate(360deg) scale(1.05) translateZ(0);
         opacity: 1;
     }
     100% {
-        transform: rotate(1080deg) scale(1) translateZ(0);
+        transform: rotate(720deg) scale(1) translateZ(0);
         opacity: 1;
     }
 }
 
-/* Floating dots style like Flor de Seul */
+/* Floating dots style */
 .floating-dot {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background-color: #E50000;
     border-radius: 50%;
-    filter: blur(2px) shadow(0 0 10px #E50000);
-    opacity: 0.4;
-    animation: float 6s infinite ease-in-out;
+    filter: blur(1px);
+    box-shadow: 0 0 8px #E50000;
+    opacity: 0.35;
+    animation: float 4s infinite ease-in-out;
 }
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(20px, -20px); }
+    50% { transform: translate(15px, -15px); }
 }
 
-
-
 .loading-bar {
-    width: 200px;
-    height: 4px;
-    background-color: #333;
-    margin-top: 30px;
+    width: min(70vw, 200px);
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 15px;
     position: relative;
     overflow: hidden;
+    border-radius: 9999px;
 }
 
 .loading-progress {
@@ -1175,36 +1176,24 @@ footer {
     height: 100%;
     width: 0%;
     background-color: #E50000;
-    animation: loadingProgress 2s ease-in-out forwards;
+    box-shadow: 0 0 10px #E50000;
+    animation: loadingProgress 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes loadingProgress {
     0% { width: 0%; }
-    50% { width: 70%; }
+    50% { width: 75%; }
     100% { width: 100%; }
 }
 
-.intro-text {
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    font-size: 24px;
-    margin-top: 20px;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out 1.5s forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .intro-screen.fade-out {
-    animation: fadeOut 1s ease-in-out forwards;
+    animation: fadeOut 0.35s ease-out forwards;
+    pointer-events: none;
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; visibility: hidden; }
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.03); visibility: hidden; }
 }
 
 @keyframes page-fade-in {
