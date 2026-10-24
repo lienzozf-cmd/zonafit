@@ -539,43 +539,6 @@
     "visible": true
   },
   {
-    "id": 1800,
-    "name": "Proteína whey Dragon Pharma",
-    "price": "Q.500.00",
-    "availability": "Agotado",
-    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "proteina",
-    "brand": "Dragon Pharma",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Protein",
-        "src": "/assets/images/marcas/dragonpharma/proteinaPDP.webp",
-        "option": "Pastel de cumpleaños",
-        "dataAiHint": "protein supplement"
-      }
-    ],
-    "options": {
-      "type": "sabor",
-      "values": [
-        {
-          "stock": 0,
-          "value": "Pastel de cumpleaños"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Pureza Micronizada de Grado Superior",
-    "feature2": "Máxima Absorción Intracelular",
-    "feature3": "Libre de Azúcares y Rellenos",
-    "feature4": "Sabor y Mezclabilidad de Nivel Pro",
-    "benefits": "Apoya el crecimiento muscular, rápida absorción.",
-    "servings_info": "30 servicios por envase.",
-    "visible": true
-  },
-  {
     "id": 2301,
     "name": "Minimal Rope Chain - Gold 14K SS \"22\"",
     "price": "Q.295.00",
@@ -998,130 +961,6 @@
     "visible": true
   },
   {
-    "id": 2609,
-    "name": "Hella Pocket Sweats",
-    "price": "Q.600.00",
-    "availability": "Agotado",
-    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "pantalon",
-    "brand": "YoungLA",
-    "fabric_type": "100% Cotton",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Hella Pocket Sweats",
-        "src": "/assets/images/marcas/youngla/hombre/2005 - Hella Pocket Sweats morado.webp",
-        "option": "S",
-        "dataAiHint": "men pants"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Corte Cónico de Estética Moderna",
-    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
-    "feature3": "Puños Acanalados de Alta Resistencia",
-    "feature4": "Cordones Ajustables con Puntas Metálicas",
-    "visible": true
-  },
-  {
-    "id": 2610,
-    "name": "The Boys Graphic Tees",
-    "price": "Q.450.00",
-    "availability": "Agotado",
-    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "100% Cotton",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "The Boys Graphic Tees",
-        "src": "/assets/images/marcas/youngla/hombre/4095 - The Boys® Graphic Tees.webp",
-        "option": "M",
-        "dataAiHint": "graphic tee"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        },
-        {
-          "stock": 0,
-          "value": "M"
-        },
-        {
-          "stock": 0,
-          "value": "L"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Tejido Transpirable de Alto Rendimiento",
-    "feature2": "Ajuste Atlético que Realza la Figura",
-    "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad",
-    "visible": true
-  },
-  {
-    "id": 2611,
-    "name": "The Boys® Cut-Offs",
-    "price": "Q.450.00",
-    "availability": "Agotado",
-    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "tank",
-    "brand": "YoungLA",
-    "fabric_type": "100% Cotton",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "The Boys® Graphic Tees",
-        "src": "/assets/images/marcas/youngla/hombre/3005 - The Boys® Cut-Offs.webp",
-        "option": "S",
-        "dataAiHint": "graphic tee"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        },
-        {
-          "stock": 0,
-          "value": "M"
-        },
-        {
-          "stock": 0,
-          "value": "L"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Tejido Transpirable de Alto Rendimiento",
-    "feature2": "Ajuste Atlético que Realza la Figura",
-    "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad",
-    "visible": true
-  },
-  {
     "id": 2612,
     "name": "5003 UFC™ Cut-Off hoodies",
     "price": "Q.495.00",
@@ -1147,50 +986,6 @@
         {
           "stock": 1,
           "value": "M"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Tejido Transpirable de Alto Rendimiento",
-    "feature2": "Ajuste Atlético que Realza la Figura",
-    "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad",
-    "visible": true
-  },
-  {
-    "id": 2613,
-    "name": "UFC™ Jersey",
-    "price": "Q.445.00",
-    "availability": "Agotado",
-    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "100% Polyester",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "UFC™ Jersey",
-        "src": "/assets/images/marcas/youngla/hombre/4207 - UFC™ Jersey GRIS.webp",
-        "option": "S",
-        "dataAiHint": "ufc jersey"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        },
-        {
-          "stock": 0,
-          "value": "M"
-        },
-        {
-          "stock": 0,
-          "value": "L"
         }
       ]
     },
@@ -1317,50 +1112,6 @@
         "imageSrc": "/assets/images/marcas/youngla/hombre/4156 - Revenge Tees Verde.webp"
       }
     ],
-    "feature1": "Tejido Transpirable de Alto Rendimiento",
-    "feature2": "Ajuste Atlético que Realza la Figura",
-    "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad",
-    "visible": true
-  },
-  {
-    "id": 2615,
-    "name": "GRAND SLAM BASEBALL JERSEYS",
-    "price": "Q.495.00",
-    "availability": "Agotado",
-    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "playera",
-    "brand": "YoungLA",
-    "fabric_type": "100% Polyester",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "GRAND SLAM BASEBALL JERSEYS",
-        "src": "/assets/images/marcas/youngla/hombre/3002 GRAND SLAM BASEBALL JERSEYS NEGRO.webp",
-        "option": "M",
-        "dataAiHint": "baseball jersey"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        },
-        {
-          "stock": 0,
-          "value": "M"
-        },
-        {
-          "stock": 0,
-          "value": "L"
-        }
-      ]
-    },
-    "colors": [],
     "feature1": "Tejido Transpirable de Alto Rendimiento",
     "feature2": "Ajuste Atlético que Realza la Figura",
     "feature3": "Material Resistente a la Deformación",
@@ -1501,42 +1252,6 @@
     "visible": true
   },
   {
-    "id": 2628,
-    "name": "Ease Woven Joggers",
-    "price": "Q.375.00",
-    "availability": "Agotado",
-    "description": "Pantalones deportivos con corte cónico moderno y tejido premium que mantiene su forma. Ofrecen suavidad y resistencia superior tanto para entrenar como para un look casual.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "pantalon",
-    "brand": "Gymshark",
-    "fabric_type": "100% Poliéster",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Ease Woven Joggers",
-        "src": "/assets/images/marcas/gymshark/hombre/Ease Woven Joggers gris.webp",
-        "option": "S",
-        "dataAiHint": "men joggers"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Corte Cónico de Estética Moderna",
-    "feature2": "Mezcla de Algodón y Poliéster de Lujo",
-    "feature3": "Puños Acanalados de Alta Resistencia",
-    "feature4": "Cordones Ajustables con Puntas Metálicas",
-    "visible": true
-  },
-  {
     "id": 2632,
     "name": "Sets N Reps T-Shirt",
     "price": "Q.380.00",
@@ -1642,72 +1357,6 @@
     "feature2": "Tejido de Microfibra Ultra Ligera",
     "feature3": "Bolsillos Laterales Reforzados",
     "feature4": "Aperturas Laterales para Movilidad",
-    "visible": true
-  },
-  {
-    "id": 2638,
-    "name": "Sets and Reps 3pk Crew Socks",
-    "price": "Q.250.00",
-    "availability": "Agotado",
-    "description": "Calcetines para tus sets y reps, en un conveniente paquete de 3.",
-    "gender": "unisex",
-    "category": "accesorio",
-    "subcategory": "calcetin",
-    "brand": "Gymshark",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Sets and Reps 3pk Crew Socks",
-        "src": "/assets/images/Accesorios/Sets and Reps 3pk Crew.webp",
-        "dataAiHint": "fitness socks"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": [
-        {
-          "stock": 0,
-          "value": "S"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Amortiguación en talón y punta",
-    "feature2": "Tejido que absorbe la humedad",
-    "feature3": "Diseño acanalado para un ajuste seguro",
-    "visible": true
-  },
-  {
-    "id": 2642,
-    "name": "TU MARIDO MOISES SHAKER CUP",
-    "price": "Q.170.00",
-    "availability": "Agotado",
-    "description": "Shaker exclusivo \"tu marido moises\" de Dragon Pharma.",
-    "gender": "unisex",
-    "category": "accesorio",
-    "subcategory": "shaker",
-    "brand": "Dragon Pharma",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Dragon Pharma Shaker",
-        "src": "/assets/images/marcas/dragonpharma/TU MARIDO MOISES SHAKER CUP .webp",
-        "dataAiHint": "shaker bottle"
-      }
-    ],
-    "options": {
-      "type": "color",
-      "values": [
-        {
-          "stock": 0,
-          "value": "Único"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Diseño exclusivo de edición limitada",
-    "feature2": "Construcción robusta y duradera",
-    "feature3": "Tapa a rosca a prueba de derrames",
     "visible": true
   },
   {
@@ -2176,78 +1825,6 @@
     "feature4": "Sabor y Mezclabilidad de Nivel Pro",
     "benefits": "Energía intensa, sabor tropical refrescante y enfoque mejorado.",
     "servings_info": "30 servicios.",
-    "visible": true
-  },
-  {
-    "id": 2652,
-    "name": "Iso 100 - Dymatize - Chocolate 3LB",
-    "price": "Q.665.00",
-    "availability": "Agotado",
-    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "proteina",
-    "brand": "Dymatize",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Iso 100 - Dynamatize - Chocolate",
-        "src": "/assets/images/marcas/suplementos/isodc.webp",
-        "dataAiHint": "protein powder"
-      }
-    ],
-    "options": {
-      "type": "sabor",
-      "values": [
-        {
-          "stock": 0,
-          "value": "Único"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Pureza Micronizada de Grado Superior",
-    "feature2": "Máxima Absorción Intracelular",
-    "feature3": "Libre de Azúcares y Rellenos",
-    "feature4": "Sabor y Mezclabilidad de Nivel Pro",
-    "benefits": "Recuperación muscular rápida, 25g de proteína por servicio, bajo en carbohidratos.",
-    "servings_info": "43 servicios.",
-    "visible": true
-  },
-  {
-    "id": 2653,
-    "name": "Iso 100 - Dymatize- Cocoa Pebbles 3LB",
-    "price": "Q.685.00",
-    "availability": "Agotado",
-    "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "proteina",
-    "brand": "Dymatize",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Iso 100 - Dynamatize - Cocoa Pebbles",
-        "src": "/assets/images/marcas/suplementos/isodcp.webp",
-        "dataAiHint": "protein powder"
-      }
-    ],
-    "options": {
-      "type": "sabor",
-      "values": [
-        {
-          "stock": 0,
-          "value": "Único"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Pureza Micronizada de Grado Superior",
-    "feature2": "Máxima Absorción Intracelular",
-    "feature3": "Libre de Azúcares y Rellenos",
-    "feature4": "Sabor y Mezclabilidad de Nivel Pro",
-    "benefits": "Recuperación muscular rápida, sabor increíble, 5.5g de BCAAs.",
-    "servings_info": "42 servicios.",
     "visible": true
   },
   {
@@ -4245,96 +3822,6 @@
     "visible": true
   },
   {
-    "id": 2712,
-    "name": "Power Cut Off Tank",
-    "price": "Q.410.00",
-    "availability": "Agotado",
-    "description": "Prenda de alto rendimiento con tecnología de gestión de humedad. Su diseño ergonómico y materiales premium garantizan frescura y confort total durante entrenamientos exigentes.",
-    "gender": "hombre",
-    "category": "ropa",
-    "subcategory": "tank",
-    "brand": "Gymshark",
-    "fabric_type": "100% Cotton",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Power Cut Off Tank",
-        "src": "/assets/images/marcas/gymshark/hombre/Power Cut Off Tank.webp",
-        "dataAiHint": "gymshark tank"
-      }
-    ],
-    "options": {
-      "type": "talla",
-      "values": []
-    },
-    "colors": [
-      {
-        "hex": "#36454F",
-        "name": "Black/Asphalt Grey",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "stock": 0,
-              "value": "M"
-            }
-          ]
-        },
-        "imageSrc": "/assets/images/marcas/gymshark/hombre/Power Cut Off Tank.webp"
-      }
-    ],
-    "feature1": "Tejido Transpirable de Alto Rendimiento",
-    "feature2": "Ajuste Atlético que Realza la Figura",
-    "feature3": "Material Resistente a la Deformación",
-    "feature4": "Tecnología de Gestión de Humedad",
-    "visible": true
-  },
-  {
-    "id": 2714,
-    "name": "Weight Plate Zip Coin Pouch",
-    "price": "Q.230.00",
-    "availability": "Disponible",
-    "description": "Monedero Gymshark.",
-    "gender": "unisex",
-    "category": "accesorio",
-    "subcategory": "equipo",
-    "brand": "Gymshark",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Weight Plate Zip Coin Pouch",
-        "src": "/assets/images/marcas/gymshark/mujer/Weight Plate Zip Coin Pouch.webp",
-        "dataAiHint": "pink pouch"
-      }
-    ],
-    "options": {
-      "type": "color",
-      "values": [
-        {
-          "stock": 0,
-          "value": "Único"
-        }
-      ]
-    },
-    "colors": [
-      {
-        "hex": "#FFC0CB",
-        "name": "Build Pink",
-        "options": {
-          "type": "talla",
-          "values": [
-            {
-              "stock": 1,
-              "value": "Único"
-            }
-          ]
-        },
-        "imageSrc": "/assets/images/marcas/gymshark/mujer/Weight Plate Zip Coin Pouch.webp"
-      }
-    ],
-    "visible": true
-  },
-  {
     "id": 2715,
     "name": "Defy Shorts | 4.5\"",
     "price": "Q.600.00",
@@ -4945,40 +4432,6 @@
     "feature2": "Mejora el Rendimiento y la Fuerza Explosiva",
     "feature3": "Favorece la Hidratación y Volumen Celular",
     "feature4": "Sin Sabor, Ideal para Mezclar con Shakes",
-    "visible": true
-  },
-  {
-    "id": 3017,
-    "name": "Christopher's Juicy Pumps",
-    "price": "Q.505.00",
-    "availability": "Agotado",
-    "description": "Formulado para proporcionar un bombeo muscular masivo y un enfoque mental agudo. Contiene ingredientes clave para la producción de óxido nítrico, mejorando el flujo sanguíneo y el transporte de nutrientes a los músculos activos.",
-    "gender": "unisex",
-    "category": "suplemento",
-    "subcategory": "pre-entreno",
-    "brand": "RAW",
-    "is_compression": false,
-    "images": [
-      {
-        "alt": "Christopher's Juicy Pumps",
-        "src": "/assets/images/marcas/raw/Christopher's Juicy Pumps.webp",
-        "dataAiHint": "preworkout"
-      }
-    ],
-    "options": {
-      "type": "sabor",
-      "values": [
-        {
-          "stock": 0,
-          "value": "Único"
-        }
-      ]
-    },
-    "colors": [],
-    "feature1": "Fórmula Avanzada de Bombeo y Óxido Nítrico",
-    "feature2": "Enfoque Mental Limpio sin Estimulantes Extremos",
-    "feature3": "Sabores Deliciosos y Altamente Soluble",
-    "feature4": "Optimiza la Vascularización Durante el Entreno",
     "visible": true
   },
   {
