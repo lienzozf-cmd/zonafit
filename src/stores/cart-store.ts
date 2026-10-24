@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { produce } from 'immer';
 import type { CartItem } from '@/lib/types';
-import { type Product, type ProductOption } from '@/lib/data';
+import { type Product, type ProductOption, products as initialProducts } from '@/lib/data';
 
 interface AppState {
   items: CartItem[];
@@ -39,7 +39,7 @@ export const useCartStore = create<AppState>()(
       total: 0,
       itemCount: 0,
       isCartOpen: false,
-      products: [],
+      products: initialProducts || [],
       sessionId: '', 
       setSessionId: (id: string) => set({ sessionId: id }),
       

@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 
 import PageTransition from './page-transition';
 import SocialSection from './social-section';
-import BackgroundMusic from './background-music';
 import { useRealtimeStock } from '@/hooks/use-realtime-stock';
 
 export default function IntroWrapper({
@@ -15,8 +14,7 @@ export default function IntroWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const [introFinished, setIntroFinished] = useState(true);
-  const [isClient, setIsClient] = useState(false);
+  const [showIntro, setShowIntro] = useState(false);
   const setSessionId = useCartStore((state) => state.setSessionId);
   const sessionId = useCartStore((state) => state.sessionId);
   const fetchProducts = useCartStore((state) => state.fetchProducts);
@@ -26,51 +24,40 @@ export default function IntroWrapper({
   useRealtimeStock();
 
   useEffect(() => {
-    setIsClient(true);
     if (!sessionId) {
       setSessionId(Math.random().toString(36).substring(2, 11));
     }
-    // Fetch products from the API
+    // Fetch products in background to keep stock fresh
     fetchProducts();
 
+    // Eliminar el bloqueo permanente antiguo de localStorage si existía
     try {
-      const alreadyShown =
-        localStorage.getItem('introShown') === 'true' ||
-        sessionStorage.getItem('introShown') === 'true';
+      localStorage.removeItem('introShown');
+    } catch (e) {}
 
-      if (alreadyShown || pathname !== '/') {
-        setIntroFinished(true);
-        localStorage.setItem('introShown', 'true');
-        sessionStorage.setItem('introShown', 'true');
-      } else {
-        setIntroFinished(false);
+    // Mostrar intro en la página de inicio cuando es una nueva sesión
+    try {
+      const alreadySeen = sessionStorage.getItem('zonafit_intro_seen');
+      if (!alreadySeen && pathname === '/') {
+        setShowIntro(true);
       }
-    } catch (error) {
-      setIntroFinished(true);
+    } catch (e) {
+      // Fallback si sessionStorage está restringido
     }
-    // Run only once on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pathname, sessionId, setSessionId, fetchProducts]);
 
   const handleIntroFinish = () => {
-    setIntroFinished(true);
+    setShowIntro(false);
     try {
-      localStorage.setItem('introShown', 'true');
-      sessionStorage.setItem('introShown', 'true');
-    } catch (error) {
-      // Handle potential errors with storage
-    }
+      sessionStorage.setItem('zonafit_intro_seen', 'true');
+    } catch (e) {}
   };
-
-  if (!isClient) {
-    return null;
-  }
 
   const isAdminPage = pathname?.startsWith('/admin');
 
   return (
     <>
-      {!introFinished && (
+      {showIntro && (
         <IntroAnimation onIntroFinish={handleIntroFinish} />
       )}
       <PageTransition>
