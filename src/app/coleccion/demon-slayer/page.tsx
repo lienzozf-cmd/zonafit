@@ -423,12 +423,38 @@ export default function DemonSlayerColeccionPage() {
     return DEMON_SLAYER_PRODUCT_IDS.map(id => sourceList.find(p => p.id === id)).filter((p): p is Product => Boolean(p));
   }, [storeProducts]);
 
+  // Helper to check if a product is completely sold out
+  const isProductSoldOut = (product: Product): boolean => {
+    if (product.availability === 'Agotado') return true;
+    if (product.colors && product.colors.length > 0) {
+      const totalColorStock = product.colors.reduce((sum, c) => {
+        const opts = c.options?.values || [];
+        return sum + opts.reduce((s, o) => s + (o.stock ?? 0), 0);
+      }, 0);
+      return totalColorStock === 0;
+    }
+    const opts = product.options?.values || [];
+    if (opts.length > 0) {
+      const totalStock = opts.reduce((s, o) => s + (o.stock ?? 0), 0);
+      return totalStock === 0;
+    }
+    return false;
+  };
+
   const filteredProducts = useMemo(() => {
-    return demonSlayerProducts.filter(p => {
+    const list = demonSlayerProducts.filter(p => {
       if (activeBrandFilter === 'ALL') return true;
       if (activeBrandFilter === 'DARC SPORT') return p.brand?.toLowerCase().includes('darc');
       if (activeBrandFilter === 'YOUNGLA') return p.brand?.toLowerCase().includes('youngla');
       return true;
+    });
+
+    // Poner los agotados de último siempre: disponibles primero, agotados al final
+    return [...list].sort((a, b) => {
+      const aSoldOut = isProductSoldOut(a);
+      const bSoldOut = isProductSoldOut(b);
+      if (aSoldOut === bSoldOut) return 0;
+      return aSoldOut ? 1 : -1;
     });
   }, [demonSlayerProducts, activeBrandFilter]);
 

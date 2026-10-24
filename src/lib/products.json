@@ -5541,7 +5541,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 1,
+              "stock": 2,
               "value": "M"
             }
           ]
@@ -7831,7 +7831,7 @@
               "value": "S"
             },
             {
-              "stock": 2,
+              "stock": 1,
               "value": "M"
             },
             {
