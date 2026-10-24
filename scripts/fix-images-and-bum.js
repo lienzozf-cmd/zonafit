@@ -107,9 +107,9 @@ async function processCreatineImage() {
 }
 
 async function processBumEnergyImage() {
-  console.log('🎨 Procesando imagen de BUM Energy Gummy Shark para centrar en 4:5...');
-  const inputPath = 'public/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp';
-  const backupPath = 'public/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.backup.webp';
+  console.log('🎨 Procesando imagen de BUM Energy Gummy Thark para centrar en 4:5...');
+  const inputPath = 'public/assets/images/marcas/bumenergy/BUM Energy Drink gummy Thark.webp';
+  const backupPath = 'public/assets/images/marcas/bumenergy/BUM Energy Drink gummy Thark.backup.webp';
 
   if (!fs.existsSync(backupPath)) {
     fs.copyFileSync(inputPath, backupPath);
@@ -147,7 +147,7 @@ async function processBumEnergyImage() {
   .webp({ quality: 90 })
   .toFile(inputPath);
 
-  console.log(`✅ BUM Energy Gummy Shark procesada con éxito: 1080x1350 transparente, lata centrada (${resizedCan.info.width}x${resizedCan.info.height}).`);
+  console.log(`✅ BUM Energy Gummy Thark procesada con éxito: 1080x1350 transparente, lata centrada (${resizedCan.info.width}x${resizedCan.info.height}).`);
 }
 
 async function updateProductsData() {
@@ -166,28 +166,28 @@ async function updateProductsData() {
     p2648.availability = 'Disponible';
 
     const gummyImg = {
-      alt: 'BUM Energy Drink Gummy Shark',
-      src: '/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp',
-      option: 'Gummy Shark',
-      dataAiHint: 'energy drink gummy shark'
+      alt: 'BUM Energy Drink Gummy Thark',
+      src: '/assets/images/marcas/bumenergy/BUM Energy Drink gummy Thark.webp',
+      option: 'Gummy Thark',
+      dataAiHint: 'energy drink gummy Thark'
     };
 
     // Filter out if already exists, then put it as FIRST image
-    p2648.images = [gummyImg, ...p2648.images.filter(img => !img.src.includes('gummy shark'))];
+    p2648.images = [gummyImg, ...p2648.images.filter(img => !img.src.includes('gummy Thark'))];
 
-    // Add Gummy Shark to options values at the front
+    // Add Gummy Thark to options values at the front
     const existingOptIdx = p2648.options.values.findIndex(o => o.value.toLowerCase().includes('gummy'));
     if (existingOptIdx >= 0) {
       p2648.options.values[existingOptIdx].stock = 36;
-      p2648.options.values[existingOptIdx].value = 'Gummy Shark';
+      p2648.options.values[existingOptIdx].value = 'Gummy Thark';
     } else {
       p2648.options.values.unshift({
         stock: 36,
-        value: 'Gummy Shark'
+        value: 'Gummy Thark'
       });
     }
 
-    console.log('✓ Producto 2648 (Bum Energy) actualizado: precio Q.35.00, sabor Gummy Shark con stock 36.');
+    console.log('✓ Producto 2648 (Bum Energy) actualizado: precio Q.35.00, sabor Gummy Thark con stock 36.');
   }
 
   fs.writeFileSync(jsonPath, JSON.stringify(products, null, 2), 'utf-8');
@@ -218,9 +218,9 @@ async function updateProductsData() {
 
     // Add variants for 2648
     const variants2648 = [
-      { product_id: 2648, color_name: null, option_value: 'Gummy Shark', stock: 36 },
       { product_id: 2648, color_name: null, option_value: 'Gummy Thark', stock: 36 },
-      { product_id: 2648, color_name: null, option_value: 'BUM Energy Drink Gummy Shark', stock: 36 },
+      { product_id: 2648, color_name: null, option_value: 'Gummy Thark', stock: 36 },
+      { product_id: 2648, color_name: null, option_value: 'BUM Energy Drink Gummy Thark', stock: 36 },
       { product_id: 2648, color_name: null, option_value: 'Pack', stock: 36 }
     ];
 
@@ -242,7 +242,7 @@ async function updateProductsData() {
           .insert(v);
       }
     }
-    console.log('✓ Variantes de Gummy Shark para producto 2648 guardadas en Supabase.');
+    console.log('✓ Variantes de Gummy Thark para producto 2648 guardadas en Supabase.');
   }
 
   // Also ensure Creatine Premium (9111) is updated in Supabase

@@ -2369,10 +2369,10 @@
     "is_compression": false,
     "images": [
       {
-        "alt": "BUM Energy Drink Gummy Shark",
-        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink gummy shark.webp",
-        "option": "Gummy Shark",
-        "dataAiHint": "energy drink gummy shark"
+        "alt": "BUM Energy Drink Gummy Thark",
+        "src": "/assets/images/marcas/bumenergy/BUM Energy Drink gummy Thark.webp",
+        "option": "Gummy Thark",
+        "dataAiHint": "energy drink gummy Thark"
       },
       {
         "alt": "Bum Energy Mora y Limonada",
@@ -2428,7 +2428,7 @@
       "values": [
         {
           "stock": 36,
-          "value": "Gummy Shark"
+          "value": "Gummy Thark"
         },
         {
           "stock": 0,
@@ -7881,7 +7881,7 @@
     "id": 3054,
     "name": "5195 - Demon Slayer: Kimetsu no Yaiba - Zip-ups",
     "price": "Q.700.00",
-    "availability": "Disponible",
+    "availability": "Agotado",
     "description": "Chaqueta de cremallera Demon Slayer en colaboración con YoungLA. Diseño premium y máxima comodidad.",
     "gender": "unisex",
     "category": "ropa",
@@ -7908,7 +7908,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 1,
+              "stock": 0,
               "value": "M"
             }
           ]
