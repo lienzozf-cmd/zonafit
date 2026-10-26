@@ -122,10 +122,7 @@ export default async function ProductLayout({
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
         applicableCountry: 'GT',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: 15,
-        returnMethod: 'https://schema.org/ReturnByMail',
-        returnFees: 'https://schema.org/FreeReturn',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
       },
       shippingDetails: {
         '@type': 'OfferShippingDetails',
