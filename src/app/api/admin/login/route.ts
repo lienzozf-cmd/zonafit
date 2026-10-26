@@ -29,12 +29,17 @@ export async function POST(request: Request) {
     // Compute SHA-256 hash of the incoming password
     const computedHash = crypto.createHash('sha256').update(cleanPassword).digest('hex');
 
-    if (cleanUsername === expectedUsername && computedHash === expectedHash) {
+    const computedBuffer = Buffer.from(computedHash, 'utf8');
+    const expectedBuffer = Buffer.from(expectedHash, 'utf8');
+    const isHashValid = computedBuffer.length === expectedBuffer.length && crypto.timingSafeEqual(computedBuffer, expectedBuffer);
+    const isUserValid = cleanUsername === expectedUsername;
+
+    if (isUserValid && isHashValid) {
       // Create session and set cookie
       await createSession(cleanUsername);
       return NextResponse.json({ success: true });
     } else {
-      console.warn('Admin login mismatch:', { cleanUsername, expectedUsername, matchUsername: cleanUsername === expectedUsername, matchHash: computedHash === expectedHash });
+      console.warn('Admin login failed: Invalid credentials attempt from IP');
       return NextResponse.json({ error: 'Usuario o contraseña incorrectos' }, { status: 401 });
     }
   } catch (error: any) {

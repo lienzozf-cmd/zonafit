@@ -1,4 +1,5 @@
 
+import type { Metadata } from 'next';
 import BrandsSection from '@/components/brands-section';
 import CategoryGrid from '@/components/category-grid';
 import FeaturedProducts from '@/components/featured-products';
@@ -7,6 +8,12 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import InfoSection from '@/components/info-section';
 import SizeFinder from '@/components/size-finder';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default function Home() {
   return (

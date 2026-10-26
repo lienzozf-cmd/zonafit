@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/joyeria`, priority: 0.8, changeFrequency: 'daily' as const },
     { url: `${BASE_URL}/anime`, priority: 0.8, changeFrequency: 'daily' as const },
     { url: `${BASE_URL}/coleccion/spiderman`, priority: 0.9, changeFrequency: 'daily' as const },
+    { url: `${BASE_URL}/coleccion/demon-slayer`, priority: 0.9, changeFrequency: 'daily' as const },
     { url: `${BASE_URL}/coleccion/superman`, priority: 0.8, changeFrequency: 'daily' as const },
     { url: `${BASE_URL}/marcas`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/marcas/youngla`, priority: 0.8, changeFrequency: 'weekly' as const },
