@@ -34,23 +34,17 @@ export default function TerminosYCondicionesPage() {
 
             <h2 className="text-2xl font-semibold text-white mt-8" id="devoluciones">5. Política de Cambios y Devoluciones</h2>
             <p>
-              Queremos que estés completamente satisfecho con tu compra. Por ello, regulamos nuestra política de cambios y devoluciones bajo las siguientes condiciones:
+              En <strong>ZONA FIT GT</strong> no se realizan cambios ni devoluciones bajo ninguna circunstancia. Todas las compras son finales.
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong>Defectos de Fábrica:</strong> Si recibes un producto con un defecto de fabricación o dañado durante el transporte, tienes un plazo de <strong>7 días calendario</strong> desde la recepción del producto para reportarlo. Realizaremos el cambio sin costo adicional de envío o la devolución total de tu dinero.
+                <strong>Venta Final:</strong> Todos los productos disponibles en nuestra tienda se venden bajo la condición de venta final. No se aceptan devoluciones, reembolsos ni cambios por gusto, talla, color o modelo.
               </li>
               <li>
-                <strong>Condiciones del Producto:</strong> Para ser elegible para cualquier cambio o devolución, el artículo debe estar sin usar, en las mismas condiciones en que lo recibiste, con todas sus etiquetas originales adheridas y en su empaque original.
+                <strong>Revisión Previa:</strong> Recomendamos a todos los clientes verificar cuidadosamente las especificaciones, tallas, medidas y características de cada artículo antes de confirmar su orden.
               </li>
               <li>
-                <strong>Productos Excluidos:</strong> Por razones de higiene y salud, no se aceptan cambios ni devoluciones de ropa interior, calcetines ni suplementos alimenticios cuyos sellos de seguridad hayan sido abiertos o dañados.
-              </li>
-              <li>
-                <strong>Proceso de Solicitud:</strong> Para iniciar un reclamo, debes contactarnos a través de nuestras redes sociales o canales de soporte indicando tu número de orden (#ID), descripción del inconveniente y fotografías de respaldo del producto.
-              </li>
-              <li>
-                <strong>Costos de Logística:</strong> En cambios por gusto del cliente (por ejemplo, error en la selección de talla o color por parte del cliente), el costo de la mensajería del retorno y del nuevo envío correrá por cuenta del comprador.
+                <strong>Higiene y Seguridad:</strong> Por motivos de higiene, control de calidad y salud pública, ningún artículo de indumentaria, accesorios deportivos o suplementos nutricionales cuenta con opción de cambio o retorno.
               </li>
             </ul>
 
