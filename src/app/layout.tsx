@@ -48,9 +48,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  alternates: {
-    canonical: '/',
-  },
+
   openGraph: {
     title: 'ZONA FIT GT | Tienda de Ropa de Gym y Suplementos en Guatemala',
     description: 'Encuentra las mejores marcas de ropa de gym: YoungLA, Gymshark, Darc Sport, RAW y suplementos de alto rendimiento con envíos a toda Guatemala.',
