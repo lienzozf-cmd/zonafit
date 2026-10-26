@@ -361,9 +361,6 @@ export default function SpidermanColeccionPage() {
                       <span className="text-xl sm:text-2xl font-black text-[#e50914] tracking-tight">
                         {item.price}
                       </span>
-                      <span className="text-xs text-zinc-500 line-through">
-                        Q.750.00
-                      </span>
                     </div>
 
                     {/* Badges: Disponibilidad + Talla */}
