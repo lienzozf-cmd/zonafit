@@ -1,5 +1,5 @@
-const supabaseUrl = "https://mjpoqjkmnhdhohyshwxk.supabase.co";
-const serviceKey = "[REDACTED_SERVICE_KEY]";
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://mjpoqjkmnhdhohyshwxk.supabase.co";
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 async function clearTable(tableName) {
   const url = `${supabaseUrl}/rest/v1/${tableName}?order_id=neq.0`;

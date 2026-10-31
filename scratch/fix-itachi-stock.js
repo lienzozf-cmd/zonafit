@@ -1,5 +1,5 @@
-const supabaseUrl = "https://mjpoqjkmnhdhohyshwxk.supabase.co";
-const serviceKey = "[REDACTED_SERVICE_KEY]";
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://mjpoqjkmnhdhohyshwxk.supabase.co";
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 async function getItachiVariant() {
   const url = `${supabaseUrl}/rest/v1/product_variants?product_id=eq.2724&color_name=eq.Black&option_value=eq.M`;
