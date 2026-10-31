@@ -1,6 +1,7 @@
 allowBuilds:
   '@firebase/util': true
   '@swc/core': true
+  argon2: true
   core-js: true
   esbuild: true
   protobufjs: true
