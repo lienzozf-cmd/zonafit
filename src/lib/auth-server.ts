@@ -4,13 +4,13 @@ import crypto from 'crypto';
 const SESSION_COOKIE_NAME = 'admin_session';
 
 export async function createSession(username: string) {
-  const expectedHash = (process.env.ADMIN_PASSWORD_HASH || '[REDACTED_HASH]').trim();
+  const sessionSecret = (process.env.SESSION_SECRET || process.env.ADMIN_PASSWORD_HASH || 'zonafit_secure_session_key_2026').trim();
   
   const expires = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
   const payload = JSON.stringify({ username, expires });
   const payloadBase64 = Buffer.from(payload).toString('base64');
   
-  const hmac = crypto.createHmac('sha256', expectedHash).update(payloadBase64).digest('hex');
+  const hmac = crypto.createHmac('sha256', sessionSecret).update(payloadBase64).digest('hex');
   const token = `${payloadBase64}.${hmac}`;
   
   const cookieStore = await cookies();
@@ -26,7 +26,7 @@ export async function createSession(username: string) {
 }
 
 export async function verifySession(): Promise<boolean> {
-  const expectedHash = (process.env.ADMIN_PASSWORD_HASH || '[REDACTED_HASH]').trim();
+  const sessionSecret = (process.env.SESSION_SECRET || process.env.ADMIN_PASSWORD_HASH || 'zonafit_secure_session_key_2026').trim();
   const cookieStore = await cookies();
   const cookie = cookieStore.get(SESSION_COOKIE_NAME);
   
@@ -42,7 +42,7 @@ export async function verifySession(): Promise<boolean> {
   const [payloadBase64, signature] = parts;
   
   // Verify signature
-  const expectedSignature = crypto.createHmac('sha256', expectedHash).update(payloadBase64).digest('hex');
+  const expectedSignature = crypto.createHmac('sha256', sessionSecret).update(payloadBase64).digest('hex');
   if (signature !== expectedSignature) {
     return false;
   }

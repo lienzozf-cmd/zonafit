@@ -1,7 +1,39 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
+import argon2 from 'argon2';
 import { rateLimit, getClientIp } from '@/lib/rate-limit';
 import { createSession } from '@/lib/auth-server';
+
+// Default fallback Argon2id hash for admin ([REDACTED_PASSWORD])
+const DEFAULT_ADMIN_HASH = '$argon2id$v=19$m=65536,p=4,t=3$IPvn8izj0Fnqku7da5QQiw$Gm/A5z50qGD9pDm3LZYiLhXLUkEQ/YyaUKXQw+ZO5mU';
+
+async function verifyAdminPassword(cleanPassword: string, expectedHash: string): Promise<boolean> {
+  if (!cleanPassword || !expectedHash) return false;
+
+  // 1. Argon2 verification (recommended and modern standard)
+  if (expectedHash.startsWith('$argon2')) {
+    try {
+      return await argon2.verify(expectedHash, cleanPassword);
+    } catch (err) {
+      console.error('Error during argon2 verification:', err);
+      return false;
+    }
+  }
+
+  // 2. Legacy fallback for SHA-256 (if environment variable still uses legacy SHA-256)
+  try {
+    const computedHash = crypto.createHash('sha256').update(cleanPassword).digest('hex');
+    const computedBuffer = Buffer.from(computedHash, 'utf8');
+    const expectedBuffer = Buffer.from(expectedHash, 'utf8');
+    if (computedBuffer.length === expectedBuffer.length && crypto.timingSafeEqual(computedBuffer, expectedBuffer)) {
+      return true;
+    }
+  } catch (err) {
+    console.error('Error during legacy hash comparison:', err);
+  }
+
+  return false;
+}
 
 export async function POST(request: Request) {
   try {
@@ -20,21 +52,16 @@ export async function POST(request: Request) {
     const cleanPassword = (password || '').trim();
 
     const expectedUsername = (process.env.ADMIN_USERNAME || 'zonafitero').trim().toLowerCase();
-    const expectedHash = (process.env.ADMIN_PASSWORD_HASH || '[REDACTED_HASH]').trim();
+    const expectedHash = (process.env.ADMIN_PASSWORD_HASH || DEFAULT_ADMIN_HASH).trim();
 
     if (!cleanUsername || !cleanPassword) {
       return NextResponse.json({ error: 'Faltan credenciales' }, { status: 400 });
     }
 
-    // Compute SHA-256 hash of the incoming password
-    const computedHash = crypto.createHash('sha256').update(cleanPassword).digest('hex');
-
-    const computedBuffer = Buffer.from(computedHash, 'utf8');
-    const expectedBuffer = Buffer.from(expectedHash, 'utf8');
-    const isHashValid = computedBuffer.length === expectedBuffer.length && crypto.timingSafeEqual(computedBuffer, expectedBuffer);
     const isUserValid = cleanUsername === expectedUsername;
+    const isPasswordValid = isUserValid ? await verifyAdminPassword(cleanPassword, expectedHash) : false;
 
-    if (isUserValid && isHashValid) {
+    if (isUserValid && isPasswordValid) {
       // Create session and set cookie
       await createSession(cleanUsername);
       return NextResponse.json({ success: true });
@@ -47,3 +74,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });
   }
 }
+
