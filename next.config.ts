@@ -1,6 +1,24 @@
 import type { NextConfig } from "next";
 
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' data: blob: https://picsum.photos https://fastly.picsum.photos https://mjpoqjkmnhdhohyshwxk.supabase.co https://images.unsplash.com https://www.facebook.com https://c.clarity.ms https://www.clarity.ms;
+  font-src 'self' data: https://fonts.gstatic.com;
+  connect-src 'self' https://mjpoqjkmnhdhohyshwxk.supabase.co wss://mjpoqjkmnhdhohyshwxk.supabase.co https://connect.facebook.net https://www.facebook.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.clarity.ms;
+  media-src 'self' data: blob:;
+  frame-ancestors 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+`.replace(/\s{2,}/g, ' ').trim();
+
 const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: cspHeader,
+  },
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=63072000; includeSubDomains; preload',

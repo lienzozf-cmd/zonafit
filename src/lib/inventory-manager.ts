@@ -20,13 +20,12 @@ export async function getNextOrderId(): Promise<string> {
     }
 }
 
-
 /**
  * Actualiza el stock en Supabase usando una función RPC atómica.
+ * Retorna true si el stock se decrementó exitosamente, o false si no había stock suficiente.
  */
-export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<void> {
+export async function updateStock(productId: number, optionValue: string, quantity: number, colorName?: string): Promise<boolean> {
     try {
-
         const { data, error } = await supabaseServer.rpc('decrement_stock', {
             p_product_id: productId,
             p_option_value: optionValue,
@@ -36,7 +35,7 @@ export async function updateStock(productId: number, optionValue: string, quanti
 
         if (error) {
             console.error(`Error executing decrement_stock for product ${productId}:`, error.message);
-            return;
+            return false;
         }
 
         if (data === true) {
@@ -59,10 +58,13 @@ export async function updateStock(productId: number, optionValue: string, quanti
             } catch (availErr) {
                 console.error(`Error actualizando availability para producto ${productId}:`, availErr);
             }
+            return true;
         } else {
-            console.warn(`⚠️ No se pudo decrementar stock (probablemente no hay suficiente stock o variante no encontrada) para Producto ID: ${productId}`);
+            console.warn(`⚠️ No se pudo decrementar stock (sin existencias suficientes o variante no encontrada) para Producto ID: ${productId}`);
+            return false;
         }
     } catch (error) {
         console.error('Error no crítico en updateStock Supabase:', error);
+        return false;
     }
 }

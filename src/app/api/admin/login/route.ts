@@ -4,9 +4,6 @@ import argon2 from 'argon2';
 import { rateLimit, getClientIp } from '@/lib/rate-limit';
 import { createSession } from '@/lib/auth-server';
 
-// Default fallback Argon2id hash for admin ([REDACTED_PASSWORD])
-const DEFAULT_ADMIN_HASH = '$argon2id$v=19$m=65536,p=4,t=3$IPvn8izj0Fnqku7da5QQiw$Gm/A5z50qGD9pDm3LZYiLhXLUkEQ/YyaUKXQw+ZO5mU';
-
 async function verifyAdminPassword(cleanPassword: string, expectedHash: string): Promise<boolean> {
   if (!cleanPassword || !expectedHash) return false;
 
@@ -52,7 +49,12 @@ export async function POST(request: Request) {
     const cleanPassword = (password || '').trim();
 
     const expectedUsername = (process.env.ADMIN_USERNAME || 'zonafitero').trim().toLowerCase();
-    const expectedHash = (process.env.ADMIN_PASSWORD_HASH || DEFAULT_ADMIN_HASH).trim();
+    const expectedHash = (process.env.ADMIN_PASSWORD_HASH || '').trim();
+
+    if (!expectedHash) {
+      console.error('CRITICAL: ADMIN_PASSWORD_HASH is not set in environment variables.');
+      return NextResponse.json({ error: 'Configuración de autenticación no disponible en el servidor' }, { status: 500 });
+    }
 
     if (!cleanUsername || !cleanPassword) {
       return NextResponse.json({ error: 'Faltan credenciales' }, { status: 400 });
@@ -74,4 +76,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });
   }
 }
-

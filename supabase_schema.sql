@@ -118,13 +118,20 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- 8. Enable Row Level Security (RLS) on all tables
+-- 8. Restrict RPC functions: Revoke public access, allow only service_role
+REVOKE EXECUTE ON FUNCTION public.decrement_stock(integer, text, integer, text) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.decrement_stock(integer, text, integer, text) TO service_role;
+
+REVOKE EXECUTE ON FUNCTION public.get_next_order_id() FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.get_next_order_id() TO service_role;
+
+-- 9. Enable Row Level Security (RLS) on all tables
 ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.product_variants ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.order_items ENABLE ROW LEVEL SECURITY;
 
--- 9. Create policies for public access (read-only for products and variants)
+-- 10. Create policies for public access (read-only for products and variants)
 CREATE POLICY "Allow public read access on products"
   ON public.products FOR SELECT
   USING (true);
@@ -132,4 +139,5 @@ CREATE POLICY "Allow public read access on products"
 CREATE POLICY "Allow public read access on product_variants"
   ON public.product_variants FOR SELECT
   USING (true);
+
 

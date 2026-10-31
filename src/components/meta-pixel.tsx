@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 
@@ -8,13 +8,34 @@ export const FB_PIXEL_ID = '1270354408481385';
 
 export default function MetaPixel() {
   const pathname = usePathname();
+  const [consent, setConsent] = useState<string | null>(null);
 
   useEffect(() => {
-    // Track PageView on route changes
-    if (typeof window !== 'undefined' && (window as any).fbq) {
+    // Check initial cookie consent value
+    const stored = localStorage.getItem('cookie-consent');
+    setConsent(stored);
+    
+    // Listen for custom event to update when consent is accepted/rejected
+    const handleConsentChange = () => {
+      setConsent(localStorage.getItem('cookie-consent'));
+    };
+    window.addEventListener('cookie-consent-changed', handleConsentChange);
+    return () => {
+      window.removeEventListener('cookie-consent-changed', handleConsentChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Track PageView on route changes only if consented
+    if (consent === 'accepted' && typeof window !== 'undefined' && (window as any).fbq) {
       (window as any).fbq('track', 'PageView');
     }
-  }, [pathname]);
+  }, [pathname, consent]);
+
+  // Only load Meta Pixel if consent is explicitly accepted
+  if (consent !== 'accepted') {
+    return null;
+  }
 
   return (
     <>
