@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useTransform, useSpring } from 'framer-motion';
 import { ArrowUpRight, Sparkles, Zap, ShieldCheck } from 'lucide-react';
 
 interface CategoryItem {
@@ -277,14 +277,6 @@ const MagneticZonafitButton = () => {
 
 const CategoryGrid = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-  const yOffset1 = useTransform(smoothProgress, [0, 1], [30, -30]);
-  const yOffset2 = useTransform(smoothProgress, [0, 1], [-20, 20]);
 
   return (
     <section ref={containerRef} className="py-20 md:py-28 bg-transparent relative overflow-hidden text-white">
@@ -323,8 +315,8 @@ const CategoryGrid = () => {
           </div>
         </div>
 
-        {/* Row 1: Mujer & Hombre (2 High-Impact Parallax Cards) */}
-        <motion.div style={{ y: yOffset1 }} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-10">
+        {/* Row 1: Mujer & Hombre (2 High-Impact Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-10">
           {mainCategories.map(cat => (
             <TiltCard
               key={cat.name}
@@ -333,10 +325,10 @@ const CategoryGrid = () => {
               tagColor="bg-red-600"
             />
           ))}
-        </motion.div>
+        </div>
 
-        {/* Row 2: Accesorios, Suplementos, Joyería (3 Balanced 3D Cards with Ambient Parallax) */}
-        <motion.div style={{ y: yOffset2 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Row 2: Accesorios, Suplementos, Joyería (3 Balanced 3D Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {secondaryCategories.map((cat, idx) => (
             <TiltCard
               key={cat.name}
@@ -345,7 +337,7 @@ const CategoryGrid = () => {
               tagColor={idx === 1 ? 'bg-blue-600' : idx === 2 ? 'bg-amber-600' : 'bg-red-600'}
             />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

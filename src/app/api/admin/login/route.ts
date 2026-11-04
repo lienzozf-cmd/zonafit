@@ -1,23 +1,29 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
-import argon2 from 'argon2';
 import { rateLimit, getClientIp } from '@/lib/rate-limit';
 import { createSession } from '@/lib/auth-server';
 
 async function verifyAdminPassword(cleanPassword: string, expectedHash: string): Promise<boolean> {
   if (!cleanPassword || !expectedHash) return false;
 
-  // 1. Argon2 verification (recommended and modern standard)
-  if (expectedHash.startsWith('$argon2')) {
+  // 1. Scrypt / PBKDF2 formatted hash (e.g. scrypt:salt:derivedKey)
+  if (expectedHash.startsWith('scrypt:')) {
     try {
-      return await argon2.verify(expectedHash, cleanPassword);
+      const [, salt, key] = expectedHash.split(':');
+      if (salt && key) {
+        const derivedKey = crypto.scryptSync(cleanPassword, salt, 64).toString('hex');
+        const keyBuffer = Buffer.from(key, 'hex');
+        const derivedBuffer = Buffer.from(derivedKey, 'hex');
+        if (keyBuffer.length === derivedBuffer.length && crypto.timingSafeEqual(keyBuffer, derivedBuffer)) {
+          return true;
+        }
+      }
     } catch (err) {
-      console.error('Error during argon2 verification:', err);
-      return false;
+      console.error('Error during scrypt verification:', err);
     }
   }
 
-  // 2. Legacy fallback for SHA-256 (if environment variable still uses legacy SHA-256)
+  // 2. SHA-256 with constant-time verification (timingSafeEqual prevents timing attacks)
   try {
     const computedHash = crypto.createHash('sha256').update(cleanPassword).digest('hex');
     const computedBuffer = Buffer.from(computedHash, 'utf8');
@@ -26,7 +32,7 @@ async function verifyAdminPassword(cleanPassword: string, expectedHash: string):
       return true;
     }
   } catch (err) {
-    console.error('Error during legacy hash comparison:', err);
+    console.error('Error during password hash comparison:', err);
   }
 
   return false;

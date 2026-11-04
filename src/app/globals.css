@@ -37,15 +37,15 @@
 
 /* Estilos generales */
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 html, body {
-  background-color: #030304;
+  background-color: #08080a;
   min-height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -61,7 +61,7 @@ body {
   position: relative;
 }
 
-/* Elegant 3D Dark Carbon Fiber Texture with Deep Crimson Ambient Glow */
+/* Elegant 3D Dark Carbon Fiber Texture with Deep Crimson Ambient Glow (GPU Accelerated) */
 .carbon-fiber-bg {
   position: fixed;
   inset: 0;
@@ -80,7 +80,11 @@ body {
     linear-gradient(0deg, rgba(0, 0, 0, 0.25) 50%, transparent 50%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 12px 12px, 12px 12px, 12px 12px, 12px 12px, 12px 12px, 12px 12px;
   background-position: 0 0, 0 0, 0 0, 0 0, 0 6px, 6px -6px, -6px 0px, 0 0, 0 0;
-  background-attachment: fixed;
+  contain: strict;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
