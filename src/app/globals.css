@@ -61,20 +61,25 @@ body {
   position: relative;
 }
 
-/* Global Dot Matrix Texture with Deep Crimson Ambient Glow */
-.global-dot-matrix-bg {
+/* Elegant 3D Dark Carbon Fiber Texture with Deep Crimson Ambient Glow */
+.carbon-fiber-bg {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -10;
-  background-color: #030305;
+  background-color: #08080a;
   background-image: 
-    radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.12) 0%, rgba(160, 0, 0, 0.04) 45%, transparent 70%),
-    radial-gradient(circle at 80% 80%, rgba(180, 0, 0, 0.07) 0%, transparent 55%),
-    radial-gradient(circle at 15% 85%, rgba(180, 0, 0, 0.06) 0%, transparent 50%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px;
-  background-position: 0 0, 0 0, 0 0, 0 0;
+    radial-gradient(ellipse at 50% 0%, rgba(220, 38, 38, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 70%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 85%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+    linear-gradient(45deg, #121215 25%, transparent 25%),
+    linear-gradient(-45deg, #121215 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #18181d 75%),
+    linear-gradient(-45deg, transparent 75%, #18181d 75%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35) 50%, transparent 50%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.25) 50%, transparent 50%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 12px 12px, 12px 12px, 12px 12px, 12px 12px, 12px 12px, 12px 12px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 6px, 6px -6px, -6px 0px, 0 0, 0 0;
   background-attachment: fixed;
 }
 
@@ -1336,22 +1341,37 @@ html.no-intro .intro-screen {
 
 .carousel-dots {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 8px;
+    right: 12px;
     display: flex;
-    gap: 8px;
+    gap: 6px;
     z-index: 10;
   }
   
+  @media (min-width: 640px) {
+    .carousel-dots {
+      bottom: 20px;
+      right: 20px;
+      gap: 8px;
+    }
+  }
+
   .dot {
-    width: 12px;
-    height: 12px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: background-color 0.15s ease;
     will-change: background-color;
+  }
+
+  @media (min-width: 640px) {
+    .dot {
+      width: 12px;
+      height: 12px;
+    }
   }
   
   .dot.is-selected {

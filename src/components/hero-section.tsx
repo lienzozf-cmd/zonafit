@@ -99,7 +99,7 @@ const HeroSection = () => {
                     priority={index === 0}
                     loading={index === 0 ? 'eager' : 'lazy'}
                     sizes="(max-width: 768px) 100vw, 94vw"
-                    className="object-contain"
+                    className="object-cover md:object-contain"
                     data-ai-hint="fitness store"
                     quality={85}
                   />
