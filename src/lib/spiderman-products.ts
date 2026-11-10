@@ -11,7 +11,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
   {
     id: 9001,
     name: 'SPIDERMAN BEAST (CIVIL REGIME)',
-    price: 'Q.665.00',
+    price: 'Q.698.00',
     availability: stockMap[9001] > 0 ? 'Disponible' : 'Agotado',
     gender: 'hombre',
     category: 'ropa',
@@ -47,7 +47,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
   {
     id: 9002,
     name: 'SPIDER PUNK (CIVIL REGIME)',
-    price: 'Q.665.00',
+    price: 'Q.698.00',
     availability: 'Agotado',
     gender: 'hombre',
     category: 'ropa',
@@ -83,7 +83,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
   {
     id: 9003,
     name: 'MILES MORALES (CIVIL REGIME)',
-    price: 'Q.665.00',
+    price: 'Q.698.00',
     availability: 'Agotado',
     gender: 'hombre',
     category: 'ropa',
@@ -119,7 +119,7 @@ export const SPIDERMAN_PRODUCTS: Product[] = [
   {
     id: 9004,
     name: 'SPIDERMAN PETER PARKER (CIVIL REGIME)',
-    price: 'Q.665.00',
+    price: 'Q.698.00',
     availability: stockMap[9004] > 0 ? 'Disponible' : 'Agotado',
     gender: 'hombre',
     category: 'ropa',
