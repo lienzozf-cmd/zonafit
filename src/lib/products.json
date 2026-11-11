@@ -5689,7 +5689,7 @@
     "id": 3052,
     "name": "4259 - Batman Compression Tees",
     "price": "Q.646.00",
-    "availability": "Agotado",
+    "availability": "Disponible",
     "description": "Camiseta de compresión técnica de Batman. Diseñada para mejorar el rendimiento muscular y la recuperación, con un ajuste de compresión superior.",
     "gender": "hombre",
     "category": "ropa",
@@ -5737,7 +5737,7 @@
               "value": "M"
             },
             {
-              "stock": 0,
+              "stock": 1,
               "value": "L"
             }
           ]
@@ -5751,7 +5751,7 @@
           "type": "talla",
           "values": [
             {
-              "stock": 0,
+              "stock": 1,
               "value": "M"
             }
           ]
