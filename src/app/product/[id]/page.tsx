@@ -434,6 +434,12 @@ const ProductDetailPage = () => {
                 <span className={`px-2.5 py-1 ${brandStyles[product.brand] || 'bg-zinc-800 text-white'} text-[10px] font-black uppercase tracking-widest rounded-md shadow-lg`}>
                   {product.brand}
                 </span>
+                {Boolean(product.is_new || [9112, 9113, 9114].includes(product.id)) && (
+                  <span className="bg-gradient-to-r from-red-600 to-red-700 text-white font-black text-[10px] tracking-widest uppercase px-2 py-0.5 rounded shadow-[0_0_12px_rgba(255,255,255,0.4)] border border-white flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                    NUEVO
+                  </span>
+                )}
                 <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest ml-1">
                   / {product.category}
                 </span>

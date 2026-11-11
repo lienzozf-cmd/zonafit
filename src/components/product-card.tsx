@@ -242,14 +242,24 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
     return isNaN(parsed) ? 0 : parsed;
   }, [product.price]);
 
+  const isNew = Boolean(product.is_new || [9112, 9113, 9114].includes(product.id));
+
   return (
     <div 
-        className="product-item flex flex-col"
+        className={`product-item flex flex-col group relative ${isNew ? 'is-new-item' : ''}`}
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
           setCurrentImage(getProductImage(product, selectedColor, selectedOption));
         }}
     >
+        {isNew && (
+          <div className="absolute top-3 -right-2 z-20 pointer-events-none transform rotate-12 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-105">
+            <div className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-black text-[10px] sm:text-[11px] tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_4px_12px_rgba(220,38,38,0.7),0_0_8px_rgba(255,255,255,0.4)] border-2 border-white flex items-center gap-1.5 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/25 before:to-transparent before:rounded-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+              <span>NUEVO</span>
+            </div>
+          </div>
+        )}
         <Link 
             href={productUrl} 
             className="product-image-link w-full"

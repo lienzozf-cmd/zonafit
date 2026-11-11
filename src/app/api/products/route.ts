@@ -56,6 +56,7 @@ export async function GET() {
         benefits: p.benefits,
         servings_info: p.servings_info,
         visible: p.visible,
+        is_new: p.is_new ?? ([9112, 9113, 9114].includes(p.id)),
       } as Product;
       
       let totalStock = 0;

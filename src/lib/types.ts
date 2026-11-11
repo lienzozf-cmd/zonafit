@@ -51,4 +51,5 @@ export type Product = {
   benefits?: string;
   servings_info?: string;
   visible?: boolean;
+  is_new?: boolean;
 };

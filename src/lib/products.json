@@ -1,5 +1,170 @@
 [
   {
+    "id": 9112,
+    "name": "Devant Seamless T shirt",
+    "price": "Q.520.00",
+    "availability": "Disponible",
+    "description": "Camiseta técnica Gymshark Devant Seamless para hombre. Construcción de ingeniería sin costuras que se adapta al cuerpo para proporcionar máxima transpirabilidad, ajuste atlético y confort de nivel élite.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Gymshark",
+    "fabric_type": "Poliéster, Nylon y Elastano Seamless",
+    "is_compression": false,
+    "is_new": true,
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/devantblack.jpg",
+        "alt": "Devant Seamless T shirt - Negro",
+        "color": "Negro",
+        "dataAiHint": "men seamless tee black"
+      },
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/devantblue.webp",
+        "alt": "Devant Seamless T shirt - Azul",
+        "color": "Azul",
+        "dataAiHint": "men seamless tee blue"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#111111",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/devantblack.jpg"
+      },
+      {
+        "name": "Azul",
+        "hex": "#1d4ed8",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/devantblue.webp"
+      }
+    ],
+    "feature1": "Construcción Técnica Seamless Sin Costuras",
+    "feature2": "Mapeo Corporal de Máxima Transpirabilidad",
+    "feature3": "Ajuste Atlético con Estiramiento Cuatridireccional",
+    "feature4": "Logotipo Gimnasio Gymshark de Alta Definición",
+    "visible": true
+  },
+  {
+    "id": 9113,
+    "name": "Devant Seamless T shirt Longsleeves",
+    "price": "Q.557.00",
+    "availability": "Disponible",
+    "description": "Camiseta técnica manga larga Gymshark Devant Seamless para hombre. Rendimiento superior sin fricción con paneles de ventilación estratégica y elasticidad total para entrenar sin límites.",
+    "gender": "hombre",
+    "category": "ropa",
+    "subcategory": "playera",
+    "brand": "Gymshark",
+    "fabric_type": "Poliéster, Nylon y Elastano Seamless",
+    "is_compression": false,
+    "is_new": true,
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/hombre/devantlongblue.webp",
+        "alt": "Devant Seamless T shirt Longsleeves - Azul",
+        "color": "Azul",
+        "dataAiHint": "men seamless longsleeve blue"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Azul",
+        "hex": "#1d4ed8",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            },
+            {
+              "value": "M",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/hombre/devantlongblue.webp"
+      }
+    ],
+    "feature1": "Manga Larga de Alto Rendimiento Sin Costuras",
+    "feature2": "Mapeo Corporal Transpirable Anti-Rozaduras",
+    "feature3": "Tejido Ergonómico de 4 Vías de Estiramiento",
+    "feature4": "Ajuste Atlético Ceñido y Favorecedor",
+    "visible": true
+  },
+  {
+    "id": 9114,
+    "name": "Onyx Tank",
+    "price": "Q.550.00",
+    "availability": "Disponible",
+    "description": "Top tipo tank exclusivo Gymshark Onyx para mujer. Silueta estilizada de compresión media con espalda ergonómica, soporte premium y máxima libertad de movimiento para entrenar con poder.",
+    "gender": "mujer",
+    "category": "ropa",
+    "subcategory": "top",
+    "brand": "Gymshark",
+    "fabric_type": "85% Poliamida, 15% Elastano",
+    "is_compression": true,
+    "is_new": true,
+    "images": [
+      {
+        "src": "/assets/images/marcas/gymshark/mujer/onyxtank.webp",
+        "alt": "Onyx Tank - Negro",
+        "color": "Negro",
+        "dataAiHint": "women tank top black"
+      }
+    ],
+    "options": {
+      "type": "talla",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Negro",
+        "hex": "#111111",
+        "options": {
+          "type": "talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        },
+        "imageSrc": "/assets/images/marcas/gymshark/mujer/onyxtank.webp"
+      }
+    ],
+    "feature1": "Edición Limitada Colección Onyx Gymshark",
+    "feature2": "Espalda Ergonómica para Movilidad Total",
+    "feature3": "Soporte Estratégico y Silueta Moldeadora",
+    "feature4": "Tejido Transpirable de Secado Rápido",
+    "visible": true
+  },
+  {
     "id": 5098,
     "name": "Darc Sport Star Wars Anakin Skywalker",
     "price": "Q.683.00",

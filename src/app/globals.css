@@ -634,6 +634,27 @@ main > .container {
   box-shadow: 0 5px 20px rgba(229, 0, 0, 0.25);
 }
 
+/* White light contour for brand-new products with animated aura */
+.product-item.is-new-item {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.75), 0 0 40px rgba(255, 255, 255, 0.35), inset 0 0 15px rgba(255, 255, 255, 0.15) !important;
+  animation: white-glow-pulse 3s infinite ease-in-out;
+}
+
+.product-item.is-new-item:hover {
+  transform: translateY(-5px) scale(1.03) translateZ(0);
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.95), 0 0 60px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.25) !important;
+}
+
+@keyframes white-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.65), 0 0 35px rgba(255, 255, 255, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(255, 255, 255, 0.95), 0 0 50px rgba(255, 255, 255, 0.45), inset 0 0 12px rgba(255, 255, 255, 0.2);
+  }
+}
+
 .product-item .product-carousel {
   position: relative;
   width: 100%;
