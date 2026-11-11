@@ -276,7 +276,7 @@ export default function CheckoutPage() {
                   {items.map(item => (
                   <div key={item.id} className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                      <Image src={item.image} alt={item.name} width={64} height={64} className="rounded-md" />
+                      <Image src={item.image} alt={item.name} width={64} height={64} unoptimized className="rounded-md" />
                       <div>
                           <p className="font-medium">{item.name}</p>
                           <p className="text-sm text-gray-400">Cantidad: {item.quantity}</p>

@@ -74,6 +74,7 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
                     height={320}
                     className="gym-plate"
                     priority
+                    unoptimized
                 />
                 
                 <div className="intro-text-container">

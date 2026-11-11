@@ -56,9 +56,17 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 2592000, // 30 days
+    formats: ['image/webp'],
+    deviceSizes: [640, 750, 1080, 1200, 1920],
+    imageSizes: [64, 128, 256, 384],
+    qualities: [75, 80],
+    minimumCacheTTL: 31536000, // 1 year (365 days) to maximize edge cache and minimize re-transformations
     dangerouslyAllowSVG: false,
+    localPatterns: [
+      {
+        pathname: '/assets/images/**',
+      },
+    ],
     remotePatterns: [
       {
         protocol: 'https',
@@ -67,17 +75,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'fastly.picsum.photos',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'mjpoqjkmnhdhohyshwxk.supabase.co',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
         pathname: '/**',
       },
     ],

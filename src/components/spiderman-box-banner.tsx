@@ -325,8 +325,8 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
     >
       {/* Hidden preloaded assets for immediate instant opening */}
       <div className="hidden pointer-events-none" aria-hidden="true">
-        <Image src="/assets/images/spiderman/cajaspider-door-left.webp" alt="preload-left" width={10} height={10} priority />
-        <Image src="/assets/images/spiderman/cajaspider-door-right.webp" alt="preload-right" width={10} height={10} priority />
+        <Image src="/assets/images/spiderman/cajaspider-door-left.webp" alt="preload-left" width={10} height={10} priority unoptimized />
+        <Image src="/assets/images/spiderman/cajaspider-door-right.webp" alt="preload-right" width={10} height={10} priority unoptimized />
       </div>
 
       {/* Spider-Man Authentic White Spiderwebs in Banner Background */}

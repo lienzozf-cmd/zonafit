@@ -170,6 +170,7 @@ export default function DemonSlayerBanner({ onOpenChange }: DemonSlayerBannerPro
                     alt="Logo Demon Slayer Kimetsu no Yaiba"
                     fill
                     priority
+                    unoptimized
                     className="object-contain p-1.5 sm:p-2"
                   />
                 </div>

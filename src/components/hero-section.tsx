@@ -101,7 +101,7 @@ const HeroSection = () => {
                     sizes="(max-width: 768px) 100vw, 94vw"
                     className="object-cover md:object-contain"
                     data-ai-hint="fitness store"
-                    quality={85}
+                    quality={80}
                   />
                 </div>
               )}
