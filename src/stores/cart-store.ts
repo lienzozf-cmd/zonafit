@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { produce } from 'immer';
+import { singleFlight } from '@/lib/single-flight';
 import type { CartItem } from '@/lib/types';
 import { type Product, type ProductOption, products as initialProducts } from '@/lib/data';
 
@@ -32,6 +33,12 @@ const calculateTotals = (items: CartItem[]) => {
   return { itemCount, total };
 };
 
+const readCatalog = singleFlight(async (): Promise<Product[]> => {
+  const response = await fetch('/api/products', { cache: 'no-store' });
+  if (!response.ok) throw new Error('Failed to fetch products');
+  return response.json();
+});
+
 export const useCartStore = create<AppState>()(
   persist(
     (set, get) => ({
@@ -45,11 +52,7 @@ export const useCartStore = create<AppState>()(
       
       fetchProducts: async () => {
         try {
-            const response = await fetch('/api/products', { cache: 'no-store' });
-            if (!response.ok) {
-                throw new Error('Failed to fetch products');
-            }
-            const products = await response.json();
+            const products = await readCatalog();
             set({ products });
         } catch (error) {
             console.error('Error fetching products:', error);

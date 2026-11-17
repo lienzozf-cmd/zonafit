@@ -110,7 +110,9 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
   // Initialize and handle Post Malone Sunflower Audio
   useEffect(() => {
     const audioUrl = '/' + encodeURIComponent('Post Malone, Swae Lee - Sunflower (Spider-Man Into the Spider-Verse).mp3');
-    const audio = new Audio(audioUrl);
+    const audio = new Audio();
+    audio.preload = 'none';
+    audio.src = audioUrl;
     audio.loop = true;
     audio.volume = 0.65;
     audioRef.current = audio;
@@ -313,12 +315,6 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
       onMouseLeave={handleMouseLeave}
       className="relative aspect-[16/9] md:h-[85vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#070508] via-[#0f090d] to-[#070508] select-none"
     >
-      {/* Hidden preloaded assets for immediate instant opening */}
-      <div className="hidden pointer-events-none" aria-hidden="true">
-        <Image src="/assets/images/spiderman/cajaspider-door-left.webp" alt="preload-left" width={10} height={10} priority unoptimized />
-        <Image src="/assets/images/spiderman/cajaspider-door-right.webp" alt="preload-right" width={10} height={10} priority unoptimized />
-      </div>
-
       {/* Spider-Man Authentic White Spiderwebs in Banner Background */}
       {/* Top-Right White Spiderweb */}
       <div className="absolute top-0 right-0 w-64 h-64 sm:w-80 sm:h-80 md:w-[440px] md:h-[440px] pointer-events-none opacity-40 z-0">

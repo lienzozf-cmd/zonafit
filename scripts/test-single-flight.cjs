@@ -1,0 +1,20 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const ts = require('typescript');
+const { outputText } = ts.transpileModule(fs.readFileSync('src/lib/single-flight.ts', 'utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS}});
+const context = {exports:{}};
+vm.runInNewContext(outputText,context);
+(async()=>{
+ let calls=0;
+ const read=context.exports.singleFlight(async()=>++calls);
+ const result=await Promise.all([read(),read(),read()]);
+ assert.deepEqual(result,[1,1,1]);
+ assert.equal(calls,1);
+ assert.equal(await read(),2,'Later reads must refresh stock, not reuse stale data');
+ let attempts=0;
+ const retry=context.exports.singleFlight(async()=>{if(++attempts===1)throw Error('offline');return 'fresh';});
+ await assert.rejects(retry(),/offline/);
+ assert.equal(await retry(),'fresh','Failures must not lock future refreshes');
+ console.log('Single-flight checks passed: concurrent deduplication, fresh sequential reads, retry after failure.');
+})().catch(e=>{console.error(e);process.exit(1)});

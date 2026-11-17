@@ -259,7 +259,7 @@ const Header = () => {
                               </li>
                               {sublink.sublinks!.map((item) => (
                                 <li key={item.title}>
-                                  <Link href={item.href} className="sub-dropdown-link">
+                                  <Link prefetch={false} href={item.href} className="sub-dropdown-link">
                                     {item.title}
                                   </Link>
                                 </li>

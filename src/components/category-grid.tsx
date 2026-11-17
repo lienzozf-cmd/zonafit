@@ -147,7 +147,7 @@ const TiltCard = ({
             : '0 10px 30px -10px rgba(0,0,0,0.6)',
         }}
       >
-        <Link href={category.href} className="block w-full h-full relative">
+        <Link prefetch={false} href={category.href} className="block w-full h-full relative">
           {/* Main Image with Smooth Zoom */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <Image
@@ -243,7 +243,7 @@ const MagneticZonafitButton = () => {
       transition={{ type: "spring", stiffness: 200, damping: 15, mass: 0.1 }}
       className="inline-block"
     >
-      <Link
+      <Link prefetch={false}
         ref={btnRef}
         href="/marcas"
         onMouseMove={handleMouseMove}

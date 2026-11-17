@@ -260,7 +260,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
             </div>
           </div>
         )}
-        <Link 
+        <Link prefetch={false}
             href={productUrl} 
             className="product-image-link w-full"
             onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender, productId: product.id } }))}
@@ -280,7 +280,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
         </Link>
         <div className='flex flex-col flex-grow mt-4'>
             <p className={`font-semibold text-sm mb-1 uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
-            <Link 
+            <Link prefetch={false}
                 href={productUrl} 
                 onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender, productId: product.id } }))}
             >

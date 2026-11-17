@@ -34,11 +34,11 @@ const Footer = () => {
         <div className="footer-section links">
           <h3>Enlaces Útiles</h3>
           <ul>
-            <li><Link href="/politicas-de-privacidad">Políticas de Privacidad</Link></li>
-            <li><Link href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
-            <li><Link href="/terminos-y-condiciones#devoluciones"><strong className="uppercase">POLÍTICA DE DEVOLUCIONES</strong></Link></li>
+            <li><Link prefetch={false} href="/politicas-de-privacidad">Políticas de Privacidad</Link></li>
+            <li><Link prefetch={false} href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
+            <li><Link prefetch={false} href="/terminos-y-condiciones#devoluciones"><strong className="uppercase">POLÍTICA DE DEVOLUCIONES</strong></Link></li>
             <li>
-                <Link href="/admin" aria-label="Admin Panel" style={{ color: '#000000' }}>
+                <Link prefetch={false} href="/admin" aria-label="Admin Panel" style={{ color: '#000000' }}>
                   <Lock className="h-4 w-4" />
                 </Link>
             </li>

@@ -22,7 +22,7 @@ const BrandsSection = () => {
       <div className="promo-banner-content items-center">
         {[...brands, ...brands].map((brand, index) => (
           <div key={index} className="mx-2.5 sm:mx-4 md:mx-6 flex-shrink-0">
-            <Link href={brand.href} passHref>
+            <Link prefetch={false} href={brand.href} passHref>
               <div className="relative w-[75px] h-[75px] sm:w-[95px] sm:h-[95px] md:w-[125px] md:h-[125px] transition-transform duration-300 hover:scale-110">
                 <Image
                   src={brand.src}

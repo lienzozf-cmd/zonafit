@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
@@ -29,16 +29,8 @@ export default function ProductGridPage({
   const sessionId = useCartStore((state) => state.sessionId);
   const storeProducts = useCartStore((state) => state.products);
   const getProductOption = useCartStore((state) => state.getProductOption);
-  const fetchProducts = useCartStore((state) => state.fetchProducts);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
-
-  // Asegurar que los productos de la tienda se carguen si aún no están presentes
-  useEffect(() => {
-    if (!storeProducts || storeProducts.length === 0) {
-      fetchProducts();
-    }
-  }, [storeProducts, fetchProducts]);
 
   // Sincronizar productos iniciales con el stock dinámico y en tiempo real de la tienda
   const mergedProducts = useMemo(() => {

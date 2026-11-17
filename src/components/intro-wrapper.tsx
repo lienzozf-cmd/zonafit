@@ -43,8 +43,6 @@ export default function IntroWrapper({
     if (!sessionId) {
       setSessionId(Math.random().toString(36).substring(2, 11));
     }
-    // Fetch products in background to keep stock fresh
-    fetchProducts();
 
     // Eliminar el bloqueo permanente antiguo de localStorage si existía
     try {
@@ -58,7 +56,12 @@ export default function IntroWrapper({
         setShowIntro(false);
       }
     } catch (e) {}
-  }, [pathname, sessionId, setSessionId, fetchProducts]);
+  }, [pathname, sessionId, setSessionId]);
+
+  // Refresh once per navigation, independently of session ID initialization.
+  useEffect(() => {
+    fetchProducts();
+  }, [pathname, fetchProducts]);
 
   const handleIntroFinish = () => {
     setShowIntro(false);
