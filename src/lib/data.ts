@@ -1,4 +1,5 @@
 import productsData from './products.json';
+import { normalizeNewArrival } from './new-arrivals';
 
 // --- DEFINICIÓN DE TIPOS (Agregados aquí para solucionar el error) ---
 
@@ -51,7 +52,7 @@ export type Product = {
 import { SPIDERMAN_PRODUCTS } from './spiderman-products';
 
 export const products: Product[] = [
-  ...(productsData as Product[]),
+  ...(productsData as Product[]).map(normalizeNewArrival),
   ...SPIDERMAN_PRODUCTS,
 ];
 

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabaseServer } from '@/lib/supabase';
 import type { Product } from '@/lib/data';
+import { normalizeNewArrival } from '@/lib/new-arrivals';
 import { SPIDERMAN_PRODUCTS } from '@/lib/spiderman-products';
 
 export const dynamic = 'force-dynamic';
@@ -94,7 +95,7 @@ export async function GET() {
       
       product.availability = totalStock > 0 ? 'Disponible' : 'Agotado';
       
-      return product;
+      return normalizeNewArrival(product);
     });
 
     // Merge spiderman collection products seamlessly
