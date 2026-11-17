@@ -8,7 +8,6 @@ import { ArrowLeft, ShoppingBag, Check, ZoomIn, X, Volume2, VolumeX, Sparkles, S
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { useCartStore } from '@/stores/cart-store';
-import { SPIDERMAN_PRODUCTS } from '@/lib/spiderman-products';
 
 interface SpidermanItem {
   id: string;
@@ -20,8 +19,6 @@ interface SpidermanItem {
   priceNum: number;
   imageFront: string;
   imageBack: string;
-  availability: string;
-  stock: number;
   option: string;
   description: string;
 }
@@ -37,8 +34,6 @@ const ITEMS: SpidermanItem[] = [
     priceNum: 665,
     imageFront: '/assets/images/marcas/civil regime/spidermanbeast.webp',
     imageBack: '/assets/images/marcas/civil regime/spidermanbeast2.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
     option: 'M',
     description: 'Edición limitada de colección Marvel x Civil Regime. Gráfico de alta definición Spider-Man Beast en corte vintage oversize.'
   },
@@ -52,8 +47,6 @@ const ITEMS: SpidermanItem[] = [
     priceNum: 665,
     imageFront: '/assets/images/marcas/civil regime/spidermanpunk2.webp',
     imageBack: '/assets/images/marcas/civil regime/spidermanpunk.webp',
-    availability: 'AGOTADO',
-    stock: 0,
     option: 'M',
     description: 'Edición limitada Spider Punk. Estilo rebelde y gráfico icónico en algodón pesado vintage wash de alta gama.'
   },
@@ -67,8 +60,6 @@ const ITEMS: SpidermanItem[] = [
     priceNum: 665,
     imageFront: '/assets/images/marcas/civil regime/spidermanmiles.webp',
     imageBack: '/assets/images/marcas/civil regime/spidermanmiles2.webp',
-    availability: 'AGOTADO',
-    stock: 0,
     option: 'M',
     description: 'Edición exclusiva Miles Morales x Civil Regime. Confección premium con textura suave, corte oversize y gráficos vibrantes.'
   },
@@ -82,8 +73,6 @@ const ITEMS: SpidermanItem[] = [
     priceNum: 665,
     imageFront: '/assets/images/marcas/civil regime/spidermanrayas2.webp',
     imageBack: '/assets/images/marcas/civil regime/spidermanrayas.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
     option: 'M',
     description: 'El clásico Spider-Man Peter Parker redefinido por Civil Regime. Diseño de rayas icónico y acabado retro vintage de alto nivel.'
   }
@@ -104,17 +93,14 @@ export default function SpidermanColeccionPage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const addItem = useCartStore((state) => state.addItem);
   const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
-  const getProductOption = useCartStore((state) => state.getProductOption);
+  const products = useCartStore((state) => state.products);
 
   const getItemStock = (item: SpidermanItem) => {
-    const variant = getProductOption ? getProductOption(item.productId, item.option) : undefined;
-    return variant?.stock !== undefined ? variant.stock : item.stock;
+    const product = products.find(product => Number(product.id) === item.productId);
+    return product?.options?.values.find(option => option.value === item.option)?.stock ?? 0;
   };
 
-  const isItemAvailable = (item: SpidermanItem) => {
-    const currentStock = getItemStock(item);
-    return currentStock > 0 && item.availability.toUpperCase() !== 'AGOTADO';
-  };
+  const isItemAvailable = (item: SpidermanItem) => getItemStock(item) > 0;
 
   const sortedItems = [...ITEMS].sort((a, b) => {
     const aAvail = isItemAvailable(a);
@@ -514,12 +500,12 @@ export default function SpidermanColeccionPage() {
                     {enlargedItem.item.price}
                   </span>
                   <span className="block text-[11px] text-zinc-400">
-                    {enlargedItem.item.stock > 0 && enlargedItem.item.availability.toUpperCase() !== 'AGOTADO'
-                      ? `Talla ${enlargedItem.item.option} · ${enlargedItem.item.stock} unidad disponible`
+                    {isItemAvailable(enlargedItem.item)
+                      ? `Talla ${enlargedItem.item.option} · ${getItemStock(enlargedItem.item)} unidad disponible`
                       : `Talla ${enlargedItem.item.option} · Agotado`}
                   </span>
                 </div>
-                {enlargedItem.item.stock > 0 && enlargedItem.item.availability.toUpperCase() !== 'AGOTADO' ? (
+                {isItemAvailable(enlargedItem.item) ? (
                   <button
                     type="button"
                     onClick={() => {
