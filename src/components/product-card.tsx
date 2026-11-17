@@ -243,31 +243,22 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   }, [product.price]);
 
   const isNew = [9112, 9113, 9114].includes(Number(product.id));
-  const [lightPaused, setLightPaused] = useState(false);
 
   return (
     <div 
-        className={`product-item flex flex-col group relative ${isNew ? 'is-new-item' : ''} ${lightPaused ? 'light-paused' : ''}`}
+        className={`product-item flex flex-col group relative `}
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
           setCurrentImage(getProductImage(product, selectedColor, selectedOption));
         }}
     >
         {isNew && (
-          <>
-            <svg className="new-product-contour" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <rect x="0.5" y="0.5" width="99" height="99" rx="1" pathLength="100" />
-            </svg>
-            <button type="button" className="new-product-light-toggle" onClick={() => setLightPaused(!lightPaused)}>
-              {lightPaused ? 'Activar luz' : 'Pausar luz'}
-            </button>
           <div className="absolute top-3 right-3 z-20 pointer-events-none transform rotate-12 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-105">
-            <div className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-black text-[10px] sm:text-[11px] tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_4px_12px_rgba(220,38,38,0.7),0_0_8px_rgba(255,255,255,0.4)] border-2 border-white flex items-center gap-1.5 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/25 before:to-transparent before:rounded-sm">
+            <div className="relative bg-gradient-to-r from-purple-500 to-violet-600 text-white font-black text-[10px] sm:text-[11px] tracking-widest uppercase px-2.5 py-0.5 rounded shadow-[0_4px_12px_rgba(167,139,250,0.5),0_0_8px_rgba(255,255,255,0.4)] border-2 border-white flex items-center gap-1.5 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/25 before:to-transparent before:rounded-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span>NUEVO</span>
             </div>
           </div>
-          </>
         )}
         <Link 
             href={productUrl} 

@@ -634,61 +634,6 @@ main > .container {
   box-shadow: 0 5px 20px rgba(229, 0, 0, 0.25);
 }
 
-/* Only the three new arrivals receive the travelling white light. */
-.product-item.is-new-item {
-  border-color: #fff;
-  box-shadow: 0 0 16px #ffffff55;
-}
-
-.new-product-contour {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-  overflow: visible;
-}
-
-.new-product-contour rect {
-  fill: none;
-  stroke: white;
-  stroke-width: 3;
-  vector-effect: non-scaling-stroke;
-  stroke-dasharray: 12 88;
-  filter: drop-shadow(0 0 4px white);
-}
-
-.new-product-light-toggle {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 20;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: #000c;
-  color: white;
-  font-size: 10px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .new-product-contour rect {
-    animation: white-contour-travel 4s linear infinite;
-  }
-}
-
-.light-paused .new-product-contour rect {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .new-product-light-toggle { display: none; }
-}
-
-@keyframes white-contour-travel {
-  to { stroke-dashoffset: -100; }
-}
-
 .product-item .product-carousel {
   position: relative;
   width: 100%;
