@@ -17,8 +17,6 @@ interface SpidermanTee {
   priceNum: number;
   image: string;
   image2: string;
-  availability: string;
-  stock: number;
   option: string;
 }
 
@@ -32,8 +30,6 @@ const SPIDERMAN_TEES: SpidermanTee[] = [
     priceNum: 665,
     image: '/assets/images/marcas/civil regime/spidermanbeast.webp',
     image2: '/assets/images/marcas/civil regime/spidermanbeast2.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
     option: 'M'
   },
   {
@@ -45,8 +41,6 @@ const SPIDERMAN_TEES: SpidermanTee[] = [
     priceNum: 665,
     image: '/assets/images/marcas/civil regime/spidermanpunk2.webp',
     image2: '/assets/images/marcas/civil regime/spidermanpunk.webp',
-    availability: 'AGOTADO',
-    stock: 0,
     option: 'M'
   },
   {
@@ -58,8 +52,6 @@ const SPIDERMAN_TEES: SpidermanTee[] = [
     priceNum: 665,
     image: '/assets/images/marcas/civil regime/spidermanmiles.webp',
     image2: '/assets/images/marcas/civil regime/spidermanmiles2.webp',
-    availability: 'AGOTADO',
-    stock: 0,
     option: 'M'
   },
   {
@@ -71,8 +63,6 @@ const SPIDERMAN_TEES: SpidermanTee[] = [
     priceNum: 665,
     image: '/assets/images/marcas/civil regime/spidermanrayas2.webp',
     image2: '/assets/images/marcas/civil regime/spidermanrayas.webp',
-    availability: 'DISPONIBLE',
-    stock: 1,
     option: 'M'
   }
 ];
@@ -97,16 +87,16 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
   const router = useRouter();
   const addItem = useCartStore((state) => state.addItem);
   const setIsCartOpen = useCartStore((state) => state.setIsCartOpen);
-  const getProductOption = useCartStore((state) => state.getProductOption);
+  const products = useCartStore((state) => state.products);
 
   const getTeeStock = useCallback((tee: SpidermanTee) => {
-    const variant = getProductOption ? getProductOption(tee.productId, tee.option) : undefined;
-    return variant?.stock !== undefined ? variant.stock : tee.stock;
-  }, [getProductOption]);
+    const product = products.find(product => Number(product.id) === tee.productId);
+    return product?.options?.values.find(option => option.value === tee.option)?.stock ?? 0;
+  }, [products]);
 
   const isTeeAvailable = useCallback((tee: SpidermanTee) => {
     const currentStock = getTeeStock(tee);
-    return currentStock > 0 && tee.availability.toUpperCase() !== 'AGOTADO';
+    return currentStock > 0;
   }, [getTeeStock]);
 
   const sortedTees = [...SPIDERMAN_TEES].sort((a, b) => {
