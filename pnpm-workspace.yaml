@@ -1,0 +1,9 @@
+# pnpm 11 reads build policy from this file, not .npmrc.
+strictDepBuilds: true
+allowBuilds:
+  esbuild: true
+  sharp: true
+  '@firebase/util': false
+  core-js: false
+  protobufjs: false
+  unrs-resolver: false
