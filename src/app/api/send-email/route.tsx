@@ -6,6 +6,7 @@ import { rateLimit, getClientIp } from '@/lib/rate-limit';
 import { products as catalogProducts } from '@/lib/data';
 import { supabaseServer } from '@/lib/supabase';
 import type { CartItem } from '@/lib/types';
+import { parseCatalogPrice } from '@/lib/catalog-price';
 
 // Zod validation schemas
 const orderItemSchema = z.object({
@@ -49,13 +50,6 @@ function escapeHtml(str: string = ''): string {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
-}
-
-function parseCatalogPrice(priceStr: string | number | undefined): number {
-  if (typeof priceStr === 'number') return priceStr;
-  if (!priceStr) return 0;
-  const clean = priceStr.toString().replace(/[^0-9.]/g, '');
-  return parseFloat(clean) || 0;
 }
 
 async function sendTelegramNotification(htmlMessage: string) {
