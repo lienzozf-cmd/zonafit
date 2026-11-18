@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import IntroAnimation from './intro-animation';
 import { useCartStore } from '@/stores/cart-store';
 import { usePathname } from 'next/navigation';
@@ -16,21 +16,9 @@ export default function IntroWrapper({
 }) {
   const pathname = usePathname();
 
-  // Para evitar que se vea el fondo o cualquier elemento antes de la intro al cargar la web,
-  // la intro se inicia en true desde SSR en la ruta raíz '/', cubriendo la pantalla desde el milisegundo 0.
-  const [showIntro, setShowIntro] = useState(() => {
-    if (typeof window === 'undefined') {
-      return true;
-    }
-    try {
-      if (window.location.pathname !== '/' && window.location.pathname !== '') {
-        return false;
-      }
-      return sessionStorage.getItem('zonafit_intro_seen') !== 'true';
-    } catch {
-      return false;
-    }
-  });
+  // The server and first client render must use the same state.
+  // Browser storage is read only after hydration in the effect below.
+  const [showIntro, setShowIntro] = useState(pathname === '/');
 
   const setSessionId = useCartStore((state) => state.setSessionId);
   const sessionId = useCartStore((state) => state.sessionId);
@@ -63,13 +51,12 @@ export default function IntroWrapper({
     fetchProducts();
   }, [pathname, fetchProducts]);
 
-  const handleIntroFinish = () => {
+  const handleIntroFinish = useCallback(() => {
     setShowIntro(false);
     try {
       sessionStorage.setItem('zonafit_intro_seen', 'true');
-      document.documentElement.classList.add('no-intro');
     } catch (e) {}
-  };
+  }, []);
 
   const isAdminPage = pathname?.startsWith('/admin');
 

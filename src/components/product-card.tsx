@@ -121,7 +121,7 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   
     if (selectedOption) {
       if (stock === 1) {
-        setAvailabilityMessage('🔥 ¡Últimas existencias! (1 disponible)');
+        setAvailabilityMessage('🔥 Última unidad disponible');
       } else if (stock > 1) {
         setAvailabilityMessage(`Disponible: ${stock} unidades`);
       } else {
@@ -245,8 +245,8 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
   const isNew = [9112, 9113, 9114].includes(Number(product.id));
 
   return (
-    <div 
-        className={`product-item flex flex-col group relative `}
+    <article
+        className="product-item product-card-luxe flex flex-col group relative"
         id={`product-item-${product.id}`}
         onMouseLeave={() => {
           setCurrentImage(getProductImage(product, selectedColor, selectedOption));
@@ -278,8 +278,8 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                 />
             </div>
         </Link>
-        <div className='flex flex-col flex-grow mt-4'>
-            <p className={`font-semibold text-sm mb-1 uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
+        <div className="product-card-content">
+            <p className={`product-brand font-semibold uppercase tracking-wider ${brandColorMap[product.brand] || 'text-gray-300'}`}>{product.brand}</p>
             <Link prefetch={false}
                 href={productUrl} 
                 onClick={() => window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: product.gender, productId: product.id } }))}
@@ -287,25 +287,56 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                 <h3 className="product-name">{product.name}</h3>
             </Link>
 
-            <div className="flex justify-center items-center gap-2 my-1">
-              <p className="product-price text-zinc-400">{product.price}</p>
+            <div className="product-price-row">
+              <p className="product-price">
+                <span className="product-currency">Q</span>
+                {basePriceNum.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </p>
               {product.originalPrice && (
                 <p className="text-sm text-zinc-600 line-through font-bold">{product.originalPrice}</p>
               )}
             </div>
 
-            <div className="flex justify-center my-2">
-                 <div className={`product-availability ${isProductAvailable ? 'available' : 'unavailable'}`}>{isProductAvailable ? 'Disponible' : 'Agotado'}</div>
+            <div className="product-status-row">
+                 <div className={`product-availability ${isProductAvailable ? 'available' : 'unavailable'} ${isProductAvailable && availabilityMessage.startsWith('🔥') ? 'last-unit' : ''}`}>{isProductAvailable ? (availabilityMessage || 'Disponible') : 'Agotado'}</div>
             </div>
 
+            <div className="product-info mt-auto">
+                {showOptions && optionsToShow.length > 0 && (
+                    <div className="size-options" role="group" aria-label={selectedColor?.options?.type || product.options?.type || 'Talla'}>
+                    {optionsToShow.map((option) => {
+                      const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;
+                      const isOptionDisabled = stock <= 0;
+                      const isSelected = selectedOption?.value === option.value && !isOptionDisabled;
+                      return (
+                        <button
+                          key={option.value}
+                          type="button"
+                          aria-pressed={isSelected}
+                          aria-label={`${option.value}${isOptionDisabled ? ' — agotado' : ''}`}
+                          onClick={(e) => handleOptionClick(e, option)}
+                          className={isSelected ? 'active' : ''}
+                          disabled={isOptionDisabled}
+                        >
+                          {option.value}
+                        </button>
+                      )
+                    })}
+                    </div>
+                )}
             {product.colors && product.colors.length > 1 && (
-                <div className="color-swatches">
+                <div className="product-color-row">
+                  <div className="color-swatches" role="group" aria-label="Color">
                     {product.colors.map((color) => {
                         const colorOptions = color.options?.values || [];
                         const isColorSoldOut = colorOptions.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
                         return (
                             <div key={color.name} className="relative">
-                                <div
+                                <button
+                                    type="button"
+                                    aria-label={`${color.name}${isColorSoldOut ? ' — agotado' : ''}`}
+                                    aria-pressed={selectedColor?.name === color.name}
+                                    disabled={isColorSoldOut}
                                     className="color-swatch"
                                     style={{ 
                                         backgroundColor: color.hex,
@@ -319,43 +350,24 @@ const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardP
                             </div>
                         )
                     })}
+                  </div>
+                  <p className="product-color-name">{selectedColor?.name}</p>
                 </div>
             )}
 
-            <div className="product-info mt-auto">
-                {showOptions && optionsToShow.length > 0 && (
-                    <div className="size-options">
-                    {optionsToShow.map((option) => {
-                      const stock = getProductOption(product.id, option.value, selectedColor?.name)?.stock ?? 0;
-                      const isOptionDisabled = stock <= 0;
-                      const isSelected = selectedOption?.value === option.value && !isOptionDisabled;
-                      return (
-                        <button
-                          key={option.value}
-                          onClick={(e) => handleOptionClick(e, option)}
-                          className={isSelected ? 'active' : ''}
-                          disabled={isOptionDisabled}
-                        >
-                          {option.value}
-                           {isOptionDisabled && <span className="sold-out-x">X</span>}
-                        </button>
-                      )
-                    })}
-                    </div>
-                )}
-                <p className="availability-message">
-                    {availabilityMessage}
-                </p>
+
                 <button 
-                    className="add-to-cart-button" 
+                    className="add-to-cart-button"
+                    type="button"
+                    aria-label={`${!isProductAvailable ? 'Agotado' : 'Añadir al carrito'}: ${product.name}`}
                     onClick={handleAddToCart} 
                     disabled={isAddToCartDisabled}
                 >
-                  {isAddToCartDisabled && selectedOption ? 'Agotado' : 'AGREGAR'}
+                  {!isProductAvailable ? 'Agotado' : 'Añadir al carrito'}
                 </button>
             </div>
         </div>
-    </div>
+    </article>
   );
 };
 
