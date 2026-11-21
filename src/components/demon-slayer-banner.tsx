@@ -86,12 +86,12 @@ export default function DemonSlayerBanner({ onOpenChange }: DemonSlayerBannerPro
           </div>
 
           {/* Main Title: DEMON SLAYER */}
-          <h1 
+          <h2
             className="text-xl xs:text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic tracking-tighter uppercase text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] leading-none"
             style={{ fontFamily: 'Impact, "Bebas Neue", sans-serif' }}
           >
             DEMON SLAYER
-          </h1>
+          </h2>
 
           {/* Sub-Brand Collaboration Row: DARC SPORT × YOUNGLA */}
           <div className="flex flex-wrap items-center gap-1 sm:gap-2.5 text-[11px] xs:text-xs sm:text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-zinc-100 my-0.5 sm:my-2">

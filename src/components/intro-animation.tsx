@@ -78,10 +78,10 @@ const IntroAnimation = ({ onIntroFinish }: IntroAnimationProps) => {
                 />
                 
                 <div className="intro-text-container">
-                    <h1 className="intro-title">
+                    <p className="intro-title">
                         <span className="zona">ZONA</span>
                         <span className="fit">FIT</span>
-                    </h1>
+                    </p>
                     <p className="intro-subtitle">LA ZONA MAS FIT DE GUATEMALA</p>
                     
                     <div className="loading-bar">

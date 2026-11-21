@@ -10,15 +10,15 @@ import CookieConsent from '@/components/cookie-consent';
 import MouseTrail from '@/components/mouse-trail';
 import CarbonFiberBackground from '@/components/carbon-fiber-background';
 
-const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zonafitgt.com';
+import { SITE_URL as siteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'ZONA FIT GT | Tienda de Ropa de Gym, Compresión y Suplementos en Guatemala',
+    default: 'ZonaFitGT | Ropa de gym en Guatemala, YoungLA y Gymshark',
     template: '%s | ZONA FIT GT',
   },
-  description: 'La mejor tienda online de ropa de gym en Guatemala. Playeras de compresión, shorts, sudaderas y suplementos deportivos. Marcas originales: YoungLA, Gymshark, Darc Sport, RAW, Dragon Pharma. Envíos rápidos y seguros a toda Guatemala.',
+  description: 'Compra ropa de gym en Guatemala en ZonaFitGT: YoungLA, Gymshark, DFYNE, compresión, oversize y diseños de anime, Superman y Batman. Precios en quetzales y envío nacional.',
   keywords: [
     'ropa de gym',
     'ropa de gym guatemala',
@@ -94,7 +94,10 @@ const jsonLd = {
     {
       '@type': 'OnlineStore',
       '@id': `${siteUrl}/#store`,
-      name: 'ZONA FIT GT',
+      name: 'ZonaFitGT',
+      alternateName: ['ZONA FIT GT', 'Zona Fit GT', 'zonafitgt'],
+      sameAs: ['https://www.instagram.com/zonafitgt_/', 'https://www.tiktok.com/@zonafitgt_'],
+      contactPoint: { '@type': 'ContactPoint', telephone: '+50237331442', contactType: 'customer service', availableLanguage: 'es', areaServed: 'GT' },
       url: siteUrl,
       logo: `${siteUrl}/assets/images/logos/logo.webp`,
       image: `${siteUrl}/assets/images/logos/logo.webp`,
@@ -111,27 +114,7 @@ const jsonLd = {
         '@type': 'Country',
         name: 'Guatemala',
       },
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'Catálogo de Ropa de Gym y Suplementos',
-        itemListElement: [
-          {
-            '@type': 'OfferCatalog',
-            name: 'Ropa de Gym Hombre',
-            itemListElement: ['Playeras de Compresión', 'Shorts', 'Tanks', 'Sudaderas'],
-          },
-          {
-            '@type': 'OfferCatalog',
-            name: 'Ropa de Gym Mujer',
-            itemListElement: ['Leggings', 'Tops Deportivos', 'Shorts', 'Sudaderas'],
-          },
-          {
-            '@type': 'OfferCatalog',
-            name: 'Suplementos Deportivos',
-            itemListElement: ['Creatina', 'Proteína', 'Pre-entrenos'],
-          },
-        ],
-      },
+
     },
     {
       '@type': 'WebSite',
@@ -153,7 +136,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es-GT">
       <head>
         <script
           type="application/ld+json"

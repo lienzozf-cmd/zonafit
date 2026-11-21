@@ -455,9 +455,9 @@ export default function SpidermanBoxBanner({ onOpenChange }: SpidermanBoxBannerP
             </div>
 
             {/* SPIDER-MAN Title Logo */}
-            <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-black italic tracking-tighter uppercase text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-none" style={{ fontFamily: 'Impact, sans-serif' }}>
+            <h2 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-black italic tracking-tighter uppercase text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-none" style={{ fontFamily: 'Impact, sans-serif' }}>
               SPIDER-MAN
-            </h1>
+            </h2>
 
             {/* x CIVIL REGIME */}
             <div className="flex items-center gap-1 sm:gap-2 text-xs xs:text-sm sm:text-3xl md:text-4xl font-extrabold uppercase tracking-wide sm:tracking-widest text-zinc-100 my-0.5 sm:my-1">

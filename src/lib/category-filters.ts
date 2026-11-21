@@ -159,6 +159,7 @@ export const categoryFilters: Record<string, (p: Product) => boolean> = {
     }
     return false;
   },
+  'coleccion-batman': (p) => /batman/i.test(`${p.name} ${p.description || ''}`),
   'coleccion-superman': (p) => {
     const nameLower = (p.name || '').toLowerCase();
     const descLower = (p.description || '').toLowerCase();

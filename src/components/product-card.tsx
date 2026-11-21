@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
@@ -10,6 +10,7 @@ interface ProductCardProps {
   product: Product;
   sessionId: string;
   index: number;
+  preferInitialProduct?: boolean;
 }
 
 const brandColorMap: { [key: string]: string } = {
@@ -32,14 +33,21 @@ const brandColorMap: { [key: string]: string } = {
 
 const PLACEHOLDER_IMAGE = '/assets/images/logos/logo.webp';
 
-const ProductCard = ({ product: initialProduct, sessionId, index }: ProductCardProps) => {
+const ProductCard = ({ product: initialProduct, sessionId, index, preferInitialProduct = false }: ProductCardProps) => {
   const products = useCartStore((state) => state.products);
   const addItem = useCartStore((state) => state.addItem);
-  const getProductOption = useCartStore((state) => state.getProductOption);
+  const liveGetProductOption = useCartStore((state) => state.getProductOption);
+  const getProductOption = useCallback((productId: number, optionValue: string, colorName?: string) => {
+    if (!preferInitialProduct) return liveGetProductOption(productId, optionValue, colorName);
+    const options = colorName
+      ? initialProduct.colors?.find(color => color.name === colorName)?.options.values
+      : initialProduct.options?.values;
+    return options?.find(option => option.value === optionValue);
+  }, [preferInitialProduct, liveGetProductOption, initialProduct]);
   
   const product = useMemo(() => 
-    products.find(p => String(p.id) === String(initialProduct.id)) || initialProduct,
-    [products, initialProduct]
+    preferInitialProduct ? initialProduct : (products.find(p => String(p.id) === String(initialProduct.id)) || initialProduct),
+    [products, initialProduct, preferInitialProduct]
   );
 
   // Obtener el primer color disponible con stock > 0, o fallback al primero

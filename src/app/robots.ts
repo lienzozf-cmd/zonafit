@@ -1,16 +1,11 @@
-import { MetadataRoute } from 'next';
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://zonafitgt.com';
+import type { MetadataRoute } from 'next';
+import { absoluteUrl } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/'],
-      },
-    ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    // Search and AI search crawlers can read public catalog pages.
+    // This does not request model training or guarantee search inclusion.
+    rules: [{ userAgent: '*', allow: '/', disallow: ['/api/', '/admin', '/checkout'] }],
+    sitemap: absoluteUrl('/sitemap.xml'),
   };
 }

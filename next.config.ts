@@ -112,6 +112,10 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: '/checkout',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }],
+      },
+      {
         source: '/api/:path*',
         headers: [
           {

@@ -1,15 +1,9 @@
-import ProductGridPage from '@/components/product-grid-page';
-import { products } from '@/lib/data';
-import { filterProductsByCategory } from '@/lib/category-filters';
+import { collectionMetadata } from '@/lib/seo';
+import CollectionPage from '@/components/seo/collection-page';
 
-export default function MujeresPage() {
-  const filteredProducts = filterProductsByCategory(products, 'mujeres');
+export const revalidate = 60;
+export const metadata = collectionMetadata('/mujeres');
 
-  return (
-    <ProductGridPage
-      products={filteredProducts}
-      categoryKey="mujeres"
-      title="Mujeres - Ver Todo"
-    />
-  );
+export default function Page() {
+  return <CollectionPage path="/mujeres" />;
 }

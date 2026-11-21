@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
@@ -9,6 +9,9 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product, isProductAvailable } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
+import CollectionContent from '@/components/seo/collection-content';
+import Breadcrumbs from '@/components/seo/breadcrumbs';
+import type { CollectionSeo } from '@/lib/seo';
 import { useCartStore } from '@/stores/cart-store';
 
 import { filterProductsByCategory } from '@/lib/category-filters';
@@ -18,6 +21,7 @@ interface ProductGridPageProps {
   title: string;
   hideBrandFilter?: boolean;
   categoryKey?: string;
+  seo?: CollectionSeo;
 }
 
 export default function ProductGridPage({
@@ -25,9 +29,19 @@ export default function ProductGridPage({
   title,
   hideBrandFilter = false,
   categoryKey,
+  seo,
 }: ProductGridPageProps) {
   const sessionId = useCartStore((state) => state.sessionId);
-  const storeProducts = useCartStore((state) => state.products);
+  const catalogProducts = useCartStore((state) => state.products);
+  const fetchProducts = useCartStore((state) => state.fetchProducts);
+  const [hasFetchedCatalog, setHasFetchedCatalog] = useState(false);
+  useEffect(() => {
+    let active = true;
+    fetchProducts().finally(() => { if (active) setHasFetchedCatalog(true); });
+    return () => { active = false; };
+  }, [fetchProducts]);
+  // The first browser render matches the server catalog, then live stock takes over.
+  const storeProducts = hasFetchedCatalog ? catalogProducts : initialProducts;
   const getProductOption = useCartStore((state) => state.getProductOption);
   const [sortOption, setSortOption] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('all');
@@ -88,7 +102,7 @@ export default function ProductGridPage({
     if (prod.availability === 'Agotado') return false;
 
     // Si los productos de la tienda están disponibles, consultar directamente getProductOption
-    if (storeProducts && storeProducts.length > 0) {
+    if (hasFetchedCatalog && storeProducts && storeProducts.length > 0) {
       if (prod.colors && prod.colors.length > 0) {
         return prod.colors.some(c =>
           (c.options?.values || []).some(v => (getProductOption(prod.id, v.value, c.name)?.stock ?? 0) > 0)
@@ -130,13 +144,14 @@ export default function ProductGridPage({
 
       return 0;
     });
-  }, [mergedProducts, storeProducts, selectedBrand, sortOption, hideBrandFilter, getProductOption]);
+  }, [mergedProducts, storeProducts, selectedBrand, sortOption, hideBrandFilter, getProductOption, hasFetchedCatalog]);
 
   return (
     <>
       <Header />
       <main className="bg-transparent text-white min-h-[70vh]">
         <div className="container mx-auto px-4 py-6 md:py-10 max-w-7xl">
+          {seo && <Breadcrumbs items={[{ name: 'Inicio', path: '/' }, { name: seo.heading, path: seo.path }]} />}
           <div className="mb-6 flex items-center justify-between">
             <Link
               href="/"
@@ -150,6 +165,7 @@ export default function ProductGridPage({
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-center mb-8 text-white uppercase tracking-wider">
             {title}
           </h1>
+          {seo && <p className="mx-auto mb-8 max-w-3xl text-center text-base leading-relaxed text-zinc-300">{seo.description}</p>}
           <FilterSortControls
             sortOption={sortOption}
             setSortOption={setSortOption}
@@ -166,6 +182,7 @@ export default function ProductGridPage({
                   product={product}
                   sessionId={sessionId}
                   index={index}
+                  preferInitialProduct={!hasFetchedCatalog}
                 />
               ))}
             </div>
@@ -174,6 +191,7 @@ export default function ProductGridPage({
               No hay productos en esta categoría.
             </p>
           )}
+          {seo && <CollectionContent entry={seo} />}
         </div>
       </main>
       <Footer />

@@ -1,0 +1,722 @@
+'use client';
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
+import type { Product, ProductOption, ProductColor } from '@/lib/data';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Check, Shield, ArrowLeft, Pill, Server, ZoomIn, X, Activity, Layers, Zap, Wind, Sparkles, ShieldCheck, Droplets, Flame, Dumbbell } from 'lucide-react';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import Breadcrumbs from '@/components/seo/breadcrumbs';
+import { collections } from '@/lib/seo';
+import { useCartStore } from '@/stores/cart-store';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "@/components/ui/dialog";
+
+const PLACEHOLDER_IMAGE = 'https://picsum.photos/seed/placeholder/600/800';
+
+const brandStyles: { [key: string]: string } = {
+    'YoungLA': 'bg-red-600 text-white',
+    'Gymshark': 'bg-cyan-400 text-black',
+    'Dragon Pharma': 'bg-pink-500 text-white',
+    'Darc Sport': 'bg-zinc-700 text-white',
+    'RGMNT': 'bg-yellow-500 text-black',
+    'RAW': 'bg-green-600 text-white',
+    'Vanquish': 'bg-sky-500 text-white',
+    'DFYNE': 'bg-purple-600 text-white',
+    'Monster': 'bg-lime-500 text-black',
+    'Bum Energy': 'bg-amber-400 text-black',
+    'Dymatize': 'bg-blue-600 text-white',
+    'Muscletech': 'bg-orange-600 text-white',
+    'Ironbull': 'bg-zinc-500 text-white',
+    'Civil Regime': 'bg-pink-600 text-white',
+    'Breathe Divinity': 'bg-red-600 text-white',
+};
+
+const brandButtonStyles: { [key: string]: string } = {
+    'YoungLA': 'bg-red-600 hover:bg-red-500 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_25px_rgba(220,38,38,0.6)]',
+    'Gymshark': 'bg-cyan-400 hover:bg-cyan-300 text-black border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)]',
+    'Dragon Pharma': 'bg-pink-500 hover:bg-pink-400 text-white border-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_25px_rgba(236,72,153,0.6)]',
+    'Darc Sport': 'bg-zinc-700 hover:bg-zinc-600 text-white border-zinc-700 shadow-[0_0_15px_rgba(63,63,70,0.4)] hover:shadow-[0_0_25px_rgba(63,63,70,0.6)]',
+    'RGMNT': 'bg-yellow-500 hover:bg-yellow-400 text-black border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.4)] hover:shadow-[0_0_25px_rgba(234,179,8,0.6)]',
+    'RAW': 'bg-green-600 hover:bg-green-500 text-white border-green-600 shadow-[0_0_15px_rgba(22,163,74,0.4)] hover:shadow-[0_0_25px_rgba(22,163,74,0.6)]',
+    'Vanquish': 'bg-sky-500 hover:bg-sky-400 text-white border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.4)] hover:shadow-[0_0_25px_rgba(14,165,233,0.6)]',
+    'DFYNE': 'bg-purple-600 hover:bg-purple-500 text-white border-purple-600 shadow-[0_0_15px_rgba(147,51,234,0.4)] hover:shadow-[0_0_25px_rgba(147,51,234,0.6)]',
+    'Monster': 'bg-lime-500 hover:bg-lime-400 text-black border-lime-500 shadow-[0_0_15px_rgba(132,204,22,0.4)] hover:shadow-[0_0_25px_rgba(132,204,22,0.6)]',
+    'Bum Energy': 'bg-amber-400 hover:bg-amber-300 text-black border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.4)] hover:shadow-[0_0_25px_rgba(251,191,36,0.6)]',
+    'Dymatize': 'bg-blue-600 hover:bg-blue-500 text-white border-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)]',
+    'Muscletech': 'bg-orange-600 hover:bg-orange-500 text-white border-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.4)] hover:shadow-[0_0_25px_rgba(234,88,12,0.6)]',
+    'Ironbull': 'bg-zinc-500 hover:bg-zinc-400 text-white border-zinc-500 shadow-[0_0_15px_rgba(115,115,115,0.4)] hover:shadow-[0_0_25px_rgba(115,115,115,0.6)]',
+    'Civil Regime': 'bg-pink-600 hover:bg-pink-500 text-white border-pink-600 shadow-[0_0_15px_rgba(219,39,119,0.4)] hover:shadow-[0_0_25px_rgba(219,39,119,0.6)]',
+    'Breathe Divinity': 'bg-red-600 hover:bg-red-500 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_25px_rgba(220,38,38,0.6)]',
+};
+
+const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
+  const params = useParams<{ id: string }>();
+  const router = useRouter();
+  const { id } = params || { id: '' };
+
+  const products = useCartStore((state) => state.products);
+  const liveGetProductOption = useCartStore((state) => state.getProductOption);
+  const addItem = useCartStore((state) => state.addItem);
+  const items = useCartStore((state) => state.items);
+  const fetchProducts = useCartStore((state) => state.fetchProducts);
+
+  const { toast } = useToast();
+
+  const [product, setProduct] = useState<Product | null>(initialProduct);
+  const firstColor = initialProduct.colors?.find(color => color.options.values.some(option => option.stock > 0)) || initialProduct.colors?.[0] || null;
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(firstColor);
+  const [selectedOption, setSelectedOption] = useState<ProductOption | null>((firstColor?.options.values || initialProduct.options?.values || []).find(option => option.stock > 0) || null);
+  const [currentImage, setCurrentImage] = useState(initialProduct.images?.[0]?.src || PLACEHOLDER_IMAGE);
+  const [availabilityMessage, setAvailabilityMessage] = useState('');
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [shouldPulseSizes, setShouldPulseSizes] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
+  const getProductOption = useCallback((productId: number, value: string, colorName?: string) => {
+    if (hasFetched) return liveGetProductOption(productId, value, colorName);
+    const options = colorName
+      ? initialProduct.colors?.find(color => color.name === colorName)?.options.values
+      : initialProduct.options?.values;
+    return options?.find(option => option.value === value);
+  }, [hasFetched, liveGetProductOption, initialProduct]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Ensure page starts at the top
+    fetchProducts().finally(() => {
+      setHasFetched(true);
+    });
+  }, [fetchProducts]);
+
+  useEffect(() => {
+    if (!hasFetched) return;
+    if (products.length > 0) {
+      const foundProduct = products.find((p) => p.id === Number(id));
+      if (foundProduct && foundProduct.visible !== false) {
+        setProduct(foundProduct);
+        // Trigger play-music event with product's gender to play correct track on entry
+        window.dispatchEvent(new CustomEvent('play-music', { detail: { gender: foundProduct.gender, productId: foundProduct.id } }));
+
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          const cleanStr = (foundProduct.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+          const pPrice = parseFloat(cleanStr) || 0;
+          (window as any).fbq('track', 'ViewContent', {
+            content_name: foundProduct.name,
+            content_ids: [foundProduct.id.toString()],
+            content_type: 'product',
+            value: pPrice,
+            currency: 'GTQ',
+          });
+        }
+
+        const initialColor = foundProduct.colors && foundProduct.colors.length > 0
+          ? (foundProduct.colors.find(c => (c.options?.values || []).some(v => (getProductOption(foundProduct.id, v.value, c.name)?.stock ?? 0) > 0)) || foundProduct.colors[0])
+          : null;
+        setSelectedColor(initialColor);
+
+        const options = initialColor?.options?.values || foundProduct.options?.values || [];
+        const firstAvailableOption = options.find(v => (getProductOption(foundProduct.id, v.value, initialColor?.name)?.stock ?? 0) > 0);
+        const isUniqueAvailable = options.length === 1 && options[0].value === 'Único' && (getProductOption(foundProduct.id, options[0].value, initialColor?.name)?.stock ?? 0) > 0;
+        const selectedOpt = isUniqueAvailable ? options[0] : (firstAvailableOption || null);
+        setSelectedOption(selectedOpt);
+
+        let initialImg = PLACEHOLDER_IMAGE;
+        const optImg = selectedOpt ? foundProduct.images?.find(img => img.option === selectedOpt.value) : null;
+        if (optImg?.src) {
+          initialImg = optImg.src;
+        } else if (initialColor?.imageSrc) {
+          initialImg = initialColor.imageSrc;
+        } else if (initialColor) {
+          const colorImg = foundProduct.images?.find(img => img.color === initialColor.name);
+          initialImg = colorImg?.src || (foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images[0].src : PLACEHOLDER_IMAGE);
+        } else if (foundProduct.images && foundProduct.images.length > 0) {
+          initialImg = foundProduct.images[0].src;
+        }
+        setCurrentImage(initialImg);
+      } else if (hasFetched) {
+        router.push('/');
+      }
+    } else if (hasFetched) {
+      router.push('/');
+    }
+  }, [id, products, router, hasFetched, getProductOption]);
+
+  const getAvailableStock = (option: ProductOption | null) => {
+    if (!product || !option) return 0;
+    if (!hasFetched) return option.stock ?? 0;
+    const currentOption = getProductOption(product.id, option.value, selectedColor?.name);
+    return currentOption?.stock ?? 0;
+  };
+
+  useEffect(() => {
+    if (product) {
+      updateAvailabilityMessage();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOption, selectedColor, product, items]);
+
+  const updateAvailabilityMessage = () => {
+    if (!product) return;
+    if (selectedOption) {
+      const availableStock = getAvailableStock(selectedOption);
+      if (availableStock === 1) {
+        setAvailabilityMessage('🔥 ¡ÚLTIMAS EXISTENCIAS! (1 DISPONIBLE)');
+      } else if (availableStock > 1) {
+        setAvailabilityMessage(`Disponible: ${availableStock} unidades`);
+      } else {
+        setAvailabilityMessage('Agotado');
+      }
+    } else {
+      const optionType = selectedColor?.options?.type || product.options?.type || 'opción';
+      setAvailabilityMessage(`Selecciona una ${optionType}`);
+    }
+  }
+
+  const filteredImages = useMemo(() => {
+    if (!product) return [];
+    const allImages = product.images || [];
+
+    if (!selectedColor) return allImages;
+
+    // 1. Imágenes que pertenecen al color seleccionado (incluyendo detalles)
+    const currentColorImages = allImages.filter(img => img.color === selectedColor.name);
+
+    // 2. Imágenes genéricas (sin color asignado)
+    const genericImages = allImages.filter(img => !img.color);
+
+    // 3. La primera imagen representativa de cada uno de los OTROS colores
+    const otherColors = (product.colors || []).filter(c => c.name !== selectedColor.name);
+    const otherRepresentativeImages = otherColors.map(c =>
+      allImages.find(img => img.color === c.name)
+    ).filter((img): img is NonNullable<typeof img> => !!img);
+
+    // Combinar y eliminar duplicados por URL de imagen
+    const combined = [...currentColorImages, ...genericImages, ...otherRepresentativeImages];
+    return combined.filter((v, i, a) => a.findIndex(t => t.src === v.src) === i);
+  }, [product, selectedColor]);
+
+  const handleColorClick = (color: ProductColor) => {
+    setSelectedColor(color);
+
+    const options = color.options?.values || [];
+    const firstAvailable = options.find(o => (getProductOption(product?.id || 0, o.value, color.name)?.stock ?? 0) > 0);
+    const isUniqueAvailable = options.length === 1 && options[0].value === 'Único' && (getProductOption(product?.id || 0, options[0].value, color.name)?.stock ?? 0) > 0;
+    const selectedOpt = isUniqueAvailable ? options[0] : (firstAvailable || null);
+    setSelectedOption(selectedOpt);
+
+    let nextImg = color.imageSrc;
+    const optImg = selectedOpt ? product?.images?.find(img => img.option === selectedOpt.value) : null;
+    if (optImg?.src) {
+      nextImg = optImg.src;
+    } else if (!nextImg) {
+      const colorImg = product?.images?.find(img => img.color === color.name);
+      if (colorImg?.src) nextImg = colorImg.src;
+    }
+    setCurrentImage(nextImg || PLACEHOLDER_IMAGE);
+  };
+
+  const handleThumbnailClick = (image: { src: string; color?: string; option?: string }) => {
+    setCurrentImage(image.src);
+
+    // Si la imagen pertenece a un color distinto al seleccionado, cambiamos el color
+    if (image.color && image.color !== selectedColor?.name && product?.colors) {
+      const newColor = product.colors.find(c => c.name === image.color);
+      if (newColor) {
+        handleColorClick(newColor);
+      }
+    }
+
+    // Si la imagen pertenece a una opción distinta a la seleccionada, cambiamos la opción
+    if (image.option && image.option !== selectedOption?.value) {
+      const currentOptionsValues = selectedColor?.options?.values || product?.options?.values || [];
+      const newOption = currentOptionsValues.find(o => o.value === image.option);
+      if (newOption) {
+        setSelectedOption(newOption);
+      }
+    }
+  };
+
+  const handleOptionClick = (option: ProductOption) => {
+    if (!product) return;
+    setSelectedOption(option);
+
+    // Si la opción tiene una imagen asociada en el array de imágenes del producto, cambiar a esa imagen
+    const matchingImage = product.images?.find(img => img.option === option.value);
+    if (matchingImage) {
+      setCurrentImage(matchingImage.src);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!product) return;
+
+    if (product.colors && product.colors.length > 0 && !selectedColor) {
+      toast({
+        title: 'Error',
+        description: `Por favor, selecciona un color.`,
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    const currentOptionsValues = selectedColor?.options?.values || product.options?.values || [];
+    if (currentOptionsValues.length > 0 && (!selectedOption || (currentOptionsValues.length > 1 && selectedOption.value === 'Único'))) {
+      const optionType = (selectedColor ? selectedColor.options?.type : product.options?.type) || 'opción';
+      setShouldPulseSizes(true);
+      setTimeout(() => setShouldPulseSizes(false), 1500);
+      toast({
+        title: 'Error',
+        description: `Por favor, toca el botón de tu ${optionType}.`,
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (!selectedOption && currentOptionsValues.length > 0) {
+        toast({
+            title: 'Error',
+            description: `Por favor, selecciona una opción.`,
+            variant: 'destructive',
+        });
+        return;
+    }
+
+    const availableStock = getAvailableStock(selectedOption);
+    if (availableStock <= 0 && currentOptionsValues.length > 0) {
+      toast({
+        title: 'Error',
+        description: `No hay stock disponible para esta selección.`,
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    const priceString = product.price || '0';
+    const priceAsNumber = parseFloat(priceString.replace('Q.', ''));
+    const optionValue = selectedOption?.value || 'Único';
+    const cartItemId = selectedColor ? `${product.id}-${selectedColor.name}-${optionValue}` : `${product.id}-default-${optionValue}`;
+    const cartItemName = selectedColor ? `${product.name} - ${selectedColor.name}` : product.name;
+
+    addItem({
+      id: cartItemId,
+      productId: product.id,
+      name: cartItemName,
+      price: priceAsNumber,
+      image: currentImage,
+      option: optionValue,
+      color: selectedColor?.name,
+      quantity: 1,
+    });
+
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'AddToCart', {
+        content_name: cartItemName,
+        content_ids: [product.id.toString()],
+        content_type: 'product',
+        value: priceAsNumber,
+        currency: 'GTQ',
+      });
+    }
+  };
+
+  if (!product) {
+    return (
+      <>
+        <Header />
+        <div className="text-white text-center py-20">Cargando producto...</div>
+        <Footer />
+      </>
+    );
+  }
+
+  const currentOptions = selectedColor ? selectedColor.options : product.options;
+  const currentOptionValues = currentOptions?.values || [];
+  const hasMultipleOptions = currentOptionValues.length > 1 && !(currentOptionValues.length === 1 && currentOptionValues[0].value === 'Único');
+
+  const totalCurrentStock = currentOptionValues.reduce((sum, opt) => sum + getAvailableStock(opt), 0);
+  const activeStock = selectedOption ? getAvailableStock(selectedOption) : totalCurrentStock;
+
+  const isAddToCartDisabled = selectedOption
+    ? activeStock <= 0
+    : (currentOptionValues.length > 0 && activeStock <= 0);
+
+  const isPendingOption = hasMultipleOptions && !selectedOption;
+
+  const cleanPriceStr = (product.price || '0').replace(/^Q\.?\s*/i, '').replace(/,/g, '').trim();
+  const basePriceNum = parseFloat(cleanPriceStr) || 0;
+
+  return (
+    <>
+    <Header />
+    <main className="bg-[#050505] text-white min-h-screen overflow-x-hidden">
+      {/* Background patterns */}
+      <div className="fixed inset-0 pointer-events-none opacity-10" style={{
+          backgroundImage: "url('/assets/images/diamond-bg.png')",
+          backgroundSize: '80px'
+      }}></div>
+
+      <div className="container mx-auto px-4 py-4 md:py-6 relative z-10">
+        <Breadcrumbs items={[
+          { name: 'Inicio', path: '/' },
+          ...(collections.find(entry => entry.brand === product.brand) ? [{ name: product.brand, path: collections.find(entry => entry.brand === product.brand)!.path }] : []),
+          { name: product.name, path: `/product/${product.id}` },
+        ]} />
+        <Button variant="ghost" onClick={() => router.back()} className="mb-4 h-8 hover:bg-zinc-900 text-zinc-500 hover:text-white transition-all text-xs">
+            <ArrowLeft className="mr-2 h-3 w-3" />
+            VOLVER
+        </Button>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+          {/* Gallery Section - Perfectly Wrapped & Scaled */}
+          <div className="lg:col-span-6 flex flex-col items-center space-y-4">
+            <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
+              <DialogTrigger asChild>
+                <div className="relative aspect-[3/4] w-full max-w-[400px] sm:max-w-[440px] mx-auto overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl group cursor-zoom-in">
+                  <Image
+                    src={currentImage ? encodeURI(currentImage) : PLACEHOLDER_IMAGE}
+                    alt={product.name}
+                    fill
+                    unoptimized
+                    priority
+                    onError={() => setCurrentImage(PLACEHOLDER_IMAGE)}
+                    className="object-contain p-2 sm:p-3 transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                    <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity w-10 h-10 drop-shadow-lg" />
+                  </div>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-none w-screen h-screen p-0 border-none bg-black/95 shadow-none flex items-center justify-center z-[200]">
+                <DialogTitle className="sr-only">{product.name}</DialogTitle>
+                <DialogDescription className="sr-only">Imagen ampliada de {product.name}</DialogDescription>
+
+                <DialogClose className="fixed top-6 right-6 sm:top-10 sm:right-10 p-4 bg-red-600 hover:bg-red-700 rounded-full text-white transition-all shadow-[0_0_30px_rgba(229,0,0,0.6)] z-[210] scale-125 active:scale-95 border-2 border-white/30 flex items-center justify-center">
+                    <X className="w-8 h-8 stroke-[4px]" />
+                </DialogClose>
+
+                <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-10">
+                  <Image
+                    src={currentImage ? encodeURI(currentImage) : PLACEHOLDER_IMAGE}
+                    alt={product.name}
+                    width={1600}
+                    height={1600}
+                    unoptimized
+                    className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            {/* Gallery Thumbnails with Immediate Hover Preview & Larger Size */}
+            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar justify-center max-w-full">
+              {filteredImages.map((image, index) => {
+                const isSelected = currentImage === image.src;
+                return (
+                  <button
+                    key={index}
+                    onMouseEnter={() => handleThumbnailClick(image)}
+                    onClick={() => handleThumbnailClick(image)}
+                    className={`relative w-16 h-20 sm:w-20 sm:h-24 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-all duration-300 transform ${
+                      isSelected
+                        ? 'border-red-600 scale-105 shadow-[0_0_15px_rgba(229,0,0,0.5)] ring-2 ring-red-500/40 opacity-100'
+                        : 'border-zinc-800 opacity-60 hover:opacity-100 hover:scale-105 hover:border-zinc-500'
+                    }`}
+                  >
+                    <Image
+                      src={image.src ? encodeURI(image.src) : PLACEHOLDER_IMAGE}
+                      alt={`${product.name} - ${index + 1}`}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Info Section - Tighter spacing */}
+          <div className="lg:col-span-6 flex flex-col">
+            <div className="space-y-2 mb-4">
+              <div className="flex items-center gap-2">
+                <span className={`px-2.5 py-1 ${brandStyles[product.brand] || 'bg-zinc-800 text-white'} text-[10px] font-black uppercase tracking-widest rounded-md shadow-lg`}>
+                  {product.brand}
+                </span>
+                {Boolean(product.is_new || [9112, 9113, 9114].includes(product.id)) && (
+                  <span className="bg-gradient-to-r from-purple-500 to-violet-600 text-white font-black text-[10px] tracking-widest uppercase px-2 py-0.5 rounded shadow-[0_0_12px_rgba(255,255,255,0.4)] border border-white flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                    NUEVO
+                  </span>
+                )}
+                <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest ml-1">
+                  / {product.category}
+                </span>
+              </div>
+
+              <h1 className="text-3xl md:text-4xl font-black tracking-tighter leading-tight uppercase">
+                {product.name}
+              </h1>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <p className="text-3xl md:text-4xl font-black text-white tracking-tighter">
+                  {product.price}
+                </p>
+                {product.originalPrice && (
+                  <p className="text-lg text-zinc-500 line-through font-bold">
+                    {product.originalPrice}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Characteristics Grid - Differentiated with Thematic Icons and Categories */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                {[
+                    {
+                        tag: "SOPORTE Y AJUSTE",
+                        text: product.feature1 || "Corte Atlético Profesional",
+                        icon: <Activity className="h-4 w-4 text-cyan-400" />,
+                        iconBg: "bg-cyan-500/15 border-cyan-500/30 text-cyan-400",
+                        hoverBorder: "hover:border-cyan-500/50"
+                    },
+                    {
+                        tag: "COMPOSICIÓN",
+                        text: product.fabric_type ? `Tela: ${product.fabric_type}` : (product.category === 'suplemento' ? product.servings_info : "Mezcla de Fibras Premium"),
+                        icon: <Layers className="h-4 w-4 text-amber-400" />,
+                        iconBg: "bg-amber-500/15 border-amber-500/30 text-amber-400",
+                        hoverBorder: "hover:border-amber-500/50"
+                    },
+                    {
+                        tag: "RENDIMIENTO",
+                        text: product.category === 'ropa' ? (product.is_compression ? "Sistema de Compresión" : "Tejido Transpirable") : (product.benefits?.split(',')[0] || "Máxima Calidad"),
+                        icon: <Zap className="h-4 w-4 text-red-400" />,
+                        iconBg: "bg-red-500/15 border-red-500/30 text-red-400",
+                        hoverBorder: "hover:border-red-500/50"
+                    },
+                    {
+                        tag: "TECNOLOGÍA",
+                        text: product.feature2 || "Costuras de Alta Resistencia",
+                        icon: <Wind className="h-4 w-4 text-emerald-400" />,
+                        iconBg: "bg-emerald-500/15 border-emerald-500/30 text-emerald-400",
+                        hoverBorder: "hover:border-emerald-500/50"
+                    }
+                ].map((feat, i) => (
+                    <div key={i} className={`flex items-center gap-3 p-3.5 bg-zinc-900/60 rounded-xl border border-zinc-800 transition-all duration-300 ${feat.hoverBorder} group shadow-md`}>
+                        <div className={`flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center ${feat.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                            {feat.icon}
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">
+                                {feat.tag}
+                            </span>
+                            <span className="text-[14px] font-bold text-zinc-200 group-hover:text-white leading-tight">
+                                {feat.text}
+                            </span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="space-y-4">
+                <div className="space-y-2">
+                    <h2 className="text-[15px] font-black text-zinc-500 uppercase tracking-widest">Descripción</h2>
+                    <p className="text-lg md:text-xl text-zinc-100 font-bold leading-tight">
+                        {product.description}
+                    </p>
+                </div>
+
+                {/* Options Selection - Grid for perfect alignment */}
+                <div className="space-y-6">
+                    {product.colors && product.colors.length > 0 && (
+                        <div className="space-y-3">
+                            <h2 className="text-[15px] font-black text-zinc-500 uppercase tracking-widest">
+                                {product.category === 'suplemento' ? 'Sabor' : 'Color'}
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                {product.colors.map(color => {
+                                    const colorOptions = color.options?.values || [];
+                                    const isColorSoldOut = colorOptions.every(v => (getProductOption(product.id, v.value, color.name)?.stock ?? 0) === 0);
+                                    const isSelected = selectedColor?.name === color.name;
+                                    return (
+                                        <button
+                                            key={color.name}
+                                            onClick={() => !isColorSoldOut && handleColorClick(color)}
+                                            disabled={isColorSoldOut}
+                                            className={`relative w-full px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${
+                                                isColorSoldOut
+                                                    ? (isSelected
+                                                        ? 'border-red-600/80 bg-zinc-950/50 text-zinc-300 opacity-80 cursor-not-allowed'
+                                                        : 'border-zinc-900 bg-zinc-950/50 text-zinc-600 opacity-40 cursor-not-allowed'
+                                                      )
+                                                    : (isSelected
+                                                        ? 'bg-red-600 border-red-600 text-white shadow-lg'
+                                                        : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                                                      )
+                                            }`}
+                                        >
+                                            {color.name}
+                                            {isColorSoldOut && (
+                                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                    <svg className="w-full h-full absolute inset-0 text-red-600/80" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                                        <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                        <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                    </svg>
+                                                </div>
+                                            )}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {currentOptions && currentOptions.values && !(currentOptions.values.length === 1 && currentOptions.values[0].value === 'Único') && (
+                        <div className={`space-y-3 p-2 rounded-xl transition-all duration-300 ${shouldPulseSizes ? 'bg-amber-500/10 ring-2 ring-amber-500/80 scale-[1.02] shadow-[0_0_20px_rgba(245,158,11,0.2)]' : ''}`}>
+                            <h2 className="text-[15px] font-black text-zinc-500 uppercase tracking-widest">
+                                {currentOptions.type}
+                            </h2>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                                {currentOptions.values.map((option) => {
+                                    const stock = getAvailableStock(option);
+                                    const isSelected = selectedOption?.value === option.value && stock > 0;
+                                    return (
+                                        <button
+                                            key={option.value}
+                                            onClick={() => handleOptionClick(option)}
+                                            disabled={stock === 0}
+                                            className={`relative px-4 py-3 rounded-lg border text-[15px] font-black transition-all text-center ${
+                                                stock === 0
+                                                    ? 'border-zinc-900 bg-zinc-950/50 text-zinc-600 opacity-40 cursor-not-allowed'
+                                                    : (isSelected
+                                                        ? 'bg-red-600 border-red-600 text-white shadow-lg'
+                                                        : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                                                      )
+                                            }`}
+                                        >
+                                            {option.value}
+                                            {stock === 0 && (
+                                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                    <svg className="w-full h-full absolute inset-0 text-red-600/80" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                                        <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                        <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="2" />
+                                                    </svg>
+                                                </div>
+                                            )}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div className="pt-2 space-y-3">
+                    <div className="flex items-center justify-between text-[14px] font-black uppercase tracking-widest px-1 py-1">
+                        {selectedOption ? (
+                            getAvailableStock(selectedOption) === 1 ? (
+                                <div className="flex items-center gap-2 text-amber-400 font-black drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] animate-pulse">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                                    </span>
+                                    <span>🔥 ¡ÚLTIMAS EXISTENCIAS! (1 DISPONIBLE)</span>
+                                </div>
+                            ) : getAvailableStock(selectedOption) > 1 ? (
+                                <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                    </span>
+                                    <span>DISPONIBLE ({getAvailableStock(selectedOption)} UNIDADES)</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center gap-2 text-red-500 font-black drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                    <span>AGOTADO</span>
+                                </div>
+                            )
+                        ) : hasMultipleOptions ? (
+                            <div className="flex items-center gap-2 text-amber-500 font-black animate-pulse">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                                </span>
+                                <span>TOCA UN BOTÓN DE {currentOptions?.type ? currentOptions.type.toUpperCase() : 'OPCIÓN'} PARA VER DISPONIBILIDAD</span>
+                            </div>
+                        ) : (
+                            activeStock === 1 ? (
+                                <div className="flex items-center gap-2 text-amber-400 font-black drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] animate-pulse">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                                    </span>
+                                    <span>🔥 ¡ÚLTIMAS EXISTENCIAS! (1 DISPONIBLE)</span>
+                                </div>
+                            ) : activeStock > 1 ? (
+                                <div className="flex items-center gap-2 text-emerald-400 font-black drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
+                                    <span className="relative flex h-2.5 w-2.5">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                    </span>
+                                    <span>DISPONIBLE ({activeStock} UNIDADES)</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center gap-2 text-red-500 font-black drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                                    <span>AGOTADO</span>
+                                </div>
+                            )
+                        )}
+                    </div>
+
+                    {product.category === 'ropa' && (
+                      <Button
+                        type="button"
+                        onClick={() => router.push('/#size-finder-section')}
+                        className={`w-full font-black py-5 text-sm rounded-xl transition-all active:scale-95 uppercase tracking-wider border flex items-center justify-center gap-2 mb-3 animate-pulse ${
+                          brandButtonStyles[product.brand] || 'bg-red-600 hover:bg-red-500 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)]'
+                        }`}
+                      >
+                        📐 ¿Cuál es mi Talla? Encontrarla aquí
+                      </Button>
+                    )}
+
+                    <Button
+                        className={`w-full font-black py-6 text-lg rounded-xl transition-all active:scale-95 group overflow-hidden relative ${
+                          isPendingOption
+                            ? 'bg-amber-600 hover:bg-amber-500 text-white border border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.4)] animate-pulse'
+                            : 'bg-red-600 hover:bg-red-700 text-white shadow-[0_10px_20px_rgba(220,38,38,0.2)]'
+                        }`}
+                        onClick={handleAddToCart}
+                        disabled={isAddToCartDisabled}
+                    >
+                        <span className="relative z-10 uppercase tracking-tighter flex items-center justify-center gap-2">
+                            {isPendingOption ? (
+                                <>
+                                    <span>👉 TOCA EL BOTÓN DE TU {currentOptions?.type === 'Talla' ? 'TALLA' : currentOptions?.type === 'Sabor' ? 'SABOR' : 'OPCIÓN'}</span>
+                                </>
+                            ) : (
+                                isAddToCartDisabled ? 'AGOTADO' : 'AÑADIR AL CARRITO'
+                            )}
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                    </Button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <Footer />
+    </>
+  );
+};
+
+export default ProductDetailPage;

@@ -1,16 +1,9 @@
-import ProductGridPage from '@/components/product-grid-page';
-import { products } from '@/lib/data';
+import { collectionMetadata } from '@/lib/seo';
+import CollectionPage from '@/components/seo/collection-page';
 
-export default function GymsharkPage() {
-  const filteredProducts = products.filter(
-    (product) => product.brand === 'Gymshark'
-  );
+export const revalidate = 60;
+export const metadata = collectionMetadata('/marcas/gymshark');
 
-  return (
-    <ProductGridPage
-      products={filteredProducts}
-      title="Marca - Gymshark"
-      hideBrandFilter={true}
-    />
-  );
+export default function Page() {
+  return <CollectionPage path="/marcas/gymshark" />;
 }

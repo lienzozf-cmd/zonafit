@@ -1,16 +1,9 @@
-import ProductGridPage from '@/components/product-grid-page';
-import { products } from '@/lib/data';
-import { filterProductsByCategory } from '@/lib/category-filters';
+import { collectionMetadata } from '@/lib/seo';
+import CollectionPage from '@/components/seo/collection-page';
 
-export default function SupermanCollectionPage() {
-  const filteredProducts = filterProductsByCategory(products, 'coleccion-superman');
+export const revalidate = 60;
+export const metadata = collectionMetadata('/coleccion/superman');
 
-  return (
-    <ProductGridPage
-      products={filteredProducts}
-      categoryKey="coleccion-superman"
-      title="⚡ Colección Superman ⚡"
-      hideBrandFilter={false}
-    />
-  );
+export default function Page() {
+  return <CollectionPage path="/coleccion/superman" />;
 }
