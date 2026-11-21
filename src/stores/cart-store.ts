@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { produce } from 'immer';
+import { celebrateCartAddition } from '@/lib/cart-confetti';
 import { singleFlight } from '@/lib/single-flight';
 import type { CartItem } from '@/lib/types';
 import { type Product, type ProductOption, products as initialProducts } from '@/lib/data';
@@ -63,6 +64,7 @@ export const useCartStore = create<AppState>()(
       setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
       
       addItem: (item) => {
+        const previousCount = get().itemCount;
         set(produce((state: AppState) => {
             const existingItem = state.items.find((i) => i.id === item.id);
             
@@ -85,6 +87,7 @@ export const useCartStore = create<AppState>()(
             state.itemCount = itemCount;
             state.total = total;
         }));
+        if (get().itemCount > previousCount) celebrateCartAddition();
       },
       
       removeItem: (id: string) => {
