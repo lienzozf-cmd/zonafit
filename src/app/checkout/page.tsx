@@ -305,7 +305,7 @@ export default function CheckoutPage() {
               Parece que no has añadido ningún producto a tu carrito todavía. Explora nuestras marcas y catálogo exclusivo.
             </p>
             <Button asChild className="mt-8 bg-red-600 hover:bg-red-700 text-white font-black px-8 py-6 rounded-xl uppercase tracking-wider text-sm shadow-[0_0_20px_rgba(220,38,38,0.4)]">
-              <Link href="/marcas">Explorar Productos</Link>
+              <Link href="/marcas" prefetch={false}>Explorar Productos</Link>
             </Button>
           </div>
         </main>

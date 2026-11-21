@@ -1,9 +1,10 @@
 import ProductGridPage from '@/components/product-grid-page';
-import { products } from '@/lib/data';
+import { getSeoCatalog } from '@/lib/seo-catalog';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
-export default function JoyeriaPage() {
+export default async function JoyeriaPage() {
+  const { products } = await getSeoCatalog();
   const filteredProducts = products.filter(
     (product) => product.category === 'joyeria'
   );
