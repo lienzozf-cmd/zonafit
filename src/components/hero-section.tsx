@@ -33,6 +33,7 @@ const HeroSection = () => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
+  const [visitedSlides, setVisitedSlides] = useState<number[]>([0])
 
   useEffect(() => {
     if (!api) {
@@ -40,11 +41,14 @@ const HeroSection = () => {
     }
 
     setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap())
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap())
-    })
+    const onSelect = () => {
+      const selected = api.selectedScrollSnap();
+      setCurrent(selected);
+      setVisitedSlides(previous => previous.includes(selected) ? previous : [...previous, selected]);
+    };
+    onSelect();
+    api.on('select', onSelect);
+    return () => { api.off('select', onSelect); };
   }, [api])
 
   const scrollTo = useCallback(
@@ -86,7 +90,9 @@ const HeroSection = () => {
         <CarouselContent>
           {banners.map((banner, index) => (
             <CarouselItem key={index}>
-              {banner.isDemonSlayer ? (
+              {!visitedSlides.includes(index) ? (
+                <div aria-hidden="true" className="relative aspect-[16/9] md:h-[85vh] w-full bg-black" />
+              ) : banner.isDemonSlayer ? (
                 <DemonSlayerBanner onOpenChange={handleBoxOpenChange} />
               ) : banner.isInteractive ? (
                 <SpidermanBoxBanner onOpenChange={handleBoxOpenChange} />
@@ -98,6 +104,7 @@ const HeroSection = () => {
                     fill
                     priority={index === 0}
                     loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'low'}
                     sizes="(max-width: 768px) 100vw, 94vw"
                     className="object-cover md:object-contain"
                     data-ai-hint="fitness store"
@@ -110,7 +117,7 @@ const HeroSection = () => {
         </CarouselContent>
       </Carousel>
       <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 md:top-8 md:left-8 z-30">
-        <Link href="/marcas" passHref>
+        <Link prefetch={false} href="/marcas" passHref>
           <button className="relative group px-3 py-1.5 sm:px-5 sm:py-2.5 md:px-7 md:py-3.5 overflow-hidden rounded-full transition-all duration-300 hover:scale-105 active:scale-95 bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white font-extrabold text-[10px] sm:text-xs md:text-sm uppercase tracking-wider sm:tracking-[0.25em] shadow-[0_0_20px_rgba(220,38,38,0.65)] border border-red-400/50 hover:border-white/80 flex items-center gap-1.5 sm:gap-2.5">
             {/* Ambient Shimmer Beam */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />

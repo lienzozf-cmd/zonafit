@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { produce } from 'immer';
 import { celebrateCartAddition } from '@/lib/cart-confetti';
-import { singleFlight } from '@/lib/single-flight';
+import { freshTask } from '@/lib/fresh-task';
 import type { CartItem } from '@/lib/types';
 import { type Product, type ProductOption, products as initialProducts } from '@/lib/data';
 
@@ -16,7 +16,7 @@ interface AppState {
   products: Product[];
   sessionId: string;
   setSessionId: (id: string) => void;
-  fetchProducts: () => Promise<void>;
+  fetchProducts: (force?: boolean) => Promise<void>;
   setIsCartOpen: (isOpen: boolean) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
@@ -34,11 +34,13 @@ const calculateTotals = (items: CartItem[]) => {
   return { itemCount, total };
 };
 
-const readCatalog = singleFlight(async (): Promise<Product[]> => {
-  const response = await fetch('/api/products', { cache: 'no-store' });
+// Keep freshness separate from catalog data so realtime stock updates are never replayed away.
+const refreshCatalog = freshTask(async (force) => {
+  const response = await fetch('/api/products', { cache: force ? 'reload' : 'default' });
   if (!response.ok) throw new Error('Failed to fetch products');
-  return response.json();
-});
+  const products: Product[] = await response.json();
+  useCartStore.setState({ products });
+}, 30_000);
 
 export const useCartStore = create<AppState>()(
   persist(
@@ -51,13 +53,12 @@ export const useCartStore = create<AppState>()(
       sessionId: '', 
       setSessionId: (id: string) => set({ sessionId: id }),
       
-      fetchProducts: async () => {
+      fetchProducts: async (force = false) => {
         try {
-            const products = await readCatalog();
-            set({ products });
+          await refreshCatalog(force);
         } catch (error) {
-            console.error('Error fetching products:', error);
-            set({ products: [] });
+          // Preserve the current catalog during a transient failure; checkout validates stock.
+          console.error('Error fetching products:', error);
         }
       },
 
@@ -140,7 +141,7 @@ export const useCartStore = create<AppState>()(
           total: 0,
         });
         // Fetch products again to get the updated stock
-        get().fetchProducts();
+        get().fetchProducts(true);
       },
       
       getProductOption: (productId, optionValue, colorName) => {

@@ -95,7 +95,8 @@ const nextConfig: NextConfig = {
         source: '/assets/:path*',
         headers: [{
           key: 'Cache-Control',
-          value: 'public, max-age=3600',
+          // Unversioned assets remain replaceable; repeat visits reuse them for seven days.
+          value: 'public, max-age=604800',
         }],
       },
       {

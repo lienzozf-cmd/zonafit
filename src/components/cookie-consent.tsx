@@ -35,11 +35,11 @@ export default function CookieConsent() {
         <div className="text-sm md:text-base text-zinc-300 text-center md:text-left">
           <p>
             Utilizamos cookies y herramientas de análisis para personalizar el contenido y medir el tráfico del sitio (como Google Ads y Microsoft Clarity). Puedes leer más en nuestras{' '}
-            <Link href="/politicas-de-privacidad" className="text-[#E50000] hover:underline font-semibold">
+            <Link prefetch={false} href="/politicas-de-privacidad" className="text-[#E50000] hover:underline font-semibold">
               Políticas de Privacidad
             </Link>{' '}
             y{' '}
-            <Link href="/terminos-y-condiciones" className="text-[#E50000] hover:underline font-semibold">
+            <Link prefetch={false} href="/terminos-y-condiciones" className="text-[#E50000] hover:underline font-semibold">
               Términos y Condiciones
             </Link>
             .

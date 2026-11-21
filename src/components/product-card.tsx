@@ -11,6 +11,7 @@ interface ProductCardProps {
   sessionId: string;
   index: number;
   preferInitialProduct?: boolean;
+  imagePriority?: boolean;
 }
 
 const brandColorMap: { [key: string]: string } = {
@@ -33,7 +34,7 @@ const brandColorMap: { [key: string]: string } = {
 
 const PLACEHOLDER_IMAGE = '/assets/images/logos/logo.webp';
 
-const ProductCard = ({ product: initialProduct, sessionId, index, preferInitialProduct = false }: ProductCardProps) => {
+const ProductCard = ({ product: initialProduct, sessionId, index, preferInitialProduct = false, imagePriority = false }: ProductCardProps) => {
   const products = useCartStore((state) => state.products);
   const addItem = useCartStore((state) => state.addItem);
   const liveGetProductOption = useCartStore((state) => state.getProductOption);
@@ -278,7 +279,9 @@ const ProductCard = ({ product: initialProduct, sessionId, index, preferInitialP
                   src={currentImage || PLACEHOLDER_IMAGE}
                   alt={product.name}
                   fill
-                  priority={index < 4}
+                  priority={imagePriority}
+                  fetchPriority={imagePriority ? 'high' : undefined}
+                  loading={imagePriority ? 'eager' : 'lazy'}
                   quality={80}
                   onError={() => setCurrentImage(PLACEHOLDER_IMAGE)}
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

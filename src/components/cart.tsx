@@ -24,9 +24,11 @@ const Cart = () => {
   const incrementQuantity = useCartStore((state) => state.incrementQuantity);
   const decrementQuantity = useCartStore((state) => state.decrementQuantity);
   const getProductOption = useCartStore((state) => state.getProductOption);
+  const fetchProducts = useCartStore((state) => state.fetchProducts);
   const router = useRouter();
 
   const handleCheckout = () => {
+    void fetchProducts(true);
     const celebrationDuration = celebrateCheckout();
     setTimeout(() => {
       setIsCartOpen(false);

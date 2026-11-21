@@ -349,7 +349,7 @@ function DemonSlayerProductCard({
           </button>
         )}
 
-        <Link
+        <Link prefetch={false}
           href={`/product/${product.id}`}
           className="w-full py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white font-bold text-[11px] uppercase tracking-wider text-center transition-colors"
         >
@@ -487,7 +487,7 @@ export default function DemonSlayerColeccionPage() {
         
         {/* Navigation Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <Link
+          <Link prefetch={false}
             href="/"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-emerald-500 transition-all text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md"
           >

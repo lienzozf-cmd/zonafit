@@ -207,7 +207,7 @@ const Header = () => {
             const isMarcas = link.title.toUpperCase() === 'MARCAS';
             return (
               <li key={link.title} className="group/nav">
-                <Link href={link.href} className="nav-main-link">
+                <Link prefetch={false} href={link.href} className="nav-main-link">
                   <span>{link.title}</span>
                   {link.sublinks && link.sublinks.length > 0 && (
                     <span className="dropdown-arrow text-[10px] ml-1.5 opacity-70 group-hover/nav:text-red-500 group-hover/nav:translate-y-0.5 transition-all">▼</span>
@@ -222,7 +222,7 @@ const Header = () => {
 
                       return (
                         <li key={sublink.title} className="group/sub">
-                          <Link
+                          <Link prefetch={false}
                             href={sublink.href}
                             className={`dropdown-link flex items-center justify-between gap-3 ${
                               isVerTodo ? 'font-black text-red-500 hover:text-white border-t border-zinc-800/80 mt-1 pt-2' : ''
@@ -303,7 +303,7 @@ const Header = () => {
         {isMobile ? <MobileMenu /> : (
           <>
             <div className="site-branding">
-              <Link href="/">
+              <Link prefetch={false} href="/">
                 <Image src="/assets/images/logos/logo.webp" alt="Zona Fit Logo" id="site-logo" width={150} height={37} priority unoptimized data-ai-hint="logo" />
               </Link>
             </div>
@@ -313,7 +313,7 @@ const Header = () => {
         
         {isMobile && (
              <div className="site-branding">
-              <Link href="/">
+              <Link prefetch={false} href="/">
                 <Image src="/assets/images/logos/logo.webp" alt="Zona Fit Logo" id="site-logo" width={150} height={37} priority unoptimized data-ai-hint="logo" />
               </Link>
             </div>

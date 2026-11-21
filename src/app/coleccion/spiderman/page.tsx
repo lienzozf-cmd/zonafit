@@ -191,7 +191,7 @@ export default function SpidermanColeccionPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back link & Music controller */}
           <div className="flex items-center justify-between mb-6">
-            <Link
+            <Link prefetch={false}
               href="/"
               className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 px-3.5 py-1.5 rounded-full border border-zinc-700/60 transition-colors"
             >
@@ -404,7 +404,7 @@ export default function SpidermanColeccionPage() {
                       </button>
                     )}
 
-                    <Link
+                    <Link prefetch={false}
                       href={`/product/${item.productId}`}
                       className="text-center text-[11px] text-zinc-400 hover:text-red-400 font-semibold uppercase tracking-wider py-1 transition-colors"
                     >

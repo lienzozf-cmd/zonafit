@@ -46,10 +46,18 @@ export default function IntroWrapper({
     } catch (e) {}
   }, [pathname, sessionId, setSessionId]);
 
-  // Refresh once per navigation, independently of session ID initialization.
+  // Navigation refreshes share a 30-second freshness window across all consumers.
   useEffect(() => {
     fetchProducts();
   }, [pathname, fetchProducts]);
+
+  useEffect(() => {
+    const refreshOnReturn = () => {
+      if (document.visibilityState === 'visible') void fetchProducts();
+    };
+    document.addEventListener('visibilitychange', refreshOnReturn);
+    return () => document.removeEventListener('visibilitychange', refreshOnReturn);
+  }, [fetchProducts]);
 
   const handleIntroFinish = useCallback(() => {
     setShowIntro(false);

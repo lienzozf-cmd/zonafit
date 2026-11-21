@@ -1,0 +1,41 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import ts from 'typescript';
+
+const source = await readFile(new URL('../src/lib/fresh-task.ts', import.meta.url), 'utf8');
+const compiled = ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2020, module: ts.ModuleKind.ES2020 } }).outputText;
+const { freshTask } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+let time = 0;
+let reads = 0;
+let currentStock = 0;
+const refresh = freshTask(async () => { reads++; currentStock = 5; }, 30_000, () => time);
+await Promise.all([refresh(), refresh(), refresh()]);
+assert.equal(reads, 1, 'Concurrent consumers must share one catalog request');
+currentStock = 2; // Realtime stock arrived after the catalog read.
+time = 29_999;
+await refresh();
+assert.equal(reads, 1, 'Navigation inside the freshness window must not fetch');
+assert.equal(currentStock, 2, 'Skipping a request must preserve realtime stock');
+time = 30_000;
+await refresh();
+assert.equal(reads, 2, 'The catalog must refresh after expiry');
+await refresh(true);
+assert.equal(reads, 3, 'Checkout must bypass the freshness window');
+let attempts = 0;
+const retry = freshTask(async () => { if (++attempts === 1) throw new Error('offline'); }, 30_000);
+await assert.rejects(retry());
+await retry();
+assert.equal(attempts, 2, 'A failed request must not suppress retries');
+let finish;
+const modes = [];
+const queued = freshTask(async force => {
+  modes.push(force);
+  if (!force) await new Promise(resolve => { finish = resolve; });
+}, 30_000);
+const background = queued();
+await Promise.resolve();
+const purchase = queued(true);
+finish();
+await Promise.all([background, purchase]);
+assert.deepEqual(modes, [false, true], 'A purchase must get a fresh read after an older in-flight read');
+console.log('Catalog refresh checks passed: shared reads, 30-second expiry, realtime preservation, checkout bypass, queued purchase refresh and retry after failure.');

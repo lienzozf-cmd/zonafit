@@ -107,7 +107,7 @@ export default function DemonSlayerBanner({ onOpenChange }: DemonSlayerBannerPro
 
           {/* Action Buttons Row */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2 sm:mt-6">
-            <Link
+            <Link prefetch={false}
               href="/coleccion/demon-slayer"
               onClick={(e) => {
                 e.stopPropagation();
@@ -119,7 +119,7 @@ export default function DemonSlayerBanner({ onOpenChange }: DemonSlayerBannerPro
               <span className="px-1.5 py-0.5 rounded-full bg-black/40 text-[8px] sm:text-[10px] font-mono">8 PIEZAS</span>
             </Link>
 
-            <Link
+            <Link prefetch={false}
               href="/coleccion/demon-slayer"
               onClick={(e) => e.stopPropagation()}
               className="hidden sm:inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white font-bold uppercase tracking-wider transition-colors"
@@ -170,6 +170,7 @@ export default function DemonSlayerBanner({ onOpenChange }: DemonSlayerBannerPro
                     alt="Logo Demon Slayer Kimetsu no Yaiba"
                     fill
                     priority
+                    fetchPriority="high"
                     unoptimized
                     className="object-contain p-1.5 sm:p-2"
                   />

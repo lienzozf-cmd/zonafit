@@ -153,7 +153,7 @@ export default function ProductGridPage({
         <div className="container mx-auto px-4 py-6 md:py-10 max-w-7xl">
           {seo && <Breadcrumbs items={[{ name: 'Inicio', path: '/' }, { name: seo.heading, path: seo.path }]} />}
           <div className="mb-6 flex items-center justify-between">
-            <Link
+            <Link prefetch={false}
               href="/"
               className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-white text-xs sm:text-sm font-bold tracking-wide transition-all hover:scale-105 shadow-lg group"
             >
@@ -182,6 +182,7 @@ export default function ProductGridPage({
                   product={product}
                   sessionId={sessionId}
                   index={index}
+                  imagePriority={index < 2}
                   preferInitialProduct={!hasFetchedCatalog}
                 />
               ))}
