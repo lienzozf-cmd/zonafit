@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Lock } from 'lucide-react';
+import FooterCatalog from '@/components/seo/home-discovery';
 
 const Footer = () => {
   return (
@@ -34,9 +35,7 @@ const Footer = () => {
         <div className="footer-section links">
           <h3>Enlaces Útiles</h3>
           <ul>
-            <li><Link prefetch={false} href="/coleccion/batman">Ropa de Batman</Link></li>
-            <li><Link prefetch={false} href="/anime">Ropa de anime para gym</Link></li>
-            <li><Link prefetch={false} href="/hombres/playeras/compresion">Playeras de compresión</Link></li>
+            <li><FooterCatalog /></li>
             <li><Link prefetch={false} href="/politicas-de-privacidad">Políticas de Privacidad</Link></li>
             <li><Link prefetch={false} href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
             <li><Link prefetch={false} href="/terminos-y-condiciones#devoluciones"><strong className="uppercase">POLÍTICA DE DEVOLUCIONES</strong></Link></li>

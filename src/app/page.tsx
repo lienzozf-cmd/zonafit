@@ -1,5 +1,4 @@
 
-import HomeDiscovery from '@/components/seo/home-discovery';
 import type { Metadata } from 'next';
 import BrandsSection from '@/components/brands-section';
 import CategoryGrid from '@/components/category-grid';
@@ -43,7 +42,6 @@ export default function Home() {
       <div>
         <InfoSection />
       </div>
-      <HomeDiscovery />
       </main>
       <Footer />
     </div>

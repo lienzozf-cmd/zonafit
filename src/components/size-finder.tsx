@@ -382,7 +382,7 @@ const SizeFinder = () => {
             <div className="h-px w-8 sm:w-12 bg-red-600/40" />
           </div>
           <h2 className="text-4xl sm:text-6xl font-black text-white italic tracking-tighter">
-            ENCONTRAR <span className="text-red-600 drop-shadow-[0_0_15px_rgba(229,0,0,0.4)]">ROPA PARA MI</span>
+            ENCONTRAR <span className="text-red-600 drop-shadow-[0_0_15px_rgba(229,0,0,0.4)]">MI TALLA IDEAL</span>
           </h2>
           <p className="text-zinc-500 max-w-xl mx-auto text-sm sm:text-base mt-3">
             Ingresa tu altura, peso y tipo de prenda para calcular tu talla recomendada exacta y ver productos que te queden a la perfección.
