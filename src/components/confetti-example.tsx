@@ -8,8 +8,8 @@ import confetti from 'canvas-confetti';
 // 1. INSTALA LAS DEPENDENCIAS:
 //    Abre tu terminal y ejecuta los siguientes comandos en la carpeta de tu nuevo proyecto:
 //
-//    npm install canvas-confetti
-//    npm install -D @types/canvas-confetti
+//    pnpm add canvas-confetti
+//    pnpm add -D @types/canvas-confetti
 //
 // 2. COPIA Y PEGA ESTE COMPONENTE:
 //    Copia el código de este componente 'ConfettiExample' y pégalo en un nuevo archivo

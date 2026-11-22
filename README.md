@@ -6,7 +6,7 @@ Antigravity is our next-generation, agent-first IDE designed for high-velocity, 
 
 ## Getting Started
 - **Run Locally**: Use the **Run and Debug** menu on the left sidebar to start your local development server.
-  - Or in a terminal run `npm run dev` and visit `http://localhost:9002`.
+  - Or in a terminal run `pnpm run dev` and visit `http://localhost:9002`.
 - **Deploy**: You can deploy your changes to Firebase App Hosting by using the integrated terminal and standard Firebase CLI commands, just as you did in Firebase Studio.
 - **Cleanup**: Cleanup unused artifacts with the @cleanup workflow.
 
@@ -29,7 +29,7 @@ Antigravity is our next-generation, agent-first IDE designed for high-velocity, 
 
 ## Getting Started
 - **Run Locally**: Use the **Run and Debug** menu on the left sidebar to start your local development server.
-  - Or in a terminal run `npm run dev` and visit `http://localhost:9002`.
+  - Or in a terminal run `pnpm run dev` and visit `http://localhost:9002`.
 - **Deploy**: You can deploy your changes to Firebase App Hosting by using the integrated terminal and standard Firebase CLI commands, just as you did in Firebase Studio.
 - **Cleanup**: Cleanup unused artifacts with the @cleanup workflow.
 

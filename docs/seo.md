@@ -14,9 +14,9 @@
 ## Verificación
 
 ```sh
-npm run typecheck
-npm run build
-npm run start -- -p 3100
+pnpm run typecheck
+pnpm run build
+pnpm run start -p 3100
 node scripts/check-seo.mjs http://localhost:3100
 ```
 

@@ -8,8 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Check, Shield, ArrowLeft, Pill, Server, ZoomIn, X, Activity, Layers, Zap, Wind, Sparkles, ShieldCheck, Droplets, Flame, Dumbbell } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import Breadcrumbs from '@/components/seo/breadcrumbs';
-import { collections } from '@/lib/seo';
 import { useCartStore } from '@/stores/cart-store';
 import {
   Dialog,
@@ -363,11 +361,6 @@ const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
       }}></div>
 
       <div className="container mx-auto px-4 py-4 md:py-6 relative z-10">
-        <Breadcrumbs items={[
-          { name: 'Inicio', path: '/' },
-          ...(collections.find(entry => entry.brand === product.brand) ? [{ name: product.brand, path: collections.find(entry => entry.brand === product.brand)!.path }] : []),
-          { name: product.name, path: `/product/${product.id}` },
-        ]} />
         <Button variant="ghost" onClick={() => router.back()} className="mb-4 h-8 hover:bg-zinc-900 text-zinc-500 hover:text-white transition-all text-xs">
             <ArrowLeft className="mr-2 h-3 w-3" />
             VOLVER
