@@ -129,6 +129,7 @@ export const navLinks = [
         href: '/mujeres/sudaderas',
         sublinks: [{ title: 'Chamarras', href: '/mujeres/chamarras' }],
       },
+      { title: 'Enterizos', href: '/mujeres/enterizos' },
       { title: 'Pants', href: '/mujeres/pantalones' },
       { title: 'Ver Todo', href: '/mujeres' },
     ],

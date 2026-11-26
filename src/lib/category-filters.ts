@@ -42,6 +42,7 @@ export const categoryFilters: Record<string, (p: Product) => boolean> = {
   'mujeres-blusas': (p) => forWomen(p) && ['blusa', 'top', 'bras-deportivo', 'playera', 'camiseta', 'tank'].includes(p.subcategory),
   'mujeres-tops': (p) => forWomen(p) && ['top', 'blusa', 'playera', 'camiseta', 'tank'].includes(p.subcategory),
   'mujeres-bras': (p) => forWomen(p) && p.subcategory === 'bras-deportivo',
+  'mujeres-enterizos': (p) => forWomen(p) && p.subcategory === 'enterizo',
   'mujeres-leggings': (p) => forWomen(p) && p.subcategory === 'legging',
   'mujeres-shorts': (p) => forWomen(p) && p.subcategory === 'short',
   'mujeres-sudaderas': (p) => forWomen(p) && ['sudadera', 'chamarra'].includes(p.subcategory),

@@ -42,6 +42,7 @@ export const sitemapRoutes = [
   "/marcas/breathe-divinity",
   "/marcas/youngla",
   "/mujeres",
+  "/mujeres/enterizos",
   "/mujeres/blusas",
   "/mujeres/bras-deportivos",
   "/mujeres/chamarras",
