@@ -1,0 +1,359 @@
+{
+  "patches": [
+    {
+      "id": 2662,
+      "name": "Impact Shorts | 4.5\"",
+      "oldPrice": "Q.604.00",
+      "price": "Q.665.00",
+      "additions": [
+        {
+          "color": {
+            "name": "Slate Grey",
+            "hex": "#596873",
+            "imageSrc": "/assets/images/marcas/dfyne/IMPACT_SHORTS_4,5-SLATE_GREY.webp",
+            "options": {
+              "type": "Talla",
+              "values": [
+                {
+                  "value": "S",
+                  "stock": 1
+                }
+              ]
+            }
+          },
+          "images": [
+            {
+              "src": "/assets/images/marcas/dfyne/IMPACT_SHORTS_4,5-SLATE_GREY.webp",
+              "alt": "DFYNE Impact Shorts | 4.5\" - Slate Grey",
+              "color": "Slate Grey",
+              "dataAiHint": "women impact shorts | 4.5\" slate grey"
+            }
+          ]
+        }
+      ],
+      "extraImages": []
+    },
+    {
+      "id": 3057,
+      "name": "Impact Short Sleeve Top",
+      "oldPrice": "Q.593.00",
+      "price": "Q.627.00",
+      "additions": [
+        {
+          "color": {
+            "name": "Slate Grey",
+            "hex": "#596873",
+            "imageSrc": "/assets/images/marcas/dfyne/IMPACT_short_-sleeve-top-SLATE_GREY.webp",
+            "options": {
+              "type": "Talla",
+              "values": [
+                {
+                  "value": "S",
+                  "stock": 1
+                }
+              ]
+            }
+          },
+          "images": [
+            {
+              "src": "/assets/images/marcas/dfyne/IMPACT_short_-sleeve-top-SLATE_GREY.webp",
+              "alt": "DFYNE Impact Short Sleeve Top - Slate Grey",
+              "color": "Slate Grey",
+              "dataAiHint": "women impact short sleeve top slate grey"
+            }
+          ]
+        },
+        {
+          "color": {
+            "name": "Ink",
+            "hex": "#06233d",
+            "imageSrc": "/assets/images/marcas/dfyne/Impact Short Sleeve Top ink.webp",
+            "options": {
+              "type": "Talla",
+              "values": [
+                {
+                  "value": "XS",
+                  "stock": 1
+                }
+              ]
+            }
+          },
+          "images": [
+            {
+              "src": "/assets/images/marcas/dfyne/Impact Short Sleeve Top ink.webp",
+              "alt": "DFYNE Impact Short Sleeve Top - Ink",
+              "color": "Ink",
+              "dataAiHint": "women impact short sleeve top ink"
+            }
+          ]
+        },
+        {
+          "color": {
+            "name": "Espresso",
+            "hex": "#36212f",
+            "imageSrc": "/assets/images/marcas/dfyne/Impact Short Sleeve Top espresso.webp",
+            "options": {
+              "type": "Talla",
+              "values": [
+                {
+                  "value": "S",
+                  "stock": 1
+                }
+              ]
+            }
+          },
+          "images": [
+            {
+              "src": "/assets/images/marcas/dfyne/Impact Short Sleeve Top espresso.webp",
+              "alt": "DFYNE Impact Short Sleeve Top - Espresso",
+              "color": "Espresso",
+              "dataAiHint": "women impact short sleeve top espresso"
+            }
+          ]
+        }
+      ],
+      "extraImages": [
+        {
+          "src": "/assets/images/marcas/dfyne/Impact Short Sleeve Top electric blue 2.webp",
+          "alt": "DFYNE Impact Short Sleeve Top - Electric Blue - Vista trasera",
+          "color": "Electric Blue",
+          "dataAiHint": "women electric blue top back"
+        }
+      ]
+    }
+  ],
+  "newProducts": [
+    {
+      "id": 9116,
+      "name": "Vision Shorts | 4.5\"",
+      "price": "Q.676.00",
+      "availability": "Disponible",
+      "description": "Shorts deportivos DFYNE Vision de 4.5 pulgadas para mujer. Disponibles en Dove y Carbon.",
+      "gender": "mujer",
+      "category": "ropa",
+      "subcategory": "short",
+      "brand": "DFYNE",
+      "is_compression": false,
+      "is_new": true,
+      "images": [
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Shorts  4.5 dove.webp",
+          "alt": "DFYNE Vision Shorts | 4.5\" - Dove",
+          "color": "Dove",
+          "dataAiHint": "women vision shorts | 4.5\" dove"
+        },
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Shorts  4.5 carbon.webp",
+          "alt": "DFYNE Vision Shorts | 4.5\" - Carbon",
+          "color": "Carbon",
+          "dataAiHint": "women vision shorts | 4.5\" carbon"
+        },
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Shorts  4.5 carbon 2.webp",
+          "alt": "DFYNE Vision Shorts | 4.5\" - Carbon - Vista adicional",
+          "color": "Carbon",
+          "dataAiHint": "women vision shorts | 4.5\" carbon"
+        }
+      ],
+      "options": {
+        "type": "Talla",
+        "values": []
+      },
+      "colors": [
+        {
+          "name": "Dove",
+          "hex": "#8b8097",
+          "imageSrc": "/assets/images/marcas/dfyne/Vision Shorts  4.5 dove.webp",
+          "options": {
+            "type": "Talla",
+            "values": [
+              {
+                "value": "XS",
+                "stock": 1
+              }
+            ]
+          }
+        },
+        {
+          "name": "Carbon",
+          "hex": "#424e64",
+          "imageSrc": "/assets/images/marcas/dfyne/Vision Shorts  4.5 carbon.webp",
+          "options": {
+            "type": "Talla",
+            "values": [
+              {
+                "value": "XS",
+                "stock": 1
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": 9117,
+      "name": "Impact Leggings",
+      "price": "Q.737.00",
+      "availability": "Disponible",
+      "description": "Leggings deportivos DFYNE Impact para mujer. Disponibles en Ink y Espresso.",
+      "gender": "mujer",
+      "category": "ropa",
+      "subcategory": "legging",
+      "brand": "DFYNE",
+      "is_compression": false,
+      "is_new": true,
+      "images": [
+        {
+          "src": "/assets/images/marcas/dfyne/Impact Leggings INK.webp",
+          "alt": "DFYNE Impact Leggings - Ink",
+          "color": "Ink",
+          "dataAiHint": "women impact leggings ink"
+        },
+        {
+          "src": "/assets/images/marcas/dfyne/Impact Leggings INK 2.webp",
+          "alt": "DFYNE Impact Leggings - Ink - Vista adicional",
+          "color": "Ink",
+          "dataAiHint": "women impact leggings ink"
+        },
+        {
+          "src": "/assets/images/marcas/dfyne/Impact Leggings ESPRESSO.webp",
+          "alt": "DFYNE Impact Leggings - Espresso",
+          "color": "Espresso",
+          "dataAiHint": "women impact leggings espresso"
+        }
+      ],
+      "options": {
+        "type": "Talla",
+        "values": []
+      },
+      "colors": [
+        {
+          "name": "Ink",
+          "hex": "#06233d",
+          "imageSrc": "/assets/images/marcas/dfyne/Impact Leggings INK.webp",
+          "options": {
+            "type": "Talla",
+            "values": [
+              {
+                "value": "S",
+                "stock": 1
+              }
+            ]
+          }
+        },
+        {
+          "name": "Espresso",
+          "hex": "#36212f",
+          "imageSrc": "/assets/images/marcas/dfyne/Impact Leggings ESPRESSO.webp",
+          "options": {
+            "type": "Talla",
+            "values": [
+              {
+                "value": "S",
+                "stock": 1
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": 9118,
+      "name": "Vision Sports Bra",
+      "price": "Q.595.00",
+      "availability": "Disponible",
+      "description": "Bra deportivo DFYNE Vision para mujer en color Dove.",
+      "gender": "mujer",
+      "category": "ropa",
+      "subcategory": "bras-deportivo",
+      "brand": "DFYNE",
+      "is_compression": false,
+      "is_new": true,
+      "images": [
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Sports Bra DOVE.webp",
+          "alt": "DFYNE Vision Sports Bra - Dove",
+          "color": "Dove",
+          "dataAiHint": "women vision sports bra dove"
+        },
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Sports Bra dove 2.webp",
+          "alt": "DFYNE Vision Sports Bra - Dove - Vista adicional",
+          "color": "Dove",
+          "dataAiHint": "women vision sports bra dove"
+        }
+      ],
+      "options": {
+        "type": "Talla",
+        "values": []
+      },
+      "colors": [
+        {
+          "name": "Dove",
+          "hex": "#8b8097",
+          "imageSrc": "/assets/images/marcas/dfyne/Vision Sports Bra DOVE.webp",
+          "options": {
+            "type": "Talla",
+            "values": [
+              {
+                "value": "XS",
+                "stock": 1
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": 9119,
+      "name": "Vision Twist Front Sports Bra",
+      "price": "Q.595.00",
+      "availability": "Disponible",
+      "description": "Bra deportivo DFYNE Vision con diseño de nudo frontal para mujer en color Carbon.",
+      "gender": "mujer",
+      "category": "ropa",
+      "subcategory": "bras-deportivo",
+      "brand": "DFYNE",
+      "is_compression": false,
+      "is_new": true,
+      "images": [
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Twist Front Sports Bra carbon.webp",
+          "alt": "DFYNE Vision Twist Front Sports Bra - Carbon",
+          "color": "Carbon",
+          "dataAiHint": "women vision twist front sports bra carbon"
+        },
+        {
+          "src": "/assets/images/marcas/dfyne/Vision Twist Front Sports Bra carbon 2.webp",
+          "alt": "DFYNE Vision Twist Front Sports Bra - Carbon - Vista adicional",
+          "color": "Carbon",
+          "dataAiHint": "women vision twist front sports bra carbon"
+        }
+      ],
+      "options": {
+        "type": "Talla",
+        "values": []
+      },
+      "colors": [
+        {
+          "name": "Carbon",
+          "hex": "#424e64",
+          "imageSrc": "/assets/images/marcas/dfyne/Vision Twist Front Sports Bra carbon.webp",
+          "options": {
+            "type": "Talla",
+            "values": [
+              {
+                "value": "XS",
+                "stock": 1
+              }
+            ]
+          }
+        }
+      ],
+      "visible": true
+    }
+  ]
+}
