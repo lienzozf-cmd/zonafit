@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const brands = [
-  { src: '/assets/images/logos/vanquish.webp', alt: 'Vanquish', href: '/marcas/vanquish', dataAiHint: 'logo fitness' },
+  { src: '/assets/images/marcas/breathedivinity/t-shirt-oversized-heavenly-red.webp', alt: 'Breathe Divinity', href: '/marcas/breathe-divinity', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/darc.webp', alt: 'Darc Sport', href: '/marcas/darc-sport', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/dragonp.webp', alt: 'Dragon Pharma', href: '/marcas/dragon-pharma', dataAiHint: 'logo fitness' },
   { src: '/assets/images/logos/gymshark.webp', alt: 'Gymshark', href: '/marcas/gymshark', dataAiHint: 'logo fitness' },

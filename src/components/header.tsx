@@ -37,7 +37,7 @@ const brandMenuColors: { [key: string]: { text: string; bgHover: string; glow: s
     border: 'rgba(251, 146, 60, 0.5)',
     badgeBg: '#EA580C'
   },
-  'Vanquish': {
+  'Breathe Divinity': {
     text: '#38BDF8',
     bgHover: 'rgba(14, 165, 233, 0.18)',
     glow: 'rgba(14, 165, 233, 0.6)',

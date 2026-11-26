@@ -185,7 +185,7 @@ export const navLinks = [
       { title: 'YoungLA', href: '/marcas/youngla' },
       { title: 'Gymshark', href: '/marcas/gymshark' },
       { title: 'Darc Sport', href: '/marcas/darc-sport' },
-      { title: 'Vanquish', href: '/marcas/vanquish' },
+      { title: 'Breathe Divinity', href: '/marcas/breathe-divinity' },
       { title: 'Dfyne', href: '/marcas/dfyne' },
       { title: 'Dragon Pharma', href: '/marcas/dragon-pharma' },
       { title: 'RAW', href: '/marcas/raw' },

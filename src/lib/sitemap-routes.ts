@@ -39,7 +39,7 @@ export const sitemapRoutes = [
   "/marcas/gymshark",
   "/marcas/raw",
   "/marcas/rgmnt",
-  "/marcas/vanquish",
+  "/marcas/breathe-divinity",
   "/marcas/youngla",
   "/mujeres",
   "/mujeres/blusas",
