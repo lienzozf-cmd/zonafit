@@ -9,7 +9,7 @@ export default function CamisetasPage() {
     <ProductGridPage
       products={filteredProducts}
       categoryKey="hombres-camisetas"
-      title="Hombres - Camisetas"
+      title="Hombres - Camisetas Clásicas y Ajustadas"
     />
   );
 }

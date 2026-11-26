@@ -9,8 +9,6 @@ import Footer from '@/components/footer';
 import ProductCard from '@/components/product-card';
 import { Product, isProductAvailable } from '@/lib/data';
 import FilterSortControls from '@/components/filter-sort-controls';
-import CollectionContent from '@/components/seo/collection-content';
-import Breadcrumbs from '@/components/seo/breadcrumbs';
 import type { CollectionSeo } from '@/lib/seo';
 import { useCartStore } from '@/stores/cart-store';
 
@@ -151,7 +149,6 @@ export default function ProductGridPage({
       <Header />
       <main className="bg-transparent text-white min-h-[70vh]">
         <div className="container mx-auto px-4 py-6 md:py-10 max-w-7xl">
-          {seo && <Breadcrumbs items={[{ name: 'Inicio', path: '/' }, { name: seo.heading, path: seo.path }]} />}
           <div className="mb-6 flex items-center justify-between">
             <Link prefetch={false}
               href="/"
@@ -192,7 +189,6 @@ export default function ProductGridPage({
               No hay productos en esta categoría.
             </p>
           )}
-          {seo && <CollectionContent entry={seo} />}
         </div>
       </main>
       <Footer />

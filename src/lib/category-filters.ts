@@ -8,145 +8,69 @@ const animeKeywords = [
   'aot', 'attack on titan', 'shingeki', 'levi'
 ];
 
+// A shirt without compression is not necessarily oversized. Only explicit
+// cut information or a reviewed manufacturer specification qualifies it.
+// YoungLA: /products/4156, /products/4064, /products/4266, /products/4297.
+const verifiedOversizeIds = new Set([2614, 2708, 9106, 9107]);
+const isShirt = (p: Product) => p.category === 'ropa' && ['playera', 'camiseta', 'tank'].includes(p.subcategory);
+const forMen = (p: Product) => p.category === 'ropa' && ['hombre', 'unisex'].includes(p.gender);
+const forWomen = (p: Product) => p.category === 'ropa' && ['mujer', 'unisex'].includes(p.gender);
+const isCompression = (p: Product) => isShirt(p) &&
+  (p.is_compression === true || /\b(compresion|compresión|compression)\b/i.test(p.name));
+const isOversize = (p: Product) => isShirt(p) && p.subcategory !== 'tank' && !isCompression(p) && (
+  verifiedOversizeIds.has(p.id) ||
+  /\b(oversized?|supersized)\b/i.test([p.name, p.description, p.feature1, p.feature2, p.feature3, p.feature4].join(' '))
+);
+const inSubcategory = (category: Product['category'], ...subcategories: string[]) =>
+  (p: Product) => p.category === category && subcategories.includes(p.subcategory);
+
 export const categoryFilters: Record<string, (p: Product) => boolean> = {
-  // HOMBRES
-  'hombres': (p) => (p.gender === 'hombre' || p.gender === 'unisex') && p.category === 'ropa',
-  'hombres-playeras': (p) => p.gender === 'hombre' && (p.subcategory === 'playera' || p.subcategory === 'tank' || p.subcategory === 'camiseta'),
-  'hombres-tanks': (p) => p.gender === 'hombre' && (
-    p.subcategory === 'tank' ||
-    p.name.toLowerCase().includes('tank') ||
-    p.name.toLowerCase().includes('cut-off') ||
-    p.name.toLowerCase().includes('cut off') ||
-    p.name.toLowerCase().includes('stringer') ||
-    p.name.toLowerCase().includes('wife lover')
-  ),
-  'hombres-compresion': (p) => p.gender === 'hombre' &&
-    (p.is_compression === true || p.name.toLowerCase().includes('compression') || p.name.toLowerCase().includes('compresión')) &&
-    (p.subcategory === 'playera' || p.subcategory === 'tank'),
-  'hombres-oversize': (p) => p.gender === 'hombre' &&
-    p.subcategory === 'playera' &&
-    !p.is_compression &&
-    !p.name.toLowerCase().includes('compression') &&
-    !p.name.toLowerCase().includes('compresión'),
-  'hombres-shorts': (p) => p.gender === 'hombre' && p.subcategory === 'short',
-  'hombres-pants': (p) => p.gender === 'hombre' && (p.subcategory === 'pantalon' || p.subcategory === 'jogger'),
-  'hombres-sudaderas': (p) => (p.gender === 'hombre' || p.gender === 'unisex') && p.subcategory === 'sudadera',
-  'hombres-camisetas': (p) => p.gender === 'hombre' && (p.subcategory === 'playera' || p.subcategory === 'camiseta'),
-  'hombres-chamarras': (p) => p.gender === 'hombre' && p.subcategory === 'chamarra',
-  'hombres-zapatos': (p) => p.gender === 'hombre' && p.subcategory === 'zapato',
+  // Clothing uses both garment type and gender, including unisex garments.
+  'hombres': forMen,
+  'hombres-playeras': (p) => forMen(p) && isShirt(p),
+  'hombres-tanks': (p) => forMen(p) && p.subcategory === 'tank',
+  'hombres-compresion': (p) => forMen(p) && isCompression(p),
+  'hombres-oversize': (p) => forMen(p) && isOversize(p),
+  'hombres-camisetas': (p) => forMen(p) && isShirt(p) && p.subcategory !== 'tank' && !isCompression(p) && !isOversize(p),
+  'hombres-shorts': (p) => forMen(p) && p.subcategory === 'short',
+  'hombres-pants': (p) => forMen(p) && ['pantalon', 'jogger'].includes(p.subcategory),
+  'hombres-sudaderas': (p) => forMen(p) && ['sudadera', 'chamarra'].includes(p.subcategory),
+  'hombres-chamarras': (p) => forMen(p) && p.subcategory === 'chamarra',
+  'hombres-zapatos': (p) => forMen(p) && p.subcategory === 'zapato',
 
-  // MUJERES
-  'mujeres': (p) => p.gender === 'mujer',
-  'mujeres-blusas': (p) => p.gender === 'mujer' && (p.subcategory === 'blusa' || p.subcategory === 'top' || p.subcategory === 'bras-deportivo'),
-  'mujeres-tops': (p) => p.gender === 'mujer' && (p.subcategory === 'top' || p.name.toLowerCase().includes('top') || p.subcategory === 'blusa'),
-  'mujeres-bras': (p) => p.gender === 'mujer' && (p.subcategory === 'bras-deportivo' || p.name.toLowerCase().includes('bra')),
-  'mujeres-leggings': (p) => p.gender === 'mujer' && p.subcategory === 'legging',
-  'mujeres-shorts': (p) => p.gender === 'mujer' && p.subcategory === 'short',
-  'mujeres-sudaderas': (p) => p.gender === 'mujer' && (p.subcategory === 'sudadera' || p.subcategory === 'chamarra'),
-  'mujeres-chamarras': (p) => p.gender === 'mujer' && p.subcategory === 'chamarra',
-  'mujeres-pants': (p) => p.gender === 'mujer' && (p.subcategory === 'pantalon' || p.subcategory === 'jogger'),
+  'mujeres': forWomen,
+  'mujeres-blusas': (p) => forWomen(p) && ['blusa', 'top', 'bras-deportivo', 'playera', 'camiseta', 'tank'].includes(p.subcategory),
+  'mujeres-tops': (p) => forWomen(p) && ['top', 'blusa', 'playera', 'camiseta', 'tank'].includes(p.subcategory),
+  'mujeres-bras': (p) => forWomen(p) && p.subcategory === 'bras-deportivo',
+  'mujeres-leggings': (p) => forWomen(p) && p.subcategory === 'legging',
+  'mujeres-shorts': (p) => forWomen(p) && p.subcategory === 'short',
+  'mujeres-sudaderas': (p) => forWomen(p) && ['sudadera', 'chamarra'].includes(p.subcategory),
+  'mujeres-chamarras': (p) => forWomen(p) && p.subcategory === 'chamarra',
+  'mujeres-pants': (p) => forWomen(p) && ['pantalon', 'jogger'].includes(p.subcategory),
 
-  // ACCESORIOS
+  // Exact metadata prevents incidental words from creating false matches.
   'accesorios': (p) => p.category === 'accesorio',
-  'accesorios-pachones-shakers': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'pachon' ||
-    p.subcategory === 'shaker' ||
-    p.name.toLowerCase().includes('shaker') ||
-    p.name.toLowerCase().includes('pachon') ||
-    p.name.toLowerCase().includes('pachón') ||
-    p.name.toLowerCase().includes('botella') ||
-    p.name.toLowerCase().includes('cup')
-  ),
-  'accesorios-pachones': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'pachon' ||
-    ((p.name.toLowerCase().includes('pachon') || p.name.toLowerCase().includes('pachón') || p.name.toLowerCase().includes('botella')) && !p.name.toLowerCase().includes('shaker'))
-  ),
-  'accesorios-shakers': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'shaker' ||
-    p.name.toLowerCase().includes('shaker')
-  ),
-  'accesorios-equipo': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'equipo' ||
-    p.name.toLowerCase().includes('strap') ||
-    p.name.toLowerCase().includes('wrap') ||
-    p.name.toLowerCase().includes('cinturon') ||
-    p.name.toLowerCase().includes('faja')
-  ),
-  'accesorios-gorras': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'gorra' ||
-    p.name.toLowerCase().includes('gorra') ||
-    p.name.toLowerCase().includes('beanie') ||
-    p.name.toLowerCase().includes('hat') ||
-    (p.name.toLowerCase().includes('cap') && !p.name.toLowerCase().includes('capucha'))
-  ),
-  'accesorios-mochilas-maletas': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'mochila' ||
-    p.subcategory === 'maleta' ||
-    p.name.toLowerCase().includes('mochila') ||
-    p.name.toLowerCase().includes('maleta') ||
-    p.name.toLowerCase().includes('bag') ||
-    p.name.toLowerCase().includes('backpack')
-  ),
-  'accesorios-mochilas': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'mochila' ||
-    p.name.toLowerCase().includes('mochila') ||
-    p.name.toLowerCase().includes('backpack')
-  ),
-  'accesorios-maletas': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'maleta' ||
-    p.name.toLowerCase().includes('maleta') ||
-    p.name.toLowerCase().includes('gym bag') ||
-    (p.name.toLowerCase().includes('bag') && !p.name.toLowerCase().includes('backpack'))
-  ),
-  'accesorios-calcetines': (p) => p.category === 'accesorio' && (
-    p.subcategory === 'calcetin' ||
-    p.subcategory === 'calcetines' ||
-    p.name.toLowerCase().includes('calcetin') ||
-    p.name.toLowerCase().includes('socks') ||
-    p.name.toLowerCase().includes('sock')
-  ),
+  'accesorios-pachones-shakers': inSubcategory('accesorio', 'pachon', 'shaker'),
+  'accesorios-pachones': inSubcategory('accesorio', 'pachon'),
+  'accesorios-shakers': inSubcategory('accesorio', 'shaker'),
+  'accesorios-equipo': inSubcategory('accesorio', 'equipo'),
+  'accesorios-llaveros': inSubcategory('accesorio', 'llavero'),
+  'accesorios-gorras': inSubcategory('accesorio', 'gorra'),
+  'accesorios-mochilas-maletas': inSubcategory('accesorio', 'mochila', 'maleta'),
+  'accesorios-mochilas': inSubcategory('accesorio', 'mochila'),
+  'accesorios-maletas': inSubcategory('accesorio', 'maleta'),
+  'accesorios-calcetines': inSubcategory('accesorio', 'calcetin', 'calcetines'),
 
-  // SUPLEMENTOS
   'suplementos': (p) => p.category === 'suplemento',
-  'suplementos-proteinas': (p) => p.category === 'suplemento' && (
-    p.subcategory === 'proteina' ||
-    p.name.toLowerCase().includes('proteina') ||
-    p.name.toLowerCase().includes('proteína') ||
-    p.name.toLowerCase().includes('protein') ||
-    p.name.toLowerCase().includes('whey') ||
-    p.name.toLowerCase().includes('iso')
-  ),
-  'suplementos-creatinas': (p) => p.category === 'suplemento' && (
-    p.subcategory === 'creatina' ||
-    p.name.toLowerCase().includes('creatina') ||
-    p.name.toLowerCase().includes('creatine')
-  ),
-  'suplementos-pre-entrenos': (p) => p.category === 'suplemento' && (
-    p.subcategory === 'pre-entreno' ||
-    p.name.toLowerCase().includes('pre-workout') ||
-    p.name.toLowerCase().includes('pump') ||
-    p.name.toLowerCase().includes('glycerol') ||
-    p.name.toLowerCase().includes('venom')
-  ),
-  'suplementos-aminoacidos': (p) => p.category === 'suplemento' && (
-    p.subcategory === 'aminoacidos' ||
-    p.subcategory === 'aminoácidos' ||
-    p.name.toLowerCase().includes('amino') ||
-    p.name.toLowerCase().includes('bcaa') ||
-    p.name.toLowerCase().includes('eaa') ||
-    p.name.toLowerCase().includes('glutamin') ||
-    p.name.toLowerCase().includes('sleep') ||
-    p.name.toLowerCase().includes('omega')
-  ),
-  'suplementos-l-carnitina': (p) => p.category === 'suplemento' && (
-    p.subcategory === 'l-carnitina' ||
-    p.subcategory === 'carnitina' ||
-    p.name.toLowerCase().includes('carnitin')
-  ),
+  'suplementos-proteinas': inSubcategory('suplemento', 'proteina'),
+  'suplementos-creatinas': inSubcategory('suplemento', 'creatina'),
+  'suplementos-pre-entrenos': inSubcategory('suplemento', 'pre-entreno'),
+  'suplementos-aminoacidos': inSubcategory('suplemento', 'aminoacidos', 'aminoácidos'),
+  'suplementos-l-carnitina': inSubcategory('suplemento', 'l-carnitina', 'carnitina'),
+  'suplementos-bienestar': inSubcategory('suplemento', 'bienestar'),
 
-  // JOYERIA
   'joyeria': (p) => p.category === 'joyeria',
-  'joyeria-rgmnt': (p) => p.category === 'joyeria' && (p.subcategory === 'rgmnt' || p.brand === 'RGMNT'),
+  'joyeria-rgmnt': inSubcategory('joyeria', 'rgmnt'),
 
   // COLECCIONES
   'anime': (p) => {
