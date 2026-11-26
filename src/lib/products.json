@@ -13,6 +13,18 @@
     "is_new": true,
     "images": [
       {
+        "src": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_WINTER_BERRY.webp",
+        "alt": "DFYNE Impact Long Sleeve One Piece - Winter Berry",
+        "color": "Winter Berry",
+        "dataAiHint": "women long sleeve one piece winter berry"
+      },
+      {
+        "src": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_WINTER_BERRY2.webp",
+        "alt": "DFYNE Impact Long Sleeve One Piece - Winter Berry - Vista adicional",
+        "color": "Winter Berry",
+        "dataAiHint": "women long sleeve one piece winter berry"
+      },
+      {
         "src": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_TRUFFLE.webp",
         "alt": "DFYNE Impact Long Sleeve One Piece - Truffle",
         "color": "Truffle",
@@ -35,18 +47,6 @@
         "alt": "DFYNE Impact Long Sleeve One Piece - Espresso",
         "color": "Espresso",
         "dataAiHint": "women long sleeve one piece espresso"
-      },
-      {
-        "src": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_WINTER_BERRY.webp",
-        "alt": "DFYNE Impact Long Sleeve One Piece - Winter Berry",
-        "color": "Winter Berry",
-        "dataAiHint": "women long sleeve one piece winter berry"
-      },
-      {
-        "src": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_WINTER_BERRY2.webp",
-        "alt": "DFYNE Impact Long Sleeve One Piece - Winter Berry - Vista adicional",
-        "color": "Winter Berry",
-        "dataAiHint": "women long sleeve one piece winter berry"
       }
     ],
     "options": {
@@ -54,6 +54,20 @@
       "values": []
     },
     "colors": [
+      {
+        "name": "Winter Berry",
+        "hex": "#790b35",
+        "imageSrc": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_WINTER_BERRY.webp",
+        "options": {
+          "type": "Talla",
+          "values": [
+            {
+              "value": "S",
+              "stock": 1
+            }
+          ]
+        }
+      },
       {
         "name": "Truffle",
         "hex": "#777078",
@@ -91,20 +105,6 @@
           "values": [
             {
               "value": "XS",
-              "stock": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "Winter Berry",
-        "hex": "#790b35",
-        "imageSrc": "/assets/images/marcas/dfyne/IMPACT_ONE_PIECE_WINTER_BERRY.webp",
-        "options": {
-          "type": "Talla",
-          "values": [
-            {
-              "value": "S",
               "stock": 1
             }
           ]
