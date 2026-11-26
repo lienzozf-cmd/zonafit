@@ -177,28 +177,11 @@ const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
     }
   }
 
-  const filteredImages = useMemo(() => {
-    if (!product) return [];
-    const allImages = product.images || [];
-
-    if (!selectedColor) return allImages;
-
-    // 1. Imágenes que pertenecen al color seleccionado (incluyendo detalles)
-    const currentColorImages = allImages.filter(img => img.color === selectedColor.name);
-
-    // 2. Imágenes genéricas (sin color asignado)
-    const genericImages = allImages.filter(img => !img.color);
-
-    // 3. La primera imagen representativa de cada uno de los OTROS colores
-    const otherColors = (product.colors || []).filter(c => c.name !== selectedColor.name);
-    const otherRepresentativeImages = otherColors.map(c =>
-      allImages.find(img => img.color === c.name)
-    ).filter((img): img is NonNullable<typeof img> => !!img);
-
-    // Combinar y eliminar duplicados por URL de imagen
-    const combined = [...currentColorImages, ...genericImages, ...otherRepresentativeImages];
-    return combined.filter((v, i, a) => a.findIndex(t => t.src === v.src) === i);
-  }, [product, selectedColor]);
+  // Keep every image in catalog order so previews never move targets under the pointer.
+  const galleryImages = useMemo(() => {
+    const images = product?.images || [];
+    return images.filter((image, index) => images.findIndex(item => item.src === image.src) === index);
+  }, [product?.images]);
 
   const handleColorClick = (color: ProductColor) => {
     setSelectedColor(color);
@@ -221,8 +204,6 @@ const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
   };
 
   const handleThumbnailClick = (image: { src: string; color?: string; option?: string }) => {
-    setCurrentImage(image.src);
-
     // Si la imagen pertenece a un color distinto al seleccionado, cambiamos el color
     if (image.color && image.color !== selectedColor?.name && product?.colors) {
       const newColor = product.colors.find(c => c.name === image.color);
@@ -233,12 +214,15 @@ const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
 
     // Si la imagen pertenece a una opción distinta a la seleccionada, cambiamos la opción
     if (image.option && image.option !== selectedOption?.value) {
-      const currentOptionsValues = selectedColor?.options?.values || product?.options?.values || [];
+      const imageColor = product?.colors?.find(color => color.name === image.color);
+      const currentOptionsValues = imageColor?.options?.values || selectedColor?.options?.values || product?.options?.values || [];
       const newOption = currentOptionsValues.find(o => o.value === image.option);
       if (newOption) {
         setSelectedOption(newOption);
       }
     }
+    // Color selection may set its cover photo; preserve the exact thumbnail clicked.
+    setCurrentImage(image.src);
   };
 
   const handleOptionClick = (option: ProductOption) => {
@@ -407,19 +391,23 @@ const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
               </DialogContent>
             </Dialog>
 
-            {/* Gallery Thumbnails with Immediate Hover Preview & Larger Size */}
-            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar justify-center max-w-full">
-              {filteredImages.map((image, index) => {
+            {/* All thumbnails stay visible and keep their positions during previews */}
+            <div className="flex flex-wrap gap-3 p-1 justify-center w-full max-w-full">
+              {galleryImages.map((image, index) => {
                 const isSelected = currentImage === image.src;
                 return (
                   <button
-                    key={index}
-                    onMouseEnter={() => handleThumbnailClick(image)}
+                    key={image.src}
+                    type="button"
+                    aria-label={`Ver foto ${index + 1}${image.color ? ` - ${image.color}` : ''}`}
+                    aria-pressed={isSelected}
+                    onMouseEnter={() => setCurrentImage(image.src)}
+                    onFocus={() => setCurrentImage(image.src)}
                     onClick={() => handleThumbnailClick(image)}
-                    className={`relative w-16 h-20 sm:w-20 sm:h-24 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-all duration-300 transform ${
+                    className={`relative w-16 h-20 sm:w-20 sm:h-24 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white ${
                       isSelected
-                        ? 'border-red-600 scale-105 shadow-[0_0_15px_rgba(229,0,0,0.5)] ring-2 ring-red-500/40 opacity-100'
-                        : 'border-zinc-800 opacity-60 hover:opacity-100 hover:scale-105 hover:border-zinc-500'
+                        ? 'border-red-600 shadow-[0_0_15px_rgba(229,0,0,0.5)] ring-2 ring-red-500/40 opacity-100'
+                        : 'border-zinc-800 opacity-60 hover:opacity-100 hover:border-zinc-500'
                     }`}
                   >
                     <Image
