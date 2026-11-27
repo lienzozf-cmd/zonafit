@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Product, ProductOption, ProductColor } from '@/lib/data';
+import { getProductCharacteristics } from '@/lib/product-characteristics';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Check, Shield, ArrowLeft, Pill, Server, ZoomIn, X, Activity, Layers, Zap, Wind, Sparkles, ShieldCheck, Droplets, Flame, Dumbbell } from 'lucide-react';
@@ -457,53 +458,29 @@ const ProductDetailPage = ({ initialProduct }: { initialProduct: Product }) => {
               </div>
             </div>
 
-            {/* Characteristics Grid - Differentiated with Thematic Icons and Categories */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-                {[
-                    {
-                        tag: "SOPORTE Y AJUSTE",
-                        text: product.feature1 || "Corte Atlético Profesional",
-                        icon: <Activity className="h-4 w-4 text-cyan-400" />,
-                        iconBg: "bg-cyan-500/15 border-cyan-500/30 text-cyan-400",
-                        hoverBorder: "hover:border-cyan-500/50"
-                    },
-                    {
-                        tag: "COMPOSICIÓN",
-                        text: product.fabric_type ? `Tela: ${product.fabric_type}` : (product.category === 'suplemento' ? product.servings_info : "Mezcla de Fibras Premium"),
-                        icon: <Layers className="h-4 w-4 text-amber-400" />,
-                        iconBg: "bg-amber-500/15 border-amber-500/30 text-amber-400",
-                        hoverBorder: "hover:border-amber-500/50"
-                    },
-                    {
-                        tag: "RENDIMIENTO",
-                        text: product.category === 'ropa' ? (product.is_compression ? "Sistema de Compresión" : "Tejido Transpirable") : (product.benefits?.split(',')[0] || "Máxima Calidad"),
-                        icon: <Zap className="h-4 w-4 text-red-400" />,
-                        iconBg: "bg-red-500/15 border-red-500/30 text-red-400",
-                        hoverBorder: "hover:border-red-500/50"
-                    },
-                    {
-                        tag: "TECNOLOGÍA",
-                        text: product.feature2 || "Costuras de Alta Resistencia",
-                        icon: <Wind className="h-4 w-4 text-emerald-400" />,
-                        iconBg: "bg-emerald-500/15 border-emerald-500/30 text-emerald-400",
-                        hoverBorder: "hover:border-emerald-500/50"
-                    }
-                ].map((feat, i) => (
-                    <div key={i} className={`flex items-center gap-3 p-3.5 bg-zinc-900/60 rounded-xl border border-zinc-800 transition-all duration-300 ${feat.hoverBorder} group shadow-md`}>
-                        <div className={`flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center ${feat.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                            {feat.icon}
+            {/* Labels and facts match the product category. */}
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                {getProductCharacteristics(product, selectedColor).map((feat, i) => {
+                  const styles = [
+                    { Icon: Activity, color: 'text-cyan-400', bg: 'bg-cyan-500/15 border-cyan-500/30', hover: 'hover:border-cyan-500/50' },
+                    { Icon: Layers, color: 'text-amber-400', bg: 'bg-amber-500/15 border-amber-500/30', hover: 'hover:border-amber-500/50' },
+                    { Icon: Zap, color: 'text-red-400', bg: 'bg-red-500/15 border-red-500/30', hover: 'hover:border-red-500/50' },
+                    { Icon: Wind, color: 'text-emerald-400', bg: 'bg-emerald-500/15 border-emerald-500/30', hover: 'hover:border-emerald-500/50' },
+                  ][i];
+                  const Icon = styles.Icon;
+                  return (
+                    <div key={feat.tag} className={`flex items-center gap-3 p-3.5 bg-zinc-900/60 rounded-xl border border-zinc-800 transition-all duration-300 ${styles.hover} group shadow-md`}>
+                        <div aria-hidden="true" className={`flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center ${styles.bg} transition-transform duration-300 group-hover:scale-110`}>
+                            <Icon className={`h-4 w-4 ${styles.color}`} />
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">
-                                {feat.tag}
-                            </span>
-                            <span className="text-[14px] font-bold text-zinc-200 group-hover:text-white leading-tight">
-                                {feat.text}
-                            </span>
+                            <dt className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">{feat.tag}</dt>
+                            <dd className="text-[14px] font-bold text-zinc-200 group-hover:text-white leading-tight">{feat.text}</dd>
                         </div>
                     </div>
-                ))}
-            </div>
+                  );
+                })}
+            </dl>
 
             <div className="space-y-4">
                 <div className="space-y-2">
