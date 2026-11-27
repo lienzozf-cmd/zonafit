@@ -1,6 +1,6 @@
 import type { Product } from './data';
 
-export const NEW_ARRIVAL_IDS = [9112, 9113, 9114, 9115, 9116, 9117, 9118, 9119];
+export const NEW_ARRIVAL_IDS = [9112, 9113, 9114, 9115, 9116, 9117, 9118, 9119, 9120, 9121, 9122, 9123, 9124, 9125, 9126, 9127, 9128, 9129, 9130, 9131, 9132, 9133];
 
 const imagePaths: Record<string, string> = {
   '/assets/images/marcas/gymshark/hombre/devantblack.jpg': '/assets/images/new-arrivals/devant-black.webp',

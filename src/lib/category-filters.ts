@@ -68,6 +68,7 @@ export const categoryFilters: Record<string, (p: Product) => boolean> = {
   'suplementos-pre-entrenos': inSubcategory('suplemento', 'pre-entreno'),
   'suplementos-aminoacidos': inSubcategory('suplemento', 'aminoacidos', 'aminoácidos'),
   'suplementos-l-carnitina': inSubcategory('suplemento', 'l-carnitina', 'carnitina'),
+  'suplementos-control-peso': inSubcategory('suplemento', 'control-peso'),
   'suplementos-bienestar': inSubcategory('suplemento', 'bienestar'),
 
   'joyeria': (p) => p.category === 'joyeria',

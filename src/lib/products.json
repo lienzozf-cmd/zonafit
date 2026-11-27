@@ -1,5 +1,532 @@
 [
   {
+    "id": 9120,
+    "name": "Nutrex Creatine Monohydrate - 300g Unflavored",
+    "brand": "Nutrex",
+    "price": "Q.240.00",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Nutrex Creatine Monohydrate - 300g Unflavored. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Nutrex Creatine Monohydrate 300g - 60servs eliminado.png",
+        "alt": "Nutrex Creatine Monohydrate - 300g Unflavored",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Sabor",
+      "values": [
+        {
+          "value": "Unflavored",
+          "stock": 10
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9121,
+    "name": "Mutant Core Series Multi - 60 Caplets",
+    "brand": "Mutant",
+    "price": "Q.265.00",
+    "category": "suplemento",
+    "subcategory": "bienestar",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Mutant Core Series Multi - 60 Caplets. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Mutant Core Series Multi - 60 Caplets eliminado.png",
+        "alt": "Mutant Core Series Multi - 60 Caplets",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 2
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9122,
+    "name": "MuscleTech Platinum Multivitamin - 90 Tablets",
+    "brand": "Muscletech",
+    "price": "Q.275.00",
+    "category": "suplemento",
+    "subcategory": "bienestar",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "MuscleTech Platinum Multivitamin - 90 Tablets. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de MuscleTech Platinum Multivitamin - 90 Tablets eliminado.png",
+        "alt": "MuscleTech Platinum Multivitamin - 90 Tablets",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 2
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9123,
+    "name": "Mutant Creakong CX8 - 30 Servings",
+    "brand": "Mutant",
+    "price": "Q.275.00",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Mutant Creakong CX8 - 30 Servings. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Mutant Creakong CX8 - 30 Servings eliminado.png",
+        "alt": "Mutant Creakong CX8 - 30 Servings",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 1
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9124,
+    "name": "NOW Foods Ashwagandha Extract 450mg - 30 VCaps",
+    "brand": "NOW",
+    "price": "Q.175.00",
+    "category": "suplemento",
+    "subcategory": "bienestar",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "NOW Foods Ashwagandha Extract 450mg - 30 VCaps. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de NOW Foods Ashwagandha Extract 450mg - 30 VCaps eliminado.png",
+        "alt": "NOW Foods Ashwagandha Extract 450mg - 30 VCaps",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 3
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9125,
+    "name": "JNX Sports The Curse - 30 Servings",
+    "brand": "JNX",
+    "price": "Q.265.00",
+    "category": "suplemento",
+    "subcategory": "pre-entreno",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "JNX Sports The Curse - 30 Servings. Disponible en Blue Raspberry y Cherry Limeade.",
+    "options": {
+      "type": "Presentación",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Blue Raspberry",
+        "hex": "#0078d4",
+        "imageSrc": "/assets/images/marcas/suplementos/Fondo de JNX Sports The Curse - 30 Servings Blue Raspberry eliminado.png",
+        "options": {
+          "type": "Presentación",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 2
+            }
+          ]
+        }
+      },
+      {
+        "name": "Cherry Limeade",
+        "hex": "#d72b35",
+        "imageSrc": "/assets/images/marcas/suplementos/Fondo de JNX Sports The Curse - 30 Servings Cherry Limeade eliminado.png",
+        "options": {
+          "type": "Presentación",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de JNX Sports The Curse - 30 Servings Blue Raspberry eliminado.png",
+        "alt": "JNX Sports The Curse - 30 Servings - Blue Raspberry",
+        "color": "Blue Raspberry",
+        "dataAiHint": "supplement product"
+      },
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de JNX Sports The Curse - 30 Servings Cherry Limeade eliminado.png",
+        "alt": "JNX Sports The Curse - 30 Servings - Cherry Limeade",
+        "color": "Cherry Limeade",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9126,
+    "name": "JNX Sports The Curse! Skull Shaker - Red",
+    "brand": "JNX",
+    "price": "Q.150.00",
+    "category": "accesorio",
+    "subcategory": "shaker",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "JNX Sports The Curse! Skull Shaker - Red. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de JNX Sports The Curse! Skull Shaker - Red eliminado.png",
+        "alt": "JNX Sports The Curse! Skull Shaker - Red",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 3
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9127,
+    "name": "Nutrex Creatine for Women - 30 Servings Strawberry Watermelon",
+    "brand": "Nutrex",
+    "price": "Q.295.00",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "gender": "mujer",
+    "availability": "Disponible",
+    "description": "Nutrex Creatine for Women - 30 Servings Strawberry Watermelon. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Nutrex Creatine for Women - 30 Servings Strawberry Watermelon eliminado.png",
+        "alt": "Nutrex Creatine for Women - 30 Servings Strawberry Watermelon",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Sabor",
+      "values": [
+        {
+          "value": "Strawberry Watermelon",
+          "stock": 3
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9128,
+    "name": "NOW Foods Omega-3 - 100 Softgels",
+    "brand": "NOW",
+    "price": "Q.250.00",
+    "category": "suplemento",
+    "subcategory": "bienestar",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "NOW Foods Omega-3 - 100 Softgels. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de NOW Foods Omega-3 - 100 Softgels eliminado.png",
+        "alt": "NOW Foods Omega-3 - 100 Softgels",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 3
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9129,
+    "name": "Nutrex Lipo-6 Black Ultra Concentrate - 60 Capsules",
+    "brand": "Nutrex",
+    "price": "Q.295.00",
+    "category": "suplemento",
+    "subcategory": "control-peso",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Nutrex Lipo-6 Black Ultra Concentrate - 60 Capsules. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Nutrex Lipo-6 Black Ultra Concentrate - 60 Capsules eliminado.png",
+        "alt": "Nutrex Lipo-6 Black Ultra Concentrate - 60 Capsules",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 4
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9130,
+    "name": "Optimum Nutrition Micronized Creatine Powder - 300g",
+    "brand": "ON",
+    "price": "Q.295.00",
+    "category": "suplemento",
+    "subcategory": "creatina",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Optimum Nutrition Micronized Creatine Powder - 300g. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Optimum Nutrition Micronized Creatine Powder - 300g eliminado.png",
+        "alt": "Optimum Nutrition Micronized Creatine Powder - 300g",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Sabor",
+      "values": [
+        {
+          "value": "Unflavored",
+          "stock": 3
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9131,
+    "name": "Mutant Whey - 5lbs",
+    "brand": "Mutant",
+    "price": "Q.850.00",
+    "category": "suplemento",
+    "subcategory": "proteina",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Mutant Whey - 5lbs. Disponible en Triple Chocolate y Vanilla Ice Cream.",
+    "options": {
+      "type": "Presentación",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "Triple Chocolate",
+        "hex": "#593624",
+        "imageSrc": "/assets/images/marcas/suplementos/Fondo de Mutant Whey - 5lbs Triple Chocolate eliminado.png",
+        "options": {
+          "type": "Presentación",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Vanilla Ice Cream",
+        "hex": "#f1e1bd",
+        "imageSrc": "/assets/images/marcas/suplementos/Fondo de Mutant Whey - 5lbs Vanilla Ice Cream eliminado.png",
+        "options": {
+          "type": "Presentación",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Mutant Whey - 5lbs Triple Chocolate eliminado.png",
+        "alt": "Mutant Whey - 5lbs - Triple Chocolate",
+        "color": "Triple Chocolate",
+        "dataAiHint": "supplement product"
+      },
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Mutant Whey - 5lbs Vanilla Ice Cream eliminado.png",
+        "alt": "Mutant Whey - 5lbs - Vanilla Ice Cream",
+        "color": "Vanilla Ice Cream",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9132,
+    "name": "NOW Foods Melatonin 3mg - 60 VCaps",
+    "brand": "NOW",
+    "price": "Q.180.00",
+    "category": "suplemento",
+    "subcategory": "bienestar",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "NOW Foods Melatonin 3mg - 60 VCaps. Presentación individual.",
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de NOW Foods Melatonin 3mg - 60 VCaps eliminado.png",
+        "alt": "NOW Foods Melatonin 3mg - 60 VCaps",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "options": {
+      "type": "Presentación",
+      "values": [
+        {
+          "value": "Único",
+          "stock": 3
+        }
+      ]
+    },
+    "colors": [],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
+    "id": 9133,
+    "name": "Optimum Nutrition Gold Standard 100% Whey - 5lbs",
+    "brand": "ON",
+    "price": "Q.995.00",
+    "category": "suplemento",
+    "subcategory": "proteina",
+    "gender": "unisex",
+    "availability": "Disponible",
+    "description": "Optimum Nutrition Gold Standard 100% Whey - 5lbs. Disponible en French Vanilla Creme y Extreme Milk Chocolate.",
+    "options": {
+      "type": "Presentación",
+      "values": []
+    },
+    "colors": [
+      {
+        "name": "French Vanilla Creme",
+        "hex": "#f1e1bd",
+        "imageSrc": "/assets/images/marcas/suplementos/Fondo de Optimum Nutrition Gold Standard 100_ Whey - 5lbs French Vanilla Creme eliminado.png",
+        "options": {
+          "type": "Presentación",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Extreme Milk Chocolate",
+        "hex": "#593624",
+        "imageSrc": "/assets/images/marcas/suplementos/Fondo de Optimum Nutrition Gold Standard 100_ Whey - 5lbs Extreme Milk Chocolate eliminado.png",
+        "options": {
+          "type": "Presentación",
+          "values": [
+            {
+              "value": "Único",
+              "stock": 1
+            }
+          ]
+        }
+      }
+    ],
+    "images": [
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Optimum Nutrition Gold Standard 100_ Whey - 5lbs French Vanilla Creme eliminado.png",
+        "alt": "Optimum Nutrition Gold Standard 100% Whey - 5lbs - French Vanilla Creme",
+        "color": "French Vanilla Creme",
+        "dataAiHint": "supplement product"
+      },
+      {
+        "src": "/assets/images/marcas/suplementos/Fondo de Optimum Nutrition Gold Standard 100_ Whey - 5lbs Extreme Milk Chocolate eliminado.png",
+        "alt": "Optimum Nutrition Gold Standard 100% Whey - 5lbs - Extreme Milk Chocolate",
+        "color": "Extreme Milk Chocolate",
+        "dataAiHint": "supplement product"
+      }
+    ],
+    "is_compression": false,
+    "is_new": true,
+    "visible": true
+  },
+  {
     "id": 9119,
     "name": "Vision Twist Front Sports Bra",
     "price": "Q.595.00",
@@ -4519,7 +5046,7 @@
   {
     "id": 2721,
     "name": "CREATINA 80 SERVS",
-    "price": "Q.436.00",
+    "price": "Q.395.00",
     "availability": "Disponible",
     "description": "Fórmula avanzada de pureza garantizada para maximizar fuerza, potencia y recuperación. Ingredientes de grado farmacéutico diseñados para resultados reales sin rellenos innecesarios.",
     "gender": "unisex",
@@ -4538,7 +5065,7 @@
       "type": "sabor",
       "values": [
         {
-          "stock": 1,
+          "stock": 4,
           "value": "Original"
         }
       ]

@@ -55,6 +55,7 @@ export const sitemapRoutes = [
   "/suplementos",
   "/suplementos/aminoacidos",
   "/suplementos/bienestar",
+  "/suplementos/control-de-peso",
   "/suplementos/creatinas",
   "/suplementos/l-carnitina",
   "/suplementos/pre-entrenos",

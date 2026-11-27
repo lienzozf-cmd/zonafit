@@ -171,6 +171,7 @@ export const navLinks = [
       { title: 'Aminoácidos', href: '/suplementos/aminoacidos' },
       { title: 'L-Carnitina', href: '/suplementos/l-carnitina' },
       { title: 'Salud y Bienestar', href: '/suplementos/bienestar' },
+      { title: 'Control de Peso', href: '/suplementos/control-de-peso' },
       { title: 'Ver Todo', href: '/suplementos' },
     ],
   },
